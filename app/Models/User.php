@@ -1,0 +1,79 @@
+<?php
+
+/**
+ * Created by Reliese Model.
+ * Date: Fri, 22 Sep 2017 01:54:30 +0700.
+ */
+
+namespace App\Models;
+
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+/**
+ * Class User
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $facebook_id
+ * @property string $email
+ * @property string $password
+ * @property string $account_status
+ * @property float $account_balance
+ * @property string $remember_token
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ *
+ * @property \Illuminate\Database\Eloquent\Collection $customers
+ * @property \Illuminate\Database\Eloquent\Collection $rates
+ * @property \Illuminate\Database\Eloquent\Collection $reviews
+ * @property \Illuminate\Database\Eloquent\Collection $suppliers
+ * @property \Illuminate\Database\Eloquent\Collection $wish_lists
+ *
+ * @package App\Models
+ */
+class User extends Authenticatable
+{
+    protected $casts = [
+        'account_balance' => 'float',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $fillable = [
+        'name',
+        'facebook_id',
+        'email',
+        'password',
+        'account_status',
+        'account_balance',
+        'remember_token',
+    ];
+
+    public function customers()
+    {
+        return $this->hasMany(\App\Models\Customer::class);
+    }
+
+    public function rates()
+    {
+        return $this->hasMany(\App\Models\Rate::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(\App\Models\Review::class);
+    }
+
+    public function suppliers()
+    {
+        return $this->hasMany(\App\Models\Supplier::class);
+    }
+
+    public function wishLists()
+    {
+        return $this->hasMany(\App\Models\WishList::class);
+    }
+}
