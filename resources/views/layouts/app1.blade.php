@@ -43,13 +43,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li class="dropdown open">
-                                <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="true"></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ route('login') }}">Login</a></li>
-                                    <li><a href="{{ route('login_with_facebook') }}"></a></li>
-                                </ul>
-                            </li>
+                            <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
@@ -59,7 +53,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ route('logout') }}"
+                                        <a href="{{ route('admin_logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout

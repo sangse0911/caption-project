@@ -8,6 +8,7 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Class User
@@ -33,15 +34,29 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
+    use Notifiable;
+
+    /**
+     * [$casts description]
+     * @var [type]
+     */
     protected $casts = [
         'account_balance' => 'float',
     ];
 
+    /**
+     * [$hidden description]
+     * @var [type]
+     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
+    /**
+     * [$fillable description]
+     * @var [type]
+     */
     protected $fillable = [
         'name',
         'facebook_id',

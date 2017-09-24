@@ -18,12 +18,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('admin')->group(function () {
+    Route::get('/', 'AdminController@index')->name('admin_home');
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin_show');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login');
+    Route::post('/logout', 'Auth\AdminLoginController@adminLogout')->name('admin_logout');
+});
 
 Route::get('auth/facebook', 'Auth\LoginController@redirectToProvider')->name('login_with_facebook');
 Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/users', 'UserController@show')->name('user_index');
-Route::get('/users/create', 'UserController@create')->name('user_create');
+Route::get('/users/create', 'UserController@create')->name('user_create')->middleware('admin');
 Route::get('/users/{id}/edit', 'UserController@edit')->name('user_edit');
 Route::put('/users/update', 'UserController@update')->name('user_update');
 Route::get('/admins', 'UserController@index')->name('user_admin');
