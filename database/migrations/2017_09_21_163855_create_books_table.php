@@ -16,6 +16,7 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
+            $table->string('introduce');
             $table->text('description');
             $table->integer('admin_id')->unsigned();
             $table->integer('bookself_id')->unsigned();
@@ -25,6 +26,7 @@ class CreateBooksTable extends Migration
             $table->dateTime('publishing_year');
             $table->tinyInteger('republish');
             $table->string('isbn');
+            $table->string('slug');
             $table->timestamps();
 
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');

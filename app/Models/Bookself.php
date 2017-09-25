@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -26,17 +27,34 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Bookself extends Model
 {
+
+    use Sluggable;
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'status',
+            ],
+        ];
+    }
+
     protected $table = 'bookselfs';
 
     protected $casts = [
         'admin_id' => 'int',
-        'quantity' => 'int',
     ];
 
     protected $fillable = [
         'admin_id',
-        'quantity',
+        'status',
         'location',
+        'slug',
     ];
 
     public function admin()

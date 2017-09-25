@@ -32,7 +32,7 @@ class UserController extends Controller
     public function index()
     {
         $users = $this->userService->getAll();
-        return view('admin.index', compact('users'));
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -54,7 +54,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = $this->userService->save($request->all());
-        return redirect()->route('user_index');
+        return redirect()->route('admin.index');
     }
 
     /**

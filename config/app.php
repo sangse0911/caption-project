@@ -177,7 +177,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ProjectServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
     ],
 
     /*

@@ -7,6 +7,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -27,6 +28,23 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Event extends Model
 {
+
+    use Sluggable;
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title',
+            ],
+        ];
+    }
+
     protected $casts = [
         'admin_id' => 'int',
     ];
@@ -37,6 +55,7 @@ class Event extends Model
         'image_path',
         'description',
         'status',
+        'slug',
     ];
 
     public function admin()

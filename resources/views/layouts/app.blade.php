@@ -43,11 +43,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li class="dropdown open">
-                                <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="true"></a>
-                                <ul class="dropdown-menu">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Login</a>
+                                <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ route('login') }}">Login</a></li>
-                                    <li><a href="{{ route('login_with_facebook') }}"></a></li>
+                                    <li><a href="{{ route('login_with_facebook') }}">Login_with_facebook</a></li>
                                 </ul>
                             </li>
                             <li><a href="{{ route('register') }}">Register</a></li>

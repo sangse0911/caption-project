@@ -12,7 +12,7 @@ class AdminLoginController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest:admin', ['except' => 'logout']);
+        $this->middleware('guest:admin', ['except' => 'logout', 'adminLogout']);
     }
     /**
      * [showLoginForm description]
@@ -35,7 +35,7 @@ class AdminLoginController extends Controller
         ]);
         $token = Str::random(60);
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-            return redirect()->intended(route('admin_home'));
+            return redirect()->intended(route('admin.index'));
         }
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }

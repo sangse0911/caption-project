@@ -44,8 +44,8 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
 
-                            <li class="dropdown open">
-                                <a href="#" class="dropdown-toggle" role="button">Login</a>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Login</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ route('login') }}">Login</a></li>
                                     <li><a href="{{ route('login_with_facebook') }}">Login_with_facebook</a></li>

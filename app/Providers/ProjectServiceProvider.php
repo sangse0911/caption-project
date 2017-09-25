@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class ProjectServiceProvider extends ServiceProvider
@@ -13,7 +14,8 @@ class ProjectServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        View::composer(['admin.index', 'bookself.create', 'supplier.create'],
+            'App\Http\ViewComposers\ProfileComposer');
     }
 
     /**
@@ -24,5 +26,9 @@ class ProjectServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(\App\Interfaces\UserInterface::class, \App\Services\UserService::class);
+        $this->app->singleton(\App\Interfaces\SupplierInterface::class, \App\Services\SupplierService::class);
+        $this->app->singleton(\App\Interfaces\BookselfInterface::class, \App\Services\BookselfService::class);
+        $this->app->singleton(\App\Interfaces\AdminInterface::class, \App\Services\AdminService::class);
+        $this->app->singleton(\App\Interfaces\InvoiceInterface::class, \App\Services\InvoiceService::class);
     }
 }

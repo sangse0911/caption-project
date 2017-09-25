@@ -16,8 +16,9 @@ class CreateBookselfsTable extends Migration
         Schema::create('bookselfs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('admin_id')->unsigned();
-            $table->integer('quantity')->unsigned();
-            $table->string('location');
+            $table->enum('status', [0, 1])->default(1);
+            $table->string('location')->unique();
+            $table->string('slug');
             $table->timestamps();
 
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');

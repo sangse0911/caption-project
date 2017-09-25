@@ -26,7 +26,7 @@ class UserService implements UserInterface
     public function save($request)
     {
         $user = User::create($request);
-        return $users;
+        return $user;
     }
 
     /**
@@ -34,7 +34,7 @@ class UserService implements UserInterface
      * @param  [type] $id [description]
      * @return [type]     [description]
      */
-    public function getById()
+    public function getById($id)
     {
         $id = \Auth::user()->id;
         $user = User::findOrFail($id);
@@ -44,6 +44,20 @@ class UserService implements UserInterface
         return $user;
     }
 
+    public function getByName()
+    {
+
+    }
+
+    /**
+     * [getUserLast get lastest create user]
+     * @return [object] [description]
+     */
+    public function getUserLast()
+    {
+        $user = User::where('id', 'desc')->first();
+        return $user;
+    }
     /**
      * [edit description]
      * @param  [type] $request [description]

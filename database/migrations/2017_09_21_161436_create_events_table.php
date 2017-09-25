@@ -20,6 +20,7 @@ class CreateEventsTable extends Migration
             $table->string('image_path');
             $table->text('description');
             $table->enum('status', ['0', '1'])->default('0');
+            $table->string('slug');
             $table->timestamps();
 
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
