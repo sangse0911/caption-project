@@ -70,5 +70,5 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/book/create', ['as' => 'book.save', 'uses' => 'BookController@store']);
 
     Route::get('/cate-book', ['as' => 'cate-book.index', 'uses' => 'CateBookController@index']);
-    // Route::get('/')
+
 });
