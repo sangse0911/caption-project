@@ -38,7 +38,8 @@ Route::put('/users/update', 'UserController@update')->name('user_update');
 Route::get('/bookself', 'BookselfController@index')->name('bookself.index');
 Route::get('/bookself/create', 'BookselfController@create')->name('bookself.create');
 Route::post('/bookself/create', 'BookselfController@store')->name('bookself.save');
-Route::get('/bookself/{slug}', ['as' => 'bookself.single', 'uses' => 'BookselfController@getStatus'])->where('slug', '[\w\d\-\_]+');
+Route::get('/bookself/{slug}', ['as' => 'bookself.single', 'uses' => 'BookselfController@getStatus'])
+    ->where('slug', '[\w\d\-\_]+');
 
 Route::get('/supplier', 'SupplierController@index')->name('supplier.index');
 Route::get('/supplier/{slug}', ['as' => 'supplier.create', 'uses' => 'SupplierController@create'])
@@ -48,3 +49,18 @@ Route::post('/supplier/create', 'SupplierController@store')->name('supplier.save
 Route::get('/invoice', 'InvoiceController@index')->name('invoice.index');
 Route::get('/invoice/create/{id}', 'InvoiceController@create')->name('invoice.create');
 Route::post('/invoice/create', 'InvoiceController@store')->name('invoice.save');
+
+Route::middleware(['auth:admin'])->group(function () {
+
+    Route::get('/categories', ['as' => 'categories.index', 'uses' => 'CategoryController@index']);
+    Route::get('/categories/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
+    Route::post('/categories/create', ['as' => 'category.save', 'uses' => 'CategoryController@store']);
+
+    Route::get('/status', ['as' => 'status.index', 'uses' => 'StatusController@index']);
+    Route::get('/status/create', ['as' => 'status.create', 'uses' => 'StatusController@create']);
+    Route::post('/status/create', ['as' => 'status.save', 'uses' => 'StatusController@store']);
+
+    Route::get('/images', ['as' => 'images.index', 'uses' => 'ImageController@index']);
+    Route::get('/images/create', ['as' => 'images.create', 'uses' => 'ImageController@create']);
+    Route::post('/images/create', ['as' => 'images.store', 'uses' => 'ImageController@store']);
+});
