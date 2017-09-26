@@ -33,5 +33,7 @@ class ProjectServiceProvider extends ServiceProvider
         $this->app->singleton(\App\Interfaces\CategoryInterface::class, \App\Services\CategoryService::class);
         $this->app->singleton(\App\Interfaces\StatusInterface::class, \App\Services\StatusService::class);
         $this->app->singleton(\App\Interfaces\ImageInterface::class, \App\Services\ImageService::class);
+        $this->app->singleton(\App\Interfaces\BookInterface::class, \App\Services\BookService::class);
+        $this->app->singleton(\App\Interfaces\CateBookInterface::class, \App\Services\CateBookService::class);
     }
 }

@@ -63,9 +63,7 @@ class ImageService implements ImageInterface
 
             }
             $image = new Image;
-            $image->book_id = '1';
             $image->path = $time . '/';
-            $image->save();
             return $image;
         }
     }

@@ -50,6 +50,8 @@ Route::get('/invoice', 'InvoiceController@index')->name('invoice.index');
 Route::get('/invoice/create/{id}', 'InvoiceController@create')->name('invoice.create');
 Route::post('/invoice/create', 'InvoiceController@store')->name('invoice.save');
 
+Route::get('/book', ['as' => 'book.index', 'uses' => 'BookController@index']);
+
 Route::middleware(['auth:admin'])->group(function () {
 
     Route::get('/categories', ['as' => 'categories.index', 'uses' => 'CategoryController@index']);
@@ -63,4 +65,10 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/images', ['as' => 'images.index', 'uses' => 'ImageController@index']);
     Route::get('/images/create', ['as' => 'images.create', 'uses' => 'ImageController@create']);
     Route::post('/images/create', ['as' => 'images.store', 'uses' => 'ImageController@store']);
+
+    Route::get('/book/create', ['as' => 'book.create', 'uses' => 'BookController@create']);
+    Route::post('/book/create', ['as' => 'book.save', 'uses' => 'BookController@store']);
+
+    Route::get('/cate-book', ['as' => 'cate-book.index', 'uses' => 'CateBookController@index']);
+    // Route::get('/')
 });
