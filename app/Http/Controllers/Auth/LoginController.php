@@ -61,18 +61,21 @@ class LoginController extends Controller
         } catch (Exception $e) {
             return redirect('/');
         }
-        $user = User::where('facebook_id', $socialUser->getID())->first();
+        $findUser = User::where('facebook_id', $socialUser->getID())->first();
 
-        if (!$user) {
+        if ($findUser) {
+            auth()->login($findUser);
+
+        } else {
+            $user = new User;
             User::create([
                 'facebook_id' => $socialUser->getID(),
                 'email' => $socialUser->getEmail(),
                 'name' => $socialUser->getName(),
+                'password' => bcrypt(str_random(10)),
             ]);
+            auth()->login($user);
         }
-
-        auth()->login($user);
-
-        return redirect()->to('/');
+        return redirect()->intended('/');
     }
 }
