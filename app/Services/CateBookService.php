@@ -2,11 +2,10 @@
 
 namespace App\Services;
 
-use App\Interfaces\BookInterface;
 use App\Interfaces\CateBookInterface;
 use App\Models\CateBook;
 
-class CateBookService implements CateBookInterface, BookInterface
+class CateBookService implements CateBookInterface
 {
 
     public function getAll()
@@ -20,8 +19,10 @@ class CateBookService implements CateBookInterface, BookInterface
 
     }
 
-    public function save($request)
+    public function save()
     {
+        $cateBook = new CateBook;
+        return $cateBook;
 
     }
 }

@@ -58,6 +58,17 @@ class UserController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeUser(Request $request)
+    {
+        $user = $this->userService->save($request->all());
+        return redirect()->route('supplier.create')->with(['user' => $user]);
+    }
+    /**
      * Display the specified resource.
      *
      * @param  int  $id

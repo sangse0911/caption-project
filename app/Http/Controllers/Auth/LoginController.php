@@ -64,6 +64,7 @@ class LoginController extends Controller
         $findUser = User::where('facebook_id', $socialUser->getID())->first();
 
         if ($findUser) {
+
             auth()->login($findUser);
 
         } else {

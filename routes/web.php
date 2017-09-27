@@ -29,7 +29,6 @@ Route::get('auth/facebook', 'Auth\LoginController@redirectToProvider')->name('lo
 Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/users', ['as' => 'users.index', 'uses' => 'UserController@index']);
-Route::get('/users/create', 'UserController@create')->name('user_create');
 Route::post('/users/create', 'UserController@store')->name('user_save');
 Route::get('/users/{id}/edit', 'UserController@edit')->name('user_edit');
 Route::put('/users/update', 'UserController@update')->name('user_update');
@@ -42,8 +41,6 @@ Route::get('/bookself/{slug}', ['as' => 'bookself.single', 'uses' => 'BookselfCo
     ->where('slug', '[\w\d\-\_]+');
 
 Route::get('/supplier', 'SupplierController@index')->name('supplier.index');
-Route::get('/supplier/{slug}', ['as' => 'supplier.create', 'uses' => 'SupplierController@create'])
-    ->where('slug', '[\w\d\-\_]+');
 Route::post('/supplier/create', 'SupplierController@store')->name('supplier.save');
 
 Route::get('/invoice', 'InvoiceController@index')->name('invoice.index');
@@ -53,6 +50,11 @@ Route::post('/invoice/create', 'InvoiceController@store')->name('invoice.save');
 Route::get('/book', ['as' => 'book.index', 'uses' => 'BookController@index']);
 
 Route::middleware(['auth:admin'])->group(function () {
+
+    Route::get('/users/create', 'UserController@create')->name('user.create');
+    Route::post('/users/create', 'UserController@storeUser')->name('user.create.supplier');
+
+    Route::get('/supplier', ['as' => 'supplier.create', 'uses' => 'SupplierController@create']);
 
     Route::get('/categories', ['as' => 'categories.index', 'uses' => 'CategoryController@index']);
     Route::get('/categories/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
@@ -66,7 +68,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/images/create', ['as' => 'images.create', 'uses' => 'ImageController@create']);
     Route::post('/images/create', ['as' => 'images.store', 'uses' => 'ImageController@store']);
 
-    Route::get('/book/create', ['as' => 'book.create', 'uses' => 'BookController@create']);
+    Route::get('/book/create/{slug}', ['as' => 'book.create', 'uses' => 'BookController@create']);
     Route::post('/book/create', ['as' => 'book.save', 'uses' => 'BookController@store']);
 
     Route::get('/cate-book', ['as' => 'cate-book.index', 'uses' => 'CateBookController@index']);

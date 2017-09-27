@@ -6,5 +6,5 @@ interface CateBookInterface
 {
     public function getAll();
     public function getById();
-    public function save($request);
+    public function save();
 }

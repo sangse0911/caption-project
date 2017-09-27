@@ -45,7 +45,8 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $supplier = $this->supplierService->save($request->all());
-        return redirect()->route('invoice.create', $supplier);
+        // dd($supplier);
+        return redirect()->route('book.create', ['id' => $supplier->id]);
     }
 
     /**

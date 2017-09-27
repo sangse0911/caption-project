@@ -5,8 +5,9 @@ namespace App\Services;
 use App\Interfaces\BookInterface;
 use App\Interfaces\CateBookInterface;
 use App\Interfaces\ImageInterface;
+use App\Interfaces\InvoiceDetailInterface;
+use App\Interfaces\InvoiceInterface;
 use App\Models\Book;
-use App\Models\CateBook;
 use Illuminate\Support\Facades\Input;
 
 class BookService implements BookInterface
@@ -14,13 +15,19 @@ class BookService implements BookInterface
 
     protected $cateBookService;
     protected $imageService;
+    protected $invoiceService;
+    protected $invoiceDetailService;
 
     public function __construct(
         CateBookInterface $cateBookService,
-        ImageInterface $imageService
+        ImageInterface $imageService,
+        InvoiceInterface $invoiceService,
+        InvoiceDetailInterface $invoiceDetailService
     ) {
         $this->cateBookService = $cateBookService;
         $this->imageService = $imageService;
+        $this->invoiceService = $invoiceService;
+        $this->invoiceDetailService = $invoiceDetailService;
     }
     public function getAll()
     {
@@ -52,15 +59,24 @@ class BookService implements BookInterface
         $book->save();
 
         foreach ($categories as $category) {
-            $cateBook = new CateBook;
+            $cateBook = $this->cateBookService->save();
             $cateBook->category_id = $category;
             $cateBook->book()->associate($book);
             $cateBook->save();
+            // $cateBook = $this->cateBookService->save();
         }
 
         $image = $this->imageService->save();
         $image->book()->associate($book);
         $image->save();
+
+        $invoice = $this->invoiceService->save($request);
+
+        $invoiceDetail = $this->invoiceDetailService->save($request);
+        $invoiceDetail->book()->associate($book);
+        $invoiceDetail->invoice()->associate($invoice);
+
+        $invoiceDetail->save();
         return $book;
     }
 }

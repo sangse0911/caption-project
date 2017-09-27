@@ -12,9 +12,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-datetimepicker.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}">
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
 </head>
 <body>
     <div id="app">
@@ -39,14 +36,30 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Supplier</a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ route('supplier.create') }}">Add new supplier</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('user.create') }}">Add new user</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('admin.show') }}">Login</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Login</a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ route('login') }}">Login</a></li>
+                                    <li><a href="{{ route('login_with_facebook') }}">Login_with_facebook</a></li>
+                                </ul>
+                            </li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
@@ -56,7 +69,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ route('admin_logout') }}"
+                                        <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
@@ -78,8 +91,6 @@
     </div>
 
     <!-- Scripts -->
-
-    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
-
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

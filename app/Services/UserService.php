@@ -25,7 +25,11 @@ class UserService implements UserInterface
      */
     public function save($request)
     {
-        $user = User::create($request);
+        $user = new User;
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $user->password = bcrypt($request['password']);
+        $user->save();
         return $user;
     }
 
