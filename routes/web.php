@@ -12,7 +12,7 @@
  */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Auth::routes();
@@ -71,6 +71,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/book/create/{slug}', ['as' => 'book.create', 'uses' => 'BookController@create']);
     Route::post('/book/create', ['as' => 'book.save', 'uses' => 'BookController@store']);
 
-    Route::get('/cate-book', ['as' => 'cate-book.index', 'uses' => 'CateBookController@index']);
-
 });
+Route::get('/catebook', ['as' => 'catebook.index', 'uses' => 'CateBookController@index']);
+Route::get('/api/user', ['as' => 'api.user.index', 'uses' => 'UserController@indexApi']);
+Route::get('/users/content', ['as' => 'users.content', 'uses' => 'UserController@getContent']);

@@ -35,6 +35,16 @@ class UserController extends Controller
         return view('users.index', compact('users'));
     }
 
+    public function indexApi()
+    {
+        return $this->userService->getByApi();
+        // return view('api.user.index', compact('users'));
+    }
+
+    public function getContent()
+    {
+        return view('users.content');
+    }
     /**
      * Show the form for creating a new resource.
      *

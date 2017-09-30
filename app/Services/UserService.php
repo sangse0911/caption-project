@@ -18,6 +18,11 @@ class UserService implements UserInterface
         return $users;
     }
 
+    public function getByApi()
+    {
+        $user = User::all();
+        return response()->json($user);
+    }
     /**
      * [save description]
      * @param  [type] $request [description]

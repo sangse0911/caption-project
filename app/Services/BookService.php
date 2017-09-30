@@ -31,7 +31,7 @@ class BookService implements BookInterface
     }
     public function getAll()
     {
-        $books = Book::paginate(20);
+        $books = Book::all();
         return $books;
     }
 

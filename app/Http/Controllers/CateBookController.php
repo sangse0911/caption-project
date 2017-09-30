@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\CateBookInterface;
+use DB;
 use Illuminate\Http\Request;
 
 class CateBookController extends Controller
@@ -21,7 +22,13 @@ class CateBookController extends Controller
      */
     public function index()
     {
-        //
+        $cate = DB::table('categories')
+            ->groupBy('id')
+            ->get(['name']);
+        $book = DB::table('books')
+            ->groupBy('name')
+            ->get(['name']);
+        return response()->json(['cate' => $cate, 'book' => $book]);
     }
 
     /**
