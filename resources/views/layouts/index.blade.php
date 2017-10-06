@@ -18,8 +18,9 @@
     <meta name="viewport" content="width=device-width, minimum-scale=0.25, maximum-scale=1.6, initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <link rel="icon" type="image/vnd.microsoft.icon" href="http://demo.fieldthemes.com/bookshop/home1/img/favicon.ico?1473242051" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{ URL::to('/themes/bookshop/home1/img/favicon.ico') }} " />
-    <link rel="stylesheet" href="{{ URL::to('css/v_20_1173ad39a30f0722ddb83b71149aa820_all.css') }}" type="text/css" media="all" />
+    <link rel="shortcut icon" type="image/x-icon" href="../themes/bookshop/home1/img/favicon.ico?1473242051" />
+    <link rel="stylesheet" href="{{ asset('css/v_20_1173ad39a30f0722ddb83b71149aa820_all.css') }}" type="text/css" media="all" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!--[if IE 8]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script> <![endif]-->
@@ -90,13 +91,13 @@
                         <div class="row">
                             <nav>
                                 <div id="languages-block-top" class="languages-block">
-                                    <div class="current"> <img src="{{ URL::to('/img/l/1.jpg') }}" alt="en" width="16" height="11" /></div>
+                                    <div class="current"> <img src="../img/l/1.jpg" alt="en" width="16" height="11" /></div>
                                     <ul id="first-languages" class="languages-block_ul toogle_content">
-                                        <li class="selected"> <span> <img src="{{ URL::to('/img/l/1.jpg') }}" alt="en" width="16" height="11" /> <span>English</span> </span>
+                                        <li class="selected"> <span> <img src="../img/l/1.jpg" alt="en" width="16" height="11" /> <span>English</span> </span>
                                         </li>
-                                        <li> <a href="http://demo.fieldthemes.com/bookshop/home1/fr/" title="Français (French)" rel="alternate" hreflang="fr"> <img src="{{ URL::to('/img/l/2.jpg') }}" alt="fr" width="16" height="11" /> <span>Français</span> </a></li>
-                                        <li> <a href="http://demo.fieldthemes.com/bookshop/home1/es/" title="Español (Spanish)" rel="alternate" hreflang="es"> <img src="{{ URL::to('/img/l/3.jpg') }}" alt="es" width="16" height="11" /> <span>Español</span> </a></li>
-                                        <li> <a href="http://demo.fieldthemes.com/bookshop/home1/it/" title="Italiano (Italian)" rel="alternate" hreflang="it"> <img src="{{ URL::to('/img/l/4.jpg') }}" alt="it" width="16" height="11" /> <span>Italiano</span> </a></li>
+                                        <li> <a href="http://demo.fieldthemes.com/bookshop/home1/fr/" title="Français (French)" rel="alternate" hreflang="fr"> <img src="../img/l/2.jpg" alt="fr" width="16" height="11" /> <span>Français</span> </a></li>
+                                        <li> <a href="http://demo.fieldthemes.com/bookshop/home1/es/" title="Español (Spanish)" rel="alternate" hreflang="es"> <img src="../img/l/3.jpg" alt="es" width="16" height="11" /> <span>Español</span> </a></li>
+                                        <li> <a href="http://demo.fieldthemes.com/bookshop/home1/it/" title="Italiano (Italian)" rel="alternate" hreflang="it"> <img src="../img/l/4.jpg" alt="it" width="16" height="11" /> <span>Italiano</span> </a></li>
                                     </ul>
                                 </div>
                                 <div id="mobile_links">
@@ -129,7 +130,7 @@
                 <div class="header_bottom">
                     <div class="container">
                         <div class="row">
-                            <div id="header_logo" class="col-xs-12 col-sm-12 col-md-3"> <a href="http://demo.fieldthemes.com/bookshop/home1/" title="bookshop_home1"> <img class="logo img-responsive" src="{{ URL::to('/img/logo.jpg') }}" alt="bookshop_home1" width="216" height="65"/> </a></div>
+                            <div id="header_logo" class="col-xs-12 col-sm-12 col-md-3"> <a href="http://demo.fieldthemes.com/bookshop/home1/" title="bookshop_home1"> <img class="logo img-responsive" src="../img/logo.jpg" alt="bookshop_home1" width="216" height="65"/> </a></div>
                             <div id="sticky_top" class="col-xs-12 col-sm-12 col-md-9 " style=" margin-top:41.5px">
                                 <div id="search_block_top">
                                     <div class="field-search">
@@ -193,7 +194,7 @@
                                     </div>
                                 </div>
                                 <div class="shopping_cart_menu">
-                                    <div id="cart_block_top" class="shopping_cart"> <a href="#" title="View my shopping cart" rel="nofollow"><span class="ajax_cart_quantity unvisible">0</span> <span class="ajax_cart_product_txt unvisible">Item - </span> <span class="ajax_cart_product_txt_s unvisible">Items - </span> <span class="ajax_cart_total unvisible"> </span> <span class="ajax_cart_no_product">My cart: 0 item(s)</span> </a>
+                                    <div id="cart_block_top" class="shopping_cart"> <a href="quick-order.html" title="View my shopping cart" rel="nofollow"><span class="ajax_cart_quantity unvisible">0</span> <span class="ajax_cart_product_txt unvisible">Item - </span> <span class="ajax_cart_product_txt_s unvisible">Items - </span> <span class="ajax_cart_total unvisible"> </span> <span class="ajax_cart_no_product">My cart: 0 item(s)</span> </a>
                                         <div class="cart_block block exclusive">
                                             <div class="block_content">
                                                 <div class="cart_block_list">
@@ -280,9 +281,9 @@
                                                         <div class="right-title menu-product-title title_font"><span>Hot Products</span></div>
                                                         <ul class="v-right-section-products menu-product" data-pquant="2">
                                                             <li>
-                                                                <div class="li-indent"><a class="product-image-link" href="casual-dresses/3-the-art-city.html"><img src="{{ URL::to('/59-vmega_default/the-art-city.jpg') }}" alt="The Art City" /></a><a href="casual-dresses/3-the-art-city.html" class="menu-product-name">The Art City</a><span class="price-container"><span class="price">$9.36</span></span>
+                                                                <div class="li-indent"><a class="product-image-link" href="casual-dresses/3-the-art-city.html"><img src="../59-vmega_default/the-art-city.jpg" alt="The Art City" /></a><a href="casual-dresses/3-the-art-city.html" class="menu-product-name">The Art City</a><span class="price-container"><span class="price">$9.36</span></span>
                                                                 </div>
-                                                                <div class="li-indent"><a class="product-image-link" href="summer-dresses/5-convallis-pharetra.html"><img src="{{ URL::to('/47-vmega_default/convallis-pharetra.jpg') }}" alt="Convallis Phar..." /></a><a href="summer-dresses/5-convallis-pharetra.html" class="menu-product-name">Convallis Phar...</a><span class="price-container"><span class="price">$30.51</span></span>
+                                                                <div class="li-indent"><a class="product-image-link" href="summer-dresses/5-convallis-pharetra.html"><img src="../47-vmega_default/convallis-pharetra.jpg" alt="Convallis Phar..." /></a><a href="summer-dresses/5-convallis-pharetra.html" class="menu-product-name">Convallis Phar...</a><span class="price-container"><span class="price">$30.51</span></span>
                                                                 </div>
                                                             </li>
                                                         </ul>
@@ -325,7 +326,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="v-bottom-section">
-                                                    <div class="section-indent"><a href="#" class="imagelink"><img src="{{ URL::to('/modules/fieldvmegamenu/uploads/vmega-apparel.jpg') }}" class="bottomimage menu-image" alt="" /></a></div>
+                                                    <div class="section-indent"><a href="#" class="imagelink"><img src="../modules/fieldvmegamenu/uploads/vmega-apparel.jpg" class="bottomimage menu-image" alt="" /></a></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -357,7 +358,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="right-section">
-                                                    <div class="section-indent"><a href="#" class="imagelink"><img src="{{ URL::to('/modules/fieldvmegamenu/uploads/vmega_fiction.jpg') }}" class="rightimage menu-image" alt="" /></a></div>
+                                                    <div class="section-indent"><a href="#" class="imagelink"><img src="../modules/fieldvmegamenu/uploads/vmega_fiction.jpg" class="rightimage menu-image" alt="" /></a></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -469,7 +470,7 @@
                     </div>
                     <div class="stt-menu col-md-2">
                         <div class="st_header">
-                            <div class="st_img"><img src="{{ URL::to('/modules/fieldstaticblocks/images/phone.png') }}" alt="" /></div>
+                            <div class="st_img"><img src="../modules/fieldstaticblocks/images/phone.png" alt="" /></div>
                             <div class="st_text title_font">+ 020.566.6666</div>
                         </div>
                     </div>
@@ -537,7 +538,8 @@
                                                                 <li class=""><a class="menu-item-title" href="21-cocktail.html">Cocktail</a></li>
                                                                 <li class=""><a class="menu-item-title" href="22-day.html">Day</a></li>
                                                                 <li class=""><a class="menu-item-title" href="23-evening.html">Evening</a></li>
-                                                                <li class=""><a class="menu-item-title" href="24-fitness.html">Health & fitness</a></li>
+                                                                <li class=""><a class="menu-item-title" href="24-fitness.html">Health
+                                                                & fitness</a></li>
                                                                 <li class=""><a class="menu-item-title" href="19-shoes.html">Shoes</a></li>
                                                                 <li class=""><a class="menu-item-title" href="40-technology.html">Technology</a><a href="#" class="opener"></a>
                                                                     <ul class="v-main-section-sublinks dd-section level_1">
@@ -556,9 +558,9 @@
                                                     <div class="right-title menu-product-title title_font"><span>Hot Products</span></div>
                                                     <ul class="v-right-section-products menu-product" data-pquant="2">
                                                         <li>
-                                                            <div class="li-indent"><a class="product-image-link" href="casual-dresses/3-the-art-city.html"><img src="{{ URL::to('/59-vmega_default/the-art-city.jpg') }}" alt="The Art City" /></a><a href="casual-dresses/3-the-art-city.html" class="menu-product-name">The Art City</a><span class="price-container"><span class="price">$9.36</span></span>
+                                                            <div class="li-indent"><a class="product-image-link" href="casual-dresses/3-the-art-city.html"><img src="../59-vmega_default/the-art-city.jpg" alt="The Art City" /></a><a href="casual-dresses/3-the-art-city.html" class="menu-product-name">The Art City</a><span class="price-container"><span class="price">$9.36</span></span>
                                                             </div>
-                                                            <div class="li-indent"><a class="product-image-link" href="summer-dresses/5-convallis-pharetra.html"><img src="{{ URL::to('/47-vmega_default/convallis-pharetra.jpg') }}" alt="Convallis Phar..." /></a><a href="summer-dresses/5-convallis-pharetra.html" class="menu-product-name">Convallis Phar...</a><span class="price-container"><span class="price">$30.51</span></span>
+                                                            <div class="li-indent"><a class="product-image-link" href="summer-dresses/5-convallis-pharetra.html"><img src="../47-vmega_default/convallis-pharetra.jpg" alt="Convallis Phar..." /></a><a href="summer-dresses/5-convallis-pharetra.html" class="menu-product-name">Convallis Phar...</a><span class="price-container"><span class="price">$30.51</span></span>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -601,7 +603,7 @@
                                                 </div>
                                             </div>
                                             <div class="v-bottom-section">
-                                                <div class="section-indent"><a href="#" class="imagelink"><img src="{{ URL::to('/modules/fieldvmegamenu/uploads/vmega-apparel.jpg') }}" class="bottomimage menu-image" alt="" /></a></div>
+                                                <div class="section-indent"><a href="#" class="imagelink"><img src="../modules/fieldvmegamenu/uploads/vmega-apparel.jpg" class="bottomimage menu-image" alt="" /></a></div>
                                             </div>
                                         </div>
                                     </div>
@@ -633,7 +635,7 @@
                                                 </div>
                                             </div>
                                             <div class="right-section">
-                                                <div class="section-indent"><a href="#" class="imagelink"><img src="{{ URL::to('/modules/fieldvmegamenu/uploads/vmega_fiction.jpg') }}" class="rightimage menu-image" alt="" /></a></div>
+                                                <div class="section-indent"><a href="#" class="imagelink"><img src="../modules/fieldvmegamenu/uploads/vmega_fiction.jpg" class="rightimage menu-image" alt="" /></a></div>
                                             </div>
                                         </div>
                                     </div>
@@ -711,7 +713,7 @@
                 </div>
                 <div class="stt-menu col-sm-12 col-xs-12">
                     <div class="st_header">
-                        <div class="st_img"><img src="{{ URL::to('/modules/fieldstaticblocks/images/phone.png') }}" alt="" /></div>
+                        <div class="st_img"><img src="../modules/fieldstaticblocks/images/phone.png" alt="" /></div>
                         <div class="st_text title_font">+ 020.566.6666</div>
                     </div>
                 </div>
@@ -764,9 +766,9 @@
                                                         <div class="right-title menu-product-title title_font"><span>Hot Products</span></div>
                                                         <ul class="v-right-section-products menu-product" data-pquant="2">
                                                             <li>
-                                                                <div class="li-indent"><a class="product-image-link" href="casual-dresses/3-the-art-city.html"><img src="{{ URL::to('/59-vmega_default/the-art-city.jpg') }}" alt="The Art City" /></a><a href="casual-dresses/3-the-art-city.html" class="menu-product-name">The Art City</a><span class="price-container"><span class="price">$9.36</span></span>
+                                                                <div class="li-indent"><a class="product-image-link" href="casual-dresses/3-the-art-city.html"><img src="../59-vmega_default/the-art-city.jpg" alt="The Art City" /></a><a href="casual-dresses/3-the-art-city.html" class="menu-product-name">The Art City</a><span class="price-container"><span class="price">$9.36</span></span>
                                                                 </div>
-                                                                <div class="li-indent"><a class="product-image-link" href="summer-dresses/5-convallis-pharetra.html"><img src="{{ URL::to('/47-vmega_default/convallis-pharetra.jpg') }}" alt="Convallis Phar..." /></a><a href="summer-dresses/5-convallis-pharetra.html" class="menu-product-name">Convallis Phar...</a><span class="price-container"><span class="price">$30.51</span></span>
+                                                                <div class="li-indent"><a class="product-image-link" href="summer-dresses/5-convallis-pharetra.html"><img src="../47-vmega_default/convallis-pharetra.jpg" alt="Convallis Phar..." /></a><a href="summer-dresses/5-convallis-pharetra.html" class="menu-product-name">Convallis Phar...</a><span class="price-container"><span class="price">$30.51</span></span>
                                                                 </div>
                                                             </li>
                                                         </ul>
@@ -809,7 +811,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="v-bottom-section">
-                                                    <div class="section-indent"><a href="#" class="imagelink"><img src="{{ URL::to('/modules/fieldvmegamenu/uploads/vmega-apparel.jpg') }}" class="bottomimage menu-image" alt="" /></a></div>
+                                                    <div class="section-indent"><a href="#" class="imagelink"><img src="../modules/fieldvmegamenu/uploads/vmega-apparel.jpg" class="bottomimage menu-image" alt="" /></a></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -841,7 +843,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="right-section">
-                                                    <div class="section-indent"><a href="#" class="imagelink"><img src="{{ URL::to('/modules/fieldvmegamenu/uploads/vmega_fiction.jpg') }}" class="rightimage menu-image" alt="" /></a></div>
+                                                    <div class="section-indent"><a href="#" class="imagelink"><img src="../modules/fieldvmegamenu/uploads/vmega_fiction.jpg" class="rightimage menu-image" alt="" /></a></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -918,6 +920,8 @@
                         </div>
                     </div>
                     <div id="field_slideshow" class="slideshow col-xs-12 col-sm-12 col-md-9">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        {{ csrf_field() }}
                         <div class="field-main-slider block" style="overflow: hidden;">
                             <div id="insideslider_mod" class="outer-slide" style="width: 870px; height: 400px">
                                 <div class="loading">
@@ -925,7 +929,7 @@
                                     <div class="icon-loading"></div>
                                 </div>
                                 <div data-u="slides" style="width: 870px; height: 400px">
-                                    <div class="field-main-slider_1"> <a href="#"> <img class="img-slider" src="{{ URL::to('/modules/fieldslideshow/images/slider-111.jpg') }}" alt="" data-u="image"> </a>
+                                    <div class="field-main-slider_1"> <a href="#"> <img class="img-slider" src="../modules/fieldslideshow/images/slider-111.jpg" alt="" data-u="image"> </a>
                                         <div class="abm">
                                             <div class="large-slide-title title_font" data-u="caption" data-t="T-*IB" data-t2="ZML|TR" data-d="-300"> This week sale off 40%</div>
                                             <div class="big-slide-title title_font" style="line-height:1;" data-u="caption" data-t="ZM*WVR|LB" data-t2="WVC|R" data-d="-300"> Couple Beauty Love</div>
@@ -935,7 +939,7 @@
                                             <div class="div-slide-button shop_now" data-u="caption" data-t="B-R*"> <a class="slide-button title_font" href="#"> Shop now ! </a></div>
                                         </div>
                                     </div>
-                                    <div class="field-main-slider_2"> <a href="#"> <img class="img-slider" src="{{ URL::to('/modules/fieldslideshow/images/slider-222.jpg') }}" alt="" data-u="image"> </a>
+                                    <div class="field-main-slider_2"> <a href="#"> <img class="img-slider" src="../modules/fieldslideshow/images/slider-222.jpg" alt="" data-u="image"> </a>
                                         <div class="abm">
                                             <div class="large-slide-title title_font" data-u="caption" data-t="ZM*JUP1|T" data-t2="FLTTRWN|LT"> BIGGEST SALE 2016</div>
                                             <div class="big-slide-title title_font" style="line-height:1;" data-u="caption" data-t="ZM*JUP1|T" data-t2="FLTTRWN|LT"> each day a book</div>
@@ -945,7 +949,7 @@
                                             <div class="div-slide-button shop_now" data-u="caption" data-t="ZM*JUP1|B"> <a class="slide-button title_font" href="#"> Shop now ! </a></div>
                                         </div>
                                     </div>
-                                    <div class="field-main-slider_3"> <a href="#"> <img class="img-slider" src="{{ URL::to('/modules/fieldslideshow/images/slider-333.jpg') }}" alt="" data-u="image"> </a>
+                                    <div class="field-main-slider_3"> <a href="#"> <img class="img-slider" src="../modules/fieldslideshow/images/slider-333.jpg" alt="" data-u="image"> </a>
                                         <div class="abm">
                                             <div class="large-slide-title title_font" data-u="caption" data-t="ZM*WVR|RT" data-t2="WVC|B" data-d="-300"> BIGGEST SALE 2016</div>
                                             <div class="big-slide-title title_font" style="line-height:1;" data-u="caption" data-t="ZM*WVR|LB" data-t2="WVC|T" data-d="-300"> A MEMORY OF LIGHT</div>
@@ -972,15 +976,15 @@
                             <div class="special_products carousel-grid owl-carousel block_content">
                                 <div class="item first">
                                     <div class="item-inner">
-                                        <div class="left-block"> <a class="product_img" href="summer-dresses/8-history-month.html" title="Framed-Sleeve Tops"> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/44-home_default/history-month.jpg') }}" alt="Framed-Sleeve Tops" title="Framed-Sleeve Tops" height="298" width="268"/></span> <span class="img_root"> <img src="{{ URL::to('/43-home_default/history-month.jpg') }}" height="298" width="268" alt="Framed-Sleeve Tops" /> </span> </a>
+                                        <div class="left-block"> <a class="product_img" href="summer-dresses/8-history-month.html" title="Framed-Sleeve Tops"> <span class="hover-image"><img class="replace-2x" src="../44-home_default/history-month.jpg" alt="Framed-Sleeve Tops" title="Framed-Sleeve Tops" height="298" width="268"/></span> <span class="img_root"> <img src="../43-home_default/history-month.jpg" height="298" width="268" alt="Framed-Sleeve Tops" /> </span> </a>
                                             <div class="conditions-box">
                                                 <div class="b-prices-reduc title_font">
                                                     <div class="prices-reduc"> <span class="price-percent-reduction">-30%</span></div>
                                                 </div>
                                             </div>
                                             <div class="button-container">
-                                                <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="/quick-order?add=1&amp;id_product=8&amp;token=1" rel="nofollow" title="Add to cart" data-id-product="8" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                <div class="tab_button"> <a class="quick-view" href="summer-dresses/8-history-month.html" rel="summer-dresses/8-history-month.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_8" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '8', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/8-history-month.html" data-id-product="8" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/43-small_default/history-month.jpg') }}" data-product-name="History Month"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="#" rel="nofollow" title="Add to cart" data-id-product="8" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
+                                                <div class="tab_button"> <a class="quick-view" href="summer-dresses/8-history-month.html" rel="summer-dresses/8-history-month.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_8" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '8', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/8-history-month.html" data-id-product="8" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/43-small_default/history-month.jpg" data-product-name="History Month"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                             </div>
                                         </div>
                                         <div class="right-block">
@@ -1014,7 +1018,7 @@
                             <div id="new_products" class="grid carousel-grid owl-carousel block_content owl-theme">
                                 <div class="item first">
                                     <div class="item-content clearfix">
-                                        <div class="left-content"> <a href="summer-dresses/12-suspendisse-vel.html" title=""> <img src="{{ URL::to('/71-small_default/suspendisse-vel.jpg') }}" height="109" width="98" alt="" /> </a></div>
+                                        <div class="left-content"> <a href="summer-dresses/12-suspendisse-vel.html" title=""> <img src="../71-small_default/suspendisse-vel.jpg" height="109" width="98" alt="" /> </a></div>
                                         <div class="right-content">
                                             <h3 class="sub_title_font product-name"> <a href="summer-dresses/12-suspendisse-vel.html" title="Suspendisse Vel"> Suspendisse Vel </a></h3>
                                             <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1033,7 +1037,7 @@
                                         </div>
                                     </div>
                                     <div class="item-content clearfix">
-                                        <div class="left-content"> <a href="summer-dresses/11-story.html" title="Thrillers Story"> <img src="{{ URL::to('/78-small_default/story.jpg') }}" height="109" width="98" alt="Thrillers Story" /> </a></div>
+                                        <div class="left-content"> <a href="summer-dresses/11-story.html" title="Thrillers Story"> <img src="../78-small_default/story.jpg" height="109" width="98" alt="Thrillers Story" /> </a></div>
                                         <div class="right-content">
                                             <h3 class="sub_title_font product-name"> <a href="summer-dresses/11-story.html" title="Thrillers Story"> Thrillers Story </a></h3>
                                             <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1052,7 +1056,7 @@
                                         </div>
                                     </div>
                                     <div class="item-content clearfix">
-                                        <div class="left-content"> <a href="summer-dresses/10-convallis-pharetra.html" title=""> <img src="{{ URL::to('/79-small_default/convallis-pharetra.jpg') }}" height="109" width="98" alt="" /> </a></div>
+                                        <div class="left-content"> <a href="summer-dresses/10-convallis-pharetra.html" title=""> <img src="../79-small_default/convallis-pharetra.jpg" height="109" width="98" alt="" /> </a></div>
                                         <div class="right-content">
                                             <h3 class="sub_title_font product-name"> <a href="summer-dresses/10-convallis-pharetra.html" title="Convallis Pharetra"> Convallis Pharetra </a></h3>
                                             <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1071,7 +1075,7 @@
                                         </div>
                                     </div>
                                     <div class="item-content clearfix">
-                                        <div class="left-content"> <a href="home/9-eos-lobortis.html" title="Pilot Jacket"> <img src="{{ URL::to('/83-small_default/eos-lobortis.jpg') }}" height="109" width="98" alt="Pilot Jacket" /> </a></div>
+                                        <div class="left-content"> <a href="home/9-eos-lobortis.html" title="Pilot Jacket"> <img src="../83-small_default/eos-lobortis.jpg" height="109" width="98" alt="Pilot Jacket" /> </a></div>
                                         <div class="right-content">
                                             <h3 class="sub_title_font product-name"> <a href="home/9-eos-lobortis.html" title="Eos Lobortis"> Eos Lobortis </a></h3>
                                             <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1092,7 +1096,7 @@
                                 </div>
                                 <div class="item">
                                     <div class="item-content clearfix">
-                                        <div class="left-content"> <a href="summer-dresses/8-history-month.html" title="Framed-Sleeve Tops"> <img src="{{ URL::to('/43-small_default/history-month.jpg') }}" height="109" width="98" alt="Framed-Sleeve Tops" /> </a></div>
+                                        <div class="left-content"> <a href="summer-dresses/8-history-month.html" title="Framed-Sleeve Tops"> <img src="../43-small_default/history-month.jpg" height="109" width="98" alt="Framed-Sleeve Tops" /> </a></div>
                                         <div class="right-content">
                                             <h3 class="sub_title_font product-name"> <a href="summer-dresses/8-history-month.html" title="History Month"> History Month </a></h3>
                                             <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1111,7 +1115,7 @@
                                         </div>
                                     </div>
                                     <div class="item-content clearfix">
-                                        <div class="left-content"> <a href="summer-dresses/7-the-storyteller.html" title=""> <img src="{{ URL::to('/63-small_default/the-storyteller.jpg') }}" height="109" width="98" alt="" /> </a></div>
+                                        <div class="left-content"> <a href="summer-dresses/7-the-storyteller.html" title=""> <img src="../63-small_default/the-storyteller.jpg" height="109" width="98" alt="" /> </a></div>
                                         <div class="right-content">
                                             <h3 class="sub_title_font product-name"> <a href="summer-dresses/7-the-storyteller.html" title="The Storyteller"> The Storyteller </a></h3>
                                             <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1140,7 +1144,7 @@
                                         <div id="slide">
                                             <div class="main-block">
                                                 <div class="media">
-                                                    <div class="media-content"> <a class="fancybox-media" href="{{ URL::to('/modules/fieldtestimonials/img/630-client-34a13.png') }}') }}?id_test=1"> <img src="{{ URL::to('/modules/fieldtestimonials/img/630-client-3.png') }}" alt="Image Testimonial"/> </a></div>
+                                                    <div class="media-content"> <a class="fancybox-media" href="../modules/fieldtestimonials/img/630-client-34a13.png?id_test=1"> <img src="../modules/fieldtestimonials/img/630-client-3.png" alt="Image Testimonial"/> </a></div>
                                                     <div class="content_test">
                                                         <p class="des_namepost title_font">Jane Doe</p>
                                                         <p class="des_company">Online Marketer</p>
@@ -1152,7 +1156,7 @@
                                             </div>
                                             <div class="main-block">
                                                 <div class="media">
-                                                    <div class="media-content"> <a class="fancybox-media" href="{{ URL::to('/modules/fieldtestimonials/img/993-client-65c72.png') }}?id_test=2"> <img src="{{ URL::to('/modules/fieldtestimonials/img/993-client-6.png') }}" alt="Image Testimonial"/> </a></div>
+                                                    <div class="media-content"> <a class="fancybox-media" href="../modules/fieldtestimonials/img/993-client-65c72.png?id_test=2"> <img src="../modules/fieldtestimonials/img/993-client-6.png" alt="Image Testimonial"/> </a></div>
                                                     <div class="content_test">
                                                         <p class="des_namepost title_font">Cornelius Reeves</p>
                                                         <p class="des_company">Project Manager</p>
@@ -1164,7 +1168,7 @@
                                             </div>
                                             <div class="main-block">
                                                 <div class="media">
-                                                    <div class="media-content"> <a class="fancybox-media" href="{{ URL::to('/modules/fieldtestimonials/img/58-client-8ac42.png') }}?id_test=3"> <img src="{{ URL::to('/modules/fieldtestimonials/img/58-client-8.png') }}" alt="Image Testimonial"/> </a></div>
+                                                    <div class="media-content"> <a class="fancybox-media" href="../modules/fieldtestimonials/img/58-client-8ac42.png?id_test=3"> <img src="../modules/fieldtestimonials/img/58-client-8.png" alt="Image Testimonial"/> </a></div>
                                                     <div class="content_test">
                                                         <p class="des_namepost title_font">Jochen Rechsteiner</p>
                                                         <p class="des_company">Stylish Manager</p>
@@ -1189,7 +1193,7 @@
                                     <div id="field_bestsellers" class="carousel-grid owl-carousel">
                                         <div class="item">
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="summer-dresses/5-convallis-pharetra.html" title=""> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/48-home_default/convallis-pharetra.jpg') }}" alt="Convallis Pharetra" title="Convallis Pharetra" height="298" width="268"/></span> <span class="img_root"> <img src="{{ URL::to('/47-home_default/convallis-pharetra.jpg') }}" height="298" width="268" alt="" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="summer-dresses/5-convallis-pharetra.html" title=""> <span class="hover-image"><img class="replace-2x" src="../48-home_default/convallis-pharetra.jpg" alt="Convallis Pharetra" title="Convallis Pharetra" height="298" width="268"/></span> <span class="img_root"> <img src="../47-home_default/convallis-pharetra.jpg" height="298" width="268" alt="" /> </span> </a>
                                                     <div class="conditions-box">
                                                         <div class="b-new title_font">
                                                             <p class="new">New</p>
@@ -1197,7 +1201,7 @@
                                                     </div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=5&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" data-id-product="5" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/5-convallis-pharetra.html" rel="summer-dresses/5-convallis-pharetra.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_5" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '5', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/5-convallis-pharetra.html" data-id-product="5" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/47-small_default/convallis-pharetra.jpg') }}" data-product-name="Convallis Pharetra"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/5-convallis-pharetra.html" rel="summer-dresses/5-convallis-pharetra.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_5" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '5', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/5-convallis-pharetra.html" data-id-product="5" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/47-small_default/convallis-pharetra.jpg" data-product-name="Convallis Pharetra"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1220,11 +1224,11 @@
                                                 </div>
                                             </div>
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="casual-dresses/3-the-art-city.html" title=""> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/60-home_default/the-art-city.jpg') }}" alt="The Art City" title="The Art City" height="298" width="268"/></span> <span class="img_root"> <img src="{{ URL::to('/59-home_default/the-art-city.jpg') }}" height="298" width="268" alt="" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="casual-dresses/3-the-art-city.html" title=""> <span class="hover-image"><img class="replace-2x" src="../60-home_default/the-art-city.jpg" alt="The Art City" title="The Art City" height="298" width="268"/></span> <span class="img_root"> <img src="../59-home_default/the-art-city.jpg" height="298" width="268" alt="" /> </span> </a>
                                                     <div class="conditions-box"></div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=3&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" data-id-product="3" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="casual-dresses/3-the-art-city.html" rel="casual-dresses/3-the-art-city.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_3" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '3', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="casual-dresses/3-the-art-city.html" data-id-product="3" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/59-small_default/the-art-city.jpg') }}" data-product-name="The Art City"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="casual-dresses/3-the-art-city.html" rel="casual-dresses/3-the-art-city.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_3" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '3', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="casual-dresses/3-the-art-city.html" data-id-product="3" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/59-small_default/the-art-city.jpg" data-product-name="The Art City"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1249,11 +1253,11 @@
                                         </div>
                                         <div class="item">
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="blouses/2-etiam-auctor.html" title=""> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/52-home_default/etiam-auctor.jpg') }}" alt="Etiam Auctor" title="Etiam Auctor" height="298" width="268"/></span> <span class="img_root"> <img src="{{ URL::to('/51-home_default/etiam-auctor.jpg') }}" height="298" width="268" alt="" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="blouses/2-etiam-auctor.html" title=""> <span class="hover-image"><img class="replace-2x" src="../52-home_default/etiam-auctor.jpg" alt="Etiam Auctor" title="Etiam Auctor" height="298" width="268"/></span> <span class="img_root"> <img src="../51-home_default/etiam-auctor.jpg" height="298" width="268" alt="" /> </span> </a>
                                                     <div class="conditions-box"></div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=2&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" data-id-product="2" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="blouses/2-etiam-auctor.html" rel="blouses/2-etiam-auctor.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_2" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '2', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="blouses/2-etiam-auctor.html" data-id-product="2" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/51-small_default/etiam-auctor.jpg') }}" data-product-name="Etiam Auctor"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="blouses/2-etiam-auctor.html" rel="blouses/2-etiam-auctor.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_2" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '2', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="blouses/2-etiam-auctor.html" data-id-product="2" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/51-small_default/etiam-auctor.jpg" data-product-name="Etiam Auctor"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1276,11 +1280,11 @@
                                                 </div>
                                             </div>
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="summer-dresses/7-the-storyteller.html" title=""> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/64-home_default/the-storyteller.jpg') }}" alt="The Storyteller" title="The Storyteller" height="298" width="268"/></span> <span class="img_root"> <img src="{{ URL::to('/63-home_default/the-storyteller.jpg') }}" height="298" width="268" alt="" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="summer-dresses/7-the-storyteller.html" title=""> <span class="hover-image"><img class="replace-2x" src="../64-home_default/the-storyteller.jpg" alt="The Storyteller" title="The Storyteller" height="298" width="268"/></span> <span class="img_root"> <img src="../63-home_default/the-storyteller.jpg" height="298" width="268" alt="" /> </span> </a>
                                                     <div class="conditions-box"></div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=7&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" data-id-product="7" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/7-the-storyteller.html" rel="summer-dresses/7-the-storyteller.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_7" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '7', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/7-the-storyteller.html" data-id-product="7" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/63-small_default/the-storyteller.jpg') }}" data-product-name="The Storyteller"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/7-the-storyteller.html" rel="summer-dresses/7-the-storyteller.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_7" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '7', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/7-the-storyteller.html" data-id-product="7" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/63-small_default/the-storyteller.jpg" data-product-name="The Storyteller"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1305,11 +1309,11 @@
                                         </div>
                                         <div class="item">
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="tshirts/1-grateful-and-give.html" title=""> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/56-home_default/grateful-and-give.jpg') }}" alt="Grateful And Give" title="Grateful And Give" height="298" width="268"/></span> <span class="img_root"> <img src="{{ URL::to('/55-home_default/grateful-and-give.jpg') }}" height="298" width="268" alt="" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="tshirts/1-grateful-and-give.html" title=""> <span class="hover-image"><img class="replace-2x" src="../56-home_default/grateful-and-give.jpg" alt="Grateful And Give" title="Grateful And Give" height="298" width="268"/></span> <span class="img_root"> <img src="../55-home_default/grateful-and-give.jpg" height="298" width="268" alt="" /> </span> </a>
                                                     <div class="conditions-box"></div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=1&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" data-id-product="1" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="tshirts/1-grateful-and-give.html" rel="tshirts/1-grateful-and-give.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_1" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '1', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="tshirts/1-grateful-and-give.html" data-id-product="1" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/55-small_default/grateful-and-give.jpg') }}" data-product-name="Grateful And Give"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="tshirts/1-grateful-and-give.html" rel="tshirts/1-grateful-and-give.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_1" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '1', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="tshirts/1-grateful-and-give.html" data-id-product="1" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/55-small_default/grateful-and-give.jpg" data-product-name="Grateful And Give"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1332,7 +1336,7 @@
                                                 </div>
                                             </div>
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="summer-dresses/8-history-month.html" title="Framed-Sleeve Tops"> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/44-home_default/history-month.jpg') }}" alt="Framed-Sleeve Tops" title="Framed-Sleeve Tops" height="298" width="268"/></span> <span class="img_root"> <img src="{{ URL::to('/43-home_default/history-month.jpg') }}" height="298" width="268" alt="Framed-Sleeve Tops" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="summer-dresses/8-history-month.html" title="Framed-Sleeve Tops"> <span class="hover-image"><img class="replace-2x" src="../44-home_default/history-month.jpg" alt="Framed-Sleeve Tops" title="Framed-Sleeve Tops" height="298" width="268"/></span> <span class="img_root"> <img src="../43-home_default/history-month.jpg" height="298" width="268" alt="Framed-Sleeve Tops" /> </span> </a>
                                                     <div class="conditions-box">
                                                         <div class="b-prices-reduc title_font">
                                                             <div class="prices-reduc"> <span class="price-percent-reduction">-30%</span></div>
@@ -1340,7 +1344,7 @@
                                                     </div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=8&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" data-id-product="8" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/8-history-month.html" rel="summer-dresses/8-history-month.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_8" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '8', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/8-history-month.html" data-id-product="8" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/43-small_default/history-month.jpg') }}" data-product-name="History Month"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/8-history-month.html" rel="summer-dresses/8-history-month.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_8" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '8', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/8-history-month.html" data-id-product="8" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/43-small_default/history-month.jpg" data-product-name="History Month"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1365,11 +1369,11 @@
                                         </div>
                                         <div class="item">
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="summer-dresses/6-kitchen.html" title=""> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/68-home_default/kitchen.jpg') }}" alt="Loving Kitchen" title="Loving Kitchen" height="298" width="268"/></span> <span class="img_root"> <img src="{{ URL::to('/67-home_default/kitchen.jpg') }}" height="298" width="268" alt="" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="summer-dresses/6-kitchen.html" title=""> <span class="hover-image"><img class="replace-2x" src="../68-home_default/kitchen.jpg" alt="Loving Kitchen" title="Loving Kitchen" height="298" width="268"/></span> <span class="img_root"> <img src="../67-home_default/kitchen.jpg" height="298" width="268" alt="" /> </span> </a>
                                                     <div class="conditions-box"></div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=6&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" data-id-product="6" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/6-kitchen.html" rel="summer-dresses/6-kitchen.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_6" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '6', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/6-kitchen.html" data-id-product="6" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/67-small_default/kitchen.jpg') }}" data-product-name="Loving Kitchen"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/6-kitchen.html" rel="summer-dresses/6-kitchen.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_6" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '6', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/6-kitchen.html" data-id-product="6" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/67-small_default/kitchen.jpg" data-product-name="Loving Kitchen"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1392,7 +1396,7 @@
                                                 </div>
                                             </div>
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="summer-dresses/12-suspendisse-vel.html" title=""> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/72-home_default/suspendisse-vel.jpg') }}" alt="Suspendisse Vel" title="Suspendisse Vel" height="298" width="268"/></span> <span class="img_root"> <img src="{{ URL::to('/71-home_default/suspendisse-vel.jpg') }}" height="298" width="268" alt="" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="summer-dresses/12-suspendisse-vel.html" title=""> <span class="hover-image"><img class="replace-2x" src="../72-home_default/suspendisse-vel.jpg" alt="Suspendisse Vel" title="Suspendisse Vel" height="298" width="268"/></span> <span class="img_root"> <img src="../71-home_default/suspendisse-vel.jpg" height="298" width="268" alt="" /> </span> </a>
                                                     <div class="conditions-box">
                                                         <div class="b-new title_font">
                                                             <p class="new">New</p>
@@ -1400,7 +1404,7 @@
                                                     </div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=12&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" data-id-product="12" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/12-suspendisse-vel.html" rel="summer-dresses/12-suspendisse-vel.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_12" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '12', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/12-suspendisse-vel.html" data-id-product="12" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/71-small_default/suspendisse-vel.jpg') }}" data-product-name="Suspendisse Vel"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/12-suspendisse-vel.html" rel="summer-dresses/12-suspendisse-vel.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_12" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '12', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/12-suspendisse-vel.html" data-id-product="12" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/71-small_default/suspendisse-vel.jpg" data-product-name="Suspendisse Vel"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1425,11 +1429,11 @@
                                         </div>
                                         <div class="item">
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="summer-dresses/11-story.html" title="Thrillers Story"> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/75-home_default/story.jpg') }}" alt="Thrillers Story" title="Thrillers Story" height="298" width="268"/></span> <span class="img_root"> <img src="{{ URL::to('/78-home_default/story.jpg') }}" height="298" width="268" alt="Thrillers Story" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="summer-dresses/11-story.html" title="Thrillers Story"> <span class="hover-image"><img class="replace-2x" src="../75-home_default/story.jpg" alt="Thrillers Story" title="Thrillers Story" height="298" width="268"/></span> <span class="img_root"> <img src="../78-home_default/story.jpg" height="298" width="268" alt="Thrillers Story" /> </span> </a>
                                                     <div class="conditions-box"></div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=11&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" data-id-product="11" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/11-story.html" rel="summer-dresses/11-story.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_11" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '11', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/11-story.html" data-id-product="11" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/78-small_default/story.jpg') }}" data-product-name="Thrillers Story"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/11-story.html" rel="summer-dresses/11-story.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_11" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '11', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/11-story.html" data-id-product="11" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/78-small_default/story.jpg" data-product-name="Thrillers Story"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1457,7 +1461,7 @@
                             </div>
                             <div class="banner_home clearfix block">
                                 <div class="banner_home11">
-                                    <div class="hover_banner_img1"><a href="#"><img src="{{ URL::to('/modules/fieldstaticblocks/images/banner11.jpg') }}" alt="" /> </a></div>
+                                    <div class="hover_banner_img1"><a href="#"><img src="../modules/fieldstaticblocks/images/banner11.jpg" alt="" /> </a></div>
                                 </div>
                             </div>
                             <div id="featured_products_block" class="small block horizontal_mode clearfix">
@@ -1466,7 +1470,7 @@
                                     <div id="featured_products" class="carousel-grid owl-carousel">
                                         <div class="item">
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="summer-dresses/12-suspendisse-vel.html" title=""> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/72-home2_default/suspendisse-vel.jpg') }}" alt="Suspendisse Vel" title="Suspendisse Vel" height="214" width="193"/></span> <span class="img_root"> <img src="{{ URL::to('/71-home2_default/suspendisse-vel.jpg') }}" height="214" width="193" alt="" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="summer-dresses/12-suspendisse-vel.html" title=""> <span class="hover-image"><img class="replace-2x" src="../72-home2_default/suspendisse-vel.jpg" alt="Suspendisse Vel" title="Suspendisse Vel" height="214" width="193"/></span> <span class="img_root"> <img src="../71-home2_default/suspendisse-vel.jpg" height="214" width="193" alt="" /> </span> </a>
                                                     <div class="conditions-box">
                                                         <div class="b-new title_font">
                                                             <p class="new">New</p>
@@ -1474,7 +1478,7 @@
                                                     </div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=12&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" title="Add to cart" data-id-product="12" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/12-suspendisse-vel.html" title="Quick View" rel="summer-dresses/12-suspendisse-vel.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_12" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '12', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/12-suspendisse-vel.html" title="Add to compare" data-id-product="12" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/71-small_default/suspendisse-vel.jpg') }}" data-product-name="Suspendisse Vel"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/12-suspendisse-vel.html" title="Quick View" rel="summer-dresses/12-suspendisse-vel.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_12" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '12', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/12-suspendisse-vel.html" title="Add to compare" data-id-product="12" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/71-small_default/suspendisse-vel.jpg" data-product-name="Suspendisse Vel"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1497,11 +1501,11 @@
                                                 </div>
                                             </div>
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="summer-dresses/11-story.html" title="Thrillers Story"> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/75-home2_default/story.jpg') }}" alt="Thrillers Story" title="Thrillers Story" height="214" width="193"/></span> <span class="img_root"> <img src="{{ URL::to('/78-home2_default/story.jpg') }}" height="214" width="193" alt="Thrillers Story" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="summer-dresses/11-story.html" title="Thrillers Story"> <span class="hover-image"><img class="replace-2x" src="../75-home2_default/story.jpg" alt="Thrillers Story" title="Thrillers Story" height="214" width="193"/></span> <span class="img_root"> <img src="../78-home2_default/story.jpg" height="214" width="193" alt="Thrillers Story" /> </span> </a>
                                                     <div class="conditions-box"></div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=11&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" title="Add to cart" data-id-product="11" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/11-story.html" title="Quick View" rel="summer-dresses/11-story.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_11" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '11', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/11-story.html" title="Add to compare" data-id-product="11" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/78-small_default/story.jpg') }}" data-product-name="Thrillers Story"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/11-story.html" title="Quick View" rel="summer-dresses/11-story.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_11" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '11', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/11-story.html" title="Add to compare" data-id-product="11" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/78-small_default/story.jpg" data-product-name="Thrillers Story"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1526,11 +1530,11 @@
                                         </div>
                                         <div class="item">
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="summer-dresses/10-convallis-pharetra.html" title=""> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/80-home2_default/convallis-pharetra.jpg') }}" alt="Convallis Pharetra" title="Convallis Pharetra" height="214" width="193"/></span> <span class="img_root"> <img src="{{ URL::to('/79-home2_default/convallis-pharetra.jpg') }}" height="214" width="193" alt="" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="summer-dresses/10-convallis-pharetra.html" title=""> <span class="hover-image"><img class="replace-2x" src="../80-home2_default/convallis-pharetra.jpg" alt="Convallis Pharetra" title="Convallis Pharetra" height="214" width="193"/></span> <span class="img_root"> <img src="../79-home2_default/convallis-pharetra.jpg" height="214" width="193" alt="" /> </span> </a>
                                                     <div class="conditions-box"></div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=10&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" title="Add to cart" data-id-product="10" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/10-convallis-pharetra.html" title="Quick View" rel="summer-dresses/10-convallis-pharetra.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_10" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '10', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/10-convallis-pharetra.html" title="Add to compare" data-id-product="10" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/79-small_default/convallis-pharetra.jpg') }}" data-product-name="Convallis Pharetra"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/10-convallis-pharetra.html" title="Quick View" rel="summer-dresses/10-convallis-pharetra.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_10" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '10', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/10-convallis-pharetra.html" title="Add to compare" data-id-product="10" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/79-small_default/convallis-pharetra.jpg" data-product-name="Convallis Pharetra"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1553,11 +1557,11 @@
                                                 </div>
                                             </div>
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="home/9-eos-lobortis.html" title="Pilot Jacket"> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/84-home2_default/eos-lobortis.jpg') }}" alt="Pilot Jacket" title="Pilot Jacket" height="214" width="193"/></span> <span class="img_root"> <img src="{{ URL::to('/83-home2_default/eos-lobortis.jpg') }}" height="214" width="193" alt="Pilot Jacket" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="home/9-eos-lobortis.html" title="Pilot Jacket"> <span class="hover-image"><img class="replace-2x" src="../84-home2_default/eos-lobortis.jpg" alt="Pilot Jacket" title="Pilot Jacket" height="214" width="193"/></span> <span class="img_root"> <img src="../83-home2_default/eos-lobortis.jpg" height="214" width="193" alt="Pilot Jacket" /> </span> </a>
                                                     <div class="conditions-box"></div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button btn btn-default" href="home/9-eos-lobortis.html"> <i class="icon-shopping-cart"></i> <span>Customize</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="home/9-eos-lobortis.html" title="Quick View" rel="home/9-eos-lobortis.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_9" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '9', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="home/9-eos-lobortis.html" title="Add to compare" data-id-product="9" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/83-small_default/eos-lobortis.jpg') }}" data-product-name="Eos Lobortis"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="home/9-eos-lobortis.html" title="Quick View" rel="home/9-eos-lobortis.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_9" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '9', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="home/9-eos-lobortis.html" title="Add to compare" data-id-product="9" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/83-small_default/eos-lobortis.jpg" data-product-name="Eos Lobortis"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1582,7 +1586,7 @@
                                         </div>
                                         <div class="item">
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="summer-dresses/8-history-month.html" title="Framed-Sleeve Tops"> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/44-home2_default/history-month.jpg') }}" alt="Framed-Sleeve Tops" title="Framed-Sleeve Tops" height="214" width="193"/></span> <span class="img_root"> <img src="{{ URL::to('/43-home2_default/history-month.jpg') }}" height="214" width="193" alt="Framed-Sleeve Tops" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="summer-dresses/8-history-month.html" title="Framed-Sleeve Tops"> <span class="hover-image"><img class="replace-2x" src="../44-home2_default/history-month.jpg" alt="Framed-Sleeve Tops" title="Framed-Sleeve Tops" height="214" width="193"/></span> <span class="img_root"> <img src="../43-home2_default/history-month.jpg" height="214" width="193" alt="Framed-Sleeve Tops" /> </span> </a>
                                                     <div class="conditions-box">
                                                         <div class="b-prices-reduc title_font">
                                                             <div class="prices-reduc"> <span class="price-percent-reduction">-30%</span></div>
@@ -1590,7 +1594,7 @@
                                                     </div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=8&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" title="Add to cart" data-id-product="8" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/8-history-month.html" title="Quick View" rel="summer-dresses/8-history-month.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_8" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '8', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/8-history-month.html" title="Add to compare" data-id-product="8" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/43-small_default/history-month.jpg') }}" data-product-name="History Month"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/8-history-month.html" title="Quick View" rel="summer-dresses/8-history-month.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_8" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '8', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/8-history-month.html" title="Add to compare" data-id-product="8" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/43-small_default/history-month.jpg" data-product-name="History Month"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1613,11 +1617,11 @@
                                                 </div>
                                             </div>
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="summer-dresses/7-the-storyteller.html" title=""> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/64-home2_default/the-storyteller.jpg') }}" alt="The Storyteller" title="The Storyteller" height="214" width="193"/></span> <span class="img_root"> <img src="{{ URL::to('/63-home2_default/the-storyteller.jpg') }}" height="214" width="193" alt="" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="summer-dresses/7-the-storyteller.html" title=""> <span class="hover-image"><img class="replace-2x" src="../64-home2_default/the-storyteller.jpg" alt="The Storyteller" title="The Storyteller" height="214" width="193"/></span> <span class="img_root"> <img src="../63-home2_default/the-storyteller.jpg" height="214" width="193" alt="" /> </span> </a>
                                                     <div class="conditions-box"></div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=7&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" title="Add to cart" data-id-product="7" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/7-the-storyteller.html" title="Quick View" rel="summer-dresses/7-the-storyteller.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_7" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '7', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/7-the-storyteller.html" title="Add to compare" data-id-product="7" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/63-small_default/the-storyteller.jpg') }}" data-product-name="The Storyteller"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/7-the-storyteller.html" title="Quick View" rel="summer-dresses/7-the-storyteller.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_7" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '7', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/7-the-storyteller.html" title="Add to compare" data-id-product="7" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/63-small_default/the-storyteller.jpg" data-product-name="The Storyteller"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1642,11 +1646,11 @@
                                         </div>
                                         <div class="item">
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="summer-dresses/6-kitchen.html" title=""> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/68-home2_default/kitchen.jpg') }}" alt="Loving Kitchen" title="Loving Kitchen" height="214" width="193"/></span> <span class="img_root"> <img src="{{ URL::to('/67-home2_default/kitchen.jpg') }}" height="214" width="193" alt="" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="summer-dresses/6-kitchen.html" title=""> <span class="hover-image"><img class="replace-2x" src="../68-home2_default/kitchen.jpg" alt="Loving Kitchen" title="Loving Kitchen" height="214" width="193"/></span> <span class="img_root"> <img src="../67-home2_default/kitchen.jpg" height="214" width="193" alt="" /> </span> </a>
                                                     <div class="conditions-box"></div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=6&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" title="Add to cart" data-id-product="6" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/6-kitchen.html" title="Quick View" rel="summer-dresses/6-kitchen.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_6" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '6', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/6-kitchen.html" title="Add to compare" data-id-product="6" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/67-small_default/kitchen.jpg') }}" data-product-name="Loving Kitchen"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/6-kitchen.html" title="Quick View" rel="summer-dresses/6-kitchen.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_6" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '6', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/6-kitchen.html" title="Add to compare" data-id-product="6" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/67-small_default/kitchen.jpg" data-product-name="Loving Kitchen"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1669,7 +1673,7 @@
                                                 </div>
                                             </div>
                                             <div class="item-inner">
-                                                <div class="left-block"> <a class="product_img" href="summer-dresses/5-convallis-pharetra.html" title=""> <span class="hover-image"><img class="replace-2x" src="{{ URL::to('/48-home2_default/convallis-pharetra.jpg') }}" alt="Convallis Pharetra" title="Convallis Pharetra" height="214" width="193"/></span> <span class="img_root"> <img src="{{ URL::to('/47-home2_default/convallis-pharetra.jpg') }}" height="214" width="193" alt="" /> </span> </a>
+                                                <div class="left-block"> <a class="product_img" href="summer-dresses/5-convallis-pharetra.html" title=""> <span class="hover-image"><img class="replace-2x" src="../48-home2_default/convallis-pharetra.jpg" alt="Convallis Pharetra" title="Convallis Pharetra" height="214" width="193"/></span> <span class="img_root"> <img src="../47-home2_default/convallis-pharetra.jpg" height="214" width="193" alt="" /> </span> </a>
                                                     <div class="conditions-box">
                                                         <div class="b-new title_font">
                                                             <p class="new">New</p>
@@ -1677,7 +1681,7 @@
                                                     </div>
                                                     <div class="button-container">
                                                         <div class="cart-button title_font"> <a class="button_cart button ajax_add_to_cart_button btn btn-default caption-add-to-cart" href="quick-order.html?add=1&amp;id_product=5&amp;token=78089955a431fe8ca337650f419af644" rel="nofollow" title="Add to cart" data-id-product="5" data-minimal_quantity="1"> <i class="icon-shopping-cart"></i> <span>Add to cart</span> </a></div>
-                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/5-convallis-pharetra.html" title="Quick View" rel="summer-dresses/5-convallis-pharetra.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_5" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '5', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/5-convallis-pharetra.html" title="Add to compare" data-id-product="5" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/47-small_default/convallis-pharetra.jpg') }}" data-product-name="Convallis Pharetra"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
+                                                        <div class="tab_button"> <a class="quick-view" href="summer-dresses/5-convallis-pharetra.html" title="Quick View" rel="summer-dresses/5-convallis-pharetra.html"> <i class="icon-eye-open"></i> <span class="wrap_text">Quick view</span> </a> <a class="addToWishlist wishlistProd_5" title="Add to wishlist" href="#" rel="nofollow" onclick="WishlistCart('wishlist_block_list', 'add', '5', false, 1); return false;"> <i class="icon-heart"></i> <span>Add to wishlist</span> </a> <a class="btn-theme add_to_compare" href="summer-dresses/5-convallis-pharetra.html" title="Add to compare" data-id-product="5" data-product-cover="http://demo.fieldthemes.com/bookshop/home1/47-small_default/convallis-pharetra.jpg" data-product-name="Convallis Pharetra"> <i class="icon-plus"></i> <span>Add to compare</span> </a></div>
                                                     </div>
                                                 </div>
                                                 <div class="right-block">
@@ -1712,16 +1716,16 @@
             <div class="row">
                 <div class="bp2_left col-xs-12 col-sm-12 col-md-6">
                     <div class="banner21 block">
-                        <div class="hover_banner_img1"><a href="#"><img src="{{ URL::to('/modules/fieldstaticblocks/images/banner21.jpg') }}" alt="" /></a></div>
+                        <div class="hover_banner_img1"><a href="#"><img src="../modules/fieldstaticblocks/images/banner21.jpg" alt="" /></a></div>
                     </div>
                 </div>
                 <div class="bp2_right col-xs-12 col-sm-12 col-md-6">
                     <div class="row">
                         <div class="banner22 block col-xs-12 col-sm-12 col-md-12">
-                            <div class="hover_banner_img1"><a href="#"><img src="{{ URL::to('/modules/fieldstaticblocks/images/banner22.jpg') }}" alt="" /></a></div>
+                            <div class="hover_banner_img1"><a href="#"><img src="../modules/fieldstaticblocks/images/banner22.jpg" alt="" /></a></div>
                         </div>
                         <div class="banner23 col-xs-12 col-sm-12 col-md-12">
-                            <div class="hover_banner_img1"><a href="#"><img src="{{ URL::to('/modules/fieldstaticblocks/images/banner23.jpg') }}" alt="" /></a></div>
+                            <div class="hover_banner_img1"><a href="#"><img src="../modules/fieldstaticblocks/images/banner23.jpg" alt="" /></a></div>
                         </div>
                     </div>
                 </div>
@@ -1732,14 +1736,14 @@
                 <h4 class="title_block title_font"> Mostview Products</h4>
                 <div class="container">
                     <div class="row">
-                        <div class="left_image_product col-md-3"> <a href="#"><img class="img-responsive" alt="" src="{{ URL::to('/modules/fieldonecateproductslider/views/img/banner_left.jpg') }}"></a></div>
+                        <div class="left_image_product col-md-3"> <a href="#"><img class="img-responsive" alt="" src="../modules/fieldonecateproductslider/views/img/banner_left.jpg"></a></div>
                         <div class="product_new_container col-md-9">
                             <div class="right-block-content">
                                 <div id="onecate_products" class="grid carousel-grid owl-carousel block_content owl-theme">
                                     <div class="item">
                                         <div class="item-bor">
                                             <div class="item-content clearfix">
-                                                <div class="left-content"> <a href="tshirts/1-grateful-and-give.html" title=""> <img src="{{ URL::to('/55-small_default/grateful-and-give.jpg') }}" height="109" width="98" alt="" /> </a></div>
+                                                <div class="left-content"> <a href="tshirts/1-grateful-and-give.html" title=""> <img src="../55-small_default/grateful-and-give.jpg" height="109" width="98" alt="" /> </a></div>
                                                 <div class="right-content">
                                                     <h3 class="sub_title_font product-name"> <a href="tshirts/1-grateful-and-give.html" title="Grateful And Give"> Grateful And... </a></h3>
                                                     <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1758,7 +1762,7 @@
                                                 </div>
                                             </div>
                                             <div class="item-content clearfix">
-                                                <div class="left-content"> <a href="blouses/2-etiam-auctor.html" title=""> <img src="{{ URL::to('/51-small_default/etiam-auctor.jpg') }}" height="109" width="98" alt="" /> </a></div>
+                                                <div class="left-content"> <a href="blouses/2-etiam-auctor.html" title=""> <img src="../51-small_default/etiam-auctor.jpg" height="109" width="98" alt="" /> </a></div>
                                                 <div class="right-content">
                                                     <h3 class="sub_title_font product-name"> <a href="blouses/2-etiam-auctor.html" title="Etiam Auctor"> Etiam Auctor </a></h3>
                                                     <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1777,7 +1781,7 @@
                                                 </div>
                                             </div>
                                             <div class="item-content clearfix">
-                                                <div class="left-content"> <a href="casual-dresses/3-the-art-city.html" title=""> <img src="{{ URL::to('/59-small_default/the-art-city.jpg') }}" height="109" width="98" alt="" /> </a></div>
+                                                <div class="left-content"> <a href="casual-dresses/3-the-art-city.html" title=""> <img src="../59-small_default/the-art-city.jpg" height="109" width="98" alt="" /> </a></div>
                                                 <div class="right-content">
                                                     <h3 class="sub_title_font product-name"> <a href="casual-dresses/3-the-art-city.html" title="The Art City"> The Art City </a></h3>
                                                     <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1800,7 +1804,7 @@
                                     <div class="item">
                                         <div class="item-bor">
                                             <div class="item-content clearfix">
-                                                <div class="left-content"> <a href="evening-dresses/4-love.html" title=""> <img src="{{ URL::to('/87-small_default/love.jpg') }}" height="109" width="98" alt="" /> </a></div>
+                                                <div class="left-content"> <a href="evening-dresses/4-love.html" title=""> <img src="../87-small_default/love.jpg" height="109" width="98" alt="" /> </a></div>
                                                 <div class="right-content">
                                                     <h3 class="sub_title_font product-name"> <a href="evening-dresses/4-love.html" title="The Book Of Love"> The Book Of... </a></h3>
                                                     <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1819,7 +1823,7 @@
                                                 </div>
                                             </div>
                                             <div class="item-content clearfix">
-                                                <div class="left-content"> <a href="summer-dresses/5-convallis-pharetra.html" title=""> <img src="{{ URL::to('/47-small_default/convallis-pharetra.jpg') }}" height="109" width="98" alt="" /> </a></div>
+                                                <div class="left-content"> <a href="summer-dresses/5-convallis-pharetra.html" title=""> <img src="../47-small_default/convallis-pharetra.jpg" height="109" width="98" alt="" /> </a></div>
                                                 <div class="right-content">
                                                     <h3 class="sub_title_font product-name"> <a href="summer-dresses/5-convallis-pharetra.html" title="Convallis Pharetra"> Convallis... </a></h3>
                                                     <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1838,7 +1842,7 @@
                                                 </div>
                                             </div>
                                             <div class="item-content clearfix">
-                                                <div class="left-content"> <a href="summer-dresses/6-kitchen.html" title=""> <img src="{{ URL::to('/67-small_default/kitchen.jpg') }}" height="109" width="98" alt="" /> </a></div>
+                                                <div class="left-content"> <a href="summer-dresses/6-kitchen.html" title=""> <img src="../67-small_default/kitchen.jpg" height="109" width="98" alt="" /> </a></div>
                                                 <div class="right-content">
                                                     <h3 class="sub_title_font product-name"> <a href="summer-dresses/6-kitchen.html" title="Loving Kitchen"> Loving Kitchen </a></h3>
                                                     <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1861,7 +1865,7 @@
                                     <div class="item">
                                         <div class="item-bor">
                                             <div class="item-content clearfix">
-                                                <div class="left-content"> <a href="summer-dresses/7-the-storyteller.html" title=""> <img src="{{ URL::to('/63-small_default/the-storyteller.jpg') }}" height="109" width="98" alt="" /> </a></div>
+                                                <div class="left-content"> <a href="summer-dresses/7-the-storyteller.html" title=""> <img src="../63-small_default/the-storyteller.jpg" height="109" width="98" alt="" /> </a></div>
                                                 <div class="right-content">
                                                     <h3 class="sub_title_font product-name"> <a href="summer-dresses/7-the-storyteller.html" title="The Storyteller"> The Storyteller </a></h3>
                                                     <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1880,7 +1884,7 @@
                                                 </div>
                                             </div>
                                             <div class="item-content clearfix">
-                                                <div class="left-content"> <a href="summer-dresses/8-history-month.html" title="Framed-Sleeve Tops"> <img src="{{ URL::to('/43-small_default/history-month.jpg') }}" height="109" width="98" alt="Framed-Sleeve Tops" /> </a></div>
+                                                <div class="left-content"> <a href="summer-dresses/8-history-month.html" title="Framed-Sleeve Tops"> <img src="../43-small_default/history-month.jpg" height="109" width="98" alt="Framed-Sleeve Tops" /> </a></div>
                                                 <div class="right-content">
                                                     <h3 class="sub_title_font product-name"> <a href="summer-dresses/8-history-month.html" title="History Month"> History Month </a></h3>
                                                     <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1899,7 +1903,7 @@
                                                 </div>
                                             </div>
                                             <div class="item-content clearfix">
-                                                <div class="left-content"> <a href="home/9-eos-lobortis.html" title="Pilot Jacket"> <img src="{{ URL::to('/83-small_default/eos-lobortis.jpg') }}" height="109" width="98" alt="Pilot Jacket" /> </a></div>
+                                                <div class="left-content"> <a href="home/9-eos-lobortis.html" title="Pilot Jacket"> <img src="../83-small_default/eos-lobortis.jpg" height="109" width="98" alt="Pilot Jacket" /> </a></div>
                                                 <div class="right-content">
                                                     <h3 class="sub_title_font product-name"> <a href="home/9-eos-lobortis.html" title="Eos Lobortis"> Eos Lobortis </a></h3>
                                                     <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1922,7 +1926,7 @@
                                     <div class="item">
                                         <div class="item-bor">
                                             <div class="item-content clearfix">
-                                                <div class="left-content"> <a href="summer-dresses/10-convallis-pharetra.html" title=""> <img src="{{ URL::to('/79-small_default/convallis-pharetra.jpg') }}" height="109" width="98" alt="" /> </a></div>
+                                                <div class="left-content"> <a href="summer-dresses/10-convallis-pharetra.html" title=""> <img src="../79-small_default/convallis-pharetra.jpg" height="109" width="98" alt="" /> </a></div>
                                                 <div class="right-content">
                                                     <h3 class="sub_title_font product-name"> <a href="summer-dresses/10-convallis-pharetra.html" title="Convallis Pharetra"> Convallis... </a></h3>
                                                     <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1941,7 +1945,7 @@
                                                 </div>
                                             </div>
                                             <div class="item-content clearfix">
-                                                <div class="left-content"> <a href="summer-dresses/11-story.html" title="Thrillers Story"> <img src="{{ URL::to('/78-small_default/story.jpg') }}" height="109" width="98" alt="Thrillers Story" /> </a></div>
+                                                <div class="left-content"> <a href="summer-dresses/11-story.html" title="Thrillers Story"> <img src="../78-small_default/story.jpg" height="109" width="98" alt="Thrillers Story" /> </a></div>
                                                 <div class="right-content">
                                                     <h3 class="sub_title_font product-name"> <a href="summer-dresses/11-story.html" title="Thrillers Story"> Thrillers Story </a></h3>
                                                     <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1960,7 +1964,7 @@
                                                 </div>
                                             </div>
                                             <div class="item-content clearfix">
-                                                <div class="left-content"> <a href="summer-dresses/12-suspendisse-vel.html" title=""> <img src="{{ URL::to('/71-small_default/suspendisse-vel.jpg') }}" height="109" width="98" alt="" /> </a></div>
+                                                <div class="left-content"> <a href="summer-dresses/12-suspendisse-vel.html" title=""> <img src="../71-small_default/suspendisse-vel.jpg" height="109" width="98" alt="" /> </a></div>
                                                 <div class="right-content">
                                                     <h3 class="sub_title_font product-name"> <a href="summer-dresses/12-suspendisse-vel.html" title="Suspendisse Vel"> Suspendisse Vel </a></h3>
                                                     <div class="comments_note" itemtype="http://schema.org/Offer" itemscope="">
@@ -1997,7 +2001,7 @@
                                 <div class="item sds_blog_post">
                                     <div class="news_module_image_holder">
                                         <div class="inline-block_relative">
-                                            <div class="image_holder_wrap"> <a href="smartblog/8_summer-entertaining.html"><img alt="The Best Business Books" class="feat_img_small" src="{{ URL::to('/modules/smartblog/images/8-home-default.jpg') }}"></a></div>
+                                            <div class="image_holder_wrap"> <a href="smartblog/8_summer-entertaining.html"><img alt="The Best Business Books" class="feat_img_small" src="../modules/smartblog/images/8-home-default.jpg"></a></div>
                                             <div class="right_blog_home">
                                                 <div class="content">
                                                     <h3 class="sds_post_title"><a href="smartblog/8_summer-entertaining.html">The Best Business Books</a></h3> <span class="block_post_date"> <i class="icon-calendar"></i> <span class="date_added"> Sep 15,2016</span> </span>
@@ -2009,7 +2013,7 @@
                                 <div class="item sds_blog_post">
                                     <div class="news_module_image_holder">
                                         <div class="inline-block_relative">
-                                            <div class="image_holder_wrap"> <a href="smartblog/7_summer-entertaining.html"><img alt="The Best Poetry Books" class="feat_img_small" src="{{ URL::to('/modules/smartblog/images/7-home-default.jpg') }}"></a></div>
+                                            <div class="image_holder_wrap"> <a href="smartblog/7_summer-entertaining.html"><img alt="The Best Poetry Books" class="feat_img_small" src="../modules/smartblog/images/7-home-default.jpg"></a></div>
                                             <div class="right_blog_home">
                                                 <div class="content">
                                                     <h3 class="sds_post_title"><a href="smartblog/7_summer-entertaining.html">The Best Poetry Books</a></h3> <span class="block_post_date"> <i class="icon-calendar"></i> <span class="date_added"> Sep 15,2016</span> </span>
@@ -2021,7 +2025,7 @@
                                 <div class="item sds_blog_post">
                                     <div class="news_module_image_holder">
                                         <div class="inline-block_relative">
-                                            <div class="image_holder_wrap"> <a href="smartblog/6_summer-entertaining.html"><img alt="Summer Entertaining" class="feat_img_small" src="{{ URL::to('/modules/smartblog/images/6-home-default.jpg') }}"></a></div>
+                                            <div class="image_holder_wrap"> <a href="smartblog/6_summer-entertaining.html"><img alt="Summer Entertaining" class="feat_img_small" src="../modules/smartblog/images/6-home-default.jpg"></a></div>
                                             <div class="right_blog_home">
                                                 <div class="content">
                                                     <h3 class="sds_post_title"><a href="smartblog/6_summer-entertaining.html">Summer Entertaining</a></h3> <span class="block_post_date"> <i class="icon-calendar"></i> <span class="date_added"> Sep 15,2016</span> </span>
@@ -2033,7 +2037,7 @@
                                 <div class="item sds_blog_post">
                                     <div class="news_module_image_holder">
                                         <div class="inline-block_relative">
-                                            <div class="image_holder_wrap"> <a href="smartblog/5_bibendum-auctor.html"><img alt="Bibendum Auctor" class="feat_img_small" src="{{ URL::to('/modules/smartblog/images/5-home-default.jpg') }}"></a></div>
+                                            <div class="image_holder_wrap"> <a href="smartblog/5_bibendum-auctor.html"><img alt="Bibendum Auctor" class="feat_img_small" src="../modules/smartblog/images/5-home-default.jpg"></a></div>
                                             <div class="right_blog_home">
                                                 <div class="content">
                                                     <h3 class="sds_post_title"><a href="smartblog/5_bibendum-auctor.html">Bibendum Auctor</a></h3> <span class="block_post_date"> <i class="icon-calendar"></i> <span class="date_added"> Sep 15,2016</span> </span>
@@ -2045,7 +2049,7 @@
                                 <div class="item sds_blog_post">
                                     <div class="news_module_image_holder">
                                         <div class="inline-block_relative">
-                                            <div class="image_holder_wrap"> <a href="smartblog/4_bibendum-auctor.html"><img alt="Bibendum Auctor" class="feat_img_small" src="{{ URL::to('/modules/smartblog/images/4-home-default.jpg') }}"></a></div>
+                                            <div class="image_holder_wrap"> <a href="smartblog/4_bibendum-auctor.html"><img alt="Bibendum Auctor" class="feat_img_small" src="../modules/smartblog/images/4-home-default.jpg"></a></div>
                                             <div class="right_blog_home">
                                                 <div class="content">
                                                     <h3 class="sds_post_title"><a href="smartblog/4_bibendum-auctor.html">Bibendum Auctor</a></h3> <span class="block_post_date"> <i class="icon-calendar"></i> <span class="date_added"> Sep 15,2016</span> </span>
@@ -2057,7 +2061,7 @@
                                 <div class="item sds_blog_post">
                                     <div class="news_module_image_holder">
                                         <div class="inline-block_relative">
-                                            <div class="image_holder_wrap"> <a href="smartblog/3_summer-entertaining.html"><img alt="Summer Entertaining" class="feat_img_small" src="{{ URL::to('/modules/smartblog/images/3-home-default.jpg') }}"></a></div>
+                                            <div class="image_holder_wrap"> <a href="smartblog/3_summer-entertaining.html"><img alt="Summer Entertaining" class="feat_img_small" src="../modules/smartblog/images/3-home-default.jpg"></a></div>
                                             <div class="right_blog_home">
                                                 <div class="content">
                                                     <h3 class="sds_post_title"><a href="smartblog/3_summer-entertaining.html">Summer Entertaining</a></h3> <span class="block_post_date"> <i class="icon-calendar"></i> <span class="date_added"> Sep 15,2016</span> </span>
@@ -2076,20 +2080,20 @@
                         <div class="row">
                             <div id="fieldbrandslider-manufacturers" class="grid carousel-grid owl-carousel">
                                 <div class="item">
-                                    <div class="border-bot"> <a class="img-wrapper" href="2_manufacture-1.html" title="Manufacture 1"> <img class="img-responsive" src="{{ URL::to('/img/m/2-field_manufacture.jpg') }}" width="189" height="173" alt="Manufacture 1" /> </a></div>
-                                    <div class="border-bot"> <a class="img-wrapper" href="3_manufacture-2.html" title="Manufacture 2"> <img class="img-responsive" src="{{ URL::to('/img/m/3-field_manufacture.jpg') }}" width="189" height="173" alt="Manufacture 2" /> </a></div>
+                                    <div class="border-bot"> <a class="img-wrapper" href="2_manufacture-1.html" title="Manufacture 1"> <img class="img-responsive" src="../img/m/2-field_manufacture.jpg" width="189" height="173" alt="Manufacture 1" /> </a></div>
+                                    <div class="border-bot"> <a class="img-wrapper" href="3_manufacture-2.html" title="Manufacture 2"> <img class="img-responsive" src="../img/m/3-field_manufacture.jpg" width="189" height="173" alt="Manufacture 2" /> </a></div>
                                 </div>
                                 <div class="item">
-                                    <div class="border-bot"> <a class="img-wrapper" href="4_manufacture-3.html" title="Manufacture 3"> <img class="img-responsive" src="{{ URL::to('/img/m/4-field_manufacture.jpg') }}" width="189" height="173" alt="Manufacture 3" /> </a></div>
-                                    <div class="border-bot"> <a class="img-wrapper" href="5_manufacture-4.html" title="Manufacture 4"> <img class="img-responsive" src="{{ URL::to('/img/m/5-field_manufacture.jpg') }}" width="189" height="173" alt="Manufacture 4" /> </a></div>
+                                    <div class="border-bot"> <a class="img-wrapper" href="4_manufacture-3.html" title="Manufacture 3"> <img class="img-responsive" src="../img/m/4-field_manufacture.jpg" width="189" height="173" alt="Manufacture 3" /> </a></div>
+                                    <div class="border-bot"> <a class="img-wrapper" href="5_manufacture-4.html" title="Manufacture 4"> <img class="img-responsive" src="../img/m/5-field_manufacture.jpg" width="189" height="173" alt="Manufacture 4" /> </a></div>
                                 </div>
                                 <div class="item">
-                                    <div class="border-bot"> <a class="img-wrapper" href="6_manufacture-5.html" title="Manufacture 5"> <img class="img-responsive" src="{{ URL::to('/img/m/6-field_manufacture.jpg') }}" width="189" height="173" alt="Manufacture 5" /> </a></div>
-                                    <div class="border-bot"> <a class="img-wrapper" href="7_manufacture-6.html" title="Manufacture 6"> <img class="img-responsive" src="{{ URL::to('/img/m/7-field_manufacture.jpg') }}" width="189" height="173" alt="Manufacture 6" /> </a></div>
+                                    <div class="border-bot"> <a class="img-wrapper" href="6_manufacture-5.html" title="Manufacture 5"> <img class="img-responsive" src="../img/m/6-field_manufacture.jpg" width="189" height="173" alt="Manufacture 5" /> </a></div>
+                                    <div class="border-bot"> <a class="img-wrapper" href="7_manufacture-6.html" title="Manufacture 6"> <img class="img-responsive" src="../img/m/7-field_manufacture.jpg" width="189" height="173" alt="Manufacture 6" /> </a></div>
                                 </div>
                                 <div class="item">
-                                    <div class="border-bot"> <a class="img-wrapper" href="8_manufacture-8.html" title="Manufacture 8"> <img class="img-responsive" src="{{ URL::to('/img/m/8-field_manufacture.jpg') }}" width="189" height="173" alt="Manufacture 8" /> </a></div>
-                                    <div class="border-bot"> <a class="img-wrapper" href="9_menufacture-9.html" title="menufacture 9"> <img class="img-responsive" src="{{ URL::to('/img/m/9-field_manufacture.jpg') }}" width="189" height="173" alt="menufacture 9" /> </a></div>
+                                    <div class="border-bot"> <a class="img-wrapper" href="8_manufacture-8.html" title="Manufacture 8"> <img class="img-responsive" src="../img/m/8-field_manufacture.jpg" width="189" height="173" alt="Manufacture 8" /> </a></div>
+                                    <div class="border-bot"> <a class="img-wrapper" href="9_menufacture-9.html" title="menufacture 9"> <img class="img-responsive" src="../img/m/9-field_manufacture.jpg" width="189" height="173" alt="menufacture 9" /> </a></div>
                                 </div>
                             </div>
                         </div>
@@ -2104,7 +2108,7 @@
                         <div class="row">
                             <div class="footer-static row-fluid">
                                 <div class="footer-block footer_logo col-xs-12 col-sm-12 col-md-3">
-                                    <div class="logof"><a title="oliver" href="http://demo.fieldthemes.com/bookshop/home4/"> <img class="logo img-responsive" alt="bookshop" src="{{ URL::to('/modules/fieldstaticfooter/images/logof.jpg') }}" height="65" width="214" /> </a></div>
+                                    <div class="logof"><a title="oliver" href="http://demo.fieldthemes.com/bookshop/home4/"> <img class="logo img-responsive" alt="bookshop" src="../modules/fieldstaticfooter/images/logof.jpg" height="65" width="214" /> </a></div>
                                     <div class="logo_center">
                                         <ul class="logo-bullet">
                                             <li><em class="em1"><i class="icon-map-markerr "></i> </em> <em class="em">123 Main Street, Anytown,CA 12345 USA</em></li>
@@ -2150,7 +2154,7 @@
                                 </section>
                                 <div class="footer-block insta col-xs-12 col-sm-6 col-md-3">
                                     <h4 class="title_block title_font">Follow Instagram</h4>
-                                    <div class="toggle-footer bullet"><img src="{{ URL::to('/modules/fieldstaticfooter/images/instagram.jpg') }}" alt="" /></div>
+                                    <div class="toggle-footer bullet"><img src="../modules/fieldstaticfooter/images/instagram.jpg" alt="" /></div>
                                 </div>
                             </div>
                         </div>
@@ -2192,7 +2196,7 @@
                 </div>
                 <div class="container">
                     <div class="row">
-                        <div class="fieldpopupnewsletter" style="width:770px;height:437px;background-image: url(../modules/fieldpopupnewsletter/img/popupbg_176d4.jpg') }}?190807);">
+                        <div class="fieldpopupnewsletter" style="width:770px;height:437px;background-image: url(../modules/fieldpopupnewsletter/img/popupbg_176d4.jpg?190807);">
                             <div id="newsletter_block_popup" class="block">
                                 <div class="block_content">
                                     <form action="http://demo.fieldthemes.com/bookshop/home1/en/" method="post">
@@ -2228,6 +2232,7 @@
         </div>
     </div>
     <div class="layer_compare_overlay layer_overlay"></div>
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
     <script type="text/javascript">
     /* <![CDATA[ */ ;
     var CUSTOMIZE_TEXTFIELD = 1;
@@ -2245,8 +2250,8 @@
     var added_to_wishlist = 'The product was successfully added to your wishlist.';
     var ajax_allowed = true;
     var ajaxsearch = true;
-    var baseDir = 'http://localhost:8000/';
-    var baseUri = 'http://localhost:8000/';
+    var baseDir = 'http://localhost:8000';
+    var baseUri = 'http://localhost:8000';
     var comparator_max_item = 3;
     var compare_add_text = 'Add to Compare';
     var compare_remove_text = 'Remove from Compare';
@@ -2271,7 +2276,7 @@
     var field_bg = '1';
     var field_height = '437';
     var field_newsletter = '1';
-    var field_path = '';
+    var field_path = 'http://demo.fieldthemes.com/bookshop/home1/modules/fieldpopupnewsletter/ajax.php';
     var field_width = '770';
     var fieldbestsellers_autoscroll = false;
     var fieldbestsellers_items = '3';
@@ -2344,9 +2349,8 @@
     var usingSecureMode = false;
     var wishlistProductsIds = false; /* ]]> */
     </script>
-
-    <script type="text/javascript" src="{{ URL::to('js/v_19_c75439d233017f27de549e45cf0ae1bd.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('/modules/elevatezoom/js/jquery.elevatezoom.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/v_19_c75439d233017f27de549e45cf0ae1bd.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.elevatezoom.min.js') }}"></script>
     <script type="text/javascript">
     /* <![CDATA[ */ ;
     var zoom_type = 'window';
@@ -2362,15 +2366,22 @@
     var zoom_lens_shape = 'round';
     var zoom_lens_size = 345;;
 
-    function applyElevateZoom() { var src = $('.thickbox.shown').attr('href'); var bigimage = $('.fancybox.shown').attr('href');
-        $('#bigpic').elevateZoom({ zoomType: zoom_type, cursor: zoom_cursor_type, zoomWindowFadeIn: zoom_fade_in, zoomWindowFadeOut: zoom_fade_out, zoomWindowPosition: zoom_window_pos, scrollZoom: zoom_scroll, easing: zoom_easing, tint: zoom_tint, tintColour: zoom_tint_color, tintOpacity: zoom_tint_opacity, lensShape: zoom_lens_shape, lensSize: zoom_lens_size, zoomImage: bigimage, borderSize: 1, borderColour: '#f3f3f3', zoomWindowWidth: 468, zoomWindowHeight: 468, zoomLevel: 0.5, lensBorderSize: 0 }); }
-    $(document).ready(function() { applyElevateZoom();
+    function applyElevateZoom() {
+        var src = $('.thickbox.shown').attr('href');
+        var bigimage = $('.fancybox.shown').attr('href');
+        $('#bigpic').elevateZoom({ zoomType: zoom_type, cursor: zoom_cursor_type, zoomWindowFadeIn: zoom_fade_in, zoomWindowFadeOut: zoom_fade_out, zoomWindowPosition: zoom_window_pos, scrollZoom: zoom_scroll, easing: zoom_easing, tint: zoom_tint, tintColour: zoom_tint_color, tintOpacity: zoom_tint_opacity, lensShape: zoom_lens_shape, lensSize: zoom_lens_size, zoomImage: bigimage, borderSize: 1, borderColour: '#f3f3f3', zoomWindowWidth: 468, zoomWindowHeight: 468, zoomLevel: 0.5, lensBorderSize: 0 });
+    }
+    $(document).ready(function() {
+        applyElevateZoom();
         $('#color_to_pick_list').click(function() { restartElevateZoom(); });
         $('#color_to_pick_list').hover(function() { restartElevateZoom(); });
-        $('#views_block li a').hover(function() { restartElevateZoom(); }); });
+        $('#views_block li a').hover(function() { restartElevateZoom(); });
+    });
 
-    function restartElevateZoom() { $(".zoomContainer").remove();
-        applyElevateZoom(); };;
+    function restartElevateZoom() {
+        $(".zoomContainer").remove();
+        applyElevateZoom();
+    };;
     var $input = $("#search_query_top");
     var width_ac_results = $input.parent('form').width();
     $('document').ready(function() {
@@ -2390,8 +2401,10 @@
                 return mytab;
             },
             extraParams: { ajaxSearch: 1, id_lang: 1, category_filter: $("#category_filter").val() }
-        }).result(function(event, data, formatted) { $('#search_query_top').val(data.pname);
-            document.location.href = data.product_link; });
+        }).result(function(event, data, formatted) {
+            $('#search_query_top').val(data.pname);
+            document.location.href = data.product_link;
+        });
         $("#category_filter").change(function() {
             $(".ac_results").remove();
             $("#search_query_top").trigger('unautocomplete');
@@ -2411,14 +2424,28 @@
                     return mytab;
                 },
                 extraParams: { ajaxSearch: 1, id_lang: 1, category_filter: $("#category_filter").val() }
-            }).result(function(event, data, formatted) { $('#search_query_top').val(data.pname);
-                document.location.href = data.product_link; });
+            }).result(function(event, data, formatted) {
+                $('#search_query_top').val(data.pname);
+                document.location.href = data.product_link;
+            });
         });
     });
 
-    function Input_focus() { $('#search_query_top').on('focus', function() { var $this = $(this); if ($this.val() == 'Enter search your key') { $this.val('');
-                $('.btn.button-search').addClass('active'); } }).on('blur', function() { var $this = $(this); if ($this.val() == '') { $this.val('Enter search your key');
-                $('.btn.button-search').removeClass('active'); } }); };;
+    function Input_focus() {
+        $('#search_query_top').on('focus', function() {
+            var $this = $(this);
+            if ($this.val() == 'Enter search your key') {
+                $this.val('');
+                $('.btn.button-search').addClass('active');
+            }
+        }).on('blur', function() {
+            var $this = $(this);
+            if ($this.val() == '') {
+                $this.val('Enter search your key');
+                $('.btn.button-search').removeClass('active');
+            }
+        });
+    };;
     jQuery(document).ready(function($) {
         var _SlideshowTransitions = [{ $Duration: 700, $Opacity: 2, $Brother: { $Duration: 1000, $Opacity: 2 } }, { $Duration: 1200, $Delay: 20, $Cols: 8, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $SlideOut: true, $FlyDirection: 9, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 260, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Top: $JssorEasing$.$EaseInWave, $Clip: $JssorEasing$.$EaseOutQuad }, $ScaleHorizontal: 0.2, $ScaleVertical: 0.1, $Outside: true, $Round: { $Left: 1.3, $Top: 2.5 } }, { $Duration: 1000, $Zoom: 1, $Rotate: true, $SlideOut: true, $FlyDirection: 8, $Easing: { $Top: $JssorEasing$.$EaseInCubic, $Zoom: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInCubic }, $ScaleVertical: 0.5, $Opacity: 2, $Round: { $Rotate: 0.5 } }, { $Duration: 1000, $Delay: 30, $Cols: 8, $Rows: 4, $Clip: 15, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 2050, $Easing: $JssorEasing$.$EaseInQuad }];
         var _CaptionTransitions = [];
@@ -2870,9 +2897,13 @@
             var slideWrapRate = baseWidthMax / cfgHeight;
             var arrowleft = $('#insideslider_mod [data-u="arrowleft"]');
             var arrowright = $('#insideslider_mod [data-u="arrowright"]');
-            if (cfgWidth <= baseWidthMax) { arrowleft.css({ 'left': 10 });
-                arrowright.css({ 'right': 10 }); } else { arrowleft.css({ 'left': ((cfgWidth - baseWidthMax) / 2) + 30 });
-                arrowright.css({ 'right': ((cfgWidth - baseWidthMax) / 2) + 30 }); }
+            if (cfgWidth <= baseWidthMax) {
+                arrowleft.css({ 'left': 10 });
+                arrowright.css({ 'right': 10 });
+            } else {
+                arrowleft.css({ 'left': ((cfgWidth - baseWidthMax) / 2) + 30 });
+                arrowright.css({ 'right': ((cfgWidth - baseWidthMax) / 2) + 30 });
+            }
             $('#insideslider_mod').css({ 'left': '50%', 'margin-left': -(slideCurrWidth / 2) })
             if (parentWidth) { if (cfgWidth > baseWidthMax) { if (parentWidth <= baseWidthMax) { insideslider_mod.$ScaleHeight(parentWidth / slideWrapRate); } else { insideslider_mod.$ScaleHeight(cfgHeight); } } else { insideslider_mod.$ScaleWidth(Math.min(cfgWidth, parentWidth)); } } else { window.setTimeout(ScaleSlider, 30); }
         }
@@ -2883,10 +2914,15 @@
         $(window).bind("orientationchange", ScaleSlider);
     });
     jQuery(window).on('load', function() { jQuery('#insideslider_mod .loading').fadeOut(); });;
-    $(document).ready(function() { $('#slide').cycle({ fx: 'scrollHorz', speed: 1000, timeout: 3000000, next: '.next', prev: '.prev' });
+    $(document).ready(function() {
+        $('#slide').cycle({ fx: 'scrollHorz', speed: 1000, timeout: 3000000, next: '.next', prev: '.prev' });
         $('#media_post').fancybox();
-        $('.fancybox-media').attr('rel', 'media-gallery').fancybox({ openEffect: 'none', closeEffect: 'none', prevEffect: 'none', nextEffect: 'none', arrows: false, helpers: { media: {}, buttons: {} } }); if ($(window).width() < 768) { $('#left_column #wrapper').css({ 'display': 'none' });
-            $('#right_column #wrapper').css({ 'display': 'none' }); } });;
+        $('.fancybox-media').attr('rel', 'media-gallery').fancybox({ openEffect: 'none', closeEffect: 'none', prevEffect: 'none', nextEffect: 'none', arrows: false, helpers: { media: {}, buttons: {} } });
+        if ($(window).width() < 768) {
+            $('#left_column #wrapper').css({ 'display': 'none' });
+            $('#right_column #wrapper').css({ 'display': 'none' });
+        }
+    });;
     var placeholder2 = "Your e-mail";
     $(document).ready(function() { $('#newsletter-input-popup').on({ focus: function() { if ($(this).val() == placeholder2) { $(this).val(''); } }, blur: function() { if ($(this).val() == '') { $(this).val(placeholder2); } } }); }); /* ]]> */
     </script>

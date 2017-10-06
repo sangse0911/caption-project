@@ -1,4 +1,4 @@
-<html>
+
 <h3>
 	All User
 </h3>
@@ -44,10 +44,9 @@
 						html += '</tr>';
 					});
 					html += '</table>';
-					$('#page-id').html(html);
+					//$('#page-id').html(html);
 					console.log(result);
 				}
 			});
 		});
 	</script>
-</html>

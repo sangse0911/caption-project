@@ -1,24 +1,26 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('title')
+    Shop account game hang dau viet nam
+@endsection()
+
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/style.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/style1.css') }}" media="all" />
+@endsection
+
+@section('header')
+    @include('particals.header')
+@endsection()
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-
-                </div>
-            </div>
+    <div id="content" class="site-content" tabindex="-1">
+        <div class="container">
+            @include('particals.contents')
         </div>
     </div>
-</div>
-@endsection
+@endsection()
+
+@section('footer')
+    @include('particals.footer')
+@endsection()

@@ -69,13 +69,15 @@ class LoginController extends Controller
 
         } else {
             $user = new User;
-            User::create([
-                'facebook_id' => $socialUser->getID(),
-                'email' => $socialUser->getEmail(),
-                'name' => $socialUser->getName(),
-                'password' => bcrypt(str_random(10)),
-            ]);
+
+            $user->facebook_id = $socialUser->getID();
+            $user->email = $socialUser->getEmail();
+            $user->name = $socialUser->getName();
+            $user->password = bcrypt(str_random(10));
+            $user->save();
+
             auth()->login($user);
+            return redirect()->route('home');
         }
         return redirect('/');
     }

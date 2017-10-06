@@ -11,10 +11,10 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($add, $id, $token)
+    public function index()
     {
 
-        return view('cart.quick-order', compact('id', 'add', 'token'));
+        return view('layouts.index');
     }
 
     /**
@@ -24,9 +24,16 @@ class CartController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts.newtest');
     }
 
+    public function createApi(Request $request)
+    {
+
+        $data = $request->all();
+        return response()->json($data);
+
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -35,7 +42,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "a";
     }
 
     /**

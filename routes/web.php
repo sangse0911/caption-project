@@ -12,7 +12,7 @@
  */
 
 Route::get('/', function () {
-    return view('index');
+    return view('home');
 });
 
 Auth::routes();
@@ -75,3 +75,10 @@ Route::middleware(['auth:admin'])->group(function () {
 Route::get('/catebook', ['as' => 'catebook.index', 'uses' => 'CateBookController@index']);
 Route::get('/api/user', ['as' => 'api.user.index', 'uses' => 'UserController@indexApi']);
 Route::get('/users/content', ['as' => 'users.content', 'uses' => 'UserController@getContent']);
+
+Route::get('/layouts/', ['as' => 'layouts.index', 'uses' => 'CartController@index']);
+Route::get('/layouts/newtest', ['as' => 'layouts.newtest', 'uses' => 'CartController@create']);
+Route::get('/layouts/cart', ['as' => 'layouts.newtest.save', 'uses' => 'CartController@createApi']);
+
+Route::post('/layouts/', ['as' => 'layouts.save', 'uses' => 'CartController@store']);
+Route::get('/cart/cart', ['as' => 'ahihi', 'uses' => 'CartController@createApi']);
