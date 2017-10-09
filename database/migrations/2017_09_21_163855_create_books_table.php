@@ -20,7 +20,7 @@ class CreateBooksTable extends Migration
             $table->text('description');
             $table->integer('admin_id')->unsigned();
             $table->integer('bookself_id')->unsigned();
-            $table->integer('status_id')->unsigned();
+            $table->integer('status')->unsigned();
             $table->string('author', 50);
             $table->string('publishing_company');
             $table->dateTime('publishing_year');
@@ -31,7 +31,6 @@ class CreateBooksTable extends Migration
 
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('bookself_id')->references('id')->on('bookselfs')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('status_id')->references('id')->on('status')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

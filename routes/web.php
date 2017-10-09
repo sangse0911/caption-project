@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::prefix('admin')->group(function () {
     Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.show');
@@ -81,4 +82,4 @@ Route::get('/layouts/newtest', ['as' => 'layouts.newtest', 'uses' => 'CartContro
 Route::get('/layouts/cart', ['as' => 'layouts.newtest.save', 'uses' => 'CartController@createApi']);
 
 Route::post('/layouts/', ['as' => 'layouts.save', 'uses' => 'CartController@store']);
-Route::get('/cart/cart', ['as' => 'ahihi', 'uses' => 'CartController@createApi']);
+Route::post('/cart/add', ['as' => 'cart.add', 'uses' => 'CartController@add']);

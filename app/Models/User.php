@@ -72,6 +72,26 @@ class User extends Authenticatable
         return $this->hasMany(\App\Models\Customer::class);
     }
 
+    public function postComments()
+    {
+        return $this->hasMany(\App\Models\PostComment::class);
+    }
+
+    public function postNotifications()
+    {
+        return $this->hasMany(\App\Models\PostNotification::class);
+    }
+
+    public function postRates()
+    {
+        return $this->hasMany(\App\Models\PostRate::class);
+    }
+
+    public function postWishLists()
+    {
+        return $this->hasMany(\App\Models\PostWishList::class);
+    }
+
     public function rates()
     {
         return $this->hasMany(\App\Models\Rate::class);

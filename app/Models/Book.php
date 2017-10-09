@@ -54,7 +54,7 @@ class Book extends Model
     {
         return [
             'slug' => [
-                'source' => 'introduce',
+                'source' => 'name',
             ],
         ];
     }

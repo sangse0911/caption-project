@@ -13,8 +13,12 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/colors/blue.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/style.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/style1.css') }}" media="all" />
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,700italic,800,800italic,600italic,400italic,300italic' rel='stylesheet' type='text/css'>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 <body class="page home page-temlate-default">

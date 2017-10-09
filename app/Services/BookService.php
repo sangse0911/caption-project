@@ -48,7 +48,7 @@ class BookService implements BookInterface
         $book->bookself_id = $request['bookself-id'];
         $book->introduce = $request['introduce'];
         $book->description = $request['description'];
-        $book->status_id = '1';
+        $book->status = '1';
         $book->author = $request['author'];
         $book->publishing_company = $request['publishing-company'];
         $book->publishing_year = $request['publishing-year'];
@@ -63,7 +63,6 @@ class BookService implements BookInterface
             $cateBook->category_id = $category;
             $cateBook->book()->associate($book);
             $cateBook->save();
-            // $cateBook = $this->cateBookService->save();
         }
 
         $image = $this->imageService->save();

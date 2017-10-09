@@ -27,12 +27,11 @@ class CartController extends Controller
         return view('layouts.newtest');
     }
 
-    public function createApi(Request $request)
+    public function add(Request $request)
     {
-
-        $data = $request->all();
-        return response()->json($data);
-
+        if ($request->ajax()) {
+            return response()->json($request->all());
+        }
     }
     /**
      * Store a newly created resource in storage.

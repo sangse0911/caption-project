@@ -50,4 +50,9 @@ class Category extends Model
     {
         return $this->hasMany(\App\Models\CateBook::class);
     }
+
+    public function postCategories()
+    {
+        return $this->hasMany(\App\Models\PostCategory::class);
+    }
 }
