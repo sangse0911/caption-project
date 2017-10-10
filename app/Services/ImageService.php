@@ -10,9 +10,13 @@ use Illuminate\Support\Facades\Input;
 
 class ImageService implements ImageInterface
 {
-
+    //
     protected $adminService;
 
+    /**
+     * [__construct description]
+     * @param AdminInterface $adminService [description]
+     */
     public function __construct(AdminInterface $adminService)
     {
         $this->adminService = $adminService;
@@ -25,14 +29,19 @@ class ImageService implements ImageInterface
      * @param  boolean $force     [description]
      * @return [type]             [description]
      */
-    public function makeDirectory($path, $mode = 0777, $recursive = false, $force = false)
-    {
-        if ($force) {
-            return @mkdir($path, $mode, $recursive);
-        } else {
-            return mkdir($path, $mode, $recursive);
-        }
-    }
+    // public function makeDirectory($path, $mode = 0777, $recursive = false, $force = false)
+    // {
+    //     if ($force) {
+    //         return @mkdir($path, $mode, $recursive);
+    //     } else {
+    //         return mkdir($path, $mode, $recursive);
+    //     }
+    // }
+
+    /**
+     * [getAll description]
+     * @return [type] [description]
+     */
     public function getAll()
     {
         $images = Image::paginate(20);
@@ -44,27 +53,49 @@ class ImageService implements ImageInterface
 
     }
 
+    /**
+     * [save description]
+     * @return [type] [description]
+     */
     public function save()
     {
-        $id = $this->adminService->getAuth();
+
         if (Input::hasFile('images')) {
-            $images = Input::file('images');
+            //get value of input
+            $files = Input::file('images');
+            //get time now
             $time = time();
-            $path = public_path('assets/images/product/') . $id . '/' . $time . '/';
-            if (!file_exists($path)) {
-                File::makeDirectory($path, $mode = 0777, true, true);
-            }
-
-            foreach ($images as $image) {
-                $filename = rand(1, 10000) . '.' . $image->getClientOriginalExtension();
-                $location = $path . $filename;
-                $thumb = \Intervention\Image\Facades\Image::make($image);
-                $thumb->save($location);
+            //set path
+            $path = public_path() . '/assets/images/product/';
+            //
+            $filesArray = [];
+            //loop all file get by input
+            foreach ($files as $file) {
+                //
+                $filesArray[]['path'] = $this->uploadImage($file, $path);
 
             }
-            $image = new Image;
-            $image->path = $time . '/';
-            return $image;
+
+            return $filesArray;
         }
+    }
+
+    /**
+     * [uploadImage description]
+     * @param  [type] $image [description]
+     * @param  [type] $path  [description]
+     * @return [type]        [description]
+     */
+    public function uploadImage($image, $path)
+    {
+        if (empty($path) || empty($image)) {
+            return false;
+        }
+        //get imageName
+        $imageName = rand(1, 1000) . time() . '.' . $image->getClientOriginalExtension();
+        //save image into folder by path
+        $image->move($path, $imageName);
+
+        return $imageName;
     }
 }

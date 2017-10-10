@@ -52,11 +52,6 @@ class ProfileComposer
      */
     public function compose(View $view)
     {
-        $view->with('users', $this->userService->getAll());
-        $view->with('suppliers', $this->supplierService->getAll());
-        $view->with('authId', $this->adminService->getAuth());
-        $view->with('categories', $this->categoryService->getAll());
-        $view->with('bookself', $this->bookselfService->getFirst());
-        $view->with('books', $this->bookService->getAll());
+
     }
 }

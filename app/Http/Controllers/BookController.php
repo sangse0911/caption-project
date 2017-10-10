@@ -22,7 +22,7 @@ class BookController extends Controller
     public function index()
     {
         $books = $this->bookService->getAll();
-        return view('book.index', compact('books'));
+        return view('book.index', compact(['books']));
     }
 
     /**
@@ -55,7 +55,10 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+        $array = $this->bookService->getById($id);
+        $product = $array['product'];
+        $image = $array['image'];
+        return true;
     }
 
     /**

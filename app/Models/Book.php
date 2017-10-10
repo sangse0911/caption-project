@@ -139,4 +139,18 @@ class Book extends Model
     {
         return $this->hasMany(\App\Models\WishList::class);
     }
+
+    // public function getImages()
+    // {
+
+    //     $images = $this->images();
+    //     if (!empty($images)) {
+    //         $images = $images->map(function ($item, $key) {
+    //             dd($item->path);
+    //             return public_path() . '/assets/images/product/' . $item->path;
+    //         });
+    //         return $images;
+    //     }
+    //     return null;
+    // }
 }

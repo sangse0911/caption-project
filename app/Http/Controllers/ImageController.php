@@ -44,7 +44,6 @@ class ImageController extends Controller
     public function store(Request $request)
     {
         $image = $this->imageService->save($request->all());
-        // dd($image);
         return redirect()->route('images.index');
     }
 

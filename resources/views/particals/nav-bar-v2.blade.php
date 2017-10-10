@@ -512,7 +512,7 @@
 	        </ul>
 	        <ul class="navbar-wishlist nav navbar-nav pull-right flip">
 	            <li class="nav-item">
-	                <a href="{{ route('wishlist') }}" class="nav-link">
+	                <a href="#" class="nav-link">
 	                        <i class="ec ec-favorites"></i>
 	                                            </a>
 	            </li>

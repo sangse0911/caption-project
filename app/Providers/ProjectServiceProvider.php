@@ -2,11 +2,12 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\View;
+use App\Interfaces\CategoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class ProjectServiceProvider extends ServiceProvider
 {
+
     /**
      * Bootstrap the application services.
      *
@@ -14,8 +15,10 @@ class ProjectServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['admin.index', 'bookself.create', 'supplier.create', 'book.create'],
-            'App\Http\ViewComposers\ProfileComposer');
+        view()->composer(['home', 'book.index'], 'App\Http\ViewComposers\BookComposer');
+        view()->composer(['book.create'], 'App\Http\ViewComposers\CategoryComposer');
+        view()->composer(['book.create'], 'App\Http\ViewComposers\AdminComposer');
+        view()->composer('book.create', 'App\Http\ViewComposers\BookselfComposer');
     }
 
     /**

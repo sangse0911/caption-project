@@ -9,7 +9,7 @@ class CategoryService implements CategoryInterface
 {
     public function getAll()
     {
-        $categories = Category::paginate(20);
+        $categories = Category::all();
         return $categories;
     }
 
