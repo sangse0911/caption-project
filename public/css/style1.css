@@ -16301,7 +16301,7 @@ img.desaturate:hover {
 }
 
 .departments-menu .departments-menu-dropdown {
-    top: 107%;
+    top: 110%;
     border-top-width: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -22439,7 +22439,7 @@ ul.products>li {
 @media (min-width:544px) {
     ul.products.columns-3>li,
     ul.products>li {
-        width: 33.3333333333%
+        width: 20%
     }
 }
 

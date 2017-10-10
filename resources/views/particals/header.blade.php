@@ -610,10 +610,10 @@
                     <div class="col-xs-12 col-lg-9">
                         <nav>
                             <ul id="menu-secondary-nav" class="secondary-nav">
-                                <li class="highlight menu-item"><a href="home-v2.html">Super Deals</a></li>
-                                <li class="menu-item"><a href="home-v3.html">Featured Brands</a></li>
-                                <li class="menu-item"><a href="home-v3-full-color.html">Trending Styles</a></li>
-                                <li class="menu-item"><a href="blog-v1.html">Gift Cards</a></li>
+                                <li class="highlight menu-item"><a href="#">Ban sach</a></li>
+                                <li class="menu-item"><a href="#">Mua sach</a></li>
+                                <li class="menu-item"><a href="#">Thue sach</a></li>
+                                <li class="menu-item"><a href="{{ route('post.create') }}">Dang sach len</a></li>
                                 <li class="pull-right menu-item"><a href="blog-v2.html">Free Shipping on Orders $50+</a></li>
                             </ul>
                         </nav>

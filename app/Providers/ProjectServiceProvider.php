@@ -39,5 +39,6 @@ class ProjectServiceProvider extends ServiceProvider
         $this->app->singleton(\App\Interfaces\BookInterface::class, \App\Services\BookService::class);
         $this->app->singleton(\App\Interfaces\CateBookInterface::class, \App\Services\CateBookService::class);
         $this->app->singleton(\App\Interfaces\InvoiceDetailInterface::class, \App\Services\InvoiceDetailService::class);
+        $this->app->singleton(\App\Interfaces\PostInterface::class, \App\Services\PostService::class);
     }
 }

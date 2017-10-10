@@ -83,3 +83,9 @@ Route::get('/layouts/cart', ['as' => 'layouts.newtest.save', 'uses' => 'CartCont
 
 Route::post('/layouts/', ['as' => 'layouts.save', 'uses' => 'CartController@store']);
 Route::post('/cart/add', ['as' => 'cart.add', 'uses' => 'CartController@add']);
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/post/index', ['as' => 'post.index', 'uses' => 'PostController@index']);
+    Route::get('/post/create', ['as' => 'post.create', 'uses' => 'PostController@create']);
+});

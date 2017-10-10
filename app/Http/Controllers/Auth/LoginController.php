@@ -77,7 +77,7 @@ class LoginController extends Controller
             $user->save();
 
             auth()->login($user);
-            return redirect()->to('home');
+            return redirect()->to('/');
         }
         return redirect('/');
     }

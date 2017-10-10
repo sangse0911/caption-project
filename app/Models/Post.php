@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $introduce
  * @property string $description
  * @property int $status
+ * @property int $user_id
  * @property string $author
  * @property string $publishing_company
  * @property \Carbon\Carbon $publishing_year
@@ -62,6 +63,7 @@ class Post extends Eloquent
     protected $casts = [
         'status' => 'int',
         'republish' => 'int',
+        'user_id' => 'int',
     ];
 
     /**
@@ -77,6 +79,7 @@ class Post extends Eloquent
      * @var [type]
      */
     protected $fillable = [
+        'user_id',
         'name',
         'introduce',
         'description',
@@ -89,6 +92,10 @@ class Post extends Eloquent
         'slug',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class);
+    }
     public function postCategories()
     {
         return $this->hasMany(\App\Models\PostCategory::class);
