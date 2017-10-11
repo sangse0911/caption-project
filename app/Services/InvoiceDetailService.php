@@ -21,10 +21,12 @@ class InvoiceDetailService implements InvoiceDetailInterface
     public function save($request)
     {
         $invoiceDetail = new InvoiceDetail;
+
         $invoiceDetail->entered_price = $request['price-entered'];
         $invoiceDetail->sell_price = $request['price-sell'];
         $invoiceDetail->rental_price = $request['price-rent'];
         $invoiceDetail->quanlity = $request['quanlity'];
+
         return $invoiceDetail;
     }
 }

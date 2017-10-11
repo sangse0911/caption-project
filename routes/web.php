@@ -33,29 +33,27 @@ Route::get('/users', ['as' => 'users.index', 'uses' => 'UserController@index']);
 Route::post('/users/create', 'UserController@store')->name('user_save');
 Route::get('/users/{id}/edit', 'UserController@edit')->name('user_edit');
 Route::put('/users/update', 'UserController@update')->name('user_update');
-// Route::get('/users', 'UserController@index')->name('user_admin');
-
-Route::get('/bookself', 'BookselfController@index')->name('bookself.index');
-Route::get('/bookself/create', 'BookselfController@create')->name('bookself.create');
-Route::post('/bookself/create', 'BookselfController@store')->name('bookself.save');
-Route::get('/bookself/{slug}', ['as' => 'bookself.single', 'uses' => 'BookselfController@getStatus'])
-    ->where('slug', '[\w\d\-\_]+');
-
-Route::get('/supplier', 'SupplierController@index')->name('supplier.index');
-Route::post('/supplier/create', 'SupplierController@store')->name('supplier.save');
-
-Route::get('/invoice', 'InvoiceController@index')->name('invoice.index');
-Route::get('/invoice/create/{id}', 'InvoiceController@create')->name('invoice.create');
-Route::post('/invoice/create', 'InvoiceController@store')->name('invoice.save');
 
 Route::get('/book', ['as' => 'book.index', 'uses' => 'BookController@index']);
 
 Route::middleware(['auth:admin'])->group(function () {
 
+    Route::get('/bookself', 'BookselfController@index')->name('bookself.index');
+    Route::get('/bookself/create', 'BookselfController@create')->name('bookself.create');
+    Route::post('/bookself/create', 'BookselfController@store')->name('bookself.save');
+    Route::get('/bookself/{slug}', ['as' => 'bookself.single', 'uses' => 'BookselfController@getStatus'])
+        ->where('slug', '[\w\d\-\_]+');
+
+    Route::get('/invoice', 'InvoiceController@index')->name('invoice.index');
+    Route::get('/invoice/create/{id}', 'InvoiceController@create')->name('invoice.create');
+    Route::post('/invoice/create', 'InvoiceController@store')->name('invoice.save');
+
     Route::get('/users/create', 'UserController@create')->name('user.create');
     Route::post('/users/create', 'UserController@storeUser')->name('user.create.supplier');
 
-    Route::get('/supplier', ['as' => 'supplier.create', 'uses' => 'SupplierController@create']);
+    Route::get('/supplier', 'SupplierController@index')->name('supplier.index');
+    Route::get('/supplier/create', ['as' => 'supplier.create', 'uses' => 'SupplierController@create']);
+    Route::post('/supplier/create', 'SupplierController@store')->name('supplier.save');
 
     Route::get('/categories', ['as' => 'categories.index', 'uses' => 'CategoryController@index']);
     Route::get('/categories/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);

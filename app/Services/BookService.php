@@ -43,59 +43,37 @@ class BookService implements BookInterface
      */
     public function getAll()
     {
-        //get object of all book
         $books = Book::with('images')->get();
+
         return $books;
     }
 
     public function getById($id)
     {
-        //get object of book by id
         $book = Book::findOrFail($id);
 
-        $path = public_path() . '/assets/images/product/' . $book->images->first()->path;
-        if ($opendir = opendir($path)) {
-            while (($image = readdir($opendir)) !== false) {
-                if ($image != '.' && $image != '..') {
-                    $a[] = $image;
-                }
-            }
-        }
-
-        return $array = ['book' => $book, 'image' => $a];
+        return $book;
     }
 
     public function save($request)
     {
 
         $book = new Book;
-        //get book[name] by request[name]
+
         $book->name = $request['name'];
-        //
         $book->admin_id = $request['admin-id'];
-
         $book->bookself_id = $request['bookself-id'];
-
         $book->introduce = $request['introduce'];
-
         $book->description = $request['description'];
-
         $book->status = '1';
-
         $book->author = $request['author'];
-
         $book->publishing_company = $request['publishing-company'];
-
         $book->publishing_year = $request['publishing-year'];
-
         $book->republish = $request['republish'];
-
         $book->isbn = $request['isbn'];
-        //get all categories in input
         $categories = Input::get('categories');
-        //get all images in input
         $images = Input::hasFile('images');
-        //save book
+
         $book->save();
 
         /**
@@ -111,26 +89,36 @@ class BookService implements BookInterface
         /**
          * loop all categories and get each object of category
          */
-        foreach ($categories as $category) {
-            //
-            $cateBook = $this->cateBookService->save();
-            //get
-            $cateBook->category_id = $category;
+        if ($categories) {
 
-            $cateBook->book()->associate($book);
+            foreach ($categories as $category) {
+                $cateBook = $this->cateBookService->save();
 
-            $cateBook->save();
+                if (!$cateBook->book()->associate($book) || !$cateBook->category()->associate($category)) {
+                    return $result = false;
+                } else {
+
+                    $cateBook->save();
+                }
+
+            }
         }
 
         $invoice = $this->invoiceService->save($request);
-
         $invoiceDetail = $this->invoiceDetailService->save($request);
 
-        $invoiceDetail->book()->associate($book);
+        /**
+         *
+         */
+        if (!$invoice || !$invoiceDetail) {
+            return $result = false;
+        } else if (!$invoiceDetail->book()->associate($book) || !$invoiceDetail->invoice()->associate($invoice)) {
+            return $result = false;
 
-        $invoiceDetail->invoice()->associate($invoice);
+        } else {
+            $invoiceDetail->save();
 
-        $invoiceDetail->save();
+        }
 
         return $book;
     }

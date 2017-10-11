@@ -61,19 +61,12 @@ class ImageService implements ImageInterface
     {
 
         if (Input::hasFile('images')) {
-            //get value of input
             $files = Input::file('images');
-            //get time now
             $time = time();
-            //set path
             $path = public_path() . '/assets/images/product/';
-            //
             $filesArray = [];
-            //loop all file get by input
             foreach ($files as $file) {
-                //
                 $filesArray[]['path'] = $this->uploadImage($file, $path);
-
             }
 
             return $filesArray;
@@ -91,9 +84,8 @@ class ImageService implements ImageInterface
         if (empty($path) || empty($image)) {
             return false;
         }
-        //get imageName
+
         $imageName = rand(1, 1000) . time() . '.' . $image->getClientOriginalExtension();
-        //save image into folder by path
         $image->move($path, $imageName);
 
         return $imageName;

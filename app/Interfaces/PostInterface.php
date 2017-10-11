@@ -6,5 +6,5 @@ interface PostInterface
 {
     public function getAll();
     public function getBYId($id);
-    public function save();
+    public function save($request);
 }

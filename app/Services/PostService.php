@@ -18,7 +18,7 @@ class PostService implements PostInterface
 
     }
 
-    public function save()
+    public function save($request)
     {
 
     }

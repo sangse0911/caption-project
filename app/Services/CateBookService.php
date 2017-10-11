@@ -22,6 +22,7 @@ class CateBookService implements CateBookInterface
     public function save()
     {
         $cateBook = new CateBook;
+
         return $cateBook;
 
     }
