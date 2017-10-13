@@ -21,12 +21,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $updated_at
  *
  * @property \App\Models\Supplier $supplier
- * @property \Illuminate\Database\Eloquent\Collection $invoice_details
- * @property \Illuminate\Database\Eloquent\Collection $invoice_paids
  *
  * @package App\Models
  */
-class Invoice extends Model
+class Invoice extends Eloquent
 {
     protected $casts = [
         'supplier_id' => 'int',
@@ -42,15 +40,5 @@ class Invoice extends Model
     public function supplier()
     {
         return $this->belongsTo(\App\Models\Supplier::class);
-    }
-
-    public function invoiceDetails()
-    {
-        return $this->hasMany(\App\Models\InvoiceDetail::class);
-    }
-
-    public function invoicePaids()
-    {
-        return $this->hasMany(\App\Models\InvoicePaid::class);
     }
 }

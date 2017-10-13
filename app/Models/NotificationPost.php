@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 09 Oct 2017 19:56:52 +0700.
+ * Date: Fri, 13 Oct 2017 01:06:05 +0700.
  */
 
 namespace App\Models;
@@ -10,7 +10,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class PostNotification
+ * Class NotificationPost
  *
  * @property int $id
  * @property int $user_id
@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class PostNotification extends Model
+class NotificationPost extends Model
 {
     protected $casts = [
         'user_id' => 'int',

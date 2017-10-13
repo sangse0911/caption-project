@@ -8,27 +8,26 @@ use Illuminate\View\View;
 class BookComposer
 {
 
-    protected $bookService;
+    protected $bookRepository;
 
     /**
-     * [__construct description]
-     * @param BookInterface     $bookService     [description]
+     *  Bind
+     *
+     * @param BookInterface     $bookRepository
      */
-    public function __construct(
+    public function __construct(BookInterface $bookRepository)
+    {
 
-        BookInterface $bookService
-    ) {
-
-        $this->bookService = $bookService;
+        $this->bookRepository = $bookRepository;
     }
 
     /**
-     * [compose description]
+     *
      * @param  View   $view [description]
      * @return [type]       [description]
      */
     public function compose(View $view)
     {
-        $view->with('books', $this->bookService->getAll());
+        $view->with('books', $this->bookRepository->all());
     }
 }

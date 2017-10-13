@@ -29,8 +29,4 @@ class Status extends Model
         'name',
     ];
 
-    public function books()
-    {
-        return $this->hasMany(\App\Models\Book::class);
-    }
 }

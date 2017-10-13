@@ -7,17 +7,17 @@ use Illuminate\View\View;
 
 class BookselfComposer
 {
-
-    protected $bookselfService;
+    //
+    protected $bookselfRepository;
 
     /**
      * [__construct description]
-     * @param BookInterface     $bookService     [description]
+     * @param BookselfInterface $bookselfRepository [description]
      */
-    public function __construct(BookselfInterface $bookselfService)
+    public function __construct(BookselfInterface $bookselfRepository)
     {
 
-        $this->bookselfService = $bookselfService;
+        $this->bookselfRepository = $bookselfRepository;
     }
 
     /**
@@ -27,6 +27,6 @@ class BookselfComposer
      */
     public function compose(View $view)
     {
-        $view->with('bookself', $this->bookselfService->getFirst());
+        $view->with('bookself', $this->bookselfRepository->first());
     }
 }

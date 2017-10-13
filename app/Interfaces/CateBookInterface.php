@@ -4,7 +4,7 @@ namespace App\Interfaces;
 
 interface CateBookInterface
 {
-    public function getAll();
-    public function getById();
-    public function save();
+    public function all();
+    public function find($id);
+    public function create($request);
 }

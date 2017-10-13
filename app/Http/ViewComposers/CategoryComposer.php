@@ -8,18 +8,16 @@ use Illuminate\View\View;
 class CategoryComposer
 {
 
-    protected $categoryService;
+    protected $categoryRepository;
 
     /**
      * [__construct description]
-     * @param BookInterface     $bookService     [description]
+     * @param CategoryInterface $categoryRepository [description]
      */
-    public function __construct(
+    public function __construct(CategoryInterface $categoryRepository)
+    {
 
-        CategoryInterface $categoryService
-    ) {
-
-        $this->categoryService = $categoryService;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -29,6 +27,6 @@ class CategoryComposer
      */
     public function compose(View $view)
     {
-        $view->with('categories', $this->categoryService->getAll());
+        $view->with('categories', $this->categoryRepository->all());
     }
 }

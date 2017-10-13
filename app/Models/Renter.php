@@ -23,8 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $updated_at
  *
  * @property \App\Models\Customer $customer
+ * @property \Illuminate\Database\Eloquent\Collection $detail_renters
  * @property \Illuminate\Database\Eloquent\Collection $purchases
- * @property \Illuminate\Database\Eloquent\Collection $renter_details
  *
  * @package App\Models
  */
@@ -49,13 +49,13 @@ class Renter extends Model
         return $this->belongsTo(\App\Models\Customer::class);
     }
 
+    public function detailRenters()
+    {
+        return $this->hasMany(\App\Models\DetailRenter::class);
+    }
+
     public function purchases()
     {
         return $this->hasMany(\App\Models\Purchase::class);
-    }
-
-    public function renterDetails()
-    {
-        return $this->hasMany(\App\Models\RenterDetail::class);
     }
 }

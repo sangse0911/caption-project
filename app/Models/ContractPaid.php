@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 09 Oct 2017 19:56:52 +0700.
+ * Date: Fri, 13 Oct 2017 01:06:05 +0700.
  */
 
 namespace App\Models;
@@ -10,31 +10,29 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class PostImage
+ * Class ContractPaid
  *
  * @property int $id
- * @property int $post_id
- * @property string $path
+ * @property int $contract_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @property \App\Models\Post $post
+ * @property \App\Models\Contract $contract
  *
  * @package App\Models
  */
-class PostImage extends Model
+class ContractPaid extends Model
 {
     protected $casts = [
-        'post_id' => 'int',
+        'contract_id' => 'int',
     ];
 
     protected $fillable = [
-        'post_id',
-        'path',
+        'contract_id',
     ];
 
-    public function post()
+    public function contract()
     {
-        return $this->belongsTo(\App\Models\Post::class);
+        return $this->belongsTo(\App\Models\Contract::class);
     }
 }

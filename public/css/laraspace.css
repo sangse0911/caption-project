@@ -2907,7 +2907,9 @@ select.form-control-lg:not([size]):not([multiple]),
 .form-group {
   margin-bottom: 1rem;
 }
-
+.row .form-group {
+  width: 100% !important;
+}
 .form-text {
   display: block;
   margin-top: 0.25rem;

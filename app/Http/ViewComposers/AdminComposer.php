@@ -29,6 +29,6 @@ class AdminComposer
      */
     public function compose(View $view)
     {
-        $view->with('authId', $this->adminService->getAuth());
+        $view->with('authId', $this->adminService->getAdminAuth());
     }
 }

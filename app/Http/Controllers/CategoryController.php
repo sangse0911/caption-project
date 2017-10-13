@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
 
-    protected $categoryService;
+    protected $categoryRepository;
 
-    public function __construct(CategoryInterface $categoryService)
+    public function __construct(CategoryInterface $categoryRepository)
     {
-        $this->categoryService = $categoryService;
+        $this->categoryRepository = $categoryRepository;
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = $this->categoryService->getAll();
+        $categories = $this->categoryRepository->all();
         return view('categories.index', compact('categories'));
     }
 
@@ -43,7 +43,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = $this->categoryService->save($request->all());
+        $category = $this->categoryRepository->create($request->all());
         return redirect()->route('categories.index');
     }
 

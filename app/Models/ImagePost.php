@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 09 Oct 2017 19:56:52 +0700.
+ * Date: Fri, 13 Oct 2017 01:06:05 +0700.
  */
 
 namespace App\Models;
@@ -10,20 +10,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class PostInvoice
+ * Class ImagePost
  *
  * @property int $id
  * @property int $post_id
- * @property string $information
+ * @property string $path
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
  * @property \App\Models\Post $post
- * @property \Illuminate\Database\Eloquent\Collection $post_advertisments
  *
  * @package App\Models
  */
-class PostInvoice extends Model
+class ImagePost extends Model
 {
     protected $casts = [
         'post_id' => 'int',
@@ -31,16 +30,11 @@ class PostInvoice extends Model
 
     protected $fillable = [
         'post_id',
-        'information',
+        'path',
     ];
 
     public function post()
     {
         return $this->belongsTo(\App\Models\Post::class);
-    }
-
-    public function postAdvertisments()
-    {
-        return $this->hasMany(\App\Models\PostAdvertisment::class, 'postInvoice_id');
     }
 }

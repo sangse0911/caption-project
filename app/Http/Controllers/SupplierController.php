@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 class SupplierController extends Controller
 {
 
-    protected $supplierService;
+    protected $supplierRepository;
 
-    public function __construct(SupplierInterface $supplierService)
+    public function __construct(SupplierInterface $supplierRepository)
     {
         $this->middleware('auth:admin', ['except' => 'logout']);
-        $this->supplierService = $supplierService;
+        $this->supplierRepository = $supplierRepository;
     }
     /**
      * Display a listing of the resource.
@@ -22,7 +22,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $suppliers = $this->supplierService->getAll();
+        $suppliers = $this->supplierRepository->all();
         return view('admin.index', compact('suppliers'));
     }
 
@@ -44,8 +44,8 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        $supplier = $this->supplierService->save($request->all());
-        // dd($supplier);
+        $supplier = $this->supplierRepository->create($request->all());
+
         return redirect()->route('book.create', ['id' => $supplier->id]);
     }
 

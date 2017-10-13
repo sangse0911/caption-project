@@ -4,7 +4,7 @@ namespace App\Interfaces;
 
 interface PostInterface
 {
-    public function getAll();
-    public function getBYId($id);
-    public function save($request);
+    public function all();
+    public function find($id);
+    public function create($request);
 }

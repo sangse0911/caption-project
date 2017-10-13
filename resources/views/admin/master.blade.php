@@ -8,7 +8,8 @@
 <head>
     <title>Laraspace - Laravel Admin</title>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
-    <script src="{{ asset('js/pace.js') }}"></script>
+
+    @yield('style')
     <link rel="stylesheet" href="{{ asset('css/laraspace.css') }}" type="text/css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -28,12 +29,11 @@
     <link rel="manifest" href="http://laraspace.in/assets/admin/img/favicons/manifest.json">
     <link rel="mask-icon" href="http://laraspace.in/assets/admin/img/favicons/safari-pinned-tab.svg" color="#333333">
     <link rel="shortcut icon" href="http://laraspace.in/assets/admin/img/favicons/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/laraspace1954.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/laraspace1954.css') }}"> --}}
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-TileImage" content="/assets/admin/img/favicons/mstile-144x144.png">
     <meta name="msapplication-config" content="/assets/admin/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#333333">
-    @yield('style')
 </head>
 
 <body class="layout-default skin-default">
@@ -316,9 +316,11 @@
             </div>
         </footer>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ asset('js/plugins7790.js') }}"></script>
     <script src="{{ asset('js/skintools.js') }}"></script>
     <script src="{{ asset('js/appe91a.js') }}"></script>
+    <script src="{{ asset('js/pace.js') }}"></script>
     @yield('script')
 </body>
 <!-- Mirrored from laraspace.in/admin/dashboard/ecommerce by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 29 Sep 2017 01:37:33 GMT -->

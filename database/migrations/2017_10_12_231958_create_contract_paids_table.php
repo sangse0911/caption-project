@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInvoicePaidsTable extends Migration
+class CreateContractPaidsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateInvoicePaidsTable extends Migration
      */
     public function up()
     {
-        Schema::create('invoice_paids', function (Blueprint $table) {
+        Schema::create('contract_paids', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('invoice_id')->unsigned();
+            $table->integer('contract_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('contract_id')->references('id')->on('contracts')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateInvoicePaidsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invoice_paids');
+        Schema::dropIfExists('contract_paids');
     }
 }

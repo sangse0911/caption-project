@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
 
-    protected $bookService;
+    protected $bookRepository;
 
-    public function __construct(BookInterface $bookService)
+    public function __construct(BookInterface $bookRepository)
     {
-        $this->bookService = $bookService;
+        $this->bookRepository = $bookRepository;
     }
     /**
      * Display a listing of the resource.
@@ -21,10 +21,14 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = $this->bookService->getAll();
-        return view('book.index', compact(['books']));
+        $books = $this->bookRepository->all();
+        return view('book.index', compact('books'));
     }
 
+    public function getSupplier()
+    {
+        return $this->bookService->getSupplier();
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -43,7 +47,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $book = $this->bookService->save($request->all());
+        $book = $this->bookRepository->create($request->all());
         return redirect()->route('admin.index');
     }
 

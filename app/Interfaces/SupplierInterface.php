@@ -4,7 +4,7 @@ namespace App\Interfaces;
 
 interface SupplierInterface
 {
-    public function getAll();
-    public function getById();
-    public function save($request);
+    public function all();
+    public function find($id);
+    public function create(array $request);
 }

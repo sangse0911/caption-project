@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 
-interface StatusInterface
+interface PostImageInterface
 {
     public function all();
     public function find($id);

@@ -3,11 +3,11 @@
 namespace App\Services;
 
 use App\Interfaces\AdminInterface;
-use App\Interfaces\BookselfInterface;
+use App\Interfaces\BookSelfInterface;
 use App\Models\Bookself;
 use Illuminate\Http\Request;
 
-class BookselfService implements BookselfInterface
+class BookSelfService implements BookSelfInterface
 {
 
     protected $adminService;

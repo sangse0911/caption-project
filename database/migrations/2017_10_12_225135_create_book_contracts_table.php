@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInvoiceDetailsTable extends Migration
+class CreateBookContractsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,14 @@ class CreateInvoiceDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('invoice_details', function (Blueprint $table) {
+        Schema::create('book_contracts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('invoice_id')->unsigned();
             $table->integer('book_id')->unsigned();
-            $table->double('entered_price', 20, 0)->default('0');
-            $table->double('sell_price', 20, 0)->default('0');
-            $table->double('rental_price', 20, 0)->default('0');
-            $table->smallInteger('quanlity');
+            $table->integer('contract_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('contract_id')->references('id')->on('contracts')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }
@@ -36,6 +32,6 @@ class CreateInvoiceDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invoice_details');
+        Schema::dropIfExists('book_contracts');
     }
 }

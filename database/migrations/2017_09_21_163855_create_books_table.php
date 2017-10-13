@@ -20,7 +20,8 @@ class CreateBooksTable extends Migration
             $table->text('description');
             $table->integer('admin_id')->unsigned();
             $table->integer('bookself_id')->unsigned();
-            $table->integer('status')->unsigned();
+            $table->enum('status', ['0', '1', '2', '3', '4', '5', '6', '7'])->default('1');
+            $table->double('price')->default(0);
             $table->string('author', 50);
             $table->string('publishing_company');
             $table->dateTime('publishing_year');

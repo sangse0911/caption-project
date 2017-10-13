@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostInvoicesTable extends Migration
+class CreateCommentPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreatePostInvoicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_invoices', function (Blueprint $table) {
+        Schema::create('comment_posts', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->integer('post_id')->unsigned();
-            $table->text('information');
             $table->timestamps();
 
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('posts')->onUpdate('cascade')->onDelete('cascade');
+
         });
     }
 
@@ -30,6 +32,6 @@ class CreatePostInvoicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_invoices');
+        Schema::dropIfExists('comment_posts');
     }
 }

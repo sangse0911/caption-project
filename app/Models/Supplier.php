@@ -10,16 +10,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Supplier
+ * Class WishList
  *
  * @property int $id
  * @property int $user_id
- * @property string $phone
+ * @property int $book_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
+ * @property \App\Models\Book $book
  * @property \App\Models\User $user
- * @property \Illuminate\Database\Eloquent\Collection $invoices
  *
  * @package App\Models
  */
@@ -39,8 +39,13 @@ class Supplier extends Model
         return $this->belongsTo(\App\Models\User::class);
     }
 
-    public function invoices()
+    public function contracts()
     {
-        return $this->hasMany(\App\Models\Invoice::class);
+        return $this->hasMany(\App\Models\Contract::class);
+    }
+
+    public function admins()
+    {
+        return $this->belongsToMany(\App\Models\Admin::class, 'admin_id', 'supplier_id', 'id')->withTimestamps();
     }
 }

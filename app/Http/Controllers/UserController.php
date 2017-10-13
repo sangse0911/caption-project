@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\UserInterface;
-use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,15 +12,15 @@ class UserController extends Controller
      * [$userService description]
      * @var [type]
      */
-    protected $userService;
+    protected $userRepository;
 
     /**
      * [__construct description]
      * @param UserInterface $userService [description]
      */
-    public function __construct(UserInterface $userService)
+    public function __construct(UserInterface $userRepository)
     {
-        $this->userService = $userService;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -31,7 +30,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->userService->getAll();
+        $users = $this->userRepository->all();
         return view('users.index', compact('users'));
     }
 
@@ -63,7 +62,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = $this->userService->save($request->all());
+        $user = $this->userService->create($request->all());
         return redirect()->route('admin.index');
     }
 
@@ -75,7 +74,7 @@ class UserController extends Controller
      */
     public function storeUser(Request $request)
     {
-        $user = $this->userService->save($request->all());
+        $user = $this->userRepository->create($request->all());
         return redirect()->route('supplier.create')->with(['user' => $user]);
     }
     /**

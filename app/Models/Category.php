@@ -46,13 +46,23 @@ class Category extends Model
         'slug',
     ];
 
-    public function cateBooks()
+    public function bookCategories()
     {
-        return $this->hasMany(\App\Models\CateBook::class);
+        return $this->hasMany(\App\Models\BookCategory::class);
     }
 
     public function postCategories()
     {
         return $this->hasMany(\App\Models\PostCategory::class);
+    }
+
+    public function books()
+    {
+        return $this->belongsToMany(\App\Models\Book::class, 'book_id', 'category_id', 'id')->withTimestamps();
+    }
+
+    public function posts()
+    {
+        return $this->belongsToMany(\App\Models\Post::class, 'post_id', 'category_id', 'id')->withTimestamps();
     }
 }

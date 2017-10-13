@@ -8,6 +8,8 @@ use App\Interfaces\ImageInterface;
 use App\Interfaces\InvoiceDetailInterface;
 use App\Interfaces\InvoiceInterface;
 use App\Models\Book;
+use App\Models\Invoice;
+use App\Models\InvoiceDetail;
 use Illuminate\Support\Facades\Input;
 
 class BookService implements BookInterface
@@ -55,6 +57,13 @@ class BookService implements BookInterface
         return $book;
     }
 
+    public function getSupplier()
+    {
+        $id = 3;
+        $invoiceDetail = InvoiceDetail::where('book_id', $id)->first()->id;
+
+        dd($invoiceDetail);
+    }
     public function save($request)
     {
 

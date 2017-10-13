@@ -24,7 +24,12 @@ use Illuminate\Notifications\Notifiable;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
+ * @property \Illuminate\Database\Eloquent\Collection $comment_posts
  * @property \Illuminate\Database\Eloquent\Collection $customers
+ * @property \Illuminate\Database\Eloquent\Collection $notification_posts
+ * @property \Illuminate\Database\Eloquent\Collection $post_rates
+ * @property \Illuminate\Database\Eloquent\Collection $post_wish_lists
+ * @property \Illuminate\Database\Eloquent\Collection $posts
  * @property \Illuminate\Database\Eloquent\Collection $rates
  * @property \Illuminate\Database\Eloquent\Collection $reviews
  * @property \Illuminate\Database\Eloquent\Collection $suppliers
@@ -67,22 +72,19 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function commentPosts()
+    {
+        return $this->hasMany(\App\Models\CommentPost::class);
+    }
+
     public function customers()
     {
         return $this->hasMany(\App\Models\Customer::class);
     }
-    public function posts()
-    {
-        return $this->hasMany(\App\Models\Post::class);
-    }
-    public function postComments()
-    {
-        return $this->hasMany(\App\Models\PostComment::class);
-    }
 
-    public function postNotifications()
+    public function notificationPosts()
     {
-        return $this->hasMany(\App\Models\PostNotification::class);
+        return $this->hasMany(\App\Models\NotificationPost::class);
     }
 
     public function postRates()
@@ -93,6 +95,11 @@ class User extends Authenticatable
     public function postWishLists()
     {
         return $this->hasMany(\App\Models\PostWishList::class);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(\App\Models\Post::class);
     }
 
     public function rates()

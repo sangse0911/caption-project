@@ -60,6 +60,12 @@ class Admin extends Authenticatable
         return $this->hasMany(\App\Models\Book::class);
     }
 
+    public function suppliers()
+    {
+        return $this->belongsToMany(\App\Models\Supplier::class, 'contracts')
+            ->withPivot('admin_id', 'supplier_id', 'payment_method', 'bank_account', 'status')->withTimeStamps();
+    }
+
     public function bookselves()
     {
         return $this->hasMany(\App\Models\Bookself::class);

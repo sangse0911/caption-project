@@ -76,7 +76,8 @@ class Book extends Model
         'description',
         'admin_id',
         'bookself_id',
-        'status_id',
+        'status',
+        'price',
         'author',
         'publishing_company',
         'publishing_year',
@@ -95,29 +96,32 @@ class Book extends Model
         return $this->belongsTo(\App\Models\Bookself::class);
     }
 
-    public function status()
+    public function categories()
     {
-        return $this->belongsTo(\App\Models\Status::class);
+        return $this->belongsToMany(\App\Models\Category::class, 'category_id', 'book_id', 'id')->withTimestamps();
     }
 
-    public function cateBooks()
+    public function contracts()
     {
-        return $this->hasMany(\App\Models\CateBook::class);
+        return $this->belongsToMany(\App\Models\Contract::class, 'contract_id', 'book_id', 'id')->withTimestamps();
     }
 
+    public function bookCategories()
+    {
+        return $this->hasMany(\App\Models\BookCategory::class);
+    }
+
+    // public function users() {
+    //     return $this->belongsToMany(\App\Models\User::class,'user_id','')
+    // }
     public function images()
     {
         return $this->hasMany(\App\Models\Image::class);
     }
 
-    public function invoiceDetails()
+    public function detailOrders()
     {
-        return $this->hasMany(\App\Models\InvoiceDetail::class);
-    }
-
-    public function orderDetails()
-    {
-        return $this->hasMany(\App\Models\OrderDetail::class);
+        return $this->hasMany(\App\Models\DetailOrder::class);
     }
 
     public function rates()
@@ -125,9 +129,9 @@ class Book extends Model
         return $this->hasMany(\App\Models\Rate::class);
     }
 
-    public function renterDetails()
+    public function detailRenters()
     {
-        return $this->hasMany(\App\Models\RenterDetail::class);
+        return $this->hasMany(\App\Models\DetailRenter::class);
     }
 
     public function reviews()
@@ -140,17 +144,4 @@ class Book extends Model
         return $this->hasMany(\App\Models\WishList::class);
     }
 
-    // public function getImages()
-    // {
-
-    //     $images = $this->images();
-    //     if (!empty($images)) {
-    //         $images = $images->map(function ($item, $key) {
-    //             dd($item->path);
-    //             return public_path() . '/assets/images/product/' . $item->path;
-    //         });
-    //         return $images;
-    //     }
-    //     return null;
-    // }
 }

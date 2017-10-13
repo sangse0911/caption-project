@@ -4,7 +4,8 @@ namespace App\Interfaces;
 
 interface BookInterface
 {
-    public function getAll();
-    public function getById($id);
-    public function save($request);
+    public function all();
+    public function find($id);
+    public function first();
+    public function create($request);
 }

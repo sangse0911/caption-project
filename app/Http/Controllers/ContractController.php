@@ -2,23 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Interfaces\BookselfInterface;
 use Illuminate\Http\Request;
 
-class BookselfController extends Controller
+class ContractController extends Controller
 {
-    //
-    protected $bookselfRepository;
-
-    /**
-     * [__construct description]
-     * @param BookSelfInterface $bookselfService [description]
-     */
-    public function __construct(BookselfInterface $bookselfRepository)
-    {
-        $this->bookselfRepository = $bookselfRepository;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +13,7 @@ class BookselfController extends Controller
      */
     public function index()
     {
-        $bookselfs = $this->bookselfRepository->all();
-        return view('bookself.index', compact('bookselfs'));
+        //
     }
 
     /**
@@ -37,7 +23,7 @@ class BookselfController extends Controller
      */
     public function create()
     {
-        return view('bookself.create');
+        //
     }
 
     /**
@@ -48,8 +34,7 @@ class BookselfController extends Controller
      */
     public function store(Request $request)
     {
-        $bookself = $this->bookselfRepository->create($request->all());
-        return redirect()->route('bookself.index');
+        //
     }
 
     /**
@@ -61,16 +46,6 @@ class BookselfController extends Controller
     public function show($id)
     {
         //
-    }
-
-    /**
-     * [getStatus description]
-     * @return [type] [description]
-     */
-    public function getStatus($slug)
-    {
-        $bookselfs = $this->bookselfService->getByStatus($slug);
-        return view('bookself.single', compact('bookselfs'));
     }
 
     /**

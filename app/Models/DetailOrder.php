@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 22 Sep 2017 01:54:30 +0700.
+ * Date: Fri, 13 Oct 2017 01:06:05 +0700.
  */
 
 namespace App\Models;
@@ -10,7 +10,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class OrderDetail
+ * Class DetailOrder
  *
  * @property int $id
  * @property int $book_id
@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class OrderDetail extends Model
+class DetailOrder extends Model
 {
     protected $casts = [
         'book_id' => 'int',

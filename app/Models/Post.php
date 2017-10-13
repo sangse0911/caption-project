@@ -96,29 +96,30 @@ class Post extends Eloquent
     {
         return $this->belongsTo(\App\Models\User::class);
     }
-    public function postCategories()
+
+    public function categories()
     {
-        return $this->hasMany(\App\Models\PostCategory::class);
+        return $this->belongsToMany(\App\Models\Category::class, 'category_id', 'post_id', 'id')->withTimestamps();
     }
 
-    public function postComments()
+    public function categoryPosts()
     {
-        return $this->hasMany(\App\Models\PostComment::class);
+        return $this->hasMany(\App\Models\CategoryPost::class);
     }
 
-    public function postImages()
+    public function commentPosts()
     {
-        return $this->hasMany(\App\Models\PostImage::class);
+        return $this->hasMany(\App\Models\CommentPost::class);
     }
 
-    public function postInvoices()
+    public function imagePosts()
     {
-        return $this->hasMany(\App\Models\PostInvoice::class);
+        return $this->hasMany(\App\Models\ImagePost::class);
     }
 
-    public function postNotifications()
+    public function notificationPosts()
     {
-        return $this->hasMany(\App\Models\PostNotification::class);
+        return $this->hasMany(\App\Models\NotificationPost::class);
     }
 
     public function postRates()

@@ -1,5 +1,9 @@
 @extends('admin.master')
 
+@section('style')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/multiple-select.css') }}">
+
+@endsection
 @section('content')
 <div class="container">
     <form form enctype="multipart/form-data" type="hidden" name="" id="" method="POST" action="{{ route('book.save') }}">
@@ -50,17 +54,21 @@
             </div>
             <div class="col-md-6">
                 <div class="row">
-                    @foreach($categories as $category)
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="categories[]" value="{{ $category->id }}">{{ $category->name }}
-                    </label>
-                    @endforeach
+                    <div class="form-group">
+                        <label>Category sach</label>
+                            {{-- <option value="">Chon category sach</option> --}}
+                        <select id="ms" multiple="multiple">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                        </select>
+                    </div>
                 </div>
                 <div class="row">
-                    <input type="text" class="form-control" name="admin-id" value="{{ $authId }}">
+                    <input type="hidden" class="form-control" name="admin-id" value="{{ $authId }}">
                 </div>
                 <div class="row">
-                    <input type="text" class="form-control" name="bookself-id" value="{{ $bookself->id }}">
+                    <input type="hidden" class="form-control" name="bookself-id" value="{{ $bookself->id }}">
                 </div>
                 <div class="row">
                     <input type="text" class="form-control" name="name" value="" placeholder="book name">
@@ -104,9 +112,12 @@
     </form>
 </div>
 @endsection
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+@section('script')
+
 <script src="{{ asset('js/moment.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
+<script src="{{ asset('js/multiple-select.js')}}"></script>
 {{--
 <script type="text/javascript">
 $(function() {
@@ -114,3 +125,12 @@ $(function() {
 });
 </script>
 --}}
+<script>
+       $(function() {
+        $('#ms').change(function() {
+        }).multipleSelect({
+            width: '100%'
+        });
+    });
+    </script>
+@endsection
