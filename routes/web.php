@@ -70,6 +70,8 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/book/create/{slug}', ['as' => 'book.create', 'uses' => 'BookController@create']);
     Route::post('/book/create', ['as' => 'book.save', 'uses' => 'BookController@store']);
 
+    Route::post('/book/create', ['as' => 'contract.save', 'uses' => 'ContractController@store']);
+
 });
 Route::get('/catebook', ['as' => 'catebook.index', 'uses' => 'CateBookController@index']);
 Route::get('/api/user', ['as' => 'api.user.index', 'uses' => 'UserController@indexApi']);

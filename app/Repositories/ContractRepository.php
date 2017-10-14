@@ -26,7 +26,7 @@ class ContractRepository implements ContractInterface
 
     }
 
-    public function create($request)
+    public function create(array $request)
     {
 
         $supplierId = $request['supplier-id'];
@@ -34,10 +34,16 @@ class ContractRepository implements ContractInterface
         $admin = Admin::find($adminId);
 
         $admin->suppliers()->attach($supplierId, [
-            'payment_method' => $requests['method'],
+            'payment_method' => $request['method'],
             'bank_account' => $request['credit'],
             'status' => $request['status'],
         ]);
 
+        $contractId = Contract::where('contracts.admin_id', '=', $admin->id)
+            ->orderBy('created_at', 'desc')
+            ->first()
+            ->id;
+
+        return $contractId;
     }
 }

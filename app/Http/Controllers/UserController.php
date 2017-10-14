@@ -36,7 +36,7 @@ class UserController extends Controller
 
     public function indexApi()
     {
-        return $this->userService->getByApi();
+        // return $this->userService->getByApi();
         // return view('api.user.index', compact('users'));
     }
 
@@ -62,7 +62,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = $this->userService->create($request->all());
+        $user = $this->userRepository->create($request->all());
         return redirect()->route('admin.index');
     }
 
@@ -85,8 +85,7 @@ class UserController extends Controller
      */
     public function show()
     {
-        $user = $this->userService->getById();
-        return view('users.index', compact('user'));
+
     }
 
     /**
@@ -97,8 +96,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = $this->userService->getById($id);
-        return view('users.edit', compact('user'));
+
     }
 
     /**
@@ -110,8 +108,7 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        $user = $this->userService->modifired($request->all());
-        return redirect()->route('user_index');
+
     }
 
     /**
@@ -122,7 +119,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = $this->userService->delete($request->id);
-        return redirect()->route('user_admin');
+
     }
 }

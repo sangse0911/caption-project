@@ -54,7 +54,7 @@
             </div>
             <div class="col-md-6">
                 <div class="row">
-                    <div class="form-group">
+
                         <label>Category sach</label>
                             {{-- <option value="">Chon category sach</option> --}}
                         <select id="ms" multiple="multiple">
@@ -62,7 +62,7 @@
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
                         </select>
-                    </div>
+
                 </div>
                 <div class="row">
                     <input type="hidden" class="form-control" name="admin-id" value="{{ $authId }}">
@@ -115,9 +115,9 @@
 
 @section('script')
 
-<script src="{{ asset('js/moment.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
 <script src="{{ asset('js/multiple-select.js')}}"></script>
+{{-- <script src="{{ asset('js/moment.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script> --}}
 {{--
 <script type="text/javascript">
 $(function() {

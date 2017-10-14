@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\ContractInterface;
 use Illuminate\Http\Request;
 
 class ContractController extends Controller
 {
+    protected $contractRepository;
+
+    public function __construct(ContractInterface $contractRepository)
+    {
+        $this->contractRepository = $contractRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +41,8 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contract = $this->contractRepository->create($request->all());
+        return redirect()->route('admin.index');
     }
 
     /**
