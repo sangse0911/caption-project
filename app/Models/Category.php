@@ -58,11 +58,11 @@ class Category extends Model
 
     public function books()
     {
-        return $this->belongsToMany(\App\Models\Book::class, 'book_id', 'category_id', 'id')->withTimestamps();
+        return $this->belongsToMany(\App\Models\Book::class, 'book_categories')->withTimestamps();
     }
 
     public function posts()
     {
-        return $this->belongsToMany(\App\Models\Post::class, 'post_id', 'category_id', 'id')->withTimestamps();
+        return $this->belongsToMany(\App\Models\Post::class, 'category_posts')->withTimestamps();
     }
 }

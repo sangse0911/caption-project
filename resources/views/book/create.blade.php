@@ -57,7 +57,7 @@
 
                         <label>Category sach</label>
                             {{-- <option value="">Chon category sach</option> --}}
-                        <select id="ms" multiple="multiple">
+                        <select id="ms" multiple="multiple" name="categories[]">
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
@@ -128,6 +128,7 @@ $(function() {
 <script>
        $(function() {
         $('#ms').change(function() {
+            console.log($(this).val());
         }).multipleSelect({
             width: '100%'
         });

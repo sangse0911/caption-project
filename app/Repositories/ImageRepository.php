@@ -33,7 +33,7 @@ class ImageRepository implements ImageInterface
      * [save description]
      * @return [type] [description]
      */
-    public function create()
+    public function save()
     {
 
         if (Input::hasFile('images')) {

@@ -98,12 +98,12 @@ class Book extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(\App\Models\Category::class, 'category_id', 'book_id', 'id')->withTimestamps();
+        return $this->belongsToMany(\App\Models\Category::class, 'book_categories')->withTimestamps();
     }
 
     public function contracts()
     {
-        return $this->belongsToMany(\App\Models\Contract::class, 'contract_id', 'book_id', 'id')->withTimestamps();
+        return $this->belongsToMany(\App\Models\Contract::class, 'book_contracts')->withTimestamps();
     }
 
     public function bookCategories()

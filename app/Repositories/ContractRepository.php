@@ -39,11 +39,10 @@ class ContractRepository implements ContractInterface
             'status' => $request['status'],
         ]);
 
-        $contractId = Contract::where('contracts.admin_id', '=', $admin->id)
+        $contract = Contract::where('contracts.admin_id', '=', $admin->id)
             ->orderBy('created_at', 'desc')
-            ->first()
-            ->id;
+            ->first();
 
-        return $contractId;
+        return $contract;
     }
 }
