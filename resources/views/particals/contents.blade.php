@@ -84,7 +84,7 @@
                 <div class="ad col-xs-12 col-sm-4">
                     <div class="media">
                         <div class="media-left media-middle">
-                            <img data-echo="assets/images/banner/cameras.jpg" src="{!! asset('assets/images/blank.gif') !!}" alt="">
+                            <img data-echo="assets/images/banner/cameras.jpg" src="{{ asset('assets/images/blank.gif') }}" alt="">
                         </div>
                         <div class="media-body media-middle">
                             <div class="ad-text">
@@ -101,7 +101,7 @@
                 <div class="ad col-xs-12 col-sm-4">
                     <div class="media">
                         <div class="media-left media-middle">
-                            <img data-echo="assets/images/banner/MobileDevicesv2-2.jpg" src="{!! asset('assets/images/blank.gif') !!}" alt="">
+                            <img data-echo="assets/images/banner/MobileDevicesv2-2.jpg" src="{{ asset('assets/images/blank.gif') }}" alt="">
                         </div>
                         <div class="media-body media-middle">
                             <div class="ad-text">
@@ -118,7 +118,7 @@
                 <div class="ad col-xs-12 col-sm-4">
                     <div class="media">
                         <div class="media-left media-middle">
-                            <img data-echo="assets/images/banner/DesktopPC.jpg" src="{!! asset('assets/images/blank.gif') !!}" alt="">
+                            <img data-echo="assets/images/banner/DesktopPC.jpg" src="{{ asset('assets/images/blank.gif') }}" alt="">
                         </div>
                         <div class="media-body media-middle">
                             <div class="ad-text">
@@ -139,786 +139,13 @@
             <div class="tabs-block col-lg-12">
                 <div class="products-carousel-tabs">
                     <ul class="nav nav-inline">
-                        <li class="nav-item"><a class="nav-link active" href="#" data-toggle="tab">Goc mua sach</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="tab">Goc thue sach</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('book.hot') }}" data-toggle="tab">Goc sach hot</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('book.sell') }}" data-toggle="tab">Goc mua sach</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('book.renter') }}" data-toggle="tab">Goc thue sach</a></li>
                         <li class="nav-item"><a class="nav-link" href="#" data-toggle="tab">Goc doc sach</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab-products-1" role="tabpanel">
-                            <div class="woocommerce columns-3">
-                                <ul class="products columns-3">
-                                    <li class="product first">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <form type="hidden">
-                                                {{ csrf_field() }}
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Audio Speakers</a></span>
-                                                <a href="#">
-                                                    <h3>Wireless Audio System Multiroom 360</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/1.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> $1,999.00</span></ins>
-                                                    <del><span class="amount">$2,299.00</span></del>
-                                                    <span class="amount"> </span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                                </form>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <script>
-                                        $.ajaxSetup({
-                                            headers: {
-                                                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-                                            }
-                                        });
-                                        $(document).ready(function() {
 
-                                            $(document).on('click', '.add_to_cart_button', function(e) {
-                                                e.preventDefault();
-                                                $.ajax({
-                                                    url: "{{ url('cart/add') }}",
-                                                    data: {
-                                                        'id': 1,
-                                                    },
-                                                    type: "POST",
-                                                    dataType: "JSON",
-                                                    success: function(data) {
-                                                        console.log(data);
-                                                        // $("#cart-item").html(data);
-                                                        // if (action != "") {
-                                                        //     switch (action) {
-                                                        //         case "add":
-                                                        //             $("#add_" + product_code).hide();
-                                                        //             $("#added_" + product_code).show();
-                                                        //             break;
-                                                        //         case "remove":
-                                                        //             $("#add_" + product_code).show();
-                                                        //             $("#added_" + product_code).hide();
-                                                        //             break;
-                                                        //         case "empty":
-                                                        //             $(".btnAddAction").show();
-                                                        //             $(".btnAdded").hide();
-                                                        //             break;
-                                                        //     }
-                                                        // }
-                                                    },
-                                                    error: function(error) {
-                                                        // alert(error);
-                                                    }
-                                                });
-
-                                            });
-
-                                        });
-                                        </script>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                    <li class="product ">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Laptops</a></span>
-                                                <a href="#">
-                                                    <h3>Tablet Red EliteBook  Revolve 810 G2</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/2.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> $1,999.00</span></ins>
-                                                    <del><span class="amount">$2,299.00</span></del>
-                                                    <span class="amount"> </span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                     <li class="product ">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Laptops</a></span>
-                                                <a href="#">
-                                                    <h3>Tablet Red EliteBook  Revolve 810 G2</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/2.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> $1,999.00</span></ins>
-                                                    <del><span class="amount">$2,299.00</span></del>
-                                                    <span class="amount"> </span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                     <li class="product ">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Laptops</a></span>
-                                                <a href="#">
-                                                    <h3>Tablet Red EliteBook  Revolve 810 G2</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/2.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> $1,999.00</span></ins>
-                                                    <del><span class="amount">$2,299.00</span></del>
-                                                    <span class="amount"> </span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                    <li class="product last">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Headphones</a></span>
-                                                <a href="#">
-                                                    <h3>White Solo 2 Wireless</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/3.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> </span></ins>
-                                                    <span class="amount"> $1,999.00</span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                    <li class="product first">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                <a href="#">
-                                                    <h3>Smartphone 6S 32GB LTE</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/4.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> $1,215.00</span></ins>
-                                                    <del><span class="amount">$2,215.00</span></del>
-                                                    <span class="amount"> </span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                    <li class="product ">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Cameras</a></span>
-                                                <a href="#">
-                                                    <h3>Purple NX Mini F1 aparat  SMART NX</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/5.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> </span></ins>
-                                                    <span class="amount"> $1,999.00</span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                     <li class="product ">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Laptops</a></span>
-                                                <a href="#">
-                                                    <h3>Tablet Red EliteBook  Revolve 810 G2</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/2.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> $1,999.00</span></ins>
-                                                    <del><span class="amount">$2,299.00</span></del>
-                                                    <span class="amount"> </span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                     <li class="product ">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Laptops</a></span>
-                                                <a href="#">
-                                                    <h3>Tablet Red EliteBook  Revolve 810 G2</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/2.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> $1,999.00</span></ins>
-                                                    <del><span class="amount">$2,299.00</span></del>
-                                                    <span class="amount"> </span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                    <li class="product last">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Printers</a></span>
-                                                <a href="#">
-                                                    <h3>Full Color LaserJet Pro  M452dn</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/6.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> </span></ins>
-                                                    <span class="amount"> $1,999.00</span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab-products-2" role="tabpanel">
-                            <div class="woocommerce columns-3">
-                                <ul class="products columns-3">
-                                    <li class="product first">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                <a href="#">
-                                                    <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img data-echo="assets/images/products/4.jpg" src="{!! asset('assets/images/blank.gif') !!}" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                    <del><span class="amount">&#036;2,299.00</span></del>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                        <a href="#" class="add-to-compare-link">Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <li class="product ">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                <a href="#">
-                                                    <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img data-echo="assets/images/products/6.jpg" src="{!! asset('assets/images/blank.gif') !!}" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                    <del><span class="amount">&#036;2,299.00</span></del>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                        <a href="#" class="add-to-compare-link">Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <li class="product last">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                <a href="#">
-                                                    <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img data-echo="assets/images/products/1.jpg" src="{!! asset('assets/images/blank.gif') !!}" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                    <del><span class="amount">&#036;2,299.00</span></del>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                        <a href="#" class="add-to-compare-link">Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <li class="product first">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                <a href="#">
-                                                    <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img data-echo="assets/images/products/2.jpg" src="{!! asset('assets/images/blank.gif') !!}" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                    <del><span class="amount">&#036;2,299.00</span></del>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                        <a href="#" class="add-to-compare-link">Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <li class="product ">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                <a href="#">
-                                                    <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img data-echo="assets/images/products/5.jpg" src="{!! asset('assets/images/blank.gif') !!}" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                    <del><span class="amount">&#036;2,299.00</span></del>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                        <a href="#" class="add-to-compare-link">Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <li class="product last">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                <a href="#">
-                                                    <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img data-echo="assets/images/products/3.jpg" src="{!! asset('assets/images/blank.gif') !!}" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount">&#036;1,999.00</span></ins>
-                                                    <del><span class="amount">&#036;2,299.00</span></del>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist">Wishlist</a>
-                                                        <a href="#" class="add-to-compare-link">Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab-products-3" role="tabpanel">
-                            <div class="woocommerce columns-3">
-                                <ul class="products columns-3">
-                                    <li class="product first">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Audio Speakers</a></span>
-                                                <a href="#">
-                                                    <h3>Wireless Audio System Multiroom 360</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/1.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> $1,999.00</span></ins>
-                                                    <del><span class="amount">$2,299.00</span></del>
-                                                    <span class="amount"> </span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                    <li class="product ">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Laptops</a></span>
-                                                <a href="#">
-                                                    <h3>Tablet Red EliteBook  Revolve 810 G2</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/2.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> $1,999.00</span></ins>
-                                                    <del><span class="amount">$2,299.00</span></del>
-                                                    <span class="amount"> </span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                    <li class="product last">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Headphones</a></span>
-                                                <a href="#">
-                                                    <h3>White Solo 2 Wireless</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/3.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> </span></ins>
-                                                    <span class="amount"> $1,999.00</span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                    <li class="product first">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Smartphones</a></span>
-                                                <a href="#">
-                                                    <h3>Smartphone 6S 32GB LTE</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/4.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> $1,215.00</span></ins>
-                                                    <del><span class="amount">$2,215.00</span></del>
-                                                    <span class="amount"> </span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                    <li class="product ">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Cameras</a></span>
-                                                <a href="#">
-                                                    <h3>Purple NX Mini F1 aparat  SMART NX</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/5.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> </span></ins>
-                                                    <span class="amount"> $1,999.00</span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                    <li class="product last">
-                                        <div class="product-outer">
-                                            <div class="product-inner">
-                                                <span class="loop-product-categories"><a href="product-category.html" rel="tag">Printers</a></span>
-                                                <a href="#">
-                                                    <h3>Full Color LaserJet Pro  M452dn</h3>
-                                                    <div class="product-thumbnail">
-                                                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/products/6.jpg" class="img-responsive" alt="">
-                                                    </div>
-                                                </a>
-                                                <div class="price-add-to-cart">
-                                                    <span class="price">
-                                                                        <span class="electro-price">
-                                                                            <ins><span class="amount"> </span></ins>
-                                                    <span class="amount"> $1,999.00</span>
-                                                    </span>
-                                                    </span>
-                                                    <a rel="nofollow" href="{{ route('cart.add') }}" class="button add_to_cart_button">Add to cart</a>
-                                                </div>
-                                                <!-- /.price-add-to-cart -->
-                                                <div class="hover-area">
-                                                    <div class="action-buttons">
-                                                        <a href="#" rel="nofollow" class="add_to_wishlist"> Wishlist</a>
-                                                        <a href="compare.html" class="add-to-compare-link"> Compare</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.product-inner -->
-                                        </div>
-                                        <!-- /.product-outer -->
-                                    </li>
-                                    <!-- /.products -->
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -949,7 +176,7 @@
                                     <a href="#">
                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                         <div class="product-thumbnail">
-                                            <img data-echo="assets/images/product-2-1-2/2.jpg" src="{!! asset('assets/images/blank.gif') !!}" alt="">
+                                            <img data-echo="assets/images/product-2-1-2/2.jpg" src="{{ asset('assets/images/blank.gif') }}" alt="">
                                         </div>
                                     </a>
                                     <div class="price-add-to-cart">
@@ -980,7 +207,7 @@
                                     <a href="#">
                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                         <div class="product-thumbnail">
-                                            <img data-echo="assets/images/product-2-1-2/4.jpg" src="{!! asset('assets/images/blank.gif') !!}" alt="">
+                                            <img data-echo="assets/images/product-2-1-2/4.jpg" src="{{ asset('assets/images/blank.gif') }}" alt="">
                                         </div>
                                     </a>
                                     <div class="price-add-to-cart">
@@ -1013,7 +240,7 @@
                                     <a href="#">
                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                         <div class="product-thumbnail">
-                                            <img class="wp-post-image" data-echo="assets/images/product-2-1-2/main.jpg" src="{!! asset('assets/images/blank.gif') !!}" alt="">
+                                            <img class="wp-post-image" data-echo="assets/images/product-2-1-2/main.jpg" src="{{ asset('assets/images/blank.gif') }}" alt="">
                                         </div>
                                     </a>
                                     <div class="price-add-to-cart">
@@ -1046,7 +273,7 @@
                                     <a href="#">
                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                         <div class="product-thumbnail">
-                                            <img class="wp-post-image" data-echo="assets/images/product-2-1-2/2.jpg" src="{!! asset('assets/images/blank.gif') !!}" alt="">
+                                            <img class="wp-post-image" data-echo="assets/images/product-2-1-2/2.jpg" src="{{ asset('assets/images/blank.gif') }}" alt="">
                                         </div>
                                     </a>
                                     <div class="price-add-to-cart">
@@ -1077,7 +304,7 @@
                                     <a href="#">
                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                         <div class="product-thumbnail">
-                                            <img class="wp-post-image" data-echo="assets/images/product-2-1-2/4.jpg" src="{!! asset('assets/images/blank.gif') !!}" alt="">
+                                            <img class="wp-post-image" data-echo="assets/images/product-2-1-2/4.jpg" src="{{ asset('assets/images/blank.gif') }}" alt="">
                                         </div>
                                     </a>
                                     <div class="price-add-to-cart">
@@ -1123,7 +350,7 @@
                             <div class="product-outer">
                                 <div class="media product-inner">
                                     <a class="media-left" href="{{ route('cart.add') }}" title="Pendrive USB 3.0 Flash 64 GB">
-                                                        <img class="media-object wp-post-image img-responsive" src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-cards/3.jpg" alt="">
+                                                        <img class="media-object wp-post-image img-responsive" src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-cards/3.jpg" alt="">
                                                         </a>
                                     <div class="media-body">
                                         <span class="loop-product-categories">
@@ -1160,7 +387,7 @@
                             <div class="product-outer">
                                 <div class="media product-inner">
                                     <a class="media-left" href="{{ route('cart.add') }}" title="Pendrive USB 3.0 Flash 64 GB">
-                                                        <img class="media-object wp-post-image img-responsive" src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-cards/4.jpg" alt="">
+                                                        <img class="media-object wp-post-image img-responsive" src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-cards/4.jpg" alt="">
                                                     </a>
                                     <div class="media-body">
                                         <span class="loop-product-categories">
@@ -1196,7 +423,7 @@
                             <div class="product-outer">
                                 <div class="media product-inner">
                                     <a class="media-left" href="{{ route('cart.add') }}" title="Pendrive USB 3.0 Flash 64 GB">
-                                                        <img class="media-object wp-post-image img-responsive" src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-cards/6.jpg" alt="">
+                                                        <img class="media-object wp-post-image img-responsive" src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-cards/6.jpg" alt="">
                                                     </a>
                                     <div class="media-body">
                                         <span class="loop-product-categories">
@@ -1232,7 +459,7 @@
                             <div class="product-outer">
                                 <div class="media product-inner">
                                     <a class="media-left" href="{{ route('cart.add') }}" title="Pendrive USB 3.0 Flash 64 GB">
-                                                        <img class="media-object wp-post-image img-responsive" src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-cards/1.jpg" alt="">
+                                                        <img class="media-object wp-post-image img-responsive" src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-cards/1.jpg" alt="">
                                                     </a>
                                     <div class="media-body">
                                         <span class="loop-product-categories">
@@ -1269,7 +496,7 @@
                             <div class="product-outer">
                                 <div class="media product-inner">
                                     <a class="media-left" href="{{ route('cart.add') }}" title="Pendrive USB 3.0 Flash 64 GB">
-                                                        <img class="media-object wp-post-image img-responsive" src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-cards/2.jpg" alt="">
+                                                        <img class="media-object wp-post-image img-responsive" src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-cards/2.jpg" alt="">
                                                     </a>
                                     <div class="media-body">
                                         <span class="loop-product-categories">
@@ -1305,7 +532,7 @@
                             <div class="product-outer">
                                 <div class="media product-inner">
                                     <a class="media-left" href="{{ route('cart.add') }}" title="Pendrive USB 3.0 Flash 64 GB">
-                                                        <img class="media-object wp-post-image img-responsive" src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-cards/5.jpg" alt="">
+                                                        <img class="media-object wp-post-image img-responsive" src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-cards/5.jpg" alt="">
                                                     </a>
                                     <div class="media-body">
                                         <span class="loop-product-categories">
@@ -1344,7 +571,7 @@
                             <div class="product-outer">
                                 <div class="media product-inner">
                                     <a class="media-left" href="{{ route('cart.add') }}" title="Pendrive USB 3.0 Flash 64 GB">
-                                                        <img class="media-object wp-post-image img-responsive" src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-cards/5.jpg" alt="">
+                                                        <img class="media-object wp-post-image img-responsive" src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-cards/5.jpg" alt="">
                                                     </a>
                                     <div class="media-body">
                                         <span class="loop-product-categories">
@@ -1380,7 +607,7 @@
                             <div class="product-outer">
                                 <div class="media product-inner">
                                     <a class="media-left" href="{{ route('cart.add') }}" title="Pendrive USB 3.0 Flash 64 GB">
-                                                        <img class="media-object wp-post-image img-responsive" src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-cards/2.jpg" alt="">
+                                                        <img class="media-object wp-post-image img-responsive" src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-cards/2.jpg" alt="">
                                                     </a>
                                     <div class="media-body">
                                         <span class="loop-product-categories">
@@ -1416,7 +643,7 @@
                             <div class="product-outer">
                                 <div class="media product-inner">
                                     <a class="media-left" href="{{ route('cart.add') }}" title="Pendrive USB 3.0 Flash 64 GB">
-                                                        <img class="media-object wp-post-image img-responsive" src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-cards/1.jpg" alt="">
+                                                        <img class="media-object wp-post-image img-responsive" src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-cards/1.jpg" alt="">
                                                     </a>
                                     <div class="media-body">
                                         <span class="loop-product-categories">
@@ -1453,7 +680,7 @@
                             <div class="product-outer">
                                 <div class="media product-inner">
                                     <a class="media-left" href="{{ route('cart.add') }}" title="Pendrive USB 3.0 Flash 64 GB">
-                                                        <img class="media-object wp-post-image img-responsive" src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-cards/6.jpg" alt="">
+                                                        <img class="media-object wp-post-image img-responsive" src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-cards/6.jpg" alt="">
                                                     </a>
                                     <div class="media-body">
                                         <span class="loop-product-categories">
@@ -1490,7 +717,7 @@
                             <div class="product-outer">
                                 <div class="media product-inner">
                                     <a class="media-left" href="{{ route('cart.add') }}" title="Pendrive USB 3.0 Flash 64 GB">
-                                                        <img class="media-object wp-post-image img-responsive" src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-cards/3.jpg" alt="">
+                                                        <img class="media-object wp-post-image img-responsive" src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-cards/3.jpg" alt="">
                                                     </a>
                                     <div class="media-body">
                                         <span class="loop-product-categories">
@@ -1527,7 +754,7 @@
                             <div class="product-outer">
                                 <div class="media product-inner">
                                     <a class="media-left" href="{{ route('cart.add') }}" title="Pendrive USB 3.0 Flash 64 GB">
-                                                        <img class="media-object wp-post-image img-responsive" src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-cards/4.jpg" alt="">
+                                                        <img class="media-object wp-post-image img-responsive" src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-cards/4.jpg" alt="">
                                                     </a>
                                     <div class="media-body">
                                         <span class="loop-product-categories">
@@ -1567,7 +794,7 @@
         <div class="home-v1-banner-block animate-in-view fadeIn animated" data-animation="fadeIn">
             <div class="home-v1-fullbanner-ad fullbanner-ad" style="margin-bottom: 70px">
                 <a href="#">
-                                    <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/banner/home-v1-banner.png" class="img-responsive" alt="">
+                                    <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/banner/home-v1-banner.png" class="img-responsive" alt="">
                                 </a>
             </div>
         </div>
@@ -1590,7 +817,7 @@
                                     <a href="#">
                                         <h3>Laptop Yoga 21 80JH0035GE  W8.1 (Copy)</h3>
                                         <div class="product-thumbnail">
-                                            <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-category/5.jpg" class="img-responsive" alt="">
+                                            <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-category/5.jpg" class="img-responsive" alt="">
                                         </div>
                                     </a>
                                     <div class="price-add-to-cart">
@@ -1622,7 +849,7 @@
                                     <a href="#">
                                         <h3>Notebook Purple G952VX-T7008T</h3>
                                         <div class="product-thumbnail">
-                                            <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-category/4.jpg" class="img-responsive" alt="">
+                                            <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-category/4.jpg" class="img-responsive" alt="">
                                         </div>
                                     </a>
                                     <div class="price-add-to-cart">
@@ -1654,7 +881,7 @@
                                     <a href="#">
                                         <h3>Notebook Widescreen Z51-70  40K6013UPB</h3>
                                         <div class="product-thumbnail">
-                                            <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-category/3.jpg" class="img-responsive" alt="">
+                                            <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-category/3.jpg" class="img-responsive" alt="">
                                         </div>
                                     </a>
                                     <div class="price-add-to-cart">
@@ -1687,7 +914,7 @@
                                     <a href="#">
                                         <h3>Smartphone 6S 128GB LTE</h3>
                                         <div class="product-thumbnail">
-                                            <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-category/6.jpg" class="img-responsive" alt="">
+                                            <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-category/6.jpg" class="img-responsive" alt="">
                                         </div>
                                     </a>
                                     <div class="price-add-to-cart">
@@ -1719,7 +946,7 @@
                                     <a href="#">
                                         <h3>Tablet Thin EliteBook  Revolve 810 G6</h3>
                                         <div class="product-thumbnail">
-                                            <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-category/2.jpg" class="img-responsive" alt="">
+                                            <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-category/2.jpg" class="img-responsive" alt="">
                                         </div>
                                     </a>
                                     <div class="price-add-to-cart">
@@ -1751,7 +978,7 @@
                                     <a href="#">
                                         <h3>Notebook Purple G952VX-T7008T</h3>
                                         <div class="product-thumbnail">
-                                            <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-category/3.jpg" class="img-responsive" alt="">
+                                            <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-category/3.jpg" class="img-responsive" alt="">
                                         </div>
                                     </a>
                                     <div class="price-add-to-cart">
@@ -1783,7 +1010,7 @@
                                     <a href="#">
                                         <h3>Notebook Black Spire V Nitro  VN7-591G</h3>
                                         <div class="product-thumbnail">
-                                            <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-category/1.jpg" class="img-responsive" alt="">
+                                            <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-category/1.jpg" class="img-responsive" alt="">
                                         </div>
                                     </a>
                                     <div class="price-add-to-cart">
@@ -1815,7 +1042,7 @@
                                     <a href="#">
                                         <h3>Tablet Thin EliteBook  Revolve 810 G6</h3>
                                         <div class="product-thumbnail">
-                                            <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/product-category/2.jpg" class="img-responsive" alt="">
+                                            <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/product-category/2.jpg" class="img-responsive" alt="">
                                         </div>
                                     </a>
                                     <div class="price-add-to-cart">
@@ -1866,7 +1093,7 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/brands/1.png" class="img-responsive" alt="">
+                        <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/brands/1.png" class="img-responsive" alt="">
                     </figure>
                 </a>
             </div>
@@ -1880,7 +1107,7 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/brands/2.png" class="img-responsive" alt="">
+                        <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/brands/2.png" class="img-responsive" alt="">
                     </figure>
                 </a>
             </div>
@@ -1894,7 +1121,7 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/brands/3.png" class="img-responsive" alt="">
+                        <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/brands/3.png" class="img-responsive" alt="">
                     </figure>
                 </a>
             </div>
@@ -1908,7 +1135,7 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/brands/4.png" class="img-responsive" alt="">
+                        <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/brands/4.png" class="img-responsive" alt="">
                     </figure>
                 </a>
             </div>
@@ -1922,7 +1149,7 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/brands/5.png" class="img-responsive" alt="">
+                        <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/brands/5.png" class="img-responsive" alt="">
                     </figure>
                 </a>
             </div>
@@ -1936,7 +1163,7 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/brands/6.png" class="img-responsive" alt="">
+                        <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/brands/6.png" class="img-responsive" alt="">
                     </figure>
                 </a>
             </div>
@@ -1950,7 +1177,7 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/brands/3.png" class="img-responsive" alt="">
+                        <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/brands/3.png" class="img-responsive" alt="">
                     </figure>
                 </a>
             </div>
@@ -1964,7 +1191,7 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/brands/5.png" class="img-responsive" alt="">
+                        <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/brands/5.png" class="img-responsive" alt="">
                     </figure>
                 </a>
             </div>
@@ -1978,7 +1205,7 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/brands/2.png" class="img-responsive" alt="">
+                        <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/brands/2.png" class="img-responsive" alt="">
                     </figure>
                 </a>
             </div>
@@ -1992,7 +1219,7 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/brands/1.png" class="img-responsive" alt="">
+                        <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/brands/1.png" class="img-responsive" alt="">
                     </figure>
                 </a>
             </div>
@@ -2006,7 +1233,7 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/brands/6.png" class="img-responsive" alt="">
+                        <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/brands/6.png" class="img-responsive" alt="">
                     </figure>
                 </a>
             </div>
@@ -2020,7 +1247,7 @@
                             </div>
                             <!-- /.info -->
                         </figcaption>
-                        <img src="{!! asset('assets/images/blank.gif') !!}" data-echo="assets/images/brands/4.png" class="img-responsive" alt="">
+                        <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/brands/4.png" class="img-responsive" alt="">
                     </figure>
                 </a>
             </div>
@@ -2029,14 +1256,15 @@
         <!-- /.owl-carousel -->
     </div>
 </section>
+
 @section('scripts')
     <script>
-        $(window).on({
-            popstate:function(e){
-            page = location.href;
-            $('#content').load(page + ' #content'); // just load the content, not the whole page!
-            }
+        $(function () {
+            $('.nav-item a').on('click', function (e) {
+                e.preventDefault();
+                var page = $(this).attr('href');
+                $('.tab-content').load(page);
+            });
         });
     </script>
-
 @endsection

@@ -23,19 +23,29 @@ class BookRepository implements BookInterface
         $this->contractRepository = $contractRepository;
     }
 
+    /**
+     * [all description]
+     * @return [type] [description]
+     */
     public function all()
     {
-        return Book::all();
+        return Book::with('images')->get();
     }
 
+    public function getSellBook()
+    {
+        return Book::where('status', '=', '1')->with(['contracts' => function ($query) {
+            $query->where('contracts.id', '=', '12');
+        }])->get();
+    }
+
+    public function getRenterBook()
+    {
+        return Book::where('status', '=', '1')->get();
+    }
     public function find($id)
     {
 
-    }
-
-    public function first()
-    {
-        return Bookself::where('status', '1')->first();
     }
 
     /**

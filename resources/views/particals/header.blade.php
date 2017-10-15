@@ -163,7 +163,7 @@
                                                                 <div class="wpb_single_image wpb_content_element vc_align_left">
                                                                     <figure class="wpb_wrapper vc_figure">
                                                                         <div class="vc_single_image-wrapper vc_box_border_grey">
-                                                                            <img src="{!! asset('/assets/images/megamenu-2.png') !!}" class="vc_single_image-img attachment-full" alt="">
+                                                                            <img src="{{ asset('assets/images/megamenu-2.png') }}" class="vc_single_image-img attachment-full" alt="">
                                                                         </div>
                                                                     </figure>
                                                                 </div>
@@ -226,7 +226,7 @@
                                                                 <div class="wpb_single_image wpb_content_element vc_align_left">
                                                                     <figure class="wpb_wrapper vc_figure">
                                                                         <div class="vc_single_image-wrapper vc_box_border_grey">
-                                                                            <img src="{!! asset('assets/images/megamenu-2.png') !!}" class="vc_single_image-img attachment-full" alt="">
+                                                                            <img src="{{ asset('assets/images/megamenu-2.png') }}" class="vc_single_image-img attachment-full" alt="">
                                                                         </div>
                                                                     </figure>
                                                                 </div>
@@ -289,7 +289,7 @@
                                                                 <div class="wpb_single_image wpb_content_element vc_align_left">
                                                                     <figure class="wpb_wrapper vc_figure">
                                                                         <div class="vc_single_image-wrapper vc_box_border_grey">
-                                                                            <img src="{!! asset('assets/images/megamenu-2.png') !!}" class="vc_single_image-img attachment-full" alt="">
+                                                                            <img src="{{ asset('assets/images/megamenu-2.png') }}" class="vc_single_image-img attachment-full" alt="">
                                                                         </div>
                                                                     </figure>
                                                                 </div>
@@ -352,7 +352,7 @@
                                                                 <div class="wpb_single_image wpb_content_element vc_align_left">
                                                                     <figure class="wpb_wrapper vc_figure">
                                                                         <div class="vc_single_image-wrapper vc_box_border_grey">
-                                                                            <img src="{!! asset('assets/images/megamenu-2.png') !!}" class="vc_single_image-img attachment-full" alt="">
+                                                                            <img src="{{ asset('assets/images/megamenu-2.png') }}" class="vc_single_image-img attachment-full" alt="">
                                                                         </div>
                                                                     </figure>
                                                                 </div>
@@ -415,7 +415,7 @@
                                                                 <div class="wpb_single_image wpb_content_element vc_align_left">
                                                                     <figure class="wpb_wrapper vc_figure">
                                                                         <div class="vc_single_image-wrapper vc_box_border_grey">
-                                                                            <img src="{!! asset('assets/images/megamenu-2.png') !!}" class="vc_single_image-img attachment-full" alt="">
+                                                                            <img src="{{ asset('assets/images/megamenu-2.png') }}" class="vc_single_image-img attachment-full" alt="">
                                                                         </div>
                                                                     </figure>
                                                                 </div>
@@ -478,7 +478,7 @@
                                                                 <div class="wpb_single_image wpb_content_element vc_align_left">
                                                                     <figure class="wpb_wrapper vc_figure">
                                                                         <div class="vc_single_image-wrapper vc_box_border_grey">
-                                                                            <img src="{!! asset('assets/images/megamenu-2.png') !!}" class="vc_single_image-img attachment-full" alt="">
+                                                                            <img src="{{ asset('assets/images/megamenu-2.png') }}" class="vc_single_image-img attachment-full" alt="">
                                                                         </div>
                                                                     </figure>
                                                                 </div>
@@ -541,7 +541,7 @@
                                                                 <div class="wpb_single_image wpb_content_element vc_align_left">
                                                                     <figure class="wpb_wrapper vc_figure">
                                                                         <div class="vc_single_image-wrapper vc_box_border_grey">
-                                                                            <img src="{!! ('assets/images/megamenu-2.png') !!}" class="vc_single_image-img attachment-full" alt="">
+                                                                            <img src="{{ asset('assets/images/megamenu-2.png') }}" class="vc_single_image-img attachment-full" alt="">
                                                                         </div>
                                                                     </figure>
                                                                 </div>

@@ -35,6 +35,9 @@ Route::get('/users/{id}/edit', 'UserController@edit')->name('user_edit');
 Route::put('/users/update', 'UserController@update')->name('user_update');
 
 Route::get('/book', ['as' => 'book.index', 'uses' => 'BookController@index']);
+Route::get('/sell-book', ['as' => 'book.sell', 'uses' => 'BookController@sellBook']);
+Route::get('/renter-book', ['as' => 'book.renter', 'uses' => 'BookController@renBook']);
+Route::get('/hot-book', ['as' => 'book.hot', 'uses' => 'BookController@hotBook']);
 
 Route::middleware(['auth:admin'])->group(function () {
 

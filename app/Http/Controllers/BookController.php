@@ -25,6 +25,23 @@ class BookController extends Controller
         return view('book.index', compact('books'));
     }
 
+    public function hotBook()
+    {
+        $books = $this->bookRepository->all();
+        return view('book.hot-book', compact('books'));
+    }
+    public function sellBook()
+    {
+        $books = $this->bookRepository->getSellBook();
+        dd($books);
+        return view('book.sell-book', compact('books'));
+    }
+
+    public function renBook()
+    {
+        $books = $this->bookRepository->getRenterBook();
+        return view('book.renter-book', compact('books'));
+    }
     public function getSupplier()
     {
         return $this->bookService->getSupplier();

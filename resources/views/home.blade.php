@@ -4,11 +4,6 @@
     Shop account game hang dau viet nam
 @endsection()
 
-@section('styles')
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/style.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/style1.css') }}" media="all" />
-@endsection
-
 @section('header')
     @include('particals.header')
 @endsection()
