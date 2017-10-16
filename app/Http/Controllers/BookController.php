@@ -22,30 +22,52 @@ class BookController extends Controller
     public function index()
     {
         $books = $this->bookRepository->all();
+
         return view('book.index', compact('books'));
     }
 
+    /**
+     * [hotBook description]
+     * @return [type] [description]
+     */
     public function hotBook()
     {
         $books = $this->bookRepository->all();
+
         return view('book.hot-book', compact('books'));
     }
+
+    /**
+     * [sellBook description]
+     * @return [type] [description]
+     */
     public function sellBook()
     {
         $books = $this->bookRepository->getSellBook();
-        dd($books);
+        // dd($books);
         return view('book.sell-book', compact('books'));
     }
 
+    /**
+     * [renBook description]
+     * @return [type] [description]
+     */
     public function renBook()
     {
         $books = $this->bookRepository->getRenterBook();
+        // dd($books);
         return view('book.renter-book', compact('books'));
     }
+
+    /**
+     * [getSupplier description]
+     * @return [type] [description]
+     */
     public function getSupplier()
     {
         return $this->bookService->getSupplier();
     }
+
     /**
      * Show the form for creating a new resource.
      *

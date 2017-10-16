@@ -11,10 +11,19 @@ use Illuminate\Support\Facades\Input;
 
 class BookRepository implements BookInterface
 {
-
+    /**
+     * [$imageRepository description]
+     * @var [type]
+     */
     protected $imageRepository;
     protected $contractRepository;
 
+    /**
+     * Bind
+     *
+     * @param ImageInterface    $imageRepository    [description]
+     * @param ContractInterface $contractRepository [description]
+     */
     public function __construct(
         ImageInterface $imageRepository,
         ContractInterface $contractRepository
@@ -34,14 +43,17 @@ class BookRepository implements BookInterface
 
     public function getSellBook()
     {
-        return Book::where('status', '=', '1')->with(['contracts' => function ($query) {
-            $query->where('contracts.id', '=', '12');
-        }])->get();
+        return Book::where('status', '=', '1')->with('images')->whereHas('contracts', function ($query) {
+            $query->where('contracts.status', '=', '1');
+        })->get();
+
     }
 
     public function getRenterBook()
     {
-        return Book::where('status', '=', '1')->get();
+        return Book::where('status', '=', '1')->with('images')->whereHas('contracts', function ($query) {
+            $query->where('contracts.status', '=', '0');
+        })->get();
     }
     public function find($id)
     {

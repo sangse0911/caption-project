@@ -30,9 +30,9 @@ Route::get('auth/facebook', 'Auth\LoginController@redirectToProvider')->name('lo
 Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/users', ['as' => 'users.index', 'uses' => 'UserController@index']);
-Route::post('/users/create', 'UserController@store')->name('user_save');
-Route::get('/users/{id}/edit', 'UserController@edit')->name('user_edit');
-Route::put('/users/update', 'UserController@update')->name('user_update');
+// Route::post('/users/create', 'UserController@store')->name('user_save');
+// Route::get('/users/{id}/edit', 'UserController@edit')->name('user_edit');
+// Route::put('/users/update', 'UserController@update')->name('user_update');
 
 Route::get('/book', ['as' => 'book.index', 'uses' => 'BookController@index']);
 Route::get('/sell-book', ['as' => 'book.sell', 'uses' => 'BookController@sellBook']);
@@ -57,6 +57,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/supplier', 'SupplierController@index')->name('supplier.index');
     Route::get('/supplier/create', ['as' => 'supplier.create', 'uses' => 'SupplierController@create']);
     Route::post('/supplier/create', 'SupplierController@store')->name('supplier.save');
+    Route::post('/supplier/create', 'SupplierController@storeIfExist')->name('supplier.save.exist');
 
     Route::get('/categories', ['as' => 'categories.index', 'uses' => 'CategoryController@index']);
     Route::get('/categories/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);

@@ -14,10 +14,10 @@
                 <input type="hidden" name="supplier-id" value="{{ \Request::segment(3) }}">
                 <div class="row">
                     <label class="radio-inline">
-                        <input type="radio" name="method" value="1">Cash
+                        <input type="radio" name="method" value="1">Tien mat
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="method" value="2">Credit
+                        <input type="radio" name="method" value="2">The ngan hang
                     </label>
                 </div>
                 <div class="row">
@@ -25,10 +25,10 @@
                 </div>
                 <div class="row">
                     <label class="radio-inline">
-                        <input type="radio" name="status" value="1">Sell
+                        <input type="radio" name="status" value="0">Sach ban
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="status" value="2">For rent
+                        <input type="radio" name="status" value="1">Sach cho thue
                     </label>
                 </div>
                 <div class="row">

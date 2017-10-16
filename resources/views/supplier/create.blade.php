@@ -1,8 +1,8 @@
-@extends('layouts.app1')
+@extends('admin.master')
 
 @section('content')
 <div class="container">
-	<form class="" type="hidden" id="" method="POST" action="{{ route('supplier.save') }}">
+	<form class="" type="hidden" id="" method="POST" action="{{ route('supplier.save.exist') }}">
 		{{ csrf_field() }}
 		<select id="" class="form-control" name="user-id">
 			<option value="">Selection</option>

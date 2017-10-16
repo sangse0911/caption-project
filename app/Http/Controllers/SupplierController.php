@@ -50,6 +50,19 @@ class SupplierController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeIfExist(Request $request)
+    {
+        $supplier = $this->supplierRepository->createIfExist($request->all());
+
+        return redirect()->route('book.create', ['id' => $supplier->id]);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id

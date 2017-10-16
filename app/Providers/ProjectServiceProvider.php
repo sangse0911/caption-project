@@ -19,6 +19,7 @@ class ProjectServiceProvider extends ServiceProvider
         view()->composer(['book.create'], 'App\Http\ViewComposers\CategoryComposer');
         view()->composer(['book.create', 'bookself.create'], 'App\Http\ViewComposers\AdminComposer');
         view()->composer('book.create', 'App\Http\ViewComposers\BookselfComposer');
+        view()->composer('supplier.create', 'App\Http\ViewComposers\UserComposer');
     }
 
     /**

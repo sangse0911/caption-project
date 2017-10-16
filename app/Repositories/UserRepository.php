@@ -20,7 +20,7 @@ class UserRepository implements UserInterface
 
     public function find($id)
     {
-
+        return User::find($id);
     }
 
     /**
