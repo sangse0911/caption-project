@@ -16,11 +16,13 @@ class CreateRatesTable extends Migration
         Schema::create('rates', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('book_id')->unsigned();
+            $table->integer('rateable_id')->unsigned();
+            $table->string('rateable_type');
+            $table->unique(['user_id', 'rateable_id']);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

@@ -24,7 +24,6 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property \App\Models\Customer $customer
  * @property \Illuminate\Database\Eloquent\Collection $detail_renters
- * @property \Illuminate\Database\Eloquent\Collection $purchases
  *
  * @package App\Models
  */
@@ -52,10 +51,5 @@ class Renter extends Model
     public function detailRenters()
     {
         return $this->hasMany(\App\Models\DetailRenter::class);
-    }
-
-    public function purchases()
-    {
-        return $this->hasMany(\App\Models\Purchase::class);
     }
 }

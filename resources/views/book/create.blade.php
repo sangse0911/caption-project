@@ -49,7 +49,7 @@
                     <input type="text" name="price-entered" class="form-control" value="" placeholder="price entered">
                 </div>
                 <div class="row">
-                    <input type="number" name="quanlity" class="form-control" value="" placeholder="quanlity of book">
+                    <input type="text" name="quality" class="form-control" value="" placeholder="quality of book">
                 </div>
             </div>
             <div class="col-md-6">
@@ -57,7 +57,7 @@
 
                         <label>Category sach</label>
                             {{-- <option value="">Chon category sach</option> --}}
-                        <select id="ms" multiple="multiple" name="categories[]">
+                        <select id="ms" multiple="multiple" name="categories[]" style="width: 100% !important">
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
@@ -128,9 +128,9 @@ $(function() {
 <script>
        $(function() {
         $('#ms').change(function() {
-            console.log($(this).val());
+            // console.log($(this).val());
         }).multipleSelect({
-            width: '100%'
+            // width: '100%'
         });
     });
     </script>

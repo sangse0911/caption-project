@@ -317,11 +317,12 @@
         </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="{{ asset('js/plugins7790.js') }}"></script>
+
+    {{-- <script src="{{ asset('js/plugins7790.js') }}"></script> --}}
+    @yield('script')
     <script src="{{ asset('js/skintools.js') }}"></script>
     <script src="{{ asset('js/appe91a.js') }}"></script>
     <script src="{{ asset('js/pace.js') }}"></script>
-    @yield('script')
 </body>
 <!-- Mirrored from laraspace.in/admin/dashboard/ecommerce by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 29 Sep 2017 01:37:33 GMT -->
 

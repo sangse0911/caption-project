@@ -13,32 +13,26 @@ use Illuminate\Database\Eloquent\Model;
  * Class Invoice
  *
  * @property int $id
- * @property int $supplier_id
- * @property string $payment_method
- * @property string $bank_account
- * @property string $status
+ * @property int $order_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @property \App\Models\Supplier $supplier
+ * @property \App\Models\Order $order
  *
  * @package App\Models
  */
-class Invoice extends Eloquent
+class Invoice extends Model
 {
     protected $casts = [
-        'supplier_id' => 'int',
+        'order_id' => 'int',
     ];
 
     protected $fillable = [
-        'supplier_id',
-        'payment_method',
-        'bank_account',
-        'status',
+        'order_id',
     ];
 
-    public function supplier()
+    public function order()
     {
-        return $this->belongsTo(\App\Models\Supplier::class);
+        return $this->belongsTo(\App\Models\Order::class);
     }
 }

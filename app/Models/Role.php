@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 22 Sep 2017 01:54:30 +0700.
+ * Date: Tue, 17 Oct 2017 20:31:23 +0700.
  */
 
 namespace App\Models;
@@ -10,23 +10,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Status
+ * Class Role
  *
  * @property int $id
  * @property string $name
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @property \Illuminate\Database\Eloquent\Collection $books
+ * @property \Illuminate\Database\Eloquent\Collection $admins
  *
  * @package App\Models
  */
-class Status extends Model
+class Role extends Model
 {
-    protected $table = 'status';
-
     protected $fillable = [
         'name',
     ];
 
+    public function admins()
+    {
+        return $this->hasMany(\App\Models\Admin::class);
+    }
 }

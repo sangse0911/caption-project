@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->enum('account_status', ['1', '2', '3', '4', '5'])->default('1');
             $table->double('account_balance', 20, 0);
+            $table->longText('tags');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImagePostsTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateImagePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('image_posts', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('post_id')->unsigned();
-            $table->string('path');
+            $table->string('name');
             $table->timestamps();
-
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -30,6 +27,6 @@ class CreateImagePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('image_posts');
+        Schema::dropIfExists('roles');
     }
 }

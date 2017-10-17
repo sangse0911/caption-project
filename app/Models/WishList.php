@@ -14,11 +14,11 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property int $user_id
- * @property int $book_id
+ * @property int $wishListable_id
+ * @property string $wishListable_type
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @property \App\Models\Book $book
  * @property \App\Models\User $user
  *
  * @package App\Models
@@ -27,18 +27,14 @@ class WishList extends Model
 {
     protected $casts = [
         'user_id' => 'int',
-        'book_id' => 'int',
+        'wishListable_id' => 'int',
     ];
 
     protected $fillable = [
         'user_id',
-        'book_id',
+        'wishListable_id',
+        'wishListable_type',
     ];
-
-    public function book()
-    {
-        return $this->belongsTo(\App\Models\Book::class);
-    }
 
     public function user()
     {

@@ -3,14 +3,14 @@
         <ul class="products columns-3">
             @foreach($books as $book)
                 @foreach($book->images as $image)
-            <li class="product ">
+            <li class="product">
                 <div class="product-outer">
                     <div class="product-inner">
                         <span class="loop-product-categories"><a href="product-category.html" rel="tag">Laptops</a></span>
                         <a href="#">
                             <h3>Tablet Red EliteBook  Revolve 810 G2</h3>
                             <div class="product-thumbnail">
-                                <img src="{{ URL::to('assets/images/product'. '/'. $image->path) }}" data-echo="{{ URL::to('assets/images/product'. '/'. $image->path) }}" class="img-responsive" alt="">
+                                <img src="{{ asset('assets/images/products/1.jpg') }}" data-echo="{{ asset('assets/images/products/1.jpg') }}" class="img-responsive" alt="">
                             </div>
                         </a>
                         <div class="price-add-to-cart">

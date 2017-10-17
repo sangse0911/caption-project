@@ -18,9 +18,11 @@ class CreateAdminsTable extends Migration
             $table->string('name');
             $table->string('password');
             $table->string('email')->unique();
-            $table->string('job_title');
+            $table->integer('role_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

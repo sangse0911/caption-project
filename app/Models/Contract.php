@@ -56,7 +56,7 @@ class Contract extends Model
 
     public function books()
     {
-        return $this->belongsToMany(\App\Models\Book::class, 'book_contracts')->withTimestamps();
+        return $this->belongsToMany(\App\Models\Book::class, 'contract_details')->withTimestamps();
     }
 
     public function contractDetails()

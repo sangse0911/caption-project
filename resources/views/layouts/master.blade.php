@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/style.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/style1.css') }}" media="all" />
     <script src="{{ URL::to('js/jquery-3.2.1.min.js') }}"></script>
+
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,700italic,800,800italic,600italic,400italic,300italic' rel='stylesheet' type='text/css'>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -99,8 +100,9 @@
 		<a id="scrollUp" href="javascript:void(0)" style="position: fixed; z-index: 1001; display: block;"><i class="fa fa-angle-up"></i></a>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 	<script type="text/javascript" src="{{ URL::to('js/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('js/tether.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/bootstrap.min.js') }}"></script>
+        @yield('scripts')
+    <script type="text/javascript" src="{{ URL::to('js/tether.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/bootstrap-hover-dropdown.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/owl.carousel.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/echo.min.js') }}"></script>
@@ -138,6 +140,5 @@
         });
     })(jQuery);
     </script>
-		@yield('scripts')
 </body>
 </html>

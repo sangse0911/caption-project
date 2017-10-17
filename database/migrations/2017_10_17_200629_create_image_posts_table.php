@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostWishListsTable extends Migration
+class CreateImagePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreatePostWishListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_wish_lists', function (Blueprint $table) {
+        Schema::create('image_posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
             $table->integer('post_id')->unsigned();
+            $table->string('path');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('post_id')->references('id')->on('posts')->onUpdate('cascade')->onDelete('cascade');
-
         });
     }
 
@@ -32,6 +30,6 @@ class CreatePostWishListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_wish_lists');
+        Schema::dropIfExists('image_posts');
     }
 }

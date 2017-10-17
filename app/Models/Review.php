@@ -14,11 +14,9 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property int $user_id
- * @property int $book_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @property \App\Models\Book $book
  * @property \App\Models\User $user
  *
  * @package App\Models
@@ -27,18 +25,11 @@ class Review extends Model
 {
     protected $casts = [
         'user_id' => 'int',
-        'book_id' => 'int',
     ];
 
     protected $fillable = [
         'user_id',
-        'book_id',
     ];
-
-    public function book()
-    {
-        return $this->belongsTo(\App\Models\Book::class);
-    }
 
     public function user()
     {

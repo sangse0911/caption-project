@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 09 Oct 2017 19:56:52 +0700.
+ * Date: Fri, 13 Oct 2017 01:06:05 +0700.
  */
 
 namespace App\Models;
@@ -10,35 +10,33 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class PostWishList
+ * Class Notification
  *
  * @property int $id
  * @property int $user_id
- * @property int $post_id
+ * @property string $notification
+ * @property int $notificationable_id
+ * @property string $notification_type
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @property \App\Models\Post $post
  * @property \App\Models\User $user
  *
  * @package App\Models
  */
-class PostWishList extends Model
+class Notification extends Model
 {
     protected $casts = [
         'user_id' => 'int',
-        'post_id' => 'int',
+        'notificationable_id' => 'int',
     ];
 
     protected $fillable = [
         'user_id',
-        'post_id',
+        'notification',
+        'notificationable_id',
+        'notification_type',
     ];
-
-    public function post()
-    {
-        return $this->belongsTo(\App\Models\Post::class);
-    }
 
     public function user()
     {

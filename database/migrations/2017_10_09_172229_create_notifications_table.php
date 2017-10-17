@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostRatesTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreatePostRatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_rates', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('post_id')->unsigned();
+            $table->text('notification');
+            $table->integer('notificationable_id')->unsigned();
+            $table->string('notification_type');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onUpdate('cascade');
-            $table->foreign('post_id')->references('id')->on('posts')->onUpdate('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
         });
     }
@@ -32,6 +33,6 @@ class CreatePostRatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_rates');
+        Schema::dropIfExists('notifications');
     }
 }

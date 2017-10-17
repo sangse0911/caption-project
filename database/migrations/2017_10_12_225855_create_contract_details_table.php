@@ -16,12 +16,14 @@ class CreateContractDetailsTable extends Migration
         Schema::create('contract_details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('contract_id')->unsigned();
+            $table->integer('book_id')->unsigned();
             $table->double('entered_price')->default(0);
             $table->double('rental_price')->default(0);
             $table->string('quality');
             $table->timestamps();
 
             $table->foreign('contract_id')->references('id')->on('contracts')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

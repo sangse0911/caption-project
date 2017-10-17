@@ -56,28 +56,16 @@ class Post extends Eloquent
         ];
     }
 
-    /**
-     * [$casts description]
-     * @var [type]
-     */
     protected $casts = [
+        'user_id' => 'int',
         'status' => 'int',
         'republish' => 'int',
-        'user_id' => 'int',
     ];
 
-    /**
-     * [$dates description]
-     * @var [type]
-     */
     protected $dates = [
         'publishing_year',
     ];
 
-    /**
-     * [$fillable description]
-     * @var [type]
-     */
     protected $fillable = [
         'user_id',
         'name',
@@ -97,38 +85,20 @@ class Post extends Eloquent
         return $this->belongsTo(\App\Models\User::class);
     }
 
+    public function advertisments()
+    {
+        return $this->hasMany(\App\Models\Advertisment::class);
+    }
+
     public function categories()
     {
-        return $this->belongsToMany(\App\Models\Category::class, 'category_id', 'post_id', 'id')->withTimestamps();
-    }
-
-    public function categoryPosts()
-    {
-        return $this->hasMany(\App\Models\CategoryPost::class);
-    }
-
-    public function commentPosts()
-    {
-        return $this->hasMany(\App\Models\CommentPost::class);
+        return $this->belongsToMany(\App\Models\Category::class, 'category_posts')
+            ->withPivot('id')
+            ->withTimestamps();
     }
 
     public function imagePosts()
     {
         return $this->hasMany(\App\Models\ImagePost::class);
-    }
-
-    public function notificationPosts()
-    {
-        return $this->hasMany(\App\Models\NotificationPost::class);
-    }
-
-    public function postRates()
-    {
-        return $this->hasMany(\App\Models\PostRate::class);
-    }
-
-    public function postWishLists()
-    {
-        return $this->hasMany(\App\Models\PostWishList::class);
     }
 }

@@ -34,26 +34,27 @@ class Admin extends Authenticatable
 
     protected $guard = 'admin';
 
-    /**
-     * [$hidden description]
-     * @var [type]
-     */
+    protected $casts = [
+        'role_id' => 'int',
+    ];
+
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * [$fillable description]
-     * @var [type]
-     */
     protected $fillable = [
         'name',
         'password',
         'email',
-        'job_title',
+        'role_id',
         'remember_token',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo(\App\Models\Role::class);
+    }
 
     public function books()
     {
@@ -62,8 +63,7 @@ class Admin extends Authenticatable
 
     public function suppliers()
     {
-        return $this->belongsToMany(\App\Models\Supplier::class, 'contracts')
-            ->withPivot('admin_id', 'supplier_id', 'payment_method', 'bank_account', 'status')->withTimeStamps();
+        return $this->belongsToMany(\App\Models\Supplier::class, 'contracts')->withTimeStamps();
     }
 
     public function bookselves()
@@ -74,6 +74,11 @@ class Admin extends Authenticatable
     public function contacts()
     {
         return $this->hasMany(\App\Models\Contact::class);
+    }
+
+    public function contracts()
+    {
+        return $this->hasMany(\App\Models\Contract::class);
     }
 
     public function events()

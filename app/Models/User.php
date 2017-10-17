@@ -20,15 +20,13 @@ use Illuminate\Notifications\Notifiable;
  * @property string $password
  * @property string $account_status
  * @property float $account_balance
+ * @property string $tags
  * @property string $remember_token
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @property \Illuminate\Database\Eloquent\Collection $comment_posts
  * @property \Illuminate\Database\Eloquent\Collection $customers
- * @property \Illuminate\Database\Eloquent\Collection $notification_posts
- * @property \Illuminate\Database\Eloquent\Collection $post_rates
- * @property \Illuminate\Database\Eloquent\Collection $post_wish_lists
+ * @property \Illuminate\Database\Eloquent\Collection $notifications
  * @property \Illuminate\Database\Eloquent\Collection $posts
  * @property \Illuminate\Database\Eloquent\Collection $rates
  * @property \Illuminate\Database\Eloquent\Collection $reviews
@@ -41,27 +39,15 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * [$casts description]
-     * @var [type]
-     */
     protected $casts = [
         'account_balance' => 'float',
     ];
 
-    /**
-     * [$hidden description]
-     * @var [type]
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * [$fillable description]
-     * @var [type]
-     */
     protected $fillable = [
         'name',
         'facebook_id',
@@ -69,32 +55,18 @@ class User extends Authenticatable
         'password',
         'account_status',
         'account_balance',
+        'tags',
         'remember_token',
     ];
-
-    public function commentPosts()
-    {
-        return $this->hasMany(\App\Models\CommentPost::class);
-    }
 
     public function customers()
     {
         return $this->hasMany(\App\Models\Customer::class);
     }
 
-    public function notificationPosts()
+    public function notifications()
     {
-        return $this->hasMany(\App\Models\NotificationPost::class);
-    }
-
-    public function postRates()
-    {
-        return $this->hasMany(\App\Models\PostRate::class);
-    }
-
-    public function postWishLists()
-    {
-        return $this->hasMany(\App\Models\PostWishList::class);
+        return $this->hasMany(\App\Models\Notification::class);
     }
 
     public function posts()

@@ -38,23 +38,34 @@ class BookRepository implements BookInterface
      */
     public function all()
     {
-        return Book::with('images')->get();
+        return Book::simplePaginate(10);
     }
 
+    /**
+     * [getSellBook description]
+     * @return [type] [description]
+     */
     public function getSellBook()
     {
-        return Book::where('status', '=', '1')->with('images')->whereHas('contracts', function ($query) {
-            $query->where('contracts.status', '=', '1');
-        })->get();
+        return Book::where('status', '=', '1')->with('images')
+            ->whereHas('contracts', function ($query) {
+                $query->where('contracts.status', '=', '1');
+            })->get();
 
     }
 
+    /**
+     * [getRenterBook description]
+     * @return [type] [description]
+     */
     public function getRenterBook()
     {
-        return Book::where('status', '=', '1')->with('images')->whereHas('contracts', function ($query) {
-            $query->where('contracts.status', '=', '0');
-        })->get();
+        return Book::where('status', '=', '1')->with('images')
+            ->whereHas('contracts', function ($query) {
+                $query->where('contracts.status', '=', '0');
+            })->get();
     }
+
     public function find($id)
     {
 
@@ -93,8 +104,13 @@ class BookRepository implements BookInterface
         }
 
         $contract = $this->contractRepository->create($request);
-        //save the book_contract
-        $contract->books()->attach($book->id);
+        //save the contract_detail
+        $contract->books()->attach($book->id, [
+            'entered_price' => $request['price-entered'],
+            'rental_price' => $request['price-rent'],
+            'quality' => $request['quality'],
+
+        ]);
 
         $images = Input::hasFile('images');
         //save image
@@ -104,5 +120,7 @@ class BookRepository implements BookInterface
                 return $result = false;
             };
         }
+
+        return $book;
     }
 }

@@ -20,11 +20,11 @@ class CreatePostsTable extends Migration
             $table->string('introduce')->nullable();
             $table->text('description');
             $table->integer('status')->unsigned();
-            $table->string('author', 50);
-            $table->string('publishing_company');
-            $table->dateTime('publishing_year');
+            $table->string('author', 50)->nullable();
+            $table->string('publishing_company')->nullable();
+            $table->dateTime('publishing_year')->nullable();
             $table->tinyInteger('republish');
-            $table->string('isbn');
+            $table->string('isbn')->nullable();
             $table->string('slug');
             $table->timestamps();
 
