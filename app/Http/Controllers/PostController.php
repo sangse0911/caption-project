@@ -21,7 +21,8 @@ class PostController extends Controller
      */
     public function index()
     {
-
+        $posts = $this->postRepository->all();
+        return view('post.index', compact('posts'));
     }
 
     /**
