@@ -98,11 +98,11 @@
 	        <li class="last"><a href="#" onclick="logoutFacebook();">Dang xuat</a></li>
 	    </ul>
 		<a id="scrollUp" href="javascript:void(0)" style="position: fixed; z-index: 1001; display: block;"><i class="fa fa-angle-up"></i></a>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
 	<script type="text/javascript" src="{{ URL::to('js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/tether.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/bootstrap.min.js') }}"></script>
         @yield('scripts')
-    <script type="text/javascript" src="{{ URL::to('js/tether.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/bootstrap-hover-dropdown.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/owl.carousel.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/echo.min.js') }}"></script>

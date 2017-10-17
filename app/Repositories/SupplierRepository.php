@@ -41,6 +41,7 @@ class SupplierRepository implements SupplierInterface
 
     /**
      * [createIfExist description]
+     *
      * @param  array  $request [description]
      * @return [type]          [description]
      */
@@ -58,6 +59,7 @@ class SupplierRepository implements SupplierInterface
 
     /**
      * [create description]
+     *
      * @param  array  $request [description]
      * @return [type]          [description]
      */

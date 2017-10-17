@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('name', 100);
             $table->string('introduce')->nullable();
             $table->text('description');
-            $table->integer('status')->unsigned();
+            $table->enum('status', ['1', '2', '3', '4', '5', '6', '7'])->default('1');
             $table->string('author', 50)->nullable();
             $table->string('publishing_company')->nullable();
             $table->dateTime('publishing_year')->nullable();

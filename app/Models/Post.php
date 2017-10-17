@@ -38,7 +38,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class Post extends Eloquent
+class Post extends Model
 {
     use Sluggable;
 

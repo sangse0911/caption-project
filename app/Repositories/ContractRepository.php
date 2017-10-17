@@ -26,6 +26,11 @@ class ContractRepository implements ContractInterface
 
     }
 
+    /**
+     * [create description]
+     * @param  array  $request [description]
+     * @return [type]          [description]
+     */
     public function create(array $request)
     {
 

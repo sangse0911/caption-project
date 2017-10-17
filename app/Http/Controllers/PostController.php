@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\PostInterface;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    protected $postRepository;
+
+    public function __construct(PostInterface $postRepository)
+    {
+        $this->postRepository = $postRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +42,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = $this->postRepository->create($request->all());
+        return redirect()->to('/');
     }
 
     /**
