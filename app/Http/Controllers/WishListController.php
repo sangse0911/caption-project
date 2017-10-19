@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Interfaces\InvoiceInterface;
+use App\Interfaces\WishListInterface;
 use Illuminate\Http\Request;
 
-class InvoiceController extends Controller
+class WishListController extends Controller
 {
 
-    protected $invoiceService;
+    protected $wishListRepository;
 
-    public function __construct(InvoiceInterface $invoiceService)
+    public function __construct(WishListInterface $wishListRepository)
     {
-        $this->middleware('auth:admin');
-        $this->invoiceService = $invoiceService;
+        $this->wishListRepository = $wishListRepository;
     }
     /**
      * Display a listing of the resource.
@@ -22,8 +21,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = $this->invoiceService->getAll();
-        return view('invoice.index', compact('invoices'));
+        //
     }
 
     /**
@@ -31,9 +29,12 @@ class InvoiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createPost(Request $request)
     {
-        return view('invoice.create');
+
+        $wishlist = $this->wishListRepository->createPost($request->all());
+        return redirect()->back();
+        //
     }
 
     /**
@@ -42,10 +43,10 @@ class InvoiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storePost(Request $request)
     {
-        $invoice = $this->invoiceService->save($request->all());
-        return redirect()->route('invoice.index');
+        // $wishlist = $this->wishListRepository->createPost($request->all());
+        // dd($wishlist);
     }
 
     /**

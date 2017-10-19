@@ -10,17 +10,28 @@ use Illuminate\Support\Facades\Input;
 
 class PostRepository implements PostInterface
 {
-
+    /**
+     * [$imagePostRepository description]
+     * @var [type]
+     */
     protected $imagePostRepository;
 
+    /**
+     * [__construct description]
+     * @param ImagePostInterface $imagePostRepository [description]
+     */
     public function __construct(ImagePostInterface $imagePostRepository)
     {
         $this->imagePostRepository = $imagePostRepository;
     }
 
+    /**
+     * [all description]
+     * @return [type] [description]
+     */
     public function all()
     {
-        return Post::all();
+        return Post::with('imagePosts')->get();
     }
 
     public function find($id)
@@ -28,6 +39,11 @@ class PostRepository implements PostInterface
 
     }
 
+    /**
+     * [create description]
+     * @param  [type] $request [description]
+     * @return [type]          [description]
+     */
     public function create($request)
     {
         $post = new Post;

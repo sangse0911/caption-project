@@ -18,6 +18,8 @@ class RoleTableSeeder extends Seeder
         for ($i = 0; $i < $row; $i++) {
             $data = array(
                 'name' => str_random(12),
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
             );
 
             DB::table('roles')->insert($data);

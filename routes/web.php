@@ -39,6 +39,8 @@ Route::get('/sell-book', ['as' => 'book.sell', 'uses' => 'BookController@sellBoo
 Route::get('/renter-book', ['as' => 'book.renter', 'uses' => 'BookController@renBook']);
 Route::get('/hot-book', ['as' => 'book.hot', 'uses' => 'BookController@hotBook']);
 
+Route::get('/content-post', ['as' => 'content.post', 'uses' => 'PostController@contentPost']);
+
 Route::middleware(['auth:admin'])->group(function () {
 
     Route::get('/bookself', 'BookselfController@index')->name('bookself.index');
@@ -46,10 +48,6 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/bookself/create', 'BookselfController@store')->name('bookself.save');
     Route::get('/bookself/{slug}', ['as' => 'bookself.single', 'uses' => 'BookselfController@getStatus'])
         ->where('slug', '[\w\d\-\_]+');
-
-    Route::get('/invoice', 'InvoiceController@index')->name('invoice.index');
-    Route::get('/invoice/create/{id}', 'InvoiceController@create')->name('invoice.create');
-    Route::post('/invoice/create', 'InvoiceController@store')->name('invoice.save');
 
     Route::get('/users/create', 'UserController@create')->name('user.create');
     Route::post('/users/create', 'UserController@storeUser')->name('user.create.supplier');
@@ -63,9 +61,9 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/categories/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
     Route::post('/categories/create', ['as' => 'category.save', 'uses' => 'CategoryController@store']);
 
-    Route::get('/status', ['as' => 'status.index', 'uses' => 'StatusController@index']);
-    Route::get('/status/create', ['as' => 'status.create', 'uses' => 'StatusController@create']);
-    Route::post('/status/create', ['as' => 'status.save', 'uses' => 'StatusController@store']);
+    // Route::get('/status', ['as' => 'status.index', 'uses' => 'StatusController@index']);
+    // Route::get('/status/create', ['as' => 'status.create', 'uses' => 'StatusController@create']);
+    // Route::post('/status/create', ['as' => 'status.save', 'uses' => 'StatusController@store']);
 
     Route::get('/images', ['as' => 'images.index', 'uses' => 'ImageController@index']);
     Route::get('/images/create', ['as' => 'images.create', 'uses' => 'ImageController@create']);
@@ -76,7 +74,6 @@ Route::middleware(['auth:admin'])->group(function () {
 
 });
 
-Route::get('/catebook', ['as' => 'catebook.index', 'uses' => 'CateBookController@index']);
 Route::get('/api/user', ['as' => 'api.user.index', 'uses' => 'UserController@indexApi']);
 Route::get('/users/content', ['as' => 'users.content', 'uses' => 'UserController@getContent']);
 
@@ -94,5 +91,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/post/create', ['as' => 'post.save', 'uses' => 'PostController@store']);
 
     Route::get('/book/info', ['as' => 'book.info', 'uses' => 'BookController@getSupplier']);
+
+    Route::post('/addPostWishList', ['as' => 'add.post', 'uses' => 'WishListController@createPost']);
 
 });

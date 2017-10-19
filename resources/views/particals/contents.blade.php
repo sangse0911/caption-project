@@ -142,7 +142,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('book.hot') }}" data-toggle="tab">Goc sach hot</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('book.sell') }}" data-toggle="tab">Goc mua sach</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('book.renter') }}" data-toggle="tab">Goc thue sach</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="tab">Goc doc sach</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('content.post') }}" data-toggle="tab">Goc doc sach</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab-products-1" role="tabpanel">

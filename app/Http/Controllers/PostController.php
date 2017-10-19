@@ -25,6 +25,11 @@ class PostController extends Controller
         return view('post.index', compact('posts'));
     }
 
+    public function contentPost()
+    {
+        $posts = $this->postRepository->all();
+        return view('post.content-post', compact('posts'));
+    }
     /**
      * Show the form for creating a new resource.
      *

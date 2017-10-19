@@ -101,4 +101,9 @@ class Post extends Model
     {
         return $this->hasMany(\App\Models\ImagePost::class);
     }
+
+    public function wishLists()
+    {
+        return $this->morphMany(\App\Models\Wishlist::class, 'wishListable');
+    }
 }

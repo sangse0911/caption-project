@@ -15,8 +15,8 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/style1.css') }}" media="all" />
     <script src="{{ URL::to('js/jquery-3.2.1.min.js') }}"></script>
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,700italic,800,800italic,600italic,400italic,300italic' rel='stylesheet' type='text/css'>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="{{ URL::to('fonts/fontawesome-webfont3295.woff2') }}" rel='stylesheet' type='text/html'>
+    {{-- <meta name="_token" content="{{ csrf_token() }}"> --}}
 
 </head>
 <body class="page home page-temlate-default">

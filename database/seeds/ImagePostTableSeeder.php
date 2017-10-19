@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CategoryTableSeeder extends Seeder
+class ImagePostTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,16 +11,16 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->delete();
+        DB::table('image_posts')->delete();
 
-        for ($i = 0; $i < 6; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $data = array(
-                'name' => str_random(12),
+                'post_id' => ($i + 1),
+                'path' => '2461508266361-2.jpg',
                 'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
             );
-
-            DB::table('categories')->insert($data);
+            DB::table('image_posts')->insert($data);
             $data = null;
         }
     }

@@ -13,10 +13,16 @@ class UserTableSeeder extends Seeder
     {
         DB::table('users')->delete();
 
-        DB::table('users')->insert([
-            'name' => str_random(5),
-            'email' => str_random(5) . '@gmail.com',
-            'password' => bcrypt('123'),
-        ]);
+        for ($i = 0; $i < 5; $i++) {
+            $data = array(
+                'name' => str_random(5),
+                'email' => str_random(5) . '@gmail.com',
+                'password' => bcrypt('123'),
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            );
+            DB::table('users')->insert($data);
+            $data = null;
+        }
     }
 }

@@ -40,4 +40,9 @@ class WishList extends Model
     {
         return $this->belongsTo(\App\Models\User::class);
     }
+
+    public function wishListable()
+    {
+        return $this->morphTo();
+    }
 }

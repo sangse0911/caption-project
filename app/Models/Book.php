@@ -124,11 +124,6 @@ class Book extends Model
         return $this->hasMany(\App\Models\DetailOrder::class);
     }
 
-    public function rates()
-    {
-        return $this->hasMany(\App\Models\Rate::class);
-    }
-
     public function detailRenters()
     {
         return $this->hasMany(\App\Models\DetailRenter::class);
@@ -139,9 +134,13 @@ class Book extends Model
         return $this->hasMany(\App\Models\Review::class);
     }
 
-    public function wishLists()
+    public function contractDetails()
     {
-        return $this->hasMany(\App\Models\WishList::class);
+        return $this->hasMany(\App\Models\ContractDetail::class);
     }
 
+    public function wishLists()
+    {
+        return $this->morphMany(\App\Models\Wishlist::class, 'wishListable');
+    }
 }

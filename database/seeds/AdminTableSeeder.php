@@ -15,10 +15,13 @@ class AdminTableSeeder extends Seeder
 
         for ($i = 0; $i < 3; $i++) {
             $data = array(
-                'name' => 'admin' . rand(1, 10),
+                'name' => 'admin' . rand(1, 30),
                 'password' => bcrypt('123'),
-                'email' => 'admin' . rand(1, 10) . '@gmail.com',
+                'email' => 'admin' . rand(1, 30) . '@gmail.com',
                 'role_id' => '1',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+
             );
 
             DB::table('admins')->insert($data);

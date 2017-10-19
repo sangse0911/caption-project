@@ -18,6 +18,8 @@ class BookselfTableSeeder extends Seeder
                 'admin_id' => '1',
                 'status' => '1',
                 'location' => str_random(10),
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
             );
 
             DB::table('bookselfs')->insert($data);
