@@ -96,3 +96,83 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/book/info', ['as' => 'book.info', 'uses' => 'BookController@getSupplier']);
 
 });
+
+
+// TEST TRANG QUAN TRI
+
+Route::get('/donhangban', function () {
+    return view('admin.donhang.donhangban');
+});
+Route::get('/donhangthue', function () {
+    return view('admin.donhang.donhangthue');
+});
+Route::get('/gocsachbaidang', function () {
+    return view('admin.gocsach.gocsachbaidang');
+});
+Route::get('/gocsachdanhsach', function () {
+    return view('admin.gocsach.gocsachdanhsach');
+});
+Route::get('/gocsachthanhvien', function () {
+    return view('admin.gocsach.gocsachthanhvien');
+});
+Route::get('/khachban', function () {
+    return view('admin.khachhang.khachban');
+});
+Route::get('/khachchothue', function () {
+    return view('admin.khachhang.khachchothue');
+});
+Route::get('/khachmua', function () {
+    return view('admin.khachhang.khachmua');
+});
+Route::get('/khachthue', function () {
+    return view('admin.khachhang.khachthue');
+});
+Route::get('/danhsachquantri', function () {
+    return view('admin.quantrivien.danhsachquantri');
+});
+Route::get('/themquantri', function () {
+    return view('admin.quantrivien.themquantri');
+});
+Route::get('/sachban', function () {
+    return view('admin.sachban.sachban');
+});
+Route::get('/themsachban', function () {
+    return view('admin.sachban.themsachban');
+});
+Route::get('/sachthue', function () {
+    return view('admin.sachthue.sachthue');
+});
+Route::get('/themsachthue', function () {
+    return view('admin.sachthue.themsach');
+});
+Route::get('/trangquantri', function () {
+    return view('admin.sachban.themsachban');
+});
+// TEST GIAO DIEN
+Route::get('/trangchu', function () {
+    return view('BSO.trangchu');
+});
+Route::get('/dangky', function () {
+    return view('BSO.login.dangky');
+});
+Route::get('/dangnhap', function () {
+    return view('BSO.login.dangnhap');
+});
+Route::get('/gocsach', function () {
+    return view('BSO.gocsach.gocsach');
+});
+Route::get('/gocsachchitiet', function () {
+    return view('BSO.gocsach.gocsachchitiet');
+});
+Route::get('/muasach', function () {
+    return view('BSO.muasach.muasach');
+});
+Route::get('/muasachchitiet', function () {
+    return view('BSO.muasach.muasachchitiet');
+});
+Route::get('/thuesach', function () {
+    return view('BSO.thuesach.thuesach');
+});
+Route::get('/thuesachchitiet', function () {
+    return view('BSO.thuesach.thuesachchitiet');
+});
