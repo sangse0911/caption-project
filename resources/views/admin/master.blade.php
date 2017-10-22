@@ -94,7 +94,7 @@
 						<ul>
 							<li><a href="donghangban">Mua Sách</a></li>
 							<li><a href="donhangthue">Thuê Sách</a></li>
-							
+
 						</ul>
 					</li>
 					<li class="with-sub">
@@ -110,19 +110,19 @@
 							<li><a href="gocsachthanhvien">Thành Viên</a></li>
 						</ul>
 					</li>
-					
 
 
 
 
-					
+
+
 				</ul>
 			</div>
 		</div>
 
 		<!-- Sidebar second -->
 		<div class="site-sidebar-second custom-scroll custom-scroll-dark">
-			
+
 
 			<!-- Template options -->
 
@@ -149,7 +149,7 @@
 							<span class="hamburger"></span>
 						</div>
 						<div class=" float-xs-right ">
-							
+
 						</div>
 						<ul class="nav navbar-nav float-md-right">
 							<li class="nav-item dropdown hidden-sm-down">
@@ -181,18 +181,18 @@
 									<i class="ti-fullscreen"></i>
 								</a>
 							</li>
-							
+
 						</ul>
 						<div class="header-form float-md-left ml-md-2" style="height: 60px;margin-top: 0px;padding-top: 10px;">
-							
+
 							<a href="#"><img src="img/logo.png" height="40px"><span style="font-size: 20px;font-weight: bold; line-height: 25px;color: #0CC3D3;">BookServiceOnline</span></a>
-							
+
 						</div>
 					</div>
 				</nav>
 			</div>
 
-		</div>	
+		</div>
 		<div class="site-content">
 			@yield('content')
 		</div>

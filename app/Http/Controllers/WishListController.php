@@ -31,10 +31,10 @@ class WishListController extends Controller
      */
     public function createPost(Request $request)
     {
-
-        $wishlist = $this->wishListRepository->createPost($request->all());
-        return redirect()->back();
-        //
+        return response()->json($request->all());
+        // $wishlist = $this->wishListRepository->createPost($request->all());
+        // return redirect()->back();
+        // //
     }
 
     /**
