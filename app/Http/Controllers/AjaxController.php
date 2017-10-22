@@ -2,18 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Interfaces\WishListInterface;
 use Illuminate\Http\Request;
 
-class WishListController extends Controller
+class AjaxController extends Controller
 {
-
-    protected $wishListRepository;
-
-    public function __construct(WishListInterface $wishListRepository)
-    {
-        $this->wishListRepository = $wishListRepository;
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +13,8 @@ class WishListController extends Controller
      */
     public function index()
     {
-        //
+        $msg = "This is a simple message.";
+        return response()->json(array('msg' => $msg), 200);
     }
 
     /**
@@ -29,16 +22,9 @@ class WishListController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createPost(Request $request)
+    public function create()
     {
-        dd(3);
-        // if ($request->ajax()) {
-        //     dd(3);
-        //     return response($request->all());
-        // }
-        // $wishlist = $this->wishListRepository->createPost($request->all());
-        // return response()->json($request->all());
-
+        //
     }
 
     /**
@@ -47,10 +33,9 @@ class WishListController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storePost(Request $request)
+    public function store(Request $request)
     {
-        // $wishlist = $this->wishListRepository->createPost($request->all());
-        // dd($wishlist);
+        //
     }
 
     /**

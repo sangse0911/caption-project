@@ -92,6 +92,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/book/info', ['as' => 'book.info', 'uses' => 'BookController@getSupplier']);
 
-    Route::post('/addPostWishList', ['as' => 'add.post', 'uses' => 'WishListController@createPost']);
+    // Route::get('/addPostWishList', ['as' => 'add.get', 'uses' => 'WishListController@index']);
+    Route::post('/addToPostWish', ['as' => 'add.post', 'uses' => 'WishListController@createPost']);
 
 });
+Route::get('ajax', function () {
+    return view('message');
+});
+Route::post('/getmsg', 'AjaxController@index');
+Route::get('/book/{slug}', 'BookController@show');

@@ -98,10 +98,9 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $array = $this->bookService->getById($id);
-        $product = $array['product'];
-        $image = $array['image'];
-        return true;
+        $book = $this->bookRepository->find($id);
+
+        return view('book.single', compact('book'));
     }
 
     /**
