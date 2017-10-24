@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\WishListInterface;
+use App\Models\Post;
+use App\Models\WishList;
 use Illuminate\Http\Request;
 
 class WishListController extends Controller
@@ -32,9 +34,18 @@ class WishListController extends Controller
     public function createPost(Request $request)
     {
 
-        $wishlist = $this->wishListRepository->createPost($request->all());
-        return redirect()->back();
-        //
+        if ($request->ajax()) {
+            $user_id = $request->userId;
+            $post_id = $request->postId;
+
+            $post = Post::find($post_id);
+
+            $wishlist = new Wishlist;
+
+            $wishlist = $post->wishlists()->create(['user_id' => $user_id, 'post_id' => $post_id]);
+
+        }
+        return response($wishlist);
     }
 
     /**

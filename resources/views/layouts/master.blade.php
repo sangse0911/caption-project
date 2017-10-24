@@ -16,7 +16,7 @@
     <script src="{{ URL::to('js/jquery-3.2.1.min.js') }}"></script>
 
     <link href="{{ URL::to('fonts/fontawesome-webfont3295.woff2') }}" rel='stylesheet' type='text/html'>
-    {{-- <meta name="_token" content="{{ csrf_token() }}"> --}}
+    <meta name="_token" content="{{ csrf_token() }}">
 
 </head>
 <body class="page home page-temlate-default">

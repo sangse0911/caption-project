@@ -27,11 +27,15 @@
                         <!-- /.price-add-to-cart -->
                         <div class="hover-area">
                             <div class="action-buttons">
-                                <form method="POST" action="{{ route('add.post') }}" id="addPost">
+                                <form method="POST">
                                     {{ csrf_field() }}
-                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                    @if(Auth::guest())
+
+                                    @else
+                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" class="userhidden">
                                     <input type="hidden" name="post_id" value="{{ $post->id }}">
-                                    <button  type="submit" class="btn-link" id="add-to-wishlist"> Wishlist</button>
+                                    @endif
+                                    <button type="button" class="btn-link" id="wishlist-{{ $post->id }}"> Wishlist</button>
                                 </form>
                                 <a href="compare.html" class="add-to-compare-link"> Compare</a>
                             </div>
@@ -47,40 +51,39 @@
     </div>
 </div>
 
-@section('scripts')
+
 <script>
-    $(document).ready(function(e){
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    })
+
+
+    $('.btn-link').click(function(e){
+        userId = $('input[class="userhidden"]').val();
+        postId = e.target.id.substring(9);
+
+        $.ajax({
+            type: 'POST',
+            url: '/addPostWishList',
+            data: {
+                userId: userId,
+                postId: postId,
+            },
+            cache: false,
+            success: function(data){
+                console.log('ss', data);
+            },
+            error:function(data){
+                console.log('ee', data);
             }
-        })
-        e.preventDefault();
-
-        $('#add-to-wishlist').click(function(){
-            var form = $('#addPost');
-            var action = $(this).attr('action');
-
-            form.submit(function(e){
-                e.preventDefault();
-                var data = form.serialize();
-                $.ajax({
-                    method: 'POST',
-                    url: action,
-                    data: data,
-                    dataType: 'JSON',
-                    cache: false,
-                    success: function(data){
-                        console.log(data);
-                    },
-                    error: function(data){
-                        console.log('Error:', data);
-                    }
-                });
-            });
         });
 
+        e.preventDefault();
     });
-</script>
 
-@endsection()
+
+
+</script>
