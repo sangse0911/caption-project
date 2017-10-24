@@ -68,8 +68,7 @@ class BookRepository implements BookInterface
 
     public function find($id)
     {
-        $book = Book::findOrFail($id);
-        return $book;
+
     }
 
     /**

@@ -31,14 +31,10 @@ class WishListController extends Controller
      */
     public function createPost(Request $request)
     {
-        dd(3);
-        // if ($request->ajax()) {
-        //     dd(3);
-        //     return response($request->all());
-        // }
-        // $wishlist = $this->wishListRepository->createPost($request->all());
-        // return response()->json($request->all());
 
+        $wishlist = $this->wishListRepository->createPost($request->all());
+        return redirect()->back();
+        //
     }
 
     /**

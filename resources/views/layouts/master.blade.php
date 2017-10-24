@@ -16,7 +16,8 @@
     <script src="{{ URL::to('js/jquery-3.2.1.min.js') }}"></script>
 
     <link href="{{ URL::to('fonts/fontawesome-webfont3295.woff2') }}" rel='stylesheet' type='text/html'>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- <meta name="_token" content="{{ csrf_token() }}"> --}}
+
 </head>
 <body class="page home page-temlate-default">
 
@@ -61,13 +62,13 @@
             </div>
         </div><!-- /.top-bar -->
         @yield('header')
-
+		{{-- @include('particals.header') --}}
 		@yield('header-v2')
 		@yield('nav-v2')
         @yield('content')
-        @yield('tab-content')
+		{{-- @include('layouts.contents') --}}
 		@yield('footer')
-
+		{{-- @include('layouts.footer') --}}
 		<div class="electro-handheld-footer-bar hidden-lg-up">
 	        <ul class="columns-5">
 	            <li class="my-account">
@@ -97,10 +98,11 @@
 	        <li class="last"><a href="#" onclick="logoutFacebook();">Dang xuat</a></li>
 	    </ul>
 		<a id="scrollUp" href="javascript:void(0)" style="position: fixed; z-index: 1001; display: block;"><i class="fa fa-angle-up"></i></a>
-@yield('javascript')
-    <script type="text/javascript" src="{{ URL::to('js/jquery.min.js') }}"></script>
+
+	<script type="text/javascript" src="{{ URL::to('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/tether.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/bootstrap.min.js') }}"></script>
+        @yield('scripts')
     <script type="text/javascript" src="{{ URL::to('js/bootstrap-hover-dropdown.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/owl.carousel.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/echo.min.js') }}"></script>
@@ -109,7 +111,6 @@
     <script type="text/javascript" src="{{ URL::to('js/jquery.waypoints.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/electro.js') }}"></script>
     <script>
-
     (function($) {
         $('#scrollUp').each(function(){
             $(this).click(function(){
@@ -119,7 +120,6 @@
         });
     })(jQuery);
     </script>
-
     <script>
     (function($) {
         $("#button-open").click(function() {
@@ -140,16 +140,5 @@
         });
     })(jQuery);
     </script>
-    <script>
-        $(function () {
-            $('.nav-item a').on('click', function (e) {
-                e.preventDefault();
-                var page = $(this).attr('href');
-                $('.tab-content').load(page);
-            });
-        });
-    </script>
-
-
 </body>
 </html>
