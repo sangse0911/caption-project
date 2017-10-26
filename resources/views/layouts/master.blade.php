@@ -8,11 +8,13 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/font-awesome.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/animate.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/font-electro.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/owl-carousel.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/owl.carousel.min.css') }}" media="all" />
+
       @yield('styles')
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/colors/blue.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/style.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/style1.css') }}" media="all" />
+    {{-- <link rel="stylesheet" type="text/css" href="{{ URL::to('css/animate.css') }}"> --}}
     <script src="{{ URL::to('js/jquery-3.2.1.min.js') }}"></script>
 
     <link href="{{ URL::to('fonts/fontawesome-webfont3295.woff2') }}" rel='stylesheet' type='text/html'>
@@ -61,14 +63,17 @@
                 </nav>
             </div>
         </div><!-- /.top-bar -->
+        {{-- section header --}}
         @yield('header')
-		{{-- @include('particals.header') --}}
+		{{-- section header-v2 --}}
 		@yield('header-v2')
+        {{-- section nav-v2 --}}
 		@yield('nav-v2')
+        {{-- section content --}}
         @yield('content')
-		{{-- @include('layouts.contents') --}}
+		{{-- section footer --}}
 		@yield('footer')
-		{{-- @include('layouts.footer') --}}
+
 		<div class="electro-handheld-footer-bar hidden-lg-up">
 	        <ul class="columns-5">
 	            <li class="my-account">
@@ -99,10 +104,10 @@
 	    </ul>
 		<a id="scrollUp" href="javascript:void(0)" style="position: fixed; z-index: 1001; display: block;"><i class="fa fa-angle-up"></i></a>
 
+
 	<script type="text/javascript" src="{{ URL::to('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/tether.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/bootstrap.min.js') }}"></script>
-        @yield('scripts')
     <script type="text/javascript" src="{{ URL::to('js/bootstrap-hover-dropdown.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/owl.carousel.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/echo.min.js') }}"></script>
@@ -110,6 +115,9 @@
     <script type="text/javascript" src="{{ URL::to('js/jquery.easing.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/jquery.waypoints.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/electro.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/style.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/owl.autoplay.js') }}"></script>
+        @yield('scripts')
     <script>
     (function($) {
         $('#scrollUp').each(function(){
@@ -140,5 +148,21 @@
         });
     })(jQuery);
     </script>
+    <script type="text/javascript">
+    (function($) {
+
+  $("#owl-demo").owlCarousel({
+
+      autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+      items : 5,
+      itemsDesktop : [1199,3],
+      itemsDesktopSmall : [979,3]
+
+  });
+
+})(jQuery);
+</script>
+    </div>
 </body>
 </html>

@@ -7,6 +7,14 @@ div.wpcf7-response-output {
     margin: 2em 0.5em 1em;
     padding: 0.2em 1em
 }
+#owl-demo .item{
+  margin: 3px;
+}
+#owl-demo .item img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
 div.wpcf7 .screen-reader-response {
     position: absolute;
@@ -15763,7 +15771,7 @@ fieldset legend {
 }
 
 #content {
-    margin-bottom: 10.714em
+    /*margin-bottom: 10.714em*/
 }
 
 #content #primary,
