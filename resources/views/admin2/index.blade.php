@@ -1,5 +1,5 @@
 @extends('admin.master')
 
 @section('content')
-    @include('admin.dashboard')
+    @include('admin2.dashboard')
 @endsection

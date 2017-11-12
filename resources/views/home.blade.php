@@ -13,17 +13,23 @@
 @endsection
 
 @section('content')
-        @include('particals.carousel')
-        @include('particals.contents')
+    @section('carousel')
 
+        @include('particals.carousel')
+    @endsection
+    @section('categories')
+        @include('particals.categories')
+    @endsection
+    @section('first')
+        @include('particals.first-page')
+    @endsection
+    @section('best-sell')
+        @include('particals.best-sell')
+    @endsection
+
+    @include('particals.contents')
 @endsection
-{{-- @section('content')
-    <div id="content" class="site-content" tabindex="-1">
-        <div class="container">
-            @include('particals.contents')
-        </div>
-    </div> --}}
-{{-- @endsection() --}}
+
 
 @section('footer')
     @include('particals.footer')

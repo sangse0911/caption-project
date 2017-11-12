@@ -3,22 +3,22 @@
 <head>
 	<meta charset="UTF-8">
 	<title>@yield('title')</title>
-	
 
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('BSO/assets/css/bootstrap.min.css') }}" media="all" />
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('BSO/assets/css/font-awesome.min.css') }}" media="all" />
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('BSO/assets/css/animate.min.css') }}" media="all" />
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('BSO/assets/css/font-electro.css') }}" media="all" />
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('BSO/assets/css/owl-carousel.css') }}" media="all" />
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('BSO/assets/css/style.css') }}" media="all" />
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('BSO/assets/css/colors/yellow.css') }}" media="all" />
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('BSO/assets/css/config.css') }}" media="all" />
+
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/bootstrap.min.css') }}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/font-awesome.min.css') }}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/animate.min.css') }}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/font-electro.css') }}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/owl-carousel.css') }}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/style.css') }}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/colors/blue.css') }}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/config.css') }}" media="all" />
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,700italic,800,800italic,600italic,400italic,300italic' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="{{ URL::to('BSO/assets/images/OKPNG.png') }}" media="all" />
 	@yield('css')
 </head>
 <body>
-	
+
 	@yield('body')
 	<div id="page" class="hfeed site">
 		<a class="skip-link screen-reader-text" href="#site-navigation">Skip to navigation</a>
@@ -55,7 +55,7 @@
 						</a>
 					</div>
 					<!-- ============================================================= Header Logo : End============================================================= -->
-					
+
 					<form class="navbar-search" method="get" action="http://transvelo.github.io/">
 						<label class="sr-only screen-reader-text" for="search">Tìm Kiếm:</label>
 						<div class="input-group">
@@ -65,7 +65,7 @@
 									<option value='0' selected='selected'>Thể Loại</option>
 									<option class="level-0" value="laptops-laptops-computers">Tiểu Thuyết</option>
 									<option class="level-0" value="ultrabooks-laptops-computers">Trinh Thám</option>
-									<option class="level-0" value="mac-computers-laptops">Thiếu Nhi</option>			
+									<option class="level-0" value="mac-computers-laptops">Thiếu Nhi</option>
 								</select>
 							</div>
 							<div class="input-group-btn">
@@ -75,7 +75,7 @@
 						</div>
 					</form>
 					<ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip">
-						<li class="nav-item dropdown">	
+						<li class="nav-item dropdown">
 							<a href="#" class="nav-link" data-toggle="dropdown">
 								<i class="ec ec-shopping-bag"></i>
 								<span class="cart-items-count count">4</span>
@@ -140,7 +140,7 @@
 							<a href="#" class="nav-link"><i class="ec ec-favorites"></i></a>
 						</li>
 					</ul>
-					
+
 				</div><!-- /.row -->
 			</div>
 		</header><!-- #masthead -->
@@ -173,7 +173,7 @@
 			</div><!-- /.-container -->
 		</nav><!-- /.navbar -->
 		@yield('content')
-		
+
 		<footer id="colophon" class="site-footer">
 			<div class="footer-newsletter">
 				<div class="container">

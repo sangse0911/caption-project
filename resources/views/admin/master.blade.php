@@ -12,14 +12,14 @@
 	<title>@yield('title')</title>
 
 	<!-- Vendor CSS -->
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('AD/vendor/bootstrap4/css/bootstrap.min.css') }}" media="all" />
+	{{-- <link rel="stylesheet" type="text/css" href="{{ URL::to('css/bootstrap.min.css') }}" media="all" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to('AD/vendor/themify-icons/themify-icons.css') }}" media="all" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to('AD/vendor/font-awesome/css/font-awesome.min.css') }}" media="all" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to('AD/vendor/animate.css/animate.min.css') }}" media="all" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to('AD/vendor/jscrollpane/jquery.jscrollpane.css') }}" media="all" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to('AD/vendor/waves/waves.min.css') }}" media="all" />
 	<link rel="stylesheet" type="text/css" href="{{ URL::to('AD/vendor/switchery/dist/switchery.min.css') }}" media="all" />
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('AD/neptune-default/css/core.css') }}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('AD/neptune-default/css/core.css') }}" media="all" /> --}}
 	@yield('css')
 
 
@@ -200,7 +200,7 @@
 
 	<!-- Vendor JS -->
 
-	<script type="text/javascript" src="{{ URL::to('AD/vendor/jquery/jquery-1.12.3.min.js') }}"></script>
+	{{-- <script type="text/javascript" src="{{ URL::to('AD/vendor/jquery/jquery-1.12.3.min.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::to('AD/vendor/tether/js/tether.min.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::to('AD/vendor/bootstrap4/js/bootstrap.min.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::to('AD/vendor/detectmobilebrowser/detectmobilebrowser.js') }}"></script>
@@ -210,9 +210,7 @@
 	<script type="text/javascript" src="{{ URL::to('AD/vendor/jquery-fullscreen-plugin/jquery.fullscreen-min.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::to('AD/vendor/waves/waves.min.js') }}"></script>
 	<script type="text/javascript" src="{{ URL::to('AD/vendor/switchery/dist/switchery.min.js') }}"></script>
-
-	{{-- <script type="text/javascript" src="{{ URL::to('AD/neptune-default/js/app.js') }}"></script> --}}
-	{{-- <script type="text/javascript" src="{{ URL::to('AD/neptune-default/js/demo.js') }}"></script> --}}
+ --}}
 	@yield('script')
 </body>
 </html>

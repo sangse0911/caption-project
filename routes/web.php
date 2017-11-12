@@ -23,7 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('admin')->group(function () {
-    Route::get('/master', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
+    Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.show');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login');
     Route::post('/logout', 'Auth\AdminLoginController@adminLogout')->name('admin_logout');
