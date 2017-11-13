@@ -1,329 +1,216 @@
 <!DOCTYPE html>
-<html>
-<!-- Mirrored from laraspace.in/admin/dashboard/ecommerce by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 29 Sep 2017 01:37:33 GMT -->
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-<!-- /Added by HTTrack -->
-
+<html lang="en">
 <head>
-    <title>Laraspace - Laravel Admin</title>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    @yield('style')
-    <link rel="stylesheet" href="{{ asset('css/laraspace.css') }}" type="text/css">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="apple-touch-icon" sizes="57x57" href="../../assets/admin/img/favicons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="../../assets/admin/img/favicons/apple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="../../assets/admin/img/favicons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="../../assets/admin/img/favicons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="../../assets/admin/img/favicons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="../../assets/admin/img/favicons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="../../assets/admin/img/favicons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="../../assets/admin/img/favicons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/admin/img/favicons/apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" href="../../assets/admin/img/favicons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="../../assets/admin/img/favicons/android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="../../assets/admin/img/favicons/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/png" href="../../assets/admin/img/favicons/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="http://laraspace.in/assets/admin/img/favicons/manifest.json">
-    <link rel="mask-icon" href="http://laraspace.in/assets/admin/img/favicons/safari-pinned-tab.svg" color="#333333">
-    <link rel="shortcut icon" href="http://laraspace.in/assets/admin/img/favicons/favicon.ico">
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/laraspace1954.css') }}"> --}}
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-TileImage" content="/assets/admin/img/favicons/mstile-144x144.png">
-    <meta name="msapplication-config" content="/assets/admin/img/favicons/browserconfig.xml">
-    <meta name="theme-color" content="#333333">
+    <!-- Title -->
+    <title>@yield('title')</title>
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/bootstrap.min.css') }}" media="all" />
+    <!-- <link rel="stylesheet" type="text/css" href="{{ URL::to('AD/vendor/themify-icons/themify-icons.css') }}" media="all" /> -->
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/font-awesome.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/animate.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/jquery.jscrollpane.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/waves.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/switchery.min.css') }}" media="all" />
+    <!-- <link rel="stylesheet" type="text/css" href="{{ URL::to('css/core.css') }}" media="all" /> -->
+    @yield('css')
+
+
+
+    <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
+<body class="fixed-sidebar fixed-header skin-default content-appear">
+    <div class="wrapper">
 
-<body class="layout-default skin-default">
-    <div id="app" class="site-wrapper">
-        <header class="site-header">
-            <a href="#" class="brand-main">
-                <img src="{{ asset('img/logo-desk.png') }}" id="logo-desk" alt="Laraspace Logo" class="hidden-sm-down">
-                <img src="{{ asset('/img/logo-mobile.png') }}" id="logo-mobile" alt="Laraspace Logo" class="hidden-md-up">
-            </a>
-            <a href="#" class="nav-toggle">
-                <div class="hamburger hamburger--htla">
-                    <span>toggle menu</span>
-                </div>
-            </a>
-            <ul class="action-list">
-                <li>
-                    <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-fa icon-fa-plus"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#"><i class="icon-fa icon-fa-edit"></i> New Post</a>
-                        <a class="dropdown-item" href="#"><i class="icon-fa icon-fa-tag"></i> New Category</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="icon-fa icon-fa-star"></i> Separated link</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-fa icon-fa-bell"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right notification-dropdown">
-                        <h6 class="dropdown-header">Notifications</h6>
-                        <a class="dropdown-item" href="#"><i class="icon-fa icon-fa-user"></i> New User was Registered</a>
-                        <a class="dropdown-item" href="#"><i class="icon-fa icon-fa-comment"></i> A Comment has been posted.</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="avatar"><img src="{{ asset('img/avatar.png') }}" alt="Avatar"></a>
-                    <div class="dropdown-menu dropdown-menu-right notification-dropdown">
-                        <a class="dropdown-item" href="http://laraspace.in/admin/settings"><i class="icon-fa icon-fa-cogs"></i> Settings</a>
-                        <a class="dropdown-item" href="{{ url('/logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();"><i class="icon-fa icon-fa-sign-out"></i> Logout</a>
-                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </div>
-                </li>
-            </ul>
-        </header>
-        <div class="mobile-menu-overlay"></div>
-        <div class="sidebar-left " id="mobile-nav">
-            <div class="sidebar-body scroll-pane">
-                <ul class="side-nav metismenu" id="menu">
-                    <li class="active">
-                        <a href="#"><i class="icon-fa icon-fa-dashboard"></i> Dashboard <span class="icon-fa arrow icon-fa-fw"></span> </a>
-                        <ul aria-expanded="true" class="collapse">
-                            <li class="">
-                                <a href="basic.html">Basic</a>
-                            </li>
-                            <li class="active">
-                                <a href="ecommerce.html">Ecommerce</a>
-                            </li>
-                            <li class="">
-                                <a href="finance.html">Finance</a>
-                            </li>
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+        <!-- Sidebar -->
+        <div class="site-overlay"></div>
+        <div class="site-sidebar">
+            <div class="custom-scroll custom-scroll-light">
+                <ul class="sidebar-menu">
+                    <li>
+
+                        <a href="danhsachquantri" class="waves-effect  waves-light">
+                            <span class="s-icon"><i class="fa fa-user"></i></span>
+                            <span class="s-text">Quản Trị Viên</span>
+                        </a>
+                    </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="s-icon"><i class="fa fa-book"></i></span>
+                            <span class="s-text">Sách Bán</span>
+                        </a>
+                        <ul>
+                            <li><a href="sachban">Danh Sách</a></li>
+                            <li><a href="themsachban">Thêm Sách Mới</a></li>
                         </ul>
                     </li>
-                    <li class="">
-                        <a href="#"><i class="icon-fa icon-fa-th-large"></i> Layouts <span class="icon-fa arrow icon-fa-fw"></span> </a>
-                        <ul aria-expanded="true" class="collapse">
-                            <li class="">
-                                <a href="http://laraspace.in/admin/layouts/sidebar">Sidebar</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/layouts/icon-sidebar">Icon Sidebar</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/layouts/horizontal-menu">Horizontal Menu</a>
-                            </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="s-icon"><i class="fa fa-leanpub"></i></span>
+                            <span class="s-text">Sách Thuê</span>
+                        </a>
+                        <ul>
+                            <li><a href="sachthue">Danh Sách</a></li>
+                            <li><a href="themsachthue">Thêm Sách Mới</a></li>
                         </ul>
                     </li>
-                    <li class="">
-                        <a href="#"><i class="icon-fa icon-fa-star"></i> Basic UI <span class="icon-fa arrow icon-fa-fw"></span> </a>
-                        <ul aria-expanded="true" class="collapse">
-                            <li class="">
-                                <a href="http://laraspace.in/admin/basic-ui/buttons">Buttons</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/basic-ui/cards">Cards</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/basic-ui/tabs">Tabs &amp; Accordians</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/basic-ui/typography">Typography</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/basic-ui/tables">Tables</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/basic-ui/modals">Modals</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/basic-ui/progress-bars">Progress Bar</a>
-                            </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="s-icon"><i class="fa fa-users"></i></span>
+                            <span class="s-text">Khách Hàng</span>
+                        </a>
+                        <ul>
+                            <li><a href="khachthue">Khách Thuê</a></li>
+                            <li><a href="khachmua">Khách Mua</a></li>
+                            <li><a href="khachban">Khách Bán</a></li>
+                            <li><a href="khachchothue">Khách Cho Thuê</a></li>
                         </ul>
                     </li>
-                    <li class="">
-                        <a href="#"><i class="icon-fa icon-fa-puzzle-piece"></i> Components <span class="icon-fa arrow icon-fa-fw"></span> </a>
-                        <ul aria-expanded="true" class="collapse">
-                            <li class="">
-                                <a href="http://laraspace.in/admin/components/datatables">Datatables</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/components/notifications">Notifications</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/components/nestable-list"> Nestable List</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/components/nestable-tree">Nestable Tree</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/components/image-cropper">Image Cropper</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/components/zoom">Image Zoom</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/components/calendar">Calendar</a>
-                            </li>
-                            <li class="">
-                                <a href="#">Rating<span class="icon-fa arrow icon-fa-fw"></span> </a>
-                                <ul aria-expanded="true" class="collapse submenu">
-                                    <li class=""><a href="http://laraspace.in/admin/components/ratings/star">Star Ratings</a></li>
-                                    <li class=""><a href="http://laraspace.in/admin/components/ratings/bar">Bar Ratings</a></li>
-                                </ul>
-                            </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="tag tag-danger">10</span>
+                            <span class="s-icon"><i class="fa fa-cart-arrow-down"></i></span>
+                            <span class="s-text">Đơn Hàng</span>
+                        </a>
+                        <ul>
+                            <li><a href="donghangban">Mua Sách</a></li>
+                            <li><a href="donhangthue">Thuê Sách</a></li>
+
                         </ul>
                     </li>
-                    <li class="">
-                        <a href="#"><i class="icon-fa icon-fa-bar-chart"></i> Charts <span class="icon-fa arrow icon-fa-fw"></span> </a>
-                        <ul aria-expanded="true" class="collapse">
-                            <li class="">
-                                <a href="http://laraspace.in/admin/charts/chartjs">Chart JS</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/charts/sparklines">Sparkline</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/charts/amcharts">AM Charts</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/charts/morris">Morris</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/charts/gauges">Gauges</a>
-                            </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="tag tag-danger">10</span>
+                            <span class="s-icon"><i class="fa fa-bars"></i></span>
+                            <span class="s-text">Góc Sách</span>
+                        </a>
+                        <ul>
+                            <li><a href="gocsachbaidang">Bài Đăng</a></li>
+                            <li><a href="gocsachdanhsach">Danh Sách</a></li>
+                            <li><a href="gocsachthanhvien">Thành Viên</a></li>
                         </ul>
                     </li>
-                    <li class="">
-                        <a href="#"><i class="icon-fa icon-fa-eye"></i> Icons <span class="icon-fa arrow icon-fa-fw"></span> </a>
-                        <ul aria-expanded="true" class="collapse">
-                            <li class="">
-                                <a href="http://laraspace.in/admin/icons/icomoon">IcoMoon</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/icons/evil">Evil Icons</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/icons/meteo">Meteo Icons</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/icons/line">Line Icons</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/icons/fps-line">FPS Line</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/icons/fontawesome">Font Awesome</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="#"><i class="icon-fa icon-fa-rocket"></i> Forms <span class="icon-fa arrow icon-fa-fw"></span> </a>
-                        <ul aria-expanded="true" class="collapse">
-                            <li class="">
-                                <a href="http://laraspace.in/admin/forms/general">General Elements</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/forms/advanced">Advanced Elements</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/forms/layouts">Form Layouts</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/forms/validation">Form Validation</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/forms/wizards">Form Wizard</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/forms/wizards-2">Form Wizard 2</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/forms/wizards-3">Form Wizard 3</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/forms/editors">Editors</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="#"><i class="icon-fa icon-fa-image"></i> Gallery <span class="icon-fa arrow icon-fa-fw"></span> </a>
-                        <ul aria-expanded="true" class="collapse">
-                            <li class="">
-                                <a href="http://laraspace.in/admin/gallery/grid">Gallery Grid</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/gallery/masonry-grid">Gallery Masonry Grid</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="#"><i class="icon-fa icon-fa-file"></i> Pages <span class="icon-fa arrow icon-fa-fw"></span> </a>
-                        <ul aria-expanded="true" class="collapse">
-                            <li class="">
-                                <a href="http://laraspace.in/login">Login</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/login-2">Login 2</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/login-3">Login 3</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/register">Register</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/register-2">Register 2</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/register-3">Register 3</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/404">404 Page</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="#"><i class="icon-fa icon-fa-user"></i> Users <span class="icon-fa arrow icon-fa-fw"></span> </a>
-                        <ul aria-expanded="true" class="collapse">
-                            <li class="">
-                                <a href="http://laraspace.in/admin/users">All Users</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/users/1">User Profile</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="http://laraspace.in/admin/todos"><i class="icon-fa icon-fa-check"></i> Todo App </a>
-                    </li>
-                    <li class="">
-                        <a href="#"><i class="icon-fa icon-fa-cogs"></i> Settings <span class="icon-fa arrow icon-fa-fw"></span> </a>
-                        <ul aria-expanded="true" class="collapse">
-                            <li class="">
-                                <a href="http://laraspace.in/admin/settings/social">Social</a>
-                            </li>
-                            <li class="">
-                                <a href="http://laraspace.in/admin/settings/mail">Mail Driver</a>
-                            </li>
-                        </ul>
-                    </li>
+
+
+
+
+
+
                 </ul>
             </div>
         </div>
-        <div class="main-content" id="dashboardPage">
+
+        <!-- Sidebar second -->
+        <div class="site-sidebar-second custom-scroll custom-scroll-dark">
+
+
+            <!-- Template options -->
+
+
+            <!-- Header -->
+            <div class="site-header">
+                <nav class="navbar navbar-light">
+                    <div class="navbar-left">
+                        <a class="navbar-brand" href="index.html">
+                            <span style="color: white;font-size: 25px;font-weight: bold;">BSO</span>
+                        </a>
+                        <div class="toggle-button dark sidebar-toggle-first float-xs-left hidden-md-up">
+                            <span class="hamburger"></span>
+                        </div>
+                        <div class="toggle-button-second dark float-xs-right hidden-md-up">
+                            <i class="ti-arrow-left"></i>
+                        </div>
+                        <div class="toggle-button dark float-xs-right hidden-md-up" data-toggle="collapse" data-target="#collapse-1">
+                            <span class="more"></span>
+                        </div>
+                    </div>
+                    <div class="navbar-right navbar-toggleable-sm collapse" id="collapse-1">
+                        <div class="toggle-button light sidebar-toggle-second float-xs-left hidden-sm-down">
+                            <span class="hamburger"></span>
+                        </div>
+                        <div class=" float-xs-right ">
+
+                        </div>
+                        <ul class="nav navbar-nav float-md-right">
+                            <li class="nav-item dropdown hidden-sm-down">
+                                Xin chào <a href="" style="color: #0CC3D3;">XXX</a>, Chào mừng đến trang quản trị
+                                <a href="index.html#" data-toggle="dropdown" aria-expanded="false">
+                                    <span class="avatar box-32">
+                                        <img src="img/avatars/1.jpg" alt="">
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right animated fadeInUp">
+                                    <a class="dropdown-item" href="index.html#">
+                                        <i class="ti-email mr-0-5"></i> Inbox
+                                    </a>
+                                    <a class="dropdown-item" href="index.html#">
+                                        <i class="ti-user mr-0-5"></i> Profile
+                                    </a>
+                                    <a class="dropdown-item" href="index.html#">
+                                        <i class="ti-settings mr-0-5"></i> Settings
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="index.html#"><i class="ti-help mr-0-5"></i> Help</a>
+                                    <a class="dropdown-item" href="index.html#"><i class="ti-power-off mr-0-5"></i> Sign out</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item hidden-sm-down">
+                                <a class="nav-link toggle-fullscreen" href="#">
+                                    <i class="ti-fullscreen"></i>
+                                </a>
+                            </li>
+
+                        </ul>
+                        <div class="header-form float-md-left ml-md-2" style="height: 60px;margin-top: 0px;padding-top: 10px;">
+
+                            <a href="#"><img src="img/logo.png" height="40px"><span style="font-size: 20px;font-weight: bold; line-height: 25px;color: #0CC3D3;">BookServiceOnline</span></a>
+
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+        </div>
+        <div class="site-content">
             @yield('content')
         </div>
-        <footer class="site-footer">
-            <div class="text-right">
-                Powered by <a href="http://bytefury.com/" target="_blank">Bytefury</a>
-            </div>
-        </footer>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    {{-- <script src="{{ asset('js/plugins7790.js') }}"></script> --}}
+    <!-- Vendor JS -->
+
+    {{-- <script type="text/javascript" src="{{ URL::to('AD/vendor/jquery/jquery-1.12.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('AD/vendor/tether/js/tether.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('AD/vendor/bootstrap4/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('AD/vendor/detectmobilebrowser/detectmobilebrowser.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('AD/vendor/jscrollpane/jquery.mousewheel.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('AD/vendor/jscrollpane/mwheelIntent.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('AD/vendor/jscrollpane/jquery.jscrollpane.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('AD/vendor/jquery-fullscreen-plugin/jquery.fullscreen-min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('AD/vendor/waves/waves.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('AD/vendor/switchery/dist/switchery.min.js') }}"></script>
+ --}}
     @yield('script')
-    <script src="{{ asset('js/skintools.js') }}"></script>
-    <script src="{{ asset('js/appe91a.js') }}"></script>
-    <script src="{{ asset('js/pace.js') }}"></script>
 </body>
-<!-- Mirrored from laraspace.in/admin/dashboard/ecommerce by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 29 Sep 2017 01:37:33 GMT -->
-
 </html>
