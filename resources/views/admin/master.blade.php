@@ -12,14 +12,16 @@
 	<title>@yield('title')</title>
 
 	<!-- Vendor CSS -->
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/bootstrap.min.css') }}" media="all" />
-	{{-- <link rel="stylesheet" type="text/css" href="{{ URL::to('AD/vendor/themify-icons/themify-icons.css') }}" media="all" /> --}}
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('AD/vendor/css/font-awesome.min.css') }}" media="all" />
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('AD/vendor/css/animate.min.css') }}" media="all" />
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('AD/vendor/css/jquery.jscrollpane.css') }}" media="all" />
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('AD/vendor/css/waves.min.css') }}" media="all" />
-	<link rel="stylesheet" type="text/css" href="{{ URL::to('AD/vendor/css/switchery.min.css') }}" media="all" />
-	{{-- <link rel="stylesheet" type="text/css" href="{{ URL::to('AD/vendor/css/core.css') }}" media="all" /> --}}
+		<link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/bootstrap4/css/bootstrap.min.css') }}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/themify-icons/themify-icons.css') }}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/font-awesome/css/font-awesome.min.css') }}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/animate.css/animate.min.css') }}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/jscrollpane/jquery.jscrollpane.css') }}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/waves/waves.min.css') }}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/switchery/dist/switchery.min.css') }}" media="all" />
+	<link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/core.css') }}" media="all" />
+	@yield('css')
+
 	@yield('css')
 
 
@@ -200,16 +202,19 @@
 
 	<!-- Vendor JS -->
 
-	<script type="text/javascript" src="{{ URL::to('AD/vendor/js/jquery-1.12.3.min.js') }}"></script>
-	<script type="text/javascript" src="{{ URL::to('AD/vendor/js/tether.min.js') }}"></script>
-	<script type="text/javascript" src="{{ URL::to('AD/vendor/js/bootstrap.min.js') }}"></script>
-	<script type="text/javascript" src="{{ URL::to('AD/vendor/js/detectmobilebrowser.js') }}"></script>
-	<script type="text/javascript" src="{{ URL::to('AD/vendor/js/jquery.mousewheel.js') }}"></script>
-	<script type="text/javascript" src="{{ URL::to('AD/vendor/js/mwheelIntent.js') }}"></script>
-	<script type="text/javascript" src="{{ URL::to('AD/vendor/js/jquery.jscrollpane.min.js') }}"></script>
-	<script type="text/javascript" src="{{ URL::to('AD/vendor/js/jquery.fullscreen-min.js') }}"></script>
-	<script type="text/javascript" src="{{ URL::to('AD/vendor/js/waves.min.js') }}"></script>
-	<script type="text/javascript" src="{{ URL::to('AD/vendor/js/switchery.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('css/admin/jquery/jquery-1.12.3.min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::to('css/admin/tether/js/tether.min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::to('css/admin/bootstrap4/js/bootstrap.min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::to('css/admin/detectmobilebrowser/detectmobilebrowser.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::to('css/admin/jscrollpane/jquery.mousewheel.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::to('css/admin/jscrollpane/mwheelIntent.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::to('css/admin/jscrollpane/jquery.jscrollpane.min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::to('css/admin/jquery-fullscreen-plugin/jquery.fullscreen-min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::to('css/admin/waves/waves.min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::to('css/admin/switchery/dist/switchery.min.js') }}"></script>
+
+	<script type="text/javascript" src="{{ URL::to('js/admin/app.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::to('js/admin/demo.js') }}"></script>
 
 	@yield('script')
 </body>
