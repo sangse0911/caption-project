@@ -2,7 +2,7 @@
     <div class="container">
         <div id="primary" class="content-area">
             <main id="main" class="site-main">
-                @yield('carousel') @yield('categories') @yield('first') @yield('event')
+                @yield('carousel') @yield('categories') @yield('first')
                 <!-- ============================================================= 2-1-2 Product Grid : End============================================================= -->
                 <div class="home-v1-banner-block animate-in-view fadeIn animated" data-animation="fadeIn">
                     <div class="home-v1-fullbanner-ad fullbanner-ad" style="margin-bottom: 70px">
@@ -14,6 +14,7 @@
                 <!-- /.home-v1-banner-block -->
                 @yield('recently')
                 @yield('best-sell')
+                @yield('event')
             </main>
             <!-- #main -->
         </div>

@@ -26,7 +26,9 @@
     @section('best-sell')
         @include('particals.best-sell')
     @endsection
-
+    @section('event')
+        @include('particals.event')
+    @endsection
     @include('particals.contents')
 @endsection
 
