@@ -52,7 +52,7 @@ class BookController extends Controller
      * [renBook description]
      * @return [type] [description]
      */
-    public function renBook()
+    public function rentBook()
     {
         $books = $this->bookRepository->getRenterBook();
         // dd($books);

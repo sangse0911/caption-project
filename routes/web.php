@@ -75,7 +75,10 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/book/create/{slug}', ['as' => 'book.create', 'uses' => 'BookController@create']);
     Route::post('/book/create', ['as' => 'book.save', 'uses' => 'BookController@store']);
 
+    Route::get('/event/create', ['as' => 'event.create', 'uses' => 'EventController@create']);
+
 });
+Route::get('/event', ['as' => 'event.index', 'uses' => 'EventController@index']);
 
 Route::get('/api/user', ['as' => 'api.user.index', 'uses' => 'UserController@indexApi']);
 Route::get('/users/content', ['as' => 'users.content', 'uses' => 'UserController@getContent']);
