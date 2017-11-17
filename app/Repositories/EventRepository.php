@@ -71,4 +71,21 @@ class EventRepository implements EventInterface
         return $event;
 
     }
+
+    public function modified($request)
+    {
+
+        if ($request->ajax()) {
+
+            $event = Event::findOrFail($request->get('id'));
+
+            $event->admin_id = Auth::user()->id;
+            $event->title = $request->get('title');
+            $event->description = $request->get('description');
+            $event->status = $request->get('status');
+
+            $event->save();
+        }
+        return response($event);
+    }
 }

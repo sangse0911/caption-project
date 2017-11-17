@@ -24,12 +24,13 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="event-name">Ten su kien</label>
-                                <input type="text" name="event-name" class="form-control" id="event-name" placeholder="Ten su kien">
+                                <input type="hidden" name="event-id" value="" id="event-id">
+                                <input type="text" name="event-name" class="form-control" id="event-name" value="" placeholder="Ten su kien">
                                 <br/>
                             </div>
                             <div class="form-group">
                                 <label for="event-detail">Chi tiet su kien</label>
-                                <textarea class="form-control" name="event-detail" id="event-detail" rows="10" placeholder="Chi tiet su kien"></textarea>
+                                <textarea class="form-control" name="event-detail" id="event-detail" rows="10" value="" placeholder="Chi tiet su kien"></textarea>
                             </div>
                             <label class="radio-inline">
                                 <input type="radio" name="event-status" value="1">San sang</label>
@@ -41,6 +42,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-info btn-default  b-a-0 waves-effect waves-light" id="add">Them</button>
+                            <button type="button" class="btn btn-info btn-default  b-a-0 waves-effect waves-light" style="display: none;" id="update">Luu</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Dong</button>
                         </div>
                     </div>
@@ -66,8 +68,10 @@
                         <td>{{ $event->description }}</td>
                         <td>{{ $event->status }}</td>
                         <td>
-                            <button type="button" class="btn btn-info btn-default  b-a-0 waves-effect waves-light">Sua</button>
-                            <button type="button" class="btn btn-info btn-default  b-a-0 waves-effect waves-light">Xoa</button>
+                            <button type="button" class="btn btn-info btn-default  btn-update b-a-0 waves-effect waves-light"
+                            id="update-{{ $event->id }}" data-toggle="modal" data-target="#myModal">Sua</button>
+                            <button type="button" class="btn btn-info btn-default  btn-delete b-a-0 waves-effect waves-light"
+                            id="delete-{{ $event->id }}">Xoa</button>
                         </td>
                     </tr>
                     @endforeach
@@ -80,7 +84,7 @@
 <script>
 $(document).ready(function() {
 
-	  $.ajaxSetup({
+  	$.ajaxSetup({
 	    headers: {
 	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	    }
@@ -118,5 +122,63 @@ $(document).ready(function() {
         e.preventDefault();
     });
 });
+</script>
+<script>
+ 	$('.btn-update').on('click', function(e) {
+    	var event_id = e.currentTarget.id.substring(7);
+    	$.ajax({
+    		cache: false,
+    		method: 'GET',
+    		dataType: 'JSON',
+    		url: '/event/' + event_id,
+    		success: function(data){
+    			$('.modal-title').text('Thay doi su kien');
+    			$('#event-id').val(data['id']);
+    			$('#event-name').val(data['title']);
+    			$('#event-detail').val(data['description']);
+    			$('input[type=radio][name="event-status"][value='+data['status']+']').prop('checked', true);
+    			$('#add').css("display","none");
+    			$('#update').removeAttr('style');
+    		},
+    		error: function(data){
+    			console.log('ee', data);
+    		}
+    	});
+    });
+    var url_event_update = '{{ route('event.update')}}';
+
+	$('#update').on('click', function(e){
+		var title = $('#event-name').val();
+        var description = $('#event-detail').val();
+        var status = $('input[name=event-status]:checked').val();
+        var form = new FormData(document.getElementById('image'));
+        var file = document.getElementById('image').files[0];
+        var id = $('#event-id').val();
+        if (file) {
+            form.append('image', file);
+        }
+        $.ajax({
+
+            cache: false,
+            method: 'PUT',
+            dataType: 'JSON',
+            url: url_event_update,
+            data: {
+            	id: id,
+                title: title,
+                description: description,
+                status: status,
+            },
+            success: function(data) {
+            	// console.log('ss', data);
+                window.location.reload(true);
+            },
+            error: function(data) {
+                console.log('ee', data);
+            }
+        });
+        // console.log(data),
+        e.preventDefault();
+	});
 </script>
 @endsection

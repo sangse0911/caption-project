@@ -39,7 +39,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('event.create');
+        // return view('event.create');
     }
 
     /**
@@ -82,7 +82,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->eventRepository->find($id);
     }
 
     /**
@@ -93,7 +93,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -103,9 +103,22 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            // $event = Event::find(1);
+            $event = Event::findOrFail($request->get('id'));
+
+            $event->admin_id = Auth::user()->id;
+            $event->title = $request->get('title');
+            $event->description = $request->get('description');
+            $event->status = $request->get('status');
+
+            $event->save();
+        }
+        // $event = $this->eventRepository->modified($request->all());
+        return response($event);
+        // return redirect()->route('event.index');
     }
 
     /**

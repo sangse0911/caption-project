@@ -77,6 +77,8 @@ Route::middleware(['auth:admin'])->group(function () {
 
     Route::get('/event/create', ['as' => 'event.create', 'uses' => 'EventController@create']);
     Route::post('/event/store', ['uses' => 'EventController@store'])->name('event.store');
+    Route::put('/event/update', ['as' => 'event.update', 'uses' => 'EventController@update']);
+    Route::get('/event/{id}', ['as' => 'event.show', 'uses' => 'EventController@show']);
 
 });
 Route::get('/event', ['as' => 'event.index', 'uses' => 'EventController@index']);
