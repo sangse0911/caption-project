@@ -49,6 +49,20 @@ class ImageRepository implements ImageInterface
         }
     }
 
+    public function saveEvent()
+    {
+        if (Input::hasFile('images')) {
+            $files = Input::file('images');
+            $time = time();
+            $path = public_path() . '/assets/images/event/';
+            $filesArray = [];
+            foreach ($files as $file) {
+                $filesArray[]['path'] = $this->uploadImage($file, $path);
+            }
+
+            return $filesArray;
+        }
+    }
     /**
      * [uploadImage description]
      * @param  [type] $image [description]

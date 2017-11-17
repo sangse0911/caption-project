@@ -2,10 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\EventInterface;
+use App\Interfaces\ImageInterface;
+use App\Models\Event;
+use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class EventController extends Controller
 {
+
+    protected $eventRepository;
+    protected $imageRepository;
+    public function __construct(
+        EventInterface $eventRepository,
+        ImageInterface $imageRepository
+    ) {
+        $this->eventRepository = $eventRepository;
+        $this->imageRepository = $imageRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +28,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = $this->eventRepository->getAll();
+        return view('event.index', compact('events'));
     }
 
     /**
@@ -34,7 +50,28 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        if ($request->ajax()) {
+            $event = new Event;
+
+            $event->admin_id = Auth::user()->id;
+            $event->title = $request->get('title');
+            $event->description = $request->get('description');
+            $event->status = $request->get('status');
+
+            $images = Input::hasFile('images');
+            //save image
+            if ($images) {
+                $filesArray = $this->imageRepository->saveEvent();
+                if (!$event->createMany($filesArray)) {
+                    return $result = false;
+                };
+            }
+            // $event->image_path = $filesArray;
+            $event->save();
+        }
+
+        return response($event);
     }
 
     /**

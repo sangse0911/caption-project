@@ -16,6 +16,8 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/owl-carousel.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/style.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/colors/green.css') }}" media="all" />
+    {{-- <script src="https//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Demo Purpose Only. Should be removed in production -->
 </head>
 
@@ -41,8 +43,7 @@
             </div>
         </div>
         <!-- /.top-bar -->
-
-        {{-- section header --}} @yield('header') {{-- section header-v2 --}} @yield('header-v2') {{-- section nav-v2 --}} @yield('nav-v2') {{-- section content --}} @yield('content')  @yield('first') {{-- section footer --}} @yield('footer')
+        {{-- section header --}} @yield('header') {{-- section header-v2 --}} @yield('header-v2') {{-- section nav-v2 --}} @yield('nav-v2') {{-- section content --}} @yield('content') @yield('first') {{-- section footer --}} @yield('footer')
         <div class="electro-handheld-footer-bar hidden-lg-up">
             <ul class="columns-5">
                 <li class="my-account">
@@ -261,26 +262,25 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        $(document).ready(function() {
-            $('.btn-link').on('click', function(e) {
 
-                var bookId = e.currentTarget.id.substring(9);
-                var userId = $('input.hiddenfieldclass').val();
+        $('.btn-link').on('click', function(e) {
 
-                $.ajax({
+            var bookId = e.currentTarget.id.substring(9);
+            var userId = $('input.hiddenfieldclass').val();
 
-                    type: 'POST',
-                    url: '/addToPostWish',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: 'JSON',
-                    data: {
-                        userId: userId,
-                        bookId: bookId,
-                    },
-                    success: function(data) {
-                        console.log(data);
-                    }
-                });
+            $.ajax({
+
+                type: 'POST',
+                url: '/addToPostWish',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'JSON',
+                data: {
+                    userId: userId,
+                    bookId: bookId,
+                },
+                success: function(data) {
+                    console.log(data);
+                }
             });
         });
         </script>

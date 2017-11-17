@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="">
-    <meta name="author" content="">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Title -->
     <title>@yield('title')</title>
     <!-- Vendor CSS -->
@@ -18,7 +18,8 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/jscrollpane/jquery.jscrollpane.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/waves/waves.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/switchery/dist/switchery.min.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/core.css') }}" media="all" /> @yield('css') @yield('css')
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/core.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/> @yield('css') @yield('css')
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -36,11 +37,17 @@
         <div class="site-sidebar">
             <div class="custom-scroll custom-scroll-light">
                 <ul class="sidebar-menu">
-                    <li>
-                        <a href="danhsachquantri" class="waves-effect  waves-light">
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
 							<span class="s-icon"><i class="fa fa-user"></i></span>
 							<span class="s-text">Quản Trị Viên</span>
 						</a>
+                        <ul>
+                            <li><a href="sachban">Lien he</a></li>
+                            <li><a href="themsachban">Danh sach quan li</a></li>
+                            <li><a href="themsachban">Danh sach quyen han</a></li>
+                            <li><a href="themsachban">Danh sach </a></li>
+                        </ul>
                     </li>
                     <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
@@ -110,8 +117,8 @@
 							<span class="s-text">Su kien</span>
 						</a>
                         <ul>
-                            <li><a href="#">Danh sach</a></li>
-                            <li><a href="{{ route('event.create') }}" data-toggle="modal" data-target="#myModal">Them moi</a></li>
+                            <li><a href="{{ URL::route('event.index') }}">Danh sach</a></li>
+
                         </ul>
                     </li>
                 </ul>
@@ -198,6 +205,7 @@
     <script type="text/javascript" src="{{ URL::to('css/admin/switchery/dist/switchery.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/admin/app.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/admin/demo.js') }}"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     @yield('script')
 </body>
 
