@@ -62,8 +62,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = $this->userRepository->create($request->all());
-        return redirect()->route('admin.index');
+        if ($request->ajax()) {
+            $data = $request->all();
+            $user = $this->userRepository->create($data);
+        }
+        return response()->json($user, 200);
     }
 
     /**

@@ -1,89 +1,120 @@
-<!DOCTYPE html>
-<html>
+@extends('admin.master')
 
-<head>
-    <title>User</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-</head>
-
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-offset-3 col-lg-6">
-                <div class="panel panel-default">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading">
-                        <h3 class="panel-title">aaa<a href="#" class="pull-right"><i class="fa fa-plus" aria-hidden="true" data-toggle="modal" data-target="#myModal"></i></a></h3>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-hover table-striper">
-                            <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Balance</th>
-                                <th>Account Status</th>
-                            </tr>
-                            @foreach($users as $user)
-                            <tr>
-                                <td class="info" data-toggle="modal" data-target="#myModal">{{ $user->id }}</td>
-                                <td class="info" data-toggle="modal" data-target="#myModal">{{ $user->name }}</td>
-                                <td class="info" data-toggle="modal" data-target="#myModal">{{ $user->account_balance }}</td>
-                                <td class="info" data-toggle="modal" data-target="#myModal">{{ $user->account_status }}</td>
-
-                            </tr>
-                            @endforeach
-                        </table>
-
-                    </div>
-                </div>
+@section('content')
+<div class="content-area py-1">
+    <div class="container-fluid">
+        <ol class="breadcrumb no-bg mb-1">
+            <div style="float: right;">
+                <button type="button" class="btn btn-info btn-lg label-right b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal" id="user-create">
+                    <span class="btn-label"><i class="fa fa-user-plus"></i></span> Thêm
+                </button>
             </div>
-            <!-- Button trigger modal -->
-            <!-- Button trigger modal -->
-
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
+        </ol>
+        <form enctype="multipart/form-data" type="hidden" name="" id="" method="POST">
+            {{ csrf_field() }}
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Them moi nguoi dung</h4>
                         </div>
                         <div class="modal-body">
-                            <input type="text" name="" class="form-control" id="user-id" readonly="true">aaa
-                            <input type="text" name="" class="form-control" id="user-name">
-                            <input type="text" name="" class="form-control" id="user-account_balance">
-                            <input type="text" name="" class="form-control" id="user-account_status">
+                            <div class="form-group">
+                                <label for="name">Ten nguoi dung</label>
+                                <input type="hidden" name="id" value="" id="id">
+                                <input type="text" name="name" class="form-control" id="name" value="" placeholder="Ten nguoi dung">
+
+                            </div>
+                             <div class="form-group">
+                                <label for="email">Email nguoi dung</label>
+                                <input type="email" name="email" class="form-control" id="email" value="" placeholder="Email nguoi dung">
+
+                            </div>
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" id="delete" data-dismiss="modal">Delete</button>
-                            <button type="button" class="btn btn-primary" id="save">Save changes</button>
-                            <button type="button" class="btn btn-default" id="add">Add</button>
+                            <button type="button" class="btn btn-info btn-default  b-a-0 waves-effect waves-light" id="add">Them</button>
+                            <button type="button" class="btn btn-info btn-default  b-a-0 waves-effect waves-light" style="display: none;" id="update">Luu</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Dong</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </form>
+        <div class="box box-block bg-white">
+            <table class="table table-striped table-bordered dataTable" id="table-1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên</th>
+                        <th>Email</th>
+                        <th>Trạng Thái</th>
+                        <th>Hanh dong</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($users as $user)
+                    <tr>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->account_status }}</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-default  btn-update "
+                            id="update-{{ $user->id }}" data-toggle="modal" data-target="#myModal">Sua</button>
+                            <button type="button" class="btn btn-info btn-default  btn-delete "
+                            id="delete-{{ $user->id }}">Xoa</button>
+                            <button type="button" class="btn btn-info btn-default  btn-supplier"
+                            id="add-{{ $user->id }}">Nha cung cap</button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script>
-    $(document).ready(function() {
-        $('.info').each(function() {
-            $(this).click(function(event) {
-                $('#user-id').val($(this).closest("tr").find('td:eq(0)').text());
-                $('#user-name').val($(this).closest("tr").find('td:eq(1)').text());
-                $('#user-account_balance').val($(this).closest("tr").find('td:eq(2)').text());
-                $('#user-account_status').val($(this).closest("tr").find('td:eq(3)').text());
-
-            });
-        });
+</div>
+@endsection @section('script')
+<script>
+    $(document).on('focus', 'input' , function() {
+        $(this).removeAttr('placeholder');
     });
-    </script>
-</body>
+    $(document).on('focusout', 'input', function(){
+        $(this).attr('placeholder');
+    });
 
-</html>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    var url_user_store = '{{ route('user.store')}}';
+    $('#add').on('click', function(e) {
+
+        var name = $('#name').val();
+        var email = $('#email').val();
+
+        $.ajax({
+
+            cache: false,
+            method: 'POST',
+            dataType: 'JSON',
+            url: url_user_store,
+            data: {
+                name: name,
+                email: email,
+            },
+            success: function() {
+                window.location.reload(true);
+            },
+            error: function(data) {
+                console.log('ee', data);
+            }
+        });
+
+        e.preventDefault();
+    });
+</script>
+@endsection

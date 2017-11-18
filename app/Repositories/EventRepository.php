@@ -45,47 +45,38 @@ class EventRepository implements EventInterface
      * @param  [type] $request [description]
      * @return [type]          [description]
      */
-    public function create($request)
+    public function create($data)
     {
-        if ($request->ajax()) {
 
-            $event = new Event;
+        $event = new Event;
 
-            $event->admin_id = Auth::user()->id;
-            $event->title = $request['event-name'];
-            $event->information = $request['event-detail'];
-            $event->status = $request['event-status'];
+        $event->admin_id = Auth::user()->id;
+        $event->title = $data['title'];
+        $event->description = $data['description'];
+        $event->status = $data['status'];
 
-            $images = Input::hasFile('images');
-            //save image
-            if ($images) {
-                $filesArray = $this->imageRepository->saveEvent();
-                if (!$event->createMany($filesArray)) {
-                    return $result = false;
-                };
-            }
-
-            $event->save();
+        $images = Input::hasFile('images');
+        //save image
+        if ($images) {
+            $filesArray = $this->imageRepository->saveEvent();
+            if (!$event->createMany($filesArray)) {
+                return $result = false;
+            };
         }
 
-        return $event;
+        return $event->save();
 
     }
 
-    public function modified($request)
+    public function modified($data)
     {
+        $event = Event::findOrFail($data['id']);
 
-        if ($request->ajax()) {
+        $event->admin_id = Auth::user()->id;
+        $event->title = $data['title'];
+        $event->description = $data['description'];
+        $event->status = $data['status'];
 
-            $event = Event::findOrFail($request->get('id'));
-
-            $event->admin_id = Auth::user()->id;
-            $event->title = $request->get('title');
-            $event->description = $request->get('description');
-            $event->status = $request->get('status');
-
-            $event->save();
-        }
-        return response($event);
+        return $event->save();
     }
 }

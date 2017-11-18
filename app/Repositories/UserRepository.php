@@ -29,12 +29,12 @@ class UserRepository implements UserInterface
      * @param  array $request
      * @return App\Models\User
      */
-    public function create(array $request)
+    public function create(array $data)
     {
         return User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password']),
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt('123456'),
         ]
         );
 

@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Interfaces\EventInterface;
 use App\Interfaces\ImageInterface;
-use App\Models\Event;
-use Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 
 class EventController extends Controller
 {
@@ -32,6 +29,11 @@ class EventController extends Controller
         return view('event.index', compact('events'));
     }
 
+    public function content()
+    {
+        $events = $this->eventRepository->getAll();
+        return view('event.content', compact('events'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -52,26 +54,11 @@ class EventController extends Controller
     {
 
         if ($request->ajax()) {
-            $event = new Event;
-
-            $event->admin_id = Auth::user()->id;
-            $event->title = $request->get('title');
-            $event->description = $request->get('description');
-            $event->status = $request->get('status');
-
-            $images = Input::hasFile('images');
-            //save image
-            if ($images) {
-                $filesArray = $this->imageRepository->saveEvent();
-                if (!$event->createMany($filesArray)) {
-                    return $result = false;
-                };
-            }
-            // $event->image_path = $filesArray;
-            $event->save();
+            $data = $request->all();
+            $event = $this->eventRepository->create($data);
         }
 
-        return response($event);
+        return response()->json($event, 200);
     }
 
     /**
@@ -106,19 +93,12 @@ class EventController extends Controller
     public function update(Request $request)
     {
         if ($request->ajax()) {
-            // $event = Event::find(1);
-            $event = Event::findOrFail($request->get('id'));
 
-            $event->admin_id = Auth::user()->id;
-            $event->title = $request->get('title');
-            $event->description = $request->get('description');
-            $event->status = $request->get('status');
-
-            $event->save();
+            $data = $request->all();
+            $event = $this->eventRepository->modified($data);
         }
-        // $event = $this->eventRepository->modified($request->all());
-        return response($event);
-        // return redirect()->route('event.index');
+
+        return response()->json($event, 200);
     }
 
     /**

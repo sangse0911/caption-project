@@ -32,8 +32,6 @@ Route::prefix('admin')->group(function () {
 Route::get('auth/facebook', 'Auth\LoginController@redirectToProvider')->name('login_with_facebook');
 Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get('/users', ['as' => 'users.index', 'uses' => 'UserController@index']);
-// Route::post('/users/create', 'UserController@store')->name('user_save');
 // Route::get('/users/{id}/edit', 'UserController@edit')->name('user_edit');
 // Route::put('/users/update', 'UserController@update')->name('user_update');
 
@@ -45,6 +43,8 @@ Route::get('/hot-book', ['as' => 'book.hot', 'uses' => 'BookController@hotBook']
 Route::get('/content-post', ['as' => 'content.post', 'uses' => 'PostController@contentPost']);
 
 Route::middleware(['auth:admin'])->group(function () {
+    Route::get('/users', ['as' => 'users.index', 'uses' => 'UserController@index']);
+    Route::post('/users/store', 'UserController@store')->name('user.store');
 
     Route::get('/bookself', 'BookselfController@index')->name('bookself.index');
     Route::get('/bookself/create', 'BookselfController@create')->name('bookself.create');
@@ -79,9 +79,10 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/event/store', ['uses' => 'EventController@store'])->name('event.store');
     Route::put('/event/update', ['as' => 'event.update', 'uses' => 'EventController@update']);
     Route::get('/event/{id}', ['as' => 'event.show', 'uses' => 'EventController@show']);
+    Route::get('/content', ['as' => 'event.content', 'uses' => 'EventController@content']);
 
+    Route::get('/event', ['as' => 'event.index', 'uses' => 'EventController@index']);
 });
-Route::get('/event', ['as' => 'event.index', 'uses' => 'EventController@index']);
 
 Route::get('/api/user', ['as' => 'api.user.index', 'uses' => 'UserController@indexApi']);
 Route::get('/users/content', ['as' => 'users.content', 'uses' => 'UserController@getContent']);

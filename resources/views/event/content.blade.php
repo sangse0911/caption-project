@@ -1,4 +1,4 @@
-@extends('admin.master') @section('content')
+
 <div class="content-area py-1">
     <div class="container-fluid">
         <ol class="breadcrumb no-bg mb-1">
@@ -8,7 +8,7 @@
                 </button>
             </div>
         </ol>
-        <form enctype="multipart/form-data" type="hidden" name="" id="" method="POST">
+        {{-- <form enctype="multipart/form-data" type="hidden" name="" id="" method="POST">
             {{ csrf_field() }}
             <div id="myModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-lg">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        </form> --}}
         <div class="box box-block bg-white">
             <table class="table table-striped table-bordered dataTable" id="table-1">
                 <thead>
@@ -77,105 +77,3 @@
         </div>
     </div>
 </div>
-@endsection @section('script')
-<script>
-$(document).ready(function() {
-
-  	$.ajaxSetup({
-	    headers: {
-	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-	    }
-	});
-    var url_event_store = '{{ route('event.store')}}';
-    $('#add').on('click', function(e) {
-
-        var title = $('#event-name').val();
-        var description = $('#event-detail').val();
-        var status = $('input[name=event-status]:checked').val();
-        var form = new FormData(document.getElementById('image'));
-        var file = document.getElementById('image').files[0];
-        if (file) {
-            form.append('image', file);
-        }
-        $.ajax({
-
-            cache: false,
-            method: 'POST',
-            dataType: 'JSON',
-            url: url_event_store,
-            data: {
-                title: title,
-                description: description,
-                status: status,
-            },
-            success: function() {
-                window.location.reload(true);
-            },
-            error: function(data) {
-                console.log('ee', data);
-            }
-        });
-        // console.log(data),
-        e.preventDefault();
-    });
-});
-</script>
-<script>
- 	$('.btn-update').on('click', function(e) {
-    	var event_id = e.currentTarget.id.substring(7);
-    	$.ajax({
-    		cache: false,
-    		method: 'GET',
-    		dataType: 'JSON',
-    		url: '/event/' + event_id,
-    		success: function(data){
-    			$('.modal-title').text('Thay doi su kien');
-    			$('#event-id').val(data['id']);
-    			$('#event-name').val(data['title']);
-    			$('#event-detail').val(data['description']);
-    			$('input[type=radio][name="event-status"][value='+data['status']+']').prop('checked', true);
-    			$('#add').css("display","none");
-    			$('#update').removeAttr('style');
-    		},
-    		error: function(data){
-    			console.log('ee', data);
-    		}
-    	});
-    });
-    var url_event_update = '{{ route('event.update')}}';
-
-	$('#update').on('click', function(e){
-		var title = $('#event-name').val();
-        var description = $('#event-detail').val();
-        var status = $('input[name=event-status]:checked').val();
-        var form = new FormData(document.getElementById('image'));
-        var file = document.getElementById('image').files[0];
-        var id = $('#event-id').val();
-        if (file) {
-            form.append('image', file);
-        }
-        $.ajax({
-
-            cache: false,
-            method: 'PUT',
-            dataType: 'JSON',
-            url: url_event_update,
-            data: {
-            	id: id,
-                title: title,
-                description: description,
-                status: status,
-            },
-            success: function(data) {
-            	// console.log('ss', data);
-                window.location.reload(true);
-            },
-            error: function(data) {
-                console.log('ee', data);
-            }
-        });
-        // console.log(data),
-        e.preventDefault();
-	});
-</script>
-@endsection

@@ -2,16 +2,11 @@
     <div class="container">
         <div id="primary" class="content-area">
             <main id="main" class="site-main">
+                @yield('part-content')
+
+
                 @yield('carousel') @yield('categories') @yield('first')
-                <!-- ============================================================= 2-1-2 Product Grid : End============================================================= -->
-                <div class="home-v1-banner-block animate-in-view fadeIn animated" data-animation="fadeIn">
-                    <div class="home-v1-fullbanner-ad fullbanner-ad" style="margin-bottom: 70px">
-                        <a href="#">
-                                    <img src="{{ asset('assets/images/blank.gif') }}" data-echo="assets/images/banner/home-v1-banner.png" class="img-responsive" alt="">
-                                </a>
-                    </div>
-                </div>
-                <!-- /.home-v1-banner-block -->
+
                 @yield('recently')
                 @yield('best-sell')
                 @yield('event')
