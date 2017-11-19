@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\AdminInterface;
 use App\Models\Admin;
 
 class AdminController extends Controller
 {
+
+    protected $adminRepository;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(AdminInterface $adminRepository)
     {
         $this->middleware('auth:admin', ['except' => 'adminLogout']);
+        $this->adminRepository = $adminRepository;
     }
 
     /**
@@ -26,6 +30,10 @@ class AdminController extends Controller
         return view('admin.master');
     }
 
+    public function indexBook()
+    {
+        return view('admin.books.index');
+    }
     /**
      * Create a new user instance after a valid registration.
      *

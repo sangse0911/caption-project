@@ -27,6 +27,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.show');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login');
     Route::post('/logout', 'Auth\AdminLoginController@adminLogout')->name('admin_logout');
+
 });
 
 Route::get('auth/facebook', 'Auth\LoginController@redirectToProvider')->name('login_with_facebook');
@@ -45,6 +46,8 @@ Route::get('/content-post', ['as' => 'content.post', 'uses' => 'PostController@c
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/users', ['as' => 'users.index', 'uses' => 'UserController@index']);
     Route::post('/users/store', 'UserController@store')->name('user.store');
+
+    Route::get('/admin/books', ['as' => 'admin.book.index', 'uses' => 'AdminController@indexBook']);
 
     Route::get('/bookself', 'BookselfController@index')->name('bookself.index');
     Route::get('/bookself/create', 'BookselfController@create')->name('bookself.create');
