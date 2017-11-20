@@ -41,6 +41,6 @@ class ProjectServiceProvider extends ServiceProvider
         $this->app->singleton(\App\Interfaces\PostInterface::class, \App\Repositories\PostRepository::class);
         $this->app->singleton(\App\Interfaces\WishlistInterface::class, \App\Repositories\WishListRepository::class);
         $this->app->singleton(\App\Interfaces\EventInterface::class, \App\Repositories\EventRepository::class);
-
+        $this->app->singleton(\App\Interfaces\RoleInterface::class, \App\Repositories\RoleRepository::class);
     }
 }

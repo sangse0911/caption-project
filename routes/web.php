@@ -40,6 +40,12 @@ Route::get('/hot-book', ['as' => 'book.hot', 'uses' => 'BookController@hotBook']
 
 Route::get('/content-post', ['as' => 'content.post', 'uses' => 'PostController@contentPost']);
 
+Route::middleware(['auth:admin', 'super_admin'])->group(function () {
+    Route::get('/role', 'RoleController@index')->name('super.admin.index');
+    Route::post('/role/store', 'RoleController@store')->name('super.admin.store');
+    Route::put('/role/update', 'RoleController@update')->name('super.admin.update');
+    Route::get('/role/{id}', 'RoleController@show')->name('super.admin.show');
+});
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/users', ['as' => 'users.index', 'uses' => 'UserController@index']);
     Route::post('/users/store', 'UserController@store')->name('user.store');

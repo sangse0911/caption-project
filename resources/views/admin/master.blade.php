@@ -37,6 +37,7 @@
         <div class="site-sidebar">
             <div class="custom-scroll custom-scroll-light">
                 <ul class="sidebar-menu">
+                    @if(Auth::user()->role_id == 1)
                     <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-icon"><i class="fa fa-user"></i></span>
@@ -46,9 +47,10 @@
                             <li><a href="sachban">Lien he</a></li>
                             <li><a href="themsachban">Danh sach quan li</a></li>
                             <li><a href="themsachban">Danh sach quyen han</a></li>
-                            <li><a href="themsachban">Danh sach </a></li>
+                            <li><a href="{{ route('super.admin.index') }}">Danh sach </a></li>
                         </ul>
                     </li>
+
                     <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
@@ -133,6 +135,92 @@
                             <li><a href="{{ URL::route('event.index') }}">Danh sach</a></li>
                         </ul>
                     </li>
+                    @else
+                     <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="s-icon"><i class="fa fa-book"></i></span>
+                            <span class="s-text">Quan li gia sach</span>
+                        </a>
+                        <ul>
+                            <li><a href="{{ route('admin.bookshelf.index') }}">Danh Sách</a></li>
+                        </ul>
+                    </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="s-icon"><i class="fa fa-book"></i></span>
+                            <span class="s-text">Quan li sach</span>
+                        </a>
+                        <ul>
+                            <li><a href="{{ route('admin.book.index') }}">Danh Sách</a></li>
+                            <li><a href="themsachban">Sach ban</a></li>
+                            <li><a href="themsachban">Sach thue</a></li>
+                        </ul>
+                    </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="s-icon"><i class="fa fa-users"></i></span>
+                            <span class="s-text">Nguoi dung</span>
+                        </a>
+                        <ul>
+                            <li><a href="{{ route('users.index') }}">Danh sach</a></li>
+                            <li><a href="khachmua">Khách Mua</a></li>
+                            <li><a href="khachban">Khách Bán</a></li>
+                            <li><a href="khachchothue">Khách Cho Thuê</a></li>
+                        </ul>
+                    </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="s-icon"><i class="fa fa-users"></i></span>
+                            <span class="s-text">Khách Hàng</span>
+                        </a>
+                        <ul>
+                            <li><a href="khachthue">Khách Thuê</a></li>
+                            <li><a href="khachmua">Khách Mua</a></li>
+                            <li><a href="khachban">Khách Bán</a></li>
+                            <li><a href="khachchothue">Khách Cho Thuê</a></li>
+                        </ul>
+                    </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="tag tag-danger">10</span>
+                            <span class="s-icon"><i class="fa fa-cart-arrow-down"></i></span>
+                            <span class="s-text">Đơn Hàng</span>
+                        </a>
+                        <ul>
+                            <li><a href="donghangban">Mua Sách</a></li>
+                            <li><a href="donhangthue">Thuê Sách</a></li>
+                        </ul>
+                    </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="tag tag-danger">10</span>
+                            <span class="s-icon"><i class="fa fa-bars"></i></span>
+                            <span class="s-text">Góc Sách</span>
+                        </a>
+                        <ul>
+                            <li><a href="gocsachbaidang">Bài Đăng</a></li>
+                            <li><a href="gocsachdanhsach">Danh Sách</a></li>
+                            <li><a href="gocsachthanhvien">Thành Viên</a></li>
+                        </ul>
+                    </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="tag tag-danger">10</span>
+                            <span class="s-icon"><i class="fa fa-bars"></i></span>
+                            <span class="s-text">Su kien</span>
+                        </a>
+                        <ul>
+                            <li><a href="{{ URL::route('event.index') }}">Danh sach</a></li>
+                        </ul>
+                    </li>
+                    @endif
                 </ul>
             </div>
         </div>
