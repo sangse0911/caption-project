@@ -22,13 +22,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::prefix('admin')->group(function () {
-    Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
-    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.show');
-    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login');
-    Route::post('/logout', 'Auth\AdminLoginController@adminLogout')->name('admin_logout');
-
-});
+Route::get('/admin', ['as' => 'admin.index', 'uses' => 'AdminController@index'])->middleware('auth:admin');
+Route::get('/admin/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.show');
+Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login');
+Route::post('/admin/logout', 'Auth\AdminLoginController@adminLogout')->name('admin_logout')->middleware('auth:admin');
 
 Route::get('auth/facebook', 'Auth\LoginController@redirectToProvider')->name('login_with_facebook');
 Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallback');
@@ -50,7 +47,12 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/books', ['as' => 'admin.book.index', 'uses' => 'AdminController@indexBook']);
     Route::get('/admin/books/{id}', ['as' => 'admin.book.show', 'uses' => 'AdminController@showBook']);
 
-    Route::get('/bookself', 'BookselfController@index')->name('bookself.index');
+    Route::get('/admin/bookshelves', 'BookshelfController@index')->name('admin.bookshelf.index');
+    Route::post('/bookshelf/store', 'BookshelfController@store')->name('bookshelf.store');
+    Route::get('/bookshelf/{id}', 'BookshelfController@show')->name('bookshelf.show');
+    Route::put('/bookshelf/update', 'BookshelfController@update')->name('bookshelf.update');
+
+    Route::get('/bookself', 'BookshelfController@index')->name('bookself.index');
     Route::get('/bookself/create', 'BookselfController@create')->name('bookself.create');
     Route::post('/bookself/create', 'BookselfController@store')->name('bookself.save');
     Route::get('/bookself/{slug}', ['as' => 'bookself.single', 'uses' => 'BookselfController@getStatus'])

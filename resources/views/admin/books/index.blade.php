@@ -71,7 +71,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="publishing-year">Nam xuat ban</label>
-                                <input type="number" class="form-control" name="publishing-year" id="publishing-year" value="" placeholder="Nam xuat ban">
+                                <input type="text" class="form-control" name="publishing-year" id="publishing-year" value="" placeholder="Nam xuat ban">
                             </div>
                             <div class="form-group">
                                 <label for="republish">Tai ban lan</label>
@@ -83,9 +83,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-info btn-default  b-a-0 waves-effect waves-light" id="add">Them</button>
-                            <button type="button" class="btn btn-info btn-default  b-a-0 waves-effect waves-light" style="display: none;" id="update">Luu</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Dong</button>
+                            <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="update">Luu</button>
+                            <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Dong</button>
                         </div>
                     </div>
                 </div>
@@ -115,11 +114,24 @@
                         <td>{{ $book->author }}</td>
                         <td>{{ $book->publishing_year }}</td>
                         <td>{{ $book->republish }}</td>
-                        <td>
-                        	<button type="button" class="btn btn-info btn-default  btn-view " id="view-{{ $book->id }}" data-toggle="modal" data-target="#myModal">Xem</button>
-                            <button type="button" class="btn btn-info btn-default  btn-update " id="update-{{ $book->id }}" data-toggle="modal" data-target="#myModal">Sua</button>
-                            <button type="button" class="btn btn-info btn-default  btn-delete " id="delete-{{ $book->id }}">Xoa</button>
-                        </td>
+                        <td align="center">
+                            <button id="{{ $book->id }}" type="button" class="btn btn-warning btn-sm label-left b-a-0 waves-effect waves-light">
+                            <span class="btn-label"><i class="fa fa-eye" ></i></span>
+                            Xem
+                        </button>
+                        &nbsp
+                        <button type="button" id="update-{{ $book->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
+                            <span class="btn-label"><i class="fa fa-edit"></i></span>
+                            Sửa
+                        </button>
+                        &nbsp
+                        <button id="view-{{ $book->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
+                            <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span>
+                            Xóa
+                        </button>
+
+                    </td>
+
                     </tr>
                     @endforeach
                 </tbody>
@@ -130,12 +142,13 @@
 @endsection
 @section('script')
 <script>
-    $("select").multipleSelect({
-        filter: true
-    });
+   $("#category").select2({closeOnSelect:false});
 </script>
 <script>
-	 $(document).on('focus', 'input' , function() {
+
+</script>
+<script>
+ 	$(document).on('focus', 'input' , function() {
         $(this).removeAttr('placeholder');
     });
 	 $('.btn-update').on('click', function(e) {
@@ -150,9 +163,9 @@
     			console.log(data);
     			$('.modal-title').text('Cap nhat sach');
     			$('#name').val(data['book']['name']);
-			  	$('select').val(['1','2']);
+			  	$('.category option[value=2]').attr('selected','selected');
+    			$('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
     			$('#introduce').val(data['book']['introduce']);
-    			$('#description').val(data['book']['description']);
     			$('#bookshelf-id').val(data['book']['bookself_id']);
     			$('#price').val(data['book']['price']);
     			$('#author').val(data['book']['author']);
@@ -161,7 +174,6 @@
     			$('#publishing-year').val(data['book']['publishing_year']);
     			$('#republish').val(data['book']['republish']);
     			$('#ISBN').val(data['book']['isbn']);
-
     		},
     		error: function(data){
     			console.log('ee', data);

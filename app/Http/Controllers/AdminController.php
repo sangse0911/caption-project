@@ -18,7 +18,7 @@ class AdminController extends Controller
      */
     public function __construct(AdminInterface $adminRepository,
         BookInterface $bookRepository) {
-        $this->middleware('auth:admin', ['except' => 'adminLogout']);
+        // $this->middleware('auth:admin', ['except' => 'adminLogout']);
         $this->adminRepository = $adminRepository;
         $this->bookRepository = $bookRepository;
     }

@@ -10,17 +10,17 @@
     <!-- Title -->
     <title>@yield('title')</title>
     <!-- Vendor CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/bootstrap4/css/bootstrap.min.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/themify-icons/themify-icons.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/font-awesome/css/font-awesome.min.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/animate.css/animate.min.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/jscrollpane/jquery.jscrollpane.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/waves/waves.min.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/switchery/dist/switchery.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/bootstrap4/css/bootstrap.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/themify-icons/themify-icons.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/font-awesome/css/font-awesome.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/animate.css/animate.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/jscrollpane/jquery.jscrollpane.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/waves/waves.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/switchery/dist/switchery.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/core.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/multiple-select.css') }}">
-    {{-- <link rel="stylesheet" type="text/css" href="{{ URL::to('css/select2.min.css') }}">  --}}
+    {{-- <link rel="stylesheet" type="text/css" href="{{ URL::to('css/multiple-select.css') }}"> --}}
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/select2.min.css') }}">
      @yield('css') @yield('css')
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,6 +49,16 @@
                             <li><a href="themsachban">Danh sach quan li</a></li>
                             <li><a href="themsachban">Danh sach quyen han</a></li>
                             <li><a href="themsachban">Danh sach </a></li>
+                        </ul>
+                    </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="s-icon"><i class="fa fa-book"></i></span>
+                            <span class="s-text">Quan li gia sach</span>
+                        </a>
+                        <ul>
+                            <li><a href="{{ route('admin.bookshelf.index') }}">Danh Sách</a></li>
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -201,21 +211,50 @@
         </div>
     </div>
     <!-- Vendor JS -->
-    <script type="text/javascript" src="{{ URL::to('css/admin/jquery/jquery-1.12.3.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admin/tether/js/tether.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admin/bootstrap4/js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admin/detectmobilebrowser/detectmobilebrowser.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admin/jscrollpane/jquery.mousewheel.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admin/jscrollpane/mwheelIntent.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admin/jscrollpane/jquery.jscrollpane.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admin/jquery-fullscreen-plugin/jquery.fullscreen-min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admin/waves/waves.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admin/switchery/dist/switchery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('js/admin/app.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('js/admin/demo.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('css/admins/jquery/jquery-1.12.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('css/admins/tether/js/tether.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('css/admins/bootstrap4/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('css/admins/detectmobilebrowser/detectmobilebrowser.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('css/admins/jscrollpane/jquery.mousewheel.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('css/admins/jscrollpane/mwheelIntent.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('css/admins/jscrollpane/jquery.jscrollpane.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('css/admins/jquery-fullscreen-plugin/jquery.fullscreen-min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('css/admins/waves/waves.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('css/admins/switchery/dist/switchery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admins/app.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admins/demo.js') }}"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="{{ URL::to('js/multiple-select.js') }}"></script>
-    {{-- <script type="text/javascript" src="{{ URL::to('js/select2.full.min.js') }}"></script> --}}
+    {{-- <script type="text/javascript" src="{{ URL::to('js/multiple-select.js') }}"></script> --}}
+    <script type="text/javascript" src="{{ URL::to('js/select2.full.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('admins/js/dropify.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/jquery.flot.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/jquery.flot.resize.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/jquery.flot.tooltip.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/curvedLines.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/tinycolor.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/jquery.sparkline.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/raphael.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/morris.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/jquery-jvectormap-2.0.3.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/jquery-jvectormap-world-mill.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/jquery.peity.js') }}"></script>
+
+<script type="text/javascript" src="{{ URL::to('admins/js/ckeditor/ckeditor.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/forms-upload.js') }}"></script>
+{{-- table --}}
+<script type="text/javascript" src="{{ URL::to('admins/js/jquery.dataTables.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/dataTables.bootstrap4.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/dataTables.responsive.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/responsive.bootstrap4.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/dataTables.buttons.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/buttons.bootstrap4.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/jszip.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/pdfmake.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/vfs_fonts.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/buttons.html5.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/buttons.print.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/buttons.colVis.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::to('admins/js/tables-datatable.js') }}"></script>
     @yield('script')
     <script>
         (function($) {
