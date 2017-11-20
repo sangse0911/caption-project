@@ -19,9 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/switchery/dist/switchery.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/core.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
-    {{-- <link rel="stylesheet" type="text/css" href="{{ URL::to('css/multiple-select.css') }}"> --}}
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/select2.min.css') }}">
-     @yield('css') @yield('css')
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/select2.min.css') }}"> @yield('css') @yield('css')
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -211,60 +209,58 @@
         </div>
     </div>
     <!-- Vendor JS -->
-    <script type="text/javascript" src="{{ URL::to('css/admins/jquery/jquery-1.12.3.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admins/tether/js/tether.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admins/bootstrap4/js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admins/detectmobilebrowser/detectmobilebrowser.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admins/jscrollpane/jquery.mousewheel.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admins/jscrollpane/mwheelIntent.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admins/jscrollpane/jquery.jscrollpane.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admins/jquery-fullscreen-plugin/jquery.fullscreen-min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admins/waves/waves.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/admins/switchery/dist/switchery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('js/admins/app.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('js/admins/demo.js') }}"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    {{-- <script type="text/javascript" src="{{ URL::to('js/multiple-select.js') }}"></script> --}}
-    <script type="text/javascript" src="{{ URL::to('js/select2.full.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('admins/js/dropify.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/jquery.flot.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/jquery.flot.resize.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/jquery.flot.tooltip.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/curvedLines.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/tinycolor.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/jquery.sparkline.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/raphael.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/morris.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/jquery-jvectormap-2.0.3.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/jquery-jvectormap-world-mill.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/jquery.peity.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/jquery-1.12.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/tether.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/detectmobilebrowser.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/jquery.mousewheel.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/mwheelIntent.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/jquery.jscrollpane.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/jquery.fullscreen-min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/waves.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/switchery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/app.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/demo.js') }}"></script>
 
-<script type="text/javascript" src="{{ URL::to('admins/js/ckeditor/ckeditor.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/forms-upload.js') }}"></script>
-{{-- table --}}
-<script type="text/javascript" src="{{ URL::to('admins/js/jquery.dataTables.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/dataTables.bootstrap4.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/dataTables.responsive.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/responsive.bootstrap4.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/dataTables.buttons.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/buttons.bootstrap4.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/jszip.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/pdfmake.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/vfs_fonts.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/buttons.html5.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/buttons.print.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/buttons.colVis.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('admins/js/tables-datatable.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/select2.full.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/dropify.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/jquery.flot.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/jquery.flot.resize.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/jquery.flot.tooltip.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/curvedLines.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/tinycolor.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/jquery.sparkline.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/raphael.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/morris.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/jquery-jvectormap-2.0.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/jquery-jvectormap-world-mill.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/jquery.peity.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/forms-upload.js') }}"></script>
+    {{-- table --}}
+    <script type="text/javascript" src="{{ URL::to('js/admin/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/dataTables.responsive.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/responsive.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/dataTables.buttons.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/buttons.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/jszip.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/pdfmake.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/vfs_fonts.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/buttons.html5.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/buttons.print.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/buttons.colVis.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/admin/tables-datatable.js') }}"></script>
     @yield('script')
     <script>
-        (function($) {
-            $('.with-sub a').on('click', function(e) {
-                e.preventDefault();
-                var page = $(this).attr('href');
-                $('.site-content').load(page);
-            });
+    (function($) {
+        $('.with-sub a').on('click', function(e) {
+            e.preventDefault();
+            var page = $(this).attr('href');
+            $('.site-content').load(page);
         });
+    });
     </script>
-
 </body>
+
 </html>
