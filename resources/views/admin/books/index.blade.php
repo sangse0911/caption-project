@@ -1,6 +1,4 @@
-@extends('admin.master')
-
-@section('content')
+@extends('admin.master') @section('content')
 <div class="content-area py-1">
     <div class="container-fluid">
         <ol class="breadcrumb no-bg mb-1">
@@ -18,21 +16,71 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Them moi nguoi dung</h4>
+                            <h4 class="modal-title">Chinh sua sach</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="name">Ten nguoi dung</label>
+                                <label for="name">Ten sach</label>
                                 <input type="hidden" name="id" value="" id="id">
-                                <input type="text" name="name" class="form-control" id="name" value="" placeholder="Ten nguoi dung">
+                                <input type="text" name="name" class="form-control" id="name" value="" placeholder="Ten sach">
+                            </div>
+                            <div class="form-group">
+                                <label for="categories">The loai sach</label>
+                                <select id="category" multiple="multiple" name="categories[]" class="category" style="width: 100%;">
+                                	@foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="introduce">Gioi thieu ve sach</label>
+                                <input type="text" name="introduce" class="form-control" id="introduce" value="" placeholder="Gioi thieu ve sach">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Mo ta ve sach</label>
+                                <textarea class=" form-control ckeditor" id="description" name="description" rows="10" placeholder="Mo ta ve sach"></textarea>
 
                             </div>
-                             <div class="form-group">
-                                <label for="email">Email nguoi dung</label>
-                                <input type="email" name="email" class="form-control" id="email" value="" placeholder="Email nguoi dung">
-
+                            <div class="form-group">
+                                <label for="bookshelf-id">Vi tri cua sach</label>
+                                <input type="text" class="form-control" name="bookshelf-id" id="bookshelf-id" value="" placeholder="Vi tri cua sach">
                             </div>
-
+                            <div class="form-group">
+                                <label for="price">Gia cua sach</label>
+                                <input type="number" class="form-control" name="price" id="price" value="" placeholder="Gia cua sach">
+                            </div>
+                            <div class="form-group">
+                                <label for="author">Tac gia</label>
+                                <input type="text" class="form-control" name="author" id="author" value="" placeholder="Tac gia">
+                            </div>
+                            <label class="radio-inline">
+                                <input type="radio" name="status" value="0">Khong san sang</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="status" value="1">San sang</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="status" value="2">Dang </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="status" value="3">Da ban</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="status" value="4">Da cho thue</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="status" value="5">Da tra lai</label>
+                            <div class="form-group">
+                                <label for="publishing-company">Nha xuat ban</label>
+                                <input type="text" class="form-control" name="publishing-company" id="publishing-company" value="" placeholder="Nha xuat ban">
+                            </div>
+                            <div class="form-group">
+                                <label for="publishing-year">Nam xuat ban</label>
+                                <input type="number" class="form-control" name="publishing-year" id="publishing-year" value="" placeholder="Nam xuat ban">
+                            </div>
+                            <div class="form-group">
+                                <label for="republish">Tai ban lan</label>
+                                <input type="number" class="form-control" name="republish" id="republish" value="" placeholder="Tai ban lan thu">
+                            </div>
+                            <div class="form-group">
+                                <label for="ISBN">Ma so sach</label>
+                                <input type="text" class="form-control" name="ISBN" id="ISBN" value="" placeholder="ISBN">
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-info btn-default  b-a-0 waves-effect waves-light" id="add">Them</button>
@@ -68,11 +116,9 @@
                         <td>{{ $book->publishing_year }}</td>
                         <td>{{ $book->republish }}</td>
                         <td>
-                            <button type="button" class="btn btn-info btn-default  btn-update "
-                            id="update-{{ $book->id }}" data-toggle="modal" data-target="#myModal">Sua</button>
-                            <button type="button" class="btn btn-info btn-default  btn-delete "
-                            id="delete-{{ $book->id }}">Xoa</button>
-
+                        	<button type="button" class="btn btn-info btn-default  btn-view " id="view-{{ $book->id }}" data-toggle="modal" data-target="#myModal">Xem</button>
+                            <button type="button" class="btn btn-info btn-default  btn-update " id="update-{{ $book->id }}" data-toggle="modal" data-target="#myModal">Sua</button>
+                            <button type="button" class="btn btn-info btn-default  btn-delete " id="delete-{{ $book->id }}">Xoa</button>
                         </td>
                     </tr>
                     @endforeach
@@ -81,4 +127,46 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    $("select").multipleSelect({
+        filter: true
+    });
+</script>
+<script>
+	 $(document).on('focus', 'input' , function() {
+        $(this).removeAttr('placeholder');
+    });
+	 $('.btn-update').on('click', function(e) {
+    	var book_id = e.currentTarget.id.substring(7);
+
+    	$.ajax({
+    		cache: false,
+    		method: 'GET',
+    		dataType: 'JSON',
+    		url: '/admin/books/' + book_id,
+    		success: function(data){
+    			console.log(data);
+    			$('.modal-title').text('Cap nhat sach');
+    			$('#name').val(data['book']['name']);
+			  	$('select').val(['1','2']);
+    			$('#introduce').val(data['book']['introduce']);
+    			$('#description').val(data['book']['description']);
+    			$('#bookshelf-id').val(data['book']['bookself_id']);
+    			$('#price').val(data['book']['price']);
+    			$('#author').val(data['book']['author']);
+    			$('input[type=radio][name="status"][value='+data['book']['status']+']').prop('checked', true);
+    			$('#publishing-company').val(data['book']['publishing_company']);
+    			$('#publishing-year').val(data['book']['publishing_year']);
+    			$('#republish').val(data['book']['republish']);
+    			$('#ISBN').val(data['book']['isbn']);
+
+    		},
+    		error: function(data){
+    			console.log('ee', data);
+    		}
+    	});
+    });
+</script>
 @endsection

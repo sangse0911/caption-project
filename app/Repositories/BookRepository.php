@@ -6,6 +6,7 @@ use App\Interfaces\BookInterface;
 use App\Interfaces\ContractInterface;
 use App\Interfaces\ImageInterface;
 use App\Models\Book;
+use App\Models\BookCategory;
 use App\Models\Category;
 use Illuminate\Support\Facades\Input;
 
@@ -68,7 +69,11 @@ class BookRepository implements BookInterface
 
     public function find($id)
     {
+        $book = Book::find($id);
+        $cate_book = BookCategory::find($book->id);
 
+        return $array = ['book' => $book,
+            'categories' => $cate_book];
     }
 
     /**
@@ -122,5 +127,13 @@ class BookRepository implements BookInterface
         }
 
         return $book;
+    }
+
+    public function modified($data)
+    {
+        $book = Book::findOrFail($data['id']);
+
+        $book->admin_id = Auth::user()->id;
+
     }
 }

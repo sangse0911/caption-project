@@ -98,10 +98,7 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $array = $this->bookService->getById($id);
-        $product = $array['product'];
-        $image = $array['image'];
-        return true;
+        return $this->bookRepository->find($id);
     }
 
     /**

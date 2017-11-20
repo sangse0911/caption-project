@@ -9,4 +9,5 @@ interface BookInterface
     public function getSellBook();
     public function getRenterBook();
     public function create($request);
+    public function modified($data);
 }

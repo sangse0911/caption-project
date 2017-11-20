@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class CateBook extends Model
+class BookCategory extends Model
 {
     protected $casts = [
         'category_id' => 'int',

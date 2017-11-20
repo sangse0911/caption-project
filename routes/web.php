@@ -48,6 +48,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/users/store', 'UserController@store')->name('user.store');
 
     Route::get('/admin/books', ['as' => 'admin.book.index', 'uses' => 'AdminController@indexBook']);
+    Route::get('/admin/books/{id}', ['as' => 'admin.book.show', 'uses' => 'AdminController@showBook']);
 
     Route::get('/bookself', 'BookselfController@index')->name('bookself.index');
     Route::get('/bookself/create', 'BookselfController@create')->name('bookself.create');
@@ -85,6 +86,9 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/content', ['as' => 'event.content', 'uses' => 'EventController@content']);
 
     Route::get('/event', ['as' => 'event.index', 'uses' => 'EventController@index']);
+    Route::get('/trangquantri', function () {
+        return view('admin.sachban.themsachban');
+    });
 });
 
 Route::get('/api/user', ['as' => 'api.user.index', 'uses' => 'UserController@indexApi']);
@@ -155,9 +159,7 @@ Route::get('/khachban', function () {
 // Route::get('/themsachthue', function () {
 //     return view('admin.sachthue.themsach');
 // });
-// Route::get('/trangquantri', function () {
-//     return view('admin.sachban.themsachban');
-// });
+
 // TEST GIAO DIEN
 // Route::get('/trangchu', function () {
 //     return view('BSO.trangchu');

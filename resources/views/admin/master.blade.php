@@ -17,8 +17,11 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/jscrollpane/jquery.jscrollpane.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/waves/waves.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/switchery/dist/switchery.min.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/core.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" /> @yield('css') @yield('css')
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/core.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/multiple-select.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ URL::to('css/select2.min.css') }}">  --}}
+     @yield('css') @yield('css')
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -55,7 +58,7 @@
                             <span class="s-text">Quan li sach</span>
                         </a>
                         <ul>
-                            <li><a href="#">Danh Sách</a></li>
+                            <li><a href="{{ route('admin.book.index') }}">Danh Sách</a></li>
                             <li><a href="themsachban">Sach ban</a></li>
                             <li><a href="themsachban">Sach thue</a></li>
                         </ul>
@@ -153,8 +156,8 @@
                         </div>
                         <ul class="nav navbar-nav float-md-right">
                             <li class="nav-item dropdown hidden-sm-down">
-                                Xin chào <a href="" style="color: #0CC3D3;">{{ Auth::user()->name }}</a>
-                                <a href="index.html#" data-toggle="dropdown" aria-expanded="false">
+                                Xin chào <a href="#" style="color: #0CC3D3;">{{ Auth::user()->name }}</a>
+                                <a href="#" data-toggle="dropdown" aria-expanded="false">
                                     <span class="avatar box-32">
                                         <img src="img/avatars/1.jpg" alt="">
                                     </span>
@@ -182,9 +185,13 @@
                                 </a>
                             </li>
                         </ul>
-                        <div class="header-form float-md-left ml-md-2" style="height: 60px;margin-top: 0px;padding-top: 10px;">
-                            <a href="#"><img src="img/logo.png" height="40px"><span style="font-size: 20px;font-weight: bold; line-height: 25px;color: #0CC3D3;">BookServiceOnline</span></a>
-                        </div>
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item hidden-sm-down" style="margin-left: 10px;">
+                                <a class="nav-link toggle-fullscreen" href="#">
+                                   <img src="img/logo.png"><span style="font-size: 20px;font-weight: bold; color: #0CC3D3;">BookServiceOnline</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </nav>
             </div>
@@ -207,6 +214,8 @@
     <script type="text/javascript" src="{{ URL::to('js/admin/app.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/admin/demo.js') }}"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="{{ URL::to('js/multiple-select.js') }}"></script>
+    {{-- <script type="text/javascript" src="{{ URL::to('js/select2.full.min.js') }}"></script> --}}
     @yield('script')
     <script>
         (function($) {
@@ -218,7 +227,5 @@
         });
     </script>
 
-
 </body>
-
 </html>

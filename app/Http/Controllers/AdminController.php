@@ -3,21 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\AdminInterface;
+use App\Interfaces\BookInterface;
 use App\Models\Admin;
 
 class AdminController extends Controller
 {
 
     protected $adminRepository;
+    protected $bookRepository;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(AdminInterface $adminRepository)
-    {
+    public function __construct(AdminInterface $adminRepository,
+        BookInterface $bookRepository) {
         $this->middleware('auth:admin', ['except' => 'adminLogout']);
         $this->adminRepository = $adminRepository;
+        $this->bookRepository = $bookRepository;
     }
 
     /**
@@ -33,6 +36,15 @@ class AdminController extends Controller
     public function indexBook()
     {
         return view('admin.books.index');
+    }
+
+    public function showBook($id)
+    {
+        $array = $this->bookRepository->find($id);
+        $book = $array['book'];
+        $categories = $array['categories'];
+
+        return response()->json(['book' => $book, 'categories' => $categories], 200);
     }
     /**
      * Create a new user instance after a valid registration.
