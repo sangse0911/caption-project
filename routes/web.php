@@ -45,6 +45,11 @@ Route::middleware(['auth:admin', 'super_admin'])->group(function () {
     Route::post('/role/store', 'RoleController@store')->name('super.admin.store');
     Route::put('/role/update', 'RoleController@update')->name('super.admin.update');
     Route::get('/role/{id}', 'RoleController@show')->name('super.admin.show');
+
+    Route::get('/admin/contact', 'ContactController@index')->name('admin.contact.index');
+    Route::post('/contact/store', 'ContactController@store')->name('admin.contact.store');
+    Route::put('/contact/update', 'ContactController@update')->name('admin.contact.update');
+    Route::get('/contact/{id}', 'ContactController@show')->name('admin.contact.show');
 });
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/users', ['as' => 'users.index', 'uses' => 'UserController@index']);

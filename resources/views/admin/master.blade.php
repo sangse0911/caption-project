@@ -44,7 +44,7 @@
                             <span class="s-text">Quản Trị Viên</span>
                         </a>
                         <ul>
-                            <li><a href="sachban">Lien he</a></li>
+                            <li><a href="{{ route('admin.contact.index') }}">Lien he</a></li>
                             <li><a href="themsachban">Danh sach quan li</a></li>
                             <li><a href="themsachban">Danh sach quyen han</a></li>
                             <li><a href="{{ route('super.admin.index') }}">Danh sach </a></li>
