@@ -28,7 +28,7 @@
                                 <label for="categories">The loai sach</label>
                                 <select id="category" multiple="multiple" name="categories[]" class="category" style="width: 100%;">
                                 	@foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}" >{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -162,6 +162,7 @@
 
 </script>
 <script>
+
  	$(document).on('focus', 'input' , function() {
         $(this).removeAttr('placeholder');
     });
@@ -177,7 +178,7 @@
     			console.log(data);
     			$('.modal-title').text('Cap nhat sach');
     			$('#name').val(data['book']['name']);
-			  	$('.category option[value=2]').attr('selected','selected');
+                $('#category').val(data['categories']['category_id']).trigger('change');
     			$('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
     			$('#introduce').val(data['book']['introduce']);
     			$('#bookshelf-id').val(data['book']['bookself_id']);
