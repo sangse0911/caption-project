@@ -7,4 +7,5 @@ interface UserInterface
     public function all();
     public function find($id);
     public function create(array $request);
+    public function modified($data);
 }

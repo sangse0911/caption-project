@@ -1,6 +1,4 @@
-@extends('admin.master')
-
-@section('content')
+@extends('admin.master') @section('content')
 <div class="content-area py-1">
     <div class="container-fluid">
         <ol class="breadcrumb no-bg mb-1">
@@ -24,20 +22,21 @@
                             <div class="form-group">
                                 <label for="name">Ten nguoi dung</label>
                                 <input type="hidden" name="id" value="" id="id">
-                                <input type="text" name="name" class="form-control" id="name" value="" placeholder="Ten nguoi dung">
-
+                                <input type="text" name="name" class="form-control" id="name" readonly="true">
                             </div>
-                             <div class="form-group">
-                                <label for="email">Email nguoi dung</label>
-                                <input type="email" name="email" class="form-control" id="email" value="" placeholder="Email nguoi dung">
-
+                            <div class="form-group">
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" value="1">Binh thuong</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" value="2">Cam</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" value="3">Canh cao</label>
                             </div>
-
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-info btn-default  b-a-0 waves-effect waves-light" id="add">Them</button>
-                            <button type="button" class="btn btn-info btn-default  b-a-0 waves-effect waves-light" style="display: none;" id="update">Luu</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Dong</button>
+
+                            <button type="button" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="user-update">Luu</button>
+                            <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Dong</button>
                         </div>
                     </div>
                 </div>
@@ -61,13 +60,14 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->account_status }}</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-default  btn-update "
-                            id="update-{{ $user->id }}" data-toggle="modal" data-target="#myModal">Sua</button>
-                            <button type="button" class="btn btn-info btn-default  btn-delete "
-                            id="delete-{{ $user->id }}">Xoa</button>
-                            <button type="button" class="btn btn-info btn-default  btn-supplier"
-                            id="add-{{ $user->id }}">Nha cung cap</button>
+                        <td align="center">
+                            <button type="button" id="update-{{ $user->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
+                                <span class="btn-label"><i class="fa fa-edit"></i></span> Sửa
+                            </button>
+                            &nbsp
+                            <button id="view-{{ $user->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
+                                <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span> Xóa
+                            </button>
                         </td>
                     </tr>
                     @endforeach
@@ -78,10 +78,10 @@
 </div>
 @endsection @section('script')
 <script>
-    $(document).on('focus', 'input' , function() {
+    $(document).on('focus', 'input', function() {
         $(this).removeAttr('placeholder');
     });
-    $(document).on('focusout', 'input', function(){
+    $(document).on('focusout', 'input', function() {
         $(this).attr('placeholder');
     });
 
@@ -114,6 +114,51 @@
             }
         });
 
+        e.preventDefault();
+    });
+    $('.btn-update').click(function(e) {
+        var user_id = e.currentTarget.id.substring(7);
+        $.ajax({
+            cache: false,
+            method: 'GET',
+            dataType: 'JSON',
+            url: '/admin/users/' + user_id,
+            success: function(data) {
+                $('.modal-title').text('Cap nhat nguoi dung');
+                 $('#id').val(data['id']);
+                $('#name').val(data['name']);
+                $('input[type=radio][name="status"][value='+data['account_status']+']').prop('checked', true);
+            },
+            error: function(data) {
+                console.log('ee',data);
+            }
+        });
+        e.preventDefault();
+    });
+     $('#user-update').on('click', function(e){
+
+        var status =  $('input[name=status]:checked').val();
+        var id = $('#id').val();
+
+        $.ajax({
+
+            cache: false,
+            method: 'PUT',
+            dataType: 'JSON',
+            url: '/admin/users/update',
+            data: {
+                id: id,
+                status: status,
+            },
+            success: function(data) {
+                // console.log('ss', data);
+                window.location.reload(true);
+            },
+            error: function(data) {
+                console.log('ee', data);
+            }
+        });
+        // console.log(data),
         e.preventDefault();
     });
 </script>

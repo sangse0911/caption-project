@@ -18,6 +18,11 @@ class UserRepository implements UserInterface
         return User::all();
     }
 
+    /**
+     * [find description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function find($id)
     {
         return User::find($id);
@@ -37,6 +42,20 @@ class UserRepository implements UserInterface
             'password' => bcrypt('123456'),
         ]
         );
+    }
 
+    /**
+     * [modified description]
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public function modified($data)
+    {
+
+        $user = User::findOrFail($data['id']);
+
+        $user->account_status = $data['status'];
+
+        return $user->save();
     }
 }

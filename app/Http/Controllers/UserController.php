@@ -86,9 +86,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-
+        return $this->userRepository->find($id);
     }
 
     /**
@@ -111,7 +111,11 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-
+        if ($request->ajax()) {
+            $data = $request->all();
+            $user = $this->userRepository->modified($data);
+        }
+        return response()->json($user, 200);
     }
 
     /**

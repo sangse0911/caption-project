@@ -55,6 +55,8 @@ Route::middleware(['auth:admin', 'super_admin'])->group(function () {
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/users', ['as' => 'users.index', 'uses' => 'UserController@index']);
     Route::post('/users/store', 'UserController@store')->name('user.store');
+    Route::get('/admin/users/{id}', 'UserController@show')->name('admin.user.show');
+    Route::put('/admin/users/update', 'UserController@update')->name('admin.user.update');
 
     Route::get('/admin/books', ['as' => 'admin.book.index', 'uses' => 'AdminController@indexBook']);
     Route::get('/admin/books/{id}', ['as' => 'admin.book.show', 'uses' => 'AdminController@showBook']);
