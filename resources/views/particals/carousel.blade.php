@@ -1,7 +1,7 @@
 <div class="home-v2-slider">
     <!-- ========================================== SECTION – HERO : END========================================= -->
     <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
-        <div class="item" style="background-image: url(BSO/assets/images/ok3.jpg);">
+        <div class="item" style="background-image: url(assets/images/banner/ok3.jpg);">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
@@ -24,7 +24,7 @@
             <!-- /.container -->
         </div>
         <!-- /.item -->
-        <div class="item" style="background-image: url(BSO/assets/images/ok1.jpg);">
+        <div class="item" style="background-image: url(assets/images/banner/ok1.jpg);">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
@@ -46,7 +46,7 @@
             <!-- /.container -->
         </div>
         <!-- /.item -->
-        <div class="item" style="background-image: url(BSO/assets/images/oklife.jpg);">
+        <div class="item" style="background-image: url(assets/images/banner/oklife.jpg);">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
@@ -68,11 +68,5 @@
             </div>
             <!-- /.container -->
         </div>
-        <!-- /.item -->
     </div>
-    <!-- /.owl-carousel -->
-    <!-- ========================================= SECTION – HERO : END ========================================= -->
 </div>
-<!-- /.home-v3-slider -->
-<!-- /.deals-and-tabs -->
-<!-- ============================================================= 2-1-2 Product Grid ============================================================= -->

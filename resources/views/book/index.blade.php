@@ -1,4 +1,4 @@
-@extends('layouts.master') @section('title') Shop account game hang dau viet nam @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') @section('part-content')
+@extends('layouts.master') @section('title') Cua hang sach hang dau viet nam @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') @section('part-content')
 <div>
     <ul class="products exclude-auto-height products-6">
     	@foreach($books as $book) @foreach($book->images as $image)
@@ -19,7 +19,7 @@
                         <del><span class="amount">$2,299.00</span></del>
                         </span>
                         </span>
-                        <a rel="nofollow" href="single-product.html" class="button add_to_cart_button">Add to cart</a>
+                        <a rel="nofollow" href="#" class="button add_to_cart_button">Add to cart</a>
                     </div>
                     <!-- /.price-add-to-cart -->
                     <div class="hover-area">

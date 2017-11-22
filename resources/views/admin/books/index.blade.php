@@ -19,12 +19,12 @@
                             <h4 class="modal-title">Chinh sua sach</h4>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group">
+                            <div class="form-group col-sm-6">
                                 <label for="name">Ten sach</label>
                                 <input type="hidden" name="id" value="" id="id">
                                 <input type="text" name="name" class="form-control" id="name" value="" placeholder="Ten sach">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-sm-6">
                                 <label for="categories">The loai sach</label>
                                 <select id="category" multiple="multiple" name="categories[]" class="category" style="width: 100%;">
                                 	@foreach($categories as $category)
@@ -32,24 +32,20 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-sm-6">
                                 <label for="introduce">Gioi thieu ve sach</label>
                                 <input type="text" name="introduce" class="form-control" id="introduce" value="" placeholder="Gioi thieu ve sach">
                             </div>
-                            <div class="form-group">
-                                <label for="description">Mo ta ve sach</label>
-                                <textarea class=" form-control ckeditor" id="description" name="description" rows="10" placeholder="Mo ta ve sach"></textarea>
 
-                            </div>
-                            <div class="form-group">
+                            <div class="form-group col-sm-6">
                                 <label for="bookshelf-id">Vi tri cua sach</label>
                                 <input type="text" class="form-control" name="bookshelf-id" id="bookshelf-id" value="" placeholder="Vi tri cua sach">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-sm-6">
                                 <label for="price">Gia cua sach</label>
                                 <input type="number" class="form-control" name="price" id="price" value="" placeholder="Gia cua sach">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-sm-6">
                                 <label for="author">Tac gia</label>
                                 <input type="text" class="form-control" name="author" id="author" value="" placeholder="Tac gia">
                             </div>
@@ -65,21 +61,39 @@
                                 <input type="radio" name="status" value="4">Da cho thue</label>
                             <label class="radio-inline">
                                 <input type="radio" name="status" value="5">Da tra lai</label>
-                            <div class="form-group">
+                             <div class="form-group">
+                                <label for="description">Mo ta ve sach</label>
+                                <textarea class=" form-control ckeditor" id="description" name="description" rows="10" placeholder="Mo ta ve sach"></textarea>
+                            </div>
+                            <div class="form-group col-sm-6">
                                 <label for="publishing-company">Nha xuat ban</label>
                                 <input type="text" class="form-control" name="publishing-company" id="publishing-company" value="" placeholder="Nha xuat ban">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-sm-6">
                                 <label for="publishing-year">Nam xuat ban</label>
                                 <input type="text" class="form-control" name="publishing-year" id="publishing-year" value="" placeholder="Nam xuat ban">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-sm-6">
                                 <label for="republish">Tai ban lan</label>
                                 <input type="number" class="form-control" name="republish" id="republish" value="" placeholder="Tai ban lan thu">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-sm-6">
                                 <label for="ISBN">Ma so sach</label>
                                 <input type="text" class="form-control" name="ISBN" id="ISBN" value="" placeholder="ISBN">
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">

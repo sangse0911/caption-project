@@ -19,7 +19,11 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/switchery/dist/switchery.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/core.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/select2.min.css') }}"> @yield('css') @yield('css')
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/morris/morris.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/jvectormap/jquery-jvectormap-2.0.3.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/dropify/dist/css/dropify.min.css') }}" media="all" />
+ @yield('css') @yield('css')
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

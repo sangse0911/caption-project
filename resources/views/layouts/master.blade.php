@@ -8,15 +8,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Electro &#8211; Electronics Ecommerce Theme</title>
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/bootstrap.min.css') }}" media="all" />
+    <title>@yield('title')Book &#8211; Book Service Online</title>
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/bootstrap4/css/bootstrap.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/font-awesome.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/animate.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/font-electro.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/owl-carousel.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/style.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/colors/green.css') }}" media="all" />
-    {{-- <script src="https//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> --}}
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/switchery.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/waves.min.css') }}"> {{--
+    <script src="https//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Demo Purpose Only. Should be removed in production -->
 </head>
@@ -29,21 +31,74 @@
             <div class="container">
                 <nav>
                     <ul id="menu-top-bar-left" class="nav nav-inline pull-left animate-dropdown flip">
-                        <li class="menu-item animate-dropdown"><a title="Welcome to Worldwide Electronics Store" href="#">Welcome to Worldwide Electronics Store</a></li>
+                        <li class="menu-item animate-dropdown"><a title="Welcome to Worldwide Electronics Store" href="#">Chao mung toi cua hang sach cua chung toi</a></li>
                     </ul>
                 </nav>
                 <nav>
                     <ul id="menu-top-bar-right" class="nav nav-inline pull-right animate-dropdown flip">
-                        <li class="menu-item animate-dropdown"><a title="Store Locator" href="#"><i class="ec ec-map-pointer"></i>Store Locator</a></li>
-                        <li class="menu-item animate-dropdown"><a title="Track Your Order" href="track-your-order.html"><i class="ec ec-transport"></i>Track Your Order</a></li>
-                        <li class="menu-item animate-dropdown"><a title="Shop" href="shop.html"><i class="ec ec-shopping-bag"></i>Shop</a></li>
-                        <li class="menu-item animate-dropdown"><a title="My Account" href="my-account.html"><i class="ec ec-user"></i>My Account</a></li>
+                        <li class="menu-item animate-dropdown"><a title="Store Locator" href="#"><i class="ec ec-map-pointer"></i>Dia chi</a></li>
+                        @if(Auth::guest())
+                        <li class="menu-item animate-dropdown">
+                            <a title="My Account" data-toggle="modal" href="#myModal">
+                                <i class="ec ec-user"></i>Tai khoan
+                            </a>
+                        </li>
+                        @else
+                        <li class="dropdown menu-item animate-dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ url('/logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                          Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        @endif
                     </ul>
                 </nav>
+                <form type="hidden" name="" id="" method="POST">
+                    {{ csrf_field() }}
+                    <div id="myModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog modal-lg">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Chinh sua sach</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group col-sm-6">
+                                        <label for="name">Ten tai khoan</label>
+                                        <br/>
+                                        <input type="text" name="name" class="form-control" id="name" value="" placeholder="Ten tai khoan">
+                                        <br/>
+                                        <input type="password" name="password" class="form-control" id="password" value="" placeholder="Mat khau">
+                                        <br/>
+                                        <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light">Dang nhap</button>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label for="name">Dang nhap bang facebook</label>
+                                        <br/>
+                                        <a href="{{ route('login_with_facebook') }}" type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light">Dang nhap bang facebook</a>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
         <!-- /.top-bar -->
-        {{-- section header --}} @yield('header') {{-- section header-v2 --}} @yield('header-v2') {{-- section nav-v2 --}} @yield('nav-v2') {{-- section content --}} @yield('content') @yield('first') {{-- section footer --}} @yield('footer')
+        {{-- section header --}} @yield('header') {{-- section header-v2 --}} @yield('header-v2') {{-- section nav-v2 --}} @yield('nav-v2') {{-- section content --}} @yield('content') {{-- section footer --}} @yield('footer')
         <div class="electro-handheld-footer-bar hidden-lg-up">
             <ul class="columns-5">
                 <li class="my-account">
@@ -73,9 +128,10 @@
             <li class="last"><a href="#" onclick="logoutFacebook();">Dang xuat</a></li>
         </ul>
         <a id="scrollUp" href="javascript:void(0)" style="position: fixed; z-index: 1001; display: block;"><i class="fa fa-angle-up"></i></a>
-        <script type="text/javascript" src="{{ URL::to('js/jquery.min.js') }}"></script>
-        <script type="text/javascript" src="{{ URL::to('js/tether.min.js') }}"></script>
-        <script type="text/javascript" src="{{ URL::to('js/bootstrap.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ URL::to('js/admin/jquery-1.12.3.min.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::to('js/admin/tether.min.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::to('js/admin/bootstrap.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/bootstrap-hover-dropdown.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/owl.carousel.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/echo.min.js') }}"></script>
@@ -86,6 +142,7 @@
         <script type="text/javascript" src="{{ URL::to('js/style.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/owl.autoplay.js') }}"></script>
         @yield('scripts')
+
         <script>
         (function($) {
             $('#scrollUp').each(function() {
@@ -93,26 +150,6 @@
                     $('html,body').animate({ scrollTop: 0 }, 'slow');
                     return false;
                 });
-            });
-        })(jQuery);
-        </script>
-        <script>
-        (function($) {
-            $("#button-open").click(function() {
-                $(".handheld-navigation-wrapper").addClass(" toggled");
-            });
-            $("#button-close").click(function() {
-                $(".handheld-navigation-wrapper").removeClass(" toggled");
-            });
-            $(".ehm-close").click(function() {
-                $(".handheld-navigation-wrapper").removeClass(" toggled");
-            });
-            $("#mobile-search").click(function() {
-                $(".search").toggleClass(" active");
-                $(".list-user-action").removeClass(" show");
-            });
-            $("#mobile-user").click(function() {
-                $(".list-user-action").toggleClass(" show");
             });
         })(jQuery);
         </script>
@@ -187,6 +224,11 @@
         })(jQuery);
         </script>
         <script>
+        $(document).ready(function() {
+            $(".dropdown-toggle").dropdown();
+        });
+        </script>
+        <script>
         (function($) {
 
             var owl1 = $("#owl-demo1");
@@ -256,6 +298,7 @@
             });
         })(jQuery);
         </script>
+        {{--
         <script>
         $.ajaxSetup({
             headers: {
@@ -283,7 +326,7 @@
                 }
             });
         });
-        </script>
+        </script> --}}
     </div>
 </body>
 

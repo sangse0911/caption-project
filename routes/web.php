@@ -34,6 +34,7 @@ Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallbac
 // Route::put('/users/update', 'UserController@update')->name('user_update');
 
 Route::get('/book', ['as' => 'book.index', 'uses' => 'BookController@index']);
+Route::get('/book/{id}', 'BookController@show')->name('book.show');
 Route::get('/sell-book', ['as' => 'book.sell', 'uses' => 'BookController@sellBook']);
 Route::get('/renter-book', ['as' => 'book.renter', 'uses' => 'BookController@renBook']);
 Route::get('/hot-book', ['as' => 'book.hot', 'uses' => 'BookController@hotBook']);
@@ -102,6 +103,9 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/trangquantri', function () {
         return view('admin.sachban.themsachban');
     });
+    Route::get('/themsachban', function () {
+        return view('admin.sachban.themsachban');
+    });
 });
 
 Route::get('/api/user', ['as' => 'api.user.index', 'uses' => 'UserController@indexApi']);
@@ -163,9 +167,7 @@ Route::get('/khachban', function () {
 // Route::get('/sachban', function () {
 //     return view('admin.sachban.sachban');
 // });
-// Route::get('/themsachban', function () {
-//     return view('admin.sachban.themsachban');
-// });
+
 // Route::get('/sachthue', function () {
 //     return view('admin.sachthue.sachthue');
 // });
