@@ -153,6 +153,21 @@
         })(jQuery);
         </script>
         <script>
+        $(window).bind('scroll', function() {
+            if ($(window).scrollTop() > 200) {
+                $('.navbar-primary').addClass('navbar-fixed-top');
+                $('#search-form').css("display","inline-table");
+                $('#fv-2').removeAttr("style");
+                $('#cart-2').removeAttr("style");
+            } else {
+                $('.navbar-primary').removeClass('navbar-fixed-top');
+                $('#search-form').css("display","none");
+                $('#fv-2').css("display","none");
+                $('#cart-2').css("display","none");
+            }
+        });
+        </script>
+        <script>
         (function($) {
 
             var owl = $("#owl-demo");
@@ -261,6 +276,38 @@
 
             });
         })(jQuery);
+        </script>
+        <script>
+        (function($) {
+            var owl3 = $('#owl-brands');
+            var block = false;
+            (".owl-carousel").mouseenter(function() {
+                if (!block) {
+                    block = true;
+                    owl3.trigger('stop.owl.autoplay')
+                    block = false;
+                }
+            });
+            $(".owl-carousel").mouseleave(function() {
+                if (!block) {
+                    owl3.trigger('play.owl.autoplay', [1000])
+                    block = false;
+                }
+            });
+            owl3.owlCarousel({
+                autoplay: true,
+                autoPlaySpeed: 1000,
+                autoplayHoverPause: true,
+                loop: true,
+                navigation: true,
+                items: 5, //10 items above 1000px browser width
+                itemsDesktop: [1000, 3], //5 items between 1000px and 901px
+                itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
+                itemsTablet: [600, 2], //2 items between 600 and 0;
+                itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
+
+            });
+        });
         </script>
         <script>
         (function($) {

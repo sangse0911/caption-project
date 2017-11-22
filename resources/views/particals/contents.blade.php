@@ -108,7 +108,6 @@
                                                 </div>
                                                 <!-- .summary -->
                                             </div>
-
                                             <div class="woocommerce-tabs wc-tabs-wrapper">
                                                 <ul class="nav nav-tabs electro-nav-tabs tabs wc-tabs" role="tablist">
                                                     <li class="nav-item description_tab">
@@ -145,7 +144,6 @@
                                                                             </div>
                                                                             <div class="rating-count">1</div>
                                                                         </div>
-
                                                                         <div class="rating-bar">
                                                                             <div class="star-rating" title="Rated 4 out of 5">
                                                                                 <span style="width:80%"></span>
@@ -155,7 +153,6 @@
                                                                             </div>
                                                                             <div class="rating-count">2</div>
                                                                         </div>
-
                                                                         <div class="rating-bar">
                                                                             <div class="star-rating" title="Rated 3 out of 5">
                                                                                 <span style="width:60%"></span>
@@ -165,7 +162,6 @@
                                                                             </div>
                                                                             <div class="rating-count zero">0</div>
                                                                         </div>
-
                                                                         <div class="rating-bar">
                                                                             <div class="star-rating" title="Rated 2 out of 5">
                                                                                 <span style="width:40%"></span>
@@ -184,10 +180,8 @@
                                                                             </div>
                                                                             <div class="rating-count zero">0</div>
                                                                         </div>
-
                                                                     </div>
                                                                 </div>
-
                                                                 <div class="col-xs-12 col-md-6">
                                                                     <div id="review_form_wrapper">
                                                                         <div id="review_form">
@@ -210,7 +204,9 @@
                                                                                         </span>
                                                                                     </p>
                                                                                     <p class="comment-form-comment">
-                                                                                        <p><label for="comment">Danh gia cua ban</label></p>
+                                                                                        <p>
+                                                                                            <label for="comment">Danh gia cua ban</label>
+                                                                                        </p>
                                                                                         <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
                                                                                     </p>
                                                                                     <p class="form-submit">
@@ -223,7 +219,6 @@
                                                                                     (function() { if (window === window.parent) { document.getElementById('_wp_unfiltered_html_comment_disabled').name = '_wp_unfiltered_html_comment'; } })();
                                                                                     </script>
                                                                                 </form>
-
                                                                             </div>
                                                                         </div>
                                                                     </div>
