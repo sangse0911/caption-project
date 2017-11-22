@@ -93,31 +93,5 @@
     </div>
 </section>
 @section('scripts')
-<script>
-$('.book-show').on('click', function(e) {
-    var book_id = e.currentTarget.id.substring(5);
-    $.ajax({
-        cache: false,
-        method: 'GET',
-        dataType: 'JSON',
-        url: '/book/' + book_id,
-        success: function(data) {
-            console.log(data);
-            $('#book-name').text(data['book']['name']);
-            $('#book-status').text(data['book']['status']);
-            $('#book-company').text(data['book']['publishing_company']);
-            $('#book-year').text(data['book']['publishing_year']);
-            $('#book-republish').text(data['book']['republish']);
-            $('#book-author').text(data['book']['author']);
-            $('#book-price').text('Gia: ' + data['book']['price'] + ' VND');
-            $('#book-introduce').text(data['book']['introduce']);
-            $('#book-description').text(data['book']['description']);
-        },
-        error: function(data) {
-            console.log('ee', data);
-        }
-    });
-    e.preventDefault();
-});
-</script>
+
 @endsection

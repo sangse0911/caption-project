@@ -39,7 +39,7 @@
                         <li class="menu-item animate-dropdown"><a title="Store Locator" href="#"><i class="ec ec-map-pointer"></i>Dia chi</a></li>
                         @if(Auth::guest())
                         <li class="menu-item animate-dropdown">
-                            <a title="My Account" data-toggle="modal" href="#myModal">
+                            <a title="My Account" data-toggle="modal" href="#loginModal">
                                 <i class="ec ec-user"></i>Tai khoan
                             </a>
                         </li>
@@ -65,13 +65,13 @@
                 </nav>
                 <form type="hidden" name="" id="" method="POST">
                     {{ csrf_field() }}
-                    <div id="myModal" class="modal fade" role="dialog">
+                    <div id="loginModal" class="modal fade" role="dialog">
                         <div class="modal-dialog modal-lg">
                             <!-- Modal content-->
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Chinh sua sach</h4>
+                                    <h4 class="modal-title">Dang nhap</h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group col-sm-6">
@@ -142,7 +142,6 @@
         <script type="text/javascript" src="{{ URL::to('js/style.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/owl.autoplay.js') }}"></script>
         @yield('scripts')
-
         <script>
         (function($) {
             $('#scrollUp').each(function() {
@@ -297,6 +296,33 @@
 
             });
         })(jQuery);
+        </script>
+        <script>
+        $('.book-show').on('click', function(e) {
+            var book_id = e.currentTarget.id.substring(5);
+            $.ajax({
+                cache: false,
+                method: 'GET',
+                dataType: 'JSON',
+                url: '/book/' + book_id,
+                success: function(data) {
+                    console.log(data);
+                    $('#book-name').text(data['book']['name']);
+                    $('#book-status').text(data['book']['status']);
+                    $('#book-company').text(data['book']['publishing_company']);
+                    $('#book-year').text(data['book']['publishing_year']);
+                    $('#book-republish').text(data['book']['republish']);
+                    $('#book-author').text(data['book']['author']);
+                    $('#book-price').text('Gia: ' + data['book']['price'] + ' VND');
+                    $('#book-introduce').text(data['book']['introduce']);
+                    $('#book-description').text(data['book']['description']);
+                },
+                error: function(data) {
+                    console.log('ee', data);
+                }
+            });
+            e.preventDefault();
+        });
         </script>
         {{--
         <script>
