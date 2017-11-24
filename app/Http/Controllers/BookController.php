@@ -86,8 +86,12 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $book = $this->bookRepository->create($request->all());
-        return redirect()->route('admin.index');
+
+        if ($request->ajax()) {
+            $data = $request->all();
+            $book = $this->bookRepository->create($data);
+        }
+        return response()->json($book, 200);
     }
 
     /**

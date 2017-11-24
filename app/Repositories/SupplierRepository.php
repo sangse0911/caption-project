@@ -36,25 +36,24 @@ class SupplierRepository implements SupplierInterface
      */
     public function find($id)
     {
-
+        return Supplier::find($id);
     }
 
     /**
-     * [createIfExist description]
+     * [createIfExistUser description]
      *
      * @param  array  $request [description]
      * @return [type]          [description]
      */
-    public function createIfExist(array $request)
+    public function createIfExistUser($data)
     {
-        $user = $this->userRepository->find($request['user-id']);
+        $user = $this->userRepository->find($data['id']);
 
-        $supplier = $user->suppliers()->create([
-            'phone' => $request['phone'],
-            'user_id' => $user->id,
+        return $supplier = $user->suppliers()->create([
+            'phone' => $data['phone'],
+            'user_id' => $data['id'],
         ]);
 
-        return $supplier;
     }
 
     /**
@@ -63,7 +62,7 @@ class SupplierRepository implements SupplierInterface
      * @param  array  $request [description]
      * @return [type]          [description]
      */
-    public function create(array $request)
+    public function create($data)
     {
         $user = $this->userRepository->create($request);
 

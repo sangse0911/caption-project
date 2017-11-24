@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBookselfsTable extends Migration
+class CreateBookshelvesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBookselfsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bookselfs', function (Blueprint $table) {
+        Schema::create('bookshelves', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('admin_id')->unsigned();
             $table->enum('status', [0, 1])->default(1);
@@ -32,6 +32,6 @@ class CreateBookselfsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookselfs');
+        Schema::dropIfExists('bookshelves');
     }
 }

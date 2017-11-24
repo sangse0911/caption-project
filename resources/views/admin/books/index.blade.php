@@ -38,8 +38,12 @@
                             </div>
 
                             <div class="form-group col-sm-6">
-                                <label for="bookshelf-id">Vi tri cua sach</label>
-                                <input type="text" class="form-control" name="bookshelf-id" id="bookshelf-id" value="" placeholder="Vi tri cua sach">
+                                <label for="location">Vi tri cua sach</label>
+                                <select id="location" multiple="multiple" name="location[]" class="location" style="width: 100%;">
+                                    @foreach($bookshelves as $bookshelf)
+                                    <option name="" value="{{ $bookshelf->id }}">{{ $bookshelf->location }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="price">Gia cua sach</label>
@@ -67,11 +71,11 @@
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="publishing-company">Nha xuat ban</label>
-                                <input type="text" class="form-control" name="publishing-company" id="publishing-company" value="" placeholder="Nha xuat ban">
+                                <input type="text" class="form-control" name="company" id="company" value="" placeholder="Nha xuat ban">
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="publishing-year">Nam xuat ban</label>
-                                <input type="text" class="form-control" name="publishing-year" id="publishing-year" value="" placeholder="Nam xuat ban">
+                                <input type="text" class="form-control" name="year" id="year" value="" placeholder="Nam xuat ban">
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="republish">Tai ban lan</label>
@@ -83,16 +87,16 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
+                                    <input type="file" id="input-file-now" class="dropify" name="images" />
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
+                                    <input type="file" id="input-file-now" class="dropify" name="images" />
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
+                                    <input type="file" id="input-file-now" class="dropify" name="images" />
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
+                                    <input type="file" id="input-file-now" class="dropify" name="images" />
                                 </div>
                             </div>
                         </div>
@@ -130,21 +134,20 @@
                         <td>{{ $book->republish }}</td>
                         <td align="center">
                             <button id="{{ $book->id }}" type="button" class="btn btn-warning btn-sm label-left b-a-0 waves-effect waves-light">
-                            <span class="btn-label"><i class="fa fa-eye" ></i></span>
-                            Xem
-                        </button>
-                        &nbsp
-                        <button type="button" id="update-{{ $book->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
-                            <span class="btn-label"><i class="fa fa-edit"></i></span>
-                            Sửa
-                        </button>
-                        &nbsp
-                        <button id="view-{{ $book->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
-                            <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span>
-                            Xóa
-                        </button>
-
-                    </td>
+                                <span class="btn-label"><i class="fa fa-eye" ></i></span>
+                                Xem
+                            </button>
+                            &nbsp
+                            <button type="button" id="update-{{ $book->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
+                                <span class="btn-label"><i class="fa fa-edit"></i></span>
+                                Sửa
+                            </button>
+                            &nbsp
+                            <button id="view-{{ $book->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
+                                <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span>
+                                Xóa
+                            </button>
+                        </td>
 
                     </tr>
                     @endforeach
@@ -156,13 +159,17 @@
 @endsection
 @section('script')
 <script>
-   $("#category").select2({closeOnSelect:false});
-</script>
-<script>
+  $("#category").select2({ closeOnSelect: false });
+    $("#location").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
+    $("#quality").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
+    $('#year').datetimepicker({
+        viewMode: 'years',
+        format: 'YYYY'
+    });
 
 </script>
-<script>
 
+<script>
  	$(document).on('focus', 'input' , function() {
         $(this).removeAttr('placeholder');
     });
@@ -181,12 +188,12 @@
                 $('#category').val(data['categories']['category_id']).trigger('change');
     			$('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
     			$('#introduce').val(data['book']['introduce']);
-    			$('#bookshelf-id').val(data['book']['bookself_id']);
+    			$('#location').val(data['book']['bookshelf_id']).trigger('change');
     			$('#price').val(data['book']['price']);
     			$('#author').val(data['book']['author']);
     			$('input[type=radio][name="status"][value='+data['book']['status']+']').prop('checked', true);
-    			$('#publishing-company').val(data['book']['publishing_company']);
-    			$('#publishing-year').val(data['book']['publishing_year']);
+    			$('#company').val(data['book']['company']);
+    			$('#year').val(data['book']['year']);
     			$('#republish').val(data['book']['republish']);
     			$('#ISBN').val(data['book']['isbn']);
     		},

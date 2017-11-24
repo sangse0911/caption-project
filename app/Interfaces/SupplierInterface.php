@@ -6,6 +6,6 @@ interface SupplierInterface
 {
     public function all();
     public function find($id);
-    public function create(array $request);
-    public function createIfExist(array $request);
+    public function create($data);
+    public function createIfExistUser($data);
 }

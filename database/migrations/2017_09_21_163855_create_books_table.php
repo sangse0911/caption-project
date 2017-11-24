@@ -19,19 +19,19 @@ class CreateBooksTable extends Migration
             $table->string('introduce');
             $table->text('description');
             $table->integer('admin_id')->unsigned();
-            $table->integer('bookself_id')->unsigned();
+            $table->integer('bookshelf_id')->unsigned();
             $table->enum('status', ['0', '1', '2', '3', '4', '5', '6', '7'])->default('1');
             $table->double('price')->default(0);
             $table->string('author', 50);
-            $table->string('publishing_company');
-            $table->dateTime('publishing_year');
+            $table->string('company');
+            $table->dateTime('year');
             $table->tinyInteger('republish');
             $table->string('isbn');
             $table->string('slug');
             $table->timestamps();
 
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('bookself_id')->references('id')->on('bookselfs')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('bookshelf_id')->references('id')->on('bookshelves')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

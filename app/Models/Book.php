@@ -61,8 +61,8 @@ class Book extends Model
 
     protected $casts = [
         'admin_id' => 'int',
-        'bookself_id' => 'int',
-        'status_id' => 'int',
+        'bookshelf_id' => 'int',
+        'price' => 'float',
         'republish' => 'int',
     ];
 
@@ -75,12 +75,12 @@ class Book extends Model
         'introduce',
         'description',
         'admin_id',
-        'bookself_id',
+        'bookshelf_id',
         'status',
         'price',
         'author',
-        'publishing_company',
-        'publishing_year',
+        'company',
+        'year',
         'republish',
         'isbn',
         'slug',

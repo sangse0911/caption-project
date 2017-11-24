@@ -26,8 +26,8 @@ class BookshelfController extends Controller
      */
     public function index()
     {
-        $bookshelfs = $this->bookshelfRepository->all();
-        return view('admin.bookshelves.index', compact('bookshelfs'));
+        $bookshelves = $this->bookshelfRepository->all();
+        return view('admin.bookshelves.index', compact('bookshelves'));
     }
 
     /**
@@ -98,9 +98,9 @@ class BookshelfController extends Controller
     {
         if ($request->ajax()) {
             $data = $request->all();
-            $bookShelf = $this->bookshelfRepository->modified($data);
+            $bookshelf = $this->bookshelfRepository->modified($data);
         }
-        return response()->json($bookShelf, 200);
+        return response()->json($bookshelf, 200);
     }
 
     /**

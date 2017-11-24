@@ -4,11 +4,11 @@ namespace App\Repositories;
 
 use App\Interfaces\AdminInterface;
 use App\Interfaces\BookshelfInterface;
-use App\Models\Bookself;
+use App\Models\Bookshelf;
 use Auth;
 use Illuminate\Http\Request;
 
-class BookShelfRepository implements BookshelfInterface
+class BookshelfRepository implements BookshelfInterface
 {
     //
     protected $adminRepository;
@@ -28,7 +28,7 @@ class BookShelfRepository implements BookshelfInterface
      */
     public function all()
     {
-        return Bookself::all();
+        return Bookshelf::all();
     }
 
     /**
@@ -38,7 +38,7 @@ class BookShelfRepository implements BookshelfInterface
      */
     public function find($id)
     {
-        return Bookself::findOrFail($id);
+        return Bookshelf::findOrFail($id);
     }
 
     /**
@@ -47,7 +47,7 @@ class BookShelfRepository implements BookshelfInterface
      */
     public function first()
     {
-        return Bookself::where('status', '1')->first();
+        return Bookshelf::where('status', '1')->first();
     }
 
     /**
@@ -57,29 +57,29 @@ class BookShelfRepository implements BookshelfInterface
      */
     public function create($data)
     {
-        $adminId = $this->adminRepository->getAdminAuth();
+        $adminId = Auth::user()->id;
 
-        $bookShelf = new Bookself;
+        $bookshelf = new Bookshelf;
 
-        if (!$bookShelf->admin()->associate($adminId)) {
+        if (!$bookshelf->admin()->associate($adminId)) {
             return response()->json('Loi khong xac dinh, vui long thu lai');
         }
 
-        $bookShelf->location = $data['location'];
-        $bookShelf->status = '1';
+        $bookshelf->location = $data['location'];
+        $bookshelf->status = '1';
 
-        return $bookShelf->save();
+        return $bookshelf->save();
 
     }
 
     public function modified($data)
     {
-        $bookShelf = Bookself::findOrFail($data['id']);
+        $bookshelf = Bookshelf::findOrFail($data['id']);
 
-        $bookShelf->admin_id = Auth::user()->id;
-        $bookShelf->location = $data['location'];
-        $bookShelf->status = $data['status'];
+        $bookshelf->admin_id = Auth::user()->id;
+        $bookshelf->location = $data['location'];
+        $bookshelf->status = $data['status'];
 
-        return $bookShelf->save();
+        return $bookshelf->save();
     }
 }

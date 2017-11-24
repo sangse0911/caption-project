@@ -23,7 +23,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($bookshelfs as $bookshelf)
+                    @foreach($bookshelves as $bookshelf)
                     <tr>
                         <td>{{ $bookshelf->id }}</td>
                         <td>{{ $bookshelf->admin_id }}</td>
@@ -74,9 +74,9 @@
                             <div class="form-group">
                                 <label for="name">Trang thai gia sach</label><br/>
                                <label class="radio-inline">
-                                <input type="radio" name="bookshelf-status" value="1">San sang</label>
+                                <input type="radio" name="status" value="1">San sang</label>
                             <label class="radio-inline">
-                                <input type="radio" name="bookshelf-status" value="0">Khong san sang</label>
+                                <input type="radio" name="status" value="0">Khong san sang</label>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -99,7 +99,8 @@
         }
     });
     $('#create').click(function() {
-        $('.bookshelf-status').css('display','none');
+        $('.status').css('display','none');
+        $('#location').val("");
     })
     $('#bookshelf-create').on('click', function(e) {
 
@@ -114,7 +115,7 @@
             data: {
                 location: location
             },
-            success: function() {
+            success: function(data) {
                 window.location.reload(true);
             },
             error: function(data) {
@@ -139,7 +140,7 @@
                 $('input[type=radio][name="bookshelf-status"][value='+data['status']+']').prop('checked', true);
                 $('#bookshelf-create').css("display","none");
                 $('#bookshelf-update').removeAttr('style');
-                $('.bookshelf-status').removeAttr('style');
+                $('.status').removeAttr('style');
             },
             error: function(data){
                 console.log('ee', data);
@@ -148,7 +149,7 @@
     });
     $('#bookshelf-update').on('click', function(e){
         var location = $('#location').val();
-        var status =  $('input[name=bookshelf-status]:checked').val();
+        var status =  $('input[name=status]:checked').val();
         var id = $('#id').val();
 
         $.ajax({
@@ -163,7 +164,6 @@
                 status: status,
             },
             success: function(data) {
-                // console.log('ss', data);
                 window.location.reload(true);
             },
             error: function(data) {

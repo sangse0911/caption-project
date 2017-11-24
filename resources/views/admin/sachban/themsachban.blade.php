@@ -18,7 +18,7 @@
 			</ol>
 			<div class="box box-block bg-white">
 				 <input type="hidden" name="supplier-id" value="{{ \Request::segment(3) }}">
-				<form form enctype="multipart/form-data" type="hidden" name="" id="" method="POST" action="{{ route('book.save') }}">
+				<form  enctype="multipart/form-data" type="hidden" name="" id="" method="POST" action="{{ route('book.save') }}">
 					{{ csrf_field() }}
 					   <div class="form-group col-md-6">
                     <input type="hidden" class="form-control" name="admin-id" value="1">

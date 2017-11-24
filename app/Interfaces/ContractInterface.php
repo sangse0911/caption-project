@@ -6,5 +6,5 @@ interface ContractInterface
 {
     public function all();
     public function find($id);
-    public function create(array $request);
+    public function create($data);
 }

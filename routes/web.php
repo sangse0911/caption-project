@@ -40,6 +40,7 @@ Route::get('/renter-book', ['as' => 'book.renter', 'uses' => 'BookController@ren
 Route::get('/hot-book', ['as' => 'book.hot', 'uses' => 'BookController@hotBook']);
 
 Route::get('/content-post', ['as' => 'content.post', 'uses' => 'PostController@contentPost']);
+Route::get('/supplier/{id}', ['as' => 'supplier.show', 'uses' => 'SupplierController@show']);
 
 Route::middleware(['auth:admin', 'super_admin'])->group(function () {
     Route::get('/role', 'RoleController@index')->name('super.admin.index');
@@ -75,10 +76,10 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/users/create', 'UserController@create')->name('user.create');
     Route::post('/users/create', 'UserController@storeUser')->name('user.create.supplier');
 
-    Route::get('/supplier', 'SupplierController@index')->name('supplier.index');
-    Route::get('/supplier/create', ['as' => 'supplier.create', 'uses' => 'SupplierController@create']);
+    Route::get('/suppliers', 'SupplierController@index')->name('supplier.index');
+    Route::get('/suppliers/{id}', 'SupplierController@show')->name('supplier.show');
     Route::post('/supplier/create', 'SupplierController@store')->name('supplier.save');
-    Route::post('/supplier/create', 'SupplierController@storeIfExist')->name('supplier.save.exist');
+    Route::post('/supplier/createIfExistUser', 'SupplierController@storeIfExist')->name('supplier.save.exist');
 
     Route::get('/categories', ['as' => 'categories.index', 'uses' => 'CategoryController@index']);
     Route::get('/categories/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
@@ -93,7 +94,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/images/create', ['as' => 'images.store', 'uses' => 'ImageController@store']);
 
     Route::get('/book/create/{slug}', ['as' => 'book.create', 'uses' => 'BookController@create']);
-    Route::post('/book/create', ['as' => 'book.save', 'uses' => 'BookController@store']);
+    Route::post('/book/store', ['as' => 'book.store', 'uses' => 'BookController@store']);
 
     Route::get('/event/create', ['as' => 'event.create', 'uses' => 'EventController@create']);
     Route::post('/event/store', ['uses' => 'EventController@store'])->name('event.store');
@@ -107,6 +108,11 @@ Route::middleware(['auth:admin'])->group(function () {
     });
     Route::get('/themsachban', function () {
         return view('admin.sachban.themsachban');
+    });
+    Route::post('submit', function () {
+        echo "<pre>";
+        print_r(Input::file['images']);
+        echo "</pre>";
     });
 });
 

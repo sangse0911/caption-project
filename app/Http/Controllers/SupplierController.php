@@ -23,7 +23,7 @@ class SupplierController extends Controller
     public function index()
     {
         $suppliers = $this->supplierRepository->all();
-        return view('admin.index', compact('suppliers'));
+        return view('supplier.index', compact('suppliers'));
     }
 
     /**
@@ -57,9 +57,12 @@ class SupplierController extends Controller
      */
     public function storeIfExist(Request $request)
     {
-        $supplier = $this->supplierRepository->createIfExist($request->all());
+        if ($request->ajax()) {
+            $data = $request->all();
+            $supplier = $this->supplierRepository->createIfExistUser($data);
+        }
 
-        return redirect()->route('book.create', ['id' => $supplier->id]);
+        return response()->json($supplier, 200);
     }
 
     /**
@@ -70,7 +73,7 @@ class SupplierController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->supplierRepository->find($id);
     }
 
     /**

@@ -19,12 +19,12 @@
                             <h4 class="modal-title">Them moi nguoi dung</h4>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group">
+                            <div class="form-group" id="form-name">
                                 <label for="name">Ten nguoi dung</label>
                                 <input type="hidden" name="id" value="" id="id">
-                                <input type="text" name="name" class="form-control" id="name" readonly="true">
+                                <input type="text" name="name" class="form-control" id="name">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" id="form-status">
                                 <label class="radio-inline">
                                     <input type="radio" name="status" value="1">Binh thuong</label>
                                 <label class="radio-inline">
@@ -32,10 +32,14 @@
                                 <label class="radio-inline">
                                     <input type="radio" name="status" value="3">Canh cao</label>
                             </div>
+                            <div class="form-group" id="form-phone" style="display: none;">
+                                <label for="name">So dien thoai</label>
+                                <input type="text" name="phone" class="form-control" id="phone">
+                            </div>
                         </div>
                         <div class="modal-footer">
-
                             <button type="button" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="user-update">Luu</button>
+                            <button type="button" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="supplier-create" style="display: none;">Them moi</button>
                             <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Dong</button>
                         </div>
                     </div>
@@ -65,8 +69,11 @@
                                 <span class="btn-label"><i class="fa fa-edit"></i></span> Sửa
                             </button>
                             &nbsp
-                            <button id="view-{{ $user->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
+                            <button id="delete-{{ $user->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
                                 <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span> Xóa
+                            </button>
+                            <button id="supplier-{{ $user->id }}" type="button" class="btn btn-success btn-sm btn-supplier label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
+                                <span class="btn-label"><i class="fa fa-user-plus  fa-fw"></i></span> Khach ban
                             </button>
                         </td>
                     </tr>
@@ -125,8 +132,9 @@
             url: '/admin/users/' + user_id,
             success: function(data) {
                 $('.modal-title').text('Cap nhat nguoi dung');
-                 $('#id').val(data['id']);
+                $('#id').val(data['id']);
                 $('#name').val(data['name']);
+                $('#name').attr("readonly", true);
                 $('input[type=radio][name="status"][value='+data['account_status']+']').prop('checked', true);
             },
             error: function(data) {
@@ -135,7 +143,7 @@
         });
         e.preventDefault();
     });
-     $('#user-update').on('click', function(e){
+    $('#user-update').on('click', function(e){
 
         var status =  $('input[name=status]:checked').val();
         var id = $('#id').val();
@@ -159,6 +167,53 @@
             }
         });
         // console.log(data),
+        e.preventDefault();
+    });
+    $('.btn-supplier').click(function(e) {
+        var user_id = e.currentTarget.id.substring(9);
+        $.ajax({
+            cache: false,
+            method: 'GET',
+            dataType: 'JSON',
+            url: '/admin/users/' + user_id,
+            success: function(data) {
+                $('.modal-title').text('Them moi nha cung cap');
+                $('#id').val(data['id']);
+                $('#name').val(data['name']);
+                $('#form-status').css("display", "none");
+                $('#form-name').css("display","none");
+                $('#user-update').css("display","none");
+                $('#supplier-create').removeAttr("style");
+                $('#form-phone').removeAttr("style");
+            },
+            error: function(data) {
+                console.log('ee',data);
+            }
+        });
+        e.preventDefault();
+    });
+    $('#supplier-create').on('click', function(e){
+
+        var phone =  $('#phone').val();
+        var name = $('#name').val();
+        $.ajax({
+
+            cache: false,
+            method: 'POST',
+            dataType: 'JSON',
+            url: '/supplier/createIfExistUser',
+            data: {
+                phone: phone,
+                name: name,
+            },
+            success: function(data) {
+                window.location.assign('/suppliers');
+            },
+            error: function(data) {
+                console.log('ee', data);
+            }
+        });
+
         e.preventDefault();
     });
 </script>

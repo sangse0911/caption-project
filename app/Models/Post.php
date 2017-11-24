@@ -58,12 +58,11 @@ class Post extends Model
 
     protected $casts = [
         'user_id' => 'int',
-        'status' => 'int',
         'republish' => 'int',
     ];
 
     protected $dates = [
-        'publishing_year',
+        'year',
     ];
 
     protected $fillable = [
@@ -73,8 +72,8 @@ class Post extends Model
         'description',
         'status',
         'author',
-        'publishing_company',
-        'publishing_year',
+        'company',
+        'year',
         'republish',
         'isbn',
         'slug',

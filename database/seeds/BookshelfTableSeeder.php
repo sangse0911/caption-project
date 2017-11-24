@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class BookselfTableSeeder extends Seeder
+class BookshelfTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class BookselfTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('bookselfs')->delete();
+        DB::table('bookshelves')->delete();
 
         for ($i = 0; $i < 10; $i++) {
             $data = array(
@@ -22,7 +22,7 @@ class BookselfTableSeeder extends Seeder
                 'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
             );
 
-            DB::table('bookselfs')->insert($data);
+            DB::table('bookshelves')->insert($data);
             $data = null;
         }
     }

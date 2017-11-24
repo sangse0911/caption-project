@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class Bookself extends Model
+class Bookshelf extends Model
 {
 
     use Sluggable;
@@ -43,8 +43,6 @@ class Bookself extends Model
             ],
         ];
     }
-
-    protected $table = 'bookselfs';
 
     protected $casts = [
         'admin_id' => 'int',

@@ -17,8 +17,8 @@ class CreateContractsTable extends Migration
             $table->increments('id');
             $table->integer('supplier_id')->unsigned();
             $table->integer('admin_id')->unsigned();
-            $table->enum('payment_method', ['0', '1'])->default('0');
-            $table->string('bank_account')->nullable();
+            $table->enum('method', ['0', '1'])->default('0');
+            $table->string('account')->nullable();
             $table->enum('status', ['0', '1']);
             $table->timestamps();
 

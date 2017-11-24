@@ -23,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/morris/morris.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/jvectormap/jquery-jvectormap-2.0.3.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/dropify/dist/css/dropify.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/bootstrap-datetimepicker.min.css') }}">
  @yield('css') @yield('css')
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -85,9 +86,7 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('users.index') }}">Danh sach</a></li>
-                            <li><a href="khachmua">Khách Mua</a></li>
-                            <li><a href="khachban">Khách Bán</a></li>
-                            <li><a href="khachchothue">Khách Cho Thuê</a></li>
+                            <li><a href="{{ route('supplier.index') }}">Nha cung cap</a></li>
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -304,6 +303,8 @@
     <script type="text/javascript" src="{{ URL::to('js/admin/jquery-1.12.3.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/admin/tether.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/admin/bootstrap.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+    <script src="{{ URL::to('js/bootstrap-datetimepicker.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/admin/detectmobilebrowser.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/admin/jquery.mousewheel.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/admin/mwheelIntent.js') }}"></script>
@@ -351,6 +352,7 @@
             var page = $(this).attr('href');
             $('.site-content').load(page);
         });
+
     });
     </script>
 </body>

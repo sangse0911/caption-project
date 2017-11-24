@@ -4,8 +4,8 @@ namespace App\Repositories;
 
 use App\Interfaces\AdminInterface;
 use App\Interfaces\ContractInterface;
-use App\Models\Admin;
 use App\Models\Contract;
+use Auth;
 
 class ContractRepository implements ContractInterface
 {
@@ -31,18 +31,19 @@ class ContractRepository implements ContractInterface
      * @param  array  $request [description]
      * @return [type]          [description]
      */
-    public function create(array $request)
+    public function create($data)
     {
 
-        $supplierId = $request['supplier-id'];
-        $adminId = $this->adminRepository->getAdminAuth();
-        $admin = Admin::find($adminId);
+        $supplierId = $data['id'];
 
-        $admin->suppliers()->attach($supplierId, [
-            'payment_method' => $request['method'],
-            'bank_account' => $request['credit'],
-            'status' => $request['status'],
-        ]);
+        $admin = Auth::user();
+
+        $admin->suppliers()->attach($supplierId,
+            [
+                'method' => $data['method'],
+                'account' => $data['account'],
+                'status' => $data['status'],
+            ]);
 
         $contract = Contract::where('contracts.admin_id', '=', $admin->id)
             ->orderBy('created_at', 'desc')

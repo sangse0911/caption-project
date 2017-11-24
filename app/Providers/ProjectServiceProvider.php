@@ -16,10 +16,10 @@ class ProjectServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer(['home', 'book.index', 'admin.books.index'], 'App\Http\ViewComposers\BookComposer');
-        view()->composer(['book.create', 'particals.nav-bar-v2', 'admin.books.index'], 'App\Http\ViewComposers\CategoryComposer');
+        view()->composer(['book.create', 'particals.nav-bar-v2', 'admin.books.index', 'supplier.index'], 'App\Http\ViewComposers\CategoryComposer');
         view()->composer(['book.create', 'bookself.create'], 'App\Http\ViewComposers\AdminComposer');
-        view()->composer(['book.create'], 'App\Http\ViewComposers\BookshelfComposer');
-        view()->composer('supplier.create', 'App\Http\ViewComposers\UserComposer');
+        view()->composer(['book.create', 'supplier.index', 'admin.books.index'], 'App\Http\ViewComposers\BookshelfComposer');
+        view()->composer(['supplier.create', 'supplier.index'], 'App\Http\ViewComposers\UserComposer');
     }
 
     /**

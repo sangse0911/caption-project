@@ -21,8 +21,8 @@ class CreatePostsTable extends Migration
             $table->text('description');
             $table->enum('status', ['1', '2', '3', '4', '5', '6', '7'])->default('1');
             $table->string('author', 50)->nullable();
-            $table->string('publishing_company')->nullable();
-            $table->dateTime('publishing_year')->nullable();
+            $table->string('company')->nullable();
+            $table->dateTime('year')->nullable();
             $table->tinyInteger('republish');
             $table->string('isbn')->nullable();
             $table->string('slug');

@@ -8,6 +8,7 @@ use App\Interfaces\ImageInterface;
 use App\Models\Book;
 use App\Models\BookCategory;
 use App\Models\Category;
+use Auth;
 use Illuminate\Support\Facades\Input;
 
 class BookRepository implements BookInterface
@@ -81,21 +82,24 @@ class BookRepository implements BookInterface
      * @param  [type] $request [description]
      * @return [type]          [description]
      */
-    public function create($request)
+    public function create($data)
     {
         $book = new Book;
 
-        $book->name = $request['name'];
-        $book->admin_id = $request['admin-id'];
-        $book->bookself_id = $request['bookself-id'];
-        $book->introduce = $request['introduce'];
-        $book->description = $request['description'];
+        if ($data['description'] == null) {
+            $data['description'] = "";
+        }
+        $book->name = $data['name'];
+        $book->admin_id = Auth::user()->id;
+        $book->bookshelf_id = implode($data['location']);
+        $book->introduce = $data['introduce'];
+        $book->description = $data['description'];
         $book->status = '1';
-        $book->author = $request['author'];
-        $book->publishing_company = $request['publishing-company'];
-        $book->publishing_year = $request['publishing-year'];
-        $book->republish = $request['republish'];
-        $book->isbn = $request['isbn'];
+        $book->author = $data['author'];
+        $book->company = $data['company'];
+        $book->year = $data['year'];
+        $book->republish = $data['republish'];
+        $book->isbn = $data['isbn'];
         //save book
         $book->save();
         //get all categories from input
@@ -108,17 +112,23 @@ class BookRepository implements BookInterface
 
         }
 
-        $contract = $this->contractRepository->create($request);
+        $contract = $this->contractRepository->create($data);
         //save the contract_detail
+        if ($data['price-sell'] == null) {
+            $data['price-sell'] = 0;
+        }
+        if ($data['price-rent'] == null) {
+            $data['price-rent'] = 0;
+        }
         $contract->books()->attach($book->id, [
-            'entered_price' => $request['price-entered'],
-            'rental_price' => $request['price-rent'],
-            'quality' => $request['quality'],
+            'entered_price' => $data['price-sell'],
+            'rental_price' => $data['price-rent'],
+            'quality' => implode($data['quality']),
 
         ]);
 
         $images = Input::hasFile('images');
-        //save image
+
         if ($images) {
             $filesArray = $this->imageRepository->save();
             if (!$book->images()->createMany($filesArray)) {

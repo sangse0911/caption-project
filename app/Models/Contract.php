@@ -39,8 +39,8 @@ class Contract extends Model
     protected $fillable = [
         'supplier_id',
         'admin_id',
-        'payment_method',
-        'bank_account',
+        'method',
+        'account',
         'status',
     ];
 
