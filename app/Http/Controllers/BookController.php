@@ -123,9 +123,14 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $data = $request->all();
+            dd($data);
+            // $book = $this->bookRepository->modified($data);
+        }
+        return response()->json($book, 200);
     }
 
     /**

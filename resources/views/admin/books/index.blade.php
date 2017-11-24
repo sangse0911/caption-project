@@ -8,10 +8,11 @@
                 </button>
             </div>
         </ol>
-        <form enctype="multipart/form-data" type="hidden" name="" id="" method="POST">
-            {{ csrf_field() }}
+        <form enctype="multipart/form-data" type="hidden" id="form-action" name="" method="POST">
+            <input type="hidden" name="token" value="{{ csrf_token() }}">
+            <!-- {{ csrf_field() }} -->
             <div id="myModal" class="modal fade" role="dialog">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-lg" style="max-width: 1100px;">
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
@@ -27,8 +28,8 @@
                             <div class="form-group col-sm-6">
                                 <label for="categories">The loai sach</label>
                                 <select id="category" multiple="multiple" name="categories[]" class="category" style="width: 100%;">
-                                	@foreach($categories as $category)
-                                    <option value="{{ $category->id }}" >{{ $category->name }}</option>
+                                    @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -36,7 +37,6 @@
                                 <label for="introduce">Gioi thieu ve sach</label>
                                 <input type="text" name="introduce" class="form-control" id="introduce" value="" placeholder="Gioi thieu ve sach">
                             </div>
-
                             <div class="form-group col-sm-6">
                                 <label for="location">Vi tri cua sach</label>
                                 <select id="location" multiple="multiple" name="location[]" class="location" style="width: 100%;">
@@ -53,21 +53,19 @@
                                 <label for="author">Tac gia</label>
                                 <input type="text" class="form-control" name="author" id="author" value="" placeholder="Tac gia">
                             </div>
-                            <label class="radio-inline">
-                                <input type="radio" name="status" value="0">Khong san sang</label>
-                            <label class="radio-inline">
-                                <input type="radio" name="status" value="1">San sang</label>
-                            <label class="radio-inline">
-                                <input type="radio" name="status" value="2">Dang </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="status" value="3">Da ban</label>
-                            <label class="radio-inline">
-                                <input type="radio" name="status" value="4">Da cho thue</label>
-                            <label class="radio-inline">
-                                <input type="radio" name="status" value="5">Da tra lai</label>
-                             <div class="form-group">
-                                <label for="description">Mo ta ve sach</label>
-                                <textarea class=" form-control ckeditor" id="description" name="description" rows="10" placeholder="Mo ta ve sach"></textarea>
+                            <div class="form-group col-sm-12">
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" value="0">Khong san sang</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" value="1">San sang</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" value="2">Dang </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" value="3">Da ban</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" value="4">Da cho thue</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" value="5">Da tra lai</label>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="publishing-company">Nha xuat ban</label>
@@ -83,25 +81,30 @@
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="ISBN">Ma so sach</label>
-                                <input type="text" class="form-control" name="ISBN" id="ISBN" value="" placeholder="ISBN">
+                                <input type="text" class="form-control" name="isbn" id="isbn" value="" placeholder="ISBN">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-sm-12">
+                                <label for="description">Mo ta ve sach</label>
+                                <textarea class=" form-control ckeditor" id="description" name="description" rows="10" placeholder="Mo ta ve sach"></textarea>
+                            </div>
+                            <div class="form-group image-area">
                                 <div class="col-md-6">
-                                    <input type="file" id="input-file-now" class="dropify" name="images" />
+                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="file" id="input-file-now" class="dropify" name="images" />
+                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="file" id="input-file-now" class="dropify" name="images" />
+                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="file" id="input-file-now" class="dropify" name="images" />
+                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
                                 </div>
                             </div>
                         </div>
+                        <div style="clear: both;"></div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="update">Luu</button>
+                            <button type="submit" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="book-update">Luu</button>
                             <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Dong</button>
                         </div>
                     </div>
@@ -134,21 +137,17 @@
                         <td>{{ $book->republish }}</td>
                         <td align="center">
                             <button id="{{ $book->id }}" type="button" class="btn btn-warning btn-sm label-left b-a-0 waves-effect waves-light">
-                                <span class="btn-label"><i class="fa fa-eye" ></i></span>
-                                Xem
+                                <span class="btn-label"><i class="fa fa-eye" ></i></span> Xem
                             </button>
                             &nbsp
                             <button type="button" id="update-{{ $book->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
-                                <span class="btn-label"><i class="fa fa-edit"></i></span>
-                                Sửa
+                                <span class="btn-label"><i class="fa fa-edit"></i></span> Sửa
                             </button>
                             &nbsp
                             <button id="view-{{ $book->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
-                                <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span>
-                                Xóa
+                                <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span> Xóa
                             </button>
                         </td>
-
                     </tr>
                     @endforeach
                 </tbody>
@@ -156,51 +155,101 @@
         </div>
     </div>
 </div>
-@endsection
-@section('script')
+@endsection @section('script')
 <script>
-  $("#category").select2({ closeOnSelect: false });
-    $("#location").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
-    $("#quality").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
-    $('#year').datetimepicker({
-        viewMode: 'years',
-        format: 'YYYY'
-    });
-
+$("#category").select2({ closeOnSelect: false });
+$("#location").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
+$("#quality").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
+$('#year').datetimepicker({
+    viewMode: 'years',
+    format: 'YYYY'
+});
 </script>
-
 <script>
- 	$(document).on('focus', 'input' , function() {
+    $(document).on('focus', 'input', function() {
         $(this).removeAttr('placeholder');
     });
-	 $('.btn-update').on('click', function(e) {
-    	var book_id = e.currentTarget.id.substring(7);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('.btn-update').on('click', function(e) {
+        $('.image-area').css("display", "none");
 
-    	$.ajax({
-    		cache: false,
-    		method: 'GET',
-    		dataType: 'JSON',
-    		url: '/admin/books/' + book_id,
-    		success: function(data){
-    			console.log(data);
-    			$('.modal-title').text('Cap nhat sach');
-    			$('#name').val(data['book']['name']);
-                $('#category').val(data['categories']['category_id']).trigger('change');
-    			$('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
-    			$('#introduce').val(data['book']['introduce']);
-    			$('#location').val(data['book']['bookshelf_id']).trigger('change');
-    			$('#price').val(data['book']['price']);
-    			$('#author').val(data['book']['author']);
-    			$('input[type=radio][name="status"][value='+data['book']['status']+']').prop('checked', true);
-    			$('#company').val(data['book']['company']);
-    			$('#year').val(data['book']['year']);
-    			$('#republish').val(data['book']['republish']);
-    			$('#ISBN').val(data['book']['isbn']);
-    		},
-    		error: function(data){
-    			console.log('ee', data);
-    		}
-    	});
+        var book_id = e.currentTarget.id.substring(7);
+        var array = [];
+        $.ajax({
+            cache: false,
+            method: 'GET',
+            dataType: 'JSON',
+            url: '/admin/books/' + book_id,
+            success: function(data) {
+
+                $('.modal-title').text('Cap nhat sach');
+                $('#name').val(data['book']['name']);
+                for (var i = 0; i < data['categories'].length; i++) {
+                    array.push(data['categories'][i]['id']);
+
+                }
+                $('#id').val(data['book']['id']);
+                $('#category').val(array).trigger('change');
+                $('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
+                $('#introduce').val(data['book']['introduce']);
+                $('#location').val(data['book']['bookshelf_id']).trigger('change');
+                $('#price').val(data['book']['price']);
+                $('#author').val(data['book']['author']);
+                $('input[type=radio][name="status"][value=' + data['book']['status'] + ']').prop('checked', true);
+                $('#company').val(data['book']['company']);
+                $('#year').val(data['book']['year']);
+                $('#republish').val(data['book']['republish']);
+                $('#ISBN').val(data['book']['isbn']);
+            },
+            error: function(data) {
+                console.log('ee', data);
+            }
+        });
+    });
+    $('#form-action').submit( function(evt) {
+        // var id = $('#id').val();
+        // $.ajax({
+        //     cache: false,
+        //     method: 'PUT',
+        //     dataType: 'JSON',
+        //     url: '/book/update',
+        //     data: {
+        //         id: id,
+        //     },
+        //     success: function(data) {
+
+
+        //     },
+        //     error: function(data) {
+        //         console.log('ee', data);
+        //     }
+        // });
+        var formData = new FormData(this);
+
+        $.ajax({
+            async:true,
+            method: 'POST',
+            url: '/book/update',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: 'JSON',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+            },
+            success: function(data) {
+                window.location.reload();
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+        evt.preventDefault();
     });
 </script>
 @endsection

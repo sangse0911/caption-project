@@ -6,7 +6,6 @@ use App\Interfaces\BookInterface;
 use App\Interfaces\ContractInterface;
 use App\Interfaces\ImageInterface;
 use App\Models\Book;
-use App\Models\BookCategory;
 use App\Models\Category;
 use Auth;
 use Illuminate\Support\Facades\Input;
@@ -71,10 +70,11 @@ class BookRepository implements BookInterface
     public function find($id)
     {
         $book = Book::find($id);
-        $cate_book = BookCategory::find($book->id);
+        $cate_book = Book::has('categories')->get();
 
         return $array = ['book' => $book,
-            'categories' => $cate_book];
+            'categories' => $cate_book,
+        ];
     }
 
     /**
@@ -144,7 +144,30 @@ class BookRepository implements BookInterface
     {
         $book = Book::findOrFail($data['id']);
 
-        $book->admin_id = Auth::user()->id;
+        if ($data['description'] == null) {
+            $data['description'] = "";
+        }
 
+        $book->name = $data['name'];
+        $book->admin_id = Auth::user()->id;
+        $book->bookshelf_id = implode($data['location']);
+        $book->introduce = $data['introduce'];
+        $book->description = $data['description'];
+        $book->status = $data['status'];
+        $book->author = $data['author'];
+        $book->company = $data['company'];
+        $book->year = $data['year'];
+        $book->republish = $data['republish'];
+        $book->isbn = $data['isbn'];
+        $book->price = $data['price'];
+        //save book
+        $book->save();
+
+        $categories = Input::get('categories');
+        foreach ($categories as $categoriesOb) {
+            $category = Category::find($categoriesOb);
+            $category->books()->updateExistingPivot($categoriesOb, ['book_id' => $book->id]);
+        }
+        return $book;
     }
 }

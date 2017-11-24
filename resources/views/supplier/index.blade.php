@@ -292,7 +292,7 @@
 
         $.ajax({
         	async:true,
-	        type: 'POST',
+	        method: 'POST',
 	        url: '/book/store',
 	        data:formData,
 	        cache:false,

@@ -96,6 +96,7 @@ Route::middleware(['auth:admin'])->group(function () {
 
     Route::get('/book/create/{slug}', ['as' => 'book.create', 'uses' => 'BookController@create']);
     Route::post('/book/store', ['as' => 'book.store', 'uses' => 'BookController@store']);
+    Route::post('/book/update', 'BookController@update')->name('book.update');
 
     Route::get('/event/create', ['as' => 'event.create', 'uses' => 'EventController@create']);
     Route::post('/event/store', ['uses' => 'EventController@store'])->name('event.store');
