@@ -68,7 +68,7 @@ class Admin extends Authenticatable
 
     public function bookselves()
     {
-        return $this->hasMany(\App\Models\Bookself::class);
+        return $this->hasMany(\App\Models\Bookshelf::class);
     }
 
     public function contacts()

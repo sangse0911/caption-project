@@ -78,6 +78,7 @@ Route::middleware(['auth:admin'])->group(function () {
 
     Route::get('/suppliers', 'SupplierController@index')->name('supplier.index');
     Route::get('/suppliers/{id}', 'SupplierController@show')->name('supplier.show');
+    Route::get('/supplier/detail/{id}', 'SupplierController@showDetail')->name('supplier.detail');
     Route::post('/supplier/create', 'SupplierController@store')->name('supplier.save');
     Route::post('/supplier/createIfExistUser', 'SupplierController@storeIfExist')->name('supplier.save.exist');
 

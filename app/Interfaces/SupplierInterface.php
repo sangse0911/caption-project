@@ -8,4 +8,5 @@ interface SupplierInterface
     public function find($id);
     public function create($data);
     public function createIfExistUser($data);
+    public function detail($id);
 }

@@ -91,9 +91,9 @@ class Book extends Model
         return $this->belongsTo(\App\Models\Admin::class);
     }
 
-    public function bookself()
+    public function bookshelf()
     {
-        return $this->belongsTo(\App\Models\Bookself::class);
+        return $this->belongsTo(\App\Models\Bookshelf::class);
     }
 
     public function categories()

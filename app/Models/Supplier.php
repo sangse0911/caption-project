@@ -48,4 +48,9 @@ class Supplier extends Model
     {
         return $this->belongsToMany(\App\Models\Admin::class, 'admin_id', 'supplier_id', 'id')->withTimestamps();
     }
+
+    public function contractDetails()
+    {
+        return $this->hasManyThrough(\App\Models\ContractDetail::class, \App\Models\Contract::class);
+    }
 }

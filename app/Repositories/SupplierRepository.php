@@ -39,6 +39,17 @@ class SupplierRepository implements SupplierInterface
         return Supplier::find($id);
     }
 
+    public function detail($id)
+    {
+        $supplier = Supplier::find($id);
+        $details = $supplier->contractDetails->all();
+        $contracts = $supplier->contracts->all();
+        return $array = [
+            'supplier' => $supplier,
+            'details' => $details,
+            'contracts' => $contracts,
+        ];
+    }
     /**
      * [createIfExistUser description]
      *

@@ -196,6 +196,7 @@
 
         var phone =  $('#phone').val();
         var name = $('#name').val();
+        var id = $('#id').val();
         $.ajax({
 
             cache: false,
@@ -203,6 +204,7 @@
             dataType: 'JSON',
             url: '/supplier/createIfExistUser',
             data: {
+                id: id,
                 phone: phone,
                 name: name,
             },

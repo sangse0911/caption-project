@@ -76,6 +76,10 @@ class SupplierController extends Controller
         return $this->supplierRepository->find($id);
     }
 
+    public function showDetail($id)
+    {
+        return $this->supplierRepository->detail($id);
+    }
     /**
      * Show the form for editing the specified resource.
      *

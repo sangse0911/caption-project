@@ -89,6 +89,7 @@ class BookRepository implements BookInterface
         if ($data['description'] == null) {
             $data['description'] = "";
         }
+
         $book->name = $data['name'];
         $book->admin_id = Auth::user()->id;
         $book->bookshelf_id = implode($data['location']);
