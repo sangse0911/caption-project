@@ -70,10 +70,10 @@ class BookRepository implements BookInterface
     public function find($id)
     {
         $book = Book::find($id);
-        $cate_book = Book::has('categories')->get();
+        $categories = $book->bookCategories()->where('book_id', $id)->get();
 
         return $array = ['book' => $book,
-            'categories' => $cate_book,
+            'categories' => $categories,
         ];
     }
 
@@ -142,7 +142,9 @@ class BookRepository implements BookInterface
 
     public function modified($data)
     {
+
         $book = Book::findOrFail($data['id']);
+        $book->categories()->detach();
 
         if ($data['description'] == null) {
             $data['description'] = "";
@@ -166,7 +168,7 @@ class BookRepository implements BookInterface
         $categories = Input::get('categories');
         foreach ($categories as $categoriesOb) {
             $category = Category::find($categoriesOb);
-            $category->books()->updateExistingPivot($categoriesOb, ['book_id' => $book->id]);
+            $category->books()->attach($book->id);
         }
         return $book;
     }

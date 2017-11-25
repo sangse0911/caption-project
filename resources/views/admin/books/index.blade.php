@@ -9,8 +9,8 @@
             </div>
         </ol>
         <form enctype="multipart/form-data" type="hidden" id="form-action" name="" method="POST">
-            <input type="hidden" name="token" value="{{ csrf_token() }}">
-            <!-- {{ csrf_field() }} -->
+            <!-- <input type="hidden" name="token" value="{{ csrf_token() }}"> -->
+            {{ csrf_field() }}
             <div id="myModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-lg" style="max-width: 1100px;">
                     <!-- Modal content-->
@@ -104,7 +104,7 @@
                         </div>
                         <div style="clear: both;"></div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="book-update">Luu</button>
+                            <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="book-update">Luu</button>
                             <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Dong</button>
                         </div>
                     </div>
@@ -133,7 +133,7 @@
                         <td>{{ $book->introduce }}</td>
                         <td>{{ $book->description }}</td>
                         <td>{{ $book->author }}</td>
-                        <td>{{ $book->publishing_year }}</td>
+                        <td>{{ $book->year }}</td>
                         <td>{{ $book->republish }}</td>
                         <td align="center">
                             <button id="{{ $book->id }}" type="button" class="btn btn-warning btn-sm label-left b-a-0 waves-effect waves-light">
@@ -189,7 +189,7 @@ $('#year').datetimepicker({
                 $('.modal-title').text('Cap nhat sach');
                 $('#name').val(data['book']['name']);
                 for (var i = 0; i < data['categories'].length; i++) {
-                    array.push(data['categories'][i]['id']);
+                    array.push(data['categories'][i]['category_id']);
 
                 }
                 $('#id').val(data['book']['id']);
@@ -203,53 +203,59 @@ $('#year').datetimepicker({
                 $('#company').val(data['book']['company']);
                 $('#year').val(data['book']['year']);
                 $('#republish').val(data['book']['republish']);
-                $('#ISBN').val(data['book']['isbn']);
+                $('#isbn').val(data['book']['isbn']);
             },
             error: function(data) {
                 console.log('ee', data);
             }
         });
     });
-    $('#form-action').submit( function(evt) {
-        // var id = $('#id').val();
-        // $.ajax({
-        //     cache: false,
-        //     method: 'PUT',
-        //     dataType: 'JSON',
-        //     url: '/book/update',
-        //     data: {
-        //         id: id,
-        //     },
-        //     success: function(data) {
+    $('#book-update').click( function(evt) {
 
-
-        //     },
-        //     error: function(data) {
-        //         console.log('ee', data);
-        //     }
-        // });
-        var formData = new FormData(this);
+        var id = $('#id').val();
+        var name = $('#name').val();
+        var categories = $('#category').val();
+        var description = CKEDITOR.instances['description'].getData();
+        var introduce = $('#introduce').val();
+        var location = $('#location').val();
+        var price = $('#price').val();
+        var author = $('#author').val();
+        var status = $('input[name=status]:checked').val();
+        var company = $('#company').val();
+        var year = $('#year').val();
+        var republish = $('#republish').val();
+        var isbn = $('#isbn').val();
 
         $.ajax({
-            async:true,
-            method: 'POST',
-            url: '/book/update',
-            data: formData,
+
             cache: false,
-            contentType: false,
-            processData: false,
+            method: 'PUT',
             dataType: 'JSON',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+            url: '/book/update',
+            data: {
+                id: id,
+                name: name,
+                categories: categories,
+                status: status,
+                description: description,
+                introduce: introduce,
+                location: location,
+                price: price,
+                author: author,
+                company: company,
+                year: year,
+                republish: republish,
+                isbn: isbn
             },
             success: function(data) {
-                window.location.reload();
+                window.location.reload(true);
             },
             error: function(data) {
-                console.log(data);
+                console.log('ee', data);
             }
         });
-        evt.preventDefault();
+        // console.log(data),
+        e.preventDefault();
     });
 </script>
 @endsection

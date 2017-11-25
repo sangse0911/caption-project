@@ -67,12 +67,6 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/bookshelf/{id}', 'BookshelfController@show')->name('bookshelf.show');
     Route::put('/bookshelf/update', 'BookshelfController@update')->name('bookshelf.update');
 
-    Route::get('/bookself', 'BookshelfController@index')->name('bookself.index');
-    Route::get('/bookself/create', 'BookselfController@create')->name('bookself.create');
-    Route::post('/bookself/create', 'BookselfController@store')->name('bookself.save');
-    Route::get('/bookself/{slug}', ['as' => 'bookself.single', 'uses' => 'BookselfController@getStatus'])
-        ->where('slug', '[\w\d\-\_]+');
-
     Route::get('/users/create', 'UserController@create')->name('user.create');
     Route::post('/users/create', 'UserController@storeUser')->name('user.create.supplier');
 
@@ -96,7 +90,7 @@ Route::middleware(['auth:admin'])->group(function () {
 
     Route::get('/book/create/{slug}', ['as' => 'book.create', 'uses' => 'BookController@create']);
     Route::post('/book/store', ['as' => 'book.store', 'uses' => 'BookController@store']);
-    Route::post('/book/update', 'BookController@update')->name('book.update');
+    Route::put('/book/update', 'BookController@update')->name('book.update');
 
     Route::get('/event/create', ['as' => 'event.create', 'uses' => 'EventController@create']);
     Route::post('/event/store', ['uses' => 'EventController@store'])->name('event.store');

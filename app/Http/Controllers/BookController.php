@@ -127,8 +127,7 @@ class BookController extends Controller
     {
         if ($request->ajax()) {
             $data = $request->all();
-            dd($data);
-            // $book = $this->bookRepository->modified($data);
+            $book = $this->bookRepository->modified($data);
         }
         return response()->json($book, 200);
     }

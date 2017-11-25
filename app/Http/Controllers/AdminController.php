@@ -44,7 +44,7 @@ class AdminController extends Controller
         $book = $array['book'];
         $categories = $array['categories'];
 
-        return response()->json(['book' => $book, 'categories' => $categories], 200);
+        return ['book' => $book, 'categories' => $categories];
     }
     /**
      * Create a new user instance after a valid registration.
