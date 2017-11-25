@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Interfaces\WishlistInterface;
+use App\Models\Book;
 use App\Models\Post;
 use App\Models\WishList;
 
@@ -18,14 +19,36 @@ class WishListRepository implements WishlistInterface
 
     }
 
-    public function createPost($request)
+    /**
+     * [createWishlistPost description]
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public function createWishlistPost($data)
     {
 
-        $post = Post::find($request['post_id']);
-        $userId = $request['user_id'];
+        $post = Post::find($data['post_id']);
+        $userId = $data['user_id'];
 
-        $wishlist = new Wishlist;
+        return $post->wishLists()->create([
+            'user_id' => $userId,
+            'wishListable_id' => $post->id,
+        ]);
+    }
 
-        $post->wishLists()->create(array('user_id' => $userId, 'wishListable_id' => $post->id));
+    /**
+     * [createWishlistBook description]
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public function createWishlistBook($data)
+    {
+        $book = Book::find($data['bookId']);
+        $userId = $data['userId'];
+
+        return $book->wishLists()->create([
+            'user_id' => $userId,
+            'wishListable_id' => $book->id,
+        ]);
     }
 }

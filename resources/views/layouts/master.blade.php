@@ -141,7 +141,7 @@
         <script type="text/javascript" src="{{ URL::to('js/electro.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/style.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/owl.autoplay.js') }}"></script>
-        @yield('scripts')
+        @yield('script')
         <script>
         (function($) {
             $('#scrollUp').each(function() {
@@ -371,35 +371,60 @@
             e.preventDefault();
         });
         </script>
-        {{--
+
         <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $('.btn-link').on('click', function(e) {
-
-            var bookId = e.currentTarget.id.substring(9);
-            var userId = $('input.hiddenfieldclass').val();
-
-            $.ajax({
-
-                type: 'POST',
-                url: '/addToPostWish',
-                contentType: "application/json; charset=utf-8",
-                dataType: 'JSON',
-                data: {
-                    userId: userId,
-                    bookId: bookId,
-                },
-                success: function(data) {
-                    console.log(data);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-        });
-        </script> --}}
+
+            $('.btn-link').on('click', function(e) {
+
+                var bookId = e.currentTarget.id.substring(9);
+                var userId = $('input.hiddenfieldclass').val();
+
+                $.ajax({
+
+                    type: 'POST',
+                    url: '/addToPostWish',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'JSON',
+                    data: {
+                        userId: userId,
+                        bookId: bookId,
+                    },
+                    success: function(data) {
+                        console.log(data);
+                    }
+                });
+                e.preventDefault();
+            });
+            $('.add-book').click(function(e) {
+                var bookId = e.currentTarget.id.substring(5);
+                var userId = $('#user-id').val();
+
+                $.ajax({
+
+                    cache: false,
+                    method: 'POST',
+                    dataType: 'JSON',
+                    url: '/addBookWishlist',
+                    data: {
+                        bookId: bookId,
+                        userId: userId
+                    },
+                    success: function(data) {
+                        alert("Ban da them thanh cong vao danh sach yeu thich");
+                    },
+                    error: function(data) {
+                        console.log('ee', data);
+                    }
+
+                });
+                e.preventDefault();
+            });
+        </script>
     </div>
 </body>
 

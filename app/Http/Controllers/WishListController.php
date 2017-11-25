@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\WishListInterface;
-use App\Models\Post;
-use App\Models\WishList;
 use Illuminate\Http\Request;
 
 class WishListController extends Controller
@@ -31,23 +29,28 @@ class WishListController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createPost(Request $request)
+    public function createWishlistPost(Request $request)
     {
 
         if ($request->ajax()) {
-            $user_id = $request->userId;
-            $post_id = $request->postId;
+            $data = $request->all();
+            $wishlist = $this->wishListRepository->createWishlistPost($data);
 
-            $post = Post::find($post_id);
-
-            $wishlist = new Wishlist;
-
-            $wishlist = $post->wishlists()->create(['user_id' => $user_id, 'post_id' => $post_id]);
-
+            return response($wishlist, 200);
         }
-        return response($wishlist);
+        return false;
     }
 
+    public function createWishlistBook(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            $wishlist = $this->wishListRepository->createWishlistBook($data);
+
+            return response()->json($wishlist, 200);
+        }
+        return false;
+    }
     /**
      * Store a newly created resource in storage.
      *

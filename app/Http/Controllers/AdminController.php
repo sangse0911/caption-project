@@ -38,14 +38,6 @@ class AdminController extends Controller
         return view('admin.books.index');
     }
 
-    public function showBook($id)
-    {
-        $array = $this->bookRepository->find($id);
-        $book = $array['book'];
-        $categories = $array['categories'];
-
-        return ['book' => $book, 'categories' => $categories];
-    }
     /**
      * Create a new user instance after a valid registration.
      *

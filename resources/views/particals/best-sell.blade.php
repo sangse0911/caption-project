@@ -16,8 +16,6 @@
                 <div class="owl-stage">
                     <div class="owl-item" style="width: 863px;">
                         <ul class="products columns-2">
-
-
                                 <li class="product product-card first">
                                     <div class="product-outer" style="height: 216px;">
                                         <div class="media product-inner">

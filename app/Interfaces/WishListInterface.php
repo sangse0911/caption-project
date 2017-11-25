@@ -2,9 +2,10 @@
 
 namespace App\Interfaces;
 
-interface WishlistInterface
+interface WishListInterface
 {
     public function all();
     public function find($id);
-    public function createPost($request);
+    public function createWishlistPost($data);
+    public function createWishlistBook($data);
 }

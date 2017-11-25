@@ -67,7 +67,7 @@ class Book extends Model
     ];
 
     protected $dates = [
-        'publishing_year',
+        'year',
     ];
 
     protected $fillable = [
@@ -141,6 +141,6 @@ class Book extends Model
 
     public function wishLists()
     {
-        return $this->morphMany(\App\Models\Wishlist::class, 'wishListable');
+        return $this->morphMany(\App\Models\WishList::class, 'wishListable');
     }
 }

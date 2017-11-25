@@ -50,7 +50,7 @@ class BookRepository implements BookInterface
     {
         return Book::where('status', '=', '1')->with('images')
             ->whereHas('contracts', function ($query) {
-                $query->where('contracts.status', '=', '1');
+                $query->where('contracts.status', '=', '0');
             })->get();
 
     }
@@ -59,11 +59,11 @@ class BookRepository implements BookInterface
      * [getRenterBook description]
      * @return [type] [description]
      */
-    public function getRenterBook()
+    public function getRentBook()
     {
         return Book::where('status', '=', '1')->with('images')
             ->whereHas('contracts', function ($query) {
-                $query->where('contracts.status', '=', '0');
+                $query->where('contracts.status', '=', '1');
             })->get();
     }
 
@@ -71,9 +71,10 @@ class BookRepository implements BookInterface
     {
         $book = Book::find($id);
         $categories = $book->bookCategories()->where('book_id', $id)->get();
-
+        $images = $book->images()->where('book_id', $id)->get();
         return $array = ['book' => $book,
             'categories' => $categories,
+            'images' => $images,
         ];
     }
 
