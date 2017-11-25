@@ -29,6 +29,13 @@
     @section('event')
         @include('particals.event')
     @endsection
+    @section('single-book-field')
+        @include('book.single-book')
+    @endsection
+    @section('post-book-field')
+        @include('book.post-book-field')
+    @endsection
+
     @include('particals.contents')
 @endsection
 

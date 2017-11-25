@@ -26,7 +26,7 @@ class CreateBooksTable extends Migration
             $table->string('company');
             $table->dateTime('year');
             $table->tinyInteger('republish');
-            $table->string('isbn');
+            $table->string('isbn')->nullable();
             $table->string('slug');
             $table->timestamps();
 

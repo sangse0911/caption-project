@@ -183,7 +183,7 @@ Route::middleware(['auth'])->group(function () {
      */
     Route::get('/post/index', ['as' => 'post.index', 'uses' => 'PostController@index']);
     Route::get('/post/create', ['as' => 'post.create', 'uses' => 'PostController@create']);
-    Route::post('/post/create', ['as' => 'post.save', 'uses' => 'PostController@store']);
+    Route::post('/post/store', ['as' => 'post.store', 'uses' => 'PostController@store']);
 
     Route::get('/book/info', ['as' => 'book.info', 'uses' => 'BookController@getSupplier']);
 

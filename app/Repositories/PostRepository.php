@@ -41,22 +41,24 @@ class PostRepository implements PostInterface
 
     /**
      * [create description]
-     * @param  [type] $request [description]
+     * @param  [type] $data [description]
      * @return [type]          [description]
      */
-    public function create($request)
+    public function create($data)
     {
+        // dd($data);
         $post = new Post;
 
-        $post->name = $request['name'];
-        $post->introduce = $request['introduce'];
-        $post->description = $request['description'];
+        $post->name = $data['name'];
+        $post->introduce = $data['introduce'];
+        $post->description = $data['description'];
         $post->status = '1';
-        $post->author = $request['author'];
-        $post->publishing_company = $request['publishing-company'];
-        $post->publishing_year = $request['publishing-year'];
-        $post->republish = $request['republish'];
-        $post->isbn = $request['isbn'];
+        $post->kind = $data['kind'];
+        $post->author = $data['author'];
+        $post->company = $data['company'];
+        $post->year = $data['year'];
+        $post->republish = $data['republish'];
+        $post->isbn = "";
         $post->user_id = Auth::user()->id;
 
         $images = Input::hasFile('images');

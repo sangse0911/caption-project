@@ -17,8 +17,10 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/style.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/colors/green.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/switchery.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/waves.min.css') }}"> {{--
-    <script src="https//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> --}}
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/waves.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/dropify/dist/css/dropify.min.css') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/bootstrap-datetimepicker.min.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Demo Purpose Only. Should be removed in production -->
 </head>
@@ -132,6 +134,7 @@
         <script type="text/javascript" src="{{ URL::to('js/admin/jquery-1.12.3.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/tether.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/bootstrap.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
         <script type="text/javascript" src="{{ URL::to('js/bootstrap-hover-dropdown.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/owl.carousel.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/echo.min.js') }}"></script>
@@ -141,6 +144,11 @@
         <script type="text/javascript" src="{{ URL::to('js/electro.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/style.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/owl.autoplay.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::to('js/select2.full.min.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::to('js/admin/ckeditor/ckeditor.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::to('js/admin/forms-upload.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::to('js/admin/dropify.min.js') }}"></script>
+        <script src="{{ URL::to('js/bootstrap-datetimepicker.js') }}"></script>
         @yield('script')
         <script>
         (function($) {
@@ -166,8 +174,58 @@
                 $('#cart-2').css("display","none");
             }
         });
+
         </script>
         <script>
+            $('#post-book').click(function(e) {
+                $('.modal-lg').css("max-width","1100px");
+                $('.modal-title').text('Chao mung ban da mang lai sach cho chung toi');
+                $('#single-product').css("display", "none");
+                $('.post').removeAttr("style");
+
+            });
+
+            $('.book-show').click(function(e) {
+                $('.modal-title').text('Thong tin chi tiet');
+                $('.post').css("display","none");
+                $('#single-product').removeAttr("style");
+            });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('#post-form').submit(function(evt) {
+
+                var formData = new FormData(this);
+
+                $.ajax({
+                    async:true,
+                    method: 'POST',
+                    url: '/post/store',
+                    data:formData,
+                    cache:false,
+                    contentType: false,
+                    processData: false,
+                    dataType: 'JSON',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+                    },
+                    success: function(data) {
+                        alert("Chuc mung ban da thanh cong");
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+                 evt.preventDefault();
+            });
+        </script>
+        <script>
+        $('#year').datetimepicker({
+            viewMode: 'years',
+            format: 'YYYY'
+        });
         (function($) {
 
             var owl = $("#owl-demo");

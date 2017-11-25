@@ -20,6 +20,8 @@ class PostTableSeeder extends Seeder
                 'description' => 'cccccccccccccccc',
                 'status' => '1',
                 'user_id' => '2',
+                'kind' => '1',
+                'address' => 'sssssssssss',
                 'author' => 'dddddddddddddddd',
                 'company' => 'eeeeeeeeeeeeee',
                 'year' => '3',

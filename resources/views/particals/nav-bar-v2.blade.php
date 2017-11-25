@@ -7,9 +7,9 @@
         </div>
         <div class="collapse navbar-toggleable-xs" id="header-v3">
             <ul class="nav navbar-nav" style="display: inline-flex; align-items: center;">
-                <li class="menu-item" style="display: inline-table;"><a title="TV &amp; Audio" href="product-category.html">Ban sach</a></li>
-                <li class="menu-item" style="display: inline-table;"><a title="RTV" href="product-category.html">Dang bai</a></li>
-                <li class="menu-item" style="display: inline-table;"><a title="Computers" href="product-category.html">Computers</a></li>
+                <li class="menu-item" style="display: inline-table;"><a title="TV &amp; Audio" href="#">Ban sach</a></li>
+                <li class="menu-item" style="display: inline-table;"><a title="Goc dang bai" href="#"  data-toggle="modal" data-target="#myModal" id="post-book">Dang bai</a></li>
+                <li class="menu-item" style="display: inline-table;"><a title="Computers" href="#">Computers</a></li>
                 <li id="search-form" class="menu-item" style="display: none;">
                     <form class="navbar-search" method="get" action="#" style="width: 100%;">
                         <label class="sr-only screen-reader-text" for="search">Search for:</label>

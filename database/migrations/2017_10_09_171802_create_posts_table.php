@@ -20,6 +20,8 @@ class CreatePostsTable extends Migration
             $table->string('introduce')->nullable();
             $table->text('description');
             $table->enum('status', ['1', '2', '3', '4', '5', '6', '7'])->default('1');
+            $table->enum('kind', ['1', '2', '3'])->default('1');
+            $table->string('address');
             $table->string('author', 50)->nullable();
             $table->string('company')->nullable();
             $table->dateTime('year')->nullable();

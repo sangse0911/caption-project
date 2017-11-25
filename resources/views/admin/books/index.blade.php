@@ -104,8 +104,8 @@
                         </div>
                         <div style="clear: both;"></div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="book-update">Luu</button>
-                            <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Dong</button>
+                            <button type="button" class="btn btn-success" id="book-update">Luu</button>
+                            <button type="button" class="btn btn-danger " data-dismiss="modal">Dong</button>
                         </div>
                     </div>
                 </div>

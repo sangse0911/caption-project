@@ -48,8 +48,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = $this->postRepository->create($request->all());
-        return redirect()->to('/');
+        if ($request->ajax()) {
+            $data = $request->all();
+            $post = $this->postRepository->create($data);
+
+            return response()->json($post, 200);
+        }
+
     }
 
     /**
