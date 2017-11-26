@@ -255,7 +255,7 @@ $('#year').datetimepicker({
             }
         });
         // console.log(data),
-        e.preventDefault();
+        evt.preventDefault();
     });
 </script>
 @endsection

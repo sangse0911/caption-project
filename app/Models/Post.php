@@ -96,6 +96,11 @@ class Post extends Model
             ->withTimestamps();
     }
 
+    public function categoryPosts()
+    {
+        return $this->hasMany(\App\Models\CategoryPost::class);
+    }
+
     public function imagePosts()
     {
         return $this->hasMany(\App\Models\ImagePost::class);
@@ -103,6 +108,6 @@ class Post extends Model
 
     public function wishLists()
     {
-        return $this->morphMany(\App\Models\Wishlist::class, 'wishListable');
+        return $this->morphMany(\App\Models\WishList::class, 'wishListable');
     }
 }

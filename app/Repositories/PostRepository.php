@@ -31,12 +31,21 @@ class PostRepository implements PostInterface
      */
     public function all()
     {
-        return Post::with('imagePosts')->get();
+        $posts = Post::with('imagePosts')->get();
+
+        return $posts;
     }
 
     public function find($id)
     {
-
+        $post = Post::find($id);
+        $categories = $post->categoryPosts()->where('post_id', $id)->get();
+        $images = $post->imagePosts()->where('post_id', $id)->get();
+        return [
+            'post' => $post,
+            'categories' => $categories,
+            'images' => $images,
+        ];
     }
 
     /**

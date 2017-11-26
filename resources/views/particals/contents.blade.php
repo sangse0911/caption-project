@@ -2,7 +2,7 @@
     <div class="container">
         <div id="primary" class="content-area">
             <main id="main" class="site-main">
-                @yield('part-content') @yield('carousel') @yield('categories') @yield('first') @yield('recently') @yield('best-sell') @yield('event')
+                @yield('part-content') @yield('carousel') @yield('categories') @yield('first') @yield('recently') @yield('best-sell') @yield('event') @yield('post-book')
                 <form type="hidden" name="" id="post-form" method="POST">
                     {{-- {{ csrf_field() }} --}}
                     <input type="hidden" name="token" value="{{ csrf_token() }}">

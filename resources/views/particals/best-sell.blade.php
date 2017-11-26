@@ -3,15 +3,14 @@
         <h2 class="h1">Sach ban chay nhat</h2>
         <ul class="nav nav-inline">
             <li class="nav-item active"><span class="nav-link">Top 20</span></li>
-            {{--
-            <li class="nav-item"><a class="nav-link" href="product-category.html">Smart Phones &amp; Tablets</a></li>
-            <li class="nav-item"><a class="nav-link" href="product-category.html">Laptops &amp; Computers</a></li>
-            <li class="nav-item"><a class="nav-link" href="product-category.html">Video Cameras</a></li> --}}
         </ul>
     </header>
     <div id="home-v1-product-cards-careousel">
         <div class="woocommerce columns-2 home-v1-product-cards-carousel product-cards-carousel owl-carousel" id="owl-demo2">
-            @foreach($books as $book) @foreach($book->images as $image)
+            @foreach($posts->chunk(4) as $new_post)
+            @foreach($new_post as $post)
+            @foreach($post->imagePosts as $image)
+            {{-- @foreach($book->images as $image) --}}
             <div class="owl-stage-outer">
                 <div class="owl-stage">
                     <div class="owl-item" style="width: 863px;">
@@ -19,15 +18,15 @@
                                 <li class="product product-card first">
                                     <div class="product-outer" style="height: 216px;">
                                         <div class="media product-inner">
-                                            <a class="media-left" href="single-product.html" title="Pendrive USB 3.0 Flash 64 GB">
-                                                <img class="media-object wp-post-image img-responsive" src="assets/images/product-cards/3.jpg" alt="">
+                                            <a class="media-left" href="#" title="Pendrive USB 3.0 Flash 64 GB">
+                                                <img class="media-object wp-post-image img-responsive" src="{{ URL::to('assets/images/post/'. $image->path) }}" alt="">
                                             </a>
                                             <div class="media-body">
                                                 <span class="loop-product-categories">
                                                     <a href="product-category.html" rel="tag">Headphone Cases</a>
                                                 </span>
-                                                <a href="single-product.html">
-                                                    <h3>Universal Headphones Case in Black</h3>
+                                                <a href="#">
+                                                    <h3>{{ $posts[0]->name }}</h3>
                                                 </a>
                                                 <div class="price-add-to-cart">
                                                     <span class="price">
@@ -51,21 +50,21 @@
                                         <!-- /.product-inner -->
                                     </div>
                                     <!-- /.product-outer -->
-                                    arr[i].name
+
                                 </li>
                                 <!-- /.products -->
                                 <li class="product product-card last">
                                 <div class="product-outer" style="height: 216px;">
                                     <div class="media product-inner">
                                         <a class="media-left" href="single-product.html" title="Pendrive USB 3.0 Flash 64 GB">
-                                            <img class="media-object wp-post-image img-responsive" src="assets/images/product-cards/2.jpg" alt="">
+                                            <img class="media-object wp-post-image img-responsive" src="{{ URL::to('assets/images/post/'. $image->path) }}" alt="">
                                         </a>
                                         <div class="media-body">
                                             <span class="loop-product-categories">
                                                 <a href="product-category.html" rel="tag">Smartphones</a>
                                             </span>
                                             <a href="single-product.html">
-                                                <h3>Tablet Thin EliteBook  Revolve 810 G6</h3>
+                                                <h3>{{ $posts[1]->name }}</h3>
                                             </a>
                                             <div class="price-add-to-cart">
                                                 <span class="price">
@@ -88,22 +87,21 @@
                                     <!-- /.product-inner -->
                                 </div>
                                 <!-- /.product-outer -->
-                                arr[i+1].name
-                               </li>
 
+                               </li>
                             <!-- /.products -->
                             <li class="product product-card first">
                                 <div class="product-outer" style="height: 216px;">
                                     <div class="media product-inner">
                                         <a class="media-left" href="single-product.html" title="Pendrive USB 3.0 Flash 64 GB">
-                                            <img class="media-object wp-post-image img-responsive" src="assets/images/product-cards/3.jpg" alt="">
+                                            <img class="media-object wp-post-image img-responsive" src="{{ URL::to('assets/images/post/'. $image->path) }}" alt="">
                                         </a>
                                         <div class="media-body">
                                             <span class="loop-product-categories">
                                                 <a href="product-category.html" rel="tag">Headphone Cases</a>
                                             </span>
                                             <a href="single-product.html">
-                                                <h3>Universal Headphones Case in Black</h3>
+                                                <h3>{{ $posts[2]->name }}</h3>
                                             </a>
                                             <div class="price-add-to-cart">
                                                 <span class="price">
@@ -133,14 +131,14 @@
                                 <div class="product-outer" style="height: 216px;">
                                     <div class="media product-inner">
                                         <a class="media-left" href="single-product.html" title="Pendrive USB 3.0 Flash 64 GB">
-                                            <img class="media-object wp-post-image img-responsive" src="assets/images/product-cards/2.jpg" alt="">
+                                            <img class="media-object wp-post-image img-responsive" src="{{ URL::to('assets/images/post/'. $image->path) }}" alt="">
                                         </a>
                                         <div class="media-body">
                                             <span class="loop-product-categories">
                                                 <a href="product-category.html" rel="tag">Smartphones</a>
                                             </span>
                                             <a href="single-product.html">
-                                                <h3>Tablet Thin EliteBook  Revolve 810 G6</h3>
+                                                <h3>{{ $posts[3]->name }}</h3>
                                             </a>
                                             <div class="price-add-to-cart">
                                                 <span class="price">
@@ -169,7 +167,7 @@
                     </div>
                 </div>
             </div>
-            @endforeach @endforeach
+            @endforeach @endforeach @endforeach
         </div>
     </div>
     <!-- #home-v1-product-cards-careousel -->

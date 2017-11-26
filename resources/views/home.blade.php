@@ -35,7 +35,9 @@
     @section('post-book-field')
         @include('book.post-book-field')
     @endsection
-
+    @section('post-book')
+        @include('book.post-book')
+    @endsection
     @include('particals.contents')
 @endsection
 

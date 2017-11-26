@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/select2.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/dropify/dist/css/dropify.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/bootstrap-datetimepicker.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/star-rating-svg.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Demo Purpose Only. Should be removed in production -->
 </head>
@@ -149,6 +150,7 @@
         <script type="text/javascript" src="{{ URL::to('js/admin/forms-upload.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/dropify.min.js') }}"></script>
         <script src="{{ URL::to('js/bootstrap-datetimepicker.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::to('js/jquery.star-rating-svg.min.js') }}"></script>
         @yield('script')
         <script>
         (function($) {
@@ -189,12 +191,20 @@
                 $('.modal-title').text('Thong tin chi tiet');
                 $('.post').css("display","none");
                 $('#single-product').removeAttr("style");
+                $('.action-buttons').removeAttr("style");
+            });
+            $('.post-show').click(function(e) {
+                $('.modal-title').text('Thong tin chi tiet');
+                $('.post').css("display","none");
+                $('#single-product').removeAttr("style");
+                $('.action-buttons').css("display", "none");
             });
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
             $('#post-form').submit(function(evt) {
 
                 var formData = new FormData(this);
@@ -220,45 +230,59 @@
                 });
                  evt.preventDefault();
             });
+
         </script>
         <script>
-        $('#year').datetimepicker({
-            viewMode: 'years',
-            format: 'YYYY'
-        });
-        (function($) {
+            $('#year').datetimepicker({
+                viewMode: 'years',
+                format: 'YYYY'
+            });
 
-            var owl = $("#owl-demo");
-
-            var block = false;
-            $(".owl-carousel").mouseenter(function() {
-                if (!block) {
-                    block = true;
-                    owl.trigger('stop.owl.autoplay')
-                    block = false;
+            $(".my-rating-9").starRating({
+                starSize: 20,
+                initialRating: 0,
+                disableAfterRate: false,
+                strokeColor: '#a3d133',
+                onHover: function(currentIndex, currentRating, $el){
+                  $('.live-rating').text(currentIndex);
+                },
+                onLeave: function(currentIndex, currentRating, $el){
+                  $('.live-rating').text(currentRating);
                 }
-            });
-            $(".owl-carousel").mouseleave(function() {
-                if (!block) {
-                    owl.trigger('play.owl.autoplay', [1000])
-                    block = false;
-                }
-            });
+              });
+            (function($) {
 
-            owl.owlCarousel({
-                autoplay: true,
-                autoPlaySpeed: 1000,
-                autoplayHoverPause: true,
-                loop: true,
-                navigation: true,
-                items: 4, //10 items above 1000px browser width
-                itemsDesktop: [1000, 5], //5 items between 1000px and 901px
-                itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
-                itemsTablet: [600, 2], //2 items between 600 and 0;
-                itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
+                var owl = $("#owl-demo");
 
-            });
-        })(jQuery);
+                var block = false;
+                $(".owl-carousel").mouseenter(function() {
+                    if (!block) {
+                        block = true;
+                        owl.trigger('stop.owl.autoplay')
+                        block = false;
+                    }
+                });
+                $(".owl-carousel").mouseleave(function() {
+                    if (!block) {
+                        owl.trigger('play.owl.autoplay', [1000])
+                        block = false;
+                    }
+                });
+
+                owl.owlCarousel({
+                    autoplay: true,
+                    autoPlaySpeed: 1000,
+                    autoplayHoverPause: true,
+                    loop: true,
+                    navigation: true,
+                    items: 4, //10 items above 1000px browser width
+                    itemsDesktop: [1000, 5], //5 items between 1000px and 901px
+                    itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
+                    itemsTablet: [600, 2], //2 items between 600 and 0;
+                    itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
+
+                });
+            })(jQuery);
         </script>
         <script>
         (function($) {
@@ -412,6 +436,7 @@
                 url: '/book/' + book_id,
                 success: function(data) {
                     console.log(data);
+                    $('#book-rate').text(data['book']['id']);
                     $('#book-name').text(data['book']['name']);
                     $('#book-status').text(data['book']['status']);
                     $('#book-company').text(data['book']['publishing_company']);
@@ -428,6 +453,28 @@
             });
             e.preventDefault();
         });
+        $('.post-show').click(function(e) {
+            var post_id = e.currentTarget.id.substring(5);
+
+            $.ajax({
+                cache: false,
+                method: 'GET',
+                dataType: 'JSON',
+                url: '/post/' + post_id,
+                success: function(data) {
+                    console.log(data);
+                    $('#book-name').text(data['post']['name']);
+                    $('#book-status').text(data['post']['kind']);
+                    $('#book-company').text(data['post']['company']);
+                    $('#book-year').text(data['post']['year']);
+                    $('#book-republish').text(data['post']['republish']);
+                    $('#book-author').text(data['post']['author']);
+                    $('#book-price').text('Gia: ' + data['post']['price'] + ' VND');
+                    $('#book-introduce').text(data['post']['introduce']);
+                    $('#book-description').text(data['post']['description']);
+                }
+            });
+        });
         </script>
 
         <script>
@@ -437,27 +484,30 @@
                 }
             });
 
-            $('.btn-link').on('click', function(e) {
+            // $('.add-post').click(function(e) {
 
-                var bookId = e.currentTarget.id.substring(9);
-                var userId = $('input.hiddenfieldclass').val();
+            //     var postId = e.currentTarget.id.substring(9);
+            //     var userId = $('#user-id').val();
 
-                $.ajax({
+            //     $.ajax({
 
-                    type: 'POST',
-                    url: '/addToPostWish',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: 'JSON',
-                    data: {
-                        userId: userId,
-                        bookId: bookId,
-                    },
-                    success: function(data) {
-                        console.log(data);
-                    }
-                });
-                e.preventDefault();
-            });
+            //         cache: false,
+            //         method: 'POST',
+            //         dataType: 'JSON',
+            //         url: '/addPostWishlist',
+            //         data: {
+            //             userId: userId,
+            //             postId: postId,
+            //         },
+            //         success: function(data) {
+            //             alert("Ban da them thanh cong vao danh sach yeu thich");
+            //         },
+            //         error: function(data) {
+            //             console.log('ee', data);
+            //         }
+            //     });
+            //     e.preventDefault();
+            // });
             $('.add-book').click(function(e) {
                 var bookId = e.currentTarget.id.substring(5);
                 var userId = $('#user-id').val();
@@ -481,6 +531,35 @@
 
                 });
                 e.preventDefault();
+            });
+            $('.submit-rate').click(function(evt) {
+
+                var bookId = $('#book-rate').val();
+                console.log(bookId);
+                var userId = $('#user-id').val();
+                var comment = $('#comment').val();
+                var rate = $('.my-rating-9').starRating('getRating');
+
+                $.ajax({
+
+                    cache:false,
+                    method: 'POST',
+                    url: '/addBookRate',
+                    data: {
+                        userId: userId,
+                        bookId: bookId,
+                        comment: comment,
+                        rate: rate,
+                    },
+                    dataType: 'JSON',
+                    success: function(data) {
+                        alert("Cam on ban da danh gia");
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+                evt.preventDefault();
             });
         </script>
     </div>

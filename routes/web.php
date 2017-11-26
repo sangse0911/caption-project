@@ -176,12 +176,17 @@ Route::post('/cart/add', ['as' => 'cart.add', 'uses' => 'CartController@add']);
 /**
  *
  */
+Route::get('/post/index', ['as' => 'post.index', 'uses' => 'PostController@index']);
+Route::get('/post/{id}', 'PostController@show')->name('post.show');
+
+/**
+ *
+ */
 Route::middleware(['auth'])->group(function () {
 
     /**
      *
      */
-    Route::get('/post/index', ['as' => 'post.index', 'uses' => 'PostController@index']);
     Route::get('/post/create', ['as' => 'post.create', 'uses' => 'PostController@create']);
     Route::post('/post/store', ['as' => 'post.store', 'uses' => 'PostController@store']);
 
@@ -192,6 +197,8 @@ Route::middleware(['auth'])->group(function () {
      */
     Route::post('/addPostWishlist', ['as' => 'add.post.wishlist', 'uses' => 'WishListController@createWishlistPost']);
     Route::post('/addBookWishlist', ['as' => 'add.book.wishlist', 'uses' => 'WishListController@createWishlistBook']);
+
+    Route::post('/addBookRate', 'RateController@store')->name('book.rate');
 
 });
 // TEST TRANG QUAN TRI

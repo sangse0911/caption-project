@@ -27,14 +27,19 @@ class Rate extends Model
 {
     protected $casts = [
         'user_id' => 'int',
-        'rateable_id' => 'int',
+        'book_id' => 'int',
     ];
 
     protected $fillable = [
         'user_id',
-        'rateable_id',
-        'rateable_type',
+        'book_id',
+        'rate',
     ];
+
+    public function book()
+    {
+        return $this->belongsTo(\App\Models\Book::class);
+    }
 
     public function user()
     {

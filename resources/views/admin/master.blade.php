@@ -258,7 +258,7 @@
                                 Xin chào <a href="#" style="color: #0CC3D3;">{{ Auth::user()->name }}</a>
                                 <a href="#" data-toggle="dropdown" aria-expanded="false">
                                     <span class="avatar box-32">
-                                        <img src="img/avatars/1.jpg" alt="">
+                                        <img src="{{ URL::to('img/adminavatar.png') }}" alt="">
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right animated fadeInUp">
@@ -273,7 +273,11 @@
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="index.html#"><i class="ti-help mr-0-5"></i> Help</a>
-                                    <a class="dropdown-item" href="index.html#"><i class="ti-power-off mr-0-5"></i> Sign out</a>
+                                    <a class="dropdown-item" href="{{ url('/logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();"><i class="ti-power-off mr-0-5"></i> Sign out</a>
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
                                 </div>
                             </li>
                         </ul>

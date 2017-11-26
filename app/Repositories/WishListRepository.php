@@ -27,8 +27,8 @@ class WishListRepository implements WishlistInterface
     public function createWishlistPost($data)
     {
 
-        $post = Post::find($data['post_id']);
-        $userId = $data['user_id'];
+        $post = Post::find($data['postId']);
+        $userId = $data['userId'];
 
         return $post->wishLists()->create([
             'user_id' => $userId,

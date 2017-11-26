@@ -167,23 +167,21 @@
                             <div id="review_form_wrapper">
                                 <div id="review_form">
                                     <div id="respond" class="comment-respond">
+
                                         <h3 id="reply-title" class="comment-reply-title">Them danh gia
                                             <small>
                                                 <a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display:none;">Cancel reply</a>
                                             </small>
                                         </h3>
-                                        <form action="#" method="post" id="commentform" class="comment-form">
+                                        <form  method="post" id="commentform" class="comment-form">
+                                            <input type="hidden" name="book-rate" id="book-rate" value="">
                                             <p class="comment-form-rating">
                                                 <label>Vote cua ban</label>
                                             </p>
-                                            <p class="stars">
-                                                <span><a class="star-1" href="#">1</a>
-                                                    <a class="star-2" href="#">2</a>
-                                                    <a class="star-3" href="#">3</a>
-                                                    <a class="star-4" href="#">4</a>
-                                                    <a class="star-5" href="#">5</a>
-                                                </span>
+                                            <p class= "my-rating-9">
+
                                             </p>
+                                            <p class="live-rating"></p>
                                             <p class="comment-form-comment">
                                                 <p>
                                                     <label for="comment">Danh gia cua ban</label>
@@ -191,7 +189,7 @@
                                                 <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
                                             </p>
                                             <p class="form-submit">
-                                                <input name="submit" type="submit" id="submit" class="submit" value="Add Review">
+                                                <input name="submit" type="submit" id="comment" class="submit-rate" value="Them danh gia">
                                                 <input type="hidden" name="comment_post_ID" value="2452" id="comment_post_ID">
                                                 <input type="hidden" name="comment_parent" id="comment_parent" value="0">
                                             </p>

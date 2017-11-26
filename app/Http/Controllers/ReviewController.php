@@ -2,18 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Interfaces\PostInterface;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class ReviewController extends Controller
 {
-
-    protected $postRepository;
-
-    public function __construct(PostInterface $postRepository)
-    {
-        $this->postRepository = $postRepository;
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,16 +13,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = $this->postRepository->all();
-
-        return view('particals.best-sell', compact('posts'));
+        //
     }
 
-    public function contentPost()
-    {
-        $posts = $this->postRepository->all();
-        return view('post.content-post', compact('posts'));
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -38,7 +23,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        //
     }
 
     /**
@@ -49,13 +34,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->ajax()) {
-            $data = $request->all();
-            $post = $this->postRepository->create($data);
-
-            return response()->json($post, 200);
-        }
-
+        //
     }
 
     /**
@@ -66,7 +45,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return $this->postRepository->find($id);
+        //
     }
 
     /**

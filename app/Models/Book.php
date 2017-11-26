@@ -129,6 +129,11 @@ class Book extends Model
         return $this->hasMany(\App\Models\DetailRenter::class);
     }
 
+    public function rates()
+    {
+        return $this->hasMany(\App\Models\Rate::class);
+    }
+
     public function reviews()
     {
         return $this->hasMany(\App\Models\Review::class);

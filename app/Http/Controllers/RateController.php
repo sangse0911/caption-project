@@ -2,17 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Interfaces\PostInterface;
+use App\Interfaces\RateInterface;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class RateController extends Controller
 {
+    /**
+     * [$rateRepository description]
+     * @var [type]
+     */
+    protected $rateRepository;
 
-    protected $postRepository;
-
-    public function __construct(PostInterface $postRepository)
+    /**
+     * [__construct description]
+     * @param RateInterface $rateRepository [description]
+     */
+    public function __construct(RateInterface $rateRepository)
     {
-        $this->postRepository = $postRepository;
+        $this->rateRepository = $rateRepository;
     }
     /**
      * Display a listing of the resource.
@@ -21,16 +28,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = $this->postRepository->all();
-
-        return view('particals.best-sell', compact('posts'));
+        //
     }
 
-    public function contentPost()
-    {
-        $posts = $this->postRepository->all();
-        return view('post.content-post', compact('posts'));
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -38,7 +38,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        //
     }
 
     /**
@@ -49,13 +49,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($data);
         if ($request->ajax()) {
             $data = $request->all();
-            $post = $this->postRepository->create($data);
+            $rate = $this->rateRepository->create($data);
 
-            return response()->json($post, 200);
+            return response()->json($rate, 200);
         }
-
     }
 
     /**
@@ -66,7 +66,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return $this->postRepository->find($id);
+        //
     }
 
     /**

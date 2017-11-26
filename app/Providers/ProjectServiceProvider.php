@@ -20,6 +20,7 @@ class ProjectServiceProvider extends ServiceProvider
         view()->composer(['book.create', 'bookself.create'], 'App\Http\ViewComposers\AdminComposer');
         view()->composer(['book.create', 'supplier.index', 'admin.books.index'], 'App\Http\ViewComposers\BookshelfComposer');
         view()->composer(['supplier.create', 'supplier.index'], 'App\Http\ViewComposers\UserComposer');
+        view()->composer(['book.post-book', 'particals.best-sell'], 'App\Http\ViewComposers\PostComposer');
     }
 
     /**
@@ -43,5 +44,7 @@ class ProjectServiceProvider extends ServiceProvider
         $this->app->singleton(\App\Interfaces\EventInterface::class, \App\Repositories\EventRepository::class);
         $this->app->singleton(\App\Interfaces\RoleInterface::class, \App\Repositories\RoleRepository::class);
         $this->app->singleton(\App\Interfaces\ContactInterface::class, \App\Repositories\ContactRepository::class);
+        $this->app->singleton(\App\Interfaces\RateInterface::class, \App\Repositories\RateRepository::class);
+        $this->app->singleton(\App\Interfaces\ReviewInterface::class, \App\Repositories\ReviewRepository::class);
     }
 }
