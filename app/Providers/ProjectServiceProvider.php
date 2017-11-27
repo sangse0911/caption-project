@@ -46,5 +46,6 @@ class ProjectServiceProvider extends ServiceProvider
         $this->app->singleton(\App\Interfaces\ContactInterface::class, \App\Repositories\ContactRepository::class);
         $this->app->singleton(\App\Interfaces\RateInterface::class, \App\Repositories\RateRepository::class);
         $this->app->singleton(\App\Interfaces\ReviewInterface::class, \App\Repositories\ReviewRepository::class);
+        $this->app->singleton(\App\Interfaces\CartInterface::class, \App\Repositories\CartRepository::class);
     }
 }

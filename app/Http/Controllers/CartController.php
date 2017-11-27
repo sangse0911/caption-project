@@ -2,10 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\CartInterface;
+use App\Models\Book;
+use Cart;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+
+    protected $cartRepository;
+
+    public function __construct(CartInterface $cartRepository)
+    {
+        $this->cartRepository = $cartRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,14 +34,24 @@ class CartController extends Controller
      */
     public function create()
     {
-        return view('layouts.newtest');
+
     }
 
-    public function add(Request $request)
+    public function add($id)
     {
-        if ($request->ajax()) {
-            return response()->json($request->all());
-        }
+        $book = Book::find($id)->first();
+
+        Cart::add([
+            'id' => $id,
+            'name' => $book->name,
+            'qty' => 1,
+            'price' => $book->price,
+            'option' => [
+                'image' => $book->images[0]->path,
+            ],
+        ]);
+        $content = Cart::content();
+        print_r($content);
     }
     /**
      * Store a newly created resource in storage.

@@ -24,7 +24,7 @@
                                     <div class="product-inner">
                                         <span class="loop-product-categories"><a href="#" rel="tag">a</a></span>
                                         <a data-toggle="modal" href="#myModal" class="book-show" id="book-{{ $book->id}}">
-                                            <h3>{{ $book->name }}</h3>
+                                            <h3 class="product-name">{{ $book->name }}</h3>
                                             <div class="product-thumbnail">
                                                 <img src="{{ URL::to('assets/images/product'. '/'. $book->images[0]->path) }}" class="img-responsive" alt="">
                                             </div>
@@ -37,7 +37,7 @@
                                             <span class="amount"> </span>
                                             </span>
                                             </span>
-                                            <a rel="nofollow" href="#" class="button add_to_cart_button">Them vao gio</a>
+                                            <a rel="nofollow" href="{{ url('/cart/add', [$book->id]) }}" class="button add_to_cart_button" id="{{ $book->id }}">Them vao gio</a>
                                         </div>
                                         <!-- /.price-add-to-cart -->
                                         <div class="hover-area">

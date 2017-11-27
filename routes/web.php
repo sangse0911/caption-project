@@ -166,12 +166,12 @@ Route::middleware(['auth:admin'])->group(function () {
 Route::get('/api/user', ['as' => 'api.user.index', 'uses' => 'UserController@indexApi']);
 Route::get('/users/content', ['as' => 'users.content', 'uses' => 'UserController@getContent']);
 
-Route::get('/layouts/', ['as' => 'layouts.index', 'uses' => 'CartController@index']);
-Route::get('/layouts/newtest', ['as' => 'layouts.newtest', 'uses' => 'CartController@create']);
-Route::get('/layouts/cart', ['as' => 'layouts.newtest.save', 'uses' => 'CartController@createApi']);
-
-Route::post('/layouts/', ['as' => 'layouts.save', 'uses' => 'CartController@store']);
-Route::post('/cart/add', ['as' => 'cart.add', 'uses' => 'CartController@add']);
+/**
+ *
+ */
+Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::get('/cart/add/{id}', 'CartController@add')->name('cart.add');
+// Route::post('/cart/add', ['as' => 'cart.add', 'uses' => 'CartController@add']);
 
 /**
  *

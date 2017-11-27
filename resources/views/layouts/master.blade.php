@@ -535,7 +535,6 @@
             $('.submit-rate').click(function(evt) {
 
                 var bookId = $('#book-rate').val();
-                console.log(bookId);
                 var userId = $('#user-id').val();
                 var comment = $('#comment').val();
                 var rate = $('.my-rating-9').starRating('getRating');
@@ -561,6 +560,29 @@
                 });
                 evt.preventDefault();
             });
+            $('.add-cart').click(function(e) {
+                e.preventDefault();
+                var product_id = e.currentTarget.id.substring(5);
+
+                $.ajax({
+                    cache: false,
+                    method: 'GET',
+                    url: '/cart/add/' + product_id,
+                    data: {
+                        id: id,
+                    },
+                    dataType: 'JSON',
+                    success: function(data) {
+                        alert('aaaaaaaaaa');
+                    },
+                    error: function(data) {
+                        console.log('ee', data);
+                    }
+                });
+            });
+        </script>
+        <script>
+
         </script>
     </div>
 </body>
