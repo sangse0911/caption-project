@@ -39,7 +39,7 @@ class BookRepository implements BookInterface
      */
     public function all()
     {
-        return Book::simplePaginate(10);
+        return Book::all();
     }
 
     /**

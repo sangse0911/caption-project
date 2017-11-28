@@ -17,12 +17,11 @@ class CreateDetailRentersTable extends Migration
             $table->increments('id');
             $table->integer('book_id')->unsigned();
             $table->integer('renter_id')->unsigned();
-            $table->double('deposites', 20, 0);
-            $table->double('fine', 20, 0);
-            $table->dateTime('renter_date');
-            $table->dateTime('due_date');
-            $table->dateTime('returned_date');
+            $table->dateTime('rent_date');
+            $table->dateTime('return_date');
             $table->double('total_price', 20, 0);
+            $table->integer('fee');
+            $table->integer('discount');
             $table->timestamps();
 
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade')->onUpdate('cascade');

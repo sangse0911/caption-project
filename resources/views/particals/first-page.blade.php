@@ -1,6 +1,6 @@
 <section class="home-v2-categories-products-carousel section-products-carousel animate-in-view fadeIn animated animation" data-animation="fadeIn">
     <header>
-        <h2 class="h1">Goc sach ban</h2>
+        <h2 class="h1">Góc sách bán</h2>
 
         <div class="owl-nav">
             <a href="#products-carousel-prev" data-target="#products-carousel-57176fb2c4230" class="slider-prev"><i class="fa fa-angle-left"></i></a>
@@ -32,17 +32,17 @@
                                         <div class="price-add-to-cart">
                                             <span class="price">
                                                 <span class="electro-price" style="position: relative;">
-                                                    <ins><span class="amount">VND {{ $book->price }}</span></ins>
+                                                    <ins><span class="amount">VNĐ {{ $book->price }}</span></ins>
                                             <del style="position:absolute;left:0;top:-14px;"><span class="amount">$2,299.00</span></del>
                                             <span class="amount"> </span>
                                             </span>
                                             </span>
-                                            <a rel="nofollow" href="{{ url('/cart/add', [$book->id]) }}" class="button add_to_cart_button" id="{{ $book->id }}">Them vao gio</a>
+                                            <a rel="nofollow" href="javascript:void(0)" class="button add_to_cart_button" id="book-{{ $book->id }}" data-id="{{ $book->id }}">Thêm vào giỏ</a>
                                         </div>
                                         <!-- /.price-add-to-cart -->
                                         <div class="hover-area">
                                             <div class="action-buttons">
-                                                <a href="#" rel="nofollow" class="add_to_wishlist add-book" id="book-{{ $book->id }}"> Wishlist</a>
+                                                <a href="javascript:void(0)" rel="nofollow" id="book-{{ $book->id }}" class="add_to_wishlist">Yêu thích</a>
                                             </div>
                                         </div>
                                     </div>

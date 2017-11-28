@@ -49,10 +49,10 @@
                             <span class="s-text">Quản Trị Viên</span>
                         </a>
                         <ul>
-                            <li><a href="{{ route('admin.contact.index') }}">Lien he</a></li>
-                            <li><a href="themsachban">Danh sach quan li</a></li>
-                            <li><a href="themsachban">Danh sach quyen han</a></li>
-                            <li><a href="{{ route('super.admin.index') }}">Danh sach </a></li>
+                            <li><a href="{{ route('admin.contact.index') }}">Liên hệ</a></li>
+                            <li><a href="themsachban">Danh sách quản lí</a></li>
+                            <li><a href="themsachban">Danh sách quyền</a></li>
+                            <li><a href="{{ route('super.admin.index') }}">Danh sách </a></li>
                         </ul>
                     </li>
 
@@ -60,7 +60,7 @@
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
                             <span class="s-icon"><i class="fa fa-book"></i></span>
-                            <span class="s-text">Quan li gia sach</span>
+                            <span class="s-text">Quản lí gía sách</span>
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.bookshelf.index') }}">Danh Sách</a></li>
@@ -70,23 +70,23 @@
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
                             <span class="s-icon"><i class="fa fa-book"></i></span>
-                            <span class="s-text">Quan li sach</span>
+                            <span class="s-text">Quản lí sách</span>
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.book.index') }}">Danh Sách</a></li>
-                            <li><a href="themsachban">Sach ban</a></li>
-                            <li><a href="themsachban">Sach thue</a></li>
+                            <li><a href="themsachban">Sách bán</a></li>
+                            <li><a href="themsachban">Sách thuê</a></li>
                         </ul>
                     </li>
                     <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
                             <span class="s-icon"><i class="fa fa-users"></i></span>
-                            <span class="s-text">Nguoi dung</span>
+                            <span class="s-text">Người dùng</span>
                         </a>
                         <ul>
-                            <li><a href="{{ route('users.index') }}">Danh sach</a></li>
-                            <li><a href="{{ route('supplier.index') }}">Nha cung cap</a></li>
+                            <li><a href="{{ route('users.index') }}">Danh sách</a></li>
+                            <li><a href="{{ route('supplier.index') }}">Nhà cung cấp</a></li>
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -132,10 +132,10 @@
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
                             <span class="tag tag-danger">10</span>
                             <span class="s-icon"><i class="fa fa-bars"></i></span>
-                            <span class="s-text">Su kien</span>
+                            <span class="s-text">Sự kiện</span>
                         </a>
                         <ul>
-                            <li><a href="{{ URL::route('event.index') }}">Danh sach</a></li>
+                            <li><a href="{{ URL::route('event.index') }}">Danh sách</a></li>
                         </ul>
                     </li>
                     @else
@@ -143,7 +143,7 @@
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
                             <span class="s-icon"><i class="fa fa-book"></i></span>
-                            <span class="s-text">Quan li gia sach</span>
+                            <span class="s-text">Quản lí gía sách</span>
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.bookshelf.index') }}">Danh Sách</a></li>
@@ -153,22 +153,22 @@
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
                             <span class="s-icon"><i class="fa fa-book"></i></span>
-                            <span class="s-text">Quan li sach</span>
+                            <span class="s-text">Quản lí sách</span>
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.book.index') }}">Danh Sách</a></li>
-                            <li><a href="themsachban">Sach ban</a></li>
-                            <li><a href="themsachban">Sach thue</a></li>
+                            <li><a href="themsachban">Sách bán</a></li>
+                            <li><a href="themsachban">Sách thuê</a></li>
                         </ul>
                     </li>
                     <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
                             <span class="s-icon"><i class="fa fa-users"></i></span>
-                            <span class="s-text">Nguoi dung</span>
+                            <span class="s-text">Người dùng</span>
                         </a>
                         <ul>
-                            <li><a href="{{ route('users.index') }}">Danh sach</a></li>
+                            <li><a href="{{ route('users.index') }}">Danh sách</a></li>
                             <li><a href="khachmua">Khách Mua</a></li>
                             <li><a href="khachban">Khách Bán</a></li>
                             <li><a href="khachchothue">Khách Cho Thuê</a></li>
@@ -217,10 +217,10 @@
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
                             <span class="tag tag-danger">10</span>
                             <span class="s-icon"><i class="fa fa-bars"></i></span>
-                            <span class="s-text">Su kien</span>
+                            <span class="s-text">Sự kiện</span>
                         </a>
                         <ul>
-                            <li><a href="{{ URL::route('event.index') }}">Danh sach</a></li>
+                            <li><a href="{{ URL::route('event.index') }}">Danh sách</a></li>
                         </ul>
                     </li>
                     @endif
@@ -263,18 +263,14 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right animated fadeInUp">
                                     <a class="dropdown-item" href="index.html#">
-                                        <i class="ti-email mr-0-5"></i> Inbox
+                                        <i class="ti-email mr-0-5"></i> Tin nhắn
                                     </a>
                                     <a class="dropdown-item" href="index.html#">
-                                        <i class="ti-user mr-0-5"></i> Profile
-                                    </a>
-                                    <a class="dropdown-item" href="index.html#">
-                                        <i class="ti-settings mr-0-5"></i> Settings
+                                        <i class="ti-user mr-0-5"></i> Thông tin
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="index.html#"><i class="ti-help mr-0-5"></i> Help</a>
                                     <a class="dropdown-item" href="{{ url('/logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();"><i class="ti-power-off mr-0-5"></i> Sign out</a>
+                                        document.getElementById('logout-form').submit();"><i class="ti-power-off mr-0-5"></i> Đăng xuất</a>
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>

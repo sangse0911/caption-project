@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+<html lang="en-US">
 <!-- Mirrored from transvelo.github.io/electro-html/home-v3.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 12 Aug 2017 16:53:16 GMT -->
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title')Book &#8211; Book Service Online</title>
+    <title>@yield('title')</title>
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/bootstrap4/css/bootstrap.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/font-awesome.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/animate.min.css') }}" media="all" />
@@ -34,7 +34,7 @@
             <div class="container">
                 <nav>
                     <ul id="menu-top-bar-left" class="nav nav-inline pull-left animate-dropdown flip">
-                        <li class="menu-item animate-dropdown"><a title="Welcome to Worldwide Electronics Store" href="#">Chao mung toi cua hang sach cua chung toi</a></li>
+                        <li class="menu-item animate-dropdown"><a title="Welcome to Worldwide Electronics Store" href="#">Chào mừng bạn đến với cửa hàng sách của chúng tôi</a></li>
                     </ul>
                 </nav>
                 <nav>
@@ -43,7 +43,7 @@
                         @if(Auth::guest())
                         <li class="menu-item animate-dropdown">
                             <a title="My Account" data-toggle="modal" href="#loginModal">
-                                <i class="ec ec-user"></i>Tai khoan
+                                <i class="ec ec-user"></i>Tài khoản
                             </a>
                         </li>
                         @else
@@ -55,7 +55,7 @@
                                 <li>
                                     <a href="{{ url('/logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                                          Logout
+                                          Đăng xuất
                                     </a>
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
@@ -74,11 +74,11 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Dang nhap</h4>
+                                    <h4 class="modal-title">Đăng nhập</h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group col-sm-6">
-                                        <label for="name">Ten tai khoan</label>
+                                        <label for="name">Tên tài khoản</label>
                                         <br/>
                                         <input type="text" name="name" class="form-control" id="name" value="" placeholder="Ten tai khoan">
                                         <br/>
@@ -87,9 +87,9 @@
                                         <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light">Dang nhap</button>
                                     </div>
                                     <div class="form-group col-sm-6">
-                                        <label for="name">Dang nhap bang facebook</label>
+                                        <label for="name">Đăng nhập bằng facebook</label>
                                         <br/>
-                                        <a href="{{ route('login_with_facebook') }}" type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light">Dang nhap bang facebook</a>
+                                        <a href="{{ route('login_with_facebook') }}" type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light">Đăng nhập facebook</a>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -120,15 +120,15 @@
                         </div>
                     </div>
                 </li>
-                <li class="cart"> <a class="footer-cart-contents" href="https://demo2.chethemes.com/electro/cart/" title="View your shopping cart"> <span class="cart-items-count count">0</span> </a></li>
-                <li class="wishlist"> <a href="https://demo2.chethemes.com/electro/wishlist/" class="has-icon"><i class="ec ec-favorites"></i><span class="count">0</span></a></li>
-                <li class="compare"> <a href="https://demo2.chethemes.com/electro/compare/" class="has-icon"><i class="ec ec-compare"></i><span class="count">0</span></a></li>
+                <li class="cart"> <a class="footer-cart-contents" href="#" title="View your shopping cart"> <span class="cart-items-count count">0</span> </a></li>
+                <li class="wishlist"> <a href="#" class="has-icon"><i class="ec ec-favorites"></i><span class="count">0</span></a></li>
+                <li class="compare"> <a href="#" class="has-icon"><i class="ec ec-compare"></i><span class="count">0</span></a></li>
             </ul>
         </div>
         <ul class="list-user-action" aria-labelledby="dropdownMenu2" style="position: absolute; display: none;">
-            <li><a href="#">Nap tien vao tai khoan</a></li>
-            <li><a href="#">Lich su giao dich</a></li>
-            <li class="last"><a href="#" onclick="logoutFacebook();">Dang xuat</a></li>
+            <li><a href="#">Nạp tiền vào tài khoản</a></li>
+            <li><a href="#">Lịch sử giao dịch</a></li>
+            <li class="last"><a href="#" onclick="logoutFacebook();">Đăng xuất</a></li>
         </ul>
         <a id="scrollUp" href="javascript:void(0)" style="position: fixed; z-index: 1001; display: block;"><i class="fa fa-angle-up"></i></a>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -436,11 +436,11 @@
                 url: '/book/' + book_id,
                 success: function(data) {
                     console.log(data);
-                    $('#book-rate').text(data['book']['id']);
+                    $('#book-rate').val(data['book']['id']);
                     $('#book-name').text(data['book']['name']);
                     $('#book-status').text(data['book']['status']);
-                    $('#book-company').text(data['book']['publishing_company']);
-                    $('#book-year').text(data['book']['publishing_year']);
+                    $('#book-company').text(data['book']['company']);
+                    $('#book-year').text(data['book']['year']);
                     $('#book-republish').text(data['book']['republish']);
                     $('#book-author').text(data['book']['author']);
                     $('#book-price').text('Gia: ' + data['book']['price'] + ' VND');
@@ -508,7 +508,7 @@
             //     });
             //     e.preventDefault();
             // });
-            $('.add-book').click(function(e) {
+            $('.add_to_wishlist').click(function(e) {
                 var bookId = e.currentTarget.id.substring(5);
                 var userId = $('#user-id').val();
 
@@ -523,7 +523,7 @@
                         userId: userId
                     },
                     success: function(data) {
-                        alert("Ban da them thanh cong vao danh sach yeu thich");
+                        alert("Bạn đã thêm thành công vào danh sách yêu thích");
                     },
                     error: function(data) {
                         console.log('ee', data);
@@ -552,7 +552,7 @@
                     },
                     dataType: 'JSON',
                     success: function(data) {
-                        alert("Cam on ban da danh gia");
+                        alert("Cảm ơn bạn đã đánh gía");
                     },
                     error: function(data) {
                         console.log(data);
@@ -560,29 +560,55 @@
                 });
                 evt.preventDefault();
             });
-            $('.add-cart').click(function(e) {
+            $('.add_to_cart_button').click(function(e) {
                 e.preventDefault();
-                var product_id = e.currentTarget.id.substring(5);
+
+                var id = $(this).data('id');
 
                 $.ajax({
+
                     cache: false,
-                    method: 'GET',
-                    url: '/cart/add/' + product_id,
+                    method: 'POST',
+                    url: '/cart/add',
                     data: {
                         id: id,
                     },
                     dataType: 'JSON',
                     success: function(data) {
-                        alert('aaaaaaaaaa');
+                        alert('Bạn đã thêm thành công sản phẩm vào giỏ hàng');
+
                     },
                     error: function(data) {
-                        console.log('ee', data);
+                        console.log("co loi voi", data);
                     }
                 });
-            });
-        </script>
-        <script>
 
+            });
+            $('.remove').click(function(e) {
+                e.preventDefault();
+
+                var id = $(this).data('id');
+
+                $.ajax({
+
+                    cache: false,
+                    method: 'DELETE',
+                    url: '/cart/delete/' + id,
+                    data: {
+                        id: id,
+                    },
+                    dataType: 'JSON',
+                    success: function(data) {
+                        alert('Bạn đã xóa thành công sản phẩm khỏi giỏ hàng');
+                        window.location.reload();
+
+                    },
+                    error: function(data) {
+                        console.log("co loi voi", data);
+                    }
+                });
+
+            });
         </script>
     </div>
 </body>

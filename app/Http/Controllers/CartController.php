@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\CartInterface;
+use App\Interfaces\OrderInterface;
 use App\Models\Book;
 use Cart;
 use Illuminate\Http\Request;
@@ -12,9 +13,12 @@ class CartController extends Controller
 
     protected $cartRepository;
 
-    public function __construct(CartInterface $cartRepository)
-    {
+    public function __construct(
+        CartInterface $cartRepository,
+        OrderInterface $orderRepository
+    ) {
         $this->cartRepository = $cartRepository;
+        $this->orderRepository = $orderRepository;
     }
     /**
      * Display a listing of the resource.
@@ -24,7 +28,9 @@ class CartController extends Controller
     public function index()
     {
 
-        return view('layouts.index');
+        $content = Cart::content();
+        $total = Cart::subtotal();
+        return view('cart.index', compact('content', 'total'));
     }
 
     /**
@@ -32,26 +38,42 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-
-    }
-
-    public function add($id)
-    {
-        $book = Book::find($id)->first();
+        $book = Book::findOrFail($id);
 
         Cart::add([
-            'id' => $id,
+
+            'id' => $book->id,
             'name' => $book->name,
             'qty' => 1,
             'price' => $book->price,
-            'option' => [
-                'image' => $book->images[0]->path,
-            ],
+
         ]);
+
         $content = Cart::content();
-        print_r($content);
+        dd($content);
+    }
+
+    public function add(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+
+            $product = $this->cartRepository->add($data);
+
+            return response()->json($product, 200);
+        }
+
+    }
+    public function order(Request $request)
+    {
+        if (Auth::check() && $request->ajax()) {
+            $data = $request->all();
+            $order = $this->cartRepository->create($data);
+
+            return response()->json($order, 200);
+        }
     }
     /**
      * Store a newly created resource in storage.
@@ -106,6 +128,7 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return response()->json($this->cartRepository->delete($id), 200);
+
     }
 }

@@ -16,10 +16,10 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nguoi tao</th>
-                        <th>Trang thai</th>
-                        <th>Dia diem</th>
-                        <th>Hanh dong</th>
+                        <th>Người tạo</th>
+                        <th>Trạng thái</th>
+                        <th>Địa điểm</th>
+                        <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,28 +61,28 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Them moi gia sach</h4>
+                            <h4 class="modal-title">Thêm mới gía sách</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="name">Dia diem gia sach</label>
+                                <label for="name">Địa điểm gía sách</label>
                                 <input type="hidden" id="id" value="">
                                 <input type="text" name="location" class="form-control" id="location" value="" placeholder="Dia diem tren gia sach">
                             </div>
                         </div>
                         <div class="modal-body bookshelf-status" style="display: none;">
                             <div class="form-group">
-                                <label for="name">Trang thai gia sach</label><br/>
+                                <label for="name">Trạng thái gía sách</label><br/>
                                <label class="radio-inline">
-                                <input type="radio" name="status" value="1">San sang</label>
+                                <input type="radio" name="status" value="1">Sẵn sàng</label>
                             <label class="radio-inline">
-                                <input type="radio" name="status" value="0">Khong san sang</label>
+                                <input type="radio" name="status" value="0">Không sẵn sàng</label>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="bookshelf-create">Tao moi</button>
-                            <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" style="display: none;" id="bookshelf-update">Luu</button>
-                            <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Dong</button>
+                            <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="bookshelf-create">Tạo mới</button>
+                            <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" style="display: none;" id="bookshelf-update">Lưu</button>
+                            <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Đóng</button>
                         </div>
                     </div>
                 </div>

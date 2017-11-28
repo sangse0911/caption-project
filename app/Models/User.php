@@ -25,10 +25,11 @@ use Illuminate\Notifications\Notifiable;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @property \Illuminate\Database\Eloquent\Collection $customers
  * @property \Illuminate\Database\Eloquent\Collection $notifications
+ * @property \Illuminate\Database\Eloquent\Collection $orders
  * @property \Illuminate\Database\Eloquent\Collection $posts
  * @property \Illuminate\Database\Eloquent\Collection $rates
+ * @property \Illuminate\Database\Eloquent\Collection $renters
  * @property \Illuminate\Database\Eloquent\Collection $reviews
  * @property \Illuminate\Database\Eloquent\Collection $suppliers
  * @property \Illuminate\Database\Eloquent\Collection $wish_lists
@@ -59,14 +60,14 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function customers()
-    {
-        return $this->hasMany(\App\Models\Customer::class);
-    }
-
     public function notifications()
     {
         return $this->hasMany(\App\Models\Notification::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(\App\Models\Order::class);
     }
 
     public function posts()
@@ -77,6 +78,11 @@ class User extends Authenticatable
     public function rates()
     {
         return $this->hasMany(\App\Models\Rate::class);
+    }
+
+    public function renters()
+    {
+        return $this->hasMany(\App\Models\Renter::class);
     }
 
     public function reviews()

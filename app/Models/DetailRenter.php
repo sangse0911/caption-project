@@ -34,26 +34,24 @@ class DetailRenter extends Model
     protected $casts = [
         'book_id' => 'int',
         'renter_id' => 'int',
-        'deposites' => 'float',
-        'fine' => 'float',
         'total_price' => 'float',
+        'fee' => 'int',
+        'discount' => 'int',
     ];
 
     protected $dates = [
-        'renter_date',
-        'due_date',
-        'returned_date',
+        'rent_date',
+        'return_date',
     ];
 
     protected $fillable = [
         'book_id',
         'renter_id',
-        'deposites',
-        'fine',
-        'renter_date',
-        'due_date',
-        'returned_date',
+        'rent_date',
+        'return_date',
         'total_price',
+        'fee',
+        'discount',
     ];
 
     public function book()

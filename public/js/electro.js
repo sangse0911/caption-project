@@ -755,178 +755,178 @@
     /*  Accessories Product Check
     /*===================================================================================*/
 
-    jQuery(document).ready(function($) {
+    // jQuery(document).ready(function($) {
 
-        function accessory_checked_count(){
-            var product_count = 0;
-            $('.accessory-checkbox .product-check').each(function() {
-                if( $(this).is(':checked') ) {
-                    product_count++;
-                }
-            });
-            return product_count;
-        }
+    //     function accessory_checked_count(){
+    //         var product_count = 0;
+    //         $('.accessory-checkbox .product-check').each(function() {
+    //             if( $(this).is(':checked') ) {
+    //                 product_count++;
+    //             }
+    //         });
+    //         return product_count;
+    //     }
 
-        function accessory_checked_total_price(){
-            var total_price = 0;
-            $('.accessory-checkbox .product-check').each(function() {
-                if( $(this).is(':checked') ) {
-                    total_price += parseFloat( $(this).data( 'price' ) );
-                }
-            });
-            return total_price;
-        }
+    //     function accessory_checked_total_price(){
+    //         var total_price = 0;
+    //         $('.accessory-checkbox .product-check').each(function() {
+    //             if( $(this).is(':checked') ) {
+    //                 total_price += parseFloat( $(this).data( 'price' ) );
+    //             }
+    //         });
+    //         return total_price;
+    //     }
 
-        function accessory_checked_product_ids(){
-            var product_ids = [];
-            $('.accessory-checkbox .product-check').each(function() {
-                if( $(this).is(':checked') ) {
-                    product_ids.push( $(this).data( 'product-id' ) );
-                }
-            });
-            return product_ids;
-        }
+    //     function accessory_checked_product_ids(){
+    //         var product_ids = [];
+    //         $('.accessory-checkbox .product-check').each(function() {
+    //             if( $(this).is(':checked') ) {
+    //                 product_ids.push( $(this).data( 'product-id' ) );
+    //             }
+    //         });
+    //         return product_ids;
+    //     }
 
-        function accessory_unchecked_product_ids(){
-            var product_ids = [];
-            $('.accessory-checkbox .product-check').each(function() {
-                if( ! $(this).is(':checked') ) {
-                    product_ids.push( $(this).data( 'product-id' ) );
-                }
-            });
-            return product_ids;
-        }
+    //     function accessory_unchecked_product_ids(){
+    //         var product_ids = [];
+    //         $('.accessory-checkbox .product-check').each(function() {
+    //             if( ! $(this).is(':checked') ) {
+    //                 product_ids.push( $(this).data( 'product-id' ) );
+    //             }
+    //         });
+    //         return product_ids;
+    //     }
 
-        function accessory_checked_variable_product_ids(){
-            var variable_product_ids = [];
-            $('.accessory-checkbox .product-check').each(function() {
-                if( $(this).is(':checked') && $(this).data( 'product-type' ) == 'variable' ) {
-                    variable_product_ids.push( $(this).data( 'product-id' ) );
-                }
-            });
-            return variable_product_ids;
-        }
+    //     function accessory_checked_variable_product_ids(){
+    //         var variable_product_ids = [];
+    //         $('.accessory-checkbox .product-check').each(function() {
+    //             if( $(this).is(':checked') && $(this).data( 'product-type' ) == 'variable' ) {
+    //                 variable_product_ids.push( $(this).data( 'product-id' ) );
+    //             }
+    //         });
+    //         return variable_product_ids;
+    //     }
 
-        function accessory_is_variation_selected(){
-            if( $(".single_add_to_cart_button").is(":disabled") ) {
-                return false;
-            }
-            return true;
-        }
+    //     function accessory_is_variation_selected(){
+    //         if( $(".single_add_to_cart_button").is(":disabled") ) {
+    //             return false;
+    //         }
+    //         return true;
+    //     }
 
-        function accessory_refresh_fragments( response ){
-            var this_page = window.location.toString();
-            var fragments = response.fragments;
-            var cart_hash = response.cart_hash;
+    //     function accessory_refresh_fragments( response ){
+    //         var this_page = window.location.toString();
+    //         var fragments = response.fragments;
+    //         var cart_hash = response.cart_hash;
 
             // Block fragments class
-            if ( fragments ) {
-                $.each( fragments, function( key ) {
-                    $( key ).addClass( 'updating' );
-                });
-            }
+            // if ( fragments ) {
+            //     $.each( fragments, function( key ) {
+            //         $( key ).addClass( 'updating' );
+            //     });
+            // }
 
             // Replace fragments
-            if ( fragments ) {
-                $.each( fragments, function( key, value ) {
-                    $( key ).replaceWith( value );
-                });
-            }
+            // if ( fragments ) {
+            //     $.each( fragments, function( key, value ) {
+            //         $( key ).replaceWith( value );
+            //     });
+            // }
 
             // Cart page elements
-            $( '.shop_table.cart' ).load( this_page + ' .shop_table.cart:eq(0) > *', function() {
+    //         $( '.shop_table.cart' ).load( this_page + ' .shop_table.cart:eq(0) > *', function() {
 
-                $( '.shop_table.cart' ).stop( true ).css( 'opacity', '1' ).unblock();
+    //             $( '.shop_table.cart' ).stop( true ).css( 'opacity', '1' ).unblock();
 
-                $( document.body ).trigger( 'cart_page_refreshed' );
-            });
+    //             $( document.body ).trigger( 'cart_page_refreshed' );
+    //         });
 
-            $( '.cart_totals' ).load( this_page + ' .cart_totals:eq(0) > *', function() {
-                $( '.cart_totals' ).stop( true ).css( 'opacity', '1' ).unblock();
-            });
-        }
+    //         $( '.cart_totals' ).load( this_page + ' .cart_totals:eq(0) > *', function() {
+    //             $( '.cart_totals' ).stop( true ).css( 'opacity', '1' ).unblock();
+    //         });
+    //     }
 
-        $( '.accessory-checkbox .product-check' ).on( "click", function() {
-            $.ajax({
-                cache:false,
-                url: "http://demo2.transvelo.in/electro/wp-admin/admin-ajax.php",
-                success:function(result){
-                    var previous_price = $( 'span.total-price-html .amount' ).text().replace( /\.|\,/g, '' );
-                    var current_price = accessory_checked_total_price().toFixed(2).replace(/./g, function(c, i, a) {
-                        return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
-                    });
-                    total_price = previous_price.replace( /\d+/g, current_price );
-                    $( 'span.total-price-html .amount' ).html( total_price );
-                    $( 'span.total-products' ).html( accessory_checked_count() );
+    //     $( '.accessory-checkbox .product-check' ).on( "click", function() {
+    //         $.ajax({
+    //             cache:false,
+    //             url: "http://demo2.transvelo.in/electro/wp-admin/admin-ajax.php",
+    //             success:function(result){
+    //                 var previous_price = $( 'span.total-price-html .amount' ).text().replace( /\.|\,/g, '' );
+    //                 var current_price = accessory_checked_total_price().toFixed(2).replace(/./g, function(c, i, a) {
+    //                     return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+    //                 });
+    //                 total_price = previous_price.replace( /\d+/g, current_price );
+    //                 $( 'span.total-price-html .amount' ).html( total_price );
+    //                 $( 'span.total-products' ).html( accessory_checked_count() );
 
-                    var unchecked_product_ids = accessory_unchecked_product_ids();
-                    $( '.accessories ul.products > li' ).each(function() {
-                        $(this).show();
-                        for (var i = 0; i < unchecked_product_ids.length; i++ ) {
-                            if( $(this).hasClass( 'post-'+unchecked_product_ids[i] ) ) {
-                                $(this).hide();
-                            }
-                        }
-                    });
-                }
-            })
-        });
+    //                 var unchecked_product_ids = accessory_unchecked_product_ids();
+    //                 $( '.accessories ul.products > li' ).each(function() {
+    //                     $(this).show();
+    //                     for (var i = 0; i < unchecked_product_ids.length; i++ ) {
+    //                         if( $(this).hasClass( 'post-'+unchecked_product_ids[i] ) ) {
+    //                             $(this).hide();
+    //                         }
+    //                     }
+    //                 });
+    //             }
+    //         })
+    //     });
 
-        $('.accessories-add-all-to-cart .add-all-to-cart').on( "click", function() {
-            var accerories_all_product_ids = accessory_checked_product_ids();
-            var accerories_variable_product_ids = accessory_checked_variable_product_ids();
-            if( accerories_all_product_ids.length === 0 ) {
-                var accerories_alert_msg = '<div class="woocommerce-error">No Products selected.</div>';
-            } else if( accerories_variable_product_ids.length > 0 && accessory_is_variation_selected() === false ) {
-                var accerories_alert_msg = '<div class="woocommerce-error">Product Variation does not selected.</div>';
-            } else {
-                for (var i = 0; i < accerories_all_product_ids.length; i++ ) {
-                    if( ! $.inArray( accerories_all_product_ids[i], accerories_variable_product_ids ) ) {
-                        var variation_id  = $('.variations_form .variations_button').find('input[name^=variation_id]').val();
-                        var variation = {};
-                        if( $( '.variations_form' ).find('select[name^=attribute]').length ) {
-                            $( '.variations_form' ).find('select[name^=attribute]').each(function() {
-                                var attribute = $(this).attr("name");
-                                var attributevalue = $(this).val();
-                                variation[attribute] = attributevalue;
-                            });
+    //     $('.accessories-add-all-to-cart .add-all-to-cart').on( "click", function() {
+    //         var accerories_all_product_ids = accessory_checked_product_ids();
+    //         var accerories_variable_product_ids = accessory_checked_variable_product_ids();
+    //         if( accerories_all_product_ids.length === 0 ) {
+    //             var accerories_alert_msg = '<div class="woocommerce-error">No Products selected.</div>';
+    //         } else if( accerories_variable_product_ids.length > 0 && accessory_is_variation_selected() === false ) {
+    //             var accerories_alert_msg = '<div class="woocommerce-error">Product Variation does not selected.</div>';
+    //         } else {
+    //             for (var i = 0; i < accerories_all_product_ids.length; i++ ) {
+    //                 if( ! $.inArray( accerories_all_product_ids[i], accerories_variable_product_ids ) ) {
+    //                     var variation_id  = $('.variations_form .variations_button').find('input[name^=variation_id]').val();
+    //                     var variation = {};
+    //                     if( $( '.variations_form' ).find('select[name^=attribute]').length ) {
+    //                         $( '.variations_form' ).find('select[name^=attribute]').each(function() {
+    //                             var attribute = $(this).attr("name");
+    //                             var attributevalue = $(this).val();
+    //                             variation[attribute] = attributevalue;
+    //                         });
 
-                        } else {
+    //                     } else {
 
-                            $( '.variations_form' ).find('.select').each(function() {
-                                var attribute = $(this).attr("data-attribute-name");
-                                var attributevalue = $(this).find('.selected').attr('data-name');
-                                variation[attribute] = attributevalue;
-                            });
+    //                         $( '.variations_form' ).find('.select').each(function() {
+    //                             var attribute = $(this).attr("data-attribute-name");
+    //                             var attributevalue = $(this).find('.selected').attr('data-name');
+    //                             variation[attribute] = attributevalue;
+    //                         });
 
-                        }
-                        $.ajax({
-                            type: "POST",
-                            async: false,
-                            url: "http://demo2.transvelo.in/electro/wp-admin/admin-ajax.php",
-                            data: { 'action': "electro_variable_add_to_cart", 'product_id': accerories_all_product_ids[i], 'variation_id': variation_id, 'variation': variation  },
-                            success : function( response ) {
-                                accessory_refresh_fragments( response );
-                            }
-                        })
-                    } else {
-                        $.ajax({
-                            type: "POST",
-                            async: false,
-                            url: "http://demo2.transvelo.in/electro/wp-admin/admin-ajax.php",
-                            data: { 'action': "woocommerce_add_to_cart", 'product_id': accerories_all_product_ids[i]  },
-                            success : function( response ) {
-                                accessory_refresh_fragments( response );
-                            }
-                        })
-                    }
-                }
-                var accerories_alert_msg = '<div class="woocommerce-message">Products was successfully added to your cart. <a class="button wc-forward" href="http://demo2.transvelo.in/electro/cart/">View Cart</a></div>';
-            }
-            $( '.electro-wc-message' ).html(accerories_alert_msg);
-        });
+    //                     }
+    //                     $.ajax({
+    //                         type: "POST",
+    //                         async: false,
+    //                         url: "http://demo2.transvelo.in/electro/wp-admin/admin-ajax.php",
+    //                         data: { 'action': "electro_variable_add_to_cart", 'product_id': accerories_all_product_ids[i], 'variation_id': variation_id, 'variation': variation  },
+    //                         success : function( response ) {
+    //                             accessory_refresh_fragments( response );
+    //                         }
+    //                     })
+    //                 } else {
+    //                     $.ajax({
+    //                         type: "POST",
+    //                         async: false,
+    //                         url: "http://demo2.transvelo.in/electro/wp-admin/admin-ajax.php",
+    //                         data: { 'action': "woocommerce_add_to_cart", 'product_id': accerories_all_product_ids[i]  },
+    //                         success : function( response ) {
+    //                             accessory_refresh_fragments( response );
+    //                         }
+    //                     })
+    //                 }
+    //             }
+    //             var accerories_alert_msg = '<div class="woocommerce-message">Products was successfully added to your cart. <a class="button wc-forward" href="http://demo2.transvelo.in/electro/cart/">View Cart</a></div>';
+    //         }
+    //         $( '.electro-wc-message' ).html(accerories_alert_msg);
+    //     });
 
-    });
+    // });
 
 
     /*===================================================================================*/
@@ -990,29 +990,29 @@
     /*  YITH Wishlist
     /*===================================================================================*/
 
-    $(document).ready( function() {
+    // $(document).ready( function() {
 
-        $( '.add_to_wishlist' ).on( 'click', function() {
-            $( this ).closest( '.images-and-summary' ).block();
-            $( this ).closest( '.product-inner' ).block();
-            $( this ).closest( '.product-list-view-inner' ).block();
-            $( this ).closest( '.product-item-inner' ).block();
-        });
+    //     $( '.add_to_wishlist' ).on( 'click', function() {
+    //         $( this ).closest( '.images-and-summary' ).block();
+    //         $( this ).closest( '.product-inner' ).block();
+    //         $( this ).closest( '.product-list-view-inner' ).block();
+    //         $( this ).closest( '.product-item-inner' ).block();
+    //     });
 
-        $( '.yith-wcwl-wishlistaddedbrowse > .feedback' ).on( 'click', function() {
-            var browseWishlistURL = $( this ).next().attr( 'href' );
-            window.location.href = browseWishlistURL;
-        });
+    //     $( '.yith-wcwl-wishlistaddedbrowse > .feedback' ).on( 'click', function() {
+    //         var browseWishlistURL = $( this ).next().attr( 'href' );
+    //         window.location.href = browseWishlistURL;
+    //     });
 
 
-    });
+    // });
 
-    $( document ).on( 'added_to_wishlist', function() {
-        $( '.images-and-summary' ).unblock();
-        $( '.product-inner' ).unblock();
-        $( '.product-list-view-inner' ).unblock();
-        $( '.product-item-inner' ).unblock();
-    });
+    // $( document ).on( 'added_to_wishlist', function() {
+    //     $( '.images-and-summary' ).unblock();
+    //     $( '.product-inner' ).unblock();
+    //     $( '.product-list-view-inner' ).unblock();
+    //     $( '.product-item-inner' ).unblock();
+    // });
 
      /*===================================================================================*/
      /*  LAZY LOAD IMAGES USING ECHO

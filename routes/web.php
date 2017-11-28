@@ -170,8 +170,10 @@ Route::get('/users/content', ['as' => 'users.content', 'uses' => 'UserController
  *
  */
 Route::get('/cart', 'CartController@index')->name('cart.index');
-Route::get('/cart/add/{id}', 'CartController@add')->name('cart.add');
-// Route::post('/cart/add', ['as' => 'cart.add', 'uses' => 'CartController@add']);
+// Route::get('/cart/add/{id}', 'CartController@add')->name('cart.add');
+// Route::get('/cart/add/{id}', 'CartController@create')->name('cart.add.id');
+Route::post('/cart/add', ['as' => 'cart.add', 'uses' => 'CartController@add']);
+Route::delete('/cart/delete/{id}', 'CartController@destroy')->name('cart.delete');
 
 /**
  *

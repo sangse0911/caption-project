@@ -1,7 +1,7 @@
 <div class="product" id="single-product">
     <div class="single-product-wrapper">
         <div class="product-images-wrapper">
-            <span class="onsale">Sale!</span>
+            <span class="onsale">Giảm giá!</span>
             <div class="images electro-gallery">
                 <div class="thumbnails-single owl-carousel owl-loaded owl-drag">
                     <div class="owl-stage-outer">
@@ -51,12 +51,12 @@
             </div>
             <!-- .woocommerce-product-rating -->
             <div class="availability in-stock">
-                Trang thai: <span id="book-status"></span>
+                Trạng thái: <span id="book-status"></span>
             </div>
             <!-- .availability -->
             <hr class="single-product-title-divider">
             <div class="action-buttons">
-                <a href="#" class="add_to_wishlist">Wishlist</a>
+                <a href="#" class="add_to_wishlist">Yêu thích</a>
             </div>
             <!-- .action-buttons -->
             <div itemprop="description">
@@ -81,7 +81,7 @@
                 <div class="single_variation_wrap">
                     <div class="woocommerce-variation single_variation"></div>
                     <div class="woocommerce-variation-add-to-cart variations_button">
-                        <button type="submit" class="single_add_to_cart_button button">Them vao gio</button>
+                        <button type="submit" class="single_add_to_cart_button button">Thêm vào giỏ</button>
                         <input type="hidden" name="add-to-cart" value="2452">
                         <input type="hidden" name="product_id" value="2452">
                         <input type="hidden" name="variation_id" class="variation_id" value="0">
@@ -94,10 +94,10 @@
     <div class="woocommerce-tabs wc-tabs-wrapper">
         <ul class="nav nav-tabs electro-nav-tabs tabs wc-tabs" role="tablist">
             <li class="nav-item description_tab">
-                <a href="#tab-description" class="active" data-toggle="tab">Mo ta ve sach</a>
+                <a href="#tab-description" class="active" data-toggle="tab">Mô tả về sách</a>
             </li>
             <li class="nav-item reviews_tab">
-                <a href="#tab-reviews" data-toggle="tab">Danh gia cua doc gia</a>
+                <a href="#tab-reviews" data-toggle="tab">Danh sách của độc giả</a>
             </li>
         </ul>
         <div class="tab-content">
@@ -111,7 +111,7 @@
                 <div id="reviews" class="electro-advanced-reviews">
                     <div class="advanced-review row">
                         <div class="col-xs-12 col-md-6">
-                            <h2 class="based-title">Based on 3 reviews</h2>
+                            <h2 class="based-title">Dựa trên 3 đánh giá</h2>
                             <div class="avg-rating">
                                 <span class="avg-rating-number">4.3</span> overall
                             </div>
@@ -168,15 +168,15 @@
                                 <div id="review_form">
                                     <div id="respond" class="comment-respond">
 
-                                        <h3 id="reply-title" class="comment-reply-title">Them danh gia
+                                        <h3 id="reply-title" class="comment-reply-title">Thêm đánh giá
                                             <small>
                                                 <a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display:none;">Cancel reply</a>
                                             </small>
                                         </h3>
+                                        <input type="hidden" name="book-rate" id="book-rate"/>
                                         <form  method="post" id="commentform" class="comment-form">
-                                            <input type="hidden" name="book-rate" id="book-rate" value="">
                                             <p class="comment-form-rating">
-                                                <label>Vote cua ban</label>
+                                                <label>Vote cho sách</label>
                                             </p>
                                             <p class= "my-rating-9">
 
@@ -184,12 +184,12 @@
                                             <p class="live-rating"></p>
                                             <p class="comment-form-comment">
                                                 <p>
-                                                    <label for="comment">Danh gia cua ban</label>
+                                                    <label for="comment">Đánh giá của bạn</label>
                                                 </p>
                                                 <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
                                             </p>
                                             <p class="form-submit">
-                                                <input name="submit" type="submit" id="comment" class="submit-rate" value="Them danh gia">
+                                                <input name="submit" type="submit"  class="submit-rate" value="Them danh gia">
                                                 <input type="hidden" name="comment_post_ID" value="2452" id="comment_post_ID">
                                                 <input type="hidden" name="comment_parent" id="comment_parent" value="0">
                                             </p>

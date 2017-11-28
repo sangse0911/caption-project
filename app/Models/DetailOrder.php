@@ -32,19 +32,19 @@ class DetailOrder extends Model
     protected $casts = [
         'book_id' => 'int',
         'order_id' => 'int',
-        'discount' => 'int',
-        'fee' => 'int',
         'quantity' => 'int',
         'total_price' => 'float',
+        'fee' => 'int',
+        'discount' => 'int',
     ];
 
     protected $fillable = [
         'book_id',
         'order_id',
-        'discount',
-        'fee',
         'quantity',
         'total_price',
+        'fee',
+        'discount',
     ];
 
     public function book()

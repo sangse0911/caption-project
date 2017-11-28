@@ -1,6 +1,6 @@
 <section class="section-product-cards-carousel animate-in-view fadeIn animated" data-animation="fadeIn">
     <header>
-        <h2 class="h1">Sach ban chay nhat</h2>
+        <h2 class="h1">Sách bán chạy nhất</h2>
         <ul class="nav nav-inline">
             <li class="nav-item active"><span class="nav-link">Top 20</span></li>
         </ul>
@@ -36,13 +36,12 @@
                                                             <span class="amount"> </span>
                                                         </span>
                                                     </span>
-                                                    <a href="cart.html" class="button add_to_cart_button">Add to cart</a>
+                                                    <a href="cart.html" class="button add_to_cart_button">Thêm vào giỏ</a>
                                                 </div>
                                                 <!-- /.price-add-to-cart -->
                                                 <div class="hover-area">
                                                     <div class="action-buttons">
-                                                        <a href="#" class="add_to_wishlist">Wishlist</a>
-                                                        <a href="#" class="add-to-compare-link">Compare</a>
+                                                        <a href="#" class="add_to_wishlist">Yêu thích</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -73,13 +72,12 @@
                                                         <span class="amount"> $500</span>
                                                     </span>
                                                 </span>
-                                                <a href="cart.html" class="button add_to_cart_button">Add to cart</a>
+                                                <a href="cart.html" class="button add_to_cart_button">Thêm vào giỏ</a>
                                             </div>
                                             <!-- /.price-add-to-cart -->
                                             <div class="hover-area">
                                                 <div class="action-buttons">
-                                                    <a href="#" class="add_to_wishlist">Wishlist</a>
-                                                    <a href="#" class="add-to-compare-link">Compare</a>
+                                                    <a href="#" class="add_to_wishlist">Yêu thích</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -98,7 +96,7 @@
                                         </a>
                                         <div class="media-body">
                                             <span class="loop-product-categories">
-                                                <a href="product-category.html" rel="tag">Headphone Cases</a>
+                                                <a href="#" rel="tag">Headphone Cases</a>
                                             </span>
                                             <a href="single-product.html">
                                                 <h3>{{ $posts[2]->name }}</h3>
@@ -111,13 +109,12 @@
                                                         <span class="amount"> </span>
                                                     </span>
                                                 </span>
-                                                <a href="cart.html" class="button add_to_cart_button">Add to cart</a>
+                                                <a href="cart.html" class="button add_to_cart_button">Thêm vào giỏ</a>
                                             </div>
                                             <!-- /.price-add-to-cart -->
                                             <div class="hover-area">
                                                 <div class="action-buttons">
-                                                    <a href="#" class="add_to_wishlist">Wishlist</a>
-                                                    <a href="#" class="add-to-compare-link">Compare</a>
+                                                    <a href="#" class="add_to_wishlist">Yêu thích</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,13 +144,12 @@
                                                         <span class="amount"> $500</span>
                                                     </span>
                                                 </span>
-                                                <a href="cart.html" class="button add_to_cart_button">Add to cart</a>
+                                                <a href="cart.html" class="button add_to_cart_button">Thêm vào giỏ</a>
                                             </div>
                                             <!-- /.price-add-to-cart -->
                                             <div class="hover-area">
                                                 <div class="action-buttons">
-                                                    <a href="#" class="add_to_wishlist">Wishlist</a>
-                                                    <a href="#" class="add-to-compare-link">Compare</a>
+                                                    <a href="#" class="add_to_wishlist">Yêu thích</a>
                                                 </div>
                                             </div>
                                         </div>

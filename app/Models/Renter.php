@@ -13,16 +13,14 @@ use Illuminate\Database\Eloquent\Model;
  * Class Renter
  *
  * @property int $id
- * @property int $customer_id
+ * @property int $user_id
  * @property string $payment_method
  * @property string $status
- * @property string $ship_status
- * @property int $ship_id
  * @property string $shipping_address
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @property \App\Models\Customer $customer
+ * @property \App\Models\User $user
  * @property \Illuminate\Database\Eloquent\Collection $detail_renters
  *
  * @package App\Models
@@ -30,22 +28,19 @@ use Illuminate\Database\Eloquent\Model;
 class Renter extends Model
 {
     protected $casts = [
-        'customer_id' => 'int',
-        'ship_id' => 'int',
+        'user_id' => 'int',
     ];
 
     protected $fillable = [
-        'customer_id',
+        'user_id',
         'payment_method',
         'status',
-        'ship_status',
-        'ship_id',
         'shipping_address',
     ];
 
-    public function customer()
+    public function user()
     {
-        return $this->belongsTo(\App\Models\Customer::class);
+        return $this->belongsTo(\App\Models\User::class);
     }
 
     public function detailRenters()

@@ -17,16 +17,16 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Chinh sua sach</h4>
+                            <h4 class="modal-title">Chỉnh sửa sách</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group col-sm-6">
-                                <label for="name">Ten sach</label>
+                                <label for="name">Tên sách</label>
                                 <input type="hidden" name="id" value="" id="id">
                                 <input type="text" name="name" class="form-control" id="name" value="" placeholder="Ten sach">
                             </div>
                             <div class="form-group col-sm-6">
-                                <label for="categories">The loai sach</label>
+                                <label for="categories">Thể loại sách</label>
                                 <select id="category" multiple="multiple" name="categories[]" class="category" style="width: 100%;">
                                     @foreach($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -34,11 +34,11 @@
                                 </select>
                             </div>
                             <div class="form-group col-sm-6">
-                                <label for="introduce">Gioi thieu ve sach</label>
+                                <label for="introduce">Giới thiệu về sách</label>
                                 <input type="text" name="introduce" class="form-control" id="introduce" value="" placeholder="Gioi thieu ve sach">
                             </div>
                             <div class="form-group col-sm-6">
-                                <label for="location">Vi tri cua sach</label>
+                                <label for="location">Vị trí của sách</label>
                                 <select id="location" multiple="multiple" name="location[]" class="location" style="width: 100%;">
                                     @foreach($bookshelves as $bookshelf)
                                     <option name="" value="{{ $bookshelf->id }}">{{ $bookshelf->location }}</option>
@@ -50,41 +50,41 @@
                                 <input type="number" class="form-control" name="price" id="price" value="" placeholder="Gia cua sach">
                             </div>
                             <div class="form-group col-sm-6">
-                                <label for="author">Tac gia</label>
+                                <label for="author">Tác gỉa</label>
                                 <input type="text" class="form-control" name="author" id="author" value="" placeholder="Tac gia">
                             </div>
                             <div class="form-group col-sm-12">
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="0">Khong san sang</label>
+                                    <input type="radio" name="status" value="0">Không sẵn sàng</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="1">San sang</label>
+                                    <input type="radio" name="status" value="1">Sẵn sàng</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="2">Dang </label>
+                                    <input type="radio" name="status" value="2">Đang </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="3">Da ban</label>
+                                    <input type="radio" name="status" value="3">Đã bán</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="4">Da cho thue</label>
+                                    <input type="radio" name="status" value="4">Đã cho thuê</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="5">Da tra lai</label>
+                                    <input type="radio" name="status" value="5">Đã trả lại</label>
                             </div>
                             <div class="form-group col-sm-6">
-                                <label for="publishing-company">Nha xuat ban</label>
+                                <label for="publishing-company">Nhà xuất bản</label>
                                 <input type="text" class="form-control" name="company" id="company" value="" placeholder="Nha xuat ban">
                             </div>
                             <div class="form-group col-sm-6">
-                                <label for="publishing-year">Nam xuat ban</label>
+                                <label for="publishing-year">Năm xuát bản</label>
                                 <input type="text" class="form-control" name="year" id="year" value="" placeholder="Nam xuat ban">
                             </div>
                             <div class="form-group col-sm-6">
-                                <label for="republish">Tai ban lan</label>
+                                <label for="republish">Tái bản lân thứ</label>
                                 <input type="number" class="form-control" name="republish" id="republish" value="" placeholder="Tai ban lan thu">
                             </div>
                             <div class="form-group col-sm-6">
-                                <label for="ISBN">Ma so sach</label>
+                                <label for="ISBN">Mã số sách</label>
                                 <input type="text" class="form-control" name="isbn" id="isbn" value="" placeholder="ISBN">
                             </div>
                             <div class="form-group col-sm-12">
-                                <label for="description">Mo ta ve sach</label>
+                                <label for="description">Mô tả về sách</label>
                                 <textarea class=" form-control ckeditor" id="description" name="description" rows="10" placeholder="Mo ta ve sach"></textarea>
                             </div>
                             <div class="form-group image-area">
@@ -104,8 +104,8 @@
                         </div>
                         <div style="clear: both;"></div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" id="book-update">Luu</button>
-                            <button type="button" class="btn btn-danger " data-dismiss="modal">Dong</button>
+                            <button type="button" class="btn btn-success" id="book-update">Lưu</button>
+                            <button type="button" class="btn btn-danger " data-dismiss="modal">Đóng</button>
                         </div>
                     </div>
                 </div>
@@ -117,12 +117,12 @@
                     <tr>
                         <th>ID</th>
                         <th>Tên</th>
-                        <th>Gioi thieu</th>
-                        <th>Mo ta</th>
-                        <th>Tac gia</th>
-                        <th>Nam xuat ban</th>
-                        <th>Xuat ban lan thu</th>
-                        <th>Hanh dong</th>
+                        <th>Giới thiệu</th>
+                        <th>Mô tả</th>
+                        <th>Tác gỉa</th>
+                        <th>Năm xuất bản</th>
+                        <th>Xuất bản lần thứ</th>
+                        <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -248,6 +248,7 @@ $('#year').datetimepicker({
                 isbn: isbn
             },
             success: function(data) {
+                alert("Cập nhật thành công thông tin sách");
                 window.location.reload(true);
             },
             error: function(data) {
