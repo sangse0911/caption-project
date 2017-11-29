@@ -8,6 +8,7 @@ use App\Models\Book;
 use Auth;
 use Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class CartController extends Controller
 {
@@ -31,6 +32,7 @@ class CartController extends Controller
 
         $content = Cart::content();
         $total = Cart::subtotal();
+
         return view('cart.index', compact('content', 'total'));
     }
 
@@ -53,7 +55,6 @@ class CartController extends Controller
         ]);
 
         $content = Cart::content();
-        dd($content);
     }
 
     public function add(Request $request)

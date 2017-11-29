@@ -44,8 +44,9 @@ class BookController extends Controller
     public function sellBook()
     {
         $books = $this->bookRepository->getSellBook();
-        // dd($books);
-        return view('particals.first-page', compact('books'));
+        return response()->json([
+            'html' => view('admin.books.sell-book', compact('books'))->render(),
+        ]);
     }
 
     /**
@@ -54,9 +55,10 @@ class BookController extends Controller
      */
     public function rentBook()
     {
-        $books = $this->bookRepository->getRenBook();
-        // dd($books);
-        return view('book.renter-book', compact('books'));
+        $books = $this->bookRepository->getRentBook();
+        return response()->json([
+            'html' => view('admin.books.rent-book', compact('books'))->render(),
+        ]);
     }
 
     /**

@@ -14,9 +14,6 @@
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/a', function () {
-    return view('BSO.trangchu');
-});
 
 Auth::routes();
 /**
@@ -27,7 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 /**
  *
  */
-Route::get('/admin', ['as' => 'admin.index', 'uses' => 'AdminController@index'])->middleware('auth:admin');
 Route::get('/admin/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.show');
 Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login');
 Route::post('/admin/logout', 'Auth\AdminLoginController@adminLogout')->name('admin_logout')->middleware('auth:admin');
@@ -64,7 +60,7 @@ Route::middleware(['auth:admin', 'super_admin'])->group(function () {
     /**
      *
      */
-    Route::get('/role', 'RoleController@index')->name('super.admin.index');
+    Route::get('/roles', 'RoleController@index')->name('super.admin.index');
     Route::post('/role/store', 'RoleController@store')->name('super.admin.store');
     Route::put('/role/update', 'RoleController@update')->name('super.admin.update');
     Route::get('/role/{id}', 'RoleController@show')->name('super.admin.show');
@@ -72,10 +68,12 @@ Route::middleware(['auth:admin', 'super_admin'])->group(function () {
     /**
      *
      */
-    Route::get('/admin/contact', 'ContactController@index')->name('admin.contact.index');
+    Route::get('/admin/contacts', 'ContactController@index')->name('admin.contact.index');
     Route::post('/contact/store', 'ContactController@store')->name('admin.contact.store');
     Route::put('/contact/update', 'ContactController@update')->name('admin.contact.update');
     Route::get('/contact/{id}', 'ContactController@show')->name('admin.contact.show');
+
+    Route::get('/admins', 'AdminController@listAllManager')->name('admin.managers.index');
 });
 /**
  *
@@ -155,14 +153,9 @@ Route::middleware(['auth:admin'])->group(function () {
      *
      */
     Route::get('/event', ['as' => 'event.index', 'uses' => 'EventController@index']);
-    Route::get('/trangquantri', function () {
-        return view('admin.sachban.themsachban');
-    });
-    Route::get('/admin/sell-book', function () {
-        return response()->json([
-            'html' => view('admin.sell-book')->render(),
-        ]);
-    });
+
+    Route::get('/admin/sell-book', 'BookController@sellBook')->name('admin.book.sell-book');
+    Route::get('/admin/rent-book', 'BookController@rentBook')->name('admin.book.rent-book');
 });
 
 Route::get('/api/user', ['as' => 'api.user.index', 'uses' => 'UserController@indexApi']);

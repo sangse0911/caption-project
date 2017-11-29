@@ -30,9 +30,23 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.master');
+        return view('admin.index');
     }
 
+    /**
+     * [listAllManager description]
+     * @return [type] [description]
+     */
+    public function listAllManager()
+    {
+        $admins = $this->adminRepository->all();
+        return view('admin.managers.index', compact('admins'));
+    }
+
+    /**
+     * [indexBook description]
+     * @return [type] [description]
+     */
     public function indexBook()
     {
         return view('admin.books.index');

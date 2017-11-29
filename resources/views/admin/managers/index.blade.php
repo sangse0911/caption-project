@@ -1,4 +1,5 @@
-@extends('admin.master') @section('content')
+@extends('admin.master')
+@section('content')
 <div class="content-area py-1">
     <div class="container-fluid">
         <ol class="breadcrumb no-bg mb-1">
@@ -13,29 +14,29 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Số điện thoại liên hệ</th>
+                        <th>Tên</th>
                         <th>Email liên hệ</th>
-                        <th>Địa chỉ liên hệ</th>
+                        <th>Quyền</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($contacts as $contact)
+                    @foreach($admins as $admin)
                     <tr>
-                        <td>{{ $contact->id }}</td>
-                        <td>{{ $contact->phone }}</td>
-                        <td>{{ $contact->email }}</td>
-                        <td>{{ $contact->address }}</td>
+                        <td>{{ $admin->id }}</td>
+                        <td>{{ $admin->name }}</td>
+                        <td>{{ $admin->email }}</td>
+                        <td>{{ $admin->role_id }}</td>
                         <td align="center">
-                            <button id="{{ $contact->id }}" type="button" class="btn btn-warning btn-sm label-left b-a-0 waves-effect waves-light">
+                            <button id="{{ $admin->id }}" type="button" class="btn btn-warning btn-sm label-left b-a-0 waves-effect waves-light">
                                 <span class="btn-label"><i class="fa fa-eye" ></i></span> Xem
                             </button>
                             &nbsp
-                            <button type="button" id="update-{{ $contact->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
+                            <button type="button" id="update-{{ $admin->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
                                 <span class="btn-label"><i class="fa fa-edit"></i></span> Sửa
                             </button>
                             &nbsp
-                            <button id="view-{{ $contact->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
+                            <button id="view-{{ $admin->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
                                 <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span> Xóa
                             </button>
                         </td>
@@ -80,93 +81,4 @@
         </form>
     </div>
 </div>
-@endsection
-@section('script')
-<script>
-	$.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    $('#contact-create').on('click', function(e) {
-
-        var phone = $('#phone').val();
-        var email = $('#email').val();
-        var address = $('#address').val();
-
-        $.ajax({
-
-            cache: false,
-            method: 'POST',
-            dataType: 'JSON',
-            url: '/contact/store',
-            data: {
-                phone: phone,
-                email: email,
-                address: address,
-            },
-            success: function() {
-                window.location.reload(true);
-            },
-            error: function(data) {
-                console.log('ee', data);
-            }
-        });
-        // console.log(data),
-        e.preventDefault();
-    });
-    $('.btn-update').on('click', function(e) {
-        var contact_id = e.currentTarget.id.substring(7);
-
-        $.ajax({
-            cache: false,
-            method: 'GET',
-            dataType: 'JSON',
-            url: '/contact/' + contact_id,
-            success: function(data){
-                console.log(data);
-                $('.modal-title').text('Thay doi thong tin lien he');
-                $('#phone').val(data['phone']);
-                $('#id').val(data['id']);
-                $('#email').val(data['email']);
-                $('#address').val(data['address']);
-                $('#contact-create').css('display','none');
-                $('#contact-update').removeAttr('style');
-            },
-            error: function(data){
-                console.log('ee', data);
-            }
-        });
-    });
-    $('#contact-update').on('click', function(e){
-        var phone = $('#phone').val();
-        var id = $('#id').val();
-        var email = $('#email').val();
-        var address = $('#address').val();
-
-        $.ajax({
-
-            cache: false,
-            method: 'PUT',
-            dataType: 'JSON',
-            url: '/contact/update',
-            data: {
-                id: id,
-                phone: phone,
-                email: email,
-                address: address,
-            },
-            success: function(data) {
-                // console.log('ss', data);
-                window.location.reload(true);
-            },
-            error: function(data) {
-                console.log('ee', data);
-            }
-        });
-        // console.log(data),
-        e.preventDefault();
-    });
-</script>
 @endsection

@@ -584,6 +584,7 @@
                 });
 
             });
+
             $('.remove').click(function(e) {
                 e.preventDefault();
 
@@ -626,7 +627,8 @@
                     },
                     dataType: 'JSON',
                     success: function(data) {
-                        console.log('ss', data);
+                        alert("Bạn đã đặt hàng thành công, cảm ơn bạn");
+                        window.location.assign("/");
                     },
                     error: function(data) {
                         console.log("co loi voi", data);

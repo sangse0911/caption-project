@@ -183,6 +183,7 @@ class BookRepository implements BookInterface
 
         $categories = Input::get('categories');
         foreach ($categories as $categoriesOb) {
+
             $category = Category::find($categoriesOb);
             $category->books()->attach($book->id);
         }

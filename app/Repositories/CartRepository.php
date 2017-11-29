@@ -34,8 +34,13 @@ class CartRepository implements CartInterface
      */
     public function all()
     {
-        return Cart::content();
+        $content = Cart::content();
+        $total = Cart::total();
 
+        return [
+            'content' => $content,
+            'total' => $total,
+        ];
     }
 
     /**
@@ -95,10 +100,7 @@ class CartRepository implements CartInterface
         $order = $this->orderRepository->create($items);
 
         foreach ($content as $item) {
-            // dd($item->id);
-            // echo "<pre>";
-            // print_r($item->id);
-            // echo "</pre>";
+
             $itemDetails = array(
                 'order_id' => $order->id,
                 'book_id' => $item->id,
@@ -123,6 +125,8 @@ class CartRepository implements CartInterface
                 ]);
 
         }
+
+        Cart::destroy();
 
         return $order;
     }

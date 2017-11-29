@@ -39,41 +39,31 @@
                     <li id="cart-2" class="nav-item dropdown" style="display: none;">
                         <a href="cart.html" class="nav-link" data-toggle="dropdown" aria-expanded="false">
                             <i class="ec ec-shopping-bag"></i>
-                            <span class="cart-items-count count">4</span>
-                            <span class="cart-items-total-price total-price"><span class="amount">$1,215.00</span></span>
+                            <span class="cart-items-count count">{{ Cart::count() }}</span>
+                            <span class="cart-items-total-price total-price"><span class="amount">{{ Cart::subtotal() }}</span></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-mini-cart">
                             <li>
                                 <div class="widget_shopping_cart_content">
-                                    <ul class="cart_list product_list_widget ">
-                                        <li class="mini_cart_item">
-                                            <a title="Remove this item" class="remove" href="#">×</a>
-                                            <a href="single-product.html">
-                                                <img class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" src="assets/images/products/mini-cart1.jpg" alt="">White lumia 9001&nbsp;
-                                            </a>
-                                            <span class="quantity">2 × <span class="amount">£150.00</span></span>
-                                        </li>
-                                        <li class="mini_cart_item">
-                                            <a title="Remove this item" class="remove" href="#">×</a>
-                                            <a href="single-product.html">
-                                                <img class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" src="assets/images/products/mini-cart2.jpg" alt="">PlayStation 4&nbsp;
-                                            </a>
-                                            <span class="quantity">1 × <span class="amount">£399.99</span></span>
-                                        </li>
-                                        <li class="mini_cart_item">
-                                            <a data-product_sku="" data-product_id="34" title="Remove this item" class="remove" href="#">×</a>
-                                            <a href="single-product.html">
-                                                <img class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" src="assets/images/products/mini-cart3.jpg" alt="">POV Action Cam HDR-AS100V&nbsp;
+                                    <ul class="cart_list product_list_widget">
+                                        @forelse (Cart::content() as $element)
+                                            <li class="mini_cart_item">
+                                                <a title="Remove this item" class="remove" href="javascript:void(0)"
+                                                    data-id="{{ $element->rowId}}">×</a>
+                                                <a href="#">
+                                                    <img class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" src="{{ URL::to('assets/images/product/' . $element->options->image) }}" alt="">{{ $element->name }}
+                                                </a>
+                                                <span class="quantity"><span class="amount">{{ $element->price }}</span></span>
+                                            </li>
+                                        @empty
+                                        @endforelse
 
-                                            </a>
-                                            <span class="quantity">1 × <span class="amount">£269.99</span></span>
-                                        </li>
                                     </ul>
                                     <!-- end product list -->
                                     <p class="total"><strong>Subtotal:</strong> <span class="amount">£969.98</span></p>
                                     <p class="buttons">
-                                        <a class="button wc-forward" href="cart.html">View Cart</a>
-                                        <a class="button checkout wc-forward" href="checkout.html">Checkout</a>
+                                        <a class="button wc-forward" href="cart.html">Giỏ hàng</a>
+                                        <a class="button checkout wc-forward" href="#">Xóa</a>
                                     </p>
                                 </div>
                             </li>
