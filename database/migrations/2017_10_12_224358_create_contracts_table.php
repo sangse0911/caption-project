@@ -19,7 +19,7 @@ class CreateContractsTable extends Migration
             $table->integer('admin_id')->unsigned();
             $table->enum('method', ['0', '1'])->default('0');
             $table->string('account')->nullable();
-            $table->enum('status', ['0', '1']);
+            $table->enum('kind', ['0', '1']);
             $table->timestamps();
 
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade')->onUpdate('cascade');

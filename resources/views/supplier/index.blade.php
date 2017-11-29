@@ -19,55 +19,49 @@
                         <div class="modal-body">
                             <div class="form-group col-md-6 supplier">
                                 <h6>Loại Sách</h6>
-                                <label class="custom-control custom-radio" id="sell">
-                                    <input id="radio1" name="status" value="0" type="radio" class="custom-control-input">
+                                <label class="custom-control custom-radio">
+                                    <input id="radio1" name="kind" value="0" type="radio" class="custom-control-input">
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">Sách Bán</span>
                                 </label>
-                                <label class="custom-control custom-radio" id="rent">
-                                    <input id="radio2" name="status" value="1" type="radio" class="custom-control-input">
+                                <label class="custom-control custom-radio">
+                                    <input id="radio2" name="kind" value="1" type="radio" class="custom-control-input">
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">Sách Thuê</span>
                                 </label>
-
                             </div>
-                         	<div class="form-group col-md-6 supplier">
-                                <h6>Thanh toan bang</h6>
+                            <div class="form-group col-md-6 supplier">
+                                <h6>Thanh toán bằng</h6>
                                 <label class="custom-control custom-radio">
                                     <input id="radio1" name="method" value="0" type="radio" class="custom-control-input">
                                     <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-description">Tien mat</span>
+                                    <span class="custom-control-description">Tiền mặt</span>
                                 </label>
                                 <label class="custom-control custom-radio">
                                     <input id="radio2" name="method" value="1" type="radio" class="custom-control-input">
                                     <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-description">The ngan hang</span>
+                                    <span class="custom-control-description">Thẻ ngân hàng</span>
                                 </label>
-
                             </div>
                             <div class="form-group col-md-6 supplier">
-                                <h6>Tai khoan ngan hang</h6>
+                                <h6>Tài khoản ngân hàng</h6>
                                 <input type="text" name="account" id="account" class="form-control" placeholder="Tai khoan ngan hang">
                             </div>
                             <div class="form-group col-md-6 supplier">
                                 <h6>Tác Giả</h6>
                                 <input type="text" name="author" id="author" class="form-control" placeholder="Nhập Tên Tác Giả">
-
                             </div>
-                             <div class="form-group col-md-6 supplier">
-                                <h6>Gioi thieu qua ve sach</h6>
+                            <div class="form-group col-md-6 supplier">
+                                <h6>Giới thiệu qua về sách</h6>
                                 <input type="text" name="introduce" id="introduce" class="form-control" placeholder="Gioi thieu ve sach">
-
                             </div>
                             <div class="form-group col-md-6 supplier">
                                 <h6>Tên Sách</h6>
                                 <input type="text" name="name" class="form-control" id="name" placeholder="Nhập Tên Sách">
-
                             </div>
                             <div class="form-group col-md-6 supplier">
                                 <h6>Nhà Xuất Bản</h6>
                                 <input type="text" name="company" class="form-control" id="company" placeholder="Nhập Tên Nhà Xuất Bản">
-
                             </div>
                             <div class="form-group col-md-6 supplier">
                                 <h6>Thể Loại</h6>
@@ -80,30 +74,21 @@
                             <div class="form-group col-md-6 supplier">
                                 <h6>Năm Xuất Bản</h6>
                                 <input type="text" name="year" class="form-control" id="year" placeholder="Nhập Năm Xuất Bản">
-
                             </div>
                             <div class="form-group col-md-6 supplier">
                                 <h6>Giá Bán</h6>
-                                <input type="text" name="price-sell" class="form-control form-control-success" id="price-sell">
-
+                                <input type="text" name="price" class="form-control form-control-success" id="price">
                             </div>
                             <div class="form-group col-md-6 supplier">
                                 <h6>ISBN</h6>
                                 <input type="text" name="isbn" class="form-control" id="isbn" placeholder="Ma so sach">
-
-                            </div>
-                            <div class="form-group col-md-6 supplier" id="rent-area">
-                                <h6>Giá Thuê</h6>
-                                <input type="text" name="price-rent" class="form-control form-control-success" id="price-rent">
-
                             </div>
                             <div class="form-group col-md-6 supplier">
                                 <h6>Tái Bản Lần Thứ</h6>
                                 <input type="text" name="republish" class="form-control" id="republish" placeholder="Tai ban lan thu">
-
                             </div>
                             <div class="form-group col-md-6 supplier">
-                                <h6>Vi tri cua sach</h6>
+                                <h6>Vị trí của sách</h6>
                                 <select id="location" multiple="multiple" name="location[]" class="location" style="width: 100%;">
                                     @foreach($bookshelves as $bookshelf)
                                     <option name="" value="{{ $bookshelf->id }}">{{ $bookshelf->location }}</option>
@@ -113,33 +98,32 @@
                             <div class="form-group col-md-6 supplier">
                                 <h6>Chất Lượng Sách</h6>
                                 <select id="quality" multiple="multiple" name="quality[]" class="quality" style="width: 100%;">
-                                    <option name="" value="1">25% den 50%</option>
-                                    <option name="" value="2">51% den 65%</option>
-                                    <option name="" value="3">66% den 75%</option>
-                                    <option name="" value="4">76% den 90%</option>
+                                    <option name="" value="1">25% đến 50%</option>
+                                    <option name="" value="2">51% đến 65%</option>
+                                    <option name="" value="3">66% đến 75%</option>
+                                    <option name="" value="4">76% đến 90%</option>
                                 </select>
-
                             </div>
-                            <div class="form-group col-md-6 supplier">
+                            <div class="form-group col-md-12 supplier">
                                 <h6>Tóm Tắt</h6>
                                 <textarea class="ckeditor" rows="9" id="description" name="description" rows="10"></textarea>
                             </div>
-                            <div class="form-group col-md-6 supplier">
+                            <div class="form-group col-md-12 supplier">
                                 <h6>Hình Ảnh</h6>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="file" id="" class="dropify" name="images[]"/>
+                                        <input type="file" id="" class="dropify" name="images[]" />
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="file" id="" class="dropify" name="images[]"/>
+                                        <input type="file" id="" class="dropify" name="images[]" />
                                     </div>
                                 </div>
                                 <div class="row" style="margin-top: 30px;">
                                     <div class="col-md-6">
-                                        <input type="file" id="" class="dropify" name="images[]"/>
+                                        <input type="file" id="" class="dropify" name="images[]" />
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="file" id="" class="dropify" name="images[]"/>
+                                        <input type="file" id="" class="dropify" name="images[]" />
                                     </div>
                                 </div>
                             </div>
@@ -149,40 +133,36 @@
                             <table class="table table-striped table-bordered dataTable" id="table-1">
                                 <thead>
                                     <tr>
-                                        <th>Ma so hop dong</th>
-                                        <th>Tai khoan ngan hang</th>
-                                        <th>Phone</th>
-
+                                        <th>Mã số hợp đồng</th>
+                                        <th>Tài khoản ngân hàng</th>
+                                        <th>Số điện thoại</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     <tr>
                                         <td id="contract-id"></td>
                                         <td id="supplier-account"></td>
                                         <td id="supplier-phone"></td>
-
                                     </tr>
-
                                 </tbody>
                             </table>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="book-create"">Them moi</button>
-                            <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Dong</button>
+                            <button type="submit" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="book-create" ">Thêm mới</button>
+                            <button type="button " class="btn btn-danger btn-default " data-dismiss="modal ">Đóng</button>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
-        <div class="box box-block bg-white">
-            <table class="table table-striped table-bordered dataTable" id="table-1">
+        <div class="box box-block bg-white ">
+            <table class="table table-striped table-bordered dataTable " id="table-1 ">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Ten</th>
-                        <th>Phone</th>
-                        <th>Hanh dong</th>
+                        <th>Tên</th>
+                        <th>Số điện thoại</th>
+                        <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -191,16 +171,16 @@
                         <td>{{ $supplier->id }}</td>
                         <td>{{ $supplier->user->name }}</td>
                         <td>{{ $supplier->phone }}</td>
-                        <td align="center">
-                            <button type="button" id="view-{{ $supplier->id }}" class="btn btn-warning btn-sm btn-view label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
+                        <td align="center ">
+                            <button type="button " id="view-{{ $supplier->id }}" class="btn btn-warning btn-sm btn-view label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
                                 <span class="btn-label"><i class="fa fa-eye"></i></span> Xem
                             </button>
                             &nbsp
                             <button id="supplier-{{ $supplier->id }}" type="button" class="btn btn-success btn-sm btn-sell label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
-                                <span class="btn-label"><i class="fa fa-user-plus  fa-fw"></i></span> Khach ban
+                                <span class="btn-label"><i class="fa fa-user-plus  fa-fw"></i></span> Khách bán
                             </button>
                             <button id="supplier-{{ $supplier->id }}" type="button" class="btn btn-success btn-sm btn-rent label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
-                                <span class="btn-label"><i class="fa fa-user-plus  fa-fw"></i></span> Khach cho thue
+                                <span class="btn-label"><i class="fa fa-user-plus  fa-fw"></i></span> Khách cho thuê
                             </button>
                             <button id="delete-{{ $supplier->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
                                 <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span> Xóa
@@ -215,22 +195,22 @@
 </div>
 @endsection @section('script')
 <script>
-	$("#category").select2({ closeOnSelect: false });
-	$("#location").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
-	$("#quality").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
-	$('#year').datetimepicker({
+    $("#category").select2({ closeOnSelect: false });
+    $("#location").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
+    $("#quality").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
+    $('#year').datetimepicker({
         viewMode: 'years',
         format: 'YYYY'
     });
 
-	$.ajaxSetup({
-	    headers: {
-	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-	    }
-	});
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $('.btn-view').click(function(e) {
-        $('.modal-title').text('Thong tin chi tiet nha cung cap');
-        $('.supplier').css("display","none");
+        $('.modal-title').text('Thông tin chi tiết nhà cung cấp');
+        $('.supplier').css("display", "none");
         $('#box-hide').removeAttr("style");
 
         var supplier_id = e.currentTarget.id.substring(5);
@@ -242,13 +222,13 @@
             url: '/supplier/detail/' + supplier_id,
             success: function(data) {
                 console.log(data);
-                if(data['details'].length == 0) {
+                if (data['details'].length == 0) {
                     $('#contract-id').text("");
                     $('#supplier-account').text("");
                     $('#supplier-phone').text(data['supplier']['phone']);
-                }else{
+                } else {
 
-                    for(var i=0; i< (data['details'].length); i++) {
+                    for (var i = 0; i < (data['details'].length); i++) {
 
                         $('#contract-id').text(data['contracts'][i]['id']);
                         $('#supplier-account').text(data['contracts'][i]['account']);
@@ -262,55 +242,52 @@
         });
         e.preventDefault();
     });
-	$('.btn-sell').click(function(e) {
+    $('.btn-sell').click(function(e) {
         $('.supplier').removeAttr("style");
         $('#box-hide').css("display", "none");
 
-	    var supplier_id = e.currentTarget.id.substring(9);
+        var supplier_id = e.currentTarget.id.substring(9);
 
-	    $.ajax({
-	        cache: false,
-	        method: 'GET',
-	        dataType: 'JSON',
-	        url: '/suppliers/' + supplier_id,
-	        success: function(data) {
-	            $('.modal-title').text('Them moi nha cung cap');
-	            $('#id').val(data['id']);
-	            $('#rent').css("display", "none");
-	            $('#rent-area').css("display", "none");
-	            $('#radio1').prop("checked", true);
-	        },
-	        error: function(data) {
-	            console.log('ee', data);
-	        }
-	    });
-	    e.preventDefault();
-	});
-	$('#ahihi').submit(function(evt) {
+        $.ajax({
+            cache: false,
+            method: 'GET',
+            dataType: 'JSON',
+            url: '/suppliers/' + supplier_id,
+            success: function(data) {
+                $('.modal-title').text('Thêm mới nhà cung cấp');
+                $('#id').val(data['id']);
+                $('#radio1').prop("checked", true);
+            },
+            error: function(data) {
+                console.log('ee', data);
+            }
+        });
+        e.preventDefault();
+    });
+    $('#ahihi').submit(function(evt) {
 
         var formData = new FormData(this);
 
         $.ajax({
-        	async:true,
-	        method: 'POST',
-	        url: '/book/store',
-	        data:formData,
-	        cache:false,
-	        contentType: false,
-	        processData: false,
-	        dataType: 'JSON',
-	        headers: {
-			    'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
-			},
-	        success: function(data) {
-	            window.location.assign('/admin/books');
-	        },
-	        error: function(data) {
-	            console.log(data);
-        	}
+            async: true,
+            method: 'POST',
+            url: '/book/store',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: 'JSON',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+            },
+            success: function(data) {
+                window.location.assign('/admin/books');
+            },
+            error: function(data) {
+                console.log(data);
+            }
         });
-         evt.preventDefault();
+        evt.preventDefault();
     });
-
 </script>
 @endsection

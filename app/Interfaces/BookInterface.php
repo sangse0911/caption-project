@@ -11,4 +11,6 @@ interface BookInterface
     public function getRentBook();
     public function create($request);
     public function modified($data);
+    public function createOwnerBook($data);
+    public function getRecentlyBook();
 }

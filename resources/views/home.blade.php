@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Cua hang sach hang dau
+
 @endsection()
 
 @section('header-v2')

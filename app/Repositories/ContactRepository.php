@@ -9,15 +9,30 @@ use Auth;
 class ContactRepository implements ContactInterface
 {
 
+    /**
+     * [getAll description]
+     * @return [type] [description]
+     */
     public function getAll()
     {
         return Contact::all();
     }
 
+    /**
+     * [find description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function find($id)
     {
         return Contact::findOrFail($id);
     }
+
+    /**
+     * [create description]
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
     public function create($data)
     {
         return Contact::create([
@@ -28,6 +43,11 @@ class ContactRepository implements ContactInterface
         ]);
     }
 
+    /**
+     * [modified description]
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
     public function modified($data)
     {
         $contact = Contact::find($data['id']);

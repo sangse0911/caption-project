@@ -48,7 +48,7 @@
             <form class="navbar-search" method="get" action="http://transvelo.github.io/">
                 <label class="sr-only screen-reader-text" for="search">Search for:</label>
                 <div class="input-group">
-                    <input type="text" id="search" class="form-control search-field" dir="ltr" value="" name="s" placeholder="Search for products">
+                    <input type="text" id="search" class="form-control search-field" dir="ltr" value="" name="s" placeholder="Tìm kiếm sách">
                     <div class="input-group-addon search-categories">
                         <select name="product_cat" id="product_cat" class="postform resizeselect" style="width: 141px;">
                             <option value="0" selected="selected">Thể loại sách</option>

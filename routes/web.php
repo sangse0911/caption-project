@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/a', function () {
+    return view('BSO.trangchu');
+});
 
 Auth::routes();
 /**
@@ -24,6 +27,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 /**
  *
  */
+
 Route::get('/admin/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.show');
 Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login');
 Route::post('/admin/logout', 'Auth\AdminLoginController@adminLogout')->name('admin_logout')->middleware('auth:admin');
@@ -79,6 +83,8 @@ Route::middleware(['auth:admin', 'super_admin'])->group(function () {
  *
  */
 Route::middleware(['auth:admin'])->group(function () {
+
+    Route::get('/admin', 'AdminController@index')->name('admin.show.index');
     /**
      *
      */
@@ -96,7 +102,7 @@ Route::middleware(['auth:admin'])->group(function () {
     /**
      *
      */
-    Route::get('/admin/bookshelves', 'BookshelfController@index')->name('admin.bookshelf.index');
+    Route::get('/bookshelves', 'BookshelfController@index')->name('admin.bookshelf.index');
     Route::post('/bookshelf/store', 'BookshelfController@store')->name('bookshelf.store');
     Route::get('/bookshelf/{id}', 'BookshelfController@show')->name('bookshelf.show');
     Route::put('/bookshelf/update', 'BookshelfController@update')->name('bookshelf.update');
@@ -138,6 +144,7 @@ Route::middleware(['auth:admin'])->group(function () {
      */
     Route::get('/book/create/{slug}', ['as' => 'book.create', 'uses' => 'BookController@create']);
     Route::post('/book/store', ['as' => 'book.store', 'uses' => 'BookController@store']);
+    Route::post('/book/storeIfOwned', 'BookController@storeIfOwned')->name('book.own.store');
     Route::put('/book/update', 'BookController@update')->name('book.update');
 
     /**

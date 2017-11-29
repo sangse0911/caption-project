@@ -7,18 +7,20 @@
         </div>
         <div class="collapse navbar-toggleable-xs" id="header-v3">
             <ul class="nav navbar-nav" style="display: inline-flex; align-items: center;">
-                <li class="menu-item" style="display: inline-table;"><a title="TV &amp; Audio" href="#">Ban sach</a></li>
-                <li class="menu-item" style="display: inline-table;"><a title="Goc dang bai" href="#"  data-toggle="modal" data-target="#myModal" id="post-book">Dang bai</a></li>
-                <li class="menu-item" style="display: inline-table;"><a title="Computers" href="#">Computers</a></li>
+                <li class="menu-item" style="display: inline-table;"><a title="Góc bán sách" href="#">Bán sách</a></li>
+                <li class="menu-item" style="display: inline-table;"><a title="Góc đăng bài" href="#"  data-toggle="modal" data-target="#myModal" id="post-book">Đăng bài</a></li>
+                <li class="menu-item" style="display: inline-table;"><a title="Quảng cáo sách" href="#">Liên hệ quảng cáo</a></li>
                 <li id="search-form" class="menu-item" style="display: none;">
                     <form class="navbar-search" method="get" action="#" style="width: 100%;">
-                        <label class="sr-only screen-reader-text" for="search">Search for:</label>
+                        <label class="sr-only screen-reader-text" for="search">Tìm kiếm</label>
                         <div class="input-group">
-                            <input type="text" id="search" class="form-control search-field" dir="ltr" value="" name="s" placeholder="Search for products" style="max-height: 50px;">
+                            <input type="text" id="search" class="form-control search-field" dir="ltr" value="" name="s" placeholder="Tìm kiếm sách" style="max-height: 50px;">
                             <div class="input-group-addon search-categories">
                                 <select name="product_cat" id="product_cat" class="postform resizeselect" style="width: 141px;">
-                                    <option value="0" selected="selected">All Categories</option>
-                                    <option class="level-0" value="laptops-laptops-computers">Laptops</option>
+                                    <option value="0" selected="selected">Thể loại sách</option>
+                                    @foreach($categories as $category)
+                                    <option class="" value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="input-group-btn">

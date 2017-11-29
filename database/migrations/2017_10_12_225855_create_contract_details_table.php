@@ -17,8 +17,7 @@ class CreateContractDetailsTable extends Migration
             $table->increments('id');
             $table->integer('contract_id')->unsigned();
             $table->integer('book_id')->unsigned();
-            $table->double('entered_price')->default(0);
-            $table->double('rental_price')->default(0);
+            $table->double('price')->default(0);
             $table->integer('quality');
             $table->timestamps();
 

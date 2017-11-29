@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <ol class="breadcrumb no-bg mb-1">
             <div style="float: right;">
-                <button type="button" class="btn btn-info btn-lg label-right b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal" id="user-create">
+                <button type="button" class="btn btn-info btn-lg label-right b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal" id="book-create">
                     <span class="btn-label"><i class="fa fa-user-plus"></i></span> Thêm
                 </button>
             </div>
@@ -19,41 +19,97 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Chỉnh sửa sách</h4>
                         </div>
+                        <input type="hidden" name="" id="id">
                         <div class="modal-body">
-                            <div class="form-group col-sm-6">
-                                <label for="name">Tên sách</label>
-                                <input type="hidden" name="id" value="" id="id">
-                                <input type="text" name="name" class="form-control" id="name" value="" placeholder="Ten sach">
+                            <div class="form-group col-md-6 supplier kind-book">
+                                <h6>Loại Sách</h6>
+                                <label class="custom-control custom-radio">
+                                    <input id="radio1" name="kind" value="0" type="radio" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Sách Bán</span>
+                                </label>
+                                <label class="custom-control custom-radio">
+                                    <input id="radio2" name="kind" value="1" type="radio" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Sách Thuê</span>
+                                </label>
                             </div>
-                            <div class="form-group col-sm-6">
-                                <label for="categories">Thể loại sách</label>
+                            <div class="form-group col-md-6 supplier method-pay">
+                                <h6>Thanh toán bằng</h6>
+                                <label class="custom-control custom-radio">
+                                    <input id="radio1" name="method" value="0" type="radio" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Tiền mặt</span>
+                                </label>
+                                <label class="custom-control custom-radio">
+                                    <input id="radio2" name="method" value="1" type="radio" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Thẻ ngân hàng</span>
+                                </label>
+                            </div>
+                            <div class="form-group col-md-6 supplier bank-account">
+                                <h6>Tài khoản ngân hàng</h6>
+                                <input type="text" name="account" id="account" class="form-control" placeholder="Tai khoan ngan hang">
+                            </div>
+                            <div class="form-group col-md-6 supplier">
+                                <h6>Tác Giả</h6>
+                                <input type="text" name="author" id="author" class="form-control" placeholder="Nhập Tên Tác Giả">
+                            </div>
+                            <div class="form-group col-md-6 supplier">
+                                <h6>Giới thiệu qua về sách</h6>
+                                <input type="text" name="introduce" id="introduce" class="form-control" placeholder="Gioi thieu ve sach">
+                            </div>
+                            <div class="form-group col-md-6 supplier">
+                                <h6>Tên Sách</h6>
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Nhập Tên Sách">
+                            </div>
+                            <div class="form-group col-md-6 supplier">
+                                <h6>Nhà Xuất Bản</h6>
+                                <input type="text" name="company" class="form-control" id="company" placeholder="Nhập Tên Nhà Xuất Bản">
+                            </div>
+                            <div class="form-group col-md-6 supplier">
+                                <h6>Thể Loại</h6>
                                 <select id="category" multiple="multiple" name="categories[]" class="category" style="width: 100%;">
                                     @foreach($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group col-sm-6">
-                                <label for="introduce">Giới thiệu về sách</label>
-                                <input type="text" name="introduce" class="form-control" id="introduce" value="" placeholder="Gioi thieu ve sach">
+                            <div class="form-group col-md-6 supplier">
+                                <h6>Năm Xuất Bản</h6>
+                                <input type="text" name="year" class="form-control" id="year" placeholder="Nhập Năm Xuất Bản">
                             </div>
-                            <div class="form-group col-sm-6">
-                                <label for="location">Vị trí của sách</label>
+                            <div class="form-group col-md-6 supplier">
+                                <h6>Giá Bán</h6>
+                                <input type="text" name="price" class="form-control form-control-success" id="price">
+                            </div>
+                            <div class="form-group col-md-6 supplier">
+                                <h6>ISBN</h6>
+                                <input type="text" name="isbn" class="form-control" id="isbn" placeholder="Ma so sach">
+                            </div>
+                            <div class="form-group col-md-6 supplier">
+                                <h6>Tái Bản Lần Thứ</h6>
+                                <input type="text" name="republish" class="form-control" id="republish" placeholder="Tai ban lan thu">
+                            </div>
+                            <div class="form-group col-md-6 supplier">
+                                <h6>Vị trí của sách</h6>
                                 <select id="location" multiple="multiple" name="location[]" class="location" style="width: 100%;">
                                     @foreach($bookshelves as $bookshelf)
                                     <option name="" value="{{ $bookshelf->id }}">{{ $bookshelf->location }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group col-sm-6">
-                                <label for="price">Gia cua sach</label>
-                                <input type="number" class="form-control" name="price" id="price" value="" placeholder="Gia cua sach">
+                            <div class="form-group col-md-6 supplier">
+                                <h6>Chất Lượng Sách</h6>
+                                <select id="quality" multiple="multiple" name="quality[]" class="quality" style="width: 100%;">
+                                    <option name="" value="1">25% đến 50%</option>
+                                    <option name="" value="2">51% đến 65%</option>
+                                    <option name="" value="3">66% đến 75%</option>
+                                    <option name="" value="4">76% đến 90%</option>
+                                </select>
                             </div>
-                            <div class="form-group col-sm-6">
-                                <label for="author">Tác gỉa</label>
-                                <input type="text" class="form-control" name="author" id="author" value="" placeholder="Tac gia">
-                            </div>
-                            <div class="form-group col-sm-12">
+                            <div class="form-group col-sm-6 form-status">
+                                <h6>Cập nhật trạng thái</h6><br/>
                                 <label class="radio-inline">
                                     <input type="radio" name="status" value="0">Không sẵn sàng</label>
                                 <label class="radio-inline">
@@ -67,44 +123,34 @@
                                 <label class="radio-inline">
                                     <input type="radio" name="status" value="5">Đã trả lại</label>
                             </div>
-                            <div class="form-group col-sm-6">
-                                <label for="publishing-company">Nhà xuất bản</label>
-                                <input type="text" class="form-control" name="company" id="company" value="" placeholder="Nha xuat ban">
+                            <div class="form-group col-md-12 supplier">
+                                <h6>Tóm Tắt</h6>
+                                <textarea class="ckeditor" rows="9" id="description" name="description" rows="10"></textarea>
                             </div>
-                            <div class="form-group col-sm-6">
-                                <label for="publishing-year">Năm xuát bản</label>
-                                <input type="text" class="form-control" name="year" id="year" value="" placeholder="Nam xuat ban">
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label for="republish">Tái bản lân thứ</label>
-                                <input type="number" class="form-control" name="republish" id="republish" value="" placeholder="Tai ban lan thu">
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label for="ISBN">Mã số sách</label>
-                                <input type="text" class="form-control" name="isbn" id="isbn" value="" placeholder="ISBN">
-                            </div>
-                            <div class="form-group col-sm-12">
-                                <label for="description">Mô tả về sách</label>
-                                <textarea class=" form-control ckeditor" id="description" name="description" rows="10" placeholder="Mo ta ve sach"></textarea>
-                            </div>
-                            <div class="form-group image-area">
-                                <div class="col-md-6">
-                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
+                            <div class="form-group col-md-12 image-area">
+                                <h6>Hình Ảnh</h6>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="file" id="" class="dropify" name="images[]" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="file" id="" class="dropify" name="images[]" />
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="file" id="input-file-now" class="dropify" name="images[]" />
+                                <div class="row" style="margin-top: 30px;">
+                                    <div class="col-md-6">
+                                        <input type="file" id="" class="dropify" name="images[]" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="file" id="" class="dropify" name="images[]" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div style="clear: both;"></div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" id="book-update">Lưu</button>
+                            <button type="submit" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="create-book">Thêm mới</button>
+                            <button type="button" class="btn btn-success" id="book-update" style="display: none;">Lưu</button>
                             <button type="button" class="btn btn-danger " data-dismiss="modal">Đóng</button>
                         </div>
                     </div>
@@ -117,8 +163,6 @@
                     <tr>
                         <th>ID</th>
                         <th>Tên</th>
-                        <th>Giới thiệu</th>
-                        <th>Mô tả</th>
                         <th>Tác gỉa</th>
                         <th>Năm xuất bản</th>
                         <th>Xuất bản lần thứ</th>
@@ -130,8 +174,6 @@
                     <tr>
                         <td>{{ $book->id }}</td>
                         <td>{{ $book->name }}</td>
-                        <td>{{ $book->introduce }}</td>
-                        <td>{{ $book->description }}</td>
                         <td>{{ $book->author }}</td>
                         <td>{{ $book->year }}</td>
                         <td>{{ $book->republish }}</td>
@@ -140,7 +182,7 @@
                                 <span class="btn-label"><i class="fa fa-eye" ></i></span> Xem
                             </button>
                             &nbsp
-                            <button type="button" id="update-{{ $book->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
+                            <button type="button" id="update-{{ $book->id }}" data-id="{{ $book->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
                                 <span class="btn-label"><i class="fa fa-edit"></i></span> Sửa
                             </button>
                             &nbsp
@@ -166,97 +208,139 @@ $('#year').datetimepicker({
 });
 </script>
 <script>
-    $(document).on('focus', 'input', function() {
-        $(this).removeAttr('placeholder');
-    });
-    $.ajaxSetup({
+$(document).on('focus', 'input', function() {
+    $(this).removeAttr('placeholder');
+});
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$('#book-create').click(function(e) {
+    $('.form-status').css("display", "none");
+    $('.modal-title').text("Thêm mới sách");
+})
+
+$('#form-action').submit(function(evt) {
+
+    var formData = new FormData(this);
+
+    $.ajax({
+        async: true,
+        method: 'POST',
+        url: '/book/storeIfOwned',
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: 'JSON',
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+        },
+        success: function(data) {
+            window.location.assign('/admin/books');
+        },
+        error: function(data) {
+            console.log(data);
         }
     });
-    $('.btn-update').on('click', function(e) {
-        $('.image-area').css("display", "none");
+    evt.preventDefault();
+});
 
-        var book_id = e.currentTarget.id.substring(7);
-        var array = [];
-        $.ajax({
-            cache: false,
-            method: 'GET',
-            dataType: 'JSON',
-            url: '/admin/books/' + book_id,
-            success: function(data) {
+$('.btn-update').on('click', function(e) {
+    $('.image-area').css("display", "none");
+    $('#book-update').removeAttr("style");
+    $('#create-book').css("display", "none");
+    $('.form-status').removeAttr("style");
 
-                $('.modal-title').text('Cap nhat sach');
-                $('#name').val(data['book']['name']);
-                for (var i = 0; i < data['categories'].length; i++) {
-                    array.push(data['categories'][i]['category_id']);
+    var book_id = $(this).data('id');
+    var array = [];
 
-                }
-                $('#id').val(data['book']['id']);
-                $('#category').val(array).trigger('change');
-                $('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
-                $('#introduce').val(data['book']['introduce']);
-                $('#location').val(data['book']['bookshelf_id']).trigger('change');
-                $('#price').val(data['book']['price']);
-                $('#author').val(data['book']['author']);
-                $('input[type=radio][name="status"][value=' + data['book']['status'] + ']').prop('checked', true);
-                $('#company').val(data['book']['company']);
-                $('#year').val(data['book']['year']);
-                $('#republish').val(data['book']['republish']);
-                $('#isbn').val(data['book']['isbn']);
-            },
-            error: function(data) {
-                console.log('ee', data);
+    $.ajax({
+        cache: false,
+        method: 'GET',
+        dataType: 'JSON',
+        url: '/admin/books/' + book_id,
+        success: function(data) {
+
+            $('.modal-title').text('Cập nhật thông tin sách');
+            $('.bank-account').css("display", "none");
+            $('.method-pay').css("display", "none");
+            $('.kind-book').css("display", "none");
+
+            $('#name').val(data['book']['name']);
+            for (var i = 0; i < data['categories'].length; i++) {
+                array.push(data['categories'][i]['category_id']);
+
             }
-        });
+
+            $('#id').val(data['book']['id']);
+            $('#category').val(array).trigger('change');
+            $('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
+            $('#introduce').val(data['book']['introduce']);
+            $('#location').val(data['book']['bookshelf_id']).trigger('change');
+            $('#quality').val(data['details'][0]['quality']).trigger('change');
+            $('#price').val(data['book']['price']);
+            $('#author').val(data['book']['author']);
+            $('input[type=radio][name="status"][value=' + data['book']['status'] + ']').prop('checked', true);
+            $('#company').val(data['book']['company']);
+            $('#year').val(data['book']['year']);
+            $('#republish').val(data['book']['republish']);
+            $('#isbn').val(data['book']['isbn']);
+        },
+        error: function(data) {
+            console.log('ee', data);
+        }
     });
-    $('#book-update').click( function(evt) {
+});
+$('#book-update').click(function(evt) {
 
-        var id = $('#id').val();
-        var name = $('#name').val();
-        var categories = $('#category').val();
-        var description = CKEDITOR.instances['description'].getData();
-        var introduce = $('#introduce').val();
-        var location = $('#location').val();
-        var price = $('#price').val();
-        var author = $('#author').val();
-        var status = $('input[name=status]:checked').val();
-        var company = $('#company').val();
-        var year = $('#year').val();
-        var republish = $('#republish').val();
-        var isbn = $('#isbn').val();
+    var id = $('#id').val();
+    var name = $('#name').val();
+    var categories = $('#category').val();
+    var description = CKEDITOR.instances['description'].getData();
+    var introduce = $('#introduce').val();
+    var location = $('#location').val();
+    var price = $('#price').val();
+    var author = $('#author').val();
+    var status = $('input[name=status]:checked').val();
+    var company = $('#company').val();
+    var year = $('#year').val();
+    var republish = $('#republish').val();
+    var isbn = $('#isbn').val();
 
-        $.ajax({
+    $.ajax({
 
-            cache: false,
-            method: 'PUT',
-            dataType: 'JSON',
-            url: '/book/update',
-            data: {
-                id: id,
-                name: name,
-                categories: categories,
-                status: status,
-                description: description,
-                introduce: introduce,
-                location: location,
-                price: price,
-                author: author,
-                company: company,
-                year: year,
-                republish: republish,
-                isbn: isbn
-            },
-            success: function(data) {
-                alert("Cập nhật thành công thông tin sách");
-                window.location.reload(true);
-            },
-            error: function(data) {
-                console.log('ee', data);
-            }
-        });
-        // console.log(data),
-        evt.preventDefault();
+        cache: false,
+        method: 'PUT',
+        dataType: 'JSON',
+        url: '/book/update',
+        data: {
+            id: id,
+            name: name,
+            categories: categories,
+            status: status,
+            description: description,
+            introduce: introduce,
+            location: location,
+            price: price,
+            author: author,
+            company: company,
+            year: year,
+            republish: republish,
+            isbn: isbn
+        },
+        success: function(data) {
+            alert("Cập nhật thành công thông tin sách");
+            window.location.reload(true);
+        },
+        error: function(data) {
+            console.log('ee', data);
+        }
     });
+    // console.log(data),
+    evt.preventDefault();
+});
 </script>
 @endsection

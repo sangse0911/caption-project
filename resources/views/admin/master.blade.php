@@ -58,11 +58,23 @@
                     <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="s-icon"><i class="fa fa-users"></i></span>
+                            <span class="s-text">Người dùng</span>
+                        </a>
+                        <ul>
+                            <li><a href="{{ route('users.index') }}">Danh sách</a></li>
+                            <li><a href="{{ route('supplier.index') }}">Nhà cung cấp</a></li>
+                        </ul>
+                    </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
                             <span class="s-icon"><i class="fa fa-tasks"></i></span>
                             <span class="s-text">Quản lí gía sách</span>
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.bookshelf.index') }}">Danh Sách</a></li>
+
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -77,17 +89,6 @@
                                 data-method="GET" data-url="sell-book">Sách bán</a></li>
                             <li><a href="javascript:void(0)" class="call_ajax"
                                 data-method="GET" data-url="rent-book">Sách thuê</a></li>
-                        </ul>
-                    </li>
-                    <li class="with-sub">
-                        <a href="#" class="waves-effect  waves-light">
-                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
-                            <span class="s-icon"><i class="fa fa-users"></i></span>
-                            <span class="s-text">Người dùng</span>
-                        </a>
-                        <ul>
-                            <li><a href="{{ route('users.index') }}">Danh sách</a></li>
-                            <li><a href="{{ route('supplier.index') }}">Nhà cung cấp</a></li>
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -130,11 +131,23 @@
                      <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
-                            <span class="s-icon"><i class="fa fa-book"></i></span>
+                            <span class="s-icon"><i class="fa fa-users"></i></span>
+                            <span class="s-text">Người dùng</span>
+                        </a>
+                        <ul>
+                            <li><a href="{{ route('users.index') }}">Danh sách</a></li>
+                            <li><a href="{{ route('supplier.index') }}">Nhà cung cấp</a></li>
+                        </ul>
+                    </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="s-icon"><i class="fa fa-tasks"></i></span>
                             <span class="s-text">Quản lí gía sách</span>
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.bookshelf.index') }}">Danh Sách</a></li>
+
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -145,34 +158,10 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.book.index') }}">Danh Sách</a></li>
-                            <li><a href="themsachban">Sách bán</a></li>
-                            <li><a href="themsachban">Sách thuê</a></li>
-                        </ul>
-                    </li>
-                    <li class="with-sub">
-                        <a href="#" class="waves-effect  waves-light">
-                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
-                            <span class="s-icon"><i class="fa fa-users"></i></span>
-                            <span class="s-text">Người dùng</span>
-                        </a>
-                        <ul>
-                            <li><a href="{{ route('users.index') }}">Danh sách</a></li>
-                            <li><a href="khachmua">Khách Mua</a></li>
-                            <li><a href="khachban">Khách Bán</a></li>
-                            <li><a href="khachchothue">Khách Cho Thuê</a></li>
-                        </ul>
-                    </li>
-                    <li class="with-sub">
-                        <a href="#" class="waves-effect  waves-light">
-                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
-                            <span class="s-icon"><i class="fa fa-users"></i></span>
-                            <span class="s-text">Khách Hàng</span>
-                        </a>
-                        <ul>
-                            <li><a href="khachthue">Khách Thuê</a></li>
-                            <li><a href="khachmua">Khách Mua</a></li>
-                            <li><a href="khachban">Khách Bán</a></li>
-                            <li><a href="khachchothue">Khách Cho Thuê</a></li>
+                            <li><a href="javascript:void(0)" class="call_ajax"
+                                data-method="GET" data-url="sell-book">Sách bán</a></li>
+                            <li><a href="javascript:void(0)" class="call_ajax"
+                                data-method="GET" data-url="rent-book">Sách thuê</a></li>
                         </ul>
                     </li>
                     <li class="with-sub">

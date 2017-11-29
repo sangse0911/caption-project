@@ -50,6 +50,15 @@ class BookController extends Controller
     }
 
     /**
+     * [getSellBook description]
+     * @return [type] [description]
+     */
+    public function getSellBook()
+    {
+        $books = $this->bookRepository->getSellBook();
+        return view('particals.first-page', compact('books'));
+    }
+    /**
      * [renBook description]
      * @return [type] [description]
      */
@@ -61,6 +70,15 @@ class BookController extends Controller
         ]);
     }
 
+    /**
+     * [recentlyBook description]
+     * @return [type] [description]
+     */
+    public function recentlyBook()
+    {
+        $books = $this->bookRepository->getRecentlyBook();
+        return view('particals.recently', compact('books'));
+    }
     /**
      * [getSupplier description]
      * @return [type] [description]
@@ -96,6 +114,19 @@ class BookController extends Controller
         return response()->json($book, 200);
     }
 
+    /**
+     * [storeIfOwned description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function storeIfOwned(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            $book = $this->bookRepository->createOwnerBook($data);
+        }
+        return response()->json($book, 200);
+    }
     /**
      * Display the specified resource.
      *
