@@ -67,6 +67,21 @@ class BookRepository implements BookInterface
             })->get();
     }
 
+    /**
+     * [findById description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function findById($id)
+    {
+        return Book::findOrFail($id);
+
+    }
+    /**
+     * [find description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function find($id)
     {
         $book = Book::find($id);

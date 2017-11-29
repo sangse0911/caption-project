@@ -74,7 +74,7 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.book.index') }}">Danh Sách</a></li>
-                            <li><a href="themsachban">Sách bán</a></li>
+                            <li><a href="javascript:void(0)" class="call_ajax" data-method="GET" data-url="themsachban">Sách bán</a></li>
                             <li><a href="themsachban">Sách thuê</a></li>
                         </ul>
                     </li>
@@ -354,6 +354,25 @@
         });
 
     });
+
+    $('.call_ajax').on('click', function () {
+       var _url = $(this).data('url');
+       var _type = $(this).data('method');
+        $.ajax({
+            url: _url,
+            type: _type,
+            dataType: 'JSON',
+            async: false,
+            data: {},
+            success: function(data)
+            {
+                $('div.site-content').html(data.html)
+            },
+            error: function (res) {
+                console.log(res);
+            }
+        });
+    })
     </script>
 </body>
 

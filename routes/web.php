@@ -158,8 +158,10 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/trangquantri', function () {
         return view('admin.sachban.themsachban');
     });
-    Route::get('/themsachban', function () {
-        return view('admin.sachban.themsachban');
+    Route::get('/admin/sell-book', function () {
+        return response()->json([
+            'html' => view('admin.sell-book')->render(),
+        ]);
     });
 });
 
@@ -170,8 +172,6 @@ Route::get('/users/content', ['as' => 'users.content', 'uses' => 'UserController
  *
  */
 Route::get('/cart', 'CartController@index')->name('cart.index');
-// Route::get('/cart/add/{id}', 'CartController@add')->name('cart.add');
-// Route::get('/cart/add/{id}', 'CartController@create')->name('cart.add.id');
 Route::post('/cart/add', ['as' => 'cart.add', 'uses' => 'CartController@add']);
 Route::delete('/cart/delete/{id}', 'CartController@destroy')->name('cart.delete');
 
@@ -200,7 +200,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/addPostWishlist', ['as' => 'add.post.wishlist', 'uses' => 'WishListController@createWishlistPost']);
     Route::post('/addBookWishlist', ['as' => 'add.book.wishlist', 'uses' => 'WishListController@createWishlistBook']);
 
+    /**
+     *
+     */
     Route::post('/addBookRate', 'RateController@store')->name('book.rate');
+
+    /**
+     *
+     */
+    Route::post('/cart/store', 'CartController@order')->name('cart.store');
 
 });
 // TEST TRANG QUAN TRI
@@ -238,13 +246,13 @@ Route::get('/khachban', function () {
 // Route::get('/themquantri', function () {
 //     return view('admin.quantrivien.themquantri');
 // });
-// Route::get('/sachban', function () {
-//     return view('admin.sachban.sachban');
-// });
+Route::get('/sachban', function () {
+    return view('admin.sachban.sachban');
+});
 
-// Route::get('/sachthue', function () {
-//     return view('admin.sachthue.sachthue');
-// });
+Route::get('/sachthue', function () {
+    return view('admin.sachthue.sachthue');
+});
 // Route::get('/themsachthue', function () {
 //     return view('admin.sachthue.themsach');
 // });

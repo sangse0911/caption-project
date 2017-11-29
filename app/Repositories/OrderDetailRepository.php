@@ -17,15 +17,6 @@ class OrderDetailRepository implements OrderDetailInterface
     }
     public function create()
     {
-        return DetailOrder::create(
-            [
-                'book_id' => $book->id,
-                'order_id' => $order_id,
-                'quantity' => 1,
-                'fee' => $data['fee'],
-                'discount' => $data['discount'],
-                'total_price' => 0,
-            ]);
-
+        return DetailOrder::create();
     }
 }

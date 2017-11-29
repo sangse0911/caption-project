@@ -111,9 +111,6 @@ class Book extends Model
         return $this->hasMany(\App\Models\BookCategory::class);
     }
 
-    // public function users() {
-    //     return $this->belongsToMany(\App\Models\User::class,'user_id','')
-    // }
     public function images()
     {
         return $this->hasMany(\App\Models\Image::class);

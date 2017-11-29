@@ -6,6 +6,7 @@ interface BookInterface
 {
     public function all();
     public function find($id);
+    public function findById($id);
     public function getSellBook();
     public function getRentBook();
     public function create($request);

@@ -53,4 +53,9 @@ class Order extends Model
     {
         return $this->hasMany(\App\Models\Invoice::class);
     }
+
+    public function books()
+    {
+        return $this->belongsToMany(\App\Models\Book::class, 'detail_orders')->withTimestamps();
+    }
 }

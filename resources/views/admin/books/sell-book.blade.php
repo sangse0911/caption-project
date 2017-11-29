@@ -1,13 +1,4 @@
-@extends('admin.master')
-@section('title') Trang Quản Trị | Thêm Sách2 @endsection
-@section('css')
-<link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/morris/morris.css') }}" media="all" />
-<link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/jvectormap/jquery-jvectormap-2.0.3.css') }}" media="all" />
-<link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/dropify/dist/css/dropify.min.css') }}" media="all" />
-<link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/multiple-select.css') }}" media="all" />
-@endsection
 
-@section('content')
 <div class="content-area py-1">
 	<div class="content-area py-1">
 		<div class="container-fluid">
@@ -153,45 +144,3 @@
 		</footer>
 	</div>
 </div>
-@endsection
-@section('script')
-<script>
-	$(function() {
-		$('#ms').change(function() {
-			console.log($(this).val());
-		}).multipleSelect({
-			width: '100%'
-		});
-	});
-</script>
-<script>
-function myFunctionST() {
-    document.getElementById("price-rent").disabled = true;
-    document.getElementById("price-sell").disabled = false;
-}
-</script>
-<script>
-function myFunctionSB() {
-    document.getElementById("price-sell").disabled = true;
-    document.getElementById("price-rent").disabled = false;
-}
-</script>
-
-<script type="text/javascript" src="{{ URL::to('js/multiple-select.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('css/admin/dropify/dist/js/dropify.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('css/admin/flot/jquery.flot.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('css/admin/flot/jquery.flot.resize.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('css/admin/flot.tooltip/js/jquery.flot.tooltip.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('css/admin/CurvedLines/curvedLines.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('css/admin/TinyColor/tinycolor.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('css/admin/sparkline/jquery.sparkline.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('css/admin/raphael/raphael.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('css/admin/morris/morris.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('css/admin/jvectormap/jquery-jvectormap-2.0.3.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('css/admin/jvectormap/jquery-jvectormap-world-mill.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('css/admin/peity/jquery.peity.js') }}"></script>
-
-<script type="text/javascript" src="{{ URL::to('js/admin/ckeditor/ckeditor.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('js/admin/forms-upload.js') }}"></script>
-
-@endsection

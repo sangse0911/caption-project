@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Interfaces\BookInterface;
 use App\Interfaces\CartInterface;
-use App\Interfaces\OrderDetailInterface;
 use App\Interfaces\OrderInterface;
 use App\Models\Book;
 use Auth;
@@ -15,22 +14,18 @@ class CartRepository implements CartInterface
 
     protected $orderRepository;
     protected $bookRepository;
-    protected $orderDetailRepository;
 
     /**
      * [__construct description]
      * @param OrderInterface       $orderRepository       [description]
      * @param BookInterface        $bookRepository        [description]
-     * @param OrderDetailInterface $orderDetailRepository [description]
      */
     public function __construct(
         OrderInterface $orderRepository,
-        BookInterface $bookRepository,
-        OrderDetailInterface $orderDetailRepository
+        BookInterface $bookRepository
     ) {
         $this->orderRepository = $orderRepository;
         $this->bookRepository = $bookRepository;
-        $this->orderDetailRepository = $orderDetailRepository;
     }
 
     /**
@@ -39,8 +34,8 @@ class CartRepository implements CartInterface
      */
     public function all()
     {
-        $content = Cart::content();
-        dd($content);
+        return Cart::content();
+
     }
 
     /**
@@ -88,19 +83,22 @@ class CartRepository implements CartInterface
         $id = Auth::user()->id;
         $content = Cart::content();
 
-        $content1 = Cart::subcontent();
         $total = Cart::subtotal();
 
         $items = array(
 
             'user_id' => $id,
             'payment_method' => $data['method'],
-            'status' => $data['status'],
+            'status' => 1,
             'shipping_address' => $data['address'],
         );
         $order = $this->orderRepository->create($items);
 
         foreach ($content as $item) {
+            // dd($item->id);
+            // echo "<pre>";
+            // print_r($item->id);
+            // echo "</pre>";
             $itemDetails = array(
                 'order_id' => $order->id,
                 'book_id' => $item->id,
@@ -108,14 +106,25 @@ class CartRepository implements CartInterface
                 'price' => $item->price,
             );
             //
-            $book = $this->bookRepository->find($item->id);
+            $book = $this->bookRepository->findById($item->id);
+
             //change book status to
-            $book->status = 2;
+            $book->status = '2';
             $book->save();
 
-            $orderDetail = $this->orderDetailRepository->create();
+            $orderDetail = $order->books()->attach($book->id,
+                [
+                    'book_id' => $book->id,
+                    'order_id' => $order->id,
+                    'quantity' => 1,
+                    'fee' => 0,
+                    'discount' => 0,
+                    'total_price' => 0,
+                ]);
 
         }
+
+        return $order;
     }
 
     /**

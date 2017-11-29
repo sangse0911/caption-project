@@ -609,6 +609,31 @@
                 });
 
             });
+            $('#checkout').click(function(e) {
+                e.preventDefault();
+
+                var method = $('input[name=status]:checked').val();
+                var address = $('#address').val();
+
+                $.ajax({
+
+                    cache: false,
+                    method: 'POST',
+                    url: '/cart/store',
+                    data: {
+                        method: method,
+                        address: address,
+                    },
+                    dataType: 'JSON',
+                    success: function(data) {
+                        console.log('ss', data);
+                    },
+                    error: function(data) {
+                        console.log("co loi voi", data);
+                    }
+                });
+
+            });
         </script>
     </div>
 </body>

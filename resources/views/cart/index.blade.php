@@ -17,20 +17,20 @@
                 </tr>
             </thead>
             <tbody>
-            	@foreach($content as $items)
-            	{{-- {{ dd($items->options->image) }} --}}
+            	@foreach($content as $item)
+                {{-- {{ dd($item) }} --}}
                 <tr class="cart_item">
                     <td class="product-remove">
-                        <a class="remove" href="javascript:void(0)" data-id="{{ $items->rowId}}">×</a>
+                        <a class="remove" href="javascript:void(0)" data-id="{{ $item->rowId}}">×</a>
                     </td>
                     <td class="product-thumbnail">
-                        <a href="#"><img width="180" height="180" src="{{ URL::to('assets/images/product/' . $items->options->image) }}" alt=""></a>
+                        <a href="#"><img width="180" height="180" src="{{ URL::to('assets/images/product/' . $item->options->image) }}" alt=""></a>
                     </td>
                     <td data-title="Product" class="product-name">
-                        <a href="#">{{ $items->name }}</a>
+                        <a href="#">{{ $item->name }}</a>
                     </td>
                     <td data-title="Price" class="product-price">
-                        <span class="amount">{{ number_format($items->price ,0, ",",".") }}</span>
+                        <span class="amount">{{ number_format($item->price ,0, ",",".") }}</span>
                     </td>
                     <td data-title="Total" class="product-subtotal">
                         <span class="amount">$1,999.00</span>
@@ -38,14 +38,29 @@
                 </tr>
                 @endforeach
                 <tr>
-                    <td class="actions" colspan="6">
-                        <div class="coupon">
-                            <label for="coupon_code">Mã giảm gía:</label>
-                            <input type="text" placeholder="Coupon code" value="" id="coupon_code" class="input-text" name="coupon_code">
-                            <input type="submit" value="Apply Coupon" name="apply_coupon" class="button">
+                    <td class="actions" colspan="8">
+                        <div class="" style="margin-bottom: 50px;">
+                            <label for="method" style="color: red;">Hình thức Thanh toán</label><br/>
+                            <label class="radio-inline"><input type="radio" name="status" value="1">Thanh toán khi nhận sách</label>
+                            <label class="radio-inline"><input type="radio" name="status" value="2">Chuyển khoản trước</label>
+
                         </div>
-                        <div class="wc-proceed-to-checkout">
-                            <a class="checkout-button button alt wc-forward" href="checkout.html">Đặt hàng</a>
+                        <div>
+                            <label for="address" style="color: red;">Địa chỉ của bạn</label><br/>
+                            <input type="text" name="address" id="address" value="" placeholder="Địa chỉ của bạn" style="width: 100%;">
+                        </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="actions" colspan="6">
+                        <div class="coupon" style="width: 65%; position: relative;">
+                            <label for="coupon_code">Mã giảm gía:</label>
+                            <input type="text" placeholder="Coupon code" value="" id="coupon_code" class="input-text" name="coupon_code" style="width: 100%;">
+                            <input type="submit" value="Apply Coupon" name="apply_coupon" class="button" style="position: absolute; right: 0; border-radius: 0; cursor: pointer;">
+                        </div>
+                        <div class="wc-proceed-to-checkout" style="width: 29%;">
+                            <a class="checkout-button button alt wc-forward" href="javascript:void(0)" id="checkout">Đặt hàng</a>
                         </div>
                         <input type="hidden" value="1eafc42c5e" name="_wpnonce" id="_wpnonce">
                         <input type="hidden" value="/electro/cart/" name="_wp_http_referer">
@@ -56,11 +71,11 @@
     </form>
     <div class="cart-collaterals">
         <div class="cart_totals ">
-            <h2>Cart Totals</h2>
+            <h2>Tổng gía giỏ hàng</h2>
             <table class="shop_table shop_table_responsive">
                 <tbody>
                     <tr class="cart-subtotal">
-                        <th>Subtotal</th>
+                        <th>Gía</th>
                         <td data-title="Subtotal"><span class="amount">{{ number_format($total,0,",",".") }}</span></td>
                     </tr>
                     <!-- <tr class="shipping">

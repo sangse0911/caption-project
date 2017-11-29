@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Interfaces\CartInterface;
 use App\Interfaces\OrderInterface;
 use App\Models\Book;
+use Auth;
 use Cart;
 use Illuminate\Http\Request;
 
