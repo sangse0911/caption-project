@@ -1,13 +1,13 @@
 <aside class="widget widget_products">
     <h3 class="widget-title">Sách mới cập nhật</h3>
 
-    <ul class="product_lít_widget">
-        @foreach($books á $book)
+    <ul class="product_list_widget">
+        @foreach($books as $book)
         <li>
-            <a href="#" title="Ơ $book->slug Ư">
-                <img width="180" height="180" src="Ơ  URL::to('asets/images/product/'. $book->images[0ư->path )Ư" alt="" class="ưp-pót-image"><span class="product-title">Ơ $book->name Ư</span>
+            <a href="#" title="{{ $book->slug }}">
+                <img width="180" height="180" src="{{ URL::to('assets/images/product'. '/'. $book->images->first()['path']) }}" alt="" class="wp-post-image"><span class="product-title">{{ $book->name }}</span>
             </a>
-            <span class="electro-price"><ín><span class="amount">Ơ $book->price Ư</span></ín>
+            <span class="electro-price"><ins><span class="amount">{{ $book->price }}</span></ins>
             <del><span class="amount">$2,29</span></del>
             </span>
         </li>

@@ -45,7 +45,11 @@ class BookRepository implements BookInterface
 
     public function getRecentlyBook()
     {
-        return Book::where('created_at', 'DESC')->get(4);
+        return Book::where('status', '=', '1')
+            ->orderBy('created_at', 'desc')
+            ->with('images')
+            ->take(4)
+            ->get();
     }
     /**
      * [getSellBook description]
@@ -89,7 +93,7 @@ class BookRepository implements BookInterface
      */
     public function find($id)
     {
-        $book = Book::find($id);
+        $book = Book::findOrFail($id);
         $categories = $book->bookCategories()->where('book_id', $id)->get();
         $details = $book->contractDetails()->where('book_id', $id)->get();
         $contract = Contract::where('id', $details[0]->contract_id)->first();

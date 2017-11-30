@@ -14,8 +14,8 @@
     <div id="products-carousel-57176fb2c4230">
         <div class="woocommerce">
             <div class="products owl-carousel home-v2-categories-products products-carousel columns-6" id="owl-demo">
-
                 @foreach($books as $book)
+
                 <div class="owl-stage-outer">
                     <div class="owl-stage">
                         <div class="owl-item active" style="width: 215.75px;">
@@ -26,7 +26,7 @@
                                         <a data-toggle="modal" href="#myModal" class="book-show" id="book-{{ $book->id}}">
                                             <h3 class="product-name">{{ $book->name }}</h3>
                                             <div class="product-thumbnail">
-                                                <img src="{{ URL::to('assets/images/product'. '/'. $book->images[0]->path) }}" class="img-responsive" alt="">
+                                                <img src="{{ URL::to('assets/images/product'. '/'. $book->images->first()['path'])}}" class="img-responsive" alt="">
                                             </div>
                                         </a>
                                         <div class="price-add-to-cart">

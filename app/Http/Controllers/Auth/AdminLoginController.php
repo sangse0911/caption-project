@@ -12,7 +12,7 @@ class AdminLoginController extends Controller
 
     public function __construct()
     {
-            // $this->middleware('admin',['except' => 'adminLogout']);
+        // $this->middleware('admin',['except' => 'adminLogout']);
     }
     /**
      * [showLoginForm description]
@@ -20,12 +20,9 @@ class AdminLoginController extends Controller
      */
     public function showLoginForm()
     {
-        if(!Auth::guard('admin')->check())
-        {
-            return view('BSO.login.dangnhapquantri');        
-        }
-        else
-        {  
+        if (!Auth::guard('admin')->check()) {
+            return view('admin.login.dangnhapquantri');
+        } else {
             return redirect()->intended(route('admin.index'));
         }
     }
@@ -53,7 +50,7 @@ class AdminLoginController extends Controller
      */
     public function adminLogout()
     {
-         Auth::guard('admin')->logout();
+        Auth::guard('admin')->logout();
         return redirect('admin/login');
     }
 

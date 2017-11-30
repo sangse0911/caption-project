@@ -1,9 +1,9 @@
 <section class=" section-onsale-product-carousel" data-animation="fadeIn">
     <header>
-        <h1 class="h1">Events moi nhat</h1>
+        <h1 class="h1">Sự kiện đang diễn ra</h1>
     </header>
     <div class="owl-nav">
-        <a href="#onsale-products-carousel-prev" data-target="#onsale-products-carousel-57176fb23fad9" class="slider-prev"><i class="fa fa-angle-left"></i>Truoc</a>
+        <a href="#onsale-products-carousel-prev" data-target="#onsale-products-carousel-57176fb23fad9" class="slider-prev"><i class="fa fa-angle-left"></i>Trước</a>
         <a href="#onsale-products-carousel-next" data-target="#onsale-products-carousel-57176fb23fad9" class="slider-next">Sau<i class="fa fa-angle-right"></i></a>
     </div>
     <div id="onsale-products-carousel-57176fb23fad9">
@@ -26,19 +26,19 @@
                                 </span>
                                 </span>
                                 <div class="deal-progress">
-                                    <div class="deal-stock">
+                                    {{-- <div class="deal-stock">
                                         <span class="stock-sold">Already Sold: <strong>2</strong></span>
                                         <span class="stock-available">Available: <strong>26</strong></span>
-                                    </div>
-                                    <div class="progress">
+                                    </div> --}}
+                                    {{-- <div class="progress">
                                         <span class="progress-bar" style="width:8%">8</span>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="deal-countdown-timer">
                                     <div class="marketing-text text-xs-center">
-                                        Hurry Up! Offer ends in: </div>
+                                        Sự kiện kết thúc trong: </div>
                                     <span class="deal-end-date" style="display:none;">2017-12-31</span>
-                                    <div id="deal-countdown" class="countdown"><span data-value="-317" class="days"><span class="value">-317</span><b>Days</b></span><span class="hours"><span class="value">-10</span><b>Hours</b></span><span class="minutes"><span class="value">-18</span><b>Mins</b></span><span class="seconds"><span class="value">-28</span><b>Secs</b></span>
+                                    <div id="deal-countdown" class="countdown"><span data-value="-317" class="days"><span class="value">-317</span><b>Ngày</b></span><span class="hours"><span class="value">-10</span><b>Giờ</b></span><span class="minutes"><span class="value">-18</span><b>Phút</b></span><span class="seconds"><span class="value">-28</span><b>Gíây</b></span>
                                     </div>
                                     <script>
                                     // set the date we're counting down to
@@ -69,8 +69,8 @@
                                         seconds = parseInt(seconds_left % 60);
 
                                         // format countdown string + set tag value
-                                        countdown.innerHTML = '<span data-value="' + days + '" class="days"><span class="value">' + days + '</span><b>Days</b></span><span class="hours"><span class="value">' + hours + '</span><b>Hours</b></span><span class="minutes"><span class="value">' +
-                                            minutes + '</span><b>Mins</b></span><span class="seconds"><span class="value">' + seconds + '</span><b>Secs</b></span>';
+                                        countdown.innerHTML = '<span data-value="' + days + '" class="days"><span class="value">' + days + '</span><b>Ngày</b></span><span class="hours"><span class="value">' + hours + '</span><b>Giờ</b></span><span class="minutes"><span class="value">' +
+                                            minutes + '</span><b>Phút</b></span><span class="seconds"><span class="value">' + seconds + '</span><b>Giây</b></span>';
 
                                     }, 1000);
                                     </script>
