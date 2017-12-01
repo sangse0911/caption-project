@@ -285,6 +285,41 @@
             })(jQuery);
         </script>
         <script>
+            (function($) {
+
+                var owl4 = $("#owl-demo4");
+
+                var block = false;
+                $(".owl-carousel").mouseenter(function() {
+                    if (!block) {
+                        block = true;
+                        owl4.trigger('stop.owl.autoplay')
+                        block = false;
+                    }
+                });
+                $(".owl-carousel").mouseleave(function() {
+                    if (!block) {
+                        owl4.trigger('play.owl.autoplay', [1000])
+                        block = false;
+                    }
+                });
+
+                owl4.owlCarousel({
+                    autoplay: true,
+                    autoPlaySpeed: 1000,
+                    autoplayHoverPause: true,
+                    loop: true,
+                    navigation: true,
+                    items: 4, //10 items above 1000px browser width
+                    itemsDesktop: [1000, 5], //5 items between 1000px and 901px
+                    itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
+                    itemsTablet: [600, 2], //2 items between 600 and 0;
+                    itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
+
+                });
+            })(jQuery);
+        </script>
+        <script>
         (function($) {
 
             var owl1 = $("#owl-demo1");
@@ -426,6 +461,7 @@
             });
         })(jQuery);
         </script>
+
         <script>
         $('.book-show').on('click', function(e) {
             var book_id = e.currentTarget.id.substring(5);

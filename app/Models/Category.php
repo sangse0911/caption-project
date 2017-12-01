@@ -41,10 +41,21 @@ class Category extends Model
         ];
     }
 
+    protected $casts = [
+        'admin_id' => 'int',
+    ];
+
     protected $fillable = [
+        'admin_id',
         'name',
+        'path',
         'slug',
     ];
+
+    public function admin()
+    {
+        return $this->belongsTo(\App\Models\Admin::class);
+    }
 
     public function bookCategories()
     {

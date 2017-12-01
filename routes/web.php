@@ -115,15 +115,15 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/suppliers', 'SupplierController@index')->name('supplier.index');
     Route::get('/suppliers/{id}', 'SupplierController@show')->name('supplier.show');
     Route::get('/supplier/detail/{id}', 'SupplierController@showDetail')->name('supplier.detail');
-    Route::post('/supplier/create', 'SupplierController@store')->name('supplier.save');
+    Route::post('/supplier/store', 'SupplierController@store')->name('supplier.save');
     Route::post('/supplier/createIfExistUser', 'SupplierController@storeIfExist')->name('supplier.save.exist');
 
     /**
      *
      */
-    Route::get('/categories', ['as' => 'categories.index', 'uses' => 'CategoryController@index']);
-    Route::get('/categories/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
-    Route::post('/categories/create', ['as' => 'category.save', 'uses' => 'CategoryController@store']);
+    Route::get('/admin/categories', ['as' => 'admin.categories.index', 'uses' => 'CategoryController@getIndex']);
+    Route::get('/admin/category/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
+    Route::post('/admin/category/store', ['as' => 'category.create', 'uses' => 'CategoryController@store']);
 
     // Route::get('/status', ['as' => 'status.index', 'uses' => 'StatusController@index']);
     // Route::get('/status/create', ['as' => 'status.create', 'uses' => 'StatusController@create']);
@@ -151,16 +151,17 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/event/store', ['uses' => 'EventController@store'])->name('event.store');
     Route::put('/event/update', ['as' => 'event.update', 'uses' => 'EventController@update']);
     Route::get('/event/{id}', ['as' => 'event.show', 'uses' => 'EventController@show']);
-    Route::get('/content', ['as' => 'event.content', 'uses' => 'EventController@content']);
+    Route::get('/admin/events', ['as' => 'event.admin.show', 'uses' => 'EventController@content']);
 
     /**
      *
      */
-    Route::get('/event', ['as' => 'event.index', 'uses' => 'EventController@index']);
 
     Route::get('/admin/sell-book', 'BookController@sellBook')->name('admin.book.sell-book');
     Route::get('/admin/rent-book', 'BookController@rentBook')->name('admin.book.rent-book');
 });
+
+Route::get('/events', ['as' => 'event.index', 'uses' => 'EventController@index']);
 
 Route::get('/api/user', ['as' => 'api.user.index', 'uses' => 'UserController@indexApi']);
 Route::get('/users/content', ['as' => 'users.content', 'uses' => 'UserController@getContent']);

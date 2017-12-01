@@ -25,6 +25,11 @@ class CategoryController extends Controller
         return view('categories.index', compact('categories'));
     }
 
+    public function getIndex()
+    {
+        $categories = $this->categoryRepository->all();
+        return view('admin.categories.index', compact('categories'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -43,8 +48,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = $this->categoryRepository->create($request->all());
-        return redirect()->route('categories.index');
+        if ($request->ajax()) {
+            $data = $request->all();
+            $category = $this->categoryRepository->create($data);
+            return response()->json($category, 200);
+        }
+
     }
 
     /**

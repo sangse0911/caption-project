@@ -18,6 +18,7 @@ class EventController extends Controller
         $this->eventRepository = $eventRepository;
         $this->imageRepository = $imageRepository;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +26,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = $this->eventRepository->getAll();
+        $events = $this->eventRepository->getEventReady();
         return view('event.index', compact('events'));
     }
 

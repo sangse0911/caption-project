@@ -31,22 +31,22 @@
                         <td>{{ $bookshelf->location }}</td>
 
                         <td align="center">
-                            <button id="{{ $bookshelf->id }}" type="button" class="btn btn-warning btn-sm label-left b-a-0 waves-effect waves-light">
-                            <span class="btn-label"><i class="fa fa-eye" ></i></span>
-                            Xem
-                        </button>
-                        &nbsp
-                        <button type="button" id="update-{{ $bookshelf->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
-                            <span class="btn-label"><i class="fa fa-edit"></i></span>
-                            Sửa
-                        </button>
-                        &nbsp
-                        <button id="view-{{ $bookshelf->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
-                            <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span>
-                            Xóa
-                        </button>
+                                <button id="{{ $bookshelf->id }}" type="button" class="btn btn-warning btn-sm label-left b-a-0 waves-effect waves-light">
+                                <span class="btn-label"><i class="fa fa-eye" ></i></span>
+                                Xem
+                            </button>
+                            &nbsp
+                            <button type="button" id="update-{{ $bookshelf->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
+                                <span class="btn-label"><i class="fa fa-edit"></i></span>
+                                Sửa
+                            </button>
+                            &nbsp
+                            <button id="view-{{ $bookshelf->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
+                                <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span>
+                                Xóa
+                            </button>
 
-                    </td>
+                        </td>
 
                     </tr>
                     @endforeach
@@ -68,15 +68,6 @@
                                 <label for="name">Địa điểm gía sách</label>
                                 <input type="hidden" id="id" value="">
                                 <input type="text" name="location" class="form-control" id="location" value="" placeholder="Dia diem tren gia sach">
-                            </div>
-                        </div>
-                        <div class="modal-body bookshelf-status" style="display: none;">
-                            <div class="form-group">
-                                <label for="name">Trạng thái gía sách</label><br/>
-                               <label class="radio-inline">
-                                <input type="radio" name="status" value="1">Sẵn sàng</label>
-                            <label class="radio-inline">
-                                <input type="radio" name="status" value="0">Không sẵn sàng</label>
                             </div>
                         </div>
                         <div class="modal-footer">

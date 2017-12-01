@@ -64,4 +64,23 @@ class ContractRepository implements ContractInterface
 
         return $contract;
     }
+
+    public function createIfNoContract($data)
+    {
+
+        $admin = Auth::user();
+
+        $admin->suppliers()->attach(1,
+            [
+                'method' => $data['method'],
+                'account' => '',
+                'kind' => $data['kind'],
+            ]);
+
+        $contract = Contract::where('contracts.admin_id', '=', $admin->id)
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        return $contract;
+    }
 }

@@ -16,6 +16,8 @@ class CategoryTableSeeder extends Seeder
         for ($i = 0; $i < 6; $i++) {
             $data = array(
                 'name' => str_random(12),
+                'admin_id' => '1',
+                'path' => 'love_book.png',
                 'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
             );

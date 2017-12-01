@@ -90,4 +90,10 @@ class Admin extends Authenticatable
     {
         return $this->hasMany(\App\Models\Voucher::class);
     }
+
+    public function categories()
+    {
+        return $this->hasMany(\App\Models\Category::class);
+    }
+
 }

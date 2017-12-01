@@ -12,7 +12,6 @@ class SupplierController extends Controller
 
     public function __construct(SupplierInterface $supplierRepository)
     {
-        $this->middleware('auth:admin', ['except' => 'logout']);
         $this->supplierRepository = $supplierRepository;
     }
     /**

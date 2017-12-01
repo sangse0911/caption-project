@@ -38,7 +38,6 @@ class ImageRepository implements ImageInterface
 
         if (Input::hasFile('images')) {
             $files = Input::file('images');
-            $time = time();
             $path = public_path() . '/assets/images/product/';
             $filesArray = [];
             foreach ($files as $file) {
@@ -49,20 +48,42 @@ class ImageRepository implements ImageInterface
         }
     }
 
+    /**
+     * [saveEvent description]
+     * @return [type] [description]
+     */
     public function saveEvent()
     {
         if (Input::hasFile('images')) {
             $files = Input::file('images');
-            $time = time();
             $path = public_path() . '/assets/images/event/';
-            $filesArray = [];
             foreach ($files as $file) {
-                $filesArray[]['path'] = $this->uploadImage($file, $path);
+
+                $image_path = $this->uploadImage($file, $path);
             }
 
-            return $filesArray;
+            return $image_path;
         }
     }
+
+    /**
+     * [saveCategory description]
+     * @return [type] [description]
+     */
+    public function saveCategory()
+    {
+        if (Input::hasFile('images')) {
+            $files = Input::file('images');
+            $path = public_path() . '/assets/images/category/';
+            foreach ($files as $file) {
+
+                $image_path = $this->uploadImage($file, $path);
+            }
+
+            return $image_path;
+        }
+    }
+
     /**
      * [uploadImage description]
      * @param  [type] $image [description]

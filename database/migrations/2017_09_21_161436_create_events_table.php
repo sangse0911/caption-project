@@ -17,9 +17,11 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->integer('admin_id')->unsigned();
             $table->string('title');
-            $table->string('image_path');
+            $table->string('path');
             $table->text('description');
             $table->enum('status', ['0', '1'])->default('0');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->string('slug');
             $table->timestamps();
 

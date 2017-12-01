@@ -69,6 +69,17 @@
                     <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="s-icon"><i class="fa fa-tags"></i></span>
+                            <span class="s-text">Quản lí thể loại sách</span>
+                        </a>
+                        <ul>
+                            <li><a href="{{ route('admin.categories.index') }}">Danh Sách</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
                             <span class="s-icon"><i class="fa fa-tasks"></i></span>
                             <span class="s-text">Quản lí gía sách</span>
                         </a>
@@ -120,11 +131,11 @@
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
                             <span class="tag tag-danger">10</span>
-                            <span class="s-icon"><i class="fa fa-bars"></i></span>
+                            <span class="s-icon"><i class="fa fa-bell"></i></span>
                             <span class="s-text">Sự kiện</span>
                         </a>
                         <ul>
-                            <li><a href="{{ URL::route('event.index') }}">Danh sách</a></li>
+                            <li><a href="{{ URL::route('event.admin.show') }}">Danh sách</a></li>
                         </ul>
                     </li>
                     @else
@@ -193,11 +204,11 @@
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
                             <span class="tag tag-danger">10</span>
-                            <span class="s-icon"><i class="fa fa-bars"></i></span>
+                            <span class="s-icon"><i class="fa fa-bell"></i></span>
                             <span class="s-text">Sự kiện</span>
                         </a>
                         <ul>
-                            <li><a href="{{ URL::route('event.index') }}">Danh sách</a></li>
+                            <li><a href="{{ URL::route('event.admin.show') }}">Danh sách</a></li>
                         </ul>
                     </li>
                     @endif

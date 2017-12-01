@@ -2,7 +2,7 @@
     <div class="container">
         <div id="primary" class="content-area">
             <main id="main" class="site-main">
-                @yield('part-content') @yield('carousel') @yield('categories') @yield('first') @yield('best-sell') @yield('event') @yield('post-book') @yield('cart')
+                @yield('part-content') @yield('carousel') @yield('categories') @yield('first') @yield('second') @yield('best-sell') @yield('event') @yield('post-book') @yield('cart')
                 <form type="hidden" name="" id="post-form" method="POST">
                     {{-- {{ csrf_field() }} --}}
                     <input type="hidden" name="token" value="{{ csrf_token() }}">
@@ -12,7 +12,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Thong tin chi tiet cua sach</h4>
+                                    <h4 class="modal-title">Thông tin chi tiết của sách</h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
@@ -23,8 +23,8 @@
                                 </div>
                                 <div style="clear: both;"></div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="post-create">Luu</button>
-                                    <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Dong</button>
+                                    <button type="submit" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="post-create">Lưu</button>
+                                    <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Đóng</button>
                                 </div>
                             </div>
                         </div>
@@ -52,17 +52,7 @@
                                 <i class="ec ec-transport"></i>
                             </div>
                             <div class="media-body media-middle feature-text">
-                                <strong>Free Delivery</strong> from $50
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <div class="media">
-                            <div class="media-left media-middle feature-icon">
-                                <i class="ec ec-customers"></i>
-                            </div>
-                            <div class="media-body media-middle feature-text">
-                                <strong>99% Positive</strong> Feedbacks
+                                <strong>Miễn phí vận chuyển</strong> từ $50
                             </div>
                         </div>
                     </div>
@@ -72,7 +62,7 @@
                                 <i class="ec ec-returning"></i>
                             </div>
                             <div class="media-body media-middle feature-text">
-                                <strong>365 days</strong> for free return
+                                <strong>14 ngày</strong> đổi trả
                             </div>
                         </div>
                     </div>
@@ -82,7 +72,7 @@
                                 <i class="ec ec-payment"></i>
                             </div>
                             <div class="media-body media-middle feature-text">
-                                <strong>Payment</strong> Secure System
+                                <strong>Thanh toán</strong> qua ngân hàng
                             </div>
                         </div>
                     </div>
@@ -92,7 +82,7 @@
                                 <i class="ec ec-tag"></i>
                             </div>
                             <div class="media-body media-middle feature-text">
-                                <strong>Only Best</strong> Brands
+                                <strong>Sách đã bán</strong> đều đảm bảo
                             </div>
                         </div>
                     </div>

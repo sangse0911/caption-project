@@ -1,21 +1,16 @@
 <section class="home-v2-categories-products-carousel section-products-carousel animate-in-view fadeIn animated animation">
     <header>
-        <h2 class="h1">Góc sách bán</h2>
+        <h2 class="h1">Góc sách cho thuê</h2>
 
         <div class="owl-nav">
             <a href="#products-carousel-prev" data-target="#products-carousel-57176fb2c4230" class="slider-prev"><i class="fa fa-angle-left"></i></a>
             <a href="#products-carousel-next" data-target="#products-carousel-57176fb2c4230" class="slider-next"><i class="fa fa-angle-right"></i></a>
         </div>
     </header>
-    @if(Auth::guest())
-    @else
-    <input type="hidden" name="" id="user-id" value="{{ Auth::user()->id }}">
-    @endif
     <div id="products-carousel-57176fb2c4230">
         <div class="woocommerce">
-            <div class="products owl-carousel home-v2-categories-products products-carousel columns-6" id="owl-demo">
+            <div class="products owl-carousel home-v2-categories-products products-carousel columns-6" id="owl-demo4">
                 @foreach($books as $book)
-
                 <div class="owl-stage-outer">
                     <div class="owl-stage">
                         <div class="owl-item active" style="width: 215.75px;">

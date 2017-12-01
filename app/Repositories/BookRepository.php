@@ -205,13 +205,12 @@ class BookRepository implements BookInterface
             $category->books()->attach($book->id);
 
         }
-        //find contract object has id = 1( is the owner of super admin)
 
         if ($data['price'] == null) {
             $data['price'] = 0;
         }
 
-        $contract = $this->contractRepository->find(1);
+        $contract = $this->contractRepository->createIfNoContract($data);
 
         $contract->books()->attach($book->id, [
             'price' => $data['price'],
@@ -230,6 +229,7 @@ class BookRepository implements BookInterface
 
         return $book;
     }
+
     /**
      * [modified description]
      * @param  [type] $data [description]

@@ -23,6 +23,9 @@
     @section('first')
         @include('particals.first-page')
     @endsection
+    @section('second')
+        @include('particals.second-page')
+    @endsection
     @section('best-sell')
         @include('particals.best-sell')
     @endsection

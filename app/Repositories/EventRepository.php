@@ -31,6 +31,14 @@ class EventRepository implements EventInterface
     }
 
     /**
+     * [getEventReady description]
+     * @return [type] [description]
+     */
+    public function getEventReady()
+    {
+        return Event::where('status', '=', '1')->get();
+    }
+    /**
      * [find description]
      * @param  [type] $id [description]
      * @return [type]     [description]
@@ -54,14 +62,16 @@ class EventRepository implements EventInterface
         $event->title = $data['title'];
         $event->description = $data['description'];
         $event->status = $data['status'];
+        $event->start_date = $data['start-date'];
+        $event->end_date = $data['end-date'];
 
         $images = Input::hasFile('images');
         //save image
         if ($images) {
-            $filesArray = $this->imageRepository->saveEvent();
-            if (!$event->createMany($filesArray)) {
-                return $result = false;
-            };
+
+            $path = $this->imageRepository->saveEvent();
+
+            $event->path = $path;
         }
 
         return $event->save();
@@ -76,6 +86,8 @@ class EventRepository implements EventInterface
         $event->title = $data['title'];
         $event->description = $data['description'];
         $event->status = $data['status'];
+        $event->start_date = $data['start-date'];
+        $event->end_date = $data['end-date'];
 
         return $event->save();
     }

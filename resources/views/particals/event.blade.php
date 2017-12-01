@@ -8,21 +8,28 @@
     </div>
     <div id="onsale-products-carousel-57176fb23fad9">
         <div class="onsale-product-carousel owl-carousel owl-loaded owl-drag">
+            @foreach($events as $event)
             <div class="owl-stage-outer">
                 <div class="owl-stage">
                     <div class="owl-item active" style="width: 815.012px;">
                         <div class="onsale-product">
                             <div class="onsale-product-thumbnails">
-                                <a href="#">
-                                    <div class="images">
-                                        <img src="assets/images/deals/2.jpg" class="wp-post-image" alt="GamePad" title="GamePad">
-                                    </div>
-                                </a>
+                                <div class="savings">
+                                <span class="savings-text">
+                                    Save <span class="amount">$20.00</span>
+                                </span>
+                            </div>
+                                <div class="images" style="margin-top: 48px;">
+                                    <a href="#">
+                                    <img width="600" height="600" src="{{ URL::to('assets/images/event/'. $event->path) }}" class="wp-post-image" alt="" title="{{ $event->title }}">
+                                    </a>
+                                </div>
                             </div>
                             <div class="onsale-product-content">
-                                <a href="single-product.html"><h3>Game Console Controller <br>+ USB 3.0 Cable</h3></a>
-                                <span class="price"><span class="electro-price"><ins><span class="amount">$79.00</span></ins>
-                                <del><span class="amount">$99.00</span></del>
+                                <a href="javascript:void(0)">
+                                    <h3>{{ $event->title }}</h3>
+                                </a>
+
                                 </span>
                                 </span>
                                 <div class="deal-progress">
@@ -37,7 +44,7 @@
                                 <div class="deal-countdown-timer">
                                     <div class="marketing-text text-xs-center">
                                         Sự kiện kết thúc trong: </div>
-                                    <span class="deal-end-date" style="display:none;">2017-12-31</span>
+                                    <span class="deal-end-date" style="display:none;">{{ $event->end_date }}</span>
                                     <div id="deal-countdown" class="countdown"><span data-value="-317" class="days"><span class="value">-317</span><b>Ngày</b></span><span class="hours"><span class="value">-10</span><b>Giờ</b></span><span class="minutes"><span class="value">-18</span><b>Phút</b></span><span class="seconds"><span class="value">-28</span><b>Gíây</b></span>
                                     </div>
                                     <script>
@@ -80,6 +87,7 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 </section>

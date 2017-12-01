@@ -1,60 +1,22 @@
-
+@extends('admin.master') @section('content')
 <div class="content-area py-1">
     <div class="container-fluid">
         <ol class="breadcrumb no-bg mb-1">
             <div style="float: right;">
                 <button type="button" class="btn btn-info btn-lg label-right b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal" id="event-create">
-                    <span class="btn-label"><i class="fa fa-user-plus"></i></span> Thêm su kien
+                    <span class="btn-label"><i class="fa fa-user-plus"></i></span> Thêm sự kiện
                 </button>
             </div>
         </ol>
-        {{-- <form enctype="multipart/form-data" type="hidden" name="" id="" method="POST">
-            {{ csrf_field() }}
-            <div id="myModal" class="modal fade" role="dialog">
-                <div class="modal-dialog modal-lg">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Them moi su kien</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="event-name">Ten su kien</label>
-                                <input type="hidden" name="event-id" value="" id="event-id">
-                                <input type="text" name="event-name" class="form-control" id="event-name" value="" placeholder="Ten su kien">
-                                <br/>
-                            </div>
-                            <div class="form-group">
-                                <label for="event-detail">Chi tiet su kien</label>
-                                <textarea class="form-control" name="event-detail" id="event-detail" rows="10" value="" placeholder="Chi tiet su kien"></textarea>
-                            </div>
-                            <label class="radio-inline">
-                                <input type="radio" name="event-status" value="1">San sang</label>
-                            <label class="radio-inline">
-                                <input type="radio" name="event-status" value="0">Khong san sang</label>
-                            <div class="form-group">
-                                <input type="file" class="form-control" name="images[]" id="image" multiple="multiple">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-info btn-default  b-a-0 waves-effect waves-light" id="add">Them</button>
-                            <button type="button" class="btn btn-info btn-default  b-a-0 waves-effect waves-light" style="display: none;" id="update">Luu</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Dong</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form> --}}
         <div class="box box-block bg-white">
             <table class="table table-striped table-bordered dataTable" id="table-1">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Tên</th>
-                        <th>Mo ta</th>
+                        <th>Mô tả</th>
                         <th>Trạng Thái</th>
-                        <th>Hanh dong</th>
+                        <th align="center">Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,16 +26,179 @@
                         <td>{{ $event->title }}</td>
                         <td>{{ $event->description }}</td>
                         <td>{{ $event->status }}</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-default  btn-update b-a-0 waves-effect waves-light"
-                            id="update-{{ $event->id }}" data-toggle="modal" data-target="#myModal">Sua</button>
-                            <button type="button" class="btn btn-info btn-default  btn-delete b-a-0 waves-effect waves-light"
-                            id="delete-{{ $event->id }}">Xoa</button>
+
+                        <td align="center">
+                                <button id="" type="button" class="btn btn-warning btn-sm label-left b-a-0 waves-effect waves-light">
+                                <span class="btn-label"><i class="fa fa-eye" ></i></span>
+                                Xem
+                            </button>
+                            &nbsp
+                            <button type="button" id="update" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal" data-id="{{ $event->id }}">
+                                <span class="btn-label"><i class="fa fa-edit"></i></span>
+                                Sửa
+                            </button>
+                            &nbsp
+                            <button id="view" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
+                                <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span>
+                                Xóa
+                            </button>
+
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+         <form enctype="multipart/form-data" type="hidden" name="" id="event-action" method="POST">
+            {{ csrf_field() }}
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Thêm mới sự kiện</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="title">Tên sự kiện</label>
+                                <input type="hidden" name="id" value="" id="id">
+                                <input type="text" name="title" class="form-control" id="title" value="" placeholder="Tên sự kiện">
+                                <br/>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Chi tiết sự kiện</label>
+                                <textarea class="form-control" name="description" id="description" rows="10" value="" placeholder="Chi tiết sự kiện"></textarea>
+                            </div>
+                            <div class="form-group">
+
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" value="1">Sẵn sàng</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" value="0">Không sẵn sàng</label>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <h6>Ngày bắt đầu</h6>
+                                <input type="text" name="start-date" id="start-date" class="form-control year" placeholder="Ngày bắt đầu">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <h6>Ngày kết thúc</h6>
+                                <input type="text" name="end-date" id="end-date" class="form-control year" placeholder="Ngày kết thúc">
+                            </div>
+                            <div class="form-group form-image">
+                                <input type="file" class="dropify" name="images[]" id="image" multiple="multiple">
+                            </div>
+                        </div>
+                        <dir style="clear: both;"></dir>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-info btn-default  b-a-0 waves-effect waves-light" id="add">Thêm</button>
+                            <button type="button" class="btn btn-info btn-default  b-a-0 waves-effect waves-light" style="display: none;" id="update-event">Lưu</button>
+                            <button type="button" class="btn btn-danger b-a-0 waves-effect waves-light" data-dismiss="modal">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    $('.year').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+    $('#event-action').submit(function(evt) {
+
+        var formData = new FormData(this);
+
+        $.ajax({
+            async: true,
+            method: 'POST',
+            url: '/event/store',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: 'JSON',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+            },
+            success: function(data) {
+                window.location.reload(true);
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+        evt.preventDefault();
+    });
+
+</script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('.btn-update').on('click', function(e) {
+        var event_id = $(this).data('id');
+        $('#update-event').removeAttr("style");
+        $('#add').css("display","none");
+        $('.form-image').css("display", "none");
+
+        $.ajax({
+            cache: false,
+            method: 'GET',
+            dataType: 'JSON',
+            url: '/event/' + event_id,
+            success: function(data){
+                $('.modal-title').text('Thay đổi sự kiện');
+                $('#id').val(data['id']);
+                $('#title').val(data['title']);
+                $('#description').val(data['description']);
+                $('input[type=radio][name="status"][value='+data['status']+']').prop('checked', true);
+                $('#start-date').val(data['start-date']);
+                $('#end-date').val(data['end-date']);
+
+            },
+            error: function(data){
+                console.log('ee', data);
+            }
+        });
+    });
+    var url_event_update = '{{ route('event.update')}}';
+
+    $('#update-event').on('click', function(e){
+
+        var title = $('#title').val();
+        var description = $('#description').val();
+        var status = $('input[name=status]:checked').val();
+        var start = $('#start-date').val();
+        var end = $('#end-date').val();
+        var id = $('#id').val();
+
+        $.ajax({
+
+            cache: false,
+            method: 'PUT',
+            dataType: 'JSON',
+            url: url_event_update,
+            data: {
+                id: id,
+                title: title,
+                description: description,
+                status: status,
+                'start-date': start,
+                'end-date': end
+            },
+            success: function(data) {
+                window.location.reload(true);
+            },
+            error: function(data) {
+                console.log('ee', data);
+            }
+        });
+        e.preventDefault();
+    });
+</script>
+@endsection
