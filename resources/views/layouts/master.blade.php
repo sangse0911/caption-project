@@ -151,6 +151,7 @@
         <script type="text/javascript" src="{{ URL::to('js/admin/dropify.min.js') }}"></script>
         <script src="{{ URL::to('js/bootstrap-datetimepicker.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/jquery.star-rating-svg.min.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::to('js/admin/buttons.html5.min.js') }}"></script>
         @yield('script')
         <script>
         (function($) {
@@ -181,20 +182,20 @@
         <script>
             $('#post-book').click(function(e) {
                 $('.modal-lg').css("max-width","1100px");
-                $('.modal-title').text('Chao mung ban da mang lai sach cho chung toi');
+                $('.modal-title').text('Chào mừng bạn đã mang lại sách cho chúng tôi');
                 $('#single-product').css("display", "none");
                 $('.post').removeAttr("style");
 
             });
 
             $('.book-show').click(function(e) {
-                $('.modal-title').text('Thong tin chi tiet');
+                $('.modal-title').text('Thông tin chi tiết');
                 $('.post').css("display","none");
                 $('#single-product').removeAttr("style");
                 $('.action-buttons').removeAttr("style");
             });
             $('.post-show').click(function(e) {
-                $('.modal-title').text('Thong tin chi tiet');
+                $('.modal-title').text('Thông tin chi tiết');
                 $('.post').css("display","none");
                 $('#single-product').removeAttr("style");
                 $('.action-buttons').css("display", "none");
@@ -222,7 +223,7 @@
                         'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
                     },
                     success: function(data) {
-                        alert("Chuc mung ban da thanh cong");
+                        alert("Chúc mừng bạn đã thành công");
                     },
                     error: function(data) {
                         console.log(data);
@@ -612,10 +613,14 @@
                     dataType: 'JSON',
                     success: function(data) {
                         alert('Bạn đã thêm thành công sản phẩm vào giỏ hàng');
-
+                        var count = parseInt($('.cart-items-count')[0].innerHTML);
+                        count += 1;
+                        $('.cart-items-count').each(function(e) {
+                            $(this).text(count);
+                        });
                     },
                     error: function(data) {
-                        console.log("co loi voi", data);
+                        console.log("có lỗi với", data);
                     }
                 });
 
@@ -667,7 +672,7 @@
                         window.location.assign("/");
                     },
                     error: function(data) {
-                        console.log("co loi voi", data);
+                        console.log("có lỗi với", data);
                     }
                 });
 

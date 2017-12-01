@@ -138,12 +138,8 @@
                                         <th>Số điện thoại</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td id="contract-id"></td>
-                                        <td id="supplier-account"></td>
-                                        <td id="supplier-phone"></td>
-                                    </tr>
+                                <tbody id="contracts">
+
                                 </tbody>
                             </table>
                         </div>
@@ -227,12 +223,17 @@
                     $('#supplier-account').text("");
                     $('#supplier-phone').text(data['supplier']['phone']);
                 } else {
-
+                    var contracts = $('#contracts');
                     for (var i = 0; i < (data['details'].length); i++) {
-
-                        $('#contract-id').text(data['contracts'][i]['id']);
-                        $('#supplier-account').text(data['contracts'][i]['account']);
-                        $('#supplier-phone').text(data['supplier']['phone']);
+                        var row = document.createElement('tr');
+                        var contractId = document.createElement('td');
+                        contractId.innerHTML = data['contracts'][i]['id'];
+                        var account = document.createElement('td');
+                        account.innerHTML = data['contracts'][i]['account'];
+                        var phone = document.createElement('td');
+                        phone.innerHTML = data['supplier']['phone'];
+                        $(row).append(contractId, account, phone);
+                        contracts.append(row);
                     };
                 }
             },

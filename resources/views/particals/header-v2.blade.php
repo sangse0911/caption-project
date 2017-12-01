@@ -67,7 +67,7 @@
                 <li class="nav-item dropdown">
                     <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown">
                         <i class="ec ec-shopping-bag"></i>
-                        <span class="cart-items-count count">{{ Cart::count()}}</span>
+                        <span class="cart-items-count count">{{ Cart::count() }}</span>
                         <span class="cart-items-total-price total-price"><span class="amount">{{ Cart::subtotal() }}</span></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-mini-cart">
