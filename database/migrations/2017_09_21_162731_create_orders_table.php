@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->enum('payment_method', ['1', '2'])->default('1');
+            $table->enum('method', ['1', '2'])->default('1');
             $table->enum('status', ['0', '1', '2', '3', '4', '5', '6'])->default('0');
             $table->string('shipping_address');
             $table->timestamps();

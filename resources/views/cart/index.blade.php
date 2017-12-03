@@ -41,8 +41,8 @@
                     <td class="actions" colspan="8">
                         <div class="" style="margin-bottom: 50px;">
                             <label for="method" style="color: red;">Hình thức Thanh toán</label><br/>
-                            <label class="radio-inline"><input type="radio" name="status" value="1">Thanh toán khi nhận sách</label>
-                            <label class="radio-inline"><input type="radio" name="status" value="2">Chuyển khoản trước</label>
+                            <label class="radio-inline"><input type="radio" name="method" value="1">Thanh toán khi nhận sách</label>
+                            <label class="radio-inline"><input type="radio" name="method" value="2">Chuyển khoản trước</label>
 
                         </div>
                         <div>
@@ -71,7 +71,7 @@
     </form>
     <div class="cart-collaterals">
         <div class="cart_totals ">
-            <h2>Tổng gía giỏ hàng</h2>
+            <h2>Tổng giá giỏ hàng</h2>
             <table class="shop_table shop_table_responsive">
                 <tbody>
                     <tr class="cart-subtotal">

@@ -93,9 +93,9 @@ class CartRepository implements CartInterface
         $items = array(
 
             'user_id' => $id,
-            'payment_method' => $data['method'],
+            'method' => $data['method'],
             'status' => 1,
-            'shipping_address' => $data['address'],
+            'address' => $data['address'],
         );
         $order = $this->orderRepository->create($items);
 

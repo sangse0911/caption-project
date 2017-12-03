@@ -19,6 +19,12 @@ class OrderRepository implements OrderInterface
 
     public function create($data)
     {
-        return Order::create($data);
+        // dd($data);
+        return Order::create([
+            'user_id' => $data['user_id'],
+            'method' => $data['method'],
+            'status'=>  $data['status'],
+            'address' => $data['address'],
+        ]);
     }
 }

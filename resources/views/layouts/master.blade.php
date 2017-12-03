@@ -84,7 +84,7 @@
                                         <br/>
                                         <input type="password" name="password" class="form-control" id="password" value="" placeholder="Mat khau">
                                         <br/>
-                                        <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light">Dang nhap</button>
+                                        <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light">Đăng nhập</button>
                                     </div>
                                     <div class="form-group col-sm-6">
                                         <label for="name">Đăng nhập bằng facebook</label>
@@ -151,7 +151,7 @@
         <script type="text/javascript" src="{{ URL::to('js/admin/dropify.min.js') }}"></script>
         <script src="{{ URL::to('js/bootstrap-datetimepicker.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/jquery.star-rating-svg.min.js') }}"></script>
-        <script type="text/javascript" src="{{ URL::to('js/admin/buttons.html5.min.js') }}"></script>
+        <!-- <script type="text/javascript" src="{{ URL::to('js/admin/buttons.html5.min.js') }}"></script> -->
         @yield('script')
         <script>
         (function($) {
@@ -654,7 +654,7 @@
             $('#checkout').click(function(e) {
                 e.preventDefault();
 
-                var method = $('input[name=status]:checked').val();
+                var method = $('input[name=method]:checked').val();
                 var address = $('#address').val();
 
                 $.ajax({
