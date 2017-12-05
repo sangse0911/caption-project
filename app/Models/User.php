@@ -54,11 +54,21 @@ class User extends Authenticatable
         'facebook_id',
         'email',
         'password',
+        'phone',
         'account_status',
         'account_balance',
         'tags',
         'remember_token',
     ];
+
+    public function admins()
+    {
+        return $this->belongsToMany(\App\Models\Admin::class, 'contracts')->withTimeStamps();
+    }
+    public function contracts()
+    {
+        return $this->hasMany(\App\Models\Contract::class);
+    }
 
     public function notifications()
     {
@@ -68,11 +78,6 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(\App\Models\Order::class);
-    }
-
-    public function posts()
-    {
-        return $this->hasMany(\App\Models\Post::class);
     }
 
     public function rates()
@@ -88,11 +93,6 @@ class User extends Authenticatable
     public function reviews()
     {
         return $this->hasMany(\App\Models\Review::class);
-    }
-
-    public function suppliers()
-    {
-        return $this->hasMany(\App\Models\Supplier::class);
     }
 
     public function wishLists()

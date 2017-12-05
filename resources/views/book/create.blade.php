@@ -8,11 +8,12 @@
                 <li class="breadcrumb-item active">Thêm Sách</li>
             </ol>
             <div class="box box-block bg-white">
-                <form form enctype="multipart/form-data" type="hidden" name="" id="" method="POST">
+                <form form enctype="multipart/form-data" type="hidden" name="" id="ahihi" method="POST">
                     {{ csrf_field() }}
                     <div class="form-group col-md-6">
                         <h6>Loại Sách</h6>
                         <label class="custom-control custom-radio">
+                            <input type="hidden" name="id" id="id" value="{{ \Request::segment(3) }}">
                             <input id="radio1" name="status" value="0" type="radio" class="custom-control-input">
                             <span class="custom-control-indicator"></span>
                             <span class="custom-control-description">Sách Bán</span>
@@ -25,8 +26,22 @@
                         <br>
                     </div>
                     <div class="form-group col-md-6">
-                        <h6>Tai khoan ngan hang</h6>
+                        <h6>Tài khoản ngân hàng</h6>
                         <input type="text" name="account" id="account" class="form-control" placeholder="Tai khoan ngan hang">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <h6>Phương thức thanh toán</h6>
+                        <label class="custom-control custom-radio">
+                            <input id="radio3" name="method" value="0" type="radio" class="custom-control-input">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Tiền mặt</span>
+                        </label>
+                        <label class="custom-control custom-radio">
+                            <input id="radio4" name="method" value="1" type="radio" class="custom-control-input">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Chuyển khoản</span>
+                        </label>
+                        <br>
                     </div>
                     <div class="form-group col-md-6">
                         <h6>Tác Giả</h6>
@@ -36,6 +51,11 @@
                     <div class="form-group col-md-6">
                         <h6>Tên Sách</h6>
                         <input type="text" name="name" class="form-control" id="name" placeholder="Nhập Tên Sách">
+                        <br>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <h6>Giới thiệu qua về sách</h6>
+                        <input type="text" name="introduce" class="form-control" id="introduce" placeholder="Giới thiệu sách">
                         <br>
                     </div>
                     <div class="form-group col-md-6">
@@ -57,8 +77,13 @@
                         <br>
                     </div>
                     <div class="form-group col-md-6">
-                        <h6>Giá Bán</h6>
-                        <input type="text" name="price-sell" class="form-control form-control-success" id="price-sell">
+                        <h6>Giá</h6>
+                        <input type="text" name="price" class="form-control form-control-success" id="price">
+                        <br>
+                    </div>
+                     <div class="form-group col-md-6">
+                        <h6>Giá thuê</h6>
+                        <input type="text" name="price-rent" class="form-control form-control-success" id="price-rent">
                         <br>
                     </div>
                     <div class="form-group col-md-6">
@@ -67,17 +92,12 @@
                         <br>
                     </div>
                     <div class="form-group col-md-6">
-                        <h6>Giá Thuê</h6>
-                        <input type="text" name="price-rent" class="form-control form-control-success" id="price-rent">
-                        <br>
-                    </div>
-                    <div class="form-group col-md-6">
                         <h6>Tái Bản Lần Thứ</h6>
                         <input type="text" name="republish" class="form-control" id="republish" placeholder="Tai ban lan thu">
                         <br>
                     </div>
                      <div class="form-group col-md-6">
-                        <h6>Vi tri cua sach</h6>
+                        <h6>Vị trí của sách</h6>
                         <select id="location" multiple="multiple" name="location[]" class="location" style="width: 100%;">
                             @foreach($bookshelves as $bookshelf)
                             <option name="" value="{{ $bookshelf->id }}">{{ $bookshelf->location }}</option>
@@ -94,12 +114,11 @@
                         </select>
                         <br>
                     </div>
-                    <div class="form-group col-md-6">
-                        <h6>Tóm Tắt</h6>
-                        <textarea class="ckeditor" rows="9" id="comment" name="introduce" rows="10"></textarea>
-                        <br>
+                    <div class="form-group col-sm-12 post">
+                        <label for="description">Mô tả về sách</label>
+                        <textarea class="form-control" id="description" name="description" rows="10" placeholder="Mô tả về sách"></textarea>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-12">
                         <h6>Hình Ảnh</h6>
                         <div class="row">
                             <div class="col-md-6">
@@ -120,7 +139,7 @@
                     </div>
                     <div style="clear: both;"></div>
                     <div style="text-align: center;">
-                        <button type="button" class="btn btn-success btn-rounded w-min-sm  waves-effect waves-light" id="book-create">Thêm</button>
+                        <button type="submit" class="btn btn-success btn-rounded w-min-sm  waves-effect waves-light" id="book-create">Thêm</button>
                         <button type="reset" class="btn btn-info btn-rounded w-min-sm  waves-effect waves-light">Làm Mới</button>
                     </div>
                 </form>
@@ -142,7 +161,9 @@
     $("#category").select2({ closeOnSelect: false });
     $("#location").select2({ closeOnSelect: true , maximumSelectionLength: 1});
     $("#quality").select2({ closeOnSelect: true , maximumSelectionLength: 1});
-
+    $('#year').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
 </script>
 
 <script type="text/javascript">
@@ -152,55 +173,32 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    $('#ahihi').submit(function(evt) {
 
-    $('#book-create').on('click', function(e) {
+        var formData = new FormData(this);
 
-        var name = $('#name').val();
-        var status =  $('input[name=status]:checked').val();
-        var account = $('#account').val();
-        var author = $('#author').val();
-        var company = $('#company').val();
-        var introduce = $('#introduce').val();
-        var description = $('#description').val();
-        var bookshelf_id = $('#location').select2().val();
-        var year = $('#year').val();
-        var republish = $('#republish').val();
-        var isbn = $('#isbn').val();
-        var images = $('.dropify').val();
-        var price_sell = data['price-sell'].val();
-        var price_rent = 0;
         $.ajax({
-
-            cache: false,
+            async: true,
             method: 'POST',
-            dataType: 'JSON',
             url: '/book/store',
-            data: {
-                name: name,
-                status: status,
-                account: account,
-                author: author,
-                company: company,
-                introduce: introduce,
-                description: description,
-                bookshelf_id: bookshelf_id,
-                year: year,
-                republish: republish,
-                isbn: isbn,
-                images: images,
-                price_sell: price_sell,
-                price_rent: price_rent
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: 'JSON',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
             },
             success: function(data) {
-                console.log('ss', data);
-                // window.location.reload(true);
+                window.location.assign('/admin/books');
             },
             error: function(data) {
-                console.log('ee', data);
+                console.log(data);
             }
         });
-
-        e.preventDefault();
+        evt.preventDefault();
     });
+
+
 </script>
 @endsection

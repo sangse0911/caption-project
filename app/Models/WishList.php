@@ -27,22 +27,21 @@ class WishList extends Model
 {
     protected $casts = [
         'user_id' => 'int',
-        'wishListable_id' => 'int',
+        'book_id' => 'int',
     ];
 
     protected $fillable = [
         'user_id',
-        'wishListable_id',
-        'wishListable_type',
+        'book_id',
     ];
+
+    public function book()
+    {
+        return $this->belongsTo(\App\Models\Book::class);
+    }
 
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);
-    }
-
-    public function wishListable()
-    {
-        return $this->morphTo();
     }
 }

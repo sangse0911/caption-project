@@ -180,57 +180,28 @@
 
         </script>
         <script>
-            $('#post-book').click(function(e) {
-                $('.modal-lg').css("max-width","1100px");
-                $('.modal-title').text('Chào mừng bạn đã mang lại sách cho chúng tôi');
-                $('#single-product').css("display", "none");
-                $('.post').removeAttr("style");
-
-            });
-
             $('.book-show').click(function(e) {
                 $('.modal-title').text('Thông tin chi tiết');
                 $('.post').css("display","none");
                 $('#single-product').removeAttr("style");
                 $('.action-buttons').removeAttr("style");
             });
+
             $('.post-show').click(function(e) {
                 $('.modal-title').text('Thông tin chi tiết');
                 $('.post').css("display","none");
                 $('#single-product').removeAttr("style");
                 $('.action-buttons').css("display", "none");
             });
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
 
-            $('#post-form').submit(function(evt) {
 
-                var formData = new FormData(this);
 
-                $.ajax({
-                    async:true,
-                    method: 'POST',
-                    url: '/post/store',
-                    data:formData,
-                    cache:false,
-                    contentType: false,
-                    processData: false,
-                    dataType: 'JSON',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
-                    },
-                    success: function(data) {
-                        alert("Chúc mừng bạn đã thành công");
-                    },
-                    error: function(data) {
-                        console.log(data);
-                    }
-                });
-                 evt.preventDefault();
-            });
 
         </script>
         <script>

@@ -63,6 +63,7 @@ class Book extends Model
         'admin_id' => 'int',
         'bookshelf_id' => 'int',
         'price' => 'float',
+        'rental_fee' => 'float',
         'republish' => 'int',
     ];
 
@@ -78,6 +79,7 @@ class Book extends Model
         'bookshelf_id',
         'status',
         'price',
+        'rental_fee',
         'author',
         'company',
         'year',
@@ -143,6 +145,6 @@ class Book extends Model
 
     public function wishLists()
     {
-        return $this->morphMany(\App\Models\WishList::class, 'wishListable');
+        return $this->hasMany(\App\Models\WishList::class);
     }
 }

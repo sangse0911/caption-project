@@ -13,29 +13,29 @@ use Illuminate\Database\Eloquent\Model;
  * Class Advertisment
  *
  * @property int $id
- * @property int $post_id
+ * @property int $book_id
  * @property int $money
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
- * @property \App\Models\Post $post
+ * @property \App\Models\Book $book
  *
  * @package App\Models
  */
 class Advertisment extends Model
 {
     protected $casts = [
-        'post_id' => 'int',
+        'book_id' => 'int',
         'money' => 'int',
     ];
 
     protected $fillable = [
-        'post_id',
+        'book_id',
         'money',
     ];
 
-    public function post()
+    public function book()
     {
-        return $this->belongsTo(\App\Models\Post::class);
+        return $this->belongsTo(\App\Models\Book::class);
     }
 }

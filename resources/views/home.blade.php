@@ -47,6 +47,9 @@
         @include('particals.recently')
     @endsection
 
+    @section('sidebar')
+        @include('particals.sidebar')
+    @endsection
     @include('particals.contents')
 @endsection
 

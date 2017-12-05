@@ -41,7 +41,7 @@ Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallbac
 /**
  *
  */
-Route::get('/book', ['as' => 'book.index', 'uses' => 'BookController@index']);
+Route::get('/books', ['as' => 'book.index', 'uses' => 'BookController@index']);
 Route::get('/book/{id}', 'BookController@show')->name('book.show');
 Route::get('/sell-book', ['as' => 'book.sell', 'uses' => 'BookController@sellBook']);
 Route::get('/renter-book', ['as' => 'book.renter', 'uses' => 'BookController@renBook']);
@@ -50,7 +50,7 @@ Route::get('/hot-book', ['as' => 'book.hot', 'uses' => 'BookController@hotBook']
 /**
  *
  */
-Route::get('/content-post', ['as' => 'content.post', 'uses' => 'PostController@contentPost']);
+// Route::get('/content-post', ['as' => 'content.post', 'uses' => 'PostController@contentPost']);
 Route::get('/supplier/{id}', ['as' => 'supplier.show', 'uses' => 'SupplierController@show']);
 
 /**
@@ -100,8 +100,8 @@ Route::middleware(['auth:admin'])->group(function () {
      *
      */
     Route::get('/bookshelves', 'BookshelfController@index')->name('admin.bookshelf.index');
-    Route::post('/bookshelf/store', 'BookshelfController@store')->name('bookshelf.store');
     Route::get('/bookshelf/{id}', 'BookshelfController@show')->name('bookshelf.show');
+    Route::post('/bookshelf/store', 'BookshelfController@store')->name('bookshelf.store');
     Route::put('/bookshelf/update', 'BookshelfController@update')->name('bookshelf.update');
     /**
      *
@@ -176,8 +176,7 @@ Route::delete('/cart/delete/{id}', 'CartController@destroy')->name('cart.delete'
 /**
  *
  */
-Route::get('/post/index', ['as' => 'post.index', 'uses' => 'PostController@index']);
-Route::get('/post/{id}', 'PostController@show')->name('post.show');
+Route::get('/posts', ['as' => 'post.index', 'uses' => 'PostController@index']);
 
 /**
  *
@@ -188,7 +187,9 @@ Route::middleware(['auth'])->group(function () {
      *
      */
     Route::get('/post/create', ['as' => 'post.create', 'uses' => 'PostController@create']);
-    Route::post('/post/store', ['as' => 'post.store', 'uses' => 'PostController@store']);
+    Route::get('/post/createSale', 'PostController@createSale')->name('book.create.sale');
+    Route::post('/book/storePostBook', ['as' => 'post.store', 'uses' => 'BookController@storePostBook']);
+    Route::post('/book/storeSaleBook', 'BookController@storeSaleBook')->name('sale.book');
 
     Route::get('/book/info', ['as' => 'book.info', 'uses' => 'BookController@getSupplier']);
 
@@ -209,3 +210,4 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cart/store', 'CartController@order')->name('cart.store');
 
 });
+Route::get('/post/{id}', 'PostController@show')->name('post.show');

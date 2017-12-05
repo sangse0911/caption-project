@@ -36,9 +36,14 @@ class PostRepository implements PostInterface
         return $posts;
     }
 
+    /**
+     * [find description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function find($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $categories = $post->categoryPosts()->where('post_id', $id)->get();
         $images = $post->imagePosts()->where('post_id', $id)->get();
         return [

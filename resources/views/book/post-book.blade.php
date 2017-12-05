@@ -5,13 +5,13 @@
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">
         <ul class="products columns-3">
-            @foreach($posts->chunk(3) as $new_post) @foreach($new_post as $post) @foreach($post->imagePosts as $image)
+            @foreach($books->chunk(3) as $new_book) @foreach($new_book as $book) @foreach($book->images as $image)
             <li class="product first">
                 <div class="product-outer">
                     <div class="product-inner">
                         <span class="loop-product-categories"><a href="#" rel="tag"></a></span>
-                        <a data-toggle="modal" href="#myModal" class="post-show" id="post-{{ $post->id}}">
-                            <h3>{{ $posts[0]->name }}</h3>
+                        <a data-toggle="modal" href="#myModal" class="post-show" id="post-{{ $book->id}}">
+                            <h3>{{ $books[0]->name }}</h3>
                             <div class="product-thumbnail">
                                 <img src="{{ URL::to('assets/images/post/'. $image->path) }}" alt="">
                             </div>
@@ -31,8 +31,8 @@
                 <div class="product-outer">
                     <div class="product-inner">
                         <span class="loop-product-categories"><a href="#" rel="tag"></a></span>
-                        <a data-toggle="modal" href="#myModal" class="post-show" id="post-{{ $post->id}}">
-                            <h3>{{ $posts[1]->name }}</h3>
+                        <a data-toggle="modal" href="#myModal" class="post-show" id="post-{{ $book->id}}">
+                            <h3>{{ $books[1]->name }}</h3>
                             <div class="product-thumbnail">
                                 <img src="{{ URL::to('assets/images/post/'. $image->path) }}" alt="">
                             </div>
@@ -52,8 +52,8 @@
                 <div class="product-outer">
                     <div class="product-inner">
                         <span class="loop-product-categories"><a href="#" rel="tag"></a></span>
-                        <a data-toggle="modal" href="#myModal" class="post-show" id="post-{{ $post->id}}">
-                            <h3>{{ $posts[2]->name }}</h3>
+                        <a data-toggle="modal" href="#myModal" class="post-show" id="post-{{ $book->id}}">
+                            <h3>{{ $books[2]->name }}</h3>
                             <div class="product-thumbnail">
                                 <img src="{{ URL::to('assets/images/post/'. $image->path) }}" alt="">
                             </div>

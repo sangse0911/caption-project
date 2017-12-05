@@ -22,10 +22,11 @@ class CreateBooksTable extends Migration
             $table->integer('bookshelf_id')->unsigned();
             $table->enum('status', ['0', '1', '2', '3', '4', '5', '6', '7'])->default('1');
             $table->double('price')->default(0);
+            $table->double('rental_fee')->default(0);
             $table->string('author', 50);
-            $table->string('company');
+            $table->string('company')->nullable();
             $table->dateTime('year');
-            $table->tinyInteger('republish');
+            $table->tinyInteger('republish')->default(1);
             $table->string('isbn')->nullable();
             $table->string('slug');
             $table->timestamps();

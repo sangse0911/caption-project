@@ -7,9 +7,9 @@
     </header>
     <div id="home-v1-product-cards-careousel">
         <div class="woocommerce columns-2 home-v1-product-cards-carousel product-cards-carousel owl-carousel" id="owl-demo2">
-            @foreach($posts->chunk(4) as $new_post)
-            @foreach($new_post as $post)
-            @foreach($post->imagePosts as $image)
+            @foreach($books->chunk(4) as $new_book)
+            @foreach($new_book as $book)
+            @foreach($book->images as $image)
             {{-- @foreach($book->images as $image) --}}
             <div class="owl-stage-outer">
                 <div class="owl-stage">
@@ -26,7 +26,7 @@
                                                     <a href="product-category.html" rel="tag">Headphone Cases</a>
                                                 </span>
                                                 <a href="#">
-                                                    <h3>{{ $posts[0]->name }}</h3>
+                                                    <h3>{{ $books[0]->name }}</h3>
                                                 </a>
                                                 <div class="price-add-to-cart">
                                                     <span class="price">
@@ -63,7 +63,7 @@
                                                 <a href="product-category.html" rel="tag">Smartphones</a>
                                             </span>
                                             <a href="single-product.html">
-                                                <h3>{{ $posts[1]->name }}</h3>
+                                                <h3>{{ $books[1]->name }}</h3>
                                             </a>
                                             <div class="price-add-to-cart">
                                                 <span class="price">
@@ -99,7 +99,7 @@
                                                 <a href="#" rel="tag">Headphone Cases</a>
                                             </span>
                                             <a href="single-product.html">
-                                                <h3>{{ $posts[2]->name }}</h3>
+                                                <h3>{{ $books[2]->name }}</h3>
                                             </a>
                                             <div class="price-add-to-cart">
                                                 <span class="price">
@@ -135,7 +135,7 @@
                                                 <a href="product-category.html" rel="tag">Smartphones</a>
                                             </span>
                                             <a href="single-product.html">
-                                                <h3>{{ $posts[3]->name }}</h3>
+                                                <h3>{{ $books[3]->name }}</h3>
                                             </a>
                                             <div class="price-add-to-cart">
                                                 <span class="price">

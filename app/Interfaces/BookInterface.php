@@ -10,6 +10,8 @@ interface BookInterface
     public function getSellBook();
     public function getRentBook();
     public function create($request);
+    public function createWithSupplier($request);
+    public function createPostBook($request);
     public function modified($data);
     public function createOwnerBook($data);
     public function getRecentlyBook();

@@ -9,38 +9,39 @@
             </div>
         </ol>
         <form enctype="multipart/form-data" type="hidden" name="" id="" method="POST">
-            {{ csrf_field() }}
+            {{-- {{ csrf_field() }} --}}
+            <input type="hidden" name="token" id="token" value="{{ csrf_token() }}">
             <div id="myModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-lg">
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Them moi nguoi dung</h4>
+                            <h4 class="modal-title">Thêm mới người dùng</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group" id="form-name">
-                                <label for="name">Ten nguoi dung</label>
+                                <label for="name">Tên người dùng</label>
                                 <input type="hidden" name="id" value="" id="id">
                                 <input type="text" name="name" class="form-control" id="name">
                             </div>
                             <div class="form-group" id="form-status">
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="1">Binh thuong</label>
+                                    <input type="radio" name="status" value="1">Bình thường</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="2">Cam</label>
+                                    <input type="radio" name="status" value="2">Cấm</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="3">Canh cao</label>
+                                    <input type="radio" name="status" value="3">Cảnh cáo</label>
                             </div>
                             <div class="form-group" id="form-phone" style="display: none;">
-                                <label for="name">So dien thoai</label>
+                                <label for="name">Số điện thoại </label>
                                 <input type="text" name="phone" class="form-control" id="phone">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="user-update">Luu</button>
-                            <button type="button" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="supplier-create" style="display: none;">Them moi</button>
-                            <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Dong</button>
+                            <button type="button" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="user-update">Lưu</button>
+                            <button type="button" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="supplier-create">Thêm mới</button>
+                            <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Đóng</button>
                         </div>
                     </div>
                 </div>
@@ -54,7 +55,7 @@
                         <th>Tên</th>
                         <th>Email</th>
                         <th>Trạng Thái</th>
-                        <th>Hanh dong</th>
+                        <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,15 +66,16 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->account_status }}</td>
                         <td align="center">
-                            <button type="button" id="update-{{ $user->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
+                            <button type="button" id="update" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal" data-id="{{ $user->id }}">
                                 <span class="btn-label"><i class="fa fa-edit"></i></span> Sửa
+                            </button>
+                            &nbsp
+                            <button id="supplier" type="button" class="btn btn-success btn-sm btn-supplier label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal" data-id="{{ $user->id }}">
+                                <span class="btn-label"><i class="fa fa-user-plus  fa-fw"></i></span> Khách bán
                             </button>
                             &nbsp
                             <button id="delete-{{ $user->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
                                 <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span> Xóa
-                            </button>
-                            <button id="supplier-{{ $user->id }}" type="button" class="btn btn-success btn-sm btn-supplier label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
-                                <span class="btn-label"><i class="fa fa-user-plus  fa-fw"></i></span> Khach ban
                             </button>
                         </td>
                     </tr>
@@ -124,7 +126,7 @@
         e.preventDefault();
     });
     $('.btn-update').click(function(e) {
-        var user_id = e.currentTarget.id.substring(7);
+        var user_id = $(this).data['id'];
         $.ajax({
             cache: false,
             method: 'GET',
@@ -170,21 +172,18 @@
         e.preventDefault();
     });
     $('.btn-supplier').click(function(e) {
-        var user_id = e.currentTarget.id.substring(9);
+        var user_id = $(this).data('id');
         $.ajax({
             cache: false,
             method: 'GET',
             dataType: 'JSON',
             url: '/admin/users/' + user_id,
             success: function(data) {
-                $('.modal-title').text('Them moi nha cung cap');
+                $('.modal-title').text('Thêm mới nhà cung cấp');
                 $('#id').val(data['id']);
                 $('#name').val(data['name']);
-                $('#form-status').css("display", "none");
-                $('#form-name').css("display","none");
-                $('#user-update').css("display","none");
-                $('#supplier-create').removeAttr("style");
-                $('#form-phone').removeAttr("style");
+                $('input[type=radio][name="status"][value='+data['status']+']').prop('checked', true);
+                $('#user-update').css('display','none');
             },
             error: function(data) {
                 console.log('ee',data);
@@ -194,29 +193,9 @@
     });
     $('#supplier-create').on('click', function(e){
 
-        var phone =  $('#phone').val();
-        var name = $('#name').val();
         var id = $('#id').val();
-        $.ajax({
+        window.location.href = "book/create/" + id;
 
-            cache: false,
-            method: 'POST',
-            dataType: 'JSON',
-            url: '/supplier/createIfExistUser',
-            data: {
-                id: id,
-                phone: phone,
-                name: name,
-            },
-            success: function(data) {
-                window.location.assign('/suppliers');
-            },
-            error: function(data) {
-                console.log('ee', data);
-            }
-        });
-
-        e.preventDefault();
     });
 </script>
 @endsection

@@ -25,7 +25,7 @@ class UserRepository implements UserInterface
      */
     public function find($id)
     {
-        return User::find($id);
+        return User::findOrFail($id);
     }
 
     /**
@@ -54,7 +54,8 @@ class UserRepository implements UserInterface
 
         $user = User::findOrFail($data['id']);
 
-        $user->account_status = $data['status'];
+        $user->status = $data['status'];
+        $user->phone = $data['phone'];
 
         return $user->save();
     }

@@ -27,6 +27,6 @@ class BookshelfComposer
      */
     public function compose(View $view)
     {
-        $view->with('bookshelves', $this->bookshelfRepository->all());
+        $view->with('bookshelves', $this->bookshelfRepository->getListReadyBookshelf());
     }
 }

@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->enum('method', ['1', '2'])->default('1');
             $table->enum('status', ['0', '1', '2', '3', '4', '5', '6'])->default('0');
-            $table->string('shipping_address');
+            $table->string('address');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

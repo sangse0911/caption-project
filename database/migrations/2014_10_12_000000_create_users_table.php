@@ -19,8 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('facebook_id', 50);
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('account_status', ['1', '2', '3', '4', '5'])->default('1');
-            $table->double('account_balance', 20, 0);
+            $table->string('phone', 50)->nullable();
+            $table->enum('status', ['1', '2', '3', '4', '5'])->default('1');
+            $table->double('balance', 20, 0)->default(0);
             $table->longText('tags');
             $table->rememberToken();
             $table->timestamps();

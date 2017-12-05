@@ -36,7 +36,7 @@ class Order extends Model
         'user_id',
         'method',
         'status',
-        'shipping_address',
+        'address',
     ];
 
     public function user()

@@ -19,8 +19,8 @@ class CreateDetailOrdersTable extends Migration
             $table->integer('order_id')->unsigned();
             $table->integer('quantity');
             $table->double('total_price', 20, 0);
-            $table->integer('fee');
-            $table->integer('discount');
+            $table->integer('fee')->default(0);
+            $table->integer('discount')->default(0);
             $table->timestamps();
 
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade')->onUpdate('cascade');

@@ -15,14 +15,15 @@ class CreateContractsTable extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('supplier_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->integer('admin_id')->unsigned();
             $table->enum('method', ['0', '1', '2'])->default('0');
             $table->string('account')->nullable();
-            $table->enum('kind', ['0', '1']);
+            $table->enum('kind', ['0', '1', '2']);
+            $table->enum('status', ['0', '1', '2']);
             $table->timestamps();
 
-            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
 
         });

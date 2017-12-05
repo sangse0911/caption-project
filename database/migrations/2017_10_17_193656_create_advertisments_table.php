@@ -15,11 +15,11 @@ class CreateAdvertismentsTable extends Migration
     {
         Schema::create('advertisments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('post_id')->unsigned();
+            $table->integer('book_id')->unsigned();
             $table->bigInteger('money')->unsigned();
             $table->timestamps();
 
-            $table->foreign('post_id')->references('id')->on('posts')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('book_id')->references('id')->on('books')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

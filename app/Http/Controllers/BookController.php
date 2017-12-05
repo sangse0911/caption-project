@@ -136,6 +136,36 @@ class BookController extends Controller
         }
         return response()->json($book, 200);
     }
+
+    /**
+     * [storePostBook description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function storePostBook(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            $book = $this->bookRepository->createPostBook($data);
+
+            return response()->json($book, 200);
+        }
+    }
+
+    /**
+     * [storeSaleBook description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function storeSaleBook(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            $book = $this->bookRepository->bookForSale($data);
+
+            return response()->json($book, 200);
+        }
+    }
     /**
      * Display the specified resource.
      *

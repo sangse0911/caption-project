@@ -7,16 +7,30 @@ use App\Models\Order;
 
 class OrderRepository implements OrderInterface
 {
+    /**
+     * [all description]
+     * @return [type] [description]
+     */
     public function all()
     {
         return Order::all();
     }
 
+    /**
+     * [find description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function find($id)
     {
-
+        return Order::findOrFail($id);
     }
 
+    /**
+     * [create description]
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
     public function create($data)
     {
         // dd($data);

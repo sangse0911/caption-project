@@ -3,8 +3,10 @@
 namespace App\Repositories;
 
 use App\Interfaces\BookInterface;
+use App\Interfaces\BookshelfInterface;
 use App\Interfaces\ContractInterface;
 use App\Interfaces\ImageInterface;
+use App\Interfaces\UserInterface;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Contract;
@@ -19,6 +21,8 @@ class BookRepository implements BookInterface
      */
     protected $imageRepository;
     protected $contractRepository;
+    protected $bookshelfRepository;
+    protected $userRepository;
 
     /**
      * Bind
@@ -28,10 +32,14 @@ class BookRepository implements BookInterface
      */
     public function __construct(
         ImageInterface $imageRepository,
-        ContractInterface $contractRepository
+        ContractInterface $contractRepository,
+        BookshelfInterface $bookshelfRepository,
+        UserInterface $userRepository
     ) {
         $this->imageRepository = $imageRepository;
         $this->contractRepository = $contractRepository;
+        $this->bookshelfRepository = $bookshelfRepository;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -59,7 +67,8 @@ class BookRepository implements BookInterface
     {
         return Book::where('status', '=', '1')->with('images')
             ->whereHas('contracts', function ($query) {
-                $query->where('contracts.kind', '=', '0');
+                $query->where('contracts.kind', '=', '0')
+                    ->where('contracts.status', '=', '0');
             })->get();
 
     }
@@ -72,7 +81,8 @@ class BookRepository implements BookInterface
     {
         return Book::where('status', '=', '1')->with('images')
             ->whereHas('contracts', function ($query) {
-                $query->where('contracts.kind', '=', '1');
+                $query->where('contracts.kind', '=', '1')
+                    ->where('contracts.status', '0');
             })->get();
     }
 
@@ -96,6 +106,7 @@ class BookRepository implements BookInterface
         $book = Book::findOrFail($id);
         $categories = $book->bookCategories()->where('book_id', $id)->get();
         $details = $book->contractDetails()->where('book_id', $id)->get();
+
         $contract = Contract::where('id', $details[0]->contract_id)->first();
         $images = $book->images()->where('book_id', $id)->get();
         return $array = [
@@ -122,12 +133,17 @@ class BookRepository implements BookInterface
             $data['description'] = "";
         }
 
+        if ($data['price-rent'] == null) {
+            $data['price-rent'] = 0;
+        }
+
         $book->name = $data['name'];
         $book->admin_id = Auth::user()->id;
         $book->bookshelf_id = implode($data['location']);
         $book->introduce = $data['introduce'];
         $book->description = $data['description'];
         $book->status = '1';
+        $book->rental_fee = $data['price-rent'];
         $book->author = $data['author'];
         $book->company = $data['company'];
         $book->year = $data['year'];
@@ -135,6 +151,12 @@ class BookRepository implements BookInterface
         $book->isbn = $data['isbn'];
         //save book
         $book->save();
+
+        $bookshelf = $this->bookshelfRepository->find(implode($data['location']));
+
+        $bookshelf->status = '0';
+        $bookshelf->save();
+
         //get all categories from input
         $categories = Input::get('categories');
         //get object of category from array id , after that save the
@@ -170,6 +192,11 @@ class BookRepository implements BookInterface
         return $book;
     }
 
+    public function createWithSupplier($data)
+    {
+
+    }
+
     /**
      * [createOwnerBook description]
      * @param  [type] $data [description]
@@ -183,17 +210,28 @@ class BookRepository implements BookInterface
             $data['description'] = "";
         }
 
+        if ($data['price-rent'] == null) {
+            $data['price-rent'] = 0;
+        }
+
         $book->name = $data['name'];
         $book->admin_id = Auth::user()->id;
         $book->bookshelf_id = implode($data['location']);
         $book->introduce = $data['introduce'];
         $book->description = $data['description'];
         $book->status = '1';
+        $book->rental_fee = $data['price-rent'];
         $book->author = $data['author'];
         $book->company = $data['company'];
         $book->year = $data['year'];
         $book->republish = $data['republish'];
         $book->isbn = $data['isbn'];
+
+        //change status of bookshelf to have book
+        $bookshelf = $this->bookshelfRepository->find(implode($data['location']));
+        $bookshelf->status = '0';
+        $bookshelf->save();
+
         //save book
         $book->save();
 
@@ -231,6 +269,112 @@ class BookRepository implements BookInterface
     }
 
     /**
+     * [createPostBook description]
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public function createPostBook($data)
+    {
+        $book = new Book;
+
+        if ($data['description'] == null) {
+            $data['description'] = "";
+        }
+
+        $book->name = $data['name'];
+        $book->admin_id = 1;
+        $book->bookshelf_id = 1;
+        $book->introduce = $data['introduce'];
+        $book->description = $data['description'];
+        $book->status = '4';
+        $book->price = $data['price'];
+        $book->author = $data['author'];
+        $book->company = $data['company'];
+        $book->year = $data['year'];
+        $book->republish = $data['republish'];
+        $book->isbn = "";
+
+        //save book
+        $book->save();
+
+        $user = $this->userRepository->find(Auth::user()->id);
+        $user->phone = $data['phone'];
+        $user->save();
+
+        $contract = $this->contractRepository->createByUser($data);
+
+        $contract->books()->attach($book->id, [
+            'price' => $data['price'],
+            'quality' => implode($data['quality']),
+
+        ]);
+
+        $images = Input::hasFile('images');
+
+        if ($images) {
+            $filesArray = $this->imageRepository->save();
+            if (!$book->images()->createMany($filesArray)) {
+                return $result = false;
+            };
+        }
+
+        return $book;
+    }
+
+    /**
+     * [bookForSale description]
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public function bookForSale($data)
+    {
+
+        $book = new Book;
+
+        if ($data['description'] == null) {
+            $data['description'] = "";
+        }
+
+        $book->name = $data['name'];
+        $book->admin_id = 1;
+        $book->bookshelf_id = 1;
+        $book->introduce = $data['introduce'];
+        $book->description = $data['description'];
+        $book->status = '4';
+        $book->price = $data['price'];
+        $book->author = $data['author'];
+        $book->company = $data['company'];
+        $book->year = $data['year'];
+        $book->republish = $data['republish'];
+        $book->isbn = "";
+
+        //save book
+        $book->save();
+
+        $user = $this->userRepository->find(Auth::user()->id);
+        $user->phone = $data['phone'];
+        $user->save();
+
+        $contract = $this->contractRepository->sale($data);
+
+        $contract->books()->attach($book->id, [
+            'price' => $data['price'],
+            'quality' => implode($data['quality']),
+
+        ]);
+
+        $images = Input::hasFile('images');
+
+        if ($images) {
+            $filesArray = $this->imageRepository->save();
+            if (!$book->images()->createMany($filesArray)) {
+                return $result = false;
+            };
+        }
+
+        return $book;
+    }
+    /**
      * [modified description]
      * @param  [type] $data [description]
      * @return [type]       [description]
@@ -241,6 +385,12 @@ class BookRepository implements BookInterface
 
         $book = Book::findOrFail($data['id']);
         $book->categories()->detach();
+
+        $bookshelf = $this->bookshelfRepository->find($data['id']);
+
+        $bookshelf->status = '1';
+
+        $bookshelf->save();
 
         if ($data['description'] == null) {
             $data['description'] = "";

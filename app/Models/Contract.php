@@ -32,15 +32,16 @@ use Illuminate\Database\Eloquent\Model;
 class Contract extends Model
 {
     protected $casts = [
-        'supplier_id' => 'int',
+        'user_id' => 'int',
         'admin_id' => 'int',
     ];
 
     protected $fillable = [
-        'supplier_id',
+        'user_id',
         'admin_id',
         'method',
         'account',
+        'kind',
         'status',
     ];
 
@@ -49,9 +50,9 @@ class Contract extends Model
         return $this->belongsTo(\App\Models\Admin::class);
     }
 
-    public function supplier()
+    public function user()
     {
-        return $this->belongsTo(\App\Models\Supplier::class);
+        return $this->belongsTo(\App\Models\User::class);
     }
 
     public function books()

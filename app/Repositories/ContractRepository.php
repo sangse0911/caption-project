@@ -51,11 +51,12 @@ class ContractRepository implements ContractInterface
 
         $admin = Auth::user();
 
-        $admin->suppliers()->attach($supplierId,
+        $admin->users()->attach($supplierId,
             [
                 'method' => $data['method'],
                 'account' => $data['account'],
-                'kind' => $data['kind'],
+                'kind' => $data['status'],
+                'status' => '0',
             ]);
 
         $contract = Contract::where('contracts.admin_id', '=', $admin->id)
@@ -65,19 +66,78 @@ class ContractRepository implements ContractInterface
         return $contract;
     }
 
+    /**
+     * [createIfNoContract description]
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
     public function createIfNoContract($data)
     {
 
         $admin = Auth::user();
 
-        $admin->suppliers()->attach(1,
+        $admin->users()->attach(1,
             [
                 'method' => $data['method'],
                 'account' => '',
                 'kind' => $data['kind'],
+                'status' => '0',
             ]);
 
         $contract = Contract::where('contracts.admin_id', '=', $admin->id)
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        return $contract;
+    }
+
+    /**
+     * [createByUser description]
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public function createByUser($data)
+    {
+
+        $user = Auth::user();
+
+        $user->admins()->attach($user->id,
+            [
+                'method' => $data['method'],
+                'account' => $data['account'],
+                'kind' => $data['kind'],
+                'admin_id' => 1,
+                'status' => '1',
+            ]
+        );
+
+        $contract = Contract::where('contracts.user_id', '=', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        return $contract;
+    }
+
+    /**
+     * [sale description]
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public function sale($data)
+    {
+        $user = Auth::user();
+
+        $user->admins()->attach($user->id,
+            [
+                'method' => $data['method'],
+                'account' => $data['account'],
+                'kind' => $data['kind'],
+                'admin_id' => 1,
+                'status' => '2',
+            ]
+        );
+
+        $contract = Contract::where('contracts.user_id', '=', $user->id)
             ->orderBy('created_at', 'desc')
             ->first();
 

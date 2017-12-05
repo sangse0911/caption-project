@@ -84,6 +84,10 @@
                                 <input type="text" name="price" class="form-control form-control-success" id="price">
                             </div>
                             <div class="form-group col-md-6 supplier">
+                                <h6>Giá thuê</h6>
+                                <input type="text" name="price-rent" class="form-control form-control-success" id="price-rent">
+                            </div>
+                            <div class="form-group col-md-6 supplier">
                                 <h6>ISBN</h6>
                                 <input type="text" name="isbn" class="form-control" id="isbn" placeholder="Ma so sach">
                             </div>
@@ -203,8 +207,7 @@ $("#category").select2({ closeOnSelect: false });
 $("#location").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
 $("#quality").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
 $('#year').datetimepicker({
-    viewMode: 'years',
-    format: 'YYYY'
+    format: 'YYYY-MM-DD'
 });
 </script>
 <script>
@@ -254,6 +257,11 @@ $('.btn-update').on('click', function(e) {
     $('#create-book').css("display", "none");
     $('.form-status').removeAttr("style");
 
+    $('.modal-title').text('Cập nhật thông tin sách');
+    $('.bank-account').css("display", "none");
+    $('.method-pay').css("display", "none");
+    $('.kind-book').css("display", "none");
+
     var book_id = $(this).data('id');
     var array = [];
 
@@ -263,11 +271,7 @@ $('.btn-update').on('click', function(e) {
         dataType: 'JSON',
         url: '/admin/books/' + book_id,
         success: function(data) {
-
-            $('.modal-title').text('Cập nhật thông tin sách');
-            $('.bank-account').css("display", "none");
-            $('.method-pay').css("display", "none");
-            $('.kind-book').css("display", "none");
+            console.log('ss', data);
 
             $('#name').val(data['book']['name']);
             for (var i = 0; i < data['categories'].length; i++) {

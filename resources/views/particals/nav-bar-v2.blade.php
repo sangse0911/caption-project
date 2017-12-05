@@ -7,8 +7,8 @@
         </div>
         <div class="collapse navbar-toggleable-xs" id="header-v3">
             <ul class="nav navbar-nav" style="display: inline-flex; align-items: center;">
-                <li class="menu-item" style="display: inline-table;"><a title="Góc bán sách" href="#">Bán sách</a></li>
-                <li class="menu-item" style="display: inline-table;"><a title="Góc đăng bài" href="#"  data-toggle="modal" data-target="#myModal" id="post-book">Đăng bài</a></li>
+                <li class="menu-item" style="display: inline-table;"><a title="Góc bán sách" href="{{ route('book.create.sale') }}">Bán sách</a></li>
+                <li class="menu-item" style="display: inline-table;"><a title="Góc đăng bài" href="{{ route('post.create') }}">Đăng bài</a></li>
                 <li class="menu-item" style="display: inline-table;"><a title="Quảng cáo sách" href="#">Liên hệ quảng cáo</a></li>
                 <li id="search-form" class="menu-item" style="display: none;">
                     <form class="navbar-search" method="get" action="#" style="width: 100%;">

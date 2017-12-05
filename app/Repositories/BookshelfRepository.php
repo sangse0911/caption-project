@@ -51,6 +51,15 @@ class BookshelfRepository implements BookshelfInterface
     }
 
     /**
+     * [getListReadyBookshelf description]
+     * @return [type] [description]
+     */
+    public function getListReadyBookshelf() {
+        return Bookshelf::where('status', '=', '1')
+            ->orderBy('id')
+            ->get();
+    }
+    /**
      * [create description]
      * @param  [type] $request [description]
      * @return [type]          [description]
@@ -62,7 +71,7 @@ class BookshelfRepository implements BookshelfInterface
         $bookshelf = new Bookshelf;
 
         if (!$bookshelf->admin()->associate($adminId)) {
-            return response()->json('Loi khong xac dinh, vui long thu lai');
+            return response()->json('Lỗi không xác định, vui lòng  thử  lại');
         }
 
         $bookshelf->location = $data['location'];

@@ -61,9 +61,9 @@ class Admin extends Authenticatable
         return $this->hasMany(\App\Models\Book::class);
     }
 
-    public function suppliers()
+    public function users()
     {
-        return $this->belongsToMany(\App\Models\Supplier::class, 'contracts')->withTimeStamps();
+        return $this->belongsToMany(\App\Models\User::class, 'contracts')->withTimeStamps();
     }
 
     public function bookselves()

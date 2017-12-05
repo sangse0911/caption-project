@@ -16,12 +16,13 @@ class CreateWishListsTable extends Migration
         Schema::create('wish_lists', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('wishListable_id')->unsigned();
-            $table->string('wishListable_type');
-            $table->unique(['user_id', 'wishListable_id']);
+            $table->integer('book_id')->unsigned();
+
+            $table->unique(['user_id', 'book_id']);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

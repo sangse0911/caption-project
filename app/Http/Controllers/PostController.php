@@ -42,6 +42,14 @@ class PostController extends Controller
     }
 
     /**
+     * [createSale description]
+     * @return [type] [description]
+     */
+    public function createSale()
+    {
+        return view('post.for-sale');
+    }
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
