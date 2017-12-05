@@ -51,7 +51,7 @@ Route::get('/hot-book', ['as' => 'book.hot', 'uses' => 'BookController@hotBook']
  *
  */
 // Route::get('/content-post', ['as' => 'content.post', 'uses' => 'PostController@contentPost']);
-Route::get('/supplier/{id}', ['as' => 'supplier.show', 'uses' => 'SupplierController@show']);
+// Route::get('/supplier/{id}', ['as' => 'supplier.show', 'uses' => 'SupplierController@show']);
 
 /**
  *
@@ -112,11 +112,11 @@ Route::middleware(['auth:admin'])->group(function () {
     /**
      *
      */
-    Route::get('/suppliers', 'SupplierController@index')->name('supplier.index');
-    Route::get('/suppliers/{id}', 'SupplierController@show')->name('supplier.show');
-    Route::get('/supplier/detail/{id}', 'SupplierController@showDetail')->name('supplier.detail');
-    Route::post('/supplier/store', 'SupplierController@store')->name('supplier.save');
-    Route::post('/supplier/createIfExistUser', 'SupplierController@storeIfExist')->name('supplier.save.exist');
+    // Route::get('/suppliers', 'SupplierController@index')->name('supplier.index');
+    // Route::get('/suppliers/{id}', 'SupplierController@show')->name('supplier.show');
+    // Route::get('/supplier/detail/{id}', 'SupplierController@showDetail')->name('supplier.detail');
+    // Route::post('/supplier/store', 'SupplierController@store')->name('supplier.save');
+    // Route::post('/supplier/createIfExistUser', 'SupplierController@storeIfExist')->name('supplier.save.exist');
 
     /**
      *
@@ -191,7 +191,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/book/storePostBook', ['as' => 'post.store', 'uses' => 'BookController@storePostBook']);
     Route::post('/book/storeSaleBook', 'BookController@storeSaleBook')->name('sale.book');
 
-    Route::get('/book/info', ['as' => 'book.info', 'uses' => 'BookController@getSupplier']);
+    // Route::get('/book/info', ['as' => 'book.info', 'uses' => 'BookController@getSupplier']);
 
     /**
      *

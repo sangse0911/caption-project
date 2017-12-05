@@ -38,9 +38,15 @@ class AdminLoginController extends Controller
             'password' => 'required|min:2',
         ]);
         $token = Str::random(60);
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+        if (Auth::guard('admin')->attempt(
+            [
+                'email' => $request->email,
+                'password' => $request->password,
+            ],
+            $request->remember)) {
             return redirect()->intended(route('admin.index'));
         }
+
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 
