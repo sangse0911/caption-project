@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserLoginRequest;
 use Auth;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class AdminLoginController extends Controller
 {
@@ -31,13 +30,9 @@ class AdminLoginController extends Controller
      * [login description]
      * @return [type] [description]
      */
-    public function login(Request $request)
+    public function login(StoreUserLoginRequest $request)
     {
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required|min:2',
-        ]);
-        $token = Str::random(60);
+
         if (Auth::guard('admin')->attempt(
             [
                 'email' => $request->email,

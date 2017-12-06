@@ -41,8 +41,7 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        $contract = $this->contractRepository->create($request->all());
-        return redirect()->route('admin.index');
+
     }
 
     /**

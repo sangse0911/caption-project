@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreEventRequest;
 use App\Interfaces\EventInterface;
 use App\Interfaces\ImageInterface;
 use Illuminate\Http\Request;
@@ -51,15 +52,16 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEventRequest $request)
     {
 
         if ($request->ajax()) {
             $data = $request->all();
             $event = $this->eventRepository->create($data);
+
+            return response()->json($event, 200);
         }
 
-        return response()->json($event, 200);
     }
 
     /**
@@ -91,15 +93,16 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(StoreEventRequest $request)
     {
         if ($request->ajax()) {
 
             $data = $request->all();
             $event = $this->eventRepository->modified($data);
+
+            return response()->json($event, 200);
         }
 
-        return response()->json($event, 200);
     }
 
     /**

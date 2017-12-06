@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBookShelfRequest;
 use App\Interfaces\BookshelfInterface;
 use Illuminate\Http\Request;
 
@@ -46,13 +47,16 @@ class BookshelfController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBookShelfRequest $request)
     {
+
         if ($request->ajax()) {
             $data = $request->all();
-            $bookShelf = $this->bookshelfRepository->create($data);
+            $bookshelf = $this->bookshelfRepository->create($data);
+
+            return response()->json($bookshelf, 200);
         }
-        return response()->json($bookShelf, 200);
+        // return response()->json(422);
     }
 
     /**

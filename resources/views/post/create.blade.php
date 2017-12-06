@@ -10,6 +10,10 @@
             <input type="radio" name="kind" value="1">Cho thuê</label>
         <label class="radio-inline">
             <input type="radio" name="kind" value="2">Cho mượn</label>
+        <br/>
+        <span class="help-block">
+            <strong id="error-kind"></strong>
+        </span>
     </div>
     <div class="form-group col-sm-6 post">
         <label for="introduce">Bạn muốn thanh toán bằng</label>
@@ -18,51 +22,88 @@
             <input type="radio" name="method" value="0">Tiền mặt</label>
         <label class="radio-inline">
             <input type="radio" name="method" value="1">Chuyển khoản</label>
+        <br>
+        <span class="help-block">
+            <strong id="error-method"></strong>
+        </span>
     </div>
     <div class="form-group col-sm-6 post">
         <label for="name">Số tài khoản</label>
         <input type="text" name="account" class="form-control" id="account" value="" placeholder="Tài khoản">
+        <span class="help-block">
+            <strong id="error-account"></strong>
+        </span>
     </div>
     <div class="form-group col-md-6 post">
         <label for="">Gía</label>
         <input type="text" name="price" id="price" class="form-control" placeholder="Gía bạn mong muốn">
+        <span class="help-block">
+            <strong id="error-price"></strong>
+        </span>
     </div>
     <div class="form-group col-md-6 post">
         <label for="">Gía thuê</label>
         <input type="text" name="price-rent" id="price-rent" class="form-control" placeholder="Gía bạn mong muốn">
+        <span class="help-block">
+            <strong id="error-price-rent"></strong>
+        </span>
     </div>
     <div class="form-group col-md-6 post">
         <label for="">Số điện thoại</label>
         <input type="text" name="phone" id="phone" class="form-control" placeholder="Số điện thoại nhà cung cấp">
+        <span class="help-block">
+            <strong id="error-phone"></strong>
+        </span>
     </div>
     <div class="form-group col-sm-6 post">
         <label for="name">Địa chỉ của bạn</label>
         <input type="text" name="address" class="form-control" id="address" value="" placeholder="Địa chỉ nhà cung cấp">
+        <span class="help-block">
+            <strong id="error-address"></strong>
+        </span>
     </div>
     <div class="form-group col-sm-6 post">
         <label for="name">Tên sách</label>
         <input type="hidden" name="id" value="" id="id">
         <input type="text" name="name" class="form-control" id="name" value="" placeholder="Tên sách">
+        <span class="help-block">
+            <strong id="error-name"></strong>
+        </span>
     </div>
     <div class="form-group col-sm-6 post">
         <label for="introduce">Giới thiệu về sách</label>
         <input type="text" name="introduce" class="form-control" id="introduce" value="" placeholder="Giới thiệu về sách">
+        <span class="help-block">
+            <strong id="error-introduce"></strong>
+        </span>
     </div>
     <div class="form-group col-sm-6 post">
         <label for="author">Tác gỉa</label>
         <input type="text" class="form-control" name="author" id="author" value="" placeholder="Tác gỉa">
+        <span class="help-block">
+            <strong id="error-author"></strong>
+        </span>
     </div>
     <div class="form-group col-sm-6 post">
         <label for="publishing-company">Nhà xuất bản</label>
         <input type="text" class="form-control" name="company" id="company" value="" placeholder="Nhà xuất bản">
+        <span class="help-block">
+            <strong id="error-company"></strong>
+        </span>
     </div>
     <div class="form-group col-sm-6 post">
         <label for="publishing-year">Năm xuất bản</label>
         <input type="text" class="form-control" name="year" id="year" value="" placeholder="Năm xuất bản">
+        <span class="help-block">
+            <strong id="error-year"></strong>
+        </span>
     </div>
     <div class="form-group col-sm-6 post">
         <label for="republish">Tái bản lần thứ</label>
         <input type="text" class="form-control" name="republish" id="republish" value="" placeholder="Tái bản lần thứ">
+        <span class="help-block">
+            <strong id="error-republish"></strong>
+        </span>
     </div>
     <div class="form-group col-md-6 supplier">
         <h6>Chất Lượng Sách</h6>
@@ -70,12 +111,18 @@
             <option name="" value="5">Cũ</option>
             <option name="" value="6">Mới</option>
         </select>
+        <span class="help-block">
+            <strong id="error-quality"></strong>
+        </span>
     </div>
     <div class="form-group col-sm-12 post">
         <label for="description">Mô tả về sách</label>
         <textarea class="form-control" id="description" name="description" rows="10" placeholder="Mô tả về sách"></textarea>
     </div>
     <div class="form-group image-area post">
+        <span class="help-block">
+            <strong id="error-image"></strong>
+        </span>
         <div class="col-md-6">
             <input type="file" id="input-file-now" class="dropify" name="images[]" />
         </div>
@@ -88,6 +135,7 @@
         <div class="col-md-6">
             <input type="file" id="input-file-now" class="dropify" name="images[]" />
         </div>
+
     </div>
     <div class="form-group" style="clear: both;"></div>
     <div class="form-group" style="display: block; float: right;">
@@ -224,10 +272,35 @@
 @endsection @include('particals.contents') @endsection
 @section('script')
 <script>
+
     $("#quality").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
     $('#year').datetimepicker({
 
         format: 'YYYY-MM-DD'
+    });
+
+    $('#post-create').click(function(e) {
+
+        $('#error-name').text("");
+        $('#error-introduce').text("");
+        $('#error-description').text("");
+        $('#error-price').text("");
+        $('#error-price-rent').text("");
+        $('#error-author').text("");
+        $('#error-company').text("");
+        $('#error-year').text("");
+        $('#error-kind').text("");
+        $('#error-method').text("");
+        $('#error-account').text("");
+        $('#error-category').text("");
+        $('#error-quality').text("");
+        $('#error-republish').text("");
+        $('#error-location').text("");
+        $('#error-isbn').text("");
+        $('#error-account').text("");
+        $('#error-address').text("");
+        $('#error-image').text("");
+        $('#error-phone').text("");
     });
 
     $('#ahuhu').submit(function(evt) {
@@ -251,7 +324,30 @@
                 window.location.assign('/books');
             },
             error: function(data) {
-                console.log(data);
+                if(data.status === 422) {
+                    var errors = data.responseJSON;
+
+                    $('#error-name').text(errors['name']);
+                    $('#error-introduce').text(errors['introduce']);
+                    $('#error-description').text(errors['description']);
+                    $('#error-price').text(errors['price']);
+                    $('#error-price-rent').text(errors['price-rent']);
+                    $('#error-author').text(errors['author']);
+                    $('#error-company').text(errors['company']);
+                    $('#error-year').text((errors['year']));
+                    $('#error-kind').text(errors['kind']);
+                    $('#error-method').text(errors['method']);
+                    $('#error-account').text(errors['account']);
+                    $('#error-category').text(errors['category']);
+                    $('#error-quality').text(errors['quality']);
+                    $('#error-republish').text(errors['republish']);
+                    $('#error-location').text(errors['location']);
+                    $('#error-isbn').text(errors['isbn']);
+                    $('#error-account').text(errors['account']);
+                    $('#error-address').text(errors['address']);
+                    $('#error-image').text(errors['image']);
+                    $('#error-phone').text(errors['phone']);
+                }
             }
         });
          evt.preventDefault();

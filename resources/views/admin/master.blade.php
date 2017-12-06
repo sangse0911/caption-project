@@ -63,7 +63,7 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('users.index') }}">Danh sách</a></li>
-                            <li><a href="{{ route('supplier.index') }}">Nhà cung cấp</a></li>
+                            {{-- <li><a href="{{ route('supplier.index') }}">Nhà cung cấp</a></li> --}}
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -147,7 +147,7 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('users.index') }}">Danh sách</a></li>
-                            <li><a href="{{ route('supplier.index') }}">Nhà cung cấp</a></li>
+                            {{-- <li><a href="{{ route('supplier.index') }}">Nhà cung cấp</a></li> --}}
                         </ul>
                     </li>
                     <li class="with-sub">

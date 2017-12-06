@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBookRequest;
+use App\Http\Requests\StorePostRequest;
 use App\Interfaces\BookInterface;
 use Illuminate\Http\Request;
 
@@ -113,14 +115,16 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBookRequest $request)
     {
 
         if ($request->ajax()) {
             $data = $request->all();
             $book = $this->bookRepository->create($data);
+
+            return response()->json($book, 200);
         }
-        return response()->json($book, 200);
+
     }
 
     /**
@@ -128,13 +132,15 @@ class BookController extends Controller
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function storeIfOwned(Request $request)
+    public function storeIfOwned(StoreBookRequest $request)
     {
+
         if ($request->ajax()) {
             $data = $request->all();
             $book = $this->bookRepository->createOwnerBook($data);
+
+            return response()->json($book, 200);
         }
-        return response()->json($book, 200);
     }
 
     /**
@@ -142,7 +148,7 @@ class BookController extends Controller
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function storePostBook(Request $request)
+    public function storePostBook(StorePostRequest $request)
     {
         if ($request->ajax()) {
             $data = $request->all();

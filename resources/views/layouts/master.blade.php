@@ -66,7 +66,7 @@
                         @endif
                     </ul>
                 </nav>
-                <form type="hidden" name="" id="" method="POST">
+                <form type="hidden" name="" id="" method="POST" action="{{ url('/login') }}">
                     {{ csrf_field() }}
                     <div id="loginModal" class="modal fade" role="dialog">
                         <div class="modal-dialog modal-lg">
@@ -77,14 +77,28 @@
                                     <h4 class="modal-title">Đăng nhập</h4>
                                 </div>
                                 <div class="modal-body">
+
                                     <div class="form-group col-sm-6">
                                         <label for="name">Tên tài khoản</label>
-                                        <br/>
-                                        <input type="text" name="name" class="form-control" id="name" value="" placeholder="Ten tai khoan">
-                                        <br/>
-                                        <input type="password" name="password" class="form-control" id="password" value="" placeholder="Mat khau">
-                                        <br/>
-                                        <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light">Đăng nhập</button>
+                                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+
+                                                @if ($errors->has('email'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('email') }}</strong>
+                                                    </span>
+                                                @endif
+                                        </div>
+                                        <label for="password">Mật khẩu</label>
+                                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                             <input id="password" type="password" class="form-control" name="password" required>
+                                            @if ($errors->has('password'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('password') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-default  b-a-0 waves-effect waves-light">Đăng nhập</button>
                                     </div>
                                     <div class="form-group col-sm-6">
                                         <label for="name">Đăng nhập bằng facebook</label>

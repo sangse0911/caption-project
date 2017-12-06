@@ -24,10 +24,13 @@
                             <span class="custom-control-description">Sách Thuê</span>
                         </label>
                         <br>
+                        <span class="help-block">
+                            <strong id="error-kind"></strong>
+                        </span>
                     </div>
                     <div class="form-group col-md-6">
                         <h6>Tài khoản ngân hàng</h6>
-                        <input type="text" name="account" id="account" class="form-control" placeholder="Tai khoan ngan hang">
+                        <input type="text" name="account" id="account" class="form-control" placeholder="Tài khoản ngân hàng">
                     </div>
                     <div class="form-group col-md-6">
                         <h6>Phương thức thanh toán</h6>
@@ -42,26 +45,37 @@
                             <span class="custom-control-description">Chuyển khoản</span>
                         </label>
                         <br>
+                        <span class="help-block">
+                            <strong id="error-method"></strong>
+                        </span>
                     </div>
                     <div class="form-group col-md-6">
                         <h6>Tác Giả</h6>
                         <input type="text" name="author" id="author" class="form-control" placeholder="Nhập Tên Tác Giả">
-                        <br>
+                        <span class="help-block">
+                            <strong id="error-author"></strong>
+                        </span>
                     </div>
                     <div class="form-group col-md-6">
                         <h6>Tên Sách</h6>
                         <input type="text" name="name" class="form-control" id="name" placeholder="Nhập Tên Sách">
-                        <br>
+                        <span class="help-block">
+                            <strong id="error-name"></strong>
+                        </span>
                     </div>
                     <div class="form-group col-md-6">
                         <h6>Giới thiệu qua về sách</h6>
                         <input type="text" name="introduce" class="form-control" id="introduce" placeholder="Giới thiệu sách">
-                        <br>
+                        <span class="help-block">
+                            <strong id="error-introduce"></strong>
+                        </span>
                     </div>
                     <div class="form-group col-md-6">
                         <h6>Nhà Xuất Bản</h6>
                         <input type="text" name="company" class="form-control" id="company" placeholder="Nhập Tên Nhà Xuất Bản">
-                        <br>
+                        <span class="help-block">
+                            <strong id="error-company"></strong>
+                        </span>
                     </div>
                     <div class="form-group col-md-6">
                         <h6>Thể Loại</h6>
@@ -70,31 +84,44 @@
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
+                        <span class="help-block">
+                            <strong id="error-category"></strong>
+                        </span>
                     </div>
                     <div class="form-group col-md-6">
                         <h6>Năm Xuất Bản</h6>
                         <input type="text" name="year" class="form-control" id="year" placeholder="Nhập Năm Xuất Bản">
-                        <br>
+                        <span class="help-block">
+                            <strong id="error-year"></strong>
+                        </span>
                     </div>
                     <div class="form-group col-md-6">
                         <h6>Giá</h6>
                         <input type="text" name="price" class="form-control form-control-success" id="price">
-                        <br>
+                        <span class="help-block">
+                            <strong id="error-price"></strong>
+                        </span>
                     </div>
                      <div class="form-group col-md-6">
                         <h6>Giá thuê</h6>
                         <input type="text" name="price-rent" class="form-control form-control-success" id="price-rent">
-                        <br>
+                        <span class="help-block">
+                            <strong id="error-price-rent"></strong>
+                        </span>
                     </div>
                     <div class="form-group col-md-6">
                         <h6>ISBN</h6>
-                        <input type="text" name="isbn" class="form-control" id="isbn" placeholder="Ma so sach">
-                        <br>
+                        <input type="text" name="isbn" class="form-control" id="isbn" placeholder="Mã số sách">
+                        <span class="help-block">
+                            <strong id="error-isbn"></strong>
+                        </span>
                     </div>
                     <div class="form-group col-md-6">
                         <h6>Tái Bản Lần Thứ</h6>
-                        <input type="text" name="republish" class="form-control" id="republish" placeholder="Tai ban lan thu">
-                        <br>
+                        <input type="text" name="republish" class="form-control" id="republish" placeholder="Tái bản lần thứ">
+                        <span class="help-block">
+                            <strong id="error-republish"></strong>
+                        </span>
                     </div>
                      <div class="form-group col-md-6">
                         <h6>Vị trí của sách</h6>
@@ -103,6 +130,9 @@
                             <option name="" value="{{ $bookshelf->id }}">{{ $bookshelf->location }}</option>
                             @endforeach
                         </select>
+                        <span class="help-block">
+                            <strong id="error-location"></strong>
+                        </span>
                     </div>
                     <div class="form-group col-md-6">
                         <h6>Chất Lượng Sách</h6>
@@ -112,11 +142,16 @@
                             <option name="" value="3">66% den 75%</option>
                             <option name="" value="4">76% den 90%</option>
                         </select>
-                        <br>
+                        <span class="help-block">
+                            <strong id="error-quality"></strong>
+                        </span>
                     </div>
                     <div class="form-group col-sm-12 post">
                         <label for="description">Mô tả về sách</label>
                         <textarea class="form-control" id="description" name="description" rows="10" placeholder="Mô tả về sách"></textarea>
+                        <span class="help-block">
+                            <strong id="error-description"></strong>
+                        </span>
                     </div>
                     <div class="form-group col-md-12">
                         <h6>Hình Ảnh</h6>
@@ -168,6 +203,26 @@
 
 <script type="text/javascript">
 
+    $('#book-create').click(function(e) {
+
+        $('#error-name').text("");
+        $('#error-introduce').text("");
+        $('#error-description').text("");
+        $('#error-price').text("");
+        $('#error-price-rent').text("");
+        $('#error-author').text("");
+        $('#error-company').text("");
+        $('#error-year').text("");
+        $('#error-kind').text("");
+        $('#error-method').text("");
+        $('#error-account').text("");
+        $('#error-category').text("");
+        $('#error-quality').text("");
+        $('#error-republish').text("");
+        $('#error-location').text("");
+        $('#error-isbn').text("");
+    });
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -193,7 +248,26 @@
                 window.location.assign('/admin/books');
             },
             error: function(data) {
-                console.log(data);
+                if(data.status === 422) {
+                    var errors = data.responseJSON;
+
+                    $('#error-name').text(errors['name']);
+                    $('#error-introduce').text(errors['introduce']);
+                    $('#error-description').text(errors['description']);
+                    $('#error-price').text(errors['price']);
+                    $('#error-price-rent').text(errors['price-rent']);
+                    $('#error-author').text(errors['author']);
+                    $('#error-company').text(errors['company']);
+                    $('#error-year').text((errors['year']));
+                    $('#error-kind').text(errors['kind']);
+                    $('#error-method').text(errors['method']);
+                    $('#error-account').text(errors['account']);
+                    $('#error-category').text(errors['category']);
+                    $('#error-quality').text(errors['quality']);
+                    $('#error-republish').text(errors['republish']);
+                    $('#error-location').text(errors['location']);
+                    $('#error-isbn').text(errors['isbn']);
+                }
             }
         });
         evt.preventDefault();

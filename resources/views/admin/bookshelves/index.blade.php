@@ -64,10 +64,13 @@
                             <h4 class="modal-title">Thêm mới gía sách</h4>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group">
+                            <div class="form-group {{ $errors->has('location') ? ' has-error' : ''}}">
                                 <label for="name">Địa điểm gía sách</label>
                                 <input type="hidden" id="id" value="">
-                                <input type="text" name="location" class="form-control" id="location" value="" placeholder="Dia diem tren gia sach">
+                                <input type="text" name="location" class="form-control" id="location" value="" placeholder="Địa điểm trên gía sách">
+                                <span class="help-block">
+                                    <strong id="error-location"></strong>
+                                </span>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -110,7 +113,10 @@
                 window.location.reload(true);
             },
             error: function(data) {
-                console.log('ee', data);
+                if(data.status === 422) {
+                    var errors = data.responseJSON;
+                    $('#error-location').text(errors['location']);
+                }
             }
         });
         // console.log(data),
@@ -125,7 +131,7 @@
             url: '/bookshelf/' + bookshelf_id,
             success: function(data){
                 console.log(data);
-                $('.modal-title').text('Thay doi thong tin gia sach');
+                $('.modal-title').text('Thay đổi thông tin gía sách');
                 $('#location').val(data['location']);
                 $('#id').val(data['id']);
                 $('input[type=radio][name="bookshelf-status"][value='+data['status']+']').prop('checked', true);

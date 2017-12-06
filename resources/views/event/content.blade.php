@@ -64,11 +64,16 @@
                                 <label for="title">Tên sự kiện</label>
                                 <input type="hidden" name="id" value="" id="id">
                                 <input type="text" name="title" class="form-control" id="title" value="" placeholder="Tên sự kiện">
-                                <br/>
+                                <span class="help-block">
+                                    <strong id="error-title"></strong>
+                                </span>
                             </div>
                             <div class="form-group">
                                 <label for="description">Chi tiết sự kiện</label>
                                 <textarea class="form-control" name="description" id="description" rows="10" value="" placeholder="Chi tiết sự kiện"></textarea>
+                                <span class="help-block">
+                                    <strong id="error-description"></strong>
+                                </span>
                             </div>
                             <div class="form-group">
 
@@ -76,14 +81,24 @@
                                     <input type="radio" name="status" value="1">Sẵn sàng</label>
                                 <label class="radio-inline">
                                     <input type="radio" name="status" value="0">Không sẵn sàng</label>
+                                <br/>
+                                <span class="help-block">
+                                    <strong id="error-status"></strong>
+                                </span>
                             </div>
                             <div class="form-group col-md-6">
                                 <h6>Ngày bắt đầu</h6>
                                 <input type="text" name="start-date" id="start-date" class="form-control year" placeholder="Ngày bắt đầu">
+                                <span class="help-block">
+                                    <strong id="error-start"></strong>
+                                </span>
                             </div>
                             <div class="form-group col-md-6">
                                 <h6>Ngày kết thúc</h6>
                                 <input type="text" name="end-date" id="end-date" class="form-control year" placeholder="Ngày kết thúc">
+                                <span class="help-block">
+                                    <strong id="error-end"></strong>
+                                </span>
                             </div>
                             <div class="form-group form-image">
                                 <input type="file" class="dropify" name="images[]" id="image" multiple="multiple">
@@ -107,6 +122,32 @@
     $('.year').datetimepicker({
         format: 'YYYY-MM-DD'
     });
+
+    $('#event-create').click(function(e) {
+
+        $('#title').val("");
+        $('#start-date').val("");
+        $('#description').val("");
+        $('#end-date').val("");
+        $('input[name=status]').prop('checked', false);
+    });
+
+    $('#update-event').click(function(e) {
+        $('#error-start').text("");
+        $('#error-end').text("");
+        $('#error-description').text("");
+        $('#error-title').text("");
+        $('#error-status').text("");
+    });
+
+    $('#add').click(function(e) {
+        $('#error-start').text("");
+        $('#error-end').text("");
+        $('#error-description').text("");
+        $('#error-title').text("");
+        $('#error-status').text("");
+    });
+
     $('#event-action').submit(function(evt) {
 
         var formData = new FormData(this);
@@ -127,7 +168,16 @@
                 window.location.reload(true);
             },
             error: function(data) {
-                console.log(data);
+                if(data.status === 422) {
+
+                    var errors = data.responseJSON;
+
+                    $('#error-start').text(errors['start_date']);
+                    $('#error-end').text(errors['end_date']);
+                    $('#error-description').text(errors['description']);
+                    $('#error-title').text(errors['title']);
+                    $('#error-status').text(errors['status']);
+                }
             }
         });
         evt.preventDefault();
@@ -152,13 +202,14 @@
             dataType: 'JSON',
             url: '/event/' + event_id,
             success: function(data){
+
                 $('.modal-title').text('Thay đổi sự kiện');
                 $('#id').val(data['id']);
                 $('#title').val(data['title']);
                 $('#description').val(data['description']);
                 $('input[type=radio][name="status"][value='+data['status']+']').prop('checked', true);
-                $('#start-date').val(data['start-date']);
-                $('#end-date').val(data['end-date']);
+                $('#start-date').val(data['start_date']);
+                $('#end-date').val(data['end_date']);
 
             },
             error: function(data){
@@ -195,7 +246,16 @@
                 window.location.reload(true);
             },
             error: function(data) {
-                console.log('ee', data);
+                if(data.status === 422) {
+
+                    var errors = data.responseJSON;
+
+                    $('#error-start').text(errors['start_date']);
+                    $('#error-end').text(errors['end_date']);
+                    $('#error-description').text(errors['description']);
+                    $('#error-title').text(errors['title']);
+                    $('#error-status').text(errors['status']);
+                }
             }
         });
         e.preventDefault();

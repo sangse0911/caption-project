@@ -16,8 +16,8 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Ten</th>
-                        <th>Hanh dong</th>
+                        <th>Tên</th>
+                        <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,19 +56,22 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Them moi quyen han</h4>
+                            <h4 class="modal-title">Thêm mới quyền hạn</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="name">Tean quyen han</label>
+                                <label for="name">Tên quyền hạn</label>
                                 <input type="hidden" id="id" value="">
-                                <input type="text" name="name" class="form-control" id="name" value="" placeholder="Ten quyen han">
+                                <input type="text" name="name" class="form-control" id="name" value="" placeholder="Tên quyền hạn">
                             </div>
+                            <span class="help-block">
+                                <strong id="error-name"></strong>
+                            </span>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="role-create">Tao moi</button>
-                            <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" style="display: none;" id="role-update">Luu</button>
-                            <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Dong</button>
+                            <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="role-create">Tạo mới</button>
+                            <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" style="display: none;" id="role-update">Lưu</button>
+                            <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Đóng</button>
                         </div>
                     </div>
                 </div>
@@ -85,9 +88,15 @@
         }
     });
 
+    $('#create').click(function(e) {
+        $('#name').val("");
+        $('#role-create').removeAttr("style");
+        $('#role-update').css("display", "none");
+    });
+
     $('#role-create').on('click', function(e) {
 
-        var name = $('#role').val();
+        var name = $('#name').val();
 
         $.ajax({
 
@@ -102,13 +111,18 @@
                 window.location.reload(true);
             },
             error: function(data) {
-                console.log('ee', data);
+                if(data.status === 422) {
+
+                    var errors = data.responseJSON;
+
+                    $('#error-name').text(errors['name']);
+                }
             }
         });
-        // console.log(data),
         e.preventDefault();
     });
     $('.btn-update').on('click', function(e) {
+
         var role_id = e.currentTarget.id.substring(7);
         $.ajax({
             cache: false,
@@ -116,15 +130,15 @@
             dataType: 'JSON',
             url: '/role/' + role_id,
             success: function(data){
-                console.log(data);
-                $('.modal-title').text('Thay doi thong tin quyen han');
+
+                $('.modal-title').text('Thay đổi thông tin quyền hạn');
                 $('#name').val(data['name']);
                 $('#id').val(data['id']);
                 $('#role-create').css('display','none');
                 $('#role-update').removeAttr('style');
             },
             error: function(data){
-                console.log('ee', data);
+
             }
         });
     });
@@ -141,14 +155,17 @@
             data: {
                 id: id,
                 name: name,
-
             },
             success: function(data) {
-                // console.log('ss', data);
+
                 window.location.reload(true);
             },
             error: function(data) {
-                console.log('ee', data);
+                if(data.status === 422) {
+
+                    var errors = data.responseJSON;
+                    $('#error-name').text(errors['name']);
+                }
             }
         });
         // console.log(data),
