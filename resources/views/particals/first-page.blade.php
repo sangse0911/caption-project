@@ -25,7 +25,7 @@
                                         <a data-toggle="modal" href="#myModal" class="book-show" id="book-{{ $book->id}}">
                                             <h3 class="product-name">{{ $book->name }}</h3>
                                             <div class="product-thumbnail">
-                                                <img src="{{ URL::to('assets/images/product'. '/'. $book->images[0]['path'])}}" class="img-responsive" alt="">
+                                                <img src="{{ URL::to('assets/images/product'. '/'. $book->images->first()->path )}}" class="img-responsive" alt="">
                                             </div>
                                         </a>
                                         <div class="price-add-to-cart">
