@@ -10,6 +10,7 @@ use App\Interfaces\UserInterface;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Contract;
+use App\Models\ContractDetail;
 use Auth;
 use Illuminate\Support\Facades\Input;
 
@@ -402,7 +403,6 @@ class BookRepository implements BookInterface
      */
     public function modified($data)
     {
-        // dd($data);
 
         $book = Book::findOrFail($data['id']);
         $book->categories()->detach();
@@ -429,8 +429,14 @@ class BookRepository implements BookInterface
         $book->republish = $data['republish'];
         $book->isbn = $data['isbn'];
         $book->price = $data['price'];
+        $book->rental_fee = $data['rent'];
+
         //save book
         $book->save();
+
+        $contractDetail = ContractDetail::findOrFail($book->id);
+        $contractDetail->quality = implode($data['quality']);
+        $contractDetail->save();
 
         $categories = Input::get('categories');
         foreach ($categories as $categoriesOb) {

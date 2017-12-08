@@ -64,7 +64,7 @@
                                     <!-- end product list -->
                                     <p class="total"><strong>Subtotal:</strong> <span class="amount">£969.98</span></p>
                                     <p class="buttons">
-                                        <a class="button wc-forward" href="cart.html">Giỏ hàng</a>
+                                        <a class="button wc-forward" href="{{ route('cart.index') }}">Giỏ hàng</a>
                                         <a class="button checkout wc-forward" href="#">Xóa</a>
                                     </p>
                                 </div>

@@ -278,6 +278,22 @@ $.ajaxSetup({
 $('#book-create').click(function(e) {
     $('.form-status').css("display", "none");
     $('.modal-title').text("Thêm mới sách");
+    $('#name').val('');
+    $('#introduce').val('');
+    CKEDITOR.instances.description.setData('');
+    $('#price').val('');
+    $('#price-rent').val('');
+    $('#author').val('');
+    $('#company').val('');
+    $('#year').val('');
+    $('#kind').val('');
+    $('#method').val('');
+    $('#account').val('');
+    $('#category').val('').trigger('change');
+    $('#quality').val('').trigger('change');
+    $('#republish').val('');
+    $('#location').val('').trigger('change');
+    $('#isbn').val('');
 })
 
 $('#create-book').click(function(e) {
@@ -298,6 +314,7 @@ $('#create-book').click(function(e) {
     $('#error-republish').text("");
     $('#error-location').text("");
     $('#error-isbn').text("");
+
 });
 
 
@@ -357,6 +374,23 @@ $('.btn-update').on('click', function(e) {
     $('.method-pay').css("display", "none");
     $('.kind-book').css("display", "none");
 
+    $('#error-name').text("");
+    $('#error-introduce').text("");
+    $('#error-description').text("");
+    $('#error-price').text("");
+    $('#error-price-rent').text("");
+    $('#error-author').text("");
+    $('#error-company').text("");
+    $('#error-year').text("");
+    $('#error-kind').text("");
+    $('#error-method').text("");
+    $('#error-account').text("");
+    $('#error-category').text("");
+    $('#error-quality').text("");
+    $('#error-republish').text("");
+    $('#error-location').text("");
+    $('#error-isbn').text("");
+
     var book_id = $(this).data('id');
     var array = [];
 
@@ -381,6 +415,7 @@ $('.btn-update').on('click', function(e) {
             $('#location').val(data['book']['bookshelf_id']).trigger('change');
             $('#quality').val(data['details'][0]['quality']).trigger('change');
             $('#price').val(data['book']['price']);
+            $('#price-rent').val(data['book']['rental_fee']);
             $('#author').val(data['book']['author']);
             $('input[type=radio][name="status"][value=' + data['book']['status'] + ']').prop('checked', true);
             $('#company').val(data['book']['company']);
@@ -395,6 +430,23 @@ $('.btn-update').on('click', function(e) {
 });
 $('#book-update').click(function(evt) {
 
+    $('#error-name').text("");
+    $('#error-introduce').text("");
+    $('#error-description').text("");
+    $('#error-price').text("");
+    $('#error-price-rent').text("");
+    $('#error-author').text("");
+    $('#error-company').text("");
+    $('#error-year').text("");
+    $('#error-kind').text("");
+    $('#error-method').text("");
+    $('#error-account').text("");
+    $('#error-category').text("");
+    $('#error-quality').text("");
+    $('#error-republish').text("");
+    $('#error-location').text("");
+    $('#error-isbn').text("");
+
     var id = $('#id').val();
     var name = $('#name').val();
     var categories = $('#category').val();
@@ -408,6 +460,8 @@ $('#book-update').click(function(evt) {
     var year = $('#year').val();
     var republish = $('#republish').val();
     var isbn = $('#isbn').val();
+    var rent = $('#price-rent').val();
+    var quality = $('#quality').val();
 
     $.ajax({
 
@@ -428,7 +482,9 @@ $('#book-update').click(function(evt) {
             company: company,
             year: year,
             republish: republish,
-            isbn: isbn
+            isbn: isbn,
+            rent: rent,
+            quality: quality
         },
         success: function(data) {
             alert("Cập nhật thành công thông tin sách");
@@ -442,7 +498,7 @@ $('#book-update').click(function(evt) {
                 $('#error-introduce').text(errors['introduce']);
                 $('#error-description').text(errors['description']);
                 $('#error-price').text(errors['price']);
-                $('#error-price-rent').text(errors['price-rent']);
+                $('#error-price-rent').text(errors['rent']);
                 $('#error-author').text(errors['author']);
                 $('#error-company').text(errors['company']);
                 $('#error-year').text((errors['year']));

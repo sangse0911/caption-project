@@ -1,14 +1,13 @@
 <div class="product" id="single-product">
     <div class="single-product-wrapper">
         <div class="product-images-wrapper">
-            <span class="onsale">Giảm giá!</span>
             <div class="images electro-gallery">
                 <div class="thumbnails-single owl-carousel owl-loaded owl-drag">
                     <div class="owl-stage-outer">
                         <div class="owl-stage">
-                            <div class="owl-item active" style="width: 470px;">
+                            <div class="owl-item active" style="width: 300px;">
                                 <a href="#" class="zoom" title="" data-rel="prettyPhoto[product-gallery]">
-                                    <img src="" class="wp-post-image" alt="">
+                                    <img  class="wp-post-image" alt="" id="image-book">
                                 </a>
                             </div>
                         </div>
@@ -77,17 +76,6 @@
                 <link itemprop="availability" href="http://schema.org/InStock">
             </div>
             <!-- /itemprop -->
-            <form class="variations_form cart" method="post">
-                <div class="single_variation_wrap">
-                    <div class="woocommerce-variation single_variation"></div>
-                    <div class="woocommerce-variation-add-to-cart variations_button">
-                        <button type="submit" class="single_add_to_cart_button button">Thêm vào giỏ</button>
-                        <input type="hidden" name="add-to-cart" value="2452">
-                        <input type="hidden" name="product_id" value="2452">
-                        <input type="hidden" name="variation_id" class="variation_id" value="0">
-                    </div>
-                </div>
-            </form>
         </div>
         <!-- .summary -->
     </div>
@@ -97,7 +85,7 @@
                 <a href="#tab-description" class="active" data-toggle="tab">Mô tả về sách</a>
             </li>
             <li class="nav-item reviews_tab">
-                <a href="#tab-reviews" data-toggle="tab">Danh sách của độc giả</a>
+                <a href="#tab-reviews" data-toggle="tab">Đánh gía của độc giả</a>
             </li>
         </ul>
         <div class="tab-content">
@@ -189,7 +177,7 @@
                                                 <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
                                             </p>
                                             <p class="form-submit">
-                                                <input name="submit" type="submit"  class="submit-rate" value="Them danh gia">
+                                                <input name="submit" type="submit"  class="submit-rate" value="Thêm đánh gía">
                                                 <input type="hidden" name="comment_post_ID" value="2452" id="comment_post_ID">
                                                 <input type="hidden" name="comment_parent" id="comment_parent" value="0">
                                             </p>
@@ -217,8 +205,7 @@
                                             <time itemprop="datePublished" datetime="2016-03-03T14:13:48+00:00">March 3, 2016</time>:
                                         </p>
                                         <div itemprop="description" class="description">
-                                            <p>Fusce vitae nibh mi. Integer posuere, libero et ullamcorper facilisis, enim eros tincidunt orci, eget vestibulum sapien nisi ut leo. Cras finibus vel est ut mollis. Donec luctus condimentum ante et euismod.
-                                            </p>
+
                                         </div>
                                         <p class="meta">
                                             <strong itemprop="author">John Doe</strong> –

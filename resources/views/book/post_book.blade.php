@@ -11,7 +11,7 @@
                 <div class="product-outer">
                     <div class="product-inner">
                         <span class="loop-product-categories"><a href="#" rel="tag"></a></span>
-                        <a data-toggle="modal" href="#myModal" class="post-show" id="post-{{ $book->id}}">
+                        <a data-toggle="modal" href="#myModal" class="book-show" id="book-{{ $book->id}}">
                             <h3>{{ $book->name }}</h3>
                             <div class="product-thumbnail">
                                 <img src="{{ URL::to('assets/images/product/'. $image->path) }}" alt="">
@@ -20,8 +20,8 @@
                         <div class="price-add-to-cart">
                             <span class="price">
                                 <span class="electro-price">
-                                    <ins><span class="amount">Liên hệ</span></ins>
-                                {{-- <ins><span class="amount">{{  }}</span></ins> --}}
+                                    <ins><span class="amount">Liên hệ</span></ins><br/>
+                                    <ins><span class="amount">VND {{ $book->price }}</span></ins>
                             </span>
                             </span>
                         </div>

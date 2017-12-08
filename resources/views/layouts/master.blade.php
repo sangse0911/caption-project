@@ -99,6 +99,7 @@
                                             @endif
                                         </div>
                                         <button type="submit" class="btn btn-success btn-default  b-a-0 waves-effect waves-light">Đăng nhập</button>
+                                        <a href="{{ url('/register') }}" type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" style="float: right;">Đăng kí</a href="">
                                     </div>
                                     <div class="form-group col-sm-6">
                                         <label for="name">Đăng nhập bằng facebook</label>
@@ -439,7 +440,7 @@
                 loop: true,
                 navigation: true,
                 items: 2, //10 items above 1000px browser width
-                itemsDesktop: [1000, 3], //5 items between 1000px and 901px
+                itemsDesktop: [1000, 4], //5 items between 1000px and 901px
                 itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
                 itemsTablet: [600, 2], //2 items between 600 and 0;
                 itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
@@ -457,7 +458,6 @@
                 dataType: 'JSON',
                 url: '/book/' + book_id,
                 success: function(data) {
-                    console.log(data);
                     $('#book-rate').val(data['book']['id']);
                     $('#book-name').text(data['book']['name']);
                     $('#book-status').text(data['book']['status']);
@@ -465,37 +465,16 @@
                     $('#book-year').text(data['book']['year']);
                     $('#book-republish').text(data['book']['republish']);
                     $('#book-author').text(data['book']['author']);
-                    $('#book-price').text('Gia: ' + data['book']['price'] + ' VND');
+                    $('#book-price').text('Gía: ' + data['book']['price'] + ' VND');
                     $('#book-introduce').text(data['book']['introduce']);
                     $('#book-description').text(data['book']['description']);
+                    $('#image-book').attr('src','{{ URL::to('assets/images/product/') }}' + '/' + data['images'][0]['path']);
+                    $('.modal-footer').css('display','none');
                 },
                 error: function(data) {
-                    console.log('ee', data);
                 }
             });
             e.preventDefault();
-        });
-        $('.post-show').click(function(e) {
-            var post_id = e.currentTarget.id.substring(5);
-
-            $.ajax({
-                cache: false,
-                method: 'GET',
-                dataType: 'JSON',
-                url: '/post/' + post_id,
-                success: function(data) {
-                    console.log(data);
-                    $('#book-name').text(data['post']['name']);
-                    $('#book-status').text(data['post']['kind']);
-                    $('#book-company').text(data['post']['company']);
-                    $('#book-year').text(data['post']['year']);
-                    $('#book-republish').text(data['post']['republish']);
-                    $('#book-author').text(data['post']['author']);
-                    $('#book-price').text('Gia: ' + data['post']['price'] + ' VND');
-                    $('#book-introduce').text(data['post']['introduce']);
-                    $('#book-description').text(data['post']['description']);
-                }
-            });
         });
         </script>
 
@@ -506,30 +485,6 @@
                 }
             });
 
-            // $('.add-post').click(function(e) {
-
-            //     var postId = e.currentTarget.id.substring(9);
-            //     var userId = $('#user-id').val();
-
-            //     $.ajax({
-
-            //         cache: false,
-            //         method: 'POST',
-            //         dataType: 'JSON',
-            //         url: '/addPostWishlist',
-            //         data: {
-            //             userId: userId,
-            //             postId: postId,
-            //         },
-            //         success: function(data) {
-            //             alert("Ban da them thanh cong vao danh sach yeu thich");
-            //         },
-            //         error: function(data) {
-            //             console.log('ee', data);
-            //         }
-            //     });
-            //     e.preventDefault();
-            // });
             $('.add_to_wishlist').click(function(e) {
                 var bookId = e.currentTarget.id.substring(5);
                 var userId = $('#user-id').val();
@@ -548,7 +503,9 @@
                         alert("Bạn đã thêm thành công vào danh sách yêu thích");
                     },
                     error: function(data) {
-                        console.log('ee', data);
+                        if(data.status === 401) {
+                            alert('Vui lòng đăng nhập trưóc khi thêm sách vào yêu thích');
+                        }
                     }
 
                 });
@@ -577,7 +534,9 @@
                         alert("Cảm ơn bạn đã đánh gía");
                     },
                     error: function(data) {
-                        console.log(data);
+                        if(data.status ===401) {
+                            alert('Vui lòng đăng nhập trước khi đánh gía sách, xin cảm ơn');
+                        }
                     }
                 });
                 evt.preventDefault();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\StoreSaleRequest;
+use App\Http\Requests\StoreUpdateBookAdminRequest;
 use App\Interfaces\BookInterface;
 use Illuminate\Http\Request;
 
@@ -206,13 +207,14 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(StoreUpdateBookAdminRequest $request)
     {
         if ($request->ajax()) {
             $data = $request->all();
             $book = $this->bookRepository->modified($data);
+
+            return response()->json($book, 200);
         }
-        return response()->json($book, 200);
     }
 
     /**
