@@ -30,7 +30,7 @@
                                 Xem
                             </button>
                             &nbsp
-                            <button type="button" id="update" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
+                            <button type="button" id="update" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal" data-id="{{ $category->id }}">
                                 <span class="btn-label"><i class="fa fa-edit"></i></span>
                                 Sửa
                             </button>
@@ -61,6 +61,9 @@
                                 <label for="name">Tên</label>
                                 <input type="hidden" id="id" value="">
                                 <input type="text" name="name" class="form-control" id="name" value="" placeholder="Tên">
+                                <span class="help-block">
+                                    <strong id="error-name"></strong>
+                                </span>
                             </div>
                             <div class="form-group">
                                 <input type="file" class="dropify" name="images[]" id="image" multiple="multiple">
@@ -68,8 +71,8 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="category-create">Tạo mới</button>
-                            <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" style="display: none;" id="category-update">Lưu</button>
+                            <button type="submit" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="create">Tạo mới</button>
+                            <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" style="display: none;" id="update-category">Lưu</button>
                             <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Đóng</button>
                         </div>
                     </div>
@@ -80,38 +83,102 @@
 </div>
 @endsection
 @section('script')
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
-        $('#category-action').submit(function(evt) {
+    $('#category-create').click(function(e) {
+        $('#name').val("");
+        $('#error-name').text("");
+        $('#update-category').css("display","none");
+        $('#create').removeAttr('style');
+    });
 
-        var formData = new FormData(this);
+    $('.btn-update').on('click', function(e) {
+        var category_id = $(this).data('id');
 
         $.ajax({
-            async: true,
-            method: 'POST',
-            url: '/admin/category/store',
-            data: formData,
             cache: false,
-            contentType: false,
-            processData: false,
+            method: 'GET',
             dataType: 'JSON',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+            url: '/admin/category/' + category_id,
+            success: function(data){
+                console.log(data);
+                $('.modal-title').text('Thay đổi thông tin thể loại');
+                $('#name').val(data['name']);
+                $('#id').val(data['id']);
+                $('#update-category').removeAttr("style");
+                $('#create').css("display","none");
+
+            },
+            error: function(data){
+                console.log('ee', data);
+            }
+        });
+    });
+
+    $('#update-category').click(function(e) {
+
+        var name = $('#name').val();
+        var id = $('#id').val();
+
+        $.ajax({
+
+            cache: false,
+            method: 'PUT',
+            dataType: 'JSON',
+            url: '/admin/category/update',
+            data: {
+                id: id,
+                name: name,
+
             },
             success: function(data) {
+                alert('Cập nhật thông tin thể loại sách thành công');
                 window.location.reload(true);
             },
             error: function(data) {
-                console.log(data);
+                if(data.status === 422) {
+                    var errors = data.responseJSON;
+                    $('#error-name').text(errors['name']);
+                }
             }
         });
-        evt.preventDefault();
+        e.preventDefault();
     });
 
-    </script>
+    $('#category-action').submit(function(evt) {
+
+    var formData = new FormData(this);
+
+    $.ajax({
+        async: true,
+        method: 'POST',
+        url: '/admin/category/store',
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: 'JSON',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+        },
+        success: function(data) {
+            window.location.reload(true);
+        },
+        error: function(data) {
+            if(data.status === 422) {
+                var errors = data.responseJSON;
+
+                $('#error-name').text(errors['name']);
+            }
+        }
+    });
+    evt.preventDefault();
+});
+
+</script>
 @endsection

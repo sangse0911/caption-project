@@ -19,7 +19,7 @@
                                     <div class="product-outer" style="height: 216px;">
                                         <div class="media product-inner">
                                             <a class="media-left" href="#" title="Pendrive USB 3.0 Flash 64 GB">
-                                                <img class="media-object wp-post-image img-responsive" src="{{ URL::to('assets/images/post/'. $image->path) }}" alt="">
+                                                <img class="media-object wp-post-image img-responsive" src="{{ URL::to('assets/images/product/'. $image->path) }}" alt="">
                                             </a>
                                             <div class="media-body">
                                                 <span class="loop-product-categories">
@@ -56,7 +56,7 @@
                                 <div class="product-outer" style="height: 216px;">
                                     <div class="media product-inner">
                                         <a class="media-left" href="single-product.html" title="Pendrive USB 3.0 Flash 64 GB">
-                                            <img class="media-object wp-post-image img-responsive" src="{{ URL::to('assets/images/post/'. $image->path) }}" alt="">
+                                            <img class="media-object wp-post-image img-responsive" src="{{ URL::to('assets/images/product/'. $image->path) }}" alt="">
                                         </a>
                                         <div class="media-body">
                                             <span class="loop-product-categories">
@@ -92,7 +92,7 @@
                                 <div class="product-outer" style="height: 216px;">
                                     <div class="media product-inner">
                                         <a class="media-left" href="single-product.html" title="Pendrive USB 3.0 Flash 64 GB">
-                                            <img class="media-object wp-post-image img-responsive" src="{{ URL::to('assets/images/post/'. $image->path) }}" alt="">
+                                            <img class="media-object wp-post-image img-responsive" src="{{ URL::to('assets/images/product/'. $image->path) }}" alt="">
                                         </a>
                                         <div class="media-body">
                                             <span class="loop-product-categories">
@@ -128,7 +128,7 @@
                                 <div class="product-outer" style="height: 216px;">
                                     <div class="media product-inner">
                                         <a class="media-left" href="single-product.html" title="Pendrive USB 3.0 Flash 64 GB">
-                                            <img class="media-object wp-post-image img-responsive" src="{{ URL::to('assets/images/post/'. $image->path) }}" alt="">
+                                            <img class="media-object wp-post-image img-responsive" src="{{ URL::to('assets/images/product/'. $image->path) }}" alt="">
                                         </a>
                                         <div class="media-body">
                                             <span class="loop-product-categories">

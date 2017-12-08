@@ -58,15 +58,24 @@
                             <div class="form-group">
                                 <label for="phone">Điện thoại liên hệ</label>
                                 <input type="hidden" id="id" value="">
-                                <input type="text" name="phone" class="form-control" id="phone" value="" placeholder="Dien thoai lien he">
+                                <input type="text" name="phone" class="form-control" id="phone" value="" placeholder="Điện thoại liên hệ">
+                                <span class="help-block">
+                                    <strong id="error-phone"></strong>
+                                </span>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email liên hệ</label>
-                                <input type="email" name="email" class="form-control" id="email" value="" placeholder="Email lien he">
+                                <input type="email" name="email" class="form-control" id="email" value="" placeholder="Email liên hệ">
+                                <span class="help-block">
+                                    <strong id="error-email"></strong>
+                                </span>
                             </div>
                             <div class="form-group">
                                 <label for="address">Địa chỉ liên hệ</label>
-                                <input type="text" name="address" class="form-control" id="address" value="" placeholder="Dia chi lien he">
+                                <input type="text" name="address" class="form-control" id="address" value="" placeholder="Địa chỉ liên hệ">
+                                <span class="help-block">
+                                    <strong id="error-address"></strong>
+                                </span>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -89,7 +98,22 @@
         }
     });
 
+    $('#create').click(function(e) {
+        $('#phone').val("");
+        $('#email').val("");
+        $('#address').val("");
+        $('#error-address').text("");
+        $('#error-email').text("");
+        $('#error-phone').text("");
+        $('#contact-create').removeAttr('style');
+        $('#contact-update').css('display','none');
+    });
+
+
     $('#contact-create').on('click', function(e) {
+        $('#error-address').text("");
+        $('#error-email').text("");
+        $('#error-phone').text("");
 
         var phone = $('#phone').val();
         var email = $('#email').val();
@@ -110,7 +134,12 @@
                 window.location.reload(true);
             },
             error: function(data) {
-                console.log('ee', data);
+                if(data.status === 422) {
+                    var errors = data.responseJSON;
+                    $('#error-address').text(errors['address']);
+                    $('#error-email').text(errors['email']);
+                    $('#error-phone').text(errors['phone']);
+                }
             }
         });
         // console.log(data),
@@ -126,7 +155,7 @@
             url: '/contact/' + contact_id,
             success: function(data){
                 console.log(data);
-                $('.modal-title').text('Thay doi thong tin lien he');
+                $('.modal-title').text('Thay đổi thông tin liên hệ');
                 $('#phone').val(data['phone']);
                 $('#id').val(data['id']);
                 $('#email').val(data['email']);
@@ -135,11 +164,15 @@
                 $('#contact-update').removeAttr('style');
             },
             error: function(data){
-                console.log('ee', data);
+
             }
         });
     });
     $('#contact-update').on('click', function(e){
+        $('#error-address').text("");
+        $('#error-email').text("");
+        $('#error-phone').text("");
+
         var phone = $('#phone').val();
         var id = $('#id').val();
         var email = $('#email').val();
@@ -158,14 +191,18 @@
                 address: address,
             },
             success: function(data) {
-                // console.log('ss', data);
+                alert('Cập nhật thông tin liên hệ thành công');
                 window.location.reload(true);
             },
             error: function(data) {
-                console.log('ee', data);
+                if(data.status === 422) {
+                    var errors = data.responseJSON;
+                    $('#error-address').text(errors['address']);
+                    $('#error-email').text(errors['email']);
+                    $('#error-phone').text(errors['phone']);
+                }
             }
         });
-        // console.log(data),
         e.preventDefault();
     });
 </script>

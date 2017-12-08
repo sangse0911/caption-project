@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBookRequest extends FormRequest
+class StoreSaleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,19 +31,23 @@ class StoreBookRequest extends FormRequest
             'year' => 'required',
             'kind' => 'required',
             'method' => 'required',
-            'price' => 'required:numeric',
-            'price-rent' => 'required|numeric',
+            'price' => 'required|numeric',
             'account' => 'required|min:6',
-            'categories' => 'required',
-            'isbn' => 'required',
             'republish' => 'required|numeric',
-            'location' => 'required',
             'quality' => 'required',
+            'phone' => 'required|numeric',
+            'address' => 'required|min:8',
+            // 'image' => 'required|image',
         ];
     }
 
+    /**
+     * [messages description]
+     * @return [type] [description]
+     */
     public function messages()
     {
+
         return [
 
             'name.required' => 'Vui lòng điền tên của sách',
@@ -51,6 +55,9 @@ class StoreBookRequest extends FormRequest
 
             'introduce.required' => 'Vui lòng điền thông tin giới thiệu sách',
             'introduce.min' => 'Vui lòng kiểm tra lại thông tin, không ít hơn 6 kí tự',
+
+            'account.required' => 'Vui lòng kiểm tra lại thông tin tài khoản',
+            'account.min' => 'Tài khoản phải lớn hơn 6 kí tự',
 
             'author.required' => 'Vui lòng điền thông tin tác gỉa',
             'author.min' => 'Vui lòng kiểm tra lại thông tin tác gỉa, không nhỏ hơn 6 kí tự',
@@ -65,12 +72,10 @@ class StoreBookRequest extends FormRequest
             'method.required' => 'Vui lòng chọn phương thức thanh toán',
 
             'price.required' => 'Vui lòng nhập gía sách',
-            'price.numeric' => 'Gía  phải là sô',
+            'price.numeric' => 'Gía  phải là số',
 
             'account.required' => 'Vui lòng điền thông tin tài khoản',
             'account.mind' => 'Vui lòng kiểm tra lại thông tin, không nhỏ hơn 6 kí tự',
-
-            'categories.required' => 'Vui lòng chọn thể loại sách',
 
             'price-rent.required' => 'Vui lòng nhập gía thuê',
             'price-rent.numeric' => 'Gía thuê phải là số',
@@ -78,12 +83,16 @@ class StoreBookRequest extends FormRequest
             'republish.required' => 'Vui lòng điền thông tin tái bản',
             'republish.numeric' => 'Tái bản lân thứ phải là số',
 
-            'location.required' => 'Vui lòng chọn vị trí gía sách',
-
             'quality.required' => 'Vui lòng chọn chất lưọng sách',
 
-            'isbn.required' => 'Vui lòng điền isbn của sách',
+            'phone.required' => 'Vui lòng điền thông tin điện thoại',
+            'phone.numeric' => 'Số điện thoại phải là số',
 
+            'address.required' => 'Vui lòng điền thông tin địa chỉ của bạn',
+            'address.min' => 'Địa chỉ không nhỏ hơn 8 kí tự',
+
+            // 'image.required' => 'Vui lòng cung cấp ảnh của sách cho chúng tôi',
+            // 'image.image' => 'Xin lỗi, ảnh bạn cung cấp không chính xác, vui lòng kiểm tra lại',
         ];
     }
 }

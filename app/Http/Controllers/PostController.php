@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Interfaces\PostInterface;
+use App\Interfaces\BookInterface;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
 
-    protected $postRepository;
+    protected $bookRepository;
 
-    public function __construct(PostInterface $postRepository)
+    public function __construct(BookInterface $bookRepository)
     {
-        $this->postRepository = $postRepository;
+        $this->bookRepository = $bookRepository;
     }
     /**
      * Display a listing of the resource.
@@ -21,9 +21,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = $this->postRepository->all();
-
-        return view('particals.best-sell', compact('posts'));
+        return view('post.index');
     }
 
     public function contentPost()

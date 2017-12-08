@@ -40,7 +40,7 @@
     @endsection
 
     @section('post-book')
-        @include('book.post-book')
+        @include('book.post_book')
     @endsection
 
     @section('recently')

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\StoreSaleRequest;
 use App\Interfaces\BookInterface;
 use Illuminate\Http\Request;
 
@@ -60,6 +61,7 @@ class BookController extends Controller
         $books = $this->bookRepository->getSellBook();
         return view('book.sell-book', compact('books'));
     }
+
     /**
      * [renBook description]
      * @return [type] [description]
@@ -81,6 +83,7 @@ class BookController extends Controller
         $books = $this->bookRepository->getRentBook();
         return view('book.renter-book', compact('books'));
     }
+
     /**
      * [recentlyBook description]
      * @return [type] [description]
@@ -90,13 +93,15 @@ class BookController extends Controller
         $books = $this->bookRepository->getRecentlyBook();
         return view('particals.recently', compact('books'));
     }
+
     /**
-     * [getSupplier description]
+     * [getPostBook description]
      * @return [type] [description]
      */
-    public function getSupplier()
+    public function getPostBook()
     {
-        return $this->bookService->getSupplier();
+        $books = $this->bookRepository->getPostBook();
+        return view('book.post_book', compact('books'));
     }
 
     /**
@@ -163,7 +168,7 @@ class BookController extends Controller
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function storeSaleBook(Request $request)
+    public function storeSaleBook(StoreSaleRequest $request)
     {
         if ($request->ajax()) {
             $data = $request->all();

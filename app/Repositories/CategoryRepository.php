@@ -66,4 +66,19 @@ class CategoryRepository implements CategoryInterface
         return $category->save();
 
     }
+
+    /**
+     * [modified description]
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public function modified($data)
+    {
+
+        $category = Category::find($data['id']);
+
+        $category->name = $data['name'];
+
+        return $category->save();
+    }
 }

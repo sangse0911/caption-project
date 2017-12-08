@@ -55,7 +55,7 @@ class ContractRepository implements ContractInterface
             [
                 'method' => $data['method'],
                 'account' => $data['account'],
-                'kind' => $data['status'],
+                'kind' => $data['kind'],
                 'status' => '0',
             ]);
 

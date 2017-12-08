@@ -14,12 +14,12 @@
                         <h6>Loại Sách</h6>
                         <label class="custom-control custom-radio">
                             <input type="hidden" name="id" id="id" value="{{ \Request::segment(3) }}">
-                            <input id="radio1" name="status" value="0" type="radio" class="custom-control-input">
+                            <input id="radio1" name="kind" value="0" type="radio" class="custom-control-input">
                             <span class="custom-control-indicator"></span>
                             <span class="custom-control-description">Sách Bán</span>
                         </label>
                         <label class="custom-control custom-radio">
-                            <input id="radio2" name="status" value="1" type="radio" class="custom-control-input">
+                            <input id="radio2" name="kind" value="1" type="radio" class="custom-control-input">
                             <span class="custom-control-indicator"></span>
                             <span class="custom-control-description">Sách Thuê</span>
                         </label>

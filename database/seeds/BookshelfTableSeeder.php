@@ -13,11 +13,13 @@ class BookshelfTableSeeder extends Seeder
     {
         DB::table('bookshelves')->delete();
 
-        for ($i = 0; $i < 10; $i++) {
+        $faker = Faker\Factory::create();
+
+        for ($i = 0; $i < 100; $i++) {
             $data = array(
                 'admin_id' => '1',
                 'status' => '1',
-                'location' => str_random(10),
+                'location' => $faker->macAddress,
                 'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
             );

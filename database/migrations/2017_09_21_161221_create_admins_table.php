@@ -19,6 +19,7 @@ class CreateAdminsTable extends Migration
             $table->string('password');
             $table->string('email')->unique();
             $table->integer('role_id')->unsigned();
+            $table->string('phone');
             $table->rememberToken();
             $table->timestamps();
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCategoryRequest;
 use App\Interfaces\CategoryInterface;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
         if ($request->ajax()) {
             $data = $request->all();
@@ -64,7 +65,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->categoryRepository->find($id);
     }
 
     /**
@@ -85,9 +86,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreCategoryRequest $request)
     {
-        //
+        if ($request->ajax()) {
+            $data = $request->all();
+            $category = $this->categoryRepository->modified($data);
+
+            return response()->json($category, 200);
+        }
     }
 
     /**

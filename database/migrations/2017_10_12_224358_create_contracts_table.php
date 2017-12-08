@@ -17,10 +17,10 @@ class CreateContractsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('admin_id')->unsigned();
-            $table->enum('method', ['0', '1', '2'])->default('0');
+            $table->enum('method', [0, 1, 2]);
             $table->string('account')->nullable();
-            $table->enum('kind', ['0', '1', '2']);
-            $table->enum('status', ['0', '1', '2']);
+            $table->enum('kind', [0, 1, 2]);
+            $table->enum('status', [0, 1, 2]);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

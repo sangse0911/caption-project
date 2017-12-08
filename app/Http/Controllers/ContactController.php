@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreContactRequest;
 use App\Interfaces\ContactInterface;
 use Illuminate\Http\Request;
 
@@ -41,13 +42,14 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreContactRequest $request)
     {
         if ($request->ajax()) {
             $data = $request->all();
             $contact = $this->contactRepository->create($data);
+
+            return response()->json($contact, 200);
         }
-        return response()->json($contact, 200);
     }
 
     /**
@@ -79,13 +81,14 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(StoreContactRequest $request)
     {
         if ($request->ajax()) {
             $data = $request->all();
             $contact = $this->contactRepository->modified($data);
+
+            return response()->json($contact, 200);
         }
-        return response()->json($contact, 200);
     }
 
     /**

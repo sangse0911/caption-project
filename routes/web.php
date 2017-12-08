@@ -124,6 +124,8 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/categories', ['as' => 'admin.categories.index', 'uses' => 'CategoryController@getIndex']);
     Route::get('/admin/category/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
     Route::post('/admin/category/store', ['as' => 'category.create', 'uses' => 'CategoryController@store']);
+    Route::get('/admin/category/{id}', 'CategoryController@show')->name('category.show');
+    Route::put('/admin/category/update', 'CategoryController@update')->name('category.update');
 
     // Route::get('/status', ['as' => 'status.index', 'uses' => 'StatusController@index']);
     // Route::get('/status/create', ['as' => 'status.create', 'uses' => 'StatusController@create']);

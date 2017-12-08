@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Seeder;
 
-class AdminTableSeeder extends Seeder
+class ContractDetailsTableSeeder extends Seeder
 {
+
     /**
      * Run the database seeds.
      *
@@ -11,23 +12,22 @@ class AdminTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('admins')->delete();
+
+        DB::table('contract_details')->delete();
 
         $faker = Faker\Factory::create();
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 1; $i < 51; $i++) {
             $data = array(
-                'name' => $faker->name,
-                'password' => bcrypt('123'),
-                'email' => 'admin' . rand(1, 30) . '@gmail.com',
-                'role_id' => '1',
-                'phone' => $faker->phoneNumber,
+                'contract_id' => $i,
+                'book_id' => $i,
+                'price' => rand(10000, 100000),
+                'quality' => rand(1, 2),
                 'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
-
             );
 
-            DB::table('admins')->insert($data);
+            DB::table('contract_details')->insert($data);
             $data = null;
         }
     }

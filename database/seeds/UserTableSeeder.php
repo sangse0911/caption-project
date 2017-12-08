@@ -13,11 +13,16 @@ class UserTableSeeder extends Seeder
     {
         DB::table('users')->delete();
 
-        for ($i = 0; $i < 5; $i++) {
+        $faker = Faker\Factory::create();
+
+        for ($i = 0; $i < 20; $i++) {
             $data = array(
-                'name' => str_random(5),
-                'email' => str_random(5) . '@gmail.com',
+                'name' => $faker->name,
+                'email' => $faker->freeEmail,
                 'password' => bcrypt('123'),
+                'phone' => $faker->e164PhoneNumber,
+                'status' => '1',
+                'balance' => 0,
                 'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
             );

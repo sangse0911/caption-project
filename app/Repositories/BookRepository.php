@@ -86,6 +86,27 @@ class BookRepository implements BookInterface
             })->get();
     }
 
+    public function getBestSell()
+    {
+        return Book::where('status', '=', '1')->with('images')
+            ->whereHas('contracts', function ($query) {
+                $query->where('contracts.kind', '=', '1')
+                    ->where('contracts.status', '0');
+            })->take(20)->get();
+    }
+    /**
+     * [getPostBook description]
+     * @return [type] [description]
+     */
+    public function getPostBook()
+    {
+
+        return Book::where('status', '1')->with('images')
+            ->whereHas('contracts', function ($query) {
+                $query->where('contracts.status', '1');
+            })->paginate(15);
+    }
+
     /**
      * [findById description]
      * @param  [type] $id [description]

@@ -90,6 +90,7 @@
 
     $('#create').click(function(e) {
         $('#name').val("");
+        $('#error-name').text('');
         $('#role-create').removeAttr("style");
         $('#role-update').css("display", "none");
     });
@@ -143,6 +144,8 @@
         });
     });
      $('#role-update').on('click', function(e){
+        $('#error-name').text('');
+
         var name = $('#name').val();
         var id = $('#id').val();
 

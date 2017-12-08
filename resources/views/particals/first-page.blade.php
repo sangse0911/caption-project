@@ -14,6 +14,7 @@
     <div id="products-carousel-57176fb2c4230">
         <div class="woocommerce">
             <div class="products owl-carousel home-v2-categories-products products-carousel columns-6" id="owl-demo">
+                {{-- {{ dd($books) }} --}}
                 @foreach($books as $book)
 
                 <div class="owl-stage-outer">

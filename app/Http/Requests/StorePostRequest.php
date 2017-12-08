@@ -31,7 +31,7 @@ class StorePostRequest extends FormRequest
             'year' => 'required',
             'kind' => 'required',
             'method' => 'required',
-            'price' => 'required:numeric',
+            'price' => 'required|numeric',
             'price-rent' => 'required|numeric',
             'account' => 'required|min:6',
             'republish' => 'required|numeric',
@@ -66,7 +66,7 @@ class StorePostRequest extends FormRequest
             'method.required' => 'Vui lòng chọn phương thức thanh toán',
 
             'price.required' => 'Vui lòng nhập gía sách',
-            'price.numeric' => 'Gía  phải là sô',
+            'price.numeric' => 'Gía  phải là số',
 
             'account.required' => 'Vui lòng điền thông tin tài khoản',
             'account.mind' => 'Vui lòng kiểm tra lại thông tin, không nhỏ hơn 6 kí tự',
