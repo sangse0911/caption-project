@@ -31,6 +31,6 @@
             </li>
             @endforeach
         </ul>
-        {!! $books->links() !!}
+        {{-- {!! $books->links() !!} --}}
     </div>
 </div>
