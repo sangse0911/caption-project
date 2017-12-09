@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Interfaces\CartInterface;
 use App\Interfaces\OrderInterface;
-use App\Models\Book;
 use Auth;
 use Cart;
 use Illuminate\Http\Request;
@@ -43,18 +42,7 @@ class CartController extends Controller
      */
     public function create($id)
     {
-        $book = Book::findOrFail($id);
 
-        Cart::add([
-
-            'id' => $book->id,
-            'name' => $book->name,
-            'qty' => 1,
-            'price' => $book->price,
-
-        ]);
-
-        $content = Cart::content();
     }
 
     public function add(Request $request)

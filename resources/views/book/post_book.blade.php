@@ -6,7 +6,8 @@
     <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">
         <ul class="products columns-3">
             {{-- {{ dd($books) }} --}}
-            @foreach($books as $book) @foreach($book->images as $image)
+            @foreach($books as $book)
+            {{-- {{ dd($books->toArray()) }} --}}
             <li class="product">
                 <div class="product-outer">
                     <div class="product-inner">
@@ -14,7 +15,7 @@
                         <a data-toggle="modal" href="#myModal" class="book-show" id="book-{{ $book->id}}">
                             <h3>{{ $book->name }}</h3>
                             <div class="product-thumbnail">
-                                <img src="{{ URL::to('assets/images/product/'. $image->path) }}" alt="">
+                                <img src="{{ URL::to('assets/images/product/'. $book->images[0]->path ) }}" alt="">
                             </div>
                         </a>
                         <div class="price-add-to-cart">
@@ -28,7 +29,7 @@
                     </div>
                 </div>
             </li>
-            @endforeach @endforeach
+            @endforeach
         </ul>
         {!! $books->links() !!}
     </div>

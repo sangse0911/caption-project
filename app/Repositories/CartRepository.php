@@ -8,6 +8,7 @@ use App\Interfaces\OrderInterface;
 use App\Models\Book;
 use Auth;
 use Cart;
+use Illuminate\Http\Response;
 
 class CartRepository implements CartInterface
 {
@@ -36,7 +37,7 @@ class CartRepository implements CartInterface
     {
         $content = Cart::content();
         $total = Cart::total();
-
+        // dd($content);
         return [
             'content' => $content,
             'total' => $total,
@@ -61,6 +62,17 @@ class CartRepository implements CartInterface
     {
         $book = Book::findOrFail($data['id']);
 
+        $content = Cart::content();
+        foreach ($content as $item) {
+            if ($item->id == $data['id']) {
+                // http_response_code(400);
+
+                return response($data['id'], 422);
+            } else {
+
+            }
+        }
+
         Cart::add(array(
 
             'id' => $book->id,
@@ -72,8 +84,6 @@ class CartRepository implements CartInterface
             ],
 
         ));
-
-        $content = Cart::content();
 
         return $content;
     }
