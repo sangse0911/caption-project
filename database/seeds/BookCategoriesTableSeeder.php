@@ -24,12 +24,6 @@ class BookCategoriesTableSeeder extends Seeder
                     'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
                     'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
                 ],
-                [
-                    'book_id' => $i,
-                    'category_id' => rand(1, 6),
-                    'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
-                    'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
-                ],
             );
             DB::table('book_categories')->insert($data);
             $data = null;

@@ -22,7 +22,35 @@ class ContractDetailsTableSeeder extends Seeder
                 'contract_id' => $i,
                 'book_id' => $i,
                 'price' => rand(10000, 100000),
-                'quality' => rand(1, 2),
+                'quality' => rand(1, 4),
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            );
+
+            DB::table('contract_details')->insert($data);
+            $data = null;
+        }
+
+        for ($i = 51; $i < 61; $i++) {
+            $data = array(
+                'contract_id' => $i,
+                'book_id' => $i,
+                'price' => rand(10000, 100000),
+                'quality' => '5',
+                'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            );
+
+            DB::table('contract_details')->insert($data);
+            $data = null;
+        }
+
+        for ($i = 61; $i < 71; $i++) {
+            $data = array(
+                'contract_id' => $i,
+                'book_id' => $i,
+                'price' => rand(10000, 100000),
+                'quality' => '6',
                 'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
             );

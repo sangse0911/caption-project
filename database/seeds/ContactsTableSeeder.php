@@ -16,7 +16,6 @@ class ContactsTableSeeder extends Seeder
         $faker = Faker\Factory::create();
 
         $data = array(
-
             [
                 'admin_id' => 1,
                 'phone' => $faker->e164PhoneNumber,

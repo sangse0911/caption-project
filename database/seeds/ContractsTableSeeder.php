@@ -20,55 +20,123 @@ class ContractsTableSeeder extends Seeder
                 [
                     'user_id' => rand(2, 20),
                     'admin_id' => rand(1, 5),
-                    'method' => rand(0, 1), //tien mat or the
+                    'method' => '0', //tien mat or the
+                    'account' => $faker->creditCardNumber,
+                    'kind' => '0', //sach ban hay sach thue
+                    'status' => '0', //hop dong do ai tao
+                    'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                    'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                ],
+                [
+                    'user_id' => rand(2, 20),
+                    'admin_id' => rand(1, 5),
+                    'method' => '1', //tien mat or the
+                    'account' => $faker->creditCardNumber,
+                    'kind' => '1', //sach ban hay sach thue
+                    'status' => '0', //hop dong do ai tao
+                    'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                    'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                ],
+                [
+                    'user_id' => rand(2, 20),
+                    'admin_id' => rand(1, 5),
+                    'method' => '1', //tien mat or the
+                    'account' => $faker->creditCardNumber,
+                    'kind' => '0', //sach ban hay sach thue
+                    'status' => '0', //hop dong do ai tao
+                    'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                    'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                ],
+                [
+                    'user_id' => rand(2, 20),
+                    'admin_id' => rand(1, 5),
+                    'method' => '0', //tien mat or the
+                    'account' => $faker->creditCardNumber,
+                    'kind' => '1', //sach ban hay sach thue
+                    'status' => '0', //hop dong do ai tao
+                    'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                    'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                ],
+                [
+                    'user_id' => rand(2, 20),
+                    'admin_id' => rand(1, 5),
+                    'method' => '0', //tien mat or the
+                    'account' => $faker->creditCardNumber,
+                    'kind' => '0', //sach ban hay sach thue
+                    'status' => '0', //hop dong do ai tao
+                    'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                    'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                ],
+            );
+
+            DB::table('contracts')->insert($data);
+            $data = null;
+        }
+
+        for ($i = 0; $i < 5; $i++) {
+            $data = array(
+                [
+                    'user_id' => rand(2, 20),
+                    'admin_id' => rand(1, 5),
+                    'method' => '0', //tien mat or the
                     'account' => $faker->creditCardNumber,
                     'kind' => '0', //sach ban hay sach thue
                     'status' => '1', //hop dong do ai tao
                     'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
                     'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
                 ],
+            );
+            DB::table('contracts')->insert($data);
+            $data = null;
+        }
+
+        for ($i = 0; $i < 5; $i++) {
+            $data = array(
                 [
                     'user_id' => rand(2, 20),
                     'admin_id' => rand(1, 5),
-                    'method' => rand(0, 1), //tien mat or the
+                    'method' => '1', //tien mat or the
                     'account' => $faker->creditCardNumber,
                     'kind' => '1', //sach ban hay sach thue
                     'status' => '1', //hop dong do ai tao
                     'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
                     'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
                 ],
-                [
-                    'user_id' => '1',
-                    'admin_id' => rand(1, 5),
-                    'method' => rand(0, 1),
-                    'account' => $faker->creditCardNumber,
-                    'kind' => '0',
-                    'status' => '0',
-                    'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
-                    'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
-                ],
-                [
-                    'user_id' => '1',
-                    'admin_id' => rand(1, 5),
-                    'method' => rand(0, 1),
-                    'account' => $faker->creditCardNumber,
-                    'kind' => '1',
-                    'status' => '0',
-                    'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
-                    'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
-                ],
+            );
+            DB::table('contracts')->insert($data);
+            $data = null;
+        }
+
+        for ($i = 0; $i < 5; $i++) {
+            $data = array(
                 [
                     'user_id' => rand(2, 20),
                     'admin_id' => rand(1, 5),
-                    'method' => rand(0, 1),
+                    'method' => '1', //tien mat or the
                     'account' => $faker->creditCardNumber,
-                    'kind' => rand(0, 1),
-                    'status' => '2',
+                    'kind' => '0', //sach ban hay sach thue
+                    'status' => '2', //hop dong do ai tao
                     'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
                     'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
                 ],
             );
+            DB::table('contracts')->insert($data);
+            $data = null;
+        }
 
+        for ($i = 0; $i < 5; $i++) {
+            $data = array(
+                [
+                    'user_id' => rand(2, 20),
+                    'admin_id' => rand(1, 5),
+                    'method' => '0', //tien mat or the
+                    'account' => $faker->creditCardNumber,
+                    'kind' => '0', //sach ban hay sach thue
+                    'status' => '2', //hop dong do ai tao
+                    'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                    'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+                ],
+            );
             DB::table('contracts')->insert($data);
             $data = null;
         }

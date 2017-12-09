@@ -112,6 +112,7 @@
                         <ul>
                             <li><a href="donghangban">Mua Sách</a></li>
                             <li><a href="donhangthue">Thuê Sách</a></li>
+                            <li><a href="{{ route('admin.show.supplierPost') }}">Bán Sách</a></li>
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -122,7 +123,7 @@
                             <span class="s-text">Góc Sách</span>
                         </a>
                         <ul>
-                            <li><a href="gocsachbaidang">Bài Đăng</a></li>
+                            <li><a href="{{ route('admin.post') }}">Danh sách</a></li>
                             <li><a href="gocsachdanhsach">Danh Sách</a></li>
                             <li><a href="gocsachthanhvien">Thành Viên</a></li>
                         </ul>

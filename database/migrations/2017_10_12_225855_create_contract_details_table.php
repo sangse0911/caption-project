@@ -18,7 +18,7 @@ class CreateContractDetailsTable extends Migration
             $table->integer('contract_id')->unsigned();
             $table->integer('book_id')->unsigned();
             $table->double('price')->default(0);
-            $table->enum('quality', ['1', '2', '3', '4']);
+            $table->enum('quality', ['1', '2', '3', '4', '5', '6']);
             $table->timestamps();
 
             $table->foreign('contract_id')->references('id')->on('contracts')->onDelete('cascade')->onUpdate('cascade');

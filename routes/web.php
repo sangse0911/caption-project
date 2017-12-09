@@ -161,6 +161,9 @@ Route::middleware(['auth:admin'])->group(function () {
 
     Route::get('/admin/sell-book', 'BookController@sellBook')->name('admin.book.sell-book');
     Route::get('/admin/rent-book', 'BookController@rentBook')->name('admin.book.rent-book');
+
+    Route::get('/admin/posts', 'PostController@contentPost')->name('admin.post');
+    Route::get('/admin/supplierPost/', 'PostController@showSupplierPost')->name('admin.show.supplierPost');
 });
 
 Route::get('/events', ['as' => 'event.index', 'uses' => 'EventController@index']);

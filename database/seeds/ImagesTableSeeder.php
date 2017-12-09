@@ -15,7 +15,7 @@ class ImagesTableSeeder extends Seeder
 
         $faker = Faker\Factory::create();
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 7; $i++) {
 
             $data = array(
                 [
@@ -83,7 +83,5 @@ class ImagesTableSeeder extends Seeder
             DB::table('images')->insert($data);
             $data = null;
         }
-
     }
-
 }

@@ -51,6 +51,11 @@
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">Thẻ ngân hàng</span>
                                 </label>
+                                <label class="custom-control custom-radio">
+                                    <input id="radio2" name="method" value="2" type="radio" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Cả 2 phương thức</span>
+                                </label>
                                 <br/>
                                 <span class="help-block">
                                     <strong id="error-method"></strong>
@@ -296,10 +301,12 @@ $('#book-create').click(function(e) {
     $('#isbn').val('').prop('readonly', false);
     $('select').prop('disabled', false);
     $('.method-pay').removeAttr('style');
+    $('.bank-account').css('display','none');
     $('.kind-book').removeAttr('style');
     $('.modal-footer').removeAttr('style');
     $('#book-update').css("display",'none');
     $('#create-book').removeAttr('style');
+    $('.image-area').removeAttr('style');
 })
 
 $('#create-book').click(function(e) {
@@ -341,6 +348,7 @@ $('#form-action').submit(function(evt) {
             'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
         },
         success: function(data) {
+            alert('Thêm mới sách thành công');
             window.location.assign('/admin/books');
         },
         error: function(data) {
@@ -429,7 +437,6 @@ $('.btn-view').click(function(e) {
             $('select').prop('disabled', true);
         },
         error: function(data) {
-            console.log('ee', data);
         }
     });
 });
@@ -496,7 +503,6 @@ $('.btn-update').on('click', function(e) {
             $('select').prop('disabled', false);
         },
         error: function(data) {
-            console.log('ee', data);
         }
     });
 });

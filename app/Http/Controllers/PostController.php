@@ -26,8 +26,8 @@ class PostController extends Controller
 
     public function contentPost()
     {
-        $posts = $this->postRepository->all();
-        return view('post.content-post', compact('posts'));
+        $books = $this->bookRepository->getAllPost();
+        return view('post.content-post', compact('books'));
     }
     /**
      * Show the form for creating a new resource.
@@ -75,6 +75,14 @@ class PostController extends Controller
         return $this->postRepository->find($id);
     }
 
+    /*
+
+     */
+    public function showSupplierPost()
+    {
+        $books = $this->bookRepository->getSupplierBook();
+        return view('post.supplier-post', compact('books'));
+    }
     /**
      * Show the form for editing the specified resource.
      *

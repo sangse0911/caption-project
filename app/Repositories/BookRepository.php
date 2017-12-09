@@ -87,6 +87,10 @@ class BookRepository implements BookInterface
             })->get();
     }
 
+    /**
+     * [getBestSell description]
+     * @return [type] [description]
+     */
     public function getBestSell()
     {
         return Book::where('status', '=', '1')->with('images')
@@ -95,6 +99,7 @@ class BookRepository implements BookInterface
                     ->where('contracts.status', '0');
             })->take(20)->get();
     }
+
     /**
      * [getPostBook description]
      * @return [type] [description]
@@ -105,9 +110,31 @@ class BookRepository implements BookInterface
         return Book::where('status', '1')->with('images')
             ->whereHas('contracts', function ($query) {
                 $query->where('contracts.status', '1');
-            })->paginate(15);
+            })->get();
     }
 
+    /**
+     * [getSupplierBook description]
+     * @return [type] [description]
+     */
+    public function getSupplierBook()
+    {
+        return Book::with('images')
+            ->whereHas('contracts', function ($query) {
+                $query->where('contracts.status', '2');
+            })->get();
+    }
+    /**
+     * [getAllPost description]
+     * @return [type] [description]
+     */
+    public function getAllPost()
+    {
+        return Book::with('images')
+            ->whereHas('contracts', function ($query) {
+                $query->where('contracts.status', '1');
+            })->get();
+    }
     /**
      * [findById description]
      * @param  [type] $id [description]
@@ -419,7 +446,13 @@ class BookRepository implements BookInterface
 
         $book->name = $data['name'];
         $book->admin_id = Auth::user()->id;
-        $book->bookshelf_id = implode($data['location']);
+        if ($data['location'] != '1') {
+
+            $book->bookshelf_id = implode($data['location']);
+        } else {
+            $book->bookshelf_id = '1';
+        }
+
         $book->introduce = $data['introduce'];
         $book->description = $data['description'];
         $book->status = $data['status'];
