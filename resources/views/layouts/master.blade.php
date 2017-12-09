@@ -616,7 +616,9 @@
                         window.location.assign("/");
                     },
                     error: function(data) {
-                        console.log("có lỗi với", data);
+                        if(data.status == 401) {
+                            alert('Vui lòng đăng nhập trước khi đặt hàng');
+                        }
                     }
                 });
 

@@ -1,4 +1,4 @@
-<div id="sidebar" class="sidebar" role="complementary" style="margin-top: 500px;">
+<div id="sidebar" class="sidebar" role="complementary" style="margin-top: 550px;">
     <aside class="widget widget_text">
         <div class="textwidget">
             <a href="#">

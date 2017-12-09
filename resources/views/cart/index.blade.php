@@ -18,7 +18,7 @@
             </thead>
             <tbody>
             	@foreach($content as $item)
-                {{-- {{ dd($item) }} --}}
+                {{-- {{ dd($content) }} --}}
                 <tr class="cart_item">
                     <td class="product-remove">
                         <a class="remove" href="javascript:void(0)" data-id="{{ $item->rowId}}">×</a>
@@ -30,10 +30,10 @@
                         <a href="#">{{ $item->name }}</a>
                     </td>
                     <td data-title="Price" class="product-price">
-                        <span class="amount">{{ number_format($item->price ,0, ",",".") }}</span>
+                        <span class="amount">{{ number_format($item->price) }}</span>
                     </td>
                     <td data-title="Total" class="product-subtotal">
-                        <span class="amount">$1,999.00</span>
+                        <span class="amount">{{ number_format($item->price) }}</span>
                     </td>
                 </tr>
                 @endforeach
@@ -76,7 +76,7 @@
                 <tbody>
                     <tr class="cart-subtotal">
                         <th>Gía</th>
-                        <td data-title="Subtotal"><span class="amount">{{ number_format($total,0,",",".") }}</span></td>
+                        <td data-title="Subtotal"><span class="amount">{{ ($total) }}</span></td>
                     </tr>
                     <!-- <tr class="shipping">
                         <th>Shipping</th>
@@ -89,7 +89,7 @@
                     </tr> -->
                     <tr class="order-total">
                         <th>Total</th>
-                        <td data-title="Total"><strong><span class="amount">{{ number_format($total,0,",",".") }}</span></strong> </td>
+                        <td data-title="Total"><strong><span class="amount">{{ ($total) }}</span></strong> </td>
                     </tr>
                 </tbody>
             </table>
@@ -99,4 +99,6 @@
         </div>
     </div>
 </article>
-@endsection @section('recently') @include('particals.recently') @endsection @include('particals.contents') @endsection @section('footer') @include('particals.footer') @endsection()
+@endsection @section('recently') @include('particals.recently') @endsection @section('sidebar')  @include('particals.sidebar')
+@endsection @include('particals.contents') @endsection
+@section('footer') @include('particals.footer') @endsection()
