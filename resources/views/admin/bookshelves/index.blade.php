@@ -31,7 +31,7 @@
                         <td>{{ $bookshelf->location }}</td>
 
                         <td align="center">
-                                <button id="{{ $bookshelf->id }}" type="button" class="btn btn-warning btn-sm label-left b-a-0 waves-effect waves-light">
+                                <button data-id="{{ $bookshelf->id }}" type="button" class="btn btn-warning btn-sm btn-view label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
                                 <span class="btn-label"><i class="fa fa-eye" ></i></span>
                                 Xem
                             </button>
@@ -64,7 +64,7 @@
                             <h4 class="modal-title">Thêm mới gía sách</h4>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group {{ $errors->has('location') ? ' has-error' : ''}}">
+                            <div class="form-group">
                                 <label for="name">Địa điểm gía sách</label>
                                 <input type="hidden" id="id" value="">
                                 <input type="text" name="location" class="form-control" id="location" value="" placeholder="Địa điểm trên gía sách">
@@ -95,6 +95,7 @@
     $('#create').click(function() {
         $('.status').css('display','none');
         $('#location').val("");
+        $('#error-location').text('');
     })
     $('#bookshelf-create').on('click', function(e) {
 
@@ -107,9 +108,10 @@
             dataType: 'JSON',
             url: '/bookshelf/store',
             data: {
-                location: location
+                location: location,
             },
             success: function(data) {
+                alert('Thêm mới vị trí gía sách thành công');
                 window.location.reload(true);
             },
             error: function(data) {
@@ -119,7 +121,6 @@
                 }
             }
         });
-        // console.log(data),
         e.preventDefault();
     });
     $('.btn-update').on('click', function(e) {
@@ -130,20 +131,44 @@
             dataType: 'JSON',
             url: '/bookshelf/' + bookshelf_id,
             success: function(data){
-                console.log(data);
                 $('.modal-title').text('Thay đổi thông tin gía sách');
-                $('#location').val(data['location']);
+                $('#location').val(data['location']).prop('readonly', false);
                 $('#id').val(data['id']);
-                $('input[type=radio][name="bookshelf-status"][value='+data['status']+']').prop('checked', true);
+                $('input[type=radio][name="status"][value='+data['status']+']').prop('checked', true);
+                $('input[type=radio][name="status"]').prop('disabled', false);
                 $('#bookshelf-create').css("display","none");
                 $('#bookshelf-update').removeAttr('style');
                 $('.status').removeAttr('style');
             },
             error: function(data){
-                console.log('ee', data);
             }
         });
     });
+    $('.btn-view').click(function(e) {
+        var bookshelf_id = $(this).data('id');
+        $.ajax({
+            cache: false,
+            method: 'GET',
+            dataType: 'JSON',
+            url: '/bookshelf/' + bookshelf_id,
+            success: function(data){
+                console.log(data);
+                $('.modal-title').text('Thông tin gía sách');
+                $('#location').val(data['location']).prop('readonly', true);
+                $('#id').val(data['id']);
+                $('input[type=radio][name="status"][value='+data['status']+']').prop('checked', true);
+                $('input[type=radio][name="status"]').prop('disabled', true);
+                $('#bookshelf-create').css("display","none");
+                $('#bookshelf-update').removeAttr('style');
+                $('.status').removeAttr('style');
+                $('.modal-footer').css('display','none');
+            },
+            error: function(data){
+            }
+        });
+    });
+
+
     $('#bookshelf-update').on('click', function(e){
         var location = $('#location').val();
         var status =  $('input[name=status]:checked').val();
@@ -161,10 +186,14 @@
                 status: status,
             },
             success: function(data) {
+                alert('Cập nhật trạng thái gía sách thành công');
                 window.location.reload(true);
             },
             error: function(data) {
-                console.log('ee', data);
+                if(data.status === 422) {
+                    var errors = data.responseJSON;
+                    $('#error-location').text(errors['location']);
+                }
             }
         });
         // console.log(data),

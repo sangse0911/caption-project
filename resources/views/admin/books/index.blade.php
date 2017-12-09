@@ -237,7 +237,7 @@
                         <td>{{ $book->year }}</td>
                         <td>{{ $book->republish }}</td>
                         <td align="center">
-                            <button id="{{ $book->id }}" type="button" class="btn btn-warning btn-sm label-left b-a-0 waves-effect waves-light">
+                            <button id="{{ $book->id }}" data-id="{{ $book->id }}" type="button" class="btn btn-warning btn-view btn-sm label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
                                 <span class="btn-label"><i class="fa fa-eye" ></i></span> Xem
                             </button>
                             &nbsp
@@ -278,22 +278,28 @@ $.ajaxSetup({
 $('#book-create').click(function(e) {
     $('.form-status').css("display", "none");
     $('.modal-title').text("Thêm mới sách");
-    $('#name').val('');
-    $('#introduce').val('');
+    $('#name').val('').prop('readonly', false);
+    $('#introduce').val('').prop('readonly', false);
     CKEDITOR.instances.description.setData('');
-    $('#price').val('');
-    $('#price-rent').val('');
-    $('#author').val('');
-    $('#company').val('');
-    $('#year').val('');
-    $('#kind').val('');
-    $('#method').val('');
-    $('#account').val('');
+    $('#price').val('').prop('readonly', false);
+    $('#price-rent').val('').prop('readonly', false);
+    $('#author').val('').prop('readonly', false);
+    $('#company').val('').prop('readonly', false);
+    $('#year').val('').prop('readonly', false);
+    $('#kind').val('').prop('readonly', false);
+    $('#method').val('').prop('readonly', false);
+    $('#account').val('').prop('readonly', false);
     $('#category').val('').trigger('change');
     $('#quality').val('').trigger('change');
-    $('#republish').val('');
+    $('#republish').val('').prop('readonly', false);
     $('#location').val('').trigger('change');
-    $('#isbn').val('');
+    $('#isbn').val('').prop('readonly', false);
+    $('select').prop('disabled', false);
+    $('.method-pay').removeAttr('style');
+    $('.kind-book').removeAttr('style');
+    $('.modal-footer').removeAttr('style');
+    $('#book-update').css("display",'none');
+    $('#create-book').removeAttr('style');
 })
 
 $('#create-book').click(function(e) {
@@ -363,11 +369,78 @@ $('#form-action').submit(function(evt) {
     evt.preventDefault();
 });
 
+$('.btn-view').click(function(e) {
+    $('.image-area').css("display", "none");
+    $('#book-update').removeAttr("style");
+    $('#create-book').css("display", "none");
+    $('.form-status').removeAttr("style");
+
+    $('.modal-title').text('Thông tin sách');
+    $('.bank-account').css("display", "none");
+    $('.method-pay').css("display", "none");
+    $('.kind-book').css("display", "none");
+    $('.modal-footer').css('display', 'none');
+    $('#error-name').text("");
+    $('#error-introduce').text("");
+    $('#error-description').text("");
+    $('#error-price').text("");
+    $('#error-price-rent').text("");
+    $('#error-author').text("");
+    $('#error-company').text("");
+    $('#error-year').text("");
+    $('#error-kind').text("");
+    $('#error-method').text("");
+    $('#error-account').text("");
+    $('#error-category').text("");
+    $('#error-quality').text("");
+    $('#error-republish').text("");
+    $('#error-location').text("");
+    $('#error-isbn').text("");
+
+    var book_id = $(this).data('id');
+    var array = [];
+
+    $.ajax({
+        cache: false,
+        method: 'GET',
+        dataType: 'JSON',
+        url: '/admin/books/' + book_id,
+        success: function(data) {
+            $('#name').val(data['book']['name']).prop("readonly",true);
+            for (var i = 0; i < data['categories'].length; i++) {
+                array.push(data['categories'][i]['category_id']);
+            }
+
+            $('#id').prop("readonly",true).val(data['book']['id']);
+            $('#category').val(array).trigger('change').prop("readonly",true);
+            $('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
+            $('#introduce').val(data['book']['introduce']).prop("readonly",true);
+            $('#location').val(data['book']['bookshelf_id']).trigger('change');
+            $('#quality').val(data['details'][0]['quality']).trigger('change');
+            $('#price').val(data['book']['price']).prop("readonly",true);
+            $('#price-rent').val(data['book']['rental_fee']).prop("readonly",true);
+            $('#author').val(data['book']['author']).prop("readonly",true);
+            $('input[type=radio][name="status"][value=' + data['book']['status'] + ']').prop('checked', true);
+            $('input[type=radio][name="status"]').prop('disabled', true);
+            $('#company').val(data['book']['company']).prop("readonly",true);
+            $('#year').val(data['book']['year']).prop("readonly",true);
+            $('#republish').val(data['book']['republish']).prop("readonly",true);
+            $('#isbn').val(data['book']['isbn']).prop("readonly",true);
+            $('select').prop('disabled', true);
+        },
+        error: function(data) {
+            console.log('ee', data);
+        }
+    });
+});
+
+
 $('.btn-update').on('click', function(e) {
     $('.image-area').css("display", "none");
     $('#book-update').removeAttr("style");
     $('#create-book').css("display", "none");
     $('.form-status').removeAttr("style");
+    $('.modal-footer').removeAttr('style');
 
     $('.modal-title').text('Cập nhật thông tin sách');
     $('.bank-account').css("display", "none");
@@ -400,28 +473,27 @@ $('.btn-update').on('click', function(e) {
         dataType: 'JSON',
         url: '/admin/books/' + book_id,
         success: function(data) {
-            console.log('ss', data);
-
-            $('#name').val(data['book']['name']);
+            $('#name').val(data['book']['name']).prop('readonly', false);
             for (var i = 0; i < data['categories'].length; i++) {
                 array.push(data['categories'][i]['category_id']);
-
             }
 
             $('#id').val(data['book']['id']);
             $('#category').val(array).trigger('change');
             $('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
-            $('#introduce').val(data['book']['introduce']);
+            $('#introduce').val(data['book']['introduce']).prop('readonly', false);
             $('#location').val(data['book']['bookshelf_id']).trigger('change');
             $('#quality').val(data['details'][0]['quality']).trigger('change');
-            $('#price').val(data['book']['price']);
-            $('#price-rent').val(data['book']['rental_fee']);
-            $('#author').val(data['book']['author']);
+            $('#price').val(data['book']['price']).prop('readonly', false);
+            $('#price-rent').val(data['book']['rental_fee']).prop('readonly', false);
+            $('#author').val(data['book']['author']).prop('readonly', false);
             $('input[type=radio][name="status"][value=' + data['book']['status'] + ']').prop('checked', true);
-            $('#company').val(data['book']['company']);
-            $('#year').val(data['book']['year']);
-            $('#republish').val(data['book']['republish']);
-            $('#isbn').val(data['book']['isbn']);
+            $('input[type=radio][name="status"]').prop('disabled', false);
+            $('#company').val(data['book']['company']).prop('readonly', false);
+            $('#year').val(data['book']['year']).prop('readonly', false);
+            $('#republish').val(data['book']['republish']).prop('readonly', false);
+            $('#isbn').val(data['book']['isbn']).prop('readonly', false);
+            $('select').prop('disabled', false);
         },
         error: function(data) {
             console.log('ee', data);
@@ -513,7 +585,6 @@ $('#book-update').click(function(evt) {
             }
         }
     });
-    // console.log(data),
     evt.preventDefault();
 });
 </script>

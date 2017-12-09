@@ -25,7 +25,7 @@
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->name }}</td>
                         <td align="center">
-                                <button id="" type="button" class="btn btn-warning btn-sm label-left b-a-0 waves-effect waves-light">
+                                <button type="button" class="btn btn-warning btn-sm btn-view label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal" data-id="{{ $category->id }}">
                                 <span class="btn-label"><i class="fa fa-eye" ></i></span>
                                 Xem
                             </button>
@@ -39,7 +39,6 @@
                                 <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span>
                                 Xóa
                             </button>
-
                         </td>
                     </tr>
                     @endforeach
@@ -65,7 +64,7 @@
                                     <strong id="error-name"></strong>
                                 </span>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group image">
                                 <input type="file" class="dropify" name="images[]" id="image" multiple="multiple">
                             </div>
                         </div>
@@ -91,10 +90,34 @@
     });
 
     $('#category-create').click(function(e) {
-        $('#name').val("");
+        $('#name').val("").prop('disabled', false);
         $('#error-name').text("");
         $('#update-category').css("display","none");
         $('#create').removeAttr('style');
+        $('.modal-footer').removeAttr('style');
+
+    });
+
+    $('.btn-view').click(function(e) {
+        var category_id = $(this).data('id');
+
+        $.ajax({
+            cache: false,
+            method: 'GET',
+            dataType: 'JSON',
+            url: '/admin/category/' + category_id,
+            success: function(data){
+                $('.modal-title').text('Thông tin thể loại sách');
+                $('#name').val(data['name']).prop('readonly', true);
+                $('#id').val(data['id']);
+                $('#update-category').removeAttr("style");
+                $('#create').css("display","none");
+                $('.image').css('display', 'none');
+                $('.modal-footer').css('display','none');
+            },
+            error: function(data){
+            }
+        });
     });
 
     $('.btn-update').on('click', function(e) {
@@ -106,16 +129,15 @@
             dataType: 'JSON',
             url: '/admin/category/' + category_id,
             success: function(data){
-                console.log(data);
                 $('.modal-title').text('Thay đổi thông tin thể loại');
-                $('#name').val(data['name']);
+                $('#name').val(data['name']).prop('readonly', false);
                 $('#id').val(data['id']);
                 $('#update-category').removeAttr("style");
                 $('#create').css("display","none");
-
+                $('.image').css('display', 'none');
+                $('.modal-footer').removeAttr('style');
             },
             error: function(data){
-                console.log('ee', data);
             }
         });
     });
@@ -134,7 +156,6 @@
             data: {
                 id: id,
                 name: name,
-
             },
             success: function(data) {
                 alert('Cập nhật thông tin thể loại sách thành công');
@@ -152,33 +173,33 @@
 
     $('#category-action').submit(function(evt) {
 
-    var formData = new FormData(this);
+        var formData = new FormData(this);
 
-    $.ajax({
-        async: true,
-        method: 'POST',
-        url: '/admin/category/store',
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: 'JSON',
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
-        },
-        success: function(data) {
-            window.location.reload(true);
-        },
-        error: function(data) {
-            if(data.status === 422) {
-                var errors = data.responseJSON;
-
-                $('#error-name').text(errors['name']);
+        $.ajax({
+            async: true,
+            method: 'POST',
+            url: '/admin/category/store',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: 'JSON',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+            },
+            success: function(data) {
+                alert('Thêm mới thể loại sách thành công');
+                window.location.reload(true);
+            },
+            error: function(data) {
+                if(data.status === 422) {
+                    var errors = data.responseJSON;
+                    $('#error-name').text(errors['name']);
+                }
             }
-        }
+        });
+        evt.preventDefault();
     });
-    evt.preventDefault();
-});
 
 </script>
 @endsection
