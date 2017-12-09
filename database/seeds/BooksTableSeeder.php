@@ -17,7 +17,7 @@ class BooksTableSeeder extends Seeder
 
         for ($i = 1; $i < 51; $i++) {
             $data = array(
-                'name' => $faker->title,
+                'name' => $faker->colorName,
                 'introduce' => $faker->text(rand(10, 30)),
                 'description' => $faker->text($maxNbChars = 200),
                 'admin_id' => '1',
