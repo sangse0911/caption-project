@@ -14,7 +14,7 @@
                 @foreach($books as $book)
                 {{-- {{ dd($book->images->first()->path) }} --}}
                 @foreach($book->images as $image)
-                {{ dd($image->first()->path) }}
+                {{-- {{ dd($image->first()->path) }} --}}
                 <div class="owl-stage-outer">
                     <div class="owl-stage">
                         <div class="owl-item active" style="width: 215.75px;">
