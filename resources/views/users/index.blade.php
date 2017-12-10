@@ -191,6 +191,7 @@
         });
         e.preventDefault();
     });
+
     $('#supplier-create').on('click', function(e){
 
         var id = $('#id').val();

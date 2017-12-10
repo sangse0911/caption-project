@@ -16,6 +16,7 @@
                         <th>Số điện thoại liên hệ</th>
                         <th>Email liên hệ</th>
                         <th>Địa chỉ liên hệ</th>
+                        <th>Số tài khoản</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
@@ -26,6 +27,7 @@
                         <td>{{ $contact->phone }}</td>
                         <td>{{ $contact->email }}</td>
                         <td>{{ $contact->address }}</td>
+                        <td>{{ $contact->account }}</td>
                         <td align="center">
                             <button id="{{ $contact->id }}" type="button" class="btn btn-warning btn-sm label-left b-a-0 waves-effect waves-light">
                                 <span class="btn-label"><i class="fa fa-eye" ></i></span> Xem
@@ -77,6 +79,13 @@
                                     <strong id="error-address"></strong>
                                 </span>
                             </div>
+                            <div class="form-group">
+                                <label for="address">Số tài khoản ngân hàng</label>
+                                <input type="text" name="account" class="form-control" id="account" value="" placeholder="Tài khoản ngân hàng">
+                                <span class="help-block">
+                                    <strong id="error-account"></strong>
+                                </span>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="contact-create">Tạo mới</button>
@@ -105,6 +114,7 @@
         $('#error-address').text("");
         $('#error-email').text("");
         $('#error-phone').text("");
+        $('#error-account').text("");
         $('#contact-create').removeAttr('style');
         $('#contact-update').css('display','none');
     });
@@ -114,10 +124,12 @@
         $('#error-address').text("");
         $('#error-email').text("");
         $('#error-phone').text("");
+        $('#error-account').text("");
 
         var phone = $('#phone').val();
         var email = $('#email').val();
         var address = $('#address').val();
+        var account = $('#account').val();
 
         $.ajax({
 
@@ -129,6 +141,7 @@
                 phone: phone,
                 email: email,
                 address: address,
+                account: account,
             },
             success: function() {
                 window.location.reload(true);
@@ -160,6 +173,7 @@
                 $('#id').val(data['id']);
                 $('#email').val(data['email']);
                 $('#address').val(data['address']);
+                $('#account').val(data['account']);
                 $('#contact-create').css('display','none');
                 $('#contact-update').removeAttr('style');
             },
@@ -169,14 +183,12 @@
         });
     });
     $('#contact-update').on('click', function(e){
-        $('#error-address').text("");
-        $('#error-email').text("");
-        $('#error-phone').text("");
 
         var phone = $('#phone').val();
         var id = $('#id').val();
         var email = $('#email').val();
         var address = $('#address').val();
+        var account = $('#account').val();
 
         $.ajax({
 
@@ -189,6 +201,7 @@
                 phone: phone,
                 email: email,
                 address: address,
+                account: account
             },
             success: function(data) {
                 alert('Cập nhật thông tin liên hệ thành công');
@@ -200,6 +213,7 @@
                     $('#error-address').text(errors['address']);
                     $('#error-email').text(errors['email']);
                     $('#error-phone').text(errors['phone']);
+                    $('#error-account').text(errors['account']);
                 }
             }
         });

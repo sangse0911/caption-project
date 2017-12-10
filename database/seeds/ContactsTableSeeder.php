@@ -21,6 +21,7 @@ class ContactsTableSeeder extends Seeder
                 'phone' => $faker->e164PhoneNumber,
                 'email' => $faker->freeEmail,
                 'address' => $faker->city,
+                'account' => $faker->bankAccountNumber,
                 'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
             ],

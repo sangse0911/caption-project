@@ -2,13 +2,13 @@
 
 namespace App\Http\ViewComposers;
 
-use App\Interfaces\AdminInterface;
+use App\Interfaces\ContactInterface;
 use Illuminate\View\View;
 
 class AdminComposer
 {
 
-    protected $adminService;
+    protected $contactRepository;
 
     /**
      * [__construct description]
@@ -16,10 +16,10 @@ class AdminComposer
      */
     public function __construct(
 
-        AdminInterface $adminService
+        ContactInterface $contactRepository
     ) {
 
-        $this->adminService = $adminService;
+        $this->contactRepository = $contactRepository;
     }
 
     /**
@@ -29,6 +29,6 @@ class AdminComposer
      */
     public function compose(View $view)
     {
-        $view->with('authId', $this->adminService->getAdminAuth());
+        $view->with('account', $this->contactRepository->get());
     }
 }

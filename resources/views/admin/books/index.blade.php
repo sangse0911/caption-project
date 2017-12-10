@@ -60,14 +60,10 @@
                                 <span class="help-block">
                                     <strong id="error-method"></strong>
                                 </span>
+                                {{-- {{ dd($account) }} --}}
+                                <input type="hidden" name="account" id="account" class="form-control" value="{{ $account }}" />
                             </div>
-                            <div class="form-group col-md-6 supplier bank-account">
-                                <h6>Tài khoản ngân hàng</h6>
-                                <input type="text" name="account" id="account" class="form-control" placeholder="Tài khoản ngân hàng">
-                                <span class="help-block">
-                                    <strong id="error-account"></strong>
-                                </span>
-                            </div>
+
                             <div class="form-group col-md-6 supplier">
                                 <h6>Tác Giả</h6>
                                 <input type="text" name="author" id="author" class="form-control" placeholder="Nhập Tên Tác Giả">
@@ -293,7 +289,7 @@ $('#book-create').click(function(e) {
     $('#year').val('').prop('readonly', false);
     $('#kind').val('').prop('readonly', false);
     $('#method').val('').prop('readonly', false);
-    $('#account').val('').prop('readonly', false);
+    $('#account').prop('readonly', false);
     $('#category').val('').trigger('change');
     $('#quality').val('').trigger('change');
     $('#republish').val('').prop('readonly', false);
@@ -398,7 +394,6 @@ $('.btn-view').click(function(e) {
     $('#error-year').text("");
     $('#error-kind').text("");
     $('#error-method').text("");
-    $('#error-account').text("");
     $('#error-category').text("");
     $('#error-quality').text("");
     $('#error-republish').text("");
@@ -464,7 +459,6 @@ $('.btn-update').on('click', function(e) {
     $('#error-year').text("");
     $('#error-kind').text("");
     $('#error-method').text("");
-    $('#error-account').text("");
     $('#error-category').text("");
     $('#error-quality').text("");
     $('#error-republish').text("");
@@ -518,7 +512,6 @@ $('#book-update').click(function(evt) {
     $('#error-year').text("");
     $('#error-kind').text("");
     $('#error-method').text("");
-    $('#error-account').text("");
     $('#error-category').text("");
     $('#error-quality').text("");
     $('#error-republish').text("");
@@ -582,7 +575,6 @@ $('#book-update').click(function(evt) {
                 $('#error-year').text((errors['year']));
                 $('#error-kind').text(errors['kind']);
                 $('#error-method').text(errors['method']);
-                $('#error-account').text(errors['account']);
                 $('#error-category').text(errors['category']);
                 $('#error-quality').text(errors['quality']);
                 $('#error-republish').text(errors['republish']);

@@ -13,6 +13,15 @@ class ContactRepository implements ContactInterface
      * [getAll description]
      * @return [type] [description]
      */
+    public function get()
+    {
+        return Contact::all()->first()->account;
+    }
+
+    /**
+     * [getAll description]
+     * @return [type] [description]
+     */
     public function getAll()
     {
         return Contact::all();
@@ -40,6 +49,7 @@ class ContactRepository implements ContactInterface
             'phone' => $data['phone'],
             'email' => $data['email'],
             'address' => $data['address'],
+            'account' => $data['account'],
         ]);
     }
 
@@ -55,6 +65,7 @@ class ContactRepository implements ContactInterface
         $contact->phone = $data['phone'];
         $contact->email = $data['email'];
         $contact->address = $data['address'];
+        $contact->account = $data['account'];
 
         return $contact->saveOrFail();
     }

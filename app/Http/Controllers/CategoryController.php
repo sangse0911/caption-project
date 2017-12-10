@@ -65,7 +65,12 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        return $this->categoryRepository->find($id);
+        $array = $this->categoryRepository->find($id);
+
+        $books = $array['books'];
+        $category = $array['category'];
+
+        return view('categories.index', compact(['books', 'category']));
     }
 
     /**

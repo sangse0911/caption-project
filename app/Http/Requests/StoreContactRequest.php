@@ -27,6 +27,7 @@ class StoreContactRequest extends FormRequest
             'phone' => 'required|numeric',
             'email' => 'required|email',
             'address' => 'required|min:4',
+            'account' => 'required',
         ];
     }
 
@@ -41,6 +42,8 @@ class StoreContactRequest extends FormRequest
 
             'address.required' => 'Vui lòng điền địa chỉ liên hệ',
             'address.min' => 'Vui lòng kiểm tra lại, địa chỉ không nhỏ hơn 4 kí tự',
+
+            'account.required' => 'Vui lòng nhập thông tin tài khoản ngân hàng',
         ];
     }
 }

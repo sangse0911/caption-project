@@ -38,7 +38,14 @@ class CategoryRepository implements CategoryInterface
      */
     public function find($id)
     {
-        return Category::find($id);
+        $category = Category::find($id);
+
+        $books = $category->books()->wherePivot('category_id', $id)->with('images')->get();
+
+        return $array = [
+            'category' => $category,
+            'books' => $books,
+        ];
     }
 
     /**

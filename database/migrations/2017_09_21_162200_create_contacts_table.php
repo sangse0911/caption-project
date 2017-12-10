@@ -19,6 +19,7 @@ class CreateContactsTable extends Migration
             $table->string('phone', 50);
             $table->string('email');
             $table->string('address');
+            $table->string('account');
             $table->timestamps();
 
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');

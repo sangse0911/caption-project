@@ -171,6 +171,7 @@ Route::get('/events', ['as' => 'event.index', 'uses' => 'EventController@index']
 Route::get('/api/user', ['as' => 'api.user.index', 'uses' => 'UserController@indexApi']);
 Route::get('/users/content', ['as' => 'users.content', 'uses' => 'UserController@getContent']);
 
+Route::get('/category/{id}', 'CategoryController@show')->name('category.index');
 /**
  *
  */

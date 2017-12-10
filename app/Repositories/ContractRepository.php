@@ -79,7 +79,7 @@ class ContractRepository implements ContractInterface
         $admin->users()->attach(1,
             [
                 'method' => $data['method'],
-                'account' => '',
+                'account' => $data['account'],
                 'kind' => $data['kind'],
                 'status' => '0',
             ]);

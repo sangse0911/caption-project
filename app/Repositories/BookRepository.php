@@ -70,7 +70,7 @@ class BookRepository implements BookInterface
             ->whereHas('contracts', function ($query) {
                 $query->where('contracts.kind', '=', '0')
                     ->where('contracts.status', '=', '0');
-            })->get();
+            })->take(20)->get();
 
     }
 
@@ -84,7 +84,7 @@ class BookRepository implements BookInterface
             ->whereHas('contracts', function ($query) {
                 $query->where('contracts.kind', '=', '1')
                     ->where('contracts.status', '0');
-            })->get();
+            })->take(20)->get();
     }
 
     /**

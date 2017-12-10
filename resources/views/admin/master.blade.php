@@ -124,8 +124,8 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.post') }}">Danh sách</a></li>
-                            <li><a href="gocsachdanhsach">Danh Sách</a></li>
-                            <li><a href="gocsachthanhvien">Thành Viên</a></li>
+                            <li><a href="gocsachdanhsach">Bài đăng</a></li>
+                            <li><a href="gocsachthanhvien">Sách bán cho cửa hàng</a></li>
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -148,7 +148,6 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('users.index') }}">Danh sách</a></li>
-                            {{-- <li><a href="{{ route('supplier.index') }}">Nhà cung cấp</a></li> --}}
                         </ul>
                     </li>
                     <li class="with-sub">
