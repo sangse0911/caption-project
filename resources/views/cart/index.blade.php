@@ -39,12 +39,12 @@
                     </tr>
                     @endforeach
                     <tr>
-                        <td class="actions" colspan="8" >
+                        <td class="actions" colspan="5" >
 
                         </td>
                     </tr>
                     <tr >
-                        <td class="actions" colspan="8" >
+                        <td class="actions" colspan="5" >
                             <div style="float: left;">
                             <div class="row" style="text-align: left;margin: 4px;">
                                 <span style="color: #2660C1;font-size: 15px;font-weight: bold;">Tên: </span>

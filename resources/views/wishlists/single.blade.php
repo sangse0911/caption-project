@@ -124,7 +124,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- {{ dd($books) }} --}}
+                    {{ dd($books) }}
                     @foreach($books as $book)
                     <tr>
                         <td>{{ $book->id }}</td>

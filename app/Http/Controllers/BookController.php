@@ -59,7 +59,7 @@ class BookController extends Controller
      */
     public function getSellBook()
     {
-        $books = $this->bookRepository->getSellBook();
+        $books = $this->bookRepository->getAllSellBook();
         return view('book.sell-book', compact('books'));
     }
 
@@ -81,7 +81,7 @@ class BookController extends Controller
      */
     public function getRentBook()
     {
-        $books = $this->bookRepository->getRentBook();
+        $books = $this->bookRepository->getAllRentBook();
         return view('book.renter-book', compact('books'));
     }
 

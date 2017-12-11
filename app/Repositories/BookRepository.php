@@ -74,6 +74,14 @@ class BookRepository implements BookInterface
 
     }
 
+    public function getAllSellBook()
+    {
+        return Book::where('status', '=', '1')->with('images')
+            ->whereHas('contracts', function ($query) {
+                $query->where('contracts.kind', '=', '0')
+                    ->where('contracts.status', '=', '0');
+            })->orderBy('created_at', 'desc')->get();
+    }
     /**
      * [getRenterBook description]
      * @return [type] [description]
@@ -87,6 +95,14 @@ class BookRepository implements BookInterface
             })->take(20)->get();
     }
 
+    public function getAllRentBook()
+    {
+        return Book::where('status', '=', '1')->with('images')
+            ->whereHas('contracts', function ($query) {
+                $query->where('contracts.kind', '=', '1')
+                    ->where('contracts.status', '0');
+            })->orderBy('created_at', 'desc')->get();
+    }
     /**
      * [getBestSell description]
      * @return [type] [description]
