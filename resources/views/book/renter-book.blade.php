@@ -57,6 +57,7 @@
     <div role="tabpanel" class="tab-pane" id="list-view" aria-expanded="false">
         <ul class="products columns-3">
             @foreach($books as $book)
+            @foreach($book->images as $image)
             <li class="product list-view">
                 <div class="media">
                     <div class="media-left">
