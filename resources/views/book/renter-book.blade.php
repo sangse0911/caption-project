@@ -50,7 +50,7 @@
                     </div>
                 </div>
             </li>
-            @endforeach
+            @endforeach @endforeach
         </ul>
     </div>
 
