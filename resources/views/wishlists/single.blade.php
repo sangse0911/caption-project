@@ -1,152 +1,62 @@
 @extends('layouts.master') @section('title') @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') @section('customer')
 <nav class="woocommerce-breadcrumb"><a href="/">Trang Chủ</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Danh sách yêu thích
 </nav>
-<article class="page type-page status-publish hentry">
-    <header class="entry-header">
-        <h1 itemprop="name" class="entry-title">Danh sách yêu thích</h1>
-    </header>
-    <!-- .entry-header -->
-    <form enctype="multipart/form-data" type="hidden" id="form-action" name="" method="POST">
-            <!-- <input type="hidden" name="token" value="{{ csrf_token() }}"> -->
-            {{ csrf_field() }}
-            <div id="myModal" class="modal fade" role="dialog">
-                <div class="modal-dialog modal-lg" style="max-width: 1100px;">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Chỉnh sửa sách</h4>
-                        </div>
-                        <input type="hidden" name="" id="id">
-                        <div class="modal-body">
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Tác Giả</h6>
-                                <input type="text" name="author" id="author" class="form-control" placeholder="Nhập Tên Tác Giả">
-                                <span class="help-block">
-                                    <strong id="error-author"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Giới thiệu qua về sách</h6>
-                                <input type="text" name="introduce" id="introduce" class="form-control" placeholder="Giới thiệu về sách">
-                                <span class="help-block">
-                                    <strong id="error-introduce"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Tên Sách</h6>
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Nhập Tên Sách">
-                                <span class="help-block">
-                                    <strong id="error-name"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Nhà Xuất Bản</h6>
-                                <input type="text" name="company" class="form-control" id="company" placeholder="Nhập Tên Nhà Xuất Bản">
-                                <span class="help-block">
-                                    <strong id="error-company"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Năm Xuất Bản</h6>
-                                <input type="text" name="year" class="form-control" id="year" placeholder="Nhập Năm Xuất Bản">
-                                <span class="help-block">
-                                    <strong id="error-year"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Giá Bán</h6>
-                                <input type="text" name="price" class="form-control form-control-success" id="price">
-                                <span class="help-block">
-                                    <strong id="error-price"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Giá thuê</h6>
-                                <input type="text" name="price-rent" class="form-control form-control-success" id="price-rent">
-                                <span class="help-block">
-                                    <strong id="error-price-rent"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>ISBN</h6>
-                                <input type="text" name="isbn" class="form-control" id="isbn" placeholder="Mã số sách">
-                                <span class="help-block">
-                                    <strong id="error-isbn"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Tái Bản Lần Thứ</h6>
-                                <input type="text" name="republish" class="form-control" id="republish" placeholder="Tái bản lần thứ">
-                                <span class="help-block">
-                                    <strong id="error-republish"></strong>
-                                </span>
-                            </div>
+<header class="page-header">
+    <h1 class="page-title">Danh sách yêu thích</h1>
+    {{-- <p class="woocommerce-result-count">Xem 1–15 </p> --}}
+</header>
 
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Chất Lượng Sách</h6>
-                                <select id="quality" multiple="multiple" name="quality[]" class="quality" style="width: 100%;">
-                                    <option name="" value="5">Cũ</option>
-                                    <option name="" value="6">Mới</option>
-
-                                </select>
-                                <span class="help-block">
-                                    <strong id="error-quality"></strong>
-                                </span>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">
+        <ul class="products columns-3">
+            @foreach($books as $book)
+            {{-- {{ dd($book) }} --}}
+            {{-- @foreach($book->images as $image) --}}
+            <li class="product">
+                <div class="product-outer" style="height: 391px;">
+                    <div class="product-inner">
+                        <span class="loop-product-categories"><a href="javascript:void(0)" rel="tag"></a></span>
+                        <span class="loop-product-categories" style="color: red;">{{ $book->name }}</span>
+                        <a href="javascript:void(0)">
+                            <h3></h3>
+                            <div class="product-thumbnail">
+                                <img src="{{ URL::to('assets/images/product/' . $book->images[0]->path) }}" alt="">
                             </div>
-                            <div class="form-group col-md-12 supplier">
-                                <h6>Tóm Tắt</h6>
-                                <textarea class="ckeditor" rows="9" id="description" name="description" rows="10" placeholder="Tóm tắt về sách"></textarea>
-                                <span class="help-block">
-                                    <strong id="error-description"></strong>
-                                </span>
-                            </div>
+                        </a>
+                        <div class="price-add-to-cart">
+                            <span class="price">
+                                <span class="electro-price">
+                                    <ins><span class="amount">{{ $book->price }} VND</span></ins>
+                            {{-- <del><span class="amount">$2,299.00</span></del> --}}
+                            </span>
+                            </span>
+                            {{-- <a rel="nofollow" href="javascript:void(0)" class="button add_to_cart_button">Add to cart</a> --}}
                         </div>
-                        <div style="clear: both;"></div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="create-book">Thêm mới</button>
-                            <button type="button" class="btn btn-success" id="book-update" style="display: none;">Lưu</button>
-                            <button type="button" class="btn btn-danger " data-dismiss="modal">Đóng</button>
+                        <!-- /.price-add-to-cart -->
+                        <div class="hover-area">
+                            <div class="action-buttons">
+                                <a href="#" rel="nofollow" class="add_to_wishlist">
+                                    Yêu thích
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
-    <form>
-        <div class="box box-block bg-white">
-            <table class="table table-striped table-bordered dataTable" id="table-1">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Tên sách</th>
-                        <th>Ngày đăng</th>
-                        <th>Hành động</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{ dd($books) }}
-                    @foreach($books as $book)
-                    <tr>
-                        <td>{{ $book->id }}</td>
-                        <td>{{ $book->name }}</td>
-                        <td>{{ $book->created_at }}</td>
-                        <td align="center">
-                            <button id="view-{{ $book->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
-                                <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span> Xóa
-                            </button>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </form>
-</article>
+            </li>
+            @endforeach
+        </ul>
+    </div>
+</div>
 @endsection @section('sidebar')
 <div id="sidebar" class="sidebar" role="complementary">
     <div style="clear: both; margin-top: 50px;"></div>
 
     @yield('recently')
+
+    @section('sidebar')
+        @include('particals.sidebar')
+    @endsection
+
     <aside id="electro_features_block_widget-2" class="widget widget_electro_features_block_widget">
         <div class="features-list columns-1">
             <div class="feature">
@@ -192,4 +102,7 @@
         </div>
     </aside>
 </div>
-@endsection @include('particals.contents') @endsection @section('footer') @include('particals.footer') @endsection
+@endsection @include('particals.contents')
+
+
+@endsection @section('footer') @include('particals.footer') @endsection

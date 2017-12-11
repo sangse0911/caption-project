@@ -127,7 +127,7 @@
         <div class="col-md-6">
             <input type="file" id="input-file-now" class="dropify" name="images[]" />
         </div>
-        
+
     </div>
     <div class="form-group" style="clear: both;"></div>
     <div class="form-group" style="text-align: center;">
@@ -202,8 +202,8 @@
             </div>
         </div>
     </aside>
-    
-    
+
+
 </div>
  @endsection @include('particals.contents') @endsection @section('footer') @include('particals.footer') @endsection
 @section('script')

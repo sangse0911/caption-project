@@ -788,6 +788,63 @@ div.hr hr {
                 });
 
             });
+            $('#post-create').click(function(e) {
+                $('#error-name').text("");
+                $('#error-introduce').text("");
+                $('#error-price').text("");
+                $('#error-author').text("");
+                $('#error-company').text("");
+                $('#error-year').text("");
+                $('#error-kind').text("");
+                $('#error-method').text("");
+                $('#error-account').text("");
+                $('#error-quality').text("");
+                $('#error-republish').text("");
+                $('#error-phone').text('');
+            });
+
+            $('#ahuhu').submit(function(evt) {
+
+                var formData = new FormData(this);
+
+                $.ajax({
+                    async:true,
+                    method: 'POST',
+                    url: '/book/storeSaleBook',
+                    data:formData,
+                    cache:false,
+                    contentType: false,
+                    processData: false,
+                    dataType: 'JSON',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+                    },
+                    success: function() {
+                        alert("Chúc mừng bạn đã đăng bài thành công");
+                        window.location.assign('/books');
+                    },
+                    error: function(data) {
+                        if(data.status === 422) {
+                            var errors = data.responseJSON;
+
+                            $('#error-name').text(errors['name']);
+                            $('#error-introduce').text(errors['introduce']);
+                            $('#error-price').text(errors['price']);
+                            $('#error-author').text(errors['author']);
+                            $('#error-company').text(errors['company']);
+                            $('#error-year').text((errors['year']));
+                            $('#error-kind').text(errors['kind']);
+                            $('#error-method').text(errors['method']);
+                            $('#error-account').text(errors['account']);
+                            $('#error-quality').text(errors['quality']);
+                            $('#error-republish').text(errors['republish']);
+                            $('#error-phone').text(errors['phone']);
+                            $('#error-address').text(errors['address']);
+                        }
+                    }
+                });
+                evt.preventDefault();
+            });
 
             $('.btn-view').click(function(e) {
                 $('.image-area').css("display", "none");

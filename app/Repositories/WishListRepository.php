@@ -62,9 +62,10 @@ class WishListRepository implements WishlistInterface
 
         $wishlists = $user->wishlists()->where('user_id', $id)->get();
         // dd($wishlists->book_id);
-        $books = array();
+        $books = [];
         foreach ($wishlists as $wishlist) {
-            $books->push(Book::where('id', $wishlist->book_id));
+            $book = Book::find($wishlist->book_id);
+            $books[] = $book;
         }
 
         return $books;
