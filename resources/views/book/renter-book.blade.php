@@ -18,7 +18,7 @@
         <ul class="products columns-3">
             @foreach($books as $book)
             {{-- {{ dd($book) }} --}}
-            {{-- @foreach($book->images as $image) --}}
+            @foreach($book->images as $image)
             <li class="product">
                 <div class="product-outer" style="height: 391px;">
                     <div class="product-inner">
@@ -27,7 +27,7 @@
                         <a href="javascript:void(0)">
                             <h3></h3>
                             <div class="product-thumbnail">
-                                <img src="{{ URL::to('assets/images/product/' . $book->images[0]->path) }}" alt="">
+                                <img src="{{ URL::to('assets/images/product/' . $image->path) }}" alt="">
                             </div>
                         </a>
                         <div class="price-add-to-cart">
@@ -61,7 +61,7 @@
                 <div class="media">
                     <div class="media-left">
                         <a href="javascript:void(0)">
-                            <img class="wp-post-image" src="{{ URL::to('assets/images/product/' . $book->images[0]->path) }}" alt="">
+                            <img class="wp-post-image" src="{{ URL::to('assets/images/product/' . $image->path) }}" alt="">
                         </a>
                     </div>
                     <div class="media-body media-middle">
@@ -112,7 +112,7 @@
                     </div>
                 </div>
             </li>
-            @endforeach
+            @endforeach @endforeach
         </ul>
     </div>
 
