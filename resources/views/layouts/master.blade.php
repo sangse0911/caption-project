@@ -846,6 +846,11 @@ div.hr hr {
                 evt.preventDefault();
             });
 
+            $('.category-show').click(function(e) {
+                var id = $(this).data('id');
+                window.location.assign('/category/'+id);
+            });
+
             $('.btn-view').click(function(e) {
                 $('.image-area').css("display", "none");
                 $('#book-update').removeAttr("style");

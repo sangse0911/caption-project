@@ -70,7 +70,7 @@ class CategoryController extends Controller
         $books = $array['books'];
         $category = $array['category'];
 
-        return view('categories.index', compact(['books', 'category']));
+        return view('categories.single-category', compact(['books', 'category']));
     }
 
     /**
