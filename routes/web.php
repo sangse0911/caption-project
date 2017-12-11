@@ -196,6 +196,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/post/createSale', 'PostController@createSale')->name('book.create.sale');
     Route::post('/book/storePostBook', ['as' => 'post.store', 'uses' => 'BookController@storePostBook']);
     Route::post('/book/storeSaleBook', 'BookController@storeSaleBook')->name('sale.book');
+    Route::get('/postByUser/{id}', 'PostController@getAllPostByUserId')->name('post.user.index');
 
     // Route::get('/book/info', ['as' => 'book.info', 'uses' => 'BookController@getSupplier']);
 

@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/dropify/dist/css/dropify.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/star-rating-svg.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/jquery.dataTables.min.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Demo Purpose Only. Should be removed in production -->
 </head>
@@ -52,6 +53,9 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="javascript:void(0)" data-id="{{ Auth::user()->id }}" id="post-show">Bài đăng</a>
+                                </li>
                                 <li>
                                     <a href="{{ url('/logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
@@ -166,6 +170,8 @@
         <script type="text/javascript" src="{{ URL::to('js/admin/dropify.min.js') }}"></script>
         <script src="{{ URL::to('js/bootstrap-datetimepicker.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/jquery.star-rating-svg.min.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::to('js/admin/jquery.dataTables.min.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::to('js/admin/dataTables.responsive.min.js') }}"></script>
         <!-- <script type="text/javascript" src="{{ URL::to('js/admin/buttons.html5.min.js') }}"></script> -->
         @yield('script')
         <script>
@@ -202,12 +208,6 @@
                 $('.action-buttons').removeAttr("style");
             });
 
-            $('.post-show').click(function(e) {
-                $('.modal-title').text('Thông tin chi tiết');
-                $('.post').css("display","none");
-                $('#single-product').removeAttr("style");
-                $('.action-buttons').css("display", "none");
-            });
 
             $.ajaxSetup({
                 headers: {
@@ -215,7 +215,10 @@
                 }
             });
 
-
+            $('#post-show').click(function(e) {
+                var id = $(this).data('id');
+                window.location.href = "/postByUser/" + id;
+            });
 
 
         </script>

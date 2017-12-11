@@ -1,4 +1,7 @@
-@extends('layouts.master') @section('title') @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') {{-- @section('carousel') @include('particals.carousel') @endsection --}} @section('categories') @include('particals.categories')
+@extends('layouts.master') @section('title') @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') {{-- @section('carousel') @include('particals.carousel') @endsection --}} @section('categories')
+<div style="margin-top: 50px;"></div>
+@include('particals.categories')
+
 <header class="page-header">
     <h1 class="page-title">{{ $category->name }}</h1>
     <p class="woocommerce-result-count">Xem 1–15 </p>

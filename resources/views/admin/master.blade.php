@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/waves/waves.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/switchery/dist/switchery.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/core.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/jquery.dataTables.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/select2.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/morris/morris.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/jvectormap/jquery-jvectormap-2.0.3.css') }}" media="all" />

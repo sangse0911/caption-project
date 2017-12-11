@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\BookInterface;
+use App\Interfaces\PostInterface;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -10,9 +11,12 @@ class PostController extends Controller
 
     protected $bookRepository;
 
-    public function __construct(BookInterface $bookRepository)
-    {
+    public function __construct(
+        BookInterface $bookRepository,
+        PostInterface $postRepository
+    ) {
         $this->bookRepository = $bookRepository;
+        $this->postRepository = $postRepository;
     }
     /**
      * Display a listing of the resource.
@@ -75,6 +79,12 @@ class PostController extends Controller
         return $this->postRepository->find($id);
     }
 
+    public function getAllPostByUserId($id)
+    {
+        $books = $this->postRepository->find($id);
+
+        return view('post.index', compact('books'));
+    }
     /*
 
      */
