@@ -9,7 +9,7 @@
             <ul class="nav navbar-nav" style="display: inline-flex; align-items: center;">
                 <li class="menu-item" style="display: inline-table;"><a title="Góc bán sách" href="{{ route('book.create.sale') }}">Bán sách</a></li>
                 <li class="menu-item" style="display: inline-table;"><a title="Góc đăng bài" href="{{ route('post.create') }}">Đăng bài</a></li>
-                <li class="menu-item" style="display: inline-table;"><a title="Quảng cáo sách" href="#">Liên hệ quảng cáo</a></li>
+                <li class="menu-item" style="display: inline-table;"><a title="Quảng cáo sách" href="#">Quảng cáo</a></li>
                 <li id="search-form" class="menu-item" style="display: none;">
                     <form class="navbar-search" method="get" action="#" style="width: 100%;">
                         <label class="sr-only screen-reader-text" for="search">Tìm kiếm</label>
@@ -31,18 +31,13 @@
                     </form>
                 </li>
                 <ul class="navbar-wishlist nav navbar-nav pull-right flip" style="margin-left: 2.714em;">
-                    @if(Auth::guest())
-                        <li id="fv-2" class="nav-item menu-item" style="display: none;">
-                            <a href="javascript:void(0)" class="nav-link"><i class="ec ec-favorites"></i></a>
-                        </li>
-                    @else
-                    <li>
-                        <a href="javascript:void(0)" class="nav-link wishList" data-id="{{ Auth::user()->id }}" id="wishList">
-                            <i class="ec ec-favorites"></i>
-                        </a>
+                    <li id="fv-2" class="nav-item menu-item" style="display: none;">
+                        @if(Auth::guest())
+                        <a href="javascript:void(0)" class="nav-link wishList"><i class="ec ec-favorites"></i></a>
+                        @else
+                        <a href="javascript:void(0)" class="nav-link wishList" data-id="{{ Auth::user()->id }}" id="wishList"><i class="ec ec-favorites"></i></a>
+                        @endif
                     </li>
-                    @endif
-
                 </ul>
                 <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip">
                     <li id="cart-2" class="nav-item dropdown" style="display: none;">
@@ -68,7 +63,6 @@
                                         @endforelse
 
                                     </ul>
-                                    <!-- end product list -->
                                     <p class="total"><strong>Subtotal:</strong> <span class="amount">£969.98</span></p>
                                     <p class="buttons">
                                         <a class="button wc-forward" href="{{ route('cart.index') }}">Giỏ hàng</a>
@@ -82,5 +76,4 @@
             </ul>
         </div>
     </div>
-    <!-- /.-container -->
 </nav>

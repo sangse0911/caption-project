@@ -16,7 +16,7 @@
                             <div class="onsale-product-thumbnails">
                                 <div class="savings">
                                 <span class="savings-text">
-                                    Save <span class="amount">$20.00</span>
+                                    Tiết kiệm <span class="amount">20.000 VNĐ</span>
                                 </span>
                             </div>
                                 <div class="images" style="margin-top: 48px;">
@@ -33,13 +33,6 @@
                                 </span>
                                 </span>
                                 <div class="deal-progress">
-                                    {{-- <div class="deal-stock">
-                                        <span class="stock-sold">Already Sold: <strong>2</strong></span>
-                                        <span class="stock-available">Available: <strong>26</strong></span>
-                                    </div> --}}
-                                    {{-- <div class="progress">
-                                        <span class="progress-bar" style="width:8%">8</span>
-                                    </div> --}}
                                 </div>
                                 <div class="deal-countdown-timer" style="margin-top: 70px;margin-left: 0px;">
                                     <div class="marketing-text text-xs-center">

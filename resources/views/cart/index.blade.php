@@ -7,7 +7,6 @@
         <span style="left: 50%; color: #a3d133; font-weight: bold;font-size: 35px; font-family: cursive;" >Giỏ hàng</span>
         <div class="hr"><hr /></div>
         <br>
-        <!-- .entry-header -->
         <form>
             <table class="shop_table shop_table_responsive cart" style="border-style: dashed;border-color: #a3d133;">
                 <thead>
@@ -21,7 +20,6 @@
                 </thead>
                 <tbody >
                     @foreach($content as $item)
-                    {{-- {{ dd($item) }} --}}
                     <tr class="cart_item" >
                         <td class="product-remove">
                             <a class="remove" href="javascript:void(0)" data-id="{{ $item->rowId}}">×</a>
@@ -33,10 +31,10 @@
                             <a href="#">{{ $item->name }}</a>
                         </td>
                         <td data-title="Price" class="product-price">
-                            <span class="amount" style="color: red;">{{ number_format($item->price ,0, ",",".") }}</span>
+                            <span class="amount" style="color: red;">{{ ($item->price) }}</span>
                         </td>
                         <td data-title="Total" class="product-subtotal">
-                            <span class="amount">$1,999.00</span>
+                            <span class="amount">{{ $item->price }}</span>
                         </td>
                     </tr>
                     @endforeach
@@ -44,7 +42,6 @@
                         <td class="actions" colspan="8" >
 
                         </td>
-
                     </tr>
                     <tr >
                         <td class="actions" colspan="8" >
@@ -82,11 +79,11 @@
                 <tr ><td style="border-top-color: white;"></td><td style="border-top-color: white;"><span style="color: red;  font-weight: bold;font-size: 25px;">Tổng giá giỏ hàng</span></td></tr>
                 <tr class="cart-subtotal">
                     <th>Tạm tính: </th>
-                    <td data-title="Subtotal"><span class="amount">{{ number_format($total,0,",",".") }} VNĐ</span></td>
+                    <td data-title="Subtotal"><span class="amount">{{ ($total) }} VNĐ</span></td>
                 </tr>
                 <tr class="order-total">
                     <th>Thành Tiền: </th>
-                    <td data-title="Total"><strong><span class="amount">{{ number_format($total,0,",",".") }} VNĐ</span></strong> <br><br><br>
+                    <td data-title="Total"><strong><span class="amount">{{ ($total) }} VNĐ</span></strong> <br><br><br>
                     <button class="btn-danger" style="width: 200px;" href="javascript:void(0)" id="checkout">Đặt hàng</button></td>
                 </tr>
             </tbody>
@@ -96,7 +93,20 @@
 @endsection @section('sidebar')
 <div id="sidebar" class="sidebar" role="complementary">
     <div style="clear: both; margin-top: 50px;"></div>
-
+    <aside class="widget widget_text">
+        <div class="textwidget">
+            <a href="javascript:void(0)">
+                <img src="{{ URL::to('assets/images/banner/banner1.jpg') }}" id="borderimg2" alt="Banner">
+            </a>
+        </div>
+    </aside>
+    <aside class="widget widget_text">
+        <div class="textwidget">
+            <a href="javascript:void(0)">
+                <img src="{{ URL::to('assets/images/banner/banner2.jpg') }}" id="borderimg2" alt="Banner">
+            </a>
+        </div>
+    </aside>
     @yield('recently')
     <aside id="electro_features_block_widget-2" class="widget widget_electro_features_block_widget">
         <div class="features-list columns-1">

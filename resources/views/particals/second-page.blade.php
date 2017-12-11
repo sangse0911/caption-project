@@ -37,8 +37,8 @@
                                         <div class="price-add-to-cart" style="margin-top: 150px;">
                                             <span class="price">
                                                 <span class="electro-price" style="position: relative;">
-                                                    <ins><span class="amount">VNĐ {{ $book->price }}</span></ins>
-                                            <del style="position:absolute;left:0;top:-14px;"><span class="amount">$2,299.00</span></del>
+                                                    <ins><span class="amount">{{ $book->price }} VNĐ</span></ins>
+                                            {{-- <del style="position:absolute;left:0;top:-14px;"><span class="amount">$2,299.00</span></del> --}}
                                             <span class="amount"> </span>
                                             </span>
                                             </span>

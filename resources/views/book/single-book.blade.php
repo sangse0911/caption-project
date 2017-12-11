@@ -115,7 +115,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-left">
                                 <div class="check-products">
-                                    <div class="fb-comments"  data-width="800" data-numposts="5" style="width: 900px;"></div>
+                                    <div class="fb-comments" data-width="800" data-numposts="5" style="width: 900px;"></div>
                                 </div>
                             </div>
                         </div>

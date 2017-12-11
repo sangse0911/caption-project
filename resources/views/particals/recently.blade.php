@@ -8,7 +8,7 @@
                 <img width="180" height="180" src="{{ URL::to('assets/images/product'. '/'. $book->images->first()['path']) }}" alt="" class="wp-post-image"><span class="product-title">{{ $book->name }}</span>
             </a>
             <span class="electro-price"><ins><span class="amount">{{ $book->price }}</span></ins>
-            <del><span class="amount">$2,29</span></del>
+            {{-- <del><span class="amount">$2,29</span></del> --}}
             </span>
         </li>
         @endforeach

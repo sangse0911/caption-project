@@ -22,7 +22,7 @@
                                         </a>
                                         <div class="media-body">
                                             <span class="loop-product-categories">
-                                                <a href="#" rel="tag">Headphone Cases</a>
+                                                <a href="#" rel="tag"></a>
                                             </span>
                                             <a href="#">
                                                 <h3>{{ $book->name }}</h3>

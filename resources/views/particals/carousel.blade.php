@@ -10,7 +10,7 @@
                                 <div class="hero-subtitle-v2 fadeInDown-1">
                                 </div>
                                 <div class="hero-2 fadeInDown-2" style="font-weight: bold;text-shadow: 0 0 10px #0CC3D3, 0 0 8px #0CC3D3;
-                                                        color: white;">
+                                    color: white;">
                                     Sách sẽ không bao giờ là CŨ đối với những người biết trân trọng NÓ.
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                                     <!-- Our lives change in two ways :through the people we meet and the books we read. -->
                                 </div>
                                 <div class="hero-2 fadeInDown-2" style="font-weight: bold;text-shadow: 0 0 10px #0CC3D3, 0 0 8px #0CC3D3;
-                                                color: white;">
+                                    color: white;">
                                     Cuộc đời ta thay đổi theo hai cách: qua những người ta gặp và qua những cuốn sách ta đọc.
                                 </div>
                             </div>
