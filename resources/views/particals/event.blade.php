@@ -1,5 +1,5 @@
 <section class=" section-onsale-product-carousel" data-animation="fadeIn">
-    <header>
+    <header style="text-align: center; font-weight: bold;">
         <h1 class="h1">Sự kiện đang diễn ra</h1>
     </header>
     <div class="owl-nav">
@@ -21,11 +21,11 @@
                             </div>
                                 <div class="images" style="margin-top: 48px;">
                                     <a href="#">
-                                    <img width="600" height="600" src="{{ URL::to('assets/images/event/'. $event->path) }}" class="wp-post-image" alt="" title="{{ $event->title }}">
+                                    <img width="450" height="600" src="{{ URL::to('assets/images/event/'. $event->path) }}" class="wp-post-image" alt="" title="{{ $event->title }}">
                                     </a>
                                 </div>
                             </div>
-                            <div class="onsale-product-content">
+                            <div class="onsale-product-content" style="padding-left: 0px;">
                                 <a href="javascript:void(0)">
                                     <h3>{{ $event->title }}</h3>
                                 </a>
@@ -41,11 +41,11 @@
                                         <span class="progress-bar" style="width:8%">8</span>
                                     </div> --}}
                                 </div>
-                                <div class="deal-countdown-timer">
+                                <div class="deal-countdown-timer" style="margin-top: 70px;margin-left: 0px;">
                                     <div class="marketing-text text-xs-center">
                                         Sự kiện kết thúc trong: </div>
                                     <span class="deal-end-date" style="display:none;">{{ $event->end_date }}</span>
-                                    <div id="deal-countdown" class="countdown"><span data-value="-317" class="days"><span class="value">-317</span><b>Ngày</b></span><span class="hours"><span class="value">-10</span><b>Giờ</b></span><span class="minutes"><span class="value">-18</span><b>Phút</b></span><span class="seconds"><span class="value">-28</span><b>Gíây</b></span>
+                                    <div id="deal-countdown" class="countdown" style="margin-left: 0px; "><span style="padding-left: 0px; data-value="-317" class="days"><span class="value">-317</span><b>Ngày</b></span><span class="hours"><span class="value">-10</span><b>Giờ</b></span><span class="minutes"><span class="value">-18</span><b>Phút</b></span><span class="seconds"><span class="value">-28</span><b>Gíây</b></span>
                                     </div>
                                     <script>
                                     // set the date we're counting down to

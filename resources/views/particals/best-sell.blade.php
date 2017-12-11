@@ -1,6 +1,6 @@
 <section class="section-product-cards-carousel animate-in-view fadeIn animated" data-animation="fadeIn">
     <header>
-        <h2 class="h1">Sách bán chạy nhất</h2>
+          <h2 class="h1"><a href="" style="font-size: 20px;">Xem Tất Cả</a></h2>
         <ul class="nav nav-inline">
             <li class="nav-item active"><span class="nav-link">Top 20</span></li>
         </ul>

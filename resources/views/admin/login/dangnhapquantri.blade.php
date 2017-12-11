@@ -24,9 +24,9 @@
 		<![endif]-->
 </head>
 
-<body class="img-cover" style="background-image: url('{{ URL::to('AD/neptune-default/img/adnen2.jpg') }}');">
+<body class="img-cover" style="background-image: url('{{ URL::to('/img/loginimg.jpg') }}');">
     <div style="text-align: center;">
-        <div class="mb-2"><img src="{{ URL::to('AD/neptune-default/img/OKPNG.png') }}" style="height: 150px;width: 150px;" title=""></div>
+        <div class="mb-2"><img src="{{ URL::to('/img/logologin.png') }}" style="height: 150px;width: 150px;" title=""></div>
         <h5>Xin mời bạn đăng nhập để vào trang quản trị!</h5>
         <br>
     </div>

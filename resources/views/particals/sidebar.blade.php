@@ -24,14 +24,14 @@
     <aside class="widget widget_text">
         <div class="textwidget">
             <a href="#">
-                <img src="{{ URL::to('assets/images/banner/banner1.jpg') }}" alt="Banner">
+                <img src="{{ URL::to('assets/images/banner/banner1.jpg') }}" id="borderimg2" alt="Banner">
             </a>
         </div>
     </aside>
     <aside class="widget widget_text">
         <div class="textwidget">
             <a href="#">
-                <img src="{{ URL::to('assets/images/banner/banner2.jpg') }}" alt="Banner">
+                <img src="{{ URL::to('assets/images/banner/banner2.jpg') }}" id="borderimg2" alt="Banner">
             </a>
         </div>
     </aside>
@@ -80,7 +80,7 @@
             </div>
         </div>
     </aside>
-    <aside class="widget widget_electro_products_carousel_widget">
+  {{--   <aside class="widget widget_electro_products_carousel_widget">
         <section class="section-products-carousel">
             <header>
                 <h1>Sách hay</h1>
@@ -140,7 +140,7 @@
                 </div>
             </div>
         </section>
-    </aside>
+    </aside> --}}
 </div>
 @section('script')
     <script>

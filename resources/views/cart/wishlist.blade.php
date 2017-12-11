@@ -90,7 +90,15 @@
                     <th>Tạm tính: </th>
                     <td data-title="Subtotal"><span class="amount">{{ number_format($total,0,",",".") }} VNĐ</span></td>
                 </tr>
-              
+                    <!-- <tr class="shipping">
+                        <th>Shipping</th>
+                        <td dât-title="Shipping">Flat Rate: <span class="amount">$300.00</span>
+                            <input type="hidden" class="shipping_method" value="international_delivery" id="shipping_method_0" dât-index="0" name="shipping_method[0ư">
+                            <form method="pót" action="http://transvelo.github.io/electro-html/cảt.html" class="woocmmerce-shipping-calculator">
+                                <p><a dât-toggle="collapse" ẩi-controls="calculator" href="#calculator" ẩi-expanded="false" class="shipping-calculator-button">Calculate Shipping</a></p>
+                            </form>
+                        </td>
+                    </tr> -->
                     <tr class="order-total">
                         <th>Thành Tiền: </th>
                         <td data-title="Total"><strong><span class="amount">{{ number_format($total,0,",",".") }} VNĐ</span></strong> <br><br><br>

@@ -1,6 +1,14 @@
 @extends('layouts.master') @section('title') @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') @section('customer')
-<div style="clear: both; margin-top: 100px;"></div>
-<form id="ahuhu" class="" type="hidden" method="POST">
+<nav class="woocommerce-breadcrumb"><a href="#">Trang Chủ</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Bán Sách
+</nav>
+<article class="page type-page status-publish hentry">
+    <header class="entry-header">
+        <img style="margin: auto;" src="{{ URL::to('img/HR.png') }}">
+        <span style="left: 50%; color: #a3d133; font-weight: bold;font-size: 35px; font-family: cursive;" >Bán Sách</span>
+        <div class="hr"><hr /></div>
+        <br>
+        <div style="clear: both;"></div>
+<form id="ahuhu" class="" type="hidden" method="POST" style="text-align: left;border-style: dotted;padding-top: 20px;border-color: #a3d133;">
     <div class="form-group col-sm-6 post">
         <label for="introduce">Bạn muốn làm gì với sách</label>
         <br/>
@@ -33,8 +41,8 @@
         </span>
     </div>
     <div class="form-group col-md-6 post">
-        <label for="">Gía</label>
-        <input type="text" name="price" id="price" class="form-control" placeholder="Gía bạn mong muốn">
+        <label for="">Giá</label>
+        <input type="text" name="price" id="price" class="form-control" placeholder="Giá bạn mong muốn">
         <span class="help-block">
             <strong id="error-price"></strong>
         </span>
@@ -117,19 +125,17 @@
         <div class="col-md-6">
             <input type="file" id="input-file-now" class="dropify" name="images[]" />
         </div>
-        <div class="col-md-6">
-            <input type="file" id="input-file-now" class="dropify" name="images[]" />
-        </div>
-        <div class="col-md-6">
-            <input type="file" id="input-file-now" class="dropify" name="images[]" />
-        </div>
+        
     </div>
     <div class="form-group" style="clear: both;"></div>
-    <div class="form-group" style="display: block; float: right;">
-        <button type="submit" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="post-create">Lưu</button>
-        <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Đóng</button>
+    <div class="form-group" style="text-align: center;">
+        <button type="submit" class="btn-success" id="post-create">&nbsp&nbsp&nbspGửi&nbsp&nbsp&nbsp</button>
+        <button type="reset" class="btn-danger" data-dismiss="modal">Làm mới</button>
     </div>
+        <div class="form-group" style="clear: both;"></div>
 </form>
+
+        </article>
 <script>
 </script>
 @endsection @section('sidebar')
@@ -138,14 +144,14 @@
     <aside class="widget widget_text">
         <div class="textwidget">
             <a href="#">
-                <img src="{{ URL::to('assets/images/banner/banner1.jpg') }}" alt="Banner">
+                <img src="{{ URL::to('assets/images/banner/banner1.jpg') }}" id="borderimg2" alt="Banner">
             </a>
         </div>
     </aside>
     <aside class="widget widget_text">
         <div class="textwidget">
             <a href="#">
-                <img src="{{ URL::to('assets/images/banner/banner2.jpg') }}" alt="Banner">
+                <img src="{{ URL::to('assets/images/banner/banner2.jpg') }}" id="borderimg2" alt="Banner">
             </a>
         </div>
     </aside>
@@ -194,69 +200,10 @@
             </div>
         </div>
     </aside>
-    <aside class="widget widget_electro_products_carousel_widget">
-        <section class="section-products-carousel">
-            <header>
-                <h1>Sách hay</h1>
-                <div class="owl-nav">
-                    <a href="#products-carousel-prev" data-target="#products-carousel-57176fb2dc4a8" class="slider-prev"><i class="fa fa-angle-left"></i></a>
-                    <a href="#products-carousel-next" data-target="#products-carousel-57176fb2dc4a8" class="slider-next"><i class="fa fa-angle-right"></i></a>
-                </div>
-            </header>
-            <div id="products-carousel-57176fb2dc4a8">
-                <div class="products owl-carousel  products-carousel-widget columns-1 owl-loaded owl-drag">
-                    <div class="owl-stage-outer">
-                        <div class="owl-stage">
-                            <div class="owl-item" style="width: 278px;">
-                                <div class="product-carousel-alt">
-                                    <a href="single-product.html">
-                                        <div class="product-thumbnail"><img width="250" height="232" src="assets/images/products/1.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="Smartwatch2"></div>
-                                    </a>
-                                    <span class="loop-product-categories"><a href="single-product.html" rel="tag">Smartwatches</a></span><a href="single-product.html"><h3>Smartwatch 2.0 LTE Wifi  Waterproof</h3></a>
-                                    <span class="price"><span class="electro-price"><span class="amount">$725.00</span></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </aside>
-    <aside class="widget electro_posts_carousel_widget">
-        <section class="section-posts-carousel">
-            <header>
-                <h3 class="widget-title">Đánh gía của chuyên gia</h3>
-                <div class="owl-nav">
-                    <a href="#posts-carousel-prev" data-target="#posts-carousel-57176fb2e4a7f" class="slider-prev"><i class="fa fa-angle-left"></i></a>
-                    <a href="#posts-carousel-next" data-target="#posts-carousel-57176fb2e4a7f" class="slider-next"><i class="fa fa-angle-right"></i></a>
-                </div>
-            </header>
-            <div id="posts-carousel-57176fb2e4a7f" class="blog-carousel-homev2">
-                <div class="owl-carousel post-carousel blog-carousel-widget owl-loaded owl-drag">
-                    <div class="owl-stage-outer">
-                        <div class="owl-stage">
-                            <div class="owl-item" style="width: 278px;">
-                                <div class="post-item">
-                                    <a class="post-thumbnail" href="blog-single.html">
-                                                <img width="270" height="180" src="assets/images/blog/blog-1.jpg" class="wp-post-image" alt="1">
-                                            </a>
-                                    <div class="post-content">
-                                        <span class="post-category"><a href="blog-single.html" rel="category tag">Design</a>, <a href="blog-single.html" rel="category tag">Technology</a></span> -
-                                        <span class="post-date">March 4, 2016</span>
-                                        <a class="post-name" href="blog-single.html">Robot Wars – Post with Gallery</a>
-                                        <span class="comments-link"><a href="blog-single.html#comments">Leave a comment</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </aside>
+    
+    
 </div>
-@endsection @include('particals.contents') @endsection
+ @endsection @include('particals.contents') @endsection @section('footer') @include('particals.footer') @endsection
 @section('script')
 <script>
     $("#quality").select2({ closeOnSelect: true, maximumSelectionLength: 1 });

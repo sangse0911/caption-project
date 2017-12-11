@@ -22,8 +22,25 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/dropify/dist/css/dropify.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/star-rating-svg.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/jquery.dataTables.min.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="{{ URL::to('img/OKPNG.png') }}" media="all" />
+    <style type="text/css">
+        #borderimg2 { 
+    border: 10px solid transparent;
+    padding: 1px;
+    -webkit-border-image: url({{ URL::to('img/border.png') }}) 30 stretch; /* Safari 3.1-5 */
+    -o-border-image: url({{ URL::to('img/border.png') }}g) 30 stretch; /* Opera 11-12.1 */
+    border-image: url({{ URL::to('img/border.png') }}) 30 stretch;
+}
+div.hr {
+  height: 15px;
+  background: #fff url({{ URL::to('img/hr1.gif') }}) no-repeat scroll center;
+}
+div.hr hr {
+  display: none;
+}
+
+    </style>
     <!-- Demo Purpose Only. Should be removed in production -->
 </head>
 
@@ -40,116 +57,253 @@
                 </nav>
                 <nav>
                     <ul id="menu-top-bar-right" class="nav nav-inline pull-right animate-dropdown flip">
-                        <li class="menu-item animate-dropdown"><a title="Store Locator" href="#"><i class="ec ec-map-pointer"></i>Dia chi</a></li>
-                        @if(Auth::guest())
-                        <li class="menu-item animate-dropdown">
-                            <a title="My Account" data-toggle="modal" href="#loginModal">
-                                <i class="ec ec-user"></i>Tài khoản
-                            </a>
-                        </li>
+                         <li class="menu-item animate-dropdown"><i class="fa fa-envelope-o" aria-hidden="true"></i> BookServiceOnline@gmail.com</li>
+                        <li class="menu-item animate-dropdown"><i class="fa fa-phone-square" aria-hidden="true"></i> (084)- 1682 5592</li>
+                       @if(Auth::guest())
+                        <li class="menu-item animate-dropdown"> <a title="My Account" data-toggle="modal" href="#loginModal"><i class="ec ec-user"></i>Đăng Nhập</a></li>
+                        <li class="menu-item animate-dropdown"><a title="My Account" data-toggle="modal" href="#dangkyModal"><i class="fa fa-chain-broken" aria-hidden="true"></i>Đăng Ký</a></li>
                         @else
-                        <li class="dropdown menu-item animate-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+
+                        <li class="menu-item animate-dropdown dropdown">
+                            <a href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false" role="button" class="dropdown-toggle">
+                                <i class="fa fa-user" aria-hidden="true"></i>{{ Auth::user()->name }} <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="javascript:void(0)" data-id="{{ Auth::user()->id }}" id="post-show">Bài đăng</a>
+                            <ul class="dropdown-menu" style="text-align: left; padding: 0px;color: black;" role="menu">
+                                <li style="margin-top: 5px;">
+                                    <a href="javascript:void(0)" data-id="{{ Auth::user()->id }}" id="post-show"><div style="width: 100%;height: 100%;margin-left: 10px;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Bài đăng của bạn
+                                        </div></a>
+                                </form>
                                 </li>
-                                <li>
-                                    <a href="{{ url('/logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                          Đăng xuất
-                                    </a>
-                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
+                                <li  style="margin-top: 3px;">
+                                    <a href="{{ url('/user/logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();"><div style="width: 100%;height: 100%;margin-left: 10px;"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng Xuất
+                                        </div></a>
+                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                                 </li>
+                                
                             </ul>
                         </li>
                         @endif
-                    </ul>
-                </nav>
-                <form type="hidden" name="" id="" method="POST" action="{{ url('/login') }}">
-                    {{ csrf_field() }}
-                    <div id="loginModal" class="modal fade" role="dialog">
-                        <div class="modal-dialog modal-lg">
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Đăng nhập</h4>
-                                </div>
-                                <div class="modal-body">
-
-                                    <div class="form-group col-sm-6">
-                                        <label for="name">Tên tài khoản</label>
-                                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                                @if ($errors->has('email'))
-                                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('email') }}</strong>
-                                                    </span>
-                                                @endif
-                                        </div>
-                                        <label for="password">Mật khẩu</label>
-                                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                             <input id="password" type="password" class="form-control" name="password" required>
-                                            @if ($errors->has('password'))
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('password') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                        <button type="submit" class="btn btn-success btn-default  b-a-0 waves-effect waves-light">Đăng nhập</button>
-                                        <a href="{{ url('/register') }}" type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" style="float: right;">Đăng kí</a href="">
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label for="name">Đăng nhập bằng facebook</label>
-                                        <br/>
-                                        <a href="{{ route('login_with_facebook') }}" type="button" class="btn btn-success btn-default  b-a-0 waves-effect waves-light">Đăng nhập facebook</a>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                </div>
+                </ul>
+            </nav>
+            <form type="hidden" name="" id="" method="POST" action="{{ url('/login') }}">
+                {{ csrf_field() }}
+                <div id="loginModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #A3D133;text-align: center;">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title" style="font-weight: bold;">Đăng nhập</h4>
                             </div>
-                        </div>
+                            <div class="modal-body">
+                                <div id="primary" class="content-area">
+                                    <main id="main" class="site-main">
+                                      <article id="post-8" class="hentry">
+
+                                          <div class="entry-content">
+                                            <div class="woocommerce">
+                                                <div class="customer-login-form">
+                                                    <span class="or-text">or</span>
+
+                                                    <div class="col2-set"  id="customer_login">
+
+                                                        <div class="col-1">
+
+
+                                                            <form method="post" class="login">
+
+                                                               {{--  <p class="form-row form-row-wide"> --}}
+                                                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                                                    <label for="username">Email:
+                                                                        <span class="required"></span></label>
+
+                                                                        <input id="email" type="email"  class="input-text" name="email" value="{{ old('email') }}" required autofocus/>
+                                                                        @if ($errors->has('email'))
+                                                                        <span class="help-block">
+                                                                            <strong>{{ $errors->first('email') }}</strong>
+                                                                        </span>
+                                                                        @endif
+                                                                    </div>
+                                                                {{-- </p> --}}
+
+                                                                <p class="form-row form-row-wide">
+                                                                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                                                    <label for="password">Mật khẩu:
+                                                                        <span class="required"></span></label>
+
+                                                                        <input class="input-text" id="password" type="password" name="password" required/>
+                                                                        @if ($errors->has('password'))
+                                                                        <span class="help-block">
+                                                                            <strong>{{ $errors->first('password') }}</strong>
+                                                                        </span>
+                                                                        @endif
+                                                                    </div>
+                                                                </p>
+
+                                                                <p class="lost_password">
+                                                                    <a href="login-and-register.html">Quên mật khẩu?</a>
+                                                                </p>
+                                                                <p class="form-row">
+                                                                    <input class="button" type="submit" value="Đăng Nhập" name="login">
+                                                                    <br>
+                                                                    <br>
+                                                                    <label for="rememberme" class="inline">
+                                                                        <input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Remember me
+                                                                    </label>
+                                                                </p>
+
+                                                                <p class="lost_password">
+                                                                    Bạn chưa là thành viên?<a data-toggle="modal" href="#dangkyModal"  onclick="$('#loginModal').modal('hide')"> Đăng kí ngay!</a>
+                                                                </p>
+                                                                
+                                                            </form>
+
+
+
+                                                        </div><!-- .col-1 -->
+
+                                                        <div class="col-2" style="margin-top: 200px;">
+
+                                                           <a href="{{ route('login_with_facebook') }}"><div style=" background-color:  #4267b2;width: 350px;height: 60px;" type="submit" class="button"><i class="fa fa-facebook-official fa-2x"></i>  <span style="font-size: 20px; color: white;">Đăng nhập bằng Facebook</span>&nbsp &nbsp  </div></a>
+
+                                                       </div><!-- .col-2 -->
+
+                                                   </div><!-- .col2-set -->
+
+                                               </div><!-- /.customer-login-form -->
+                                           </div><!-- .woocommerce -->
+                                       </div><!-- .entry-content -->
+
+                                   </article><!-- #post-## -->
+
+                               </main><!-- #main -->
+                           </div><!-- #primary -->
+
+                       </div>
+                       <div class="modal-footer" style="background-color: #A3D133;">
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </form>
+       <form type="hidden" name="" id="" method="POST" action="{{ url('/aaa') }}">
+        {{ csrf_field() }}
+        <div id="dangkyModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #A3D133;text-align: center;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" style="font-weight: bold;">Đăng Ký</h4>
                     </div>
-                </form>
+                    <div class="modal-body">
+                        <div id="primary" class="content-area">
+                            <main id="main" class="site-main">
+                              <article id="post-8" class="hentry">
+
+                                  <div class="entry-content">
+                                    <div class="woocommerce">
+                                        <div class="customer-login-form">
+                                            <span class="or-text">or</span>
+
+                                            <div class="col2-set"  id="customer_login">
+
+                                               <div class="col-1">
+                                        <form method="post" class="login">
+                                            <p class="form-row form-row-wide">
+                                                <label for="username">Tên:
+                                                <span class="required"></span></label>
+                                                <input type="text" name="name" id="" class="input-text" placeholder="Nhập Tên" required="true">
+                                            </p>
+                                            <p class="form-row form-row-wide">
+                                                <label for="username">Email :
+                                                <span class="required"></span></label>
+                                                <input type="email" name="email" id="" class="input-text" placeholder="Nhập Email">
+                                            </p>
+                                            <p class="form-row form-row-wide">
+                                                <label for="password">Mật Khẩu :
+                                                <span class="required"></span></label>
+                                                 <input type="text" name="password" id="" class="input-text" placeholder="Nhập mật khẩu" required="">
+                                            </p>
+                                            <p class="form-row form-row-wide">
+                                                <label for="password">Nhập Lại Mật Khẩu :
+                                                <span class="required"></span></label>
+                                                <input class="input-text" type="password" name="password" placeholder="Nhập lại mật khẩu" id="password" />
+                                            </p>
+                                            <!-- <p class="lost_password">
+                                                <a href="login-and-register.html">Quên mật khẩu?</a>
+                                            </p> -->
+                                            <label for="rememberme" class="inline">
+                                                    <input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Tôi đã đọc & đồng ý với <a href="">Điều khoản sử dụng của Tủ Sách Tương Lai.</a>
+                                                </label>
+                                            <p class="form-row">
+                                                <input class="button" type="submit" value="Đăng Ký" name="login">
+                                                
+                                                
+                                            </p>
+                                    
+                                        </form>
+                                    </div>
+                                    <div class="col-2" style="margin-top: 260px;">
+
+                                       <a href="{{ route('login_with_facebook') }}"><div style="background-color:  #4267b2;width: 350px;height: 60px;" type="submit" class="button"><i class="fa fa-facebook-official fa-2x"></i>  <span style="font-size: 20px; color: white;">Đăng nhập bằng Facebook</span>&nbsp &nbsp  </div></a>
+
+                                   </div><!-- .col-2 -->
+
+                               </div><!-- .col2-set -->
+
+                           </div><!-- /.customer-login-form -->
+                       </div><!-- .woocommerce -->
+                   </div><!-- .entry-content -->
+
+               </article><!-- #post-## -->
+
+           </main><!-- #main -->
+       </div><!-- #primary -->
+
+   </div>
+   <div class="modal-footer" style="background-color: #A3D133;">
+   </div>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+<!-- /.top-bar -->
+{{-- section header --}} @yield('header') {{-- section header-v2 --}} @yield('header-v2') {{-- section nav-v2 --}} @yield('nav-v2') {{-- section content --}} @yield('content') {{-- section footer --}} @yield('footer')
+<div class="electro-handheld-footer-bar hidden-lg-up">
+    <ul class="columns-5">
+        <li class="my-account">
+            <a id="fb-button1" onclick="login();"></a>
+            <a id="mobile-user" class="hidden" href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true" style="cursor: pointer;" title="your account"></a>
+        </li>
+        <li class="search"> <a href="javascript:void(0);" id="mobile-search" title="search everythings you need"></a>
+            <div class="site-search">
+                <div class="widget woocommerce widget_product_search">
+                    <form role="search" method="get" class="woocommerce-product-search" action="https://demo2.chethemes.com/electro/">
+                        <label class="screen-reader-text" for="woocommerce-product-search-field-0">Search for:</label>
+                        <input type="search" id="woocommerce-product-search-field-0" class="search-field" placeholder="Search products…" value="" name="s">
+                        <input type="submit" value="Search">
+                        <input type="hidden" name="post_type" value="product">
+                    </form>
+                </div>
             </div>
-        </div>
-        <!-- /.top-bar -->
-        {{-- section header --}} @yield('header') {{-- section header-v2 --}} @yield('header-v2') {{-- section nav-v2 --}} @yield('nav-v2') {{-- section content --}} @yield('content') {{-- section footer --}} @yield('footer')
-        <div class="electro-handheld-footer-bar hidden-lg-up">
-            <ul class="columns-5">
-                <li class="my-account">
-                    <a id="fb-button1" onclick="login();"></a>
-                    <a id="mobile-user" class="hidden" href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true" style="cursor: pointer;" title="your account"></a>
-                </li>
-                <li class="search"> <a href="javascript:void(0);" id="mobile-search" title="search everythings you need"></a>
-                    <div class="site-search">
-                        <div class="widget woocommerce widget_product_search">
-                            <form role="search" method="get" class="woocommerce-product-search" action="https://demo2.chethemes.com/electro/">
-                                <label class="screen-reader-text" for="woocommerce-product-search-field-0">Search for:</label>
-                                <input type="search" id="woocommerce-product-search-field-0" class="search-field" placeholder="Search products…" value="" name="s">
-                                <input type="submit" value="Search">
-                                <input type="hidden" name="post_type" value="product">
-                            </form>
-                        </div>
-                    </div>
-                </li>
-                <li class="cart"> <a class="footer-cart-contents" href="#" title="View your shopping cart"> <span class="cart-items-count count">0</span> </a></li>
-                <li class="wishlist"> <a href="#" class="has-icon"><i class="ec ec-favorites"></i><span class="count">0</span></a></li>
-                <li class="compare"> <a href="#" class="has-icon"><i class="ec ec-compare"></i><span class="count">0</span></a></li>
-            </ul>
-        </div>
-        <ul class="list-user-action" aria-labelledby="dropdownMenu2" style="position: absolute; display: none;">
-            <li><a href="#">Nạp tiền vào tài khoản</a></li>
-            <li><a href="#">Lịch sử giao dịch</a></li>
-            <li class="last"><a href="#" onclick="logoutFacebook();">Đăng xuất</a></li>
-        </ul>
-        <a id="scrollUp" href="javascript:void(0)" style="position: fixed; z-index: 1001; display: block;"><i class="fa fa-angle-up"></i></a>
+        </li>
+        <li class="cart"> <a class="footer-cart-contents" href="#" title="View your shopping cart"> <span class="cart-items-count count">0</span> </a></li>
+        <li class="wishlist"> <a href="#" class="has-icon"><i class="ec ec-favorites"></i><span class="count">0</span></a></li>
+        <li class="compare"> <a href="#" class="has-icon"><i class="ec ec-compare"></i><span class="count">0</span></a></li>
+    </ul>
+</div>
+<ul class="list-user-action" aria-labelledby="dropdownMenu2" style="position: absolute; display: none;">
+    <li><a href="#">Nạp tiền vào tài khoản</a></li>
+    <li><a href="#">Lịch sử giao dịch</a></li>
+    <li class="last"><a href="#" onclick="logoutFacebook();">Đăng xuất</a></li>
+</ul>
+<a id="scrollUp" href="javascript:void(0)" style="position: fixed; z-index: 1001; display: block;"><i class="fa fa-angle-up"></i></a>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/jquery-1.12.3.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/tether.min.js') }}"></script>

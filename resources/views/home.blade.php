@@ -9,7 +9,7 @@
 @endsection()
 
 @section('nav-v2')
-	@include('particals.nav-bar-v2')
+    @include('particals.nav-bar-v2')
 @endsection
 
 @section('content')
@@ -20,18 +20,21 @@
     @section('categories')
         @include('particals.categories')
     @endsection
-    @section('first')
+    @section('event')
+        @include('particals.event')
+    @endsection
+    
+     @section('first')
         @include('particals.first-page')
     @endsection
     @section('second')
         @include('particals.second-page')
     @endsection
+
     @section('best-sell')
         @include('particals.best-sell')
     @endsection
-    @section('event')
-        @include('particals.event')
-    @endsection
+    
     @section('single-book-field')
         @include('book.single-book')
     @endsection
