@@ -196,7 +196,6 @@
                 }
             }
         });
-        // console.log(data),
         e.preventDefault();
     });
 </script>

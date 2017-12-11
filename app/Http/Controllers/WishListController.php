@@ -71,7 +71,9 @@ class WishListController extends Controller
      */
     public function show($id)
     {
-        //
+        $books = $this->wishListRepository->getByUser($id);
+
+        return view('wishlists.single', compact('books'));
     }
 
     /**

@@ -25,7 +25,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ URL::to('img/OKPNG.png') }}" media="all" />
     <style type="text/css">
-        #borderimg2 { 
+        #borderimg2 {
     border: 10px solid transparent;
     padding: 1px;
     -webkit-border-image: url({{ URL::to('img/border.png') }}) 30 stretch; /* Safari 3.1-5 */
@@ -82,7 +82,7 @@ div.hr hr {
                                     {{ csrf_field() }}
                                 </form>
                                 </li>
-                                
+
                             </ul>
                         </li>
                         @endif
@@ -158,7 +158,7 @@ div.hr hr {
                                                                 <p class="lost_password">
                                                                     Bạn chưa là thành viên?<a data-toggle="modal" href="#dangkyModal"  onclick="$('#loginModal').modal('hide')"> Đăng kí ngay!</a>
                                                                 </p>
-                                                                
+
                                                             </form>
 
 
@@ -241,10 +241,10 @@ div.hr hr {
                                                 </label>
                                             <p class="form-row">
                                                 <input class="button" type="submit" value="Đăng Ký" name="login">
-                                                
-                                                
+
+
                                             </p>
-                                    
+
                                         </form>
                                     </div>
                                     <div class="col-2" style="margin-top: 260px;">
@@ -340,7 +340,7 @@ div.hr hr {
         </script>
         <script>
         $(window).bind('scroll', function() {
-            if ($(window).scrollTop() > 200) {
+            if ($(window).scrollTop() > 250) {
                 $('.navbar-primary').addClass('navbar-fixed-top');
                 $('#search-form').css("display","inline-table");
                 $('#fv-2').removeAttr("style");
@@ -623,12 +623,14 @@ div.hr hr {
                     $('#book-company').text(data['book']['company']);
                     $('#book-year').text(data['book']['year']);
                     $('#book-republish').text(data['book']['republish']);
-                    $('#book-author').text(data['book']['author']);
+                    $('.book-author').text(data['book']['author']);
                     $('#book-price').text('Gía: ' + data['book']['price'] + ' VND');
                     $('#book-introduce').text(data['book']['introduce']);
                     $('#book-description').text(data['book']['description']);
                     $('#image-book').attr('src','{{ URL::to('assets/images/product/') }}' + '/' + data['images'][0]['path']);
+                    $('.fb-comments').attr('data-href',"https://developers.facebook.com/"+ book_id );
                     $('.modal-footer').css('display','none');
+                    $('#book-isbn').text(data['book']['isbn']);
                 },
                 error: function(data) {
                 }
@@ -664,6 +666,9 @@ div.hr hr {
                     error: function(data) {
                         if(data.status === 401) {
                             alert('Vui lòng đăng nhập trưóc khi thêm sách vào yêu thích');
+                        }
+                        if(data.status === 500) {
+                            alert('Sách đã có trong danh sách yêu thích của bạn');
                         }
                     }
 
@@ -749,7 +754,7 @@ div.hr hr {
 
                     },
                     error: function(data) {
-                        console.log("co loi voi", data);
+
                     }
                 });
 
@@ -784,74 +789,69 @@ div.hr hr {
 
             });
 
-             $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $('.btn-view').click(function(e) {
-        $('.image-area').css("display", "none");
-        $('#book-update').removeAttr("style");
-        $('#create-book').css("display", "none");
-        $('.form-status').removeAttr("style");
+            $('.btn-view').click(function(e) {
+                $('.image-area').css("display", "none");
+                $('#book-update').removeAttr("style");
+                $('#create-book').css("display", "none");
+                $('.form-status').removeAttr("style");
 
-        $('.modal-title').text('Thông tin sách');
-        $('.bank-account').css("display", "none");
-        $('.method-pay').css("display", "none");
-        $('.kind-book').css("display", "none");
-        $('.modal-footer').css('display', 'none');
-        $('#error-name').text("");
-        $('#error-introduce').text("");
-        $('#error-description').text("");
-        $('#error-price').text("");
-        $('#error-price-rent').text("");
-        $('#error-author').text("");
-        $('#error-company').text("");
-        $('#error-year').text("");
-        $('#error-kind').text("");
-        $('#error-method').text("");
-        $('#error-account').text("");
-        $('#error-category').text("");
-        $('#error-quality').text("");
-        $('#error-republish').text("");
-        $('#error-location').text("");
-        $('#error-isbn').text("");
+                $('.modal-title').text('Thông tin sách');
+                $('.bank-account').css("display", "none");
+                $('.method-pay').css("display", "none");
+                $('.kind-book').css("display", "none");
+                $('.modal-footer').css('display', 'none');
+                $('#error-name').text("");
+                $('#error-introduce').text("");
+                $('#error-description').text("");
+                $('#error-price').text("");
+                $('#error-price-rent').text("");
+                $('#error-author').text("");
+                $('#error-company').text("");
+                $('#error-year').text("");
+                $('#error-kind').text("");
+                $('#error-method').text("");
+                $('#error-account').text("");
+                $('#error-category').text("");
+                $('#error-quality').text("");
+                $('#error-republish').text("");
+                $('#error-location').text("");
+                $('#error-isbn').text("");
 
-        var book_id = $(this).data('id');
-        var array = [];
+                var book_id = $(this).data('id');
+                var array = [];
 
-        $.ajax({
-            cache: false,
-            method: 'GET',
-            dataType: 'JSON',
-            url: '/admin/books/' + book_id,
-            success: function(data) {
-                $('#name').val(data['book']['name']).prop("readonly",true);
-                for (var i = 0; i < data['categories'].length; i++) {
-                    array.push(data['categories'][i]['category_id']);
-                }
+                $.ajax({
+                    cache: false,
+                    method: 'GET',
+                    dataType: 'JSON',
+                    url: '/admin/books/' + book_id,
+                    success: function(data) {
+                        $('#name').val(data['book']['name']).prop("readonly",true);
+                        for (var i = 0; i < data['categories'].length; i++) {
+                            array.push(data['categories'][i]['category_id']);
+                        }
 
-                $('#id').prop("readonly",true).val(data['book']['id']);
-                $('#category').val(array).trigger('change').prop("readonly",true);
-                $('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
-                $('#introduce').val(data['book']['introduce']).prop("readonly",true);
-                $('#location').val(data['book']['bookshelf_id']).trigger('change');
-                $('#quality').val(data['details'][0]['quality']).trigger('change');
-                $('#price').val(data['book']['price']).prop("readonly",true);
-                $('#price-rent').val(data['book']['rental_fee']).prop("readonly",true);
-                $('#author').val(data['book']['author']).prop("readonly",true);
-                $('input[type=radio][name="status"][value=' + data['book']['status'] + ']').prop('checked', true);
-                $('input[type=radio][name="status"]').prop('disabled', true);
-                $('#company').val(data['book']['company']).prop("readonly",true);
-                $('#year').val(data['book']['year']).prop("readonly",true);
-                $('#republish').val(data['book']['republish']).prop("readonly",true);
-                $('#isbn').val(data['book']['isbn']).prop("readonly",true);
-                $('select').prop('disabled', true);
-            },
-            error: function(data) {
-            }
-        });
-    });
+                        $('#id').prop("readonly",true).val(data['book']['id']);
+                        $('#category').val(array).trigger('change').prop("readonly",true);
+                        $('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
+                        $('#introduce').val(data['book']['introduce']).prop("readonly",true);
+                        $('#location').val(data['book']['bookshelf_id']).trigger('change');
+                        $('#quality').val(data['details'][0]['quality']).trigger('change');
+                        $('#price').val(data['book']['price']).prop("readonly",true);
+                        $('#price-rent').val(data['book']['rental_fee']).prop("readonly",true);
+                        $('#author').val(data['book']['author']).prop("readonly",true);
+                        $('input[type=radio][name="status"][value=' + data['book']['status'] + ']').prop('checked', true);
+                        $('input[type=radio][name="status"]').prop('disabled', true);
+                        $('#company').val(data['book']['company']).prop("readonly",true);
+                        $('#year').val(data['book']['year']).prop("readonly",true);
+                        $('#republish').val(data['book']['republish']).prop("readonly",true);
+                        $('#isbn').val(data['book']['isbn']).prop("readonly",true);
+                        $('select').prop('disabled', true);
+                    },
+                    error: function(data) {
+                    }
+                });
+            });
         </script>
     </div>
 </body>

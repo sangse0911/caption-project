@@ -205,6 +205,7 @@ Route::middleware(['auth'])->group(function () {
      */
     Route::post('/addPostWishlist', ['as' => 'add.post.wishlist', 'uses' => 'WishListController@createWishlistPost']);
     Route::post('/addBookWishlist', ['as' => 'add.book.wishlist', 'uses' => 'WishListController@createWishlistBook']);
+    Route::get('/wishlistByUser/{id}', 'WishListController@show')->name('wishlist.user.list');
 
     /**
      *

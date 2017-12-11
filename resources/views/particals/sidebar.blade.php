@@ -5,12 +5,12 @@
                 <ul>
                     <li class="cat-item cat-item-172 current-cat-parent current-cat-ancestor">
                         <a href="product-category.html"><span class="child-indicator open"><i class="fa fa-angle-up"></i></span>Danh sách thể loại sách</a>
-                        <span class="count">(11)</span>
+                        <span class="count">()</span>
                         <ul class="children" style="display: block;">
                            @foreach($categories as $category)
                             <li class="cat-item cat-item-228">
                                 <a href="javascript:void(0)" class="category-show" data-id="{{ $category->id }}"><span class="no-child"></span>{{ $category->name }}</a>
-                                <span class="count">(0)</span>
+                                <span class="count">()</span>
                             </li>
                            @endforeach
                         </ul>
@@ -21,20 +21,7 @@
         </ul>
         <!-- .product-categories -->
     </aside>
-    <aside class="widget widget_text">
-        <div class="textwidget">
-            <a href="#">
-                <img src="{{ URL::to('assets/images/banner/banner1.jpg') }}" id="borderimg2" alt="Banner">
-            </a>
-        </div>
-    </aside>
-    <aside class="widget widget_text">
-        <div class="textwidget">
-            <a href="#">
-                <img src="{{ URL::to('assets/images/banner/banner2.jpg') }}" id="borderimg2" alt="Banner">
-            </a>
-        </div>
-    </aside>
+
     @yield('recently')
     <aside id="electro_features_block_widget-2" class="widget widget_electro_features_block_widget">
         <div class="features-list columns-1">

@@ -2,38 +2,37 @@
 
 namespace App\Repositories;
 
+use App\Interfaces\UserInterface;
 use App\Interfaces\WishlistInterface;
 use App\Models\Book;
-use App\Models\Post;
 use App\Models\WishList;
 
 class WishListRepository implements WishlistInterface
 {
 
+    protected $userRepository;
+
+    public function __construct(UserInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+    /**
+     * [all description]
+     * @return [type] [description]
+     */
     public function all()
     {
         return Wishlist::all();
     }
+
+    /**
+     * [find description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function find($id)
     {
 
-    }
-
-    /**
-     * [createWishlistPost description]
-     * @param  [type] $data [description]
-     * @return [type]       [description]
-     */
-    public function createWishlistPost($data)
-    {
-
-        $post = Post::find($data['postId']);
-        $userId = $data['userId'];
-
-        return $post->wishLists()->create([
-            'user_id' => $userId,
-            'wishListable_id' => $post->id,
-        ]);
     }
 
     /**
@@ -50,5 +49,24 @@ class WishListRepository implements WishlistInterface
             'user_id' => $userId,
             'wishListable_id' => $book->id,
         ]);
+    }
+
+    /**
+     * [getByUser description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function getByUser($id)
+    {
+        $user = $this->userRepository->find($id);
+
+        $users = $user->wishlists()->where('user_id', $id)->get();
+
+        $books = array();
+        foreach ($users as $user) {
+            array_push($books, Book::findOrFail($user->id));
+        }
+
+        return $books;
     }
 }

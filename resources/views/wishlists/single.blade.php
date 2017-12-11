@@ -1,9 +1,9 @@
-@extends('layouts.master') @section('title') Cua hang sach hang dau @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') @section('cart')
-{{-- <nav class="woocmmerce-breadcrumb"><a href="#">Home</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Cảt
-</nav> --}}
+@extends('layouts.master') @section('title') @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') @section('customer')
+<nav class="woocommerce-breadcrumb"><a href="/">Trang Chủ</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Danh sách yêu thích
+</nav>
 <article class="page type-page status-publish hentry">
     <header class="entry-header">
-        <h1 itemprop="name" class="entry-title">Danh sách bài đăng</h1>
+        <h1 itemprop="name" class="entry-title">Danh sách yêu thích</h1>
     </header>
     <!-- .entry-header -->
     <form enctype="multipart/form-data" type="hidden" id="form-action" name="" method="POST">
@@ -124,20 +124,13 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {{-- {{ dd($books) }} --}}
                     @foreach($books as $book)
                     <tr>
                         <td>{{ $book->id }}</td>
                         <td>{{ $book->name }}</td>
                         <td>{{ $book->created_at }}</td>
                         <td align="center">
-                            <button id="{{ $book->id }}" data-id="{{ $book->id }}" type="button" class="btn btn-warning btn-view" data-toggle="modal" data-target="#myModal">
-                                <span class="btn-label"><i class="fa fa-eye" ></i></span> Xem
-                            </button>
-                            &nbsp
-                            <button type="button" id="update-{{ $book->id }}" data-id="{{ $book->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
-                                <span class="btn-label"><i class="fa fa-edit"></i></span> Sửa
-                            </button>
-                            &nbsp
                             <button id="view-{{ $book->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
                                 <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span> Xóa
                             </button>
@@ -148,9 +141,55 @@
             </table>
         </div>
     </form>
-
 </article>
-@endsection @section('recently') @include('particals.recently') @endsection @section('sidebar')  @include('particals.sidebar')
-@endsection @include('particals.contents') @endsection
+@endsection @section('sidebar')
+<div id="sidebar" class="sidebar" role="complementary">
+    <div style="clear: both; margin-top: 50px;"></div>
 
-@section('footer') @include('particals.footer') @endsection()
+    @yield('recently')
+    <aside id="electro_features_block_widget-2" class="widget widget_electro_features_block_widget">
+        <div class="features-list columns-1">
+            <div class="feature">
+                <div class="media">
+                    <div class="media-left media-middle feature-icon">
+                        <i class="ec ec-transport"></i>
+                    </div>
+                    <div class="media-body media-middle feature-text">
+                        <strong>Miễn phí vận chuyển</strong> từ $50
+                    </div>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="media">
+                    <div class="media-left media-middle feature-icon">
+                        <i class="ec ec-returning"></i>
+                    </div>
+                    <div class="media-body media-middle feature-text">
+                        <strong>14 ngày</strong> đổi trả
+                    </div>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="media">
+                    <div class="media-left media-middle feature-icon">
+                        <i class="ec ec-payment"></i>
+                    </div>
+                    <div class="media-body media-middle feature-text">
+                        <strong>Thanh toán</strong> qua ngân hàng
+                    </div>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="media">
+                    <div class="media-left media-middle feature-icon">
+                        <i class="ec ec-tag"></i>
+                    </div>
+                    <div class="media-body media-middle feature-text">
+                        <strong>Sách đã bán</strong> đều đảm bảo
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+</div>
+@endsection @include('particals.contents') @endsection @section('footer') @include('particals.footer') @endsection

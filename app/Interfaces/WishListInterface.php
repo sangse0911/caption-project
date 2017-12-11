@@ -6,6 +6,6 @@ interface WishListInterface
 {
     public function all();
     public function find($id);
-    public function createWishlistPost($data);
     public function createWishlistBook($data);
+    public function getByUser($id);
 }

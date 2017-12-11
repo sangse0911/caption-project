@@ -30,12 +30,19 @@
                         </div>
                     </form>
                 </li>
-
-                <!-- <li class="menu-item" style="display: inline-table;"><a title="Computers" href="product-category.html">Computers</a></li> -->
                 <ul class="navbar-wishlist nav navbar-nav pull-right flip" style="margin-left: 2.714em;">
-                    <li id="fv-2" class="nav-item menu-item" style="display: none;">
-                        <a href="wishlist.html" class="nav-link"><i class="ec ec-favorites"></i></a>
+                    @if(Auth::guest())
+                        <li id="fv-2" class="nav-item menu-item" style="display: none;">
+                            <a href="javascript:void(0)" class="nav-link"><i class="ec ec-favorites"></i></a>
+                        </li>
+                    @else
+                    <li>
+                        <a href="javascript:void(0)" class="nav-link wishList" data-id="{{ Auth::user()->id }}" id="wishList">
+                            <i class="ec ec-favorites"></i>
+                        </a>
                     </li>
+                    @endif
+
                 </ul>
                 <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip">
                     <li id="cart-2" class="nav-item dropdown" style="display: none;">

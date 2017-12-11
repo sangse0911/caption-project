@@ -25,7 +25,8 @@
                     <div class="hover-area">
                         <div class="action-buttons">
                             <a href="#" rel="nofollow" class="add_to_wishlist">
-											Wishlist</a>
+    							Wishlist
+                            </a>
                             <a href="#" class="add-to-compare-link">Compare</a>
                         </div>
                     </div>
