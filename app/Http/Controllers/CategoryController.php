@@ -74,6 +74,16 @@ class CategoryController extends Controller
     }
 
     /**
+     * [listById description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function listById($id)
+    {
+        return $this->categoryRepository->findById($id);
+
+    }
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

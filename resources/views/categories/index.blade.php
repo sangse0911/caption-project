@@ -15,7 +15,6 @@
     </ul>
 
 </div>
-{{-- {{ dd($books) }} --}}
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">
         <ul class="products columns-3">

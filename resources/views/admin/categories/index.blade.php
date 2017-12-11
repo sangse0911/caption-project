@@ -100,6 +100,7 @@
 
     $('.btn-view').click(function(e) {
         var category_id = $(this).data('id');
+        console.log(category_id);
 
         $.ajax({
             cache: false,

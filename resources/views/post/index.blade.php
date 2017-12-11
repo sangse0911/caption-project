@@ -1,163 +1,141 @@
-@extends('layouts.master') @section('title') Cua hang sach hang dau @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') @section('cart')
-{{-- <nav class="woocmmerce-breadcrumb"><a href="#">Home</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Cảt
-</nav> --}}
-<article class="page type-page status-publish hentry">
-    <header class="entry-header">
-        <h1 itemprop="name" class="entry-title">Danh sách bài đăng</h1></header>
-    <!-- .entry-header -->
-    <form enctype="multipart/form-data" type="hidden" id="form-action" name="" method="POST">
-            <!-- <input type="hidden" name="token" value="{{ csrf_token() }}"> -->
-            {{ csrf_field() }}
-            <div id="myModal" class="modal fade" role="dialog">
-                <div class="modal-dialog modal-lg" style="max-width: 1100px;">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Chỉnh sửa sách</h4>
-                        </div>
-                        <input type="hidden" name="" id="id">
-                        <div class="modal-body">
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Tác Giả</h6>
-                                <input type="text" name="author" id="author" class="form-control" placeholder="Nhập Tên Tác Giả">
-                                <span class="help-block">
-                                    <strong id="error-author"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Giới thiệu qua về sách</h6>
-                                <input type="text" name="introduce" id="introduce" class="form-control" placeholder="Giới thiệu về sách">
-                                <span class="help-block">
-                                    <strong id="error-introduce"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Tên Sách</h6>
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Nhập Tên Sách">
-                                <span class="help-block">
-                                    <strong id="error-name"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Nhà Xuất Bản</h6>
-                                <input type="text" name="company" class="form-control" id="company" placeholder="Nhập Tên Nhà Xuất Bản">
-                                <span class="help-block">
-                                    <strong id="error-company"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Năm Xuất Bản</h6>
-                                <input type="text" name="year" class="form-control" id="year" placeholder="Nhập Năm Xuất Bản">
-                                <span class="help-block">
-                                    <strong id="error-year"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Giá Bán</h6>
-                                <input type="text" name="price" class="form-control form-control-success" id="price">
-                                <span class="help-block">
-                                    <strong id="error-price"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Giá thuê</h6>
-                                <input type="text" name="price-rent" class="form-control form-control-success" id="price-rent">
-                                <span class="help-block">
-                                    <strong id="error-price-rent"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>ISBN</h6>
-                                <input type="text" name="isbn" class="form-control" id="isbn" placeholder="Mã số sách">
-                                <span class="help-block">
-                                    <strong id="error-isbn"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Tái Bản Lần Thứ</h6>
-                                <input type="text" name="republish" class="form-control" id="republish" placeholder="Tái bản lần thứ">
-                                <span class="help-block">
-                                    <strong id="error-republish"></strong>
-                                </span>
-                            </div>
+@extends('layouts.master') @section('title') @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') {{-- @section('carousel') @include('particals.carousel') @endsection --}} @section('categories')
+<div style="margin-top: 50px;"></div>
+@include('particals.categories')
 
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Chất Lượng Sách</h6>
-                                <select id="quality" multiple="multiple" name="quality[]" class="quality" style="width: 100%;">
-                                    <option name="" value="1">25% đến 50%</option>
-                                    <option name="" value="2">51% đến 65%</option>
-                                    <option name="" value="3">66% đến 75%</option>
-                                    <option name="" value="4">76% đến 90%</option>
-                                </select>
-                                <span class="help-block">
-                                    <strong id="error-quality"></strong>
-                                </span>
+<header class="page-header">
+    <h1 class="page-title">Góc sách</h1>
+    <p class="woocommerce-result-count">Xem 1–15 </p>
+</header>
+<div class="shop-control-bar">
+    <ul class="shop-view-switcher nav nav-tabs" role="tablist">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" title="Grid View" href="#grid" aria-expanded="true"><i class="fa fa-th"></i></a></li>
+
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" title="List View" href="#list-view" aria-expanded="false"><i class="fa fa-list"></i></a></li>
+    </ul>
+</div>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">
+        <ul class="products columns-3">
+            @foreach($books as $book)
+            {{-- {{ dd($book) }} --}}
+            {{-- @foreach($book->images as $image) --}}
+            <li class="product">
+                <div class="product-outer" style="height: 391px;">
+                    <div class="product-inner">
+                        <span class="loop-product-categories"><a href="javascript:void(0)" rel="tag">Góc sách</a></span>
+                        <span class="loop-product-categories" style="color: red;">{{ $book->name }}</span>
+                        <a href="javascript:void(0)">
+                            <h3></h3>
+                            <div class="product-thumbnail">
+                                <img src="{{ URL::to('assets/images/product/' . $book->images[0]->path) }}" alt="">
                             </div>
-                            <div class="form-group col-md-12 supplier">
-                                <h6>Tóm Tắt</h6>
-                                <textarea class="ckeditor" rows="9" id="description" name="description" rows="10" placeholder="Tóm tắt về sách"></textarea>
-                                <span class="help-block">
-                                    <strong id="error-description"></strong>
-                                </span>
-                            </div>
+                        </a>
+                        <div class="price-add-to-cart">
+                            <span class="price">
+                                <span class="electro-price">
+                                    <ins><span class="amount">{{ $book->price }} VND</span></ins>
+                            {{-- <del><span class="amount">$2,299.00</span></del> --}}
+                            </span>
+                            </span>
+                            {{-- <a rel="nofollow" href="javascript:void(0)" class="button add_to_cart_button">Add to cart</a> --}}
                         </div>
-                        <div style="clear: both;"></div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="create-book">Thêm mới</button>
-                            <button type="button" class="btn btn-success" id="book-update" style="display: none;">Lưu</button>
-                            <button type="button" class="btn btn-danger " data-dismiss="modal">Đóng</button>
+                        <!-- /.price-add-to-cart -->
+                        <div class="hover-area">
+                            <div class="action-buttons">
+                                <a href="#" rel="nofollow" class="add_to_wishlist">
+                                    Yêu thích
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
-    <form>
-        <div class="box box-block bg-white">
-            <table class="table table-striped table-bordered dataTable" id="table-1">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Tên sách</th>
-                        <th>Ngày đăng</th>
-                        <th>Hành động</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($books as $book)
-                    <tr>
-                        <td>{{ $book->id }}</td>
-                        <td>{{ $book->name }}</td>
-                        <td>{{ $book->created_at }}</td>
-                        <td align="center">
-                            <button id="{{ $book->id }}" data-id="{{ $book->id }}" type="button" class="btn btn-warning " data-toggle="modal" data-target="#myModal">
-                                <span class="btn-label"><i class="fa fa-eye" ></i></span> Xem
-                            </button>
-                            &nbsp
-                            <button type="button" id="update-{{ $book->id }}" data-id="{{ $book->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
-                                <span class="btn-label"><i class="fa fa-edit"></i></span> Sửa
-                            </button>
-                            &nbsp
-                            <button id="view-{{ $book->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
-                                <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span> Xóa
-                            </button>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </form>
+            </li>
+            @endforeach
+        </ul>
+    </div>
 
-</article>
-@endsection @section('recently') @include('particals.recently') @endsection @section('sidebar')  @include('particals.sidebar')
-@endsection @include('particals.contents') @endsection
-@section('footer') @include('particals.footer') @endsection()
-@section('script')
-<script>
-    $("#quality").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
-    $('#year').datetimepicker({
-        format: 'YYYY-MM-DD'
-    });
-</script>
+    <div role="tabpanel" class="tab-pane" id="list-view" aria-expanded="false">
+        <ul class="products columns-3">
+            @foreach($books as $book)
+            <li class="product list-view">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="javascript:void(0)">
+                            <img class="wp-post-image" src="{{ URL::to('assets/images/product/' . $book->images[0]->path) }}" alt="">
+                        </a>
+                    </div>
+                    <div class="media-body media-middle">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <span class="loop-product-categories"><a rel="tag" href="javascript:void(0)">Sách bán</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
+                                    <div class="product-rating">
+                                        <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
+                                    </div>
+                                    <div class="product-short-description">
+                                        <ul style="padding-left: 18px;">
+                                            <li>4.5 inch HD Screen</li>
+                                            <li>Android 4.4 KitKat OS</li>
+                                            <li>1.4 GHz Quad Core™ Processor</li>
+                                            <li>20 MP front Camera</li>
+                                        </ul>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="availability in-stock">
+                                    Availablity: <span>In stock</span>
+                                </div>
+                                <span class="price"><span class="electro-price"><span class="amount">{{ $book->price }}</span></span>
+                                </span>
+                                <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-id="{{ $book->id }}" data-quantity="1" href="javascript:void(0)" rel="nofollow">Add to cart</a>
+                                <div class="hover-area">
+                                    <div class="action-buttons">
+                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist">
+                                            <a class="add_to_wishlist" data-product-type="simple" data-id="{{ $book->id }}" rel="nofollow" href="#">Wishlist</a>
+                                            <div style="display:none;" class="yith-wcwl-wishlistaddedbrowse hide">
+                                                {{-- <span class="feedback">Product added!</span> --}}
+                                                <a rel="nofollow" href="javascript:void(0)">Wishlist</a>
+                                            </div>
+                                            <div style="display:none" class="yith-wcwl-wishlistexistsbrowse hide">
+                                                {{-- <span class="feedback">The product is already in the wishlist!</span> --}}
+                                                <a rel="nofollow" href="javascript:void(0)">Wishlist</a>
+                                            </div>
+                                            <div style="clear:both"></div>
+                                            <div class="yith-wcwl-wishlistaddresponse"></div>
+                                        </div>
+                                        <div class="clear"></div>
+                                        {{-- <a data-product_id="2706" class="add-to-compare-link" href="#">Compare</a> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            @endforeach
+        </ul>
+    </div>
+
+</div>
+<div class="shop-control-bar-bottom">
+    <form class="form-electro-wc-ppp">
+        <select class="electro-wc-wppp-select c-select" onchange="this.form.submit()" name="ppp"><option selected="selected" value="15">Show 15</option><option value="-1">Show All</option></select>
+    </form>
+    <p class="woocommerce-result-count">Showing 1–15 of 20 results</p>
+    <nav class="woocommerce-pagination">
+        <ul class="page-numbers">
+            <li><span class="page-numbers current">1</span></li>
+            <li><a href="#" class="page-numbers">2</a></li>
+            <li><a href="#" class="next page-numbers">→</a></li>
+        </ul>
+    </nav>
+</div>
 @endsection
+@section('sidebar')
+@include('particals.sidebar')
+@endsection
+@include('particals.contents')
+@endsection
+@section('footer')
+@include('particals.footer')
+@endsection()

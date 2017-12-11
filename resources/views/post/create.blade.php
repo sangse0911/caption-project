@@ -148,20 +148,7 @@
 @endsection @section('sidebar')
 <div id="sidebar" class="sidebar" role="complementary">
     <div style="clear: both; margin-top: 50px;"></div>
-    <aside class="widget widget_text">
-        <div class="textwidget">
-            <a href="#">
-                <img src="{{ URL::to('assets/images/banner/banner1.jpg') }}" alt="Banner">
-            </a>
-        </div>
-    </aside>
-    <aside class="widget widget_text">
-        <div class="textwidget">
-            <a href="#">
-                <img src="{{ URL::to('assets/images/banner/banner2.jpg') }}" alt="Banner">
-            </a>
-        </div>
-    </aside>
+
     @yield('recently')
     <aside id="electro_features_block_widget-2" class="widget widget_electro_features_block_widget">
         <div class="features-list columns-1">

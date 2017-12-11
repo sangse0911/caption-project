@@ -25,7 +25,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('post.index');
+        $books = $this->bookRepository->getPostBook();
+        return view('post.index', compact('books'));
     }
 
     public function contentPost()
@@ -51,6 +52,7 @@ class PostController extends Controller
     {
         return view('post.for-sale');
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -83,7 +85,7 @@ class PostController extends Controller
     {
         $books = $this->postRepository->find($id);
 
-        return view('post.index', compact('books'));
+        return view('post.single-post', compact('books'));
     }
     /*
 

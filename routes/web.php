@@ -43,15 +43,14 @@ Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallbac
  */
 Route::get('/books', ['as' => 'book.index', 'uses' => 'BookController@index']);
 Route::get('/book/{id}', 'BookController@show')->name('book.show');
-Route::get('/sell-book', ['as' => 'book.sell', 'uses' => 'BookController@sellBook']);
-Route::get('/renter-book', ['as' => 'book.renter', 'uses' => 'BookController@renBook']);
+Route::get('/sell-book', ['as' => 'book.sell', 'uses' => 'BookController@getSellBook']);
+Route::get('/renter-book', ['as' => 'book.renter', 'uses' => 'BookController@getRentBook']);
 Route::get('/hot-book', ['as' => 'book.hot', 'uses' => 'BookController@hotBook']);
 
 /**
  *
  */
-// Route::get('/content-post', ['as' => 'content.post', 'uses' => 'PostController@contentPost']);
-// Route::get('/supplier/{id}', ['as' => 'supplier.show', 'uses' => 'SupplierController@show']);
+// Route::get('/content-post', ['as' => 'content.post', 'uses' => 'PostController@contentPostadmin// Route::get('/supplier/{id}', ['as' => 'supplier.show', 'uses' => 'SupplierController@show']);
 
 /**
  *
@@ -124,7 +123,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/categories', ['as' => 'admin.categories.index', 'uses' => 'CategoryController@getIndex']);
     Route::get('/admin/category/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
     Route::post('/admin/category/store', ['as' => 'category.create', 'uses' => 'CategoryController@store']);
-    Route::get('/admin/category/{id}', 'CategoryController@show')->name('category.show');
+    Route::get('/admin/category/{id}', 'CategoryController@listById')->name('category.show');
     Route::put('/admin/category/update', 'CategoryController@update')->name('category.update');
 
     // Route::get('/status', ['as' => 'status.index', 'uses' => 'StatusController@index']);
@@ -172,6 +171,7 @@ Route::get('/api/user', ['as' => 'api.user.index', 'uses' => 'UserController@ind
 Route::get('/users/content', ['as' => 'users.content', 'uses' => 'UserController@getContent']);
 
 Route::get('/category/{id}', 'CategoryController@show')->name('category.index');
+
 /**
  *
  */

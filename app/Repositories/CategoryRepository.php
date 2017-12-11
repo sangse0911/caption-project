@@ -32,6 +32,16 @@ class CategoryRepository implements CategoryInterface
     }
 
     /**
+     * [findById description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function findById($id)
+    {
+        return Category::findOrFail($id);
+
+    }
+    /**
      * [find description]
      * @param  [type] $id [description]
      * @return [type]     [description]
