@@ -124,10 +124,11 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.post') }}">Danh sách</a></li>
-                            <li><a href="gocsachdanhsach">Bài đăng</a></li>
-                            <li><a href="gocsachthanhvien">Sách bán cho cửa hàng</a></li>
+                            <li><a href="{{ route('admin.show.post') }}">Bài đăng</a></li>
+                            <li><a href="{{ route('admin.show.supplier.post') }}">Sách bán cho cửa hàng</a></li>
                         </ul>
                     </li>
+
                     <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>

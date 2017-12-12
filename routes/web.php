@@ -117,6 +117,8 @@ Route::middleware(['auth:admin'])->group(function () {
     // Route::post('/supplier/store', 'SupplierController@store')->name('supplier.save');
     // Route::post('/supplier/createIfExistUser', 'SupplierController@storeIfExist')->name('supplier.save.exist');
 
+    Route::get('/admin/allPost', 'BookController@getAllPost')->name('admin.show.post');
+    Route::get('/admin/sellPost', 'BookController@getAllSellBook')->name('admin.show.supplier.post');
     /**
      *
      */

@@ -8,4 +8,5 @@ interface AdminInterface
     public function find($id);
     public function create($request);
     public function getAdminAuth();
+    public function getPost();
 }

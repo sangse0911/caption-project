@@ -28,4 +28,9 @@ class AdminRepository implements AdminInterface
     {
         return Auth::user()->id;
     }
+
+    public function getPost()
+    {
+
+    }
 }

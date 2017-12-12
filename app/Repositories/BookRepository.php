@@ -140,6 +140,7 @@ class BookRepository implements BookInterface
                 $query->where('contracts.status', '2');
             })->get();
     }
+
     /**
      * [getAllPost description]
      * @return [type] [description]
@@ -149,8 +150,9 @@ class BookRepository implements BookInterface
         return Book::with('images')
             ->whereHas('contracts', function ($query) {
                 $query->where('contracts.status', '1');
-            })->get();
+            })->orderBy('created_at', 'desc')->get();
     }
+
     /**
      * [findById description]
      * @param  [type] $id [description]
