@@ -8,7 +8,7 @@
         <div class="hr"><hr /></div>
         <br>
         <div style="clear: both;"></div>
-<form id="ahuhu" class="" type="hidden" method="POST" style="text-align: left;border-style: dotted;padding-top: 20px;border-color: #a3d133;">
+<form id="ahaha" class="" type="hidden" method="POST" style="text-align: left;border-style: dotted;padding-top: 20px;border-color: #a3d133;">
     <div class="form-group col-sm-6 post">
         <label for="introduce">Bạn muốn làm gì với sách</label>
         <br/>
@@ -47,6 +47,13 @@
         <input type="text" name="price" id="price" class="form-control" placeholder="Gía bạn mong muốn">
         <span class="help-block">
             <strong id="error-price"></strong>
+        </span>
+    </div>
+     <div class="form-group col-md-6 post">
+        <label for="">Gía thuê</label>
+        <input type="text" name="price-rent" id="price-rent" class="form-control" placeholder="Gía bạn mong muốn">
+        <span class="help-block">
+            <strong id="error-price-rent"></strong>
         </span>
     </div>
     <div class="form-group col-md-6 post">
@@ -229,14 +236,14 @@
         $('#error-phone').text('');
     });
 
-    $('#ahuhu').submit(function(evt) {
+    $('#ahaha').submit(function(evt) {
 
         var formData = new FormData(this);
 
         $.ajax({
             async:true,
             method: 'POST',
-            url: '/book/storeSaleBook',
+            url: '/book/storePostBook',
             data:formData,
             cache:false,
             contentType: false,

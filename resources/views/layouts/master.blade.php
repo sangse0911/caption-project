@@ -846,6 +846,50 @@ div.hr hr {
                 evt.preventDefault();
             });
 
+            $('#ahaha').submit(function(evt) {
+
+                var formData = new FormData(this);
+
+                $.ajax({
+                    async:true,
+                    method: 'POST',
+                    url: '/book/storePostBook',
+                    data:formData,
+                    cache:false,
+                    contentType: false,
+                    processData: false,
+                    dataType: 'JSON',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+                    },
+                    success: function() {
+                        alert("Chúc mừng bạn đã đăng bài thành công");
+                        window.location.assign('/books');
+                    },
+                    error: function(data) {
+                        if(data.status === 422) {
+                            var errors = data.responseJSON;
+
+                            $('#error-name').text(errors['name']);
+                            $('#error-introduce').text(errors['introduce']);
+                            $('#error-price').text(errors['price']);
+                            $('#error-author').text(errors['author']);
+                            $('#error-company').text(errors['company']);
+                            $('#error-year').text((errors['year']));
+                            $('#error-kind').text(errors['kind']);
+                            $('#error-method').text(errors['method']);
+                            $('#error-account').text(errors['account']);
+                            $('#error-quality').text(errors['quality']);
+                            $('#error-republish').text(errors['republish']);
+                            $('#error-phone').text(errors['phone']);
+                            $('#error-address').text(errors['address']);
+                            $('#error-price-rent').text(errors['price-rent']);
+                        }
+                    }
+                });
+                evt.preventDefault();
+            });
+
             $('.category-show').click(function(e) {
                 var id = $(this).data('id');
                 window.location.assign('/category/'+id);
