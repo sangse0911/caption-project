@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admins/jvectormap/jquery-jvectormap-2.0.3.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/dropify/dist/css/dropify.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/bootstrap-datetimepicker.min.css') }}">
- @yield('css') @yield('css')
+    @yield('css')
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

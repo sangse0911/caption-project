@@ -1,9 +1,14 @@
-@extends('layouts.master') @section('title') Cua hang sach hang dau @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') @section('cart')
+@extends('layouts.master') @section('title') Cua hang sach hang dau @endsection()
+@section('style')
+    <link rel="stylesheet" type="text/css" href="{{ URL::to('css/jquery.dataTables.min.css') }}">
+@endsection
+
+@section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content')
 {{-- <nav class="woocmmerce-breadcrumb"><a href="#">Home</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Cảt
 </nav> --}}
-<article class="page type-page status-publish hentry">
+<article class="page type-page status-publish hentry" style="margin-top: 50px;">
     <header class="entry-header">
-        <h1 itemprop="name" class="entry-title">Danh sách bài đăng</h1>
+        <h1 itemprop="name" class="entry-title" style="text-transform: uppercase; color: red;">Danh sách bài đăng</h1>
     </header>
     <!-- .entry-header -->
     <form enctype="multipart/form-data" type="hidden" id="form-action" name="" method="POST">
@@ -150,7 +155,12 @@
     </form>
 
 </article>
-@endsection @section('recently') @include('particals.recently') @endsection @section('sidebar')  @include('particals.sidebar')
+@section('recently') @include('particals.recently') @endsection @section('sidebar')  @include('particals.sidebar')
 @endsection @include('particals.contents') @endsection
+@push('scripts')
+<script>
+    $('#sidebar').css('margin-top','120px');
+</script>
+@endpush
 
 @section('footer') @include('particals.footer') @endsection()

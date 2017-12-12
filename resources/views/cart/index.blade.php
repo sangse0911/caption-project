@@ -154,3 +154,61 @@
     </aside>
 </div>
 @endsection @include('particals.contents') @endsection @section('footer') @include('particals.footer') @endsection
+@push('scripts')
+<script>
+    $('.remove').click(function(e) {
+        e.preventDefault();
+
+        var id = $(this).data('id');
+
+        $.ajax({
+
+            cache: false,
+            method: 'DELETE',
+            url: '/cart/delete/' + id,
+            data: {
+                id: id,
+            },
+            dataType: 'JSON',
+            success: function(data) {
+                alert('Bạn đã xóa thành công sản phẩm khỏi giỏ hàng');
+                window.location.reload();
+
+            },
+            error: function(data) {
+
+            }
+        });
+
+    });
+
+    $('#checkout').click(function(e) {
+        e.preventDefault();
+
+        var method = $('input[name=method]:checked').val();
+        var address = $('#address').val();
+
+        $.ajax({
+
+            cache: false,
+            method: 'POST',
+            url: '/cart/store',
+            data: {
+                method: method,
+                address: address,
+            },
+            dataType: 'JSON',
+            success: function(data) {
+                alert("Bạn đã đặt hàng thành công, cảm ơn bạn");
+                window.location.assign("/");
+            },
+            error: function(data) {
+                if(data.status == 401) {
+                    alert('Vui lòng đăng nhập trước khi đặt hàng');
+                }
+            }
+        });
+
+    });
+</script>
+@endpush

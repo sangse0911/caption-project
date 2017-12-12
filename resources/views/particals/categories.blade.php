@@ -17,13 +17,12 @@
         @endforeach
     </div>
 </section>
-@section('script')
+@push('scripts')
     <script>
         $('.category-show').on('click', function(e){
 
         var id = $(this).data('id');
         window.location.href = "/category/" + id;
-
     });
     </script>
-@endsection
+@endpush

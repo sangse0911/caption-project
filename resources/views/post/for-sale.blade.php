@@ -1,5 +1,5 @@
 @extends('layouts.master') @section('title') @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') @section('customer')
-<nav class="woocommerce-breadcrumb"><a href="#">Trang Chủ</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Bán Sách
+<nav class="woocommerce-breadcrumb"><a href="/">Trang Chủ</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Bán Sách
 </nav>
 <article class="page type-page status-publish hentry">
     <header class="entry-header">
@@ -139,72 +139,9 @@
 <script>
 </script>
 @endsection @section('sidebar')
-<div id="sidebar" class="sidebar" role="complementary">
-    <div style="clear: both; margin-top: 50px;"></div>
-    <aside class="widget widget_text">
-        <div class="textwidget">
-            <a href="#">
-                <img src="{{ URL::to('assets/images/banner/banner1.jpg') }}" id="borderimg2" alt="Banner">
-            </a>
-        </div>
-    </aside>
-    <aside class="widget widget_text">
-        <div class="textwidget">
-            <a href="#">
-                <img src="{{ URL::to('assets/images/banner/banner2.jpg') }}" id="borderimg2" alt="Banner">
-            </a>
-        </div>
-    </aside>
-    @yield('recently')
-    <aside id="electro_features_block_widget-2" class="widget widget_electro_features_block_widget">
-        <div class="features-list columns-1">
-            <div class="feature">
-                <div class="media">
-                    <div class="media-left media-middle feature-icon">
-                        <i class="ec ec-transport"></i>
-                    </div>
-                    <div class="media-body media-middle feature-text">
-                        <strong>Miễn phí vận chuyển</strong> từ $50
-                    </div>
-                </div>
-            </div>
-            <div class="feature">
-                <div class="media">
-                    <div class="media-left media-middle feature-icon">
-                        <i class="ec ec-returning"></i>
-                    </div>
-                    <div class="media-body media-middle feature-text">
-                        <strong>14 ngày</strong> đổi trả
-                    </div>
-                </div>
-            </div>
-            <div class="feature">
-                <div class="media">
-                    <div class="media-left media-middle feature-icon">
-                        <i class="ec ec-payment"></i>
-                    </div>
-                    <div class="media-body media-middle feature-text">
-                        <strong>Thanh toán</strong> qua ngân hàng
-                    </div>
-                </div>
-            </div>
-            <div class="feature">
-                <div class="media">
-                    <div class="media-left media-middle feature-icon">
-                        <i class="ec ec-tag"></i>
-                    </div>
-                    <div class="media-body media-middle feature-text">
-                        <strong>Sách đã bán</strong> đều đảm bảo
-                    </div>
-                </div>
-            </div>
-        </div>
-    </aside>
-
-
-</div>
- @endsection @include('particals.contents') @endsection @section('footer') @include('particals.footer') @endsection
-@section('script')
+    @include('particals.sidebar')
+@endsection @include('particals.contents') @endsection @section('footer') @include('particals.footer') @endsection
+@push('scripts')
 <script>
     $("#quality").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
     $('#year').datetimepicker({
@@ -269,5 +206,6 @@
         });
         evt.preventDefault();
     });
+    $('#sidebar').css('margin-top','150px');
 </script>
-@endsection
+@endpush

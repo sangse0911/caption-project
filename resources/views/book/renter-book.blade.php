@@ -17,7 +17,6 @@
     <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">
         <ul class="products columns-3">
             @foreach($books as $book)
-            {{-- {{ dd($book) }} --}}
             @foreach($book->images as $image)
             <li class="product">
                 <div class="product-outer" style="height: 391px;">

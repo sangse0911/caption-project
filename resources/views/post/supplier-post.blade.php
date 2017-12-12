@@ -213,8 +213,10 @@
         </div>
     </div>
 </div>
-@endsection
-@section('script')
-
-
-@endsection
+{{-- @endsection
+@push('scripts')
+<script>
+    $('#sidebar').removeAttr('style');
+</script>
+@endpush
+ --}}

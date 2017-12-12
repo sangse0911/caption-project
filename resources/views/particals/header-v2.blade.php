@@ -81,13 +81,11 @@
         <!-- /.row -->
     </div>
 </header>
-@section('script')
+@push('scripts')
 <script>
     $('.wishList').click(function(e) {
         var id = $(this).data('id');
-
         window.location.assign("/wishlistByUser/" + id);
-
     });
 </script>
-@endsection
+@endpush

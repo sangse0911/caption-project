@@ -80,7 +80,8 @@
         </div>
     </aside>
 </div>
-@section('script')
+@push('scripts')
+    @parent
     <script>
         $('.category-show').on('click', function(e){
 
@@ -89,4 +90,4 @@
 
     });
     </script>
-@endsection
+@endpush

@@ -85,7 +85,7 @@
         </div>
     </div>
 </div>
-@endsection @section('script')
+@endsection @section('scripts')
 <script>
     $(document).on('focus', 'input', function() {
         $(this).removeAttr('placeholder');

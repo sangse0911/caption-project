@@ -92,3 +92,40 @@
         </div>
     </div>
 </section>
+@push('scripts')
+<script>
+    (function($) {
+
+        var owl2 = $("#owl-demo2");
+
+        var block = false;
+        $(".owl-carousel").mouseenter(function() {
+            if (!block) {
+                block = true;
+                owl2.trigger('stop.owl.autoplay')
+                block = false;
+            }
+        });
+        $(".owl-carousel").mouseleave(function() {
+            if (!block) {
+                owl2.trigger('play.owl.autoplay', [1000])
+                block = false;
+            }
+        });
+
+        owl2.owlCarousel({
+            autoplay: true,
+            autoPlaySpeed: 1000,
+            autoplayHoverPause: true,
+            loop: true,
+            navigation: true,
+            items: 2, //10 items above 1000px browser width
+            itemsDesktop: [1000, 4], //5 items between 1000px and 901px
+            itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
+            itemsTablet: [600, 2], //2 items between 600 and 0;
+            itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
+
+        });
+    })(jQuery);
+</script>
+@endpush

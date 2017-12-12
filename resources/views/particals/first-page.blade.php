@@ -60,3 +60,152 @@
         </div>
     </div>
 </section>
+@push('scripts')
+<script>
+    (function($) {
+
+        var owl = $("#owl-demo");
+
+        var block = false;
+        $(".owl-carousel").mouseenter(function() {
+            if (!block) {
+                block = true;
+                owl.trigger('stop.owl.autoplay')
+                block = false;
+            }
+        });
+        $(".owl-carousel").mouseleave(function() {
+            if (!block) {
+                owl.trigger('play.owl.autoplay', [1000])
+                block = false;
+            }
+        });
+
+        owl.owlCarousel({
+            autoplay: true,
+            autoPlaySpeed: 1000,
+            autoplayHoverPause: true,
+            loop: true,
+            navigation: true,
+            items: 4, //10 items above 1000px browser width
+            itemsDesktop: [1000, 5], //5 items between 1000px and 901px
+            itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
+            itemsTablet: [600, 2], //2 items between 600 and 0;
+            itemsMobile: false // itemsMobile disabled - inherit from itemsTablet option
+
+        });
+    })(jQuery);
+</script>
+<script>
+    $('.book-show').click(function(e) {
+        $('.modal-title').text('Thông tin chi tiết');
+        $('.post').css("display","none");
+        $('#single-product').removeAttr("style");
+        $('.action-buttons').removeAttr("style");
+    });
+
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('#post-show').click(function(e) {
+        var id = $(this).data('id');
+        window.location.href = "/postByUser/" + id;
+    });
+
+
+</script>
+<script>
+    $('.book-show').on('click', function(e) {
+        var book_id = e.currentTarget.id.substring(5);
+        $.ajax({
+            cache: false,
+            method: 'GET',
+            dataType: 'JSON',
+            url: '/book/' + book_id,
+            success: function(data) {
+                $('#book-rate').val(data['book']['id']);
+                $('#book-name').text(data['book']['name']);
+                $('#book-status').text(data['book']['status']);
+                $('#book-company').text(data['book']['company']);
+                $('#book-year').text(data['book']['year']);
+                $('#book-republish').text(data['book']['republish']);
+                $('.book-author').text(data['book']['author']);
+                $('#book-price').text('Gía: ' + data['book']['price'] + ' VND');
+                $('#book-introduce').text(data['book']['introduce']);
+                $('#book-description').text(data['book']['description']);
+                $('#image-book').attr('src','{{ URL::to('assets/images/product/') }}' + '/' + data['images'][0]['path']);
+                $('.fb-comments').attr('data-href',"https://developers.facebook.com/"+ book_id );
+                $('.modal-footer').css('display','none');
+                $('#book-isbn').text(data['book']['isbn']);
+            },
+            error: function(data) {
+            }
+        });
+        e.preventDefault();
+    });
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('.add_to_cart_button').click(function(e) {
+        e.preventDefault();
+
+        var id = $(this).data('id');
+
+        $.ajax({
+
+            cache: false,
+            method: 'POST',
+            url: '/cart/add',
+            data: {
+                id: id,
+            },
+            dataType: 'JSON',
+            success: function(data) {
+                alert('Bạn đã thêm thành công sản phẩm vào giỏ hàng');
+                var count = parseInt($('.cart-items-count')[0].innerHTML);
+                count += 1;
+                $('.cart-items-count').each(function(e) {
+                    $(this).text(count);
+                });
+            },
+            error: function(data) {
+                console.log("có lỗi với", data);
+            }
+        });
+    });
+    $('.add_to_wishlist').click(function(e) {
+        var bookId = e.currentTarget.id.substring(5);
+        var userId = $('#user-id').val();
+
+        $.ajax({
+
+            cache: false,
+            method: 'POST',
+            dataType: 'JSON',
+            url: '/addBookWishlist',
+            data: {
+                bookId: bookId,
+                userId: userId
+            },
+            success: function(data) {
+                alert("Bạn đã thêm thành công vào danh sách yêu thích");
+            },
+            error: function(data) {
+                if(data.status === 401) {
+                    alert('Vui lòng đăng nhập trưóc khi thêm sách vào yêu thích');
+                }
+                if(data.status === 500) {
+                    alert('Sách đã có trong danh sách yêu thích của bạn');
+                }
+            }
+        });
+        e.preventDefault();
+    });
+</script>
+@endpush

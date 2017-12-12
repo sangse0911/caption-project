@@ -7,41 +7,19 @@
         </div>
         <div class="collapse navbar-toggleable-xs" id="header-v3">
             <ul class="nav navbar-nav" style="display: inline-flex; align-items: center;">
+                <li class="menu-item" style="display: inline-table;"><a title="Góc bán sách" href="/">Trang chủ</a></li>
+                <li class="menu-item dropdown" style="display: inline-table;">
+                    <a title="Góc bán sách" href="javascript:void(0)">Thể loại sách</a>
+                    <ul class="dropdown-menu">
+                        <li>a</li>
+                    </ul>
+                </li>
                 <li class="menu-item" style="display: inline-table;"><a title="Góc bán sách" href="{{ route('book.create.sale') }}">Bán sách</a></li>
                 <li class="menu-item" style="display: inline-table;"><a title="Góc đăng bài" href="{{ route('post.create') }}">Đăng bài</a></li>
                 <li class="menu-item" style="display: inline-table;"><a title="Quảng cáo sách" href="#">Quảng cáo</a></li>
-                <li id="search-form" class="menu-item" style="display: none;">
-                    <form class="navbar-search" method="get" action="#" style="width: 100%;">
-                        <label class="sr-only screen-reader-text" for="search">Tìm kiếm</label>
-                        <div class="input-group">
-                            <input type="text" id="search" class="form-control search-field" dir="ltr" value="" name="s" placeholder="Tìm kiếm sách" style="max-height: 50px;">
-                            <div class="input-group-addon search-categories">
-                                <select name="product_cat" id="product_cat" class="postform resizeselect" style="width: 141px;">
-                                    <option value="0" selected="selected">Thể loại sách</option>
-                                    @foreach($categories as $category)
-                                    <option class="" value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="input-group-btn">
-                                <input type="hidden" id="search-param" name="post_type" value="product">
-                                <button type="submit" class="btn btn-secondary"><i class="ec ec-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </li>
-                <ul class="navbar-wishlist nav navbar-nav pull-right flip" style="margin-left: 2.714em;">
-                    <li id="fv-2" class="nav-item menu-item" style="display: none;">
-                        @if(Auth::guest())
-                        <a href="javascript:void(0)" class="nav-link wishList"><i class="ec ec-favorites"></i></a>
-                        @else
-                        <a href="javascript:void(0)" class="nav-link wishList" data-id="{{ Auth::user()->id }}" id="wishList"><i class="ec ec-favorites"></i></a>
-                        @endif
-                    </li>
-                </ul>
-                <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip">
+                <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip" style="position: absolute; right: 0;">
                     <li id="cart-2" class="nav-item dropdown" style="display: none;">
-                        <a href="cart.html" class="nav-link" data-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
                             <i class="ec ec-shopping-bag"></i>
                             <span class="cart-items-count count">{{ Cart::count() }}</span>
                             <span class="cart-items-total-price total-price"><span class="amount">{{ Cart::subtotal() }}</span></span>
@@ -61,7 +39,6 @@
                                             </li>
                                         @empty
                                         @endforelse
-
                                     </ul>
                                     <p class="total"><strong>Subtotal:</strong> <span class="amount">£969.98</span></p>
                                     <p class="buttons">

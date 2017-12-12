@@ -286,3 +286,52 @@
         </script>
     </div>
 </div>
+@push('scripts')
+<script>
+     $(".my-rating-9").starRating({
+        starSize: 20,
+        initialRating: 0,
+        disableAfterRate: false,
+        strokeColor: '#a3d133',
+        onHover: function(currentIndex, currentRating, $el){
+          $('.live-rating').text(currentIndex);
+        },
+        onLeave: function(currentIndex, currentRating, $el){
+          $('.live-rating').text(currentRating);
+        }
+    });
+
+    $('.submit-rate').click(function(evt) {
+
+        var bookId = $('#book-rate').val();
+        var userId = $('#user-id').val();
+        var comment = $('#comment').val();
+        var rate = $('.my-rating-9').starRating('getRating');
+
+        $.ajax({
+
+            cache:false,
+            method: 'POST',
+            url: '/addBookRate',
+            data: {
+                userId: userId,
+                bookId: bookId,
+                comment: comment,
+                rate: rate,
+            },
+            dataType: 'JSON',
+            success: function(data) {
+                alert("Cảm ơn bạn đã đánh gía");
+                $('#myModal').modal('hide');
+            },
+            error: function(data) {
+                if(data.status ===401) {
+                    alert('Vui lòng đăng nhập trước khi đánh gía sách, xin cảm ơn');
+                }
+            }
+        });
+        evt.preventDefault();
+    });
+
+</script>
+@endpush
