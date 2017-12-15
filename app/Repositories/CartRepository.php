@@ -123,7 +123,7 @@ class CartRepository implements CartInterface
             //change book status to
             $book->status = '2';
             $book->save();
-
+            //create orderDetail
             $orderDetail = $order->books()->attach($book->id,
                 [
                     'book_id' => $book->id,
@@ -133,7 +133,6 @@ class CartRepository implements CartInterface
                     'discount' => 0,
                     'total_price' => 0,
                 ]);
-
         }
 
         Cart::destroy();

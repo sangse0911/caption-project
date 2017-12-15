@@ -54,7 +54,7 @@
                 <!-- .availability -->
                 <hr class="single-product-title-divider" />
                 <div class="action-buttons">
-                    <a href="yeuthich" class="add_to_wishlist">
+                    <a href="javascript:void(0)" class="add_to_wishlist">
                         Yêu thích
                     </a>
                 </div>
@@ -115,7 +115,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-left">
                                 <div class="check-products">
-                                    <div class="fb-comments" data-width="800" data-numposts="5" style="width: 900px;"></div>
+                                    <div class="fb-comments" data-width="800" data-numposts="5"></div>
                                 </div>
                             </div>
                         </div>
@@ -274,17 +274,15 @@
             </div>
         </div>
         <div id="fb-root"></div>
-        <script>
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.10&appId=2021233111447546';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-        </script>
-    </div>
+            <script>(function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.11&appId=251903588593570';
+                  fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
+        </div>
 </div>
 @push('scripts')
 <script>

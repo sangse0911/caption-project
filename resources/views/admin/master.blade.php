@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="_token" content="{{ csrf_token() }}">
     <!-- Title -->
     <title>@yield('title')</title>
     <!-- Vendor CSS -->
@@ -42,7 +42,7 @@
         <div class="site-sidebar">
             <div class="custom-scroll custom-scroll-light">
                 <ul class="sidebar-menu">
-                    @if(Auth::user()->role_id == 1)
+                    @if(Auth::user()->id == 6)
                     <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-icon"><i class="fa fa-user"></i></span>
@@ -50,7 +50,7 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.contact.index') }}">Liên hệ</a></li>
-                            <li><a href="{{ route('admin.managers.index') }}">Danh sách quản lí</a></li>
+                            <li><a href="{{ route('admin.manager.index') }}">Danh sách quản lí</a></li>
                             <li><a href="{{ route('super.admin.index') }}">Danh sách quyền</a></li>
                         </ul>
                     </li>
@@ -63,7 +63,10 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('users.index') }}">Danh sách</a></li>
-                            {{-- <li><a href="{{ route('supplier.index') }}">Nhà cung cấp</a></li> --}}
+                            <li><a href="{{ route('supplier.index') }}">Nhà cung cấp</a></li>
+                            <li><a href="{{ route('customer.order') }}">Khách mua</a></li>
+                            {{-- <li><a href="{{ route('supplier.index') }}">Khách thuê</a></li> --}}
+
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -110,9 +113,9 @@
                             <span class="s-text">Đơn Hàng</span>
                         </a>
                         <ul>
-                            <li><a href="donghangban">Mua Sách</a></li>
-                            <li><a href="donhangthue">Thuê Sách</a></li>
-                            <li><a href="{{ route('admin.show.supplierPost') }}">Bán Sách</a></li>
+                            <li><a href="{{ route('admin.supplierPost') }}">Đơn hàng sách bán cho cửa hàng</a></li>
+                            <li><a href="{{ route('admin.get.orderBuy') }}">Đơn hàng mua sách</a></li>
+                            <li><a href="#">Đơn hàng thuê sách</a></li>
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -141,7 +144,7 @@
                         </ul>
                     </li>
                     @else
-                     <li class="with-sub">
+                    <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
                             <span class="s-icon"><i class="fa fa-users"></i></span>
@@ -149,6 +152,21 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('users.index') }}">Danh sách</a></li>
+                            <li><a href="{{ route('supplier.index') }}">Nhà cung cấp</a></li>
+                            <li><a href="{{ route('customer.order') }}">Khách mua</a></li>
+                            {{-- <li><a href="{{ route('supplier.index') }}">Khách thuê</a></li> --}}
+
+                        </ul>
+                    </li>
+                    <li class="with-sub">
+                        <a href="#" class="waves-effect  waves-light">
+                            <span class="s-caret"><i class="fa fa-angle-down"></i></span>
+                            <span class="s-icon"><i class="fa fa-tags"></i></span>
+                            <span class="s-text">Quản lí thể loại sách</span>
+                        </a>
+                        <ul>
+                            <li><a href="{{ route('admin.categories.index') }}">Danh Sách</a></li>
+
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -184,8 +202,9 @@
                             <span class="s-text">Đơn Hàng</span>
                         </a>
                         <ul>
-                            <li><a href="donghangban">Mua Sách</a></li>
-                            <li><a href="donhangthue">Thuê Sách</a></li>
+                            <li><a href="#">Mua Sách</a></li>
+                            <li><a href="#">Thuê Sách</a></li>
+                            <li><a href="{{ route('admin.show.supplierPost') }}">Bán Sách</a></li>
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -196,11 +215,12 @@
                             <span class="s-text">Góc Sách</span>
                         </a>
                         <ul>
-                            <li><a href="gocsachbaidang">Bài Đăng</a></li>
-                            <li><a href="gocsachdanhsach">Danh Sách</a></li>
-                            <li><a href="gocsachthanhvien">Thành Viên</a></li>
+                            <li><a href="{{ route('admin.post') }}">Danh sách</a></li>
+                            <li><a href="{{ route('admin.show.post') }}">Bài đăng</a></li>
+                            <li><a href="{{ route('admin.show.supplier.post') }}">Sách bán cho cửa hàng</a></li>
                         </ul>
                     </li>
+
                     <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>

@@ -37,7 +37,6 @@ class UserRepository implements UserInterface
     public function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt('123456'),
         ]
@@ -59,4 +58,43 @@ class UserRepository implements UserInterface
 
         return $user->save();
     }
+
+    /**
+     * [getSupplier description]
+     * @return [type] [description]
+     */
+    public function getSupplier()
+    {
+        return User::has('contracts')->get();
+    }
+
+    /**
+     * [getContractOfSuppler description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function getContractOfSuppler($id)
+    {
+        return User::find($id)->contracts()->get();
+    }
+
+    /**
+     * [getOrderCustomer description]
+     * @return [type] [description]
+     */
+    public function getOrderCustomer()
+    {
+        return User::has('orders')->get();
+    }
+
+    /**
+     * [getOrderByCustomer description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function getOrderByCustomer($id)
+    {
+        return User::find($id)->orders()->get();
+    }
+
 }

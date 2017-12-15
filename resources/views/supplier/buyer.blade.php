@@ -26,10 +26,9 @@
                             <table class="table table-striped table-bordered ">
                                 <thead>
                                     <tr>
-                                        <th>Mã số hợp đồng</th>
-                                        <th>Tài khoản ngân hàng</th>
-                                        <th>Id nhà cung cấp</th>
-                                        <th>Loại hợp đồng</th>
+                                        <th>Mã số đơn hàng</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Trạng thái đơn hàng</th>
                                         <th>Phưong thức trả tiền</th>
                                     </tr>
                                 </thead>
@@ -59,6 +58,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {{-- {{ dd($users) }} --}}
                     @foreach($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
@@ -100,7 +100,7 @@ switch ($user->status) {
 
 <script>
     $('.btn-view').click(function(e) {
-        $('.modal-title').text('Thông tin chi tiết nhà cung cấp');
+        $('.modal-title').text('Thông tin chi tiết khách hàng');
         $('.supplier').css("display", "none");
         $('#box-hide').removeAttr("style");
 
@@ -110,7 +110,7 @@ switch ($user->status) {
             cache: false,
             method: 'GET',
             dataType: 'JSON',
-            url: '/supplier/' + id,
+            url: '/customer/' + id,
             success: function(data) {
                 if (data.length == 0) {
                     $('#contract-id').text("");
@@ -119,18 +119,16 @@ switch ($user->status) {
                     var contracts = $('#contracts');
                     for (var i = 0; i < (data.length); i++) {
                         var row = document.createElement('tr');
-                        var contractId = document.createElement('td');
-                        contractId.innerHTML = data[i]['id'];
-                        var account = document.createElement('td');
-                        account.innerHTML = data[i]['account'];
-                        var userId = document.createElement('td');
-                        userId.innerHTML = data[i]['id'];
-                        var kind = document.createElement('td');
-                        kind.innerHTML = data[i]['kind'];
+                        var orderId = document.createElement('td');
+                        orderId.innerHTML = data[i]['id'];
+                        var address = document.createElement('td');
+                        address.innerHTML = data[i]['address'];
+                        var status = document.createElement('td');
+                        status.innerHTML = data[i]['status'];
                         var method = document.createElement('td');
                         method.innerHTML = data[i]['method'];
 
-                        $(row).append(contractId, account, userId, kind, method);
+                        $(row).append(orderId, address, status, method);
                         contracts.append(row);
                     };
                 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCreateUserRequest;
 use App\Interfaces\UserInterface;
 use Illuminate\Http\Request;
 
@@ -40,6 +41,48 @@ class UserController extends Controller
         // return view('api.user.index', compact('users'));
     }
 
+    /**
+     * [getSupplier description]
+     * @return [type] [description]
+     */
+    public function getSupplier()
+    {
+        $users = $this->userRepository->getSupplier();
+
+        return view('supplier.index', compact('users'));
+    }
+
+    /**
+     * [getContractOfSuppler description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function getContractOfSuppler($id)
+    {
+        return $this->userRepository->getContractOfSuppler($id);
+
+    }
+
+    /**
+     * [getOrderCustomer description]
+     * @return [type] [description]
+     */
+    public function getOrderCustomer()
+    {
+        $users = $this->userRepository->getOrderCustomer();
+
+        return view('supplier.buyer', compact('users'));
+    }
+
+    public function getOrderByCustomer($id)
+    {
+
+        return $this->userRepository->getOrderByCustomer($id);
+    }
+    /**
+     * [getContent description]
+     * @return [type] [description]
+     */
     public function getContent()
     {
         return view('users.content');
@@ -60,13 +103,14 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCreateUserRequest $request)
     {
         if ($request->ajax()) {
             $data = $request->all();
             $user = $this->userRepository->create($data);
+
+            return response()->json($user, 200);
         }
-        return response()->json($user, 200);
     }
 
     /**

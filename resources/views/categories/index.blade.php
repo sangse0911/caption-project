@@ -25,7 +25,7 @@
                 <div class="product-outer" style="height: 391px;">
                     <div class="product-inner">
                         <span class="loop-product-categories"><a href="javascript:void(0)" rel="tag">Smartphones</a></span>
-                        <a href="javascript:void(0)">
+                        <a href="#myModal" class="book-show" data-toggle="modal" id="book-{{ $book->id }}">
                             <h3></h3>
                             <div class="product-thumbnail">
                                 <img src="{{ URL::to('assets/images/product/' . $book->images[0]->path) }}" alt="">
@@ -63,14 +63,14 @@
             <li class="product list-view">
                 <div class="media">
                     <div class="media-left">
-                        <a href="single-product.html">
+                        <a href="#myModal" class="book-show" data-toggle="modal" id="book-{{ $book->id }}">
 							<img class="wp-post-image" src="{{ URL::to('assets/images/product/' . $book->images[0]->path) }}" alt="">
 						</a>
                     </div>
                     <div class="media-body media-middle">
                         <div class="row">
                             <div class="col-xs-12">
-                                <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="single-product.html"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
+                                <span class="loop-product-categories"><a rel="tag" href="#">Tablets</a></span><a href="#"><h3>Tablet Air 3 WiFi 64GB  Gold</h3>
 									<div class="product-rating">
 										<div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
 									</div>

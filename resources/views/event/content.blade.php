@@ -119,6 +119,7 @@
 @endsection
 @section('script')
 <script>
+
     $('.year').datetimepicker({
         format: 'YYYY-MM-DD'
     });
@@ -213,7 +214,6 @@
 
             },
             error: function(data){
-                console.log('ee', data);
             }
         });
     });

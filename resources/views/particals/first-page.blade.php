@@ -107,7 +107,7 @@
 
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         }
     });
 
@@ -138,9 +138,10 @@
                 $('#book-introduce').text(data['book']['introduce']);
                 $('#book-description').text(data['book']['description']);
                 $('#image-book').attr('src','{{ URL::to('assets/images/product/') }}' + '/' + data['images'][0]['path']);
-                $('.fb-comments').attr('data-href',"https://developers.facebook.com/"+ book_id );
+                $('.fb-comments').attr('data-href',"http://localhost:8000/book/"+ book_id );
                 $('.modal-footer').css('display','none');
                 $('#book-isbn').text(data['book']['isbn']);
+                $('.add_to_wishlist').attr('id','book-'+ book_id);
             },
             error: function(data) {
             }

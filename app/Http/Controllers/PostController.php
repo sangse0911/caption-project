@@ -93,7 +93,7 @@ class PostController extends Controller
     public function showSupplierPost()
     {
         $books = $this->bookRepository->getSupplierBook();
-        return view('post.supplier-post', compact('books'));
+        return view('admin.books.supplier-post', compact('books'));
     }
     /**
      * Show the form for editing the specified resource.

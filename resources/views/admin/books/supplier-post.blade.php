@@ -4,8 +4,8 @@
 <div class="content-area py-1">
     <div class="container-fluid">
         <form enctype="multipart/form-data" type="hidden" id="form-action" name="" method="POST">
-            <!-- <input type="hidden" name="token" value="{{ csrf_token() }}"> -->
-            {{ csrf_field() }}
+
+            {!! csrf_field() !!}
             <div id="myModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-lg" style="max-width: 1100px;">
                     <!-- Modal content-->
@@ -213,10 +213,4 @@
         </div>
     </div>
 </div>
-{{-- @endsection
-@push('scripts')
-<script>
-    $('#sidebar').removeAttr('style');
-</script>
-@endpush
- --}}
+@endsection

@@ -84,7 +84,7 @@
 <script>
 	$.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         }
     });
 
@@ -109,6 +109,7 @@
                 name: name
             },
             success: function() {
+                alert('Thêm mới quyền thành công');
                 window.location.reload(true);
             },
             error: function(data) {
@@ -160,7 +161,7 @@
                 name: name,
             },
             success: function(data) {
-
+                alert('Thay đổi thông tin quyền thành công');
                 window.location.reload(true);
             },
             error: function(data) {
@@ -171,7 +172,6 @@
                 }
             }
         });
-        // console.log(data),
         e.preventDefault();
     });
 </script>

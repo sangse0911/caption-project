@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/dropify/dist/css/dropify.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/star-rating-svg.css') }}"> @yield('style')
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="_token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ URL::to('img/OKPNG.png') }}" media="all" />
     <!-- Demo Purpose Only. Should be removed in production -->
     <style type="text/css">

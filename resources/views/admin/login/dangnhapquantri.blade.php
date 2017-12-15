@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/font-awesome.min.css') }}" media="all" />
     <!-- Neptune CSS -->
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/core.css') }}" media="all" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

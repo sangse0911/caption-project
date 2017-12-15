@@ -4,13 +4,13 @@
             <li class="product_cat">
                 <ul>
                     <li class="cat-item cat-item-172 current-cat-parent current-cat-ancestor">
-                        <a href="product-category.html"><span class="child-indicator open"><i class="fa fa-angle-up"></i></span>Danh sách thể loại sách</a>
-                        <span class="count">()</span>
+                        <a href="javascript:void(0)"><span class="child-indicator open"><i class="fa fa-angle-up"></i></span>Danh sách thể loại sách</a>
+                        {{-- <span class="count">()</span> --}}
                         <ul class="children" style="display: block;">
                            @foreach($categories as $category)
                             <li class="cat-item cat-item-228">
                                 <a href="javascript:void(0)" class="category-show" data-id="{{ $category->id }}"><span class="no-child"></span>{{ $category->name }}</a>
-                                <span class="count">()</span>
+                                <span class="count">({{ $category->books()->count() }})</span>
                             </li>
                            @endforeach
                         </ul>

@@ -6,7 +6,7 @@ interface AdminInterface
 {
     public function all();
     public function find($id);
-    public function create($request);
+    public function create($data);
     public function getAdminAuth();
-    public function getPost();
+    public function modifiedByManager($data);
 }

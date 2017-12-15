@@ -25,7 +25,7 @@
                 <div class="product-outer" style="height: 391px;">
                     <div class="product-inner">
                         <span class="loop-product-categories"><a href="javascript:void(0)" rel="tag">Smartphones</a></span>
-                        <a href="javascript:void(0)">
+                        <a href="#myModal" class="book-show" data-toggle="modal" data-id="{{ $book->id }}">
                             <h3></h3>
                             <div class="product-thumbnail">
                                 <img src="{{ URL::to('assets/images/product/' . $book->images[0]->path) }}" alt="">
@@ -63,7 +63,7 @@
             <li class="product list-view">
                 <div class="media">
                     <div class="media-left">
-                        <a href="single-product.html">
+                        <a href="#myModal" class="book-show" data-toggle="modal" data-id="{{ $book->id }}">
 							<img class="wp-post-image" src="{{ URL::to('assets/images/product/' . $book->images[0]->path) }}" alt="">
 						</a>
                     </div>
@@ -139,7 +139,111 @@
 @endsection
 @include('particals.contents')
 @endsection
+@push('scripts')
+<script>
+    $('#sidebar').css('margin-top','150px');
 
+    $('.book-show').click(function(e) {
+        $('.modal-title').text('Thông tin chi tiết');
+        $('.post').css("display","none");
+        $('#single-product').removeAttr("style");
+        $('.action-buttons').removeAttr("style");
+    });
+
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+    $('.book-show').on('click', function(e) {
+        var book_id = $(this).data('id');
+
+        $.ajax({
+            cache: false,
+            method: 'GET',
+            dataType: 'JSON',
+            url: '/book/' + book_id,
+            success: function(data) {
+                $('#book-rate').val(data['book']['id']);
+                $('#book-name').text(data['book']['name']);
+                $('#book-status').text(data['book']['status']);
+                $('#book-company').text(data['book']['company']);
+                $('#book-year').text(data['book']['year']);
+                $('#book-republish').text(data['book']['republish']);
+                $('.book-author').text(data['book']['author']);
+                $('#book-price').text('Gía: ' + data['book']['price'] + ' VND');
+                $('#book-introduce').text(data['book']['introduce']);
+                $('#book-description').text(data['book']['description']);
+                $('#image-book').attr('src','{{ URL::to('assets/images/product/') }}' + '/' + data['images'][0]['path']);
+                $('.fb-comments').attr('data-href',"https://developers.facebook.com/"+ book_id );
+                $('.modal-footer').css('display','none');
+                $('#book-isbn').text(data['book']['isbn']);
+            },
+            error: function(data) {
+                console.log('ee', data);
+            }
+        });
+        e.preventDefault();
+    });
+
+    $('.add_to_cart_button').click(function(e) {
+        e.preventDefault();
+
+        var id = $(this).data('id');
+
+        $.ajax({
+
+            cache: false,
+            method: 'POST',
+            url: '/cart/add',
+            data: {
+                id: id,
+            },
+            dataType: 'JSON',
+            success: function(data) {
+                alert('Bạn đã thêm thành công sản phẩm vào giỏ hàng');
+                var count = parseInt($('.cart-items-count')[0].innerHTML);
+                count += 1;
+                $('.cart-items-count').each(function(e) {
+                    $(this).text(count);
+                });
+            },
+            error: function(data) {
+                console.log("có lỗi với", data);
+            }
+        });
+    });
+    $('.add_to_wishlist').click(function(e) {
+        var bookId = e.currentTarget.id.substring(5);
+        var userId = $('#user-id').val();
+
+        $.ajax({
+
+            cache: false,
+            method: 'POST',
+            dataType: 'JSON',
+            url: '/addBookWishlist',
+            data: {
+                bookId: bookId,
+                userId: userId
+            },
+            success: function(data) {
+                alert("Bạn đã thêm thành công vào danh sách yêu thích");
+            },
+            error: function(data) {
+                if(data.status === 401) {
+                    alert('Vui lòng đăng nhập trưóc khi thêm sách vào yêu thích');
+                }
+                if(data.status === 500) {
+                    alert('Sách đã có trong danh sách yêu thích của bạn');
+                }
+            }
+        });
+        e.preventDefault();
+    });
+</script>
+@endpush
 @section('footer')
 @include('particals.footer')
 @endsection()

@@ -19,8 +19,8 @@ class AdminTableSeeder extends Seeder
             $data = array(
                 'name' => $faker->name,
                 'password' => bcrypt('123'),
-                'email' => 'admin' . rand(1, 40) . '@gmail.com',
-                'role_id' => '1',
+                'email' => 'admin' . rand(1, 50) . '@gmail.com',
+                'role_id' => '2',
                 'phone' => $faker->phoneNumber,
                 'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
                 'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
@@ -30,5 +30,19 @@ class AdminTableSeeder extends Seeder
             DB::table('admins')->insert($data);
             $data = null;
         }
+
+        $data = array(
+            'name' => $faker->name,
+            'password' => bcrypt('123'),
+            'email' => 'admin6' . '@gmail.com',
+            'role_id' => '1',
+            'phone' => $faker->phoneNumber,
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+
+        );
+
+        DB::table('admins')->insert($data);
+        $data = null;
     }
 }

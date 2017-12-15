@@ -46,17 +46,17 @@
                     <tr >
                         <td class="actions" colspan="5" >
                             <div style="float: left;">
-                            <div class="row" style="text-align: left;margin: 4px;">
+                            {{-- <div class="row" style="text-align: left;margin: 4px;">
                                 <span style="color: #2660C1;font-size: 15px;font-weight: bold;">Tên: </span>
                                 <input  type="text" name="name" id="address" value="" placeholder="Nhập tên" style="width: 100%; ">
                             </div>
                             <div class="row" style="text-align: left;margin: 4px;">
                                 <span style="color: #2660C1;font-size: 15px;font-weight: bold;">Email: </span>
                                 <input type="text" name="email" id="address" value="" placeholder="Nhập email" style="width: 100%;">
-                            </div>
+                            </div> --}}
                             <div class="row" style="text-align: left;margin: 4px;">
                                 <span style="color: #2660C1;font-size: 15px;font-weight: bold;">Địa Chỉ: </span>
-                                <input type="text" name="address" id="address" value="" placeholder="Nhập địa chỉ" style="width: 100%;">
+                                <input type="text" name="address" id="address"  placeholder="Nhập địa chỉ" style="width: 100%;">
                             </div>
                             </div>
                             <div style="margin-bottom: 50px;float: right;" class="col-md-6">
@@ -156,6 +156,12 @@
 @endsection @include('particals.contents') @endsection @section('footer') @include('particals.footer') @endsection
 @push('scripts')
 <script>
+     $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+
     $('.remove').click(function(e) {
         e.preventDefault();
 

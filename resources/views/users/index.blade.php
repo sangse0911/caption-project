@@ -8,7 +8,7 @@
                 </button>
             </div>
         </ol>
-        <form enctype="multipart/form-data" type="hidden" name="" id="" method="POST">
+        <form enctype="multipart/form-data" type="hidden" name="" id="add-user" method="POST">
             {{-- {{ csrf_field() }} --}}
             <input type="hidden" name="token" id="token" value="{{ csrf_token() }}">
             <div id="myModal" class="modal fade" role="dialog">
@@ -25,6 +25,14 @@
                                 <input type="hidden" name="id" value="" id="id">
                                 <input type="text" name="name" class="form-control" id="name">
                             </div>
+                            <div class="form-group" id="form-email">
+                                <label for="email">Email người dùng</label>
+                                <input type="email" name="email" class="form-control" id="email">
+                            </div>
+                            <div class="form-group" id="form-name">
+                                <label for="phone">Số điện thoại</label>
+                                <input type="text" name="phone" class="form-control" id="phone">
+                            </div>
                             <div class="form-group" id="form-status">
                                 <label class="radio-inline">
                                     <input type="radio" name="status" value="1">Bình thường</label>
@@ -39,8 +47,9 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="user-update">Lưu</button>
-                            <button type="button" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="supplier-create">Thêm mới</button>
+                            <button type="button" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="create-user">Thêm mới</button>
+                            <button type="button" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="supplier-create" style="display: none;">Thêm mới</button>
+                            <button type="button" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="user-update" style="display: none;">Lưu</button>
                             <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Đóng</button>
                         </div>
                     </div>
@@ -64,7 +73,23 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->account_status }}</td>
+
+                        <td>
+                            <?php
+
+switch ($user->status) {
+    case (2):
+        echo 'Cấm';
+        break;
+    case (3):
+        echo "Cảnh cáo";
+        break;
+    default:
+        echo 'Bình thường';
+        break;
+}
+?>
+                        </td>
                         <td align="center">
                             <button type="button" id="update" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal" data-id="{{ $user->id }}">
                                 <span class="btn-label"><i class="fa fa-edit"></i></span> Sửa
@@ -85,7 +110,8 @@
         </div>
     </div>
 </div>
-@endsection @section('scripts')
+@endsection
+@section('script')
 <script>
     $(document).on('focus', 'input', function() {
         $(this).removeAttr('placeholder');
@@ -99,10 +125,27 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    var url_user_store = '{{ route('user.store')}}';
-    $('#add').on('click', function(e) {
+    $('#user-create').click(function(e) {
+        $('#name').val('');
+        $('input[type=radio]').prop('checked', false);
+        $('#form-status').css('display', 'none');
+        $('.modal-title').text('Thêm mới người dùng');
+        $('#phone').val('').prop('readonly', false);
+        $('#email').val('').prop('readonly', false);
+        $('#form-name').css('display', 'none');
+        $('#form-email').removeAttr('style');
+        $('#create-user').removeAttr('style');
+        $('#supplier-create').css('display','none');
+        $('#user-update').css('display', 'none');
+    });
 
-        var name = $('#name').val();
+    var url_user_store = '{{ route('user.store')}}';
+
+    $('#create-user').on('click', function(e) {
+        $('#error-address').text("");
+        $('#error-email').text("");
+
+        var phone = $('#phone').val();
         var email = $('#email').val();
 
         $.ajax({
@@ -112,32 +155,43 @@
             dataType: 'JSON',
             url: url_user_store,
             data: {
-                name: name,
+                phone: phone,
                 email: email,
             },
             success: function() {
                 window.location.reload(true);
             },
             error: function(data) {
-                console.log('ee', data);
+                if(data.status === 422) {
+                    var errors = data.responseJSON;
+                    $('#error-email').text(errors['email']);
+                    $('#error-phone').text(errors['phone']);
+                }
             }
         });
-
+        // console.log(data),
         e.preventDefault();
     });
+
     $('.btn-update').click(function(e) {
-        var user_id = $(this).data['id'];
+        var user_id = $(this).data('id');
+        $('#supplier-create').css('display','none');
+        $('#user-update').removeAttr('style');
+        $('#form-status').removeAttr('style');
+        $('#create-user').css('display', 'none');
+
         $.ajax({
             cache: false,
             method: 'GET',
             dataType: 'JSON',
             url: '/admin/users/' + user_id,
             success: function(data) {
-                $('.modal-title').text('Cap nhat nguoi dung');
+                $('.modal-title').text('Cập nhật người dùng');
                 $('#id').val(data['id']);
-                $('#name').val(data['name']);
-                $('#name').attr("readonly", true);
-                $('input[type=radio][name="status"][value='+data['account_status']+']').prop('checked', true);
+                $('#name').val(data['name']).prop('readonly', true);
+                $('input[type=radio][name="status"][value='+data['status']+']').prop('checked', true);
+                $('#phone').val(data['phone']).prop('readonly', true);
+                $('#email').val(data['email']).prop('readonly', true);
             },
             error: function(data) {
                 console.log('ee',data);
@@ -149,6 +203,7 @@
 
         var status =  $('input[name=status]:checked').val();
         var id = $('#id').val();
+        var phone = $('#phone').val();
 
         $.ajax({
 
@@ -159,9 +214,9 @@
             data: {
                 id: id,
                 status: status,
+                phone: phone
             },
             success: function(data) {
-                // console.log('ss', data);
                 window.location.reload(true);
             },
             error: function(data) {
@@ -173,6 +228,11 @@
     });
     $('.btn-supplier').click(function(e) {
         var user_id = $(this).data('id');
+
+        $('#create-user').css('display', 'none');
+        $('#supplier-create').removeAttr('style');
+        $('#form-status').removeAttr('style');
+
         $.ajax({
             cache: false,
             method: 'GET',
@@ -181,9 +241,11 @@
             success: function(data) {
                 $('.modal-title').text('Thêm mới nhà cung cấp');
                 $('#id').val(data['id']);
-                $('#name').val(data['name']);
+                $('#name').val(data['name']).prop('readonly', true);
                 $('input[type=radio][name="status"][value='+data['status']+']').prop('checked', true);
                 $('#user-update').css('display','none');
+                $('#phone').val(data['phone']).prop('readonly', true);
+                $('#email').val(data['email']).prop('readonly', true);
             },
             error: function(data) {
                 console.log('ee',data);

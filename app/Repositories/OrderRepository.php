@@ -37,8 +37,22 @@ class OrderRepository implements OrderInterface
         return Order::create([
             'user_id' => $data['user_id'],
             'method' => $data['method'],
-            'status'=>  $data['status'],
+            'status' => $data['status'],
             'address' => $data['address'],
         ]);
+    }
+
+    public function getOrder()
+    {
+
+        $books = Order::with([
+
+            'books' => function ($query) {
+                $query->whereHas('contracts', function ($q) {
+                    $q->where('kind', '0');
+                });
+            }])->get();
+
+        return $books;
     }
 }

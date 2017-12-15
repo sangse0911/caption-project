@@ -2,21 +2,14 @@
     <div class="container">
         <div id="primary" class="content-area">
             <main id="main" class="site-main">
-                @yield('part-content') 
-                @yield('carousel') 
+                @yield('part-content')
+                @yield('carousel')
                 @yield('customer')
-                @yield('event') 
-                @yield('categories') 
-                @yield('first') 
-                @yield('second') 
-               {{--  <br>
-                <img style="margin: auto;" src="{{ URL::to('img/HR.png') }}">
-                <span style="margin-left: 300px; color: #a3d133; font-weight: bold;font-size: 35px; font-family: cursive;" >Sách Bán Chạy</span>
-                <div class="hr"><hr /></div>
-                <br>
-                @yield('best-sell')  --}} 
-                 
-                @yield('post-book') 
+                @yield('event')
+                @yield('categories')
+                @yield('first')
+                @yield('second')
+                @yield('post-book')
                 @yield('cart')
                 <form type="hidden" name="" id="post-form" method="POST">
                     <input type="hidden" name="token" value="{{ csrf_token() }}">
@@ -54,7 +47,3 @@
     <!-- .container -->
 </div>
 <!-- #content -->
-
-<script>
-
-</script>

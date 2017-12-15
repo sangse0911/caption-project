@@ -28,8 +28,8 @@ class CategoryController extends Controller
 
     public function getIndex()
     {
-        $categories = $this->categoryRepository->all();
-        return view('admin.categories.index', compact('categories'));
+
+        return view('admin.categories.index');
     }
     /**
      * Show the form for creating a new resource.

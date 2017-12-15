@@ -2,27 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreAdminRequest;
-use App\Interfaces\AdminInterface;
+use App\Interfaces\OrderInterface;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class OrderController extends Controller
 {
 
-    /**
-     * [$adminRepository description]
-     * @var [type]
-     */
-    protected $adminRepository;
+    protected $orderRepository;
 
-    /**
-     * [__construct description]
-     * @param AdminInterface $adminRepository [description]
-     */
-    public function __construct(AdminInterface $adminRepository)
+    public function __construct(OrderInterface $orderRepository)
     {
-
-        $this->adminRepository = $adminRepository;
+        $this->orderRepository = $orderRepository;
     }
     /**
      * Display a listing of the resource.
@@ -31,15 +21,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = $this->adminRepository->all();
-
-        return view('admin.managers.index', compact('admins'));
+        $orders = $this->orderRepository->getOrder();
+        return view('admin.orders.order-buy', compact('orders'));
     }
 
-    public function getAllBookByAdmin()
-    {
-        return view('admin.books.index');
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -56,15 +41,9 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAdminRequest $request)
+    public function store(Request $request)
     {
-        if ($request->ajax()) {
-            $data = $request->all();
-
-            $admin = $this->adminRepository->create($data);
-
-            return response()->json($admin, 200);
-        }
+        //
     }
 
     /**
@@ -75,7 +54,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        return $this->adminRepository->find($id);
+        //
     }
 
     /**
@@ -96,15 +75,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreAdminRequest $request)
+    public function update(Request $request, $id)
     {
-        if ($request->ajax()) {
-
-            $data = $request->all();
-            $admin = $this->adminRepository->modifiedByManager($data);
-
-            return response()->json($admin, 200);
-        }
+        //
     }
 
     /**

@@ -55,7 +55,7 @@ Route::get('/hot-book', ['as' => 'book.hot', 'uses' => 'BookController@hotBook']
 /**
  *
  */
-Route::middleware(['auth:admin', 'super_admin'])->group(function () {
+Route::middleware(['auth:admin'])->group(function () {
 
     /**
      *
@@ -73,14 +73,26 @@ Route::middleware(['auth:admin', 'super_admin'])->group(function () {
     Route::put('/contact/update', 'ContactController@update')->name('admin.contact.update');
     Route::get('/contact/{id}', 'ContactController@show')->name('admin.contact.show');
 
-    Route::get('/admins', 'AdminController@listAllManager')->name('admin.managers.index');
-});
-/**
- *
- */
-Route::middleware(['auth:admin'])->group(function () {
+    Route::get('/admins', 'AdminController@index')->name('admin.manager.index');
+    Route::get('/admin/categories', ['as' => 'admin.categories.index', 'uses' => 'CategoryController@getIndex']);
+    Route::get('/admin/posts', 'PostController@contentPost')->name('admin.post');
+    Route::get('/admin/books', ['as' => 'admin.book.index', 'uses' => 'AdminController@getAllBookByAdmin']);
+    Route::get('/admin/events', ['as' => 'event.admin.show', 'uses' => 'EventController@content']);
+    Route::get('/admin/orders', 'OrderController@index')->name('admin.order');
+
+    Route::get('/admin/supplierPost', 'PostController@showSupplierPost')->name('admin.supplierPost');
+    Route::get('/admin/allPost', 'BookController@getAllPost')->name('admin.show.post');
+    Route::get('/admin/sellPost', 'BookController@getAllSellBook')->name('admin.show.supplier.post');
+    Route::get('/admin/sell-book', 'BookController@sellBook')->name('admin.book.sell-book');
+    Route::get('/admin/rent-book', 'BookController@rentBook')->name('admin.book.rent-book');
+    Route::get('/admin/books/{id}', ['as' => 'admin.book.show', 'uses' => 'BookController@show']);
+    Route::get('/admin/orderBuy', 'OrderController@index')->name('admin.get.orderBuy');
 
     Route::get('/admin', 'AdminController@index')->name('admin.index');
+    Route::get('/admin/{id}', 'AdminController@show')->name('admin.show');
+    Route::post('/admin/store', 'AdminController@store')->name('admin.store');
+    Route::put('/admin/update', 'AdminController@update')->name('admin.update');
+
     /**
      *
      */
@@ -92,16 +104,11 @@ Route::middleware(['auth:admin'])->group(function () {
     /**
      *
      */
-    Route::get('/admin/books', ['as' => 'admin.book.index', 'uses' => 'AdminController@indexBook']);
-    Route::get('/admin/books/{id}', ['as' => 'admin.book.show', 'uses' => 'BookController@show']);
-
-    /**
-     *
-     */
     Route::get('/bookshelves', 'BookshelfController@index')->name('admin.bookshelf.index');
     Route::get('/bookshelf/{id}', 'BookshelfController@show')->name('bookshelf.show');
     Route::post('/bookshelf/store', 'BookshelfController@store')->name('bookshelf.store');
     Route::put('/bookshelf/update', 'BookshelfController@update')->name('bookshelf.update');
+
     /**
      *
      */
@@ -111,21 +118,21 @@ Route::middleware(['auth:admin'])->group(function () {
     /**
      *
      */
-    // Route::get('/suppliers', 'SupplierController@index')->name('supplier.index');
+    Route::get('/suppliers', 'UserController@getSupplier')->name('supplier.index');
+    Route::get('/supplier/buys', 'UserController@getOrderCustomer')->name('customer.order');
     // Route::get('/suppliers/{id}', 'SupplierController@show')->name('supplier.show');
-    // Route::get('/supplier/detail/{id}', 'SupplierController@showDetail')->name('supplier.detail');
+    Route::get('/supplier/{id}', 'UserController@getContractOfSuppler')->name('supplier.detail');
     // Route::post('/supplier/store', 'SupplierController@store')->name('supplier.save');
     // Route::post('/supplier/createIfExistUser', 'SupplierController@storeIfExist')->name('supplier.save.exist');
 
-    Route::get('/admin/allPost', 'BookController@getAllPost')->name('admin.show.post');
-    Route::get('/admin/sellPost', 'BookController@getAllSellBook')->name('admin.show.supplier.post');
+    Route::get('/customer/{id}', 'UserController@getOrderByCustomer')->name('customer.buy.order');
+
     /**
      *
      */
-    Route::get('/admin/categories', ['as' => 'admin.categories.index', 'uses' => 'CategoryController@getIndex']);
     Route::get('/admin/category/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
-    Route::post('/admin/category/store', ['as' => 'category.create', 'uses' => 'CategoryController@store']);
     Route::get('/admin/category/{id}', 'CategoryController@listById')->name('category.show');
+    Route::post('/admin/category/store', ['as' => 'category.create', 'uses' => 'CategoryController@store']);
     Route::put('/admin/category/update', 'CategoryController@update')->name('category.update');
 
     // Route::get('/status', ['as' => 'status.index', 'uses' => 'StatusController@index']);
@@ -150,21 +157,16 @@ Route::middleware(['auth:admin'])->group(function () {
     /**
      *
      */
+
     Route::get('/event/create', ['as' => 'event.create', 'uses' => 'EventController@create']);
     Route::post('/event/store', ['uses' => 'EventController@store'])->name('event.store');
     Route::put('/event/update', ['as' => 'event.update', 'uses' => 'EventController@update']);
     Route::get('/event/{id}', ['as' => 'event.show', 'uses' => 'EventController@show']);
-    Route::get('/admin/events', ['as' => 'event.admin.show', 'uses' => 'EventController@content']);
 
     /**
      *
      */
 
-    Route::get('/admin/sell-book', 'BookController@sellBook')->name('admin.book.sell-book');
-    Route::get('/admin/rent-book', 'BookController@rentBook')->name('admin.book.rent-book');
-
-    Route::get('/admin/posts', 'PostController@contentPost')->name('admin.post');
-    Route::get('/admin/supplierPost/', 'PostController@showSupplierPost')->name('admin.show.supplierPost');
 });
 
 Route::get('/events', ['as' => 'event.index', 'uses' => 'EventController@index']);
