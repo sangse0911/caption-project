@@ -42,7 +42,7 @@
         <div class="site-sidebar">
             <div class="custom-scroll custom-scroll-light">
                 <ul class="sidebar-menu">
-                    @if(Auth::user()->id == 6)
+                    @if(Auth::user()->role_id == 1)
                     <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-icon"><i class="fa fa-user"></i></span>
@@ -54,7 +54,6 @@
                             <li><a href="{{ route('super.admin.index') }}">Danh sách quyền</a></li>
                         </ul>
                     </li>
-
                     <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
@@ -65,8 +64,6 @@
                             <li><a href="{{ route('users.index') }}">Danh sách</a></li>
                             <li><a href="{{ route('supplier.index') }}">Nhà cung cấp</a></li>
                             <li><a href="{{ route('customer.order') }}">Khách mua</a></li>
-                            {{-- <li><a href="{{ route('supplier.index') }}">Khách thuê</a></li> --}}
-
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -115,7 +112,7 @@
                         <ul>
                             <li><a href="{{ route('admin.supplierPost') }}">Đơn hàng sách bán cho cửa hàng</a></li>
                             <li><a href="{{ route('admin.get.orderBuy') }}">Đơn hàng mua sách</a></li>
-                            <li><a href="#">Đơn hàng thuê sách</a></li>
+                            <li><a href="{{ route('admin.get.orderRent') }}">Đơn hàng thuê sách</a></li>
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -154,8 +151,6 @@
                             <li><a href="{{ route('users.index') }}">Danh sách</a></li>
                             <li><a href="{{ route('supplier.index') }}">Nhà cung cấp</a></li>
                             <li><a href="{{ route('customer.order') }}">Khách mua</a></li>
-                            {{-- <li><a href="{{ route('supplier.index') }}">Khách thuê</a></li> --}}
-
                         </ul>
                     </li>
                     <li class="with-sub">
@@ -202,9 +197,9 @@
                             <span class="s-text">Đơn Hàng</span>
                         </a>
                         <ul>
-                            <li><a href="#">Mua Sách</a></li>
-                            <li><a href="#">Thuê Sách</a></li>
-                            <li><a href="{{ route('admin.show.supplierPost') }}">Bán Sách</a></li>
+                            <li><a href="{{ route('admin.supplierPost') }}">Đơn hàng sách bán cho cửa hàng</a></li>
+                            <li><a href="{{ route('admin.get.orderBuy') }}">Đơn hàng mua sách</a></li>
+                            <li><a href="{{ route('admin.get.orderRent') }}">Đơn hàng thuê sách</a></li>
                         </ul>
                     </li>
                     <li class="with-sub">

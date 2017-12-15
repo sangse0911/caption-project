@@ -46,17 +46,13 @@
                     <tr >
                         <td class="actions" colspan="5" >
                             <div style="float: left;">
-                            {{-- <div class="row" style="text-align: left;margin: 4px;">
-                                <span style="color: #2660C1;font-size: 15px;font-weight: bold;">Tên: </span>
-                                <input  type="text" name="name" id="address" value="" placeholder="Nhập tên" style="width: 100%; ">
-                            </div>
-                            <div class="row" style="text-align: left;margin: 4px;">
-                                <span style="color: #2660C1;font-size: 15px;font-weight: bold;">Email: </span>
-                                <input type="text" name="email" id="address" value="" placeholder="Nhập email" style="width: 100%;">
-                            </div> --}}
                             <div class="row" style="text-align: left;margin: 4px;">
                                 <span style="color: #2660C1;font-size: 15px;font-weight: bold;">Địa Chỉ: </span>
                                 <input type="text" name="address" id="address"  placeholder="Nhập địa chỉ" style="width: 100%;">
+                            </div>
+                             <div class="row" style="text-align: left;margin: 4px;">
+                                <span style="color: #2660C1;font-size: 15px;font-weight: bold;">Số điện thoại</span>
+                                <input type="text" name="phone" id="phone"  placeholder="Nhập số điện thoại" style="width: 100%;">
                             </div>
                             </div>
                             <div style="margin-bottom: 50px;float: right;" class="col-md-6">
@@ -193,6 +189,7 @@
 
         var method = $('input[name=method]:checked').val();
         var address = $('#address').val();
+        var phone = $('#phone').val();
 
         $.ajax({
 
@@ -202,7 +199,9 @@
             data: {
                 method: method,
                 address: address,
+                phone: phone,
             },
+
             dataType: 'JSON',
             success: function(data) {
                 alert("Bạn đã đặt hàng thành công, cảm ơn bạn");

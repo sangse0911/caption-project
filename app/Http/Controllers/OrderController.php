@@ -21,6 +21,17 @@ class OrderController extends Controller
      */
     public function index()
     {
+
+    }
+
+    public function getRenter()
+    {
+        $orders = $this->orderRepository->getRenter();
+        return view('admin.orders.order-rent', compact('orders'));
+    }
+
+    public function getOrder()
+    {
         $orders = $this->orderRepository->getOrder();
         return view('admin.orders.order-buy', compact('orders'));
     }
@@ -54,9 +65,13 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
+    public function showOrder($id)
+    {
+        return $this->orderRepository->getOrderById($id);
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -75,9 +90,14 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $data = $request->all();
+            $order = $this->orderRepository->modified($data);
+
+            return response()->json($order, 200);
+        }
     }
 
     /**

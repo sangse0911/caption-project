@@ -104,8 +104,8 @@ class CartRepository implements CartInterface
 
             'user_id' => $id,
             'method' => $data['method'],
-            'status' => 1,
             'address' => $data['address'],
+            'phone' => $data['phone'],
         );
         $order = $this->orderRepository->create($items);
 
@@ -131,7 +131,7 @@ class CartRepository implements CartInterface
                     'quantity' => 1,
                     'fee' => 0,
                     'discount' => 0,
-                    'total_price' => 0,
+                    'total_price' => $book->price,
                 ]);
         }
 

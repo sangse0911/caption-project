@@ -18,7 +18,7 @@ class AdminTableSeeder extends Seeder
         for ($i = 0; $i < 5; $i++) {
             $data = array(
                 'name' => $faker->name,
-                'password' => bcrypt('123'),
+                'password' => bcrypt('123456'),
                 'email' => 'admin' . rand(1, 50) . '@gmail.com',
                 'role_id' => '2',
                 'phone' => $faker->phoneNumber,
@@ -33,7 +33,7 @@ class AdminTableSeeder extends Seeder
 
         $data = array(
             'name' => $faker->name,
-            'password' => bcrypt('123'),
+            'password' => bcrypt('123456'),
             'email' => 'admin6' . '@gmail.com',
             'role_id' => '1',
             'phone' => $faker->phoneNumber,

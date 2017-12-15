@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCartRequest;
 use App\Interfaces\CartInterface;
 use App\Interfaces\OrderInterface;
 use Auth;
@@ -45,6 +46,10 @@ class CartController extends Controller
 
     }
 
+    /**
+     * [add description]
+     * @param Request $request [description]
+     */
     public function add(Request $request)
     {
         if ($request->ajax()) {
@@ -56,7 +61,13 @@ class CartController extends Controller
         }
 
     }
-    public function order(Request $request)
+
+    /**
+     * [order description]
+     * @param  StoreCartRequest $request [description]
+     * @return [type]                    [description]
+     */
+    public function order(StoreCartRequest $request)
     {
         if (Auth::check() && $request->ajax()) {
             $data = $request->all();
@@ -65,6 +76,7 @@ class CartController extends Controller
             return response()->json($order, 200);
         }
     }
+
     /**
      * Store a newly created resource in storage.
      *

@@ -85,8 +85,11 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/sellPost', 'BookController@getAllSellBook')->name('admin.show.supplier.post');
     Route::get('/admin/sell-book', 'BookController@sellBook')->name('admin.book.sell-book');
     Route::get('/admin/rent-book', 'BookController@rentBook')->name('admin.book.rent-book');
+    Route::get('/admin/orderBuy', 'OrderController@getOrder')->name('admin.get.orderBuy');
+    Route::get('/admin/orderRent', 'OrderController@getRenter')->name('admin.get.orderRent');
     Route::get('/admin/books/{id}', ['as' => 'admin.book.show', 'uses' => 'BookController@show']);
-    Route::get('/admin/orderBuy', 'OrderController@index')->name('admin.get.orderBuy');
+    Route::get('/admin/orderBuy/{id}', 'OrderController@showOrder')->name('admin.show.orderBuyId');
+    Route::put('/admin/order/update', 'OrderController@update')->name('admin.master.update.order');
 
     Route::get('/admin', 'AdminController@index')->name('admin.index');
     Route::get('/admin/{id}', 'AdminController@show')->name('admin.show');

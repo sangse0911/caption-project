@@ -23,20 +23,20 @@
                         </div>
                         <div class="modal-body">
                             <div class="box box-block bg-white" id="box-hide">
-                            <table class="table table-striped table-bordered ">
-                                <thead>
-                                    <tr>
-                                        <th>Mã số đơn hàng</th>
-                                        <th>Địa chỉ</th>
-                                        <th>Trạng thái đơn hàng</th>
-                                        <th>Phưong thức trả tiền</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="contracts">
+                                <table class="table table-striped table-bordered " id="table-1">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã số đơn hàng</th>
+                                            <th>Địa chỉ</th>
+                                            <th>Trạng thái đơn hàng</th>
+                                            <th>Phưong thức trả tiền</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="contracts">
 
-                                </tbody>
-                            </table>
-                        </div>
+                                    </tbody>
+                                </table>
+                            </div>
 
                         </div>
                         <div class="modal-footer">
@@ -47,7 +47,7 @@
             </div>
         </form>
         <div class="box box-block bg-white">
-            <table class="table table-striped table-bordered dataTable" id="table-1">
+            <table class="table table-striped table-bordered dataTable" >
                 <thead>
                     <tr>
                         <th>ID</th>
