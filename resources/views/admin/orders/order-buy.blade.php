@@ -94,24 +94,23 @@
                         <td>{{ $order->created_at }}</td>
                         <td>{{ $order->updated_at }}</td>
                         <td>
-                            <?php
-switch ($order->status) {
-    case '1':
-        echo 'Đã xác nhận';
-        break;
-    case '2':
-        echo 'Đã hoàn thành';
-        break;
-    case '3':
-        echo 'Đã hủy đơn';
-        break;
+                            @php
+                                switch ($order->status) {
+                                    case '1':
+                                        echo 'Đã xác nhận';
+                                        break;
+                                    case '2':
+                                        echo 'Đã hoàn thành';
+                                        break;
+                                    case '3':
+                                        echo 'Đã hủy đơn';
+                                        break;
 
-    default:
-        echo 'Đơn hàng mới';
-        break;
-}
-
-?>
+                                    default:
+                                        echo 'Đơn hàng mới';
+                                        break;
+                                }
+                            @endphp
                         </td>
                         <td align="center">
                             <button type="button"  data-id="{{ $order->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">

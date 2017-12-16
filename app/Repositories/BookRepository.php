@@ -12,6 +12,7 @@ use App\Models\Category;
 use App\Models\Contract;
 use App\Models\ContractDetail;
 use Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class BookRepository implements BookInterface
@@ -123,10 +124,24 @@ class BookRepository implements BookInterface
     public function getPostBook()
     {
 
-        return Book::where('status', '1')->with('images')
+        // $books = DB::table('books')
+        //     ->join('images', 'books.id', '=', 'images.book_id')
+        //     ->join('contract_details', 'books.id', '=', 'contract_details.book_id')
+        //     ->join('contracts', 'contracts.id', '=', 'contract_details.contract_id')
+        //     ->join('users', 'users.id', '=', 'contracts.user_id')
+        //     ->where('books.status', '=', '1')
+        //     ->where('contracts.status', '=', '1')
+        //     ->select('images.path','    ')
+        //     ->get();
+        // return $books;
+        return Book::where('status', '1')
+            ->with('images')
+            ->with('contracts.user')
             ->whereHas('contracts', function ($query) {
                 $query->where('contracts.status', '1');
-            })->get();
+            })
+
+            ->get();
     }
 
     /**

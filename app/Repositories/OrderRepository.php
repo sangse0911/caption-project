@@ -58,7 +58,7 @@ class OrderRepository implements OrderInterface
             },
             'user',
             'detailOrders',
-        ])->distinct()->get();
+        ])->get();
 
         return $books;
     }
@@ -87,7 +87,7 @@ class OrderRepository implements OrderInterface
                 $query->whereHas('contracts', function ($q) {
                     $q->where('kind', '=', '1');
                 });
-            }])->distinct()->groupBy('orders.id')->get();
+            }])->get();
 
         return $books;
     }

@@ -123,9 +123,8 @@
                             <span class="s-text">Góc Sách</span>
                         </a>
                         <ul>
-                            <li><a href="{{ route('admin.post') }}">Danh sách</a></li>
-                            <li><a href="{{ route('admin.show.post') }}">Bài đăng</a></li>
-                            <li><a href="{{ route('admin.show.supplier.post') }}">Sách bán cho cửa hàng</a></li>
+                            <li><a href="{{ route('admin.post') }}">Danh sách bài đăng</a></li>
+
                         </ul>
                     </li>
 
@@ -210,9 +209,7 @@
                             <span class="s-text">Góc Sách</span>
                         </a>
                         <ul>
-                            <li><a href="{{ route('admin.post') }}">Danh sách</a></li>
-                            <li><a href="{{ route('admin.show.post') }}">Bài đăng</a></li>
-                            <li><a href="{{ route('admin.show.supplier.post') }}">Sách bán cho cửa hàng</a></li>
+                            <li><a href="{{ route('admin.post') }}">Danh sách bài đăng</a></li>
                         </ul>
                     </li>
 
