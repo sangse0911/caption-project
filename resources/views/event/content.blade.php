@@ -163,9 +163,10 @@
             processData: false,
             dataType: 'JSON',
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            success: function(data) {
+            success: function() {
+                alert('Thêm sự kiện thành công');
                 window.location.reload(true);
             },
             error: function(data) {
@@ -242,7 +243,8 @@
                 'start-date': start,
                 'end-date': end
             },
-            success: function(data) {
+            success: function() {
+                alert('Thay đổi thông tin sự kiện thành công');
                 window.location.reload(true);
             },
             error: function(data) {

@@ -27,16 +27,16 @@
                         <td>{{ $admin->name }}</td>
                         <td>{{ $admin->email }}</td>
                         <td>
-                        <?php
-switch ($admin->role_id) {
-    case (2):
-        echo 'Nhân viên';
-        break;
-    default:
-        echo 'Quản lí';
-        break;
-}
-?>
+                        @php
+                            switch ($admin->role_id) {
+                                case (2):
+                                    echo 'Nhân viên';
+                                    break;
+                                default:
+                                    echo 'Quản lí';
+                                    break;
+                            }
+                        @endphp
 
                         </td>
                         <td align="center">
@@ -127,7 +127,7 @@ $('#admin-create').click(function(e) {
 });
 $.ajaxSetup({
     headers: {
-        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
 
@@ -145,7 +145,7 @@ $('#admin').submit(function(evt) {
         processData: false,
         dataType: 'JSON',
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(data) {
             alert('Thêm mới sách thành công');

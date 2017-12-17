@@ -21,6 +21,11 @@ Auth::routes();
  */
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/fire', function () {
+    event(new App\Events\OrderStatusChanged);
+    return 'home';
+});
+
 /**
  *
  */

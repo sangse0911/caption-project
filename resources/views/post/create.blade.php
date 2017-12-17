@@ -187,7 +187,7 @@ $('#ahaha').submit(function(evt) {
         processData: false,
         dataType: 'JSON',
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function() {
             alert("Chúc mừng bạn đã đăng bài thành công");

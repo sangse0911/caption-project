@@ -186,7 +186,7 @@
             processData: false,
             dataType: 'JSON',
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function(data) {
                 alert('Thêm mới thể loại sách thành công');

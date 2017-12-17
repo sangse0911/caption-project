@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin/dropify/dist/css/dropify.min.css') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/star-rating-svg.css') }}"> @yield('style')
-    <meta name="_token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ URL::to('img/OKPNG.png') }}" media="all" />
     <!-- Demo Purpose Only. Should be removed in production -->
     <style type="text/css">
@@ -45,7 +45,7 @@
 
 <body class="home-v2">
     <div id="page" class="hfeed site">
-        <div class="top-bar">
+        <div class="top-bar" id="app">
             <div class="container">
                 <nav>
                     <ul id="menu-top-bar-left" class="nav nav-inline pull-left animate-dropdown flip">
@@ -289,6 +289,8 @@
         <script type="text/javascript" src="{{ URL::to('js/admin/jquery-1.12.3.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/tether.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::to('/js/app.js') }}"></script>
+        {{-- <script type="text/javascript" src="/js/bootstrap.js"></script> --}}
         <script type="text/javascript" src="{{ URL::to('js/moment.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/bootstrap-hover-dropdown.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/owl.carousel.min.js') }}"></script>
@@ -307,7 +309,7 @@
         <script type="text/javascript" src="{{ URL::to('js/jquery.star-rating-svg.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/jquery.dataTables.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/dataTables.responsive.min.js') }}"></script>
-        <!-- <script type="text/javascript" src="{{ URL::to('js/admin/buttons.html5.min.js') }}"></script> -->
+
         @stack('scripts')
         <script>
         (function($) {
@@ -439,71 +441,6 @@
 
             });
         });
-        </script>
-        <script>
-        // $('.btn-view').click(function(e) {
-        //     $('.image-area').css("display", "none");
-        //     $('#book-update').removeAttr("style");
-        //     $('#create-book').css("display", "none");
-        //     $('.form-status').removeAttr("style");
-
-        //     $('.modal-title').text('Thông tin sách');
-        //     $('.bank-account').css("display", "none");
-        //     $('.method-pay').css("display", "none");
-        //     $('.kind-book').css("display", "none");
-        //     $('.modal-footer').css('display', 'none');
-        //     $('#error-name').text("");
-        //     $('#error-introduce').text("");
-        //     $('#error-description').text("");
-        //     $('#error-price').text("");
-        //     $('#error-price-rent').text("");
-        //     $('#error-author').text("");
-        //     $('#error-company').text("");
-        //     $('#error-year').text("");
-        //     $('#error-kind').text("");
-        //     $('#error-method').text("");
-        //     $('#error-account').text("");
-        //     $('#error-category').text("");
-        //     $('#error-quality').text("");
-        //     $('#error-republish').text("");
-        //     $('#error-location').text("");
-        //     $('#error-isbn').text("");
-
-        //     var book_id = $(this).data('id');
-        //     var array = [];
-
-        //     $.ajax({
-        //         cache: false,
-        //         method: 'GET',
-        //         dataType: 'JSON',
-        //         url: '/admin/books/' + book_id,
-        //         success: function(data) {
-        //             $('#name').val(data['book']['name']).prop("readonly",true);
-        //             for (var i = 0; i < data['categories'].length; i++) {
-        //                 array.push(data['categories'][i]['category_id']);
-        //             }
-
-        //             $('#id').prop("readonly",true).val(data['book']['id']);
-        //             $('#category').val(array).trigger('change').prop("readonly",true);
-        //             $('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
-        //             $('#introduce').val(data['book']['introduce']).prop("readonly",true);
-        //             $('#location').val(data['book']['bookshelf_id']).trigger('change');
-        //             $('#quality').val(data['details'][0]['quality']).trigger('change');
-        //             $('#price').val(data['book']['price']).prop("readonly",true);
-        //             $('#price-rent').val(data['book']['rental_fee']).prop("readonly",true);
-        //             $('#author').val(data['book']['author']).prop("readonly",true);
-        //             $('input[type=radio][name="status"][value=' + data['book']['status'] + ']').prop('checked', true);
-        //             $('input[type=radio][name="status"]').prop('disabled', true);
-        //             $('#company').val(data['book']['company']).prop("readonly",true);
-        //             $('#year').val(data['book']['year']).prop("readonly",true);
-        //             $('#republish').val(data['book']['republish']).prop("readonly",true);
-        //             $('#isbn').val(data['book']['isbn']).prop("readonly",true);
-        //             $('select').prop('disabled', true);
-        //         },
-        //         error: function(data) {
-        //         }
-        //     });
-        // });
         </script>
     </div>
 </body>

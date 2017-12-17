@@ -66,20 +66,20 @@
                         <td>{{ $user->email }}</td>
 
                         <td>
-                            <?php
+                            @php
 
-switch ($user->status) {
-    case (2):
-        echo 'Cấm';
-        break;
-    case (3):
-        echo "Cảnh cáo";
-        break;
-    default:
-        echo 'Bình thường';
-        break;
-}
-?>
+                                switch ($user->status) {
+                                    case (2):
+                                        echo 'Cấm';
+                                        break;
+                                    case (3):
+                                        echo "Cảnh cáo";
+                                        break;
+                                    default:
+                                        echo 'Bình thường';
+                                        break;
+                                }
+                            @endphp
                         </td>
                         <td align="center">
                             <button type="button" id="view" class="btn btn-warning btn-sm btn-view label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal" data-id="{{ $user->id }}">
