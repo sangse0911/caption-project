@@ -81,7 +81,7 @@
     </aside>
 </div>
 @push('scripts')
-    @parent
+{{--     @parent --}}
     <script>
         $('.category-show').on('click', function(e){
 

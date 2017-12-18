@@ -177,7 +177,7 @@
         </div>
         <!-- /.top-bar -->
         {{-- section header --}} @yield('header') {{-- section header-v2 --}} @yield('header-v2') {{-- section nav-v2 --}} @yield('nav-v2') {{-- section content --}} @yield('content') {{-- section footer --}} @yield('footer')
-        <div class="electro-handheld-footer-bar hidden-lg-up">
+       {{--  <div class="electro-handheld-footer-bar hidden-lg-up">
             <ul class="columns-5">
                 <li class="my-account">
                     <a id="fb-button1" onclick="login();"></a>
@@ -199,7 +199,7 @@
                 <li class="wishlist"> <a href="#" class="has-icon"><i class="ec ec-favorites"></i><span class="count">0</span></a></li>
                 <li class="compare"> <a href="#" class="has-icon"><i class="ec ec-compare"></i><span class="count">0</span></a></li>
             </ul>
-        </div>
+        </div> --}}
         <ul class="list-user-action" aria-labelledby="dropdownMenu2" style="position: absolute; display: none;">
             <li><a href="#">Nạp tiền vào tài khoản</a></li>
             <li><a href="#">Lịch sử giao dịch</a></li>

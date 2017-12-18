@@ -1,10 +1,10 @@
 <img style="margin: auto;" src="{{ URL::to('img/HR.png') }}">
-<span style="margin-left: 325px; color: #a3d133; font-weight: bold;font-size: 35px; font-family: cursive;">Sách Thuê</span>
+<span style="margin-left: 40%; color: #a3d133; font-weight: bold;font-size: 35px; font-family: cursive;">Sách Thuê</span>
 <div class="hr">
     <hr />
 </div>
 <br>
-<section class="home-v2-categories-products-carousel section-products-carousel animate-in-view fadeIn animated animation">
+<section class="section-product-cards-carousel" >
     <header>
         <h2 class="h1"><a href="{{ route('book.renter') }}" style="font-size: 20px;">Xem Tất Cả</a></h2>
         <div class="owl-nav">
@@ -12,13 +12,13 @@
             <a href="#products-carousel-next" data-target="#products-carousel-57176fb2c4230" class="slider-next"><i class="fa fa-angle-right"></i></a>
         </div>
     </header>
-    <div id="products-carousel-57176fb2c4230">
-        <div class="woocommerce">
-            <div class="products owl-carousel home-v2-categories-products products-carousel columns-6" id="owl-demo4">
+    <div id="recommended-product">
+         <div class="woocommerce columns-4">
+           <div class="products owl-carousel products-carousel columns-4 owl-loaded owl-drag" id="owl-demo">
             @foreach($books as $book)
-                <div class="owl-stage-outer">
+                {{-- <div class="owl-stage-outer">
                     <div class="owl-stage">
-                        <div class="owl-item active" style="width: 215.75px;">
+                        <div class="owl-item active" style="width: 215.75px;"> --}}
                             <div class="product">
                                 <div class="product-outer" style="height: 360px;">
                                     <div class="product-inner" style="height: 360px;">
@@ -32,8 +32,6 @@
                                                 <img src="{{ URL::to('assets/images/product'. '/'. $book->images[0]['path'])}}" class="img-responsive" style="max-height: 190px;margin:auto; max-width: 150px;" alt="">
                                             </div>
                                         </a>
-                                        <br>
-                                        <br>
                                         <div class="price-add-to-cart" style="margin-top: 150px;">
                                             <span class="price">
                                                 <span class="electro-price" style="position: relative;">
@@ -52,9 +50,9 @@
                                     <!-- /.product-inner -->
                                 </div>
                                 <!-- /.product-outer -->
-                            </div>
+                          {{--   </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 @endforeach
             </div>

@@ -1,10 +1,10 @@
 <img style="margin: auto;" src="{{ URL::to('img/HR.png') }}">
-<span style="margin-left: 335px; color: #a3d133; font-weight: bold;font-size: 35px; font-family: cursive;">Sách Bán</span>
+<span style="margin-left: 40%; color: #a3d133; font-weight: bold;font-size: 35px; font-family: cursive;">Sách Bán</span>
 <div class="hr">
     <hr />
 </div>
 <br>
-<section class="home-v2-categories-products-carousel section-products-carousel animate-in-view fadeIn animated animation">
+<section class="section-product-cards-carousel" >
     <header>
         <h2 class="h1"><a href="{{ route('book.sell') }}" style="font-size: 20px;">Xem Tất Cả</a></h2>
         <div class="owl-nav">
@@ -14,15 +14,15 @@
     </header>
     @if(Auth::guest()) @else
     <input type="hidden" name="" id="user-id" value="{{ Auth::user()->id }}"> @endif
-    <div id="products-carousel-57176fb2c4230">
-        <div class="woocommerce">
-            <div class="products owl-carousel home-v2-categories-products products-carousel columns-6" id="owl-demo">
+ <div id="recommended-product">
+     <div class="woocommerce columns-4">
+           <div class="products owl-carousel products-carousel columns-4 owl-loaded owl-drag" id="owl-demo">
                 @foreach($books as $book)
-                <div class="owl-stage-outer">
+                {{-- <div class="owl-stage-outer">
                     <div class="owl-stage">
-                        <div class="owl-item active" style="width: 215.75px;">
+                        <div class="owl-item active" style="width: 215.75px;"> --}}
                             <div class="product">
-                                <div class="product-outer" style="height: 331px;">
+                                <div class="product-outer" style="height: 360px;">
                                     <div class="product-inner" style="height: 360px;">
                                         <span class="loop-product-categories"><i class="fa fa-tags" aria-hidden="true"></i>
                                             Cũ
@@ -37,7 +37,7 @@
                                             <span class="price">
                                                 <span class="electro-price" style="position: relative;">
                                                     <ins><span class="amount">VNĐ {{ $book->price }}</span></ins>
-                                            <del style="position:absolute;left:0;top:-14px;"><span class="amount">$2,299.00</span></del>
+                                           {{--  <del style="position:absolute;left:0;top:-14px;"><span class="amount">$2,299.00</span></del> --}}
                                             <span class="amount"> </span>
                                             </span>
                                             </span>
@@ -51,9 +51,9 @@
                                     <!-- /.product-inner -->
                                 </div>
                                 <!-- /.product-outer -->
-                            </div>
+                         {{--    </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 @endforeach
             </div>

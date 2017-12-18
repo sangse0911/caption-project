@@ -1,5 +1,5 @@
 <img style="margin: auto;" src="{{ URL::to('img/HR.png') }}">
-<span style="margin-left: 330px; color: #a3d133; font-weight: bold;font-size: 35px; font-family: cursive;">Góc Sách</span>
+<span style="margin-left: 40%; color: #a3d133; font-weight: bold;font-size: 35px; font-family: cursive;">Góc Sách</span>
 <div class="hr">
     <hr/>
 </div>

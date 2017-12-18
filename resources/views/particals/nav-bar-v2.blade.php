@@ -6,18 +6,24 @@
             </button>
         </div>
         <div class="collapse navbar-toggleable-xs" id="header-v3">
-            <ul class="nav navbar-nav" style="display: inline-flex; align-items: center;">
-                <li class="menu-item" style="display: inline-table;"><a title="Góc bán sách" href="/">Trang chủ</a></li>
-                <li class="menu-item dropdown" style="display: inline-table;">
-                    <a title="Góc bán sách" href="javascript:void(0)">Thể loại sách</a>
-                    <ul class="dropdown-menu">
-                        <li>a</li>
-                    </ul>
-                </li>
-                <li class="menu-item" style="display: inline-table;"><a title="Góc bán sách" href="{{ route('book.create.sale') }}">Bán sách</a></li>
-                <li class="menu-item" style="display: inline-table;"><a title="Góc đăng bài" href="{{ route('post.create') }}">Đăng bài</a></li>
-                <li class="menu-item" style="display: inline-table;"><a title="Quảng cáo sách" href="#">Quảng cáo</a></li>
-                <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip" style="position: absolute; right: 0;">
+            <ul class="nav navbar-nav" {{-- style="display: inline-flex; align-items: center;" --}}>
+                <li class="menu-item" {{-- style="display: inline-table;" --}}><a title="Góc bán sách" href="/">Trang chủ</a></li>
+                 <li class="menu-item "><a title="Góc Sách" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Sách <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                        <ul role="menu" class=" dropdown-menu">
+                                <li class="menu-item animate-dropdown"><a title="Đăng Bài" href="{{ route('book.sell') }}">Sách Bán</a></li>
+                                <li class="menu-item animate-dropdown"><a title="Góc Sách" href="{{ route('book.renter') }}">Sách Thuê</a></li>
+                            </ul>       
+                        </li>
+                        <li class="menu-item "><a title="Góc Sách" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">Góc Sách <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                        <ul role="menu" class=" dropdown-menu">
+                                <li class="menu-item animate-dropdown"><a title="Đăng Bài" href="{{ route('post.create') }}">Đăng Bài</a></li>
+                                <li class="menu-item animate-dropdown"><a title="Góc Sách" href="gocsach">Xem Góc Sách</a></li>
+                            </ul>       
+                        </li>
+                <li class="menu-item" {{-- style="display: inline-table;" --}}><a title="Góc bán sách" href="{{ route('book.create.sale') }}">Bán & Cho Thuê Sách</a></li>
+                
+                <li class="menu-item" {{-- style="display: inline-table;" --}}><a title="Quảng cáo sách" href="#">Quảng cáo</a></li>
+                <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip" {{-- style="position: absolute; right: 0;" --}}>
                     <li id="cart-2" class="nav-item dropdown" style="display: none;">
                         <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
                             <i class="ec ec-shopping-bag"></i>
@@ -48,8 +54,10 @@
                                 </div>
                             </li>
                         </ul>
+
                     </li>
                 </ul>
+                
             </ul>
         </div>
     </div>
