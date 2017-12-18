@@ -173,85 +173,6 @@
                         </div>
                     </div>
                 </form>
-                <form type="hidden" name="" id="" method="POST" action="{{ url('/aaa') }}">
-                    {{ csrf_field() }}
-                    <div id="dangkyModal" class="modal fade" role="dialog">
-                        <div class="modal-dialog modal-lg">
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header" style="background-color: #A3D133;text-align: center;">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title" style="font-weight: bold;">Đăng Ký</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div id="primary" class="content-area">
-                                        <main id="main" class="site-main">
-                                            <article id="post-8" class="hentry">
-                                                <div class="entry-content">
-                                                    <div class="woocommerce">
-                                                        <div class="customer-login-form">
-                                                            <span class="or-text">or</span>
-                                                            <div class="col2-set" id="customer_login">
-                                                                <div class="col-1">
-                                                                    <form method="post" class="login">
-                                                                        <p class="form-row form-row-wide">
-                                                                            <label for="username">Tên:
-                                                                                <span class="required"></span></label>
-                                                                            <input type="text" name="name" id="" class="input-text" placeholder="Nhập Tên" required="true">
-                                                                        </p>
-                                                                        <p class="form-row form-row-wide">
-                                                                            <label for="username">Email :
-                                                                                <span class="required"></span></label>
-                                                                            <input type="email" name="email" id="" class="input-text" placeholder="Nhập Email">
-                                                                        </p>
-                                                                        <p class="form-row form-row-wide">
-                                                                            <label for="password">Mật Khẩu :
-                                                                                <span class="required"></span></label>
-                                                                            <input type="text" name="password" id="" class="input-text" placeholder="Nhập mật khẩu" required="">
-                                                                        </p>
-                                                                        <p class="form-row form-row-wide">
-                                                                            <label for="password">Nhập Lại Mật Khẩu :
-                                                                                <span class="required"></span></label>
-                                                                            <input class="input-text" type="password" name="password" placeholder="Nhập lại mật khẩu" id="password" />
-                                                                        </p>
-                                                                        <!-- <p class="lost_password">
-                                                <a href="login-and-register.html">Quên mật khẩu?</a>
-                                            </p> -->
-                                                                        <label for="rememberme" class="inline">
-                                                                            <input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Tôi đã đọc & đồng ý với <a href="">Điều khoản sử dụng của Tủ Sách Tương Lai.</a>
-                                                                        </label>
-                                                                        <p class="form-row">
-                                                                            <input class="button" type="submit" value="Đăng Ký" name="login">
-                                                                        </p>
-                                                                    </form>
-                                                                </div>
-                                                                <div class="col-2" style="margin-top: 260px;">
-                                                                    <a href="{{ route('login_with_facebook') }}">
-                                                                        <div style="background-color:  #4267b2;width: 350px;height: 60px;" type="submit" class="button"><i class="fa fa-facebook-official fa-2x"></i> <span style="font-size: 20px; color: white;">Đăng nhập bằng Facebook</span>&nbsp &nbsp </div>
-                                                                    </a>
-                                                                </div>
-                                                                <!-- .col-2 -->
-                                                            </div>
-                                                            <!-- .col2-set -->
-                                                        </div>
-                                                        <!-- /.customer-login-form -->
-                                                    </div>
-                                                    <!-- .woocommerce -->
-                                                </div>
-                                                <!-- .entry-content -->
-                                            </article>
-                                            <!-- #post-## -->
-                                        </main>
-                                        <!-- #main -->
-                                    </div>
-                                    <!-- #primary -->
-                                </div>
-                                <div class="modal-footer" style="background-color: #A3D133;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
         <!-- /.top-bar -->
@@ -289,8 +210,7 @@
         <script type="text/javascript" src="{{ URL::to('js/admin/jquery-1.12.3.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/tether.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/bootstrap.min.js') }}"></script>
-        <script type="text/javascript" src="{{ URL::to('/js/app.js') }}"></script>
-        {{-- <script type="text/javascript" src="/js/bootstrap.js"></script> --}}
+        {{-- <script type="text/javascript" src="{{ URL::to('/js/app.js') }}"></script> --}}
         <script type="text/javascript" src="{{ URL::to('js/moment.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/bootstrap-hover-dropdown.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/owl.carousel.min.js') }}"></script>
@@ -309,7 +229,9 @@
         <script type="text/javascript" src="{{ URL::to('js/jquery.star-rating-svg.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/jquery.dataTables.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/dataTables.responsive.min.js') }}"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.1/vue-resource.min.js"></script>
+        <script src="/js/search.js"></script>
         @stack('scripts')
         <script>
         (function($) {

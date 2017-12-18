@@ -9,6 +9,7 @@ namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 /**
  * Class Book
@@ -44,7 +45,7 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use Sluggable;
-
+    use Searchable;
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -152,4 +153,5 @@ class Book extends Model
     {
         return $this->hasMany(\App\Models\WishList::class);
     }
+
 }

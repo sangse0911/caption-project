@@ -25,6 +25,7 @@ Route::get('/fire', function () {
     event(new App\Events\OrderStatusChanged);
     return 'home';
 });
+Route::get('/search/{param}', 'SearchController@search')->name('search.all');
 
 /**
  *

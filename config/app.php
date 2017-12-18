@@ -182,6 +182,7 @@ return [
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
     ],
 
     /*

@@ -12,7 +12,7 @@
             <form class="navbar-search" method="get" action="">
                 <label class="sr-only screen-reader-text" for="search">Search for:</label>
                 <div class="input-group">
-                    <input type="text" id="search" class="form-control search-field" dir="ltr" value="" name="s" placeholder="Tìm kiếm sách">
+                    <input type="text" id="search" class="form-control search-field" dir="ltr" v-model="query" placeholder="Tìm kiếm sách">
                     <div class="input-group-addon search-categories">
                         <select name="product_cat" id="product_cat" class="postform resizeselect" style="width: 141px;">
                             <option value="0" selected="selected">Thể loại sách</option>
@@ -22,8 +22,9 @@
                         </select>
                     </div>
                     <div class="input-group-btn">
-                        <input type="hidden" id="search-param" name="post_type" value="product">
-                        <button type="submit" class="btn btn-secondary"><i class="ec ec-search"></i></button>
+                        {{-- <button class="btn btn-secondary" type="button" v-if="!loading" @click="search()"><i class="ec ec-search"></button> --}}
+                        {{-- <button class="btn btn-secondary" type="button" disabled="disabled" v-if="loading"><i class="ec ec-search"></button> --}}
+                        <button type="button" id="button-search" class="btn btn-secondary" v-if="!loading" @click="search()"><i class="ec ec-search"></i></button>
                     </div>
                 </div>
             </form>
@@ -87,5 +88,11 @@
         var id = $(this).data('id');
         window.location.assign("/wishlistByUser/" + id);
     });
+
+    // $('#button-search').click(function(e) {
+
+    //    window.location.assign('/search');
+
+    // });
 </script>
 @endpush
