@@ -72,8 +72,8 @@ class SearchController extends Controller
             // $books = $this->model->search($query)->where('status', 1)->paginate(6);
             // Using the Laravel Scout syntax to search the products table.
             $books = Book::search($request->get('q'))
-                ->where('republish', '1')
-                ->paginate(100)
+                ->where('status', '1')
+                ->paginate(20)
                 ->load('images')
                 ->load('contracts.user')
                 ->load('categories');

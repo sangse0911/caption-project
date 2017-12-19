@@ -20,7 +20,7 @@ class CreateBooksTable extends Migration
             $table->text('description');
             $table->integer('admin_id')->unsigned();
             $table->integer('bookshelf_id')->unsigned();
-            $table->enum('status', ['0', '1', '2', '3', '4', '5', '6', '7'])->default('1');
+            $table->tinyInteger('status');
             $table->double('price')->default(0);
             $table->double('rental_fee')->default(0);
             $table->string('author', 50);
