@@ -28,7 +28,7 @@
                                     <a title="Đăng Bài" id="post-new-book" href="javascript:void(0)">Đăng Bài</a>
                                 </li>
                                 <li class="menu-item animate-dropdown">
-                                    <a title="Góc Sách" href="#">Xem Góc Sách</a>
+                                    <a title="Góc Sách" href="{{ route('post.index') }}">Xem Góc Sách</a>
                                 </li>
                             </ul>
                         </li>

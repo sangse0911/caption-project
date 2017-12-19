@@ -106,3 +106,8 @@
 
 
 @endsection @section('footer') @include('particals.footer') @endsection
+@push('scripts')
+<script>
+    $('#sidebar').css('margin-top','150px');
+</script>
+@endpush

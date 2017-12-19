@@ -191,7 +191,7 @@ $('#ahaha').submit(function(evt) {
         },
         success: function() {
             alert("Chúc mừng bạn đã đăng bài thành công");
-            window.location.assign('/books');
+            window.location.assign('/');
         },
         error: function(data) {
             if (data.status === 422) {

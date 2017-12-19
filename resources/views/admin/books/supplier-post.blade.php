@@ -214,3 +214,334 @@
     </div>
 </div>
 @endsection
+
+@section('script')
+<script>
+$("#category").select2({ closeOnSelect: false });
+$("#location").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
+$("#quality").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
+$('#year').datetimepicker({
+    format: 'YYYY-MM-DD'
+});
+</script>
+<script>
+$(document).on('focus', 'input', function() {
+    $(this).removeAttr('placeholder');
+});
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$('#book-create').click(function(e) {
+    $('.form-status').css("display", "none");
+    $('.modal-title').text("Thêm mới sách");
+    $('#name').val('').prop('readonly', false);
+    $('#introduce').val('').prop('readonly', false);
+    CKEDITOR.instances.description.setData('');
+    $('#price').val('').prop('readonly', false);
+    $('#price-rent').val('').prop('readonly', false);
+    $('#author').val('').prop('readonly', false);
+    $('#company').val('').prop('readonly', false);
+    $('#year').val('').prop('readonly', false);
+    $('#kind').val('').prop('readonly', false);
+    $('#method').val('').prop('readonly', false);
+    $('#account').prop('readonly', false);
+    $('#category').val('').trigger('change');
+    $('#quality').val('').trigger('change');
+    $('#republish').val('').prop('readonly', false);
+    $('#location').val('').trigger('change');
+    $('#isbn').val('').prop('readonly', false);
+    $('select').prop('disabled', false);
+    $('.method-pay').removeAttr('style');
+    $('.bank-account').css('display','none');
+    $('.kind-book').removeAttr('style');
+    $('.modal-footer').removeAttr('style');
+    $('#book-update').css("display",'none');
+    $('#create-book').removeAttr('style');
+    $('.image-area').removeAttr('style');
+})
+
+$('#create-book').click(function(e) {
+
+    $('#error-name').text("");
+    $('#error-introduce').text("");
+    $('#error-description').text("");
+    $('#error-price').text("");
+    $('#error-price-rent').text("");
+    $('#error-author').text("");
+    $('#error-company').text("");
+    $('#error-year').text("");
+    $('#error-kind').text("");
+    $('#error-method').text("");
+    $('#error-account').text("");
+    $('#error-category').text("");
+    $('#error-quality').text("");
+    $('#error-republish').text("");
+    $('#error-location').text("");
+    $('#error-isbn').text("");
+
+});
+
+
+$('#form-action').submit(function(evt) {
+
+    var formData = new FormData(this);
+
+    $.ajax({
+        async: true,
+        method: 'POST',
+        url: '/book/storeIfOwned',
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: 'JSON',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(data) {
+            alert('Thêm mới sách thành công');
+            window.location.assign('/admin/books');
+        },
+        error: function(data) {
+            if(data.status === 422) {
+                var errors = data.responseJSON;
+
+                $('#error-name').text(errors['name']);
+                $('#error-introduce').text(errors['introduce']);
+                $('#error-description').text(errors['description']);
+                $('#error-price').text(errors['price']);
+                $('#error-price-rent').text(errors['price-rent']);
+                $('#error-author').text(errors['author']);
+                $('#error-company').text(errors['company']);
+                $('#error-year').text((errors['year']));
+                $('#error-kind').text(errors['kind']);
+                $('#error-method').text(errors['method']);
+                $('#error-account').text(errors['account']);
+                $('#error-category').text(errors['category']);
+                $('#error-quality').text(errors['quality']);
+                $('#error-republish').text(errors['republish']);
+                $('#error-location').text(errors['location']);
+                $('#error-isbn').text(errors['isbn']);
+            }
+        }
+    });
+    evt.preventDefault();
+});
+
+$('.btn-view').click(function(e) {
+    $('.image-area').css("display", "none");
+    $('#book-update').removeAttr("style");
+    $('#create-book').css("display", "none");
+    $('.form-status').removeAttr("style");
+
+    $('.modal-title').text('Thông tin sách');
+    $('.bank-account').css("display", "none");
+    $('.method-pay').css("display", "none");
+    $('.kind-book').css("display", "none");
+    $('.modal-footer').css('display', 'none');
+    $('#error-name').text("");
+    $('#error-introduce').text("");
+    $('#error-description').text("");
+    $('#error-price').text("");
+    $('#error-price-rent').text("");
+    $('#error-author').text("");
+    $('#error-company').text("");
+    $('#error-year').text("");
+    $('#error-kind').text("");
+    $('#error-method').text("");
+    $('#error-category').text("");
+    $('#error-quality').text("");
+    $('#error-republish').text("");
+    $('#error-location').text("");
+    $('#error-isbn').text("");
+
+    var book_id = $(this).data('id');
+    var array = [];
+
+    $.ajax({
+        cache: false,
+        method: 'GET',
+        dataType: 'JSON',
+        url: '/admin/books/' + book_id,
+        success: function(data) {
+            $('#name').val(data['book']['name']).prop("readonly",true);
+            for (var i = 0; i < data['categories'].length; i++) {
+                array.push(data['categories'][i]['category_id']);
+            }
+
+            $('#id').prop("readonly",true).val(data['book']['id']);
+            $('#category').val(array).trigger('change').prop("readonly",true);
+            $('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
+            $('#introduce').val(data['book']['introduce']).prop("readonly",true);
+            $('#location').val(data['book']['bookshelf_id']).trigger('change');
+            $('#quality').val(data['details'][0]['quality']).trigger('change');
+            $('#price').val(data['book']['price']).prop("readonly",true);
+            $('#price-rent').val(data['book']['rental_fee']).prop("readonly",true);
+            $('#author').val(data['book']['author']).prop("readonly",true);
+            $('input[type=radio][name="status"][value=' + data['book']['status'] + ']').prop('checked', true);
+            $('input[type=radio][name="status"]').prop('disabled', true);
+            $('#company').val(data['book']['company']).prop("readonly",true);
+            $('#year').val(data['book']['year']).prop("readonly",true);
+            $('#republish').val(data['book']['republish']).prop("readonly",true);
+            $('#isbn').val(data['book']['isbn']).prop("readonly",true);
+            $('select').prop('disabled', true);
+        },
+        error: function(data) {
+        }
+    });
+});
+
+
+$('.btn-update').on('click', function(e) {
+    $('.image-area').css("display", "none");
+    $('#book-update').removeAttr("style");
+    $('#create-book').css("display", "none");
+    $('.form-status').removeAttr("style");
+    $('.modal-footer').removeAttr('style');
+
+    $('.modal-title').text('Cập nhật thông tin sách');
+    $('.bank-account').css("display", "none");
+    $('.method-pay').css("display", "none");
+    $('.kind-book').css("display", "none");
+
+    $('#error-name').text("");
+    $('#error-introduce').text("");
+    $('#error-description').text("");
+    $('#error-price').text("");
+    $('#error-price-rent').text("");
+    $('#error-author').text("");
+    $('#error-company').text("");
+    $('#error-year').text("");
+    $('#error-kind').text("");
+    $('#error-method').text("");
+    $('#error-category').text("");
+    $('#error-quality').text("");
+    $('#error-republish').text("");
+    $('#error-location').text("");
+    $('#error-isbn').text("");
+
+    var book_id = $(this).data('id');
+    var array = [];
+
+    $.ajax({
+        cache: false,
+        method: 'GET',
+        dataType: 'JSON',
+        url: '/admin/books/' + book_id,
+        success: function(data) {
+            $('#name').val(data['book']['name']).prop('readonly', false);
+            for (var i = 0; i < data['categories'].length; i++) {
+                array.push(data['categories'][i]['category_id']);
+            }
+
+            $('#id').val(data['book']['id']);
+            $('#category').val(array).trigger('change');
+            $('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
+            $('#introduce').val(data['book']['introduce']).prop('readonly', false);
+            $('#location').val(data['book']['bookshelf_id']).trigger('change');
+            $('#quality').val(data['details'][0]['quality']).trigger('change');
+            $('#price').val(data['book']['price']).prop('readonly', false);
+            $('#price-rent').val(data['book']['rental_fee']).prop('readonly', false);
+            $('#author').val(data['book']['author']).prop('readonly', false);
+            $('input[type=radio][name="status"][value=' + data['book']['status'] + ']').prop('checked', true);
+            $('input[type=radio][name="status"]').prop('disabled', false);
+            $('#company').val(data['book']['company']).prop('readonly', false);
+            $('#year').val(data['book']['year']).prop('readonly', false);
+            $('#republish').val(data['book']['republish']).prop('readonly', false);
+            $('#isbn').val(data['book']['isbn']).prop('readonly', false);
+            $('select').prop('disabled', false);
+        },
+        error: function(data) {
+        }
+    });
+});
+$('#book-update').click(function(evt) {
+
+    $('#error-name').text("");
+    $('#error-introduce').text("");
+    $('#error-description').text("");
+    $('#error-price').text("");
+    $('#error-price-rent').text("");
+    $('#error-author').text("");
+    $('#error-company').text("");
+    $('#error-year').text("");
+    $('#error-kind').text("");
+    $('#error-method').text("");
+    $('#error-category').text("");
+    $('#error-quality').text("");
+    $('#error-republish').text("");
+    $('#error-location').text("");
+    $('#error-isbn').text("");
+
+    var id = $('#id').val();
+    var name = $('#name').val();
+    var categories = $('#category').val();
+    var description = CKEDITOR.instances['description'].getData();
+    var introduce = $('#introduce').val();
+    var location = $('#location').val();
+    var price = $('#price').val();
+    var author = $('#author').val();
+    var status = $('input[name=status]:checked').val();
+    var company = $('#company').val();
+    var year = $('#year').val();
+    var republish = $('#republish').val();
+    var isbn = $('#isbn').val();
+    var rent = $('#price-rent').val();
+    var quality = $('#quality').val();
+
+    $.ajax({
+
+        cache: false,
+        method: 'PUT',
+        dataType: 'JSON',
+        url: '/book/update',
+        data: {
+            id: id,
+            name: name,
+            categories: categories,
+            status: status,
+            description: description,
+            introduce: introduce,
+            location: location,
+            price: price,
+            author: author,
+            company: company,
+            year: year,
+            republish: republish,
+            isbn: isbn,
+            rent: rent,
+            quality: quality
+        },
+        success: function(data) {
+            alert("Cập nhật thành công thông tin sách");
+            window.location.reload(true);
+        },
+        error: function(data) {
+            if(data.status === 422) {
+                var errors = data.responseJSON;
+
+                $('#error-name').text(errors['name']);
+                $('#error-introduce').text(errors['introduce']);
+                $('#error-description').text(errors['description']);
+                $('#error-price').text(errors['price']);
+                $('#error-price-rent').text(errors['rent']);
+                $('#error-author').text(errors['author']);
+                $('#error-company').text(errors['company']);
+                $('#error-year').text((errors['year']));
+                $('#error-kind').text(errors['kind']);
+                $('#error-method').text(errors['method']);
+                $('#error-category').text(errors['category']);
+                $('#error-quality').text(errors['quality']);
+                $('#error-republish').text(errors['republish']);
+                $('#error-location').text(errors['location']);
+                $('#error-isbn').text(errors['isbn']);
+            }
+        }
+    });
+    evt.preventDefault();
+});
+</script>
+@endsection

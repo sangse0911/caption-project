@@ -127,6 +127,7 @@
             dataType: 'JSON',
             url: '/book/' + book_id,
             success: function(data) {
+                // $('.electro-nav-tabs').val('');
                 $('#book-rate').val(data['book']['id']);
                 $('#book-name').text(data['book']['name']);
                 $('#book-status').text(data['book']['status']);

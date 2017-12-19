@@ -326,6 +326,9 @@
                 if(data.status ===401) {
                     alert('Vui lòng đăng nhập trước khi đánh gía sách, xin cảm ơn');
                 }
+                if(data.status === 500) {
+                    alert('Bạn đã vote cho sách này, cảm ơn bạn');
+                }
             }
         });
         evt.preventDefault();
