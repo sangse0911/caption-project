@@ -69,9 +69,14 @@ class SearchController extends Controller
 
         // Making sure the user entered a keyword.
         if ($request->has('q')) {
-
+            // $books = $this->model->search($query)->where('status', 1)->paginate(6);
             // Using the Laravel Scout syntax to search the products table.
-            $books = Book::search($request->get('q'))->paginate(5)->load('images')->load('contracts.user')->load('categories');
+            $books = Book::search($request->get('q'))
+                ->where('republish', '1')
+                ->paginate(100)
+                ->load('images')
+                ->load('contracts.user')
+                ->load('categories');
 
             // If there are results return them, if none, return the error message.
             return $books->count() ? $books : $error;

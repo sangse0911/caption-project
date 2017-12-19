@@ -58,7 +58,6 @@
                         <li class="menu-item animate-dropdown"><i class="fa fa-phone-square" aria-hidden="true"></i> (084)- 1682 5592</li>
                         @if(Auth::guest())
                         <li class="menu-item animate-dropdown"> <a title="My Account" data-toggle="modal" href="#loginModal"><i class="ec ec-user"></i>Đăng Nhập</a></li>
-                        <li class="menu-item animate-dropdown"><a title="My Account" data-toggle="modal" href="#dangkyModal"><i class="fa fa-chain-broken" aria-hidden="true"></i>Đăng Ký</a></li>
                         @else
                         <li class="menu-item animate-dropdown dropdown">
                             <a href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false" role="button" class="dropdown-toggle">
@@ -87,10 +86,8 @@
                         @endif
                     </ul>
                 </nav>
-                <form type="hidden" name="" id="" method="POST" action="{{ url('/login') }}">
-                    {{ csrf_field() }}
                     <div id="loginModal" class="modal fade" role="dialog">
-                        <div class="modal-dialog modal-lg">
+                        <div class="modal-dialog modal-lg" style="max-width: 1170px;">
                             <!-- Modal content-->
                             <div class="modal-content">
                                 <div class="modal-header" style="background-color: #A3D133;text-align: center;">
@@ -107,48 +104,56 @@
                                                             <span class="or-text">or</span>
                                                             <div class="col2-set" id="customer_login">
                                                                 <div class="col-1">
-                                                                    <form method="post" class="login">
-                                                                        {{--
-                                                                        <p class="form-row form-row-wide"> --}}
-                                                                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                                                                <label for="username">Email:
-                                                                                    <span class="required"></span></label>
-                                                                                <input id="email" type="email" class="input-text" name="email" value="{{ old('email') }}" required autofocus/> @if ($errors->has('email'))
-                                                                                <span class="help-block">
-                                                                            <strong>{{ $errors->first('email') }}</strong>
-                                                                        </span> @endif
+                                                                    <form method="post" class="login" action="{{ route('register') }}"> {{ csrf_field() }}
+                                                                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}" id="form-name" style="display: none;">
+                                                                            <label for="name" class="col-md-4 control-label">Name</label>
+
+                                                                            <div class="col-md-6">
+                                                                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+
                                                                             </div>
-                                                                            {{-- </p> --}}
+                                                                        </div>
+                                                                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                                                            <label for="username">Email:
+                                                                                <span class="required"></span></label>
+                                                                            <input id="email" type="email" class="input-text" name="email" value="{{ old('email') }}" required autofocus/>
+                                                                            <p style="color: red; display: none;" class="error errorlogin errorEmail"></p>
+                                                                        </div>
+                                                                        {{-- </p> --}}
                                                                         <p class="form-row form-row-wide">
                                                                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                                                                 <label for="password">Mật khẩu:
                                                                                     <span class="required"></span></label>
-                                                                                <input class="input-text" id="password" type="password" name="password" required/> @if ($errors->has('password'))
-                                                                                <span class="help-block">
-                                                                            <strong>{{ $errors->first('password') }}</strong>
-                                                                        </span> @endif
+                                                                                <input class="input-text" id="password" type="password" name="password" required/>
+                                                                                <p style="color: red; display: none;" class="error errorlogin errorPassword"></p>
                                                                             </div>
                                                                         </p>
+                                                                         <div class="form-group" id="form-password" style="display: none;">
+                                                                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+
+                                                                            <div class="col-md-6">
+                                                                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                                                            </div>
+                                                                        </div>
                                                                         <p class="lost_password">
                                                                             <a href="login-and-register.html">Quên mật khẩu?</a>
                                                                         </p>
                                                                         <p class="form-row">
-                                                                            <input class="button" type="submit" value="Đăng Nhập" name="login">
-                                                                            <br>
-                                                                            <br>
-                                                                            <label for="rememberme" class="inline">
-                                                                                <input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Remember me
-                                                                            </label>
+                                                                            <input class="button" type="button" id="login" value="Đăng Nhập" name="login">
+                                                                             <input class="button" type="submit" id="register-button" value="Đăng kí" name="register" style="display: none;">
                                                                         </p>
                                                                         <p class="lost_password">
-                                                                            Bạn chưa là thành viên?<a data-toggle="modal" href="#dangkyModal" onclick="$('#loginModal').modal('hide')"> Đăng kí ngay!</a>
+                                                                            Bạn chưa là thành viên?<a href="javascript:void(0)" id="register"> Đăng kí ngay!</a>
                                                                         </p>
                                                                     </form>
+
                                                                 </div>
                                                                 <!-- .col-1 -->
                                                                 <div class="col-2" style="margin-top: 200px;">
                                                                     <a href="{{ route('login_with_facebook') }}">
-                                                                        <div style=" background-color:  #4267b2;width: 350px;height: 60px;" type="submit" class="button"><i class="fa fa-facebook-official fa-2x"></i> <span style="font-size: 20px; color: white;">Đăng nhập bằng Facebook</span>&nbsp &nbsp </div>
+                                                                        <div style=" background-color:  #4267b2;width: 350px;height: 60px;" type="submit" class="button"><i class="fa fa-facebook-official fa-2x"></i>
+                                                                            <span style="font-size: 20px; color: white;">Đăng nhập bằng Facebook</span>&nbsp
+                                                                        </div>
                                                                     </a>
                                                                 </div>
                                                                 <!-- .col-2 -->
@@ -172,12 +177,12 @@
                             </div>
                         </div>
                     </div>
-                </form>
             </div>
+
         </div>
         <!-- /.top-bar -->
-        {{-- section header --}} @yield('header') {{-- section header-v2 --}} @yield('header-v2') {{-- section nav-v2 --}} @yield('nav-v2') {{-- section content --}} @yield('content') {{-- section footer --}} @yield('footer')
-       {{--  <div class="electro-handheld-footer-bar hidden-lg-up">
+        {{-- section header --}} @yield('header') {{-- section header-v2 --}} @yield('header-v2') {{-- section nav-v2 --}} @yield('nav-v2') {{-- section content --}} @yield('content') {{-- section footer --}} @yield('footer') {{--
+        <div class="electro-handheld-footer-bar hidden-lg-up">
             <ul class="columns-5">
                 <li class="my-account">
                     <a id="fb-button1" onclick="login();"></a>
@@ -210,7 +215,8 @@
         <script type="text/javascript" src="{{ URL::to('js/admin/jquery-1.12.3.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/tether.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/bootstrap.min.js') }}"></script>
-        {{-- <script type="text/javascript" src="{{ URL::to('/js/app.js') }}"></script> --}}
+        {{--
+        <script type="text/javascript" src="{{ URL::to('/js/app.js') }}"></script> --}}
         <script type="text/javascript" src="{{ URL::to('js/moment.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/bootstrap-hover-dropdown.min.js') }}"></script>
         <script type="text/javascript" src="{{ URL::to('js/owl.carousel.min.js') }}"></script>
@@ -250,11 +256,13 @@
                 $('#search-form').css("display", "inline-table");
                 $('#fv-2').removeAttr("style");
                 $('#cart-2').removeAttr("style");
+                $('#form-navbar').removeAttr('style');
             } else {
                 $('.navbar-primary').removeClass('navbar-fixed-top');
                 $('#search-form').css("display", "none");
                 $('#fv-2').css("display", "none");
                 $('#cart-2').css("display", "none");
+                $('#form-navbar').css('display', 'none');
             }
         });
         </script>
@@ -363,6 +371,68 @@
 
             });
         });
+        </script>
+        <script>
+        $('#button-search').click(function(e) {
+
+        });
+
+
+
+        $('#register').click(function(e) {
+            $('.modal-title').text('Đăng kí tài khoản mới');
+            $('#login').css('display','none');
+            $('#register-button').removeAttr('style');
+            $('#form-password').removeAttr('style');
+            $('#form-name').removeAttr('style');
+        });
+
+        $(function() {
+            $('#login').click(function(e) {
+                e.preventDefault();
+                    $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                var email = $('#email').val();
+                var password = $('#password').val();
+
+                $.ajax({
+                    url: '/login',
+                    data: {
+                        'email': email,
+                        'password': password,
+
+                    },
+                    method: 'POST',
+                    success: function(data) {
+                        if(data.error == true) {
+                            $('.error').hide();
+
+                            if(data.message.email != undefined) {
+                                $('.errorEmail').show().text(data.message.email[0]);
+                            }
+
+                            if(data.message.password != undefined) {
+                                $('.errorPassword').show().text(data.message.password[0]);
+                            }
+
+                            if(data.message.errorLogin != undefined) {
+                                $('.errorLogin').show().text(data.message.errorlogin[0]);
+                            }
+
+                        } else {
+                            window.location.href = '/';
+                        }
+                    },
+                    error: function(data) {
+
+                    }
+                });
+            });
+        });
+
         </script>
     </div>
 </body>

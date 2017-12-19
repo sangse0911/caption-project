@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('a');
 
 Auth::routes();
 /**
@@ -21,11 +21,10 @@ Auth::routes();
  */
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/fire', function () {
-    event(new App\Events\OrderStatusChanged);
-    return 'home';
+Route::get('/search', function () {
+    return view('search');
 });
-Route::get('/search/{param}', 'SearchController@search')->name('search.all');
+// Route::get('/search/{param}', 'SearchController@search')->name('search.all');
 
 /**
  *
@@ -40,6 +39,8 @@ Route::post('/admin/logout', 'Auth\AdminLoginController@adminLogout')->name('adm
  */
 Route::get('auth/facebook', 'Auth\LoginController@redirectToProvider')->name('login_with_facebook');
 Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+Route::post('/login', 'Auth\LoginController@postLogin')->name('login.ajax');
+// Route::post('/register', 'Auth\RegisterController@postRegister')->name('register.ajax');
 
 // Route::get('/users/{id}/edit', 'UserController@edit')->name('user_edit');
 // Route::put('/users/update', 'UserController@update')->name('user_update');

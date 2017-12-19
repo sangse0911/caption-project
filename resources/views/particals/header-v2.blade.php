@@ -13,17 +13,7 @@
                 <label class="sr-only screen-reader-text" for="search">Search for:</label>
                 <div class="input-group">
                     <input type="text" id="search" class="form-control search-field" dir="ltr" v-model="query" placeholder="Tìm kiếm sách">
-                    <div class="input-group-addon search-categories">
-                        <select name="product_cat" id="product_cat" class="postform resizeselect" style="width: 141px;">
-                            <option value="0" selected="selected">Thể loại sách</option>
-                            @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
                     <div class="input-group-btn">
-                        {{-- <button class="btn btn-secondary" type="button" v-if="!loading" @click="search()"><i class="ec ec-search"></button> --}}
-                        {{-- <button class="btn btn-secondary" type="button" disabled="disabled" v-if="loading"><i class="ec ec-search"></button> --}}
                         <button type="button" id="button-search" class="btn btn-secondary" v-if="!loading" @click="search()"><i class="ec ec-search"></i></button>
                     </div>
                 </div>
