@@ -303,6 +303,7 @@ class BookRepository implements BookInterface
         $book->description = $data['description'];
         $book->status = '1';
         $book->rental_fee = $data['price-rent'];
+        $book->price = $data['price'];
         $book->author = $data['author'];
         $book->company = $data['company'];
         $book->year = $data['year'];

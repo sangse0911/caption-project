@@ -350,7 +350,7 @@
         });
         </script>
         <script>
-        $('#button-search').click(function() {
+        $('.button-search').click(function() {
             $('.home-v2-slider').css('display','none');
             $('#sidebar').css('margin-top','150px');
             $('#event-field').css('display','none');

@@ -41,7 +41,7 @@
                         <div class="input-group">
                             <input type="text" id="search" name="search" class="form-control search-field" dir="ltr" v-model="query" placeholder="Tìm kiếm sách" value="{!! old('search') !!}">
                             <div class="input-group-btn">
-                                <button type="button" id="button-search" class="btn btn-secondary" v-if="!loading"  v-on:click="search()" v-on:keyup.enter="search()"><i class="ec ec-search"></i></button>
+                                <button type="button" id="button-search" class="btn btn-secondary button-search" v-if="!loading"  @click="search()"><i class="ec ec-search"></i></button>
                             </div>
                         </div>
                     </form>
