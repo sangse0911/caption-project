@@ -4,6 +4,7 @@
             <main id="main" class="site-main">
                 @yield('part-content')
                 @yield('carousel')
+                @yield('search')
                 @yield('customer')
                 @yield('event')
                 @yield('categories')

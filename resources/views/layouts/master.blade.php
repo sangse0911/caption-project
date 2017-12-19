@@ -181,35 +181,12 @@
 
         </div>
         <!-- /.top-bar -->
-        {{-- section header --}} @yield('header') {{-- section header-v2 --}} @yield('header-v2') {{-- section nav-v2 --}} @yield('nav-v2') {{-- section content --}} @yield('content') {{-- section footer --}} @yield('footer') {{--
-        <div class="electro-handheld-footer-bar hidden-lg-up">
-            <ul class="columns-5">
-                <li class="my-account">
-                    <a id="fb-button1" onclick="login();"></a>
-                    <a id="mobile-user" class="hidden" href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true" style="cursor: pointer;" title="your account"></a>
-                </li>
-                <li class="search"> <a href="javascript:void(0);" id="mobile-search" title="search everythings you need"></a>
-                    <div class="site-search">
-                        <div class="widget woocommerce widget_product_search">
-                            <form role="search" method="get" class="woocommerce-product-search" action="https://demo2.chethemes.com/electro/">
-                                <label class="screen-reader-text" for="woocommerce-product-search-field-0">Search for:</label>
-                                <input type="search" id="woocommerce-product-search-field-0" class="search-field" placeholder="Search products…" value="" name="s">
-                                <input type="submit" value="Search">
-                                <input type="hidden" name="post_type" value="product">
-                            </form>
-                        </div>
-                    </div>
-                </li>
-                <li class="cart"> <a class="footer-cart-contents" href="#" title="View your shopping cart"> <span class="cart-items-count count">0</span> </a></li>
-                <li class="wishlist"> <a href="#" class="has-icon"><i class="ec ec-favorites"></i><span class="count">0</span></a></li>
-                <li class="compare"> <a href="#" class="has-icon"><i class="ec ec-compare"></i><span class="count">0</span></a></li>
-            </ul>
-        </div> --}}
-        <ul class="list-user-action" aria-labelledby="dropdownMenu2" style="position: absolute; display: none;">
-            <li><a href="#">Nạp tiền vào tài khoản</a></li>
-            <li><a href="#">Lịch sử giao dịch</a></li>
-            <li class="last"><a href="#" onclick="logoutFacebook();">Đăng xuất</a></li>
-        </ul>
+        {{-- section header --}} @yield('header') {{-- section header-v2 --}} @yield('header-v2') {{-- section nav-v2 --}} @yield('nav-v2') {{-- section content --}} @yield('content') {{-- section footer --}} @yield('footer')
+
+
+
+
+
         <a id="scrollUp" href="javascript:void(0)" style="position: fixed; z-index: 1001; display: block;"><i class="fa fa-angle-up"></i></a>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="{{ URL::to('js/admin/jquery-1.12.3.min.js') }}"></script>
@@ -373,11 +350,13 @@
         });
         </script>
         <script>
-        $('#button-search').click(function(e) {
-
+        $('#button-search').click(function() {
+            $('.home-v2-slider').css('display','none');
+            $('#sidebar').css('margin-top','150px');
+            $('#event-field').css('display','none');
+            $('#category-field').css('display','none');
+            $('#search-field').removeAttr("style");
         });
-
-
 
         $('#register').click(function(e) {
             $('.modal-title').text('Đăng kí tài khoản mới');

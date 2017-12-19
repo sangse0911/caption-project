@@ -33,15 +33,15 @@
                             </ul>
                         </li>
                 <li class="menu-item" {{-- style="display: inline-table;" --}}>
-                    <a title="Góc bán sách" href="{{ route('book.create.sale') }}">Bán & Cho Thuê Sách</a>
+                    <a title="Góc bán sách" id="sell-book" href="javascript:void(0)">Bán & Cho Thuê Sách</a>
                 </li>
                 <li id="form-navbar" style="display: none;">
                     <form class="navbar-search" method="get" action="">
                         <label class="sr-only screen-reader-text" for="search">Search for:</label>
                         <div class="input-group">
-                            <input type="text" id="search" class="form-control search-field" dir="ltr" v-model="query" placeholder="Tìm kiếm sách">
+                            <input type="text" id="search" name="search" class="form-control search-field" dir="ltr" v-model="query" placeholder="Tìm kiếm sách" value="{!! old('search') !!}">
                             <div class="input-group-btn">
-                                <button type="button" id="button-search" class="btn btn-secondary" v-if="!loading" @click="search()"><i class="ec ec-search"></i></button>
+                                <button type="button" id="button-search" class="btn btn-secondary" v-if="!loading"  v-on:click="search()" v-on:keyup.enter="search()"><i class="ec ec-search"></i></button>
                             </div>
                         </div>
                     </form>
@@ -108,6 +108,22 @@
                 }
             }
         });
-    })
+    });
+
+    $('#sell-book').click(function() {
+        $.ajax({
+            cache: false,
+            url: '/post/createSale',
+            success: function(data) {
+                window.location.href = '/post/createSale';
+            },
+            error: function(data) {
+                if(data.status === 401 ) {
+                    alert('Vui lòng đăng nhậ trước, xin cảm ơn');
+                    $('#loginModal').modal('show');
+                }
+            }
+        });
+    });
 </script>
 @endpush

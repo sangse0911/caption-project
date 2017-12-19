@@ -18,7 +18,7 @@
                 <div class="product-outer" style="height: 391px;">
                     <div class="product-inner">
                         <span class="loop-product-categories"><a href="javascript:void(0)" rel="tag">Sách bán</a></span>
-                        <span class="loop-product-categories" style="color: red;">@{{ product.description }}</span>
+                        <span class="loop-product-categories" style="color: red;">@{{ product.name }}</span>
                         <a href="javascript:void(0)">
                             <h3></h3>
                             <div class="product-thumbnail">
@@ -68,9 +68,9 @@
                                     </div>
                                     <div class="product-short-description">
                                         <ul style="padding-left: 18px;">
-                                            <li>Tác gỉa @{ product.author }}</li>
-                                            <li>Gía @{ product.rentel_fee }} VNĐ</li>
-                                            <li>Tái bản @{ product.republish }}</li>
+                                            <li>Tác gỉa @{{  product.author }}</li>
+                                            <li>Gía @{{  product.rentel_fee }} VNĐ</li>
+                                            <li>Tái bản @{{ product.republish }}</li>
                                             <li></li>
                                         </ul>
                                     </div>

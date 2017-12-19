@@ -1,4 +1,4 @@
-<section class="brands-carousel">
+<section class="brands-carousel" id="category-field">
     <div id="owl-brands" class="owl-brands owl-carousel">
         @foreach($categories as $category)
         <div class="owl-stage-outer">

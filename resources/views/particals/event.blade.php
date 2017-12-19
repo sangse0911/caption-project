@@ -1,4 +1,4 @@
-<section class=" section-onsale-product-carousel" data-animation="fadeIn">
+<section class=" section-onsale-product-carousel" data-animation="fadeIn" id="event-field">
     <header style="text-align: center; font-weight: bold;">
         <h1 class="h1">Sự kiện đang diễn ra</h1>
     </header>

@@ -81,7 +81,7 @@ class BookRepository implements BookInterface
             ->whereHas('contracts', function ($query) {
                 $query->where('contracts.kind', '=', '0')
                     ->where('contracts.status', '=', '0');
-            })->orderBy('created_at', 'desc')->get();
+            })->orderBy('created_at', 'desc')->paginate(15);
     }
     /**
      * [getRenterBook description]
@@ -102,7 +102,7 @@ class BookRepository implements BookInterface
             ->whereHas('contracts', function ($query) {
                 $query->where('contracts.kind', '=', '1')
                     ->where('contracts.status', '0');
-            })->orderBy('created_at', 'desc')->get();
+            })->orderBy('created_at', 'desc')->paginate(15);
     }
     /**
      * [getBestSell description]

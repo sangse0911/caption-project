@@ -1,4 +1,10 @@
-@extends('layouts.master') @section('title') @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') @section('customer')
+@extends('layouts.master') @section('title') @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content')
+@section('search')
+@include('particals.search')
+@endsection
+
+@section('customer')
+
 <nav class="woocommerce-breadcrumb"><a href="/">Trang Chủ</a><span class="delimiter"><i class="fa fa-angle-right"></i></span>Giỏ Hàng
 </nav>
 <article class="page type-page status-publish hentry">
@@ -7,7 +13,7 @@
         <span style="left: 50%; color: #a3d133; font-weight: bold;font-size: 35px; font-family: cursive;" >Giỏ hàng</span>
         <div class="hr"><hr /></div>
         <br>
-        <form>
+
             <table class="shop_table shop_table_responsive cart" style="border-style: dashed;border-color: #a3d133;">
                 <thead>
                     <tr >
@@ -69,7 +75,7 @@
                     </tr>
                 </tbody>
             </table>
-        </form>
+
         <table class="shop_table shop_table_responsive col-md-6" style="float: right;">
             <tbody>
                 <tr ><td style="border-top-color: white;"></td><td style="border-top-color: white;"><span style="color: red;  font-weight: bold;font-size: 25px;">Tổng giá giỏ hàng</span></td></tr>
@@ -86,6 +92,7 @@
         </table>
     </header>
 </article>
+<div style="clear: both;"></div>
 @endsection @section('sidebar')
 <div id="sidebar" class="sidebar" role="complementary">
     <div style="clear: both; margin-top: 50px;"></div>

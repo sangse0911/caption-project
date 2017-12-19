@@ -115,7 +115,7 @@
             @endforeach @endforeach
         </ul>
     </div>
-
+    {!! $books->links() !!}
 </div>
 <div class="shop-control-bar-bottom">
     <form class="form-electro-wc-ppp">

@@ -1,4 +1,6 @@
-@extends('layouts.master') @section('title') @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') {{-- @section('carousel') @include('particals.carousel') @endsection --}} @section('categories')
+@extends('layouts.master') @section('title') @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') {{-- @section('carousel') @include('particals.carousel') @endsection --}} @section('search')
+    @include('particals.search')
+  @endsection @section('categories')
 <div style="margin-top: 50px;"></div>
 @include('particals.categories')
 
@@ -18,6 +20,8 @@
         <ul class="products columns-3">
             @foreach($books as $book)
             @foreach($book->images as $image)
+            {{-- @foreach($book->contracts as $contract) --}}
+            {{-- {{ dd($contract) }} --}}
             <li class="product">
                 <div class="product-outer" style="height: 391px;">
                     <div class="product-inner">
@@ -117,7 +121,7 @@
             @endforeach @endforeach
         </ul>
     </div>
-
+    {!! $books->links() !!}
 </div>
 <div class="shop-control-bar-bottom">
     <form class="form-electro-wc-ppp">
@@ -141,3 +145,8 @@
 @section('footer')
 @include('particals.footer')
 @endsection()
+@push('scripts')
+<script>
+    $('#sidebar').css('margin-top','150px');
+</script>
+@endpush

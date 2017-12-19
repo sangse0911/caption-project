@@ -23,18 +23,17 @@
     @section('event')
         @include('particals.event')
     @endsection
-    
-     @section('first')
+
+    @section('search')
+        @include('particals.search')
+    @endsection
+    @section('first')
         @include('particals.first-page')
     @endsection
     @section('second')
         @include('particals.second-page')
     @endsection
 
-    @section('best-sell')
-        @include('particals.best-sell')
-    @endsection
-    
     @section('single-book-field')
         @include('book.single-book')
     @endsection
