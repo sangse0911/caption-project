@@ -95,13 +95,11 @@
 
     $('#post-new-book').click(function(e) {
 
-       ;
-
         $.ajax({
             cache: false,
             url: '/post/create',
             success: function(data) {
-
+                window.location.href = '/post/create';
             },
             error:function(data){
                 if(data.status === 401) {
