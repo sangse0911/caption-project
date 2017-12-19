@@ -211,6 +211,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/book/storePostBook', ['as' => 'post.store', 'uses' => 'BookController@storePostBook']);
     Route::post('/book/storeSaleBook', 'BookController@storeSaleBook')->name('sale.book');
     Route::get('/postByUser/{id}', 'PostController@getAllPostByUserId')->name('post.user.index');
+    Route::delete('/post/delete', 'PostController@destroy')->name('post.delete');
 
     // Route::get('/book/info', ['as' => 'book.info', 'uses' => 'BookController@getSupplier']);
 

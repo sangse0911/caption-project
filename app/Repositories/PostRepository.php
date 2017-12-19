@@ -60,6 +60,7 @@ class PostRepository implements PostInterface
             ->join('contract_details', 'contracts.id', '=', 'contract_details.contract_id')
             ->join('books', 'contract_details.book_id', '=', 'books.id')
             ->where('users.id', $id)
+            ->where('books.status', '<>', '9')
             ->get();
     }
 
