@@ -31,15 +31,15 @@
             <label for="introduce">Bạn muốn thanh toán bằng</label>
             <br/>
             <label class="radio-inline">
-                <input type="radio" name="method" value="0">Tiền mặt</label>
+                <input type="radio" name="method" id="4" value="0">Tiền mặt</label>
             <label class="radio-inline">
-                <input type="radio" name="method" value="1">Chuyển khoản</label>
+                <input type="radio" name="method" id="5" value="1">Chuyển khoản</label>
             <br/>
             <span class="help-block">
                 <strong id="error-method"></strong>
             </span>
         </div>
-        <div class="form-group col-sm-6 post">
+        <div class="form-group col-sm-6 post account" style="display: none;">
             <label for="name">Số tài khoản</label>
             <input type="text" name="account" class="form-control" id="account" value="" placeholder="Tài khoản">
             <span class="help-block">
@@ -166,6 +166,15 @@ $('#1').click(function() {
 $('#3').click(function() {
     $('.price-rent').css('display','none');
     $('#price-rent').val(parseInt(0));
+});
+
+$('#4').click(function() {
+    $('.account').css('display','none');
+    $('#account').val('000000');
+});
+
+$('#5').click(function() {
+    $('.account').removeAttr('style');
 });
 
 $('#post-create').click(function(e) {

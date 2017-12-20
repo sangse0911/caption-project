@@ -69,7 +69,7 @@ class StorePostRequest extends FormRequest
             'price.numeric' => 'Gía  phải là số',
 
             'account.required' => 'Vui lòng điền thông tin tài khoản',
-            'account.mind' => 'Vui lòng kiểm tra lại thông tin, không nhỏ hơn 6 kí tự',
+            'account.min' => 'Vui lòng kiểm tra lại thông tin, không nhỏ hơn 6 kí tự',
 
             'price-rent.numeric' => 'Gía thuê phải là số',
 

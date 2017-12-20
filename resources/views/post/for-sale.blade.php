@@ -11,15 +11,16 @@
         <br>
         <div style="clear: both;"></div>
     </header>
-    <form id="ahuhu" class="" type="hidden" method="POST" style="text-align: left;border-style: dotted;padding-top: 20px;border-color: #a3d133;">
+    <form id="ahuhu" class="" type="hidden" method="POST"
+        style="text-align: left;border-style: dotted;padding-top: 20px;border-color: #a3d133;">
         {!! csrf_field() !!}
         <div class="form-group col-sm-6 post">
             <label for="introduce">Bạn muốn làm gì với sách</label>
             <br/>
+             <label class="radio-inline">
+                <input type="radio" name="kind" id="1" value="0">Bán</label>
             <label class="radio-inline">
-                <input type="radio" name="kind" value="0">Bán</label>
-            <label class="radio-inline">
-                <input type="radio" name="kind" value="1">Cho thuê</label>
+                <input type="radio" name="kind" id="2" value="1">Cho thuê</label>
             <br/>
             <span class="help-block">
             <strong id="error-kind"></strong>
@@ -28,16 +29,16 @@
         <div class="form-group col-sm-6 post">
             <label for="introduce">Bạn muốn thanh toán bằng</label>
             <br/>
+           <label class="radio-inline">
+                <input type="radio" name="method" id="4" value="0">Tiền mặt</label>
             <label class="radio-inline">
-                <input type="radio" name="method" value="0">Tiền mặt</label>
-            <label class="radio-inline">
-                <input type="radio" name="method" value="1">Chuyển khoản</label>
+                <input type="radio" name="method" id="5" value="1">Chuyển khoản</label>
             <br/>
             <span class="help-block">
             <strong id="error-method"></strong>
         </span>
         </div>
-        <div class="form-group col-sm-6 post">
+         <div class="form-group col-sm-6 post account" style="display: none;">
             <label for="name">Số tài khoản</label>
             <input type="text" name="account" class="form-control" id="account" value="" placeholder="Tài khoản">
             <span class="help-block">
@@ -49,6 +50,13 @@
             <input type="text" name="price" id="price" class="form-control" placeholder="Giá bạn mong muốn">
             <span class="help-block">
             <strong id="error-price"></strong>
+        </span>
+        </div>
+        <div class="form-group col-md-6 price-rent" style="display: none;">
+            <label for="">Gía thuê</label>
+            <input type="text" name="price-rent" id="price-rent" class="form-control" placeholder="Gía bạn mong muốn">
+            <span class="help-block">
+            <strong id="error-price-rent"></strong>
         </span>
         </div>
         <div class="form-group col-md-6 post">
@@ -144,8 +152,26 @@
 <script>
 $("#quality").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
 $('#year').datetimepicker({
+    format: 'YYYY-MM-DD',
+    minDate: new Date()
+});
 
-    format: 'YYYY-MM-DD'
+$('#2').click(function(e) {
+    $('.price-rent').removeAttr('style');
+    $('#price-rent').val(parseInt(0));
+});
+
+$('#1').click(function() {
+    $('.price-rent').css('display','none');
+});
+
+$('#4').click(function() {
+    $('.account').css('display','none');
+    $('#account').val('000000');
+});
+
+$('#5').click(function() {
+    $('.account').removeAttr('style');
 });
 
 $('#post-create').click(function(e) {

@@ -429,6 +429,7 @@ class BookRepository implements BookInterface
         $book->description = $data['description'];
         $book->status = '4';
         $book->price = $data['price'];
+        $book->rental_fee = $data['price-rent'];
         $book->author = $data['author'];
         $book->company = $data['company'];
         $book->year = $data['year'];
@@ -447,7 +448,6 @@ class BookRepository implements BookInterface
         $contract->books()->attach($book->id, [
             'price' => $data['price'],
             'quality' => implode($data['quality']),
-
         ]);
 
         $images = Input::hasFile('images');

@@ -1,3 +1,6 @@
+@extends('admin.master')
+
+@section('content')
 <div class="content-area py-1">
     <div class="container-fluid">
 
@@ -41,3 +44,4 @@
         </div>
     </div>
 </div>
+@endsection

@@ -110,10 +110,8 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.book.index') }}">Danh Sách</a></li>
-                            <li><a href="javascript:void(0)" class="call_ajax"
-                                data-method="GET" data-url="sell-book">Sách bán</a></li>
-                            <li><a href="javascript:void(0)" class="call_ajax"
-                                data-method="GET" data-url="rent-book">Sách thuê</a></li>
+                            <li><a href="{{ route('admin.book.sell-book') }}">Sách bán</a></li>
+                            <li><a href="{{ route('admin.book.rent-book') }}">Sách thuê</a></li>
                         </ul>
                     </li>
                     <li class="with-sub">
