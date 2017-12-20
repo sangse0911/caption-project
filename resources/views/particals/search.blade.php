@@ -28,7 +28,7 @@
                                     <ins><span class="amount">@{{ product.price }}</span></ins>
                                 </span>
                                 </span>
-                                <a rel="nofollow" href="javascript:void(0)" data-id="@{{ product.id }}" class="button add_to_cart_button">Add to cart</a>
+                                <a rel="nofollow" href="javascript:void(0)" data-id="@{{ product.id }}" class="button add_to_cart_button">Thêm vào giỏ</a>
                             </div>
                             <!-- /.price-add-to-cart -->
                             <div class="hover-area">
@@ -64,7 +64,7 @@
                                     <div class="product-short-description">
                                         <ul style="padding-left: 18px;">
                                             <li>Tác gỉa @{{  product.author }}</li>
-                                            <li>Gía @{{  product.rentel_fee }} VNĐ</li>
+                                            <li>Gía thuê @{{  product.rentel_fee }} VNĐ</li>
                                             <li>Tái bản @{{ product.republish }}</li>
                                             <li></li>
                                         </ul>
@@ -78,11 +78,11 @@
                                     <span class="price">
                                     <span class="electro-price"><span class="amount">@{{ product.price }}</span></span>
                                     </span>
-                                    <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-id="@{{ product.id }}" data-quantity="1" href="javascript:void(0)" rel="nofollow">Add to cart</a>
+                                    <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-id="@{{ product.id }}" data-quantity="1" href="javascript:void(0)" rel="nofollow">Thêm vào giỏ</a>
                                     <div class="hover-area">
                                         <div class="action-buttons">
                                             <div class="yith-wcwl-add-to-wishlist add-to-wishlist">
-                                                <a class="add_to_wishlist" data-product-type="simple" data-id="@{{ product.id }}" rel="nofollow" href="#">Wishlist</a>
+                                                <a class="add_to_wishlist" data-product-type="simple" data-id="@{{ product.id }}" rel="nofollow" href="#">Yêu thích</a>
                                             </div>
                                             <div class="clear"></div>
                                         </div>
@@ -95,7 +95,7 @@
             </ul>
         </div>
     </div>
-    <div class="shop-control-bar-bottom">
+    {{-- <div class="shop-control-bar-bottom">
         <form class="form-electro-wc-ppp">
             <select class="electro-wc-wppp-select c-select" onchange="this.form.submit()" name="ppp">
                 <option selected="selected" value="15">Show 15</option>
@@ -110,14 +110,5 @@
                 <li><a href="#" class="next page-numbers">→</a></li>
             </ul>
         </nav>
-    </div>
+    </div> --}}
 </div>
-
-{{-- @push('scripts')
-<script>
-    $('#button-search').click(function() {
-        $('#search-field').removeAttr("style");
-    });
-</script>
-@endpush
- --}}

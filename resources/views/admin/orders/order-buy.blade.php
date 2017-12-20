@@ -151,6 +151,7 @@
 
                 }else {
                     var order = $('#order');
+                    $('#order').html('');
                     for (var i = 0; i < (data['books'].length); i++) {
                         var row = document.createElement('tr');
                         var name = document.createElement('td');

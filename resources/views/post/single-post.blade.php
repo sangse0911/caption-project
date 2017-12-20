@@ -222,6 +222,7 @@
             url: '/book/delete',
             success: function(data) {
                 alert('Bạn đã xóa thành công sách khỏi hệ thống');
+                window.location.reload(true);
             },
             error: function(data) {
                 alert('Có lỗi xảy ra, vui lòng thử lại');
