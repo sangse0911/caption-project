@@ -16,4 +16,6 @@ interface BookInterface
     public function createOwnerBook($data);
     public function getRecentlyBook();
     public function delete($data);
+    public function getRentBookInHomepage();
+    public function getSellBookInHomepage();
 }

@@ -28,6 +28,6 @@ class SellBookComposer
      */
     public function compose(View $view)
     {
-        $view->with('books', $this->bookRepository->getSellBook());
+        $view->with('books', $this->bookRepository->getSellBookInHomepage());
     }
 }

@@ -28,6 +28,6 @@ class RentBookComposer
      */
     public function compose(View $view)
     {
-        $view->with('books', $this->bookRepository->getRentBook());
+        $view->with('books', $this->bookRepository->getRentBookInHomepage());
     }
 }

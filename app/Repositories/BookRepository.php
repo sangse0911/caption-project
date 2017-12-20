@@ -12,7 +12,6 @@ use App\Models\Category;
 use App\Models\Contract;
 use App\Models\ContractDetail;
 use Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class BookRepository implements BookInterface
@@ -53,6 +52,10 @@ class BookRepository implements BookInterface
         return Book::where('status', '<>', 9)->get();
     }
 
+    /**
+     * get 4 books recently add orderBy created_at desc
+     * @return [type] [description]
+     */
     public function getRecentlyBook()
     {
         return Book::where('status', '=', '1')
@@ -61,8 +64,21 @@ class BookRepository implements BookInterface
             ->take(4)
             ->get();
     }
+
     /**
-     * [getSellBook description]
+     * get 20 books order by created_at and display in the homepage
+     * @return [type] [description]
+     */
+    public function getSellBookInHomepage()
+    {
+        return Book::where('status', '=', '1')->with('images')
+            ->whereHas('contracts', function ($query) {
+                $query->where('contracts.kind', '=', '0')
+                    ->where('contracts.status', '=', '0');
+            })->take(20)->get();
+    }
+    /**
+     * get all sell-book and display in the admin page
      * @return [type] [description]
      */
     public function getSellBook()
@@ -71,10 +87,14 @@ class BookRepository implements BookInterface
             ->whereHas('contracts', function ($query) {
                 $query->where('contracts.kind', '=', '0')
                     ->where('contracts.status', '=', '0');
-            })->take(20)->get();
+            })->get();
 
     }
 
+    /**
+     * get all sell-book and display in the sell-book page
+     * @return [type] [description]
+     */
     public function getAllSellBook()
     {
         return Book::where('status', '=', '1')->with('images')
@@ -83,8 +103,9 @@ class BookRepository implements BookInterface
                     ->where('contracts.status', '=', '0');
             })->orderBy('created_at', 'desc')->paginate(15);
     }
+
     /**
-     * [getRenterBook description]
+     * get all rent-book and display in the admin page
      * @return [type] [description]
      */
     public function getRentBook()
@@ -93,9 +114,25 @@ class BookRepository implements BookInterface
             ->whereHas('contracts', function ($query) {
                 $query->where('contracts.kind', '=', '1')
                     ->where('contracts.status', '0');
-            })->take(20)->get();
+            })->get();
     }
 
+    /**
+     * get 20 books of rent-book and display in home page
+     * @return [type] [description]
+     */
+    public function getRentBookInHomepage()
+    {
+        return Book::where('status', '=', '1')->with('images')
+            ->whereHas('contracts', function ($query) {
+                $query->where('contracts.kind', '=', '1')
+                    ->where('contracts.status', '0');
+            })->take(20)->get();
+    }
+    /**
+     * get all rent-book and display in the rent-book page
+     * @return [type] [description]
+     */
     public function getAllRentBook()
     {
         return Book::where('status', '=', '1')->with('images')
@@ -118,7 +155,7 @@ class BookRepository implements BookInterface
     }
 
     /**
-     * [getPostBook description]
+     * get all book of post book and display in the post-book page
      * @return [type] [description]
      */
     public function getPostBook()
@@ -140,12 +177,11 @@ class BookRepository implements BookInterface
             ->whereHas('contracts', function ($query) {
                 $query->where('contracts.status', '1');
             })
-
             ->paginate(9);
     }
 
     /**
-     * [getSupplierBook description]
+     * get all book which have sold for system
      * @return [type] [description]
      */
     public function getSupplierBook()
@@ -157,7 +193,7 @@ class BookRepository implements BookInterface
     }
 
     /**
-     * [getAllPost description]
+     * get all book of post book and display in the admin page
      * @return [type] [description]
      */
     public function getAllPost()
@@ -169,7 +205,7 @@ class BookRepository implements BookInterface
     }
 
     /**
-     * [findById description]
+     * find book by id
      * @param  [type] $id [description]
      * @return [type]     [description]
      */
@@ -179,7 +215,8 @@ class BookRepository implements BookInterface
 
     }
     /**
-     * [find description]
+     * find book by id
+     * get categories, details, rates, contract, images of book to display in the single-book page
      * @param  [type] $id [description]
      * @return [type]     [description]
      */
@@ -204,7 +241,7 @@ class BookRepository implements BookInterface
     }
 
     /**
-     * [create description]
+     * create new book from admin page
      * @param  [type] $request [description]
      * @return [type]          [description]
      */
@@ -283,7 +320,7 @@ class BookRepository implements BookInterface
     }
 
     /**
-     * [createOwnerBook description]
+     * create new book which owned by boss in the admin page
      * @param  [type] $data [description]
      * @return [type]       [description]
      */
@@ -355,7 +392,7 @@ class BookRepository implements BookInterface
     }
 
     /**
-     * [createPostBook description]
+     * create new book to save in the post-book view
      * @param  [type] $data [description]
      * @return [type]       [description]
      */
@@ -409,7 +446,7 @@ class BookRepository implements BookInterface
     }
 
     /**
-     * [bookForSale description]
+     * create new book which supplie for store
      * @param  [type] $data [description]
      * @return [type]       [description]
      */
@@ -462,7 +499,7 @@ class BookRepository implements BookInterface
         return $book;
     }
     /**
-     * [modified description]
+     * edit book
      * @param  [type] $data [description]
      * @return [type]       [description]
      */
@@ -519,7 +556,7 @@ class BookRepository implements BookInterface
     }
 
     /**
-     * [delete description]
+     * delete book from view but still save in the system
      * @param  [type] $id [description]
      * @return [type]     [description]
      */
