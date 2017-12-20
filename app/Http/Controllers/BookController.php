@@ -18,6 +18,7 @@ class BookController extends Controller
     {
         $this->bookRepository = $bookRepository;
     }
+
     /**
      * Display a listing of the resource.
      *

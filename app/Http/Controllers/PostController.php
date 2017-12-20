@@ -29,11 +29,16 @@ class PostController extends Controller
         return view('post.index', compact('books'));
     }
 
+    /**
+     * [contentPost description]
+     * @return [type] [description]
+     */
     public function contentPost()
     {
         $books = $this->bookRepository->getAllPost();
         return view('post.content-post', compact('books'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -44,11 +49,16 @@ class PostController extends Controller
         return view('post.create');
     }
 
+    /**
+     * [goToHomePage description]
+     * @return [type] [description]
+     */
     public function goToHomePage()
     {
         $books = $this->postRepository->getAtHome();
         return view('book.post_book', compact('books'));
     }
+
     /**
      * [createSale description]
      * @return [type] [description]
@@ -72,7 +82,6 @@ class PostController extends Controller
 
             return response()->json($post, 200);
         }
-
     }
 
     /**

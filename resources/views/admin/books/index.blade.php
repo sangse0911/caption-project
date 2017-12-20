@@ -263,7 +263,7 @@ $("#category").select2({ closeOnSelect: false });
 $("#location").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
 $("#quality").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
 $('#year').datetimepicker({
-    format: 'YYYY-MM-DD'
+    format: 'YYYY-MM-DD',
 });
 </script>
 <script>

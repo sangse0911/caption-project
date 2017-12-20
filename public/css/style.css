@@ -176,6 +176,9 @@ Table of Contents
       width: auto;
       color: black;
     }
+    .help-block {
+      color: red;
+    }
     .sizec{
       font-size: 30px;
       font-weight: bold;

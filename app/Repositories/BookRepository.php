@@ -11,6 +11,7 @@ use App\Models\Book;
 use App\Models\Category;
 use App\Models\Contract;
 use App\Models\ContractDetail;
+use App\Models\User;
 use Auth;
 use Illuminate\Support\Facades\Input;
 
@@ -226,8 +227,8 @@ class BookRepository implements BookInterface
         $categories = $book->bookCategories()->where('book_id', $id)->get();
         $details = $book->contractDetails()->where('book_id', $id)->get();
         $rates = $book->rates()->where('book_id', $id)->get();
-
         $contract = Contract::where('id', $details[0]->contract_id)->first();
+        $user = User::where('id', $contract->user_id)->first();
         $images = $book->images()->where('book_id', $id)->get();
 
         return $array = [
@@ -237,7 +238,9 @@ class BookRepository implements BookInterface
             'details' => $details,
             'contract' => $contract,
             'rates' => $rates,
+            'user' => $user,
         ];
+
     }
 
     /**

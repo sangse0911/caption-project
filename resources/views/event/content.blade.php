@@ -121,7 +121,8 @@
 <script>
 
     $('.year').datetimepicker({
-        format: 'YYYY-MM-DD'
+        format: 'YYYY-MM-DD',
+        minDate: new Date()
     });
 
     $('#event-create').click(function(e) {

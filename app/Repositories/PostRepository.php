@@ -104,7 +104,7 @@ class PostRepository implements PostInterface
         $post->user_id = Auth::user()->id;
 
         $images = Input::hasFile('images');
-        // dd($images);
+
         $post->save();
 
         //save image
@@ -114,7 +114,6 @@ class PostRepository implements PostInterface
                 return $result = false;
             };
         }
-
         return $post;
     }
 }
