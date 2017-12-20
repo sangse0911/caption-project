@@ -32,7 +32,16 @@ class AdminLoginController extends Controller
      */
     public function login(StoreUserLoginRequest $request)
     {
-
+        $this->validate($request,[
+                'email'=>'required',  
+                'password'=>'required|min:3|max:32'
+            ],
+            [
+                'email.required'=>'Bạn chưa nhập email',
+                'password.required'=>'Bạn chưa nhập password',
+                'password.min'=>'Password không được ít hơn 3 ký tự',
+                'password.max'=>'Password không được nhiều hơn 32 ký tự',
+            ]);
         if (Auth::guard('admin')->attempt(
             [
                 'email' => $request->email,
@@ -42,7 +51,7 @@ class AdminLoginController extends Controller
             return redirect()->intended(route('admin.index'));
         }
 
-        return redirect()->back()->withInput($request->only('email', 'remember'));
+        return redirect()->back()->withInput($request->only('email', 'remember'))->with('thongbao', 'Đăng nhập thất bại!');
     }
 
     /**

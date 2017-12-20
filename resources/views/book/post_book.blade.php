@@ -22,7 +22,7 @@
                             <span class="price">
                                 <br>
                                 <span class="electro-price">
-                                    <span style="margin-left: 60px; color: red;" >Gía:   {{ $book->price }} VNĐ</span>
+                                    <span style=" color: red;" >{{ $book->price }} VNĐ</span>
 
                                     <br><span style="font-size: 15px;">Người đăng: </span> <span style="font-size: 15px; color: blue;">
                                         {{ $book->contracts[0]->user->name }}

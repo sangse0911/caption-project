@@ -31,6 +31,16 @@
         <h5>Xin mời bạn đăng nhập để vào trang quản trị!</h5>
         <br>
     </div>
+      @if (count($errors)>0||session('thongbao'))
+<div class="alert alert-danger" style="text-align: center;width: 480px;margin: auto;">
+       @foreach ($errors->all() as $err)
+        {{$err}}<br>
+       @endforeach
+        {{session('thongbao')}}
+</div>
+<br>
+@endif
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 offset-md-4">
@@ -41,20 +51,20 @@
                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
                             <div class="input-group-addon"><i class="ti-email"></i></div>
                         </div>
-                        @if ($errors->has('email'))
+                {{--         @if ($errors->has('email'))
                         <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
-                                    </span> @endif
+                                    </span> @endif --}}
                     </div>
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <div class="input-group">
                             <input type="password" name="password" class="form-control" id="exampleInputPassword" placeholder="Mật Khẩu">
                             <div class="input-group-addon"><i class="ti-key"></i></div>
                         </div>
-                        @if ($errors->has('password'))
+                       {{--  @if ($errors->has('password'))
                         <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
-                                    </span> @endif
+                                    </span> @endif --}}
                     </div>
                     <div class="form-group clearfix">
                         <div class="float-xs-left">

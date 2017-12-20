@@ -48,12 +48,12 @@
                 </li>
                 <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip" {{-- style="position: absolute; right: 0;" --}}>
                     <li id="cart-2" class="nav-item dropdown" style="display: none;">
-                        <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
+                        <a href="{{ route('cart.index') }}" class="nav-link" data-toggle="dropdown" aria-expanded="false">
                             <i class="ec ec-shopping-bag"></i>
                             <span class="cart-items-count count">{{ Cart::count() }}</span>
-                            <span class="cart-items-total-price total-price"><span class="amount">{{ Cart::subtotal() }}</span></span>
+                          {{--   <span class="cart-items-total-price total-price"><span class="amount">{{ Cart::subtotal() }}</span></span> --}}
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-mini-cart">
+                       {{--  <ul class="dropdown-menu dropdown-menu-mini-cart">
                             <li>
                                 <div class="widget_shopping_cart_content">
                                     <ul class="cart_list product_list_widget">
@@ -76,7 +76,7 @@
                                     </p>
                                 </div>
                             </li>
-                        </ul>
+                        </ul> --}}
 
                     </li>
                 </ul>

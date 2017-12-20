@@ -20,12 +20,12 @@
             </form>
             <ul class="navbar-mini-cart navbar-nav animate-dropdown nav pull-right flip">
                 <li class="nav-item dropdown">
-                    <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown">
+                    <a href="{{ route('cart.index') }}" class="nav-link" data-toggle="dropdown">
                         <i class="ec ec-shopping-bag"></i>
                         <span class="cart-items-count count">{{ Cart::count() }}</span>
-                        <span class="cart-items-total-price total-price"><span class="amount">{{ Cart::subtotal() }}</span></span>
+                       {{--  <span class="cart-items-total-price total-price"><span class="amount">{{ Cart::subtotal() }}</span></span> --}}
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-mini-cart">
+                    {{-- <ul class="dropdown-menu dropdown-menu-mini-cart">
                         <li>
                             <div class="widget_shopping_cart_content">
                                 <ul class="cart_list product_list_widget">
@@ -33,7 +33,7 @@
                                         <li class="mini_cart_item">
                                             <a title="Remove this item" class="remove" href="javascript:void(0)"
                                                 data-id="{{ $element->rowId}}">×</a>
-                                            <a href="#">
+                                            <a href="{{ route('cart.index') }}">
                                                 <img class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" src="{{ URL::to('assets/images/product/' . $element->options->image) }}" alt="">{{ $element->name }}
                                             </a>
                                             <span class="quantity"><span class="amount">{{ $element->price }}</span></span>
@@ -50,7 +50,7 @@
                                 </p>
                             </div>
                         </li>
-                    </ul>
+                    </ul> --}}
                 </li>
             </ul>
               <ul class="navbar-wishlist nav navbar-nav pull-right flip">
