@@ -147,8 +147,6 @@
         <div class="form-group" style="clear: both;"></div>
     </form>
 </article>
-<script>
-</script>
 @endsection @section('sidebar') @include('particals.sidebar') @endsection @include('particals.contents') @endsection @section('footer') @include('particals.footer') @endsection @push('scripts')
 <script>
 $("#quality").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
@@ -191,7 +189,7 @@ $('#ahaha').submit(function(evt) {
         },
         success: function() {
             alert("Chúc mừng bạn đã đăng bài thành công");
-            window.location.assign('/books');
+            window.location.assign('/');
         },
         error: function(data) {
             if (data.status === 422) {

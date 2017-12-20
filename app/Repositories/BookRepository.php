@@ -50,7 +50,7 @@ class BookRepository implements BookInterface
      */
     public function all()
     {
-        return Book::all();
+        return Book::where('status', '<>', 9)->get();
     }
 
     public function getRecentlyBook()
@@ -512,5 +512,18 @@ class BookRepository implements BookInterface
             $category->books()->attach($book->id);
         }
         return $book;
+    }
+
+    /**
+     * [delete description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function delete($data)
+    {
+        $book = Book::findOrFail($data['id']);
+        $book->status = 9;
+
+        return $book->save();
     }
 }

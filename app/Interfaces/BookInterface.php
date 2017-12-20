@@ -15,4 +15,5 @@ interface BookInterface
     public function modified($data);
     public function createOwnerBook($data);
     public function getRecentlyBook();
+    public function delete($data);
 }

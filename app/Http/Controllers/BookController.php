@@ -238,8 +238,13 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $data = $request->all();
+
+            $book = $this->bookRepository->delete($data);
+            return response()->json();
+        }
     }
 }

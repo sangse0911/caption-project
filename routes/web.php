@@ -163,7 +163,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/book/store', ['as' => 'book.store', 'uses' => 'BookController@store']);
     Route::post('/book/storeIfOwned', 'BookController@storeIfOwned')->name('book.own.store');
     Route::put('/book/update', 'BookController@update')->name('book.update');
-
+    Route::put('/book/delete', 'BookController@destroy')->name('book.delete');
     /**
      *
      */
@@ -211,6 +211,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/book/storePostBook', ['as' => 'post.store', 'uses' => 'BookController@storePostBook']);
     Route::post('/book/storeSaleBook', 'BookController@storeSaleBook')->name('sale.book');
     Route::get('/postByUser/{id}', 'PostController@getAllPostByUserId')->name('post.user.index');
+    Route::delete('/post/delete', 'PostController@destroy')->name('post.delete');
 
     // Route::get('/book/info', ['as' => 'book.info', 'uses' => 'BookController@getSupplier']);
 
