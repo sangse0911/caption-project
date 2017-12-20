@@ -1,6 +1,37 @@
-@extends('layouts.master') @section('title') @endsection() @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') {{-- @section('carousel') @include('particals.carousel') @endsection --}} @section('search')
+@extends('layouts.master') @section('title') @endsection()
+@section('css') 
+<style type="text/css">
+.pagination {
+    display: inline-block;
+    width: 100%;
+}
+
+.pagination li {
+    list-style: none;
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 0 4px;
+}
+
+.pagination li.active {
+    background-color: #a3d133;
+    color: white;
+    border: 1px solid #a3d133;
+    border-radius: 5px;
+}
+
+.pagination li:hover:not(.active) {background-color: #ddd;}
+          </style>
+@endsection() 
+@section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') {{-- @section('carousel') @include('particals.carousel') @endsection --}} @section('search')
     @include('particals.search')
   @endsection @section('categories')
+
 <div style="margin-top: 50px;"></div>
 @include('particals.categories')
 
@@ -121,21 +152,17 @@
             @endforeach @endforeach
         </ul>
     </div>
-    {!! $books->links() !!}
+   
+    
 </div>
-<div class="shop-control-bar-bottom">
-    <form class="form-electro-wc-ppp">
+
+  {{--   <form class="form-electro-wc-ppp">
         <select class="electro-wc-wppp-select c-select" onchange="this.form.submit()" name="ppp"><option selected="selected" value="15">Show 15</option><option value="-1">Show All</option></select>
     </form>
-    <p class="woocommerce-result-count">Showing 1–15 of 20 results</p>
-    <nav class="woocommerce-pagination">
-        <ul class="page-numbers">
-            <li><span class="page-numbers current">1</span></li>
-            <li><a href="#" class="page-numbers">2</a></li>
-            <li><a href="#" class="next page-numbers">→</a></li>
-        </ul>
-    </nav>
-</div>
+    <p class="woocommerce-result-count">Showing 1–15 of 20 results</p> --}}
+     
+        {!! $books->links() !!}
+
 @endsection
 @section('sidebar')
 @include('particals.sidebar')

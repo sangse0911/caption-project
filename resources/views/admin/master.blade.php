@@ -31,9 +31,23 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+     <style type="text/css">
+        .no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url({{ URL::to('img/Preloader_10.gif') }}) center no-repeat #fff;
+}
+    </style>
 </head>
 
 <body class="fixed-sidebar fixed-header skin-default content-appear">
+    <div class="se-pre-con"></div>
     <div class="wrapper">
         <!-- Preloader -->
         <div class="preloader"></div>
@@ -374,6 +388,14 @@
         });
     })
     </script>
+       <script>
+  //paste this code under head tag or in a seperate js file.
+  // Wait for window load
+  $(window).load(function() {
+    // Animate loader off screen
+    $(".se-pre-con").fadeOut("slow");;
+  });
+</script>
 </body>
 
 </html>
