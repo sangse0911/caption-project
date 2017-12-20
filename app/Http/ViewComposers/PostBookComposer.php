@@ -2,23 +2,23 @@
 
 namespace App\Http\ViewComposers;
 
-use App\Interfaces\BookInterface;
+use App\Interfaces\PostInterface;
 use Illuminate\View\View;
 
 class PostBookComposer
 {
 
-    protected $bookRepository;
+    protected $postRepository;
 
     /**
      *  Bind
      *
      * @param BookInterface     $bookRepository
      */
-    public function __construct(BookInterface $bookRepository)
+    public function __construct(PostInterface $postRepository)
     {
 
-        $this->bookRepository = $bookRepository;
+        $this->postRepository = $postRepository;
     }
 
     /**
@@ -28,6 +28,6 @@ class PostBookComposer
      */
     public function compose(View $view)
     {
-        $view->with('books', $this->bookRepository->getPostBook());
+        $view->with('books', $this->postRepository->getAtHome());
     }
 }

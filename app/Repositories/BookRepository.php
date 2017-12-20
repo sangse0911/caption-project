@@ -141,7 +141,7 @@ class BookRepository implements BookInterface
                 $query->where('contracts.status', '1');
             })
 
-            ->get();
+            ->paginate(9);
     }
 
     /**

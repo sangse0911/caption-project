@@ -60,7 +60,7 @@ class WishListRepository implements WishlistInterface
     {
         $user = $this->userRepository->find($id);
 
-        $wishlists = $user->wishlists()->where('user_id', $id)->get();
+        $wishlists = $user->wishlists()->where('user_id', $id)->paginate(5);
         // dd($wishlists->book_id);
         $books = [];
         foreach ($wishlists as $wishlist) {

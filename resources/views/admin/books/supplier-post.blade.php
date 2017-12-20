@@ -133,19 +133,15 @@
                                 </span>
                             </div>
                             <div class="form-group col-sm-6 form-status">
-                                <h6>Cập nhật trạng thái</h6><br/>
+                                <label for="name">Trạng thái</label><br/>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="0">Không sẵn sàng</label>
+                                    <input type="radio" name="status" value="4">Đơn hàng mới</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="1">Sẵn sàng</label>
+                                    <input type="radio" name="status" value="1">Đã xác nhận</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="2">Đang </label>
+                                    <input type="radio" name="status" value="2">Đã hoàn thành </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="3">Đã bán</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="status" value="4">Đã cho thuê</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="status" value="5">Đã trả lại</label>
+                                    <input type="radio" name="status" value="3">Đã hủy</label>
 
                                 <span class="help-block">
                                     <strong id="error-status"></strong>
@@ -180,8 +176,8 @@
                         <th>ID</th>
                         <th>Tên</th>
                         <th>Tác gỉa</th>
-                        <th>Năm xuất bản</th>
                         <th>Xuất bản lần thứ</th>
+                        <th>Trạng thái</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
@@ -191,8 +187,25 @@
                         <td>{{ $book->id }}</td>
                         <td>{{ $book->name }}</td>
                         <td>{{ $book->author }}</td>
-                        <td>{{ $book->year }}</td>
                         <td>{{ $book->republish }}</td>
+                        <td>
+                            @php
+                                switch ($book->status) {
+                                    case '1':
+                                        echo 'Xác nhận';
+                                        break;
+                                    case '2':
+                                        echo 'Hoàn thành';
+                                        break;
+                                    case '3':
+                                        echo 'Đã hủy';
+                                        break;
+                                    default:
+                                        echo 'Đơn hàng mới';
+                                        break;
+                                }
+                            @endphp
+                        </td>
                         <td align="center">
                             <button id="{{ $book->id }}" data-id="{{ $book->id }}" type="button" class="btn btn-warning btn-view btn-sm label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
                                 <span class="btn-label"><i class="fa fa-eye" ></i></span> Xem
@@ -402,7 +415,7 @@ $('.btn-update').on('click', function(e) {
     $('.form-status').removeAttr("style");
     $('.modal-footer').removeAttr('style');
 
-    $('.modal-title').text('Cập nhật thông tin sách');
+    $('.modal-title').text('Cập nhật thông tin đơn hàng');
     $('.bank-account').css("display", "none");
     $('.method-pay').css("display", "none");
     $('.kind-book').css("display", "none");

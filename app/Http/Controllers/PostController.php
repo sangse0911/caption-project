@@ -44,6 +44,11 @@ class PostController extends Controller
         return view('post.create');
     }
 
+    public function goToHomePage()
+    {
+        $books = $this->postRepository->getAtHome();
+        return view('book.post_book', compact('books'));
+    }
     /**
      * [createSale description]
      * @return [type] [description]

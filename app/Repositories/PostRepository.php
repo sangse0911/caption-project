@@ -6,6 +6,7 @@ use App\Interfaces\BookInterface;
 use App\Interfaces\ImagePostInterface;
 use App\Interfaces\PostInterface;
 use App\Interfaces\UserInterface;
+use App\Models\Book;
 use App\Models\Post;
 use App\Models\User;
 use Auth;
@@ -42,9 +43,25 @@ class PostRepository implements PostInterface
      */
     public function all()
     {
-        $posts = Post::with('imagePosts')->get();
+        $posts = Post::with('imagePosts')->paginate(9);
 
         return $posts;
+    }
+
+    /**
+     * get 6 books for display in the homepage
+     * @return [type] [description]
+     */
+    public function getAtHome()
+    {
+        return Book::where('status', '1')
+            ->with('images')
+            ->with('contracts.user')
+            ->whereHas('contracts', function ($query) {
+                $query->where('contracts.status', '1');
+            })
+            ->take(6)
+            ->get();
     }
 
     /**

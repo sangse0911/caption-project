@@ -189,7 +189,7 @@ $('#ahaha').submit(function(evt) {
         },
         success: function() {
             alert("Chúc mừng bạn đã đăng bài thành công");
-            window.location.assign('/');
+            window.location.href = '/';
         },
         error: function(data) {
             if (data.status === 422) {
