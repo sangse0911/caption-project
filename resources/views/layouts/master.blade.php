@@ -49,7 +49,7 @@
   width: 100%;
   height: 100%;
   z-index: 9999;
-  background: url({{ URL::to('img/Preloader_2.gif') }}) center no-repeat #fff;
+  background: url({{ URL::to('img/Preloader_3.gif') }}) center no-repeat #fff;
 }
 </style>
 @yield('css')

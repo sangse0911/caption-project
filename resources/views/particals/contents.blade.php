@@ -12,6 +12,10 @@
                 @yield('second')
                 @yield('post-book')
                 @yield('cart')
+
+                {{-- @php
+                    echo $books->render();
+                @endphp --}}
                 <form type="hidden" name="" id="post-form" method="POST">
                     <input type="hidden" name="token" value="{{ csrf_token() }}">
                     <div id="myModal" class="modal fade" role="dialog">

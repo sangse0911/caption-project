@@ -277,18 +277,15 @@
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right animated fadeInUp">
-                                    <a class="dropdown-item" href="index.html#">
+                                {{--     <a class="dropdown-item" href="index.html#">
                                         <i class="ti-email mr-0-5"></i> Tin nhắn
                                     </a>
                                     <a class="dropdown-item" href="index.html#">
                                         <i class="ti-user mr-0-5"></i> Thông tin
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ url('/logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();"><i class="ti-power-off mr-0-5"></i> Đăng xuất</a>
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
+                                    </a> --}}
+                                   {{--  <div class="dropdown-divider"></div> --}}
+                                    <a class="dropdown-item" href="admin/logout" ><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng Xuất</a>
+                                   {{--  </form> --}}
                                 </div>
                             </li>
                         </ul>

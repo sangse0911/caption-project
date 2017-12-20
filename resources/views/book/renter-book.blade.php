@@ -31,9 +31,12 @@
 <div style="margin-top: 50px;"></div>
 @include('particals.categories')
 
-<header class="page-header">
-    <h1 class="page-title">Sách thuê</h1>
-</header>
+<img style="margin: auto;" src="{{ URL::to('img/HR.png') }}">
+<span style="margin-left: 40%; color: #a3d133; font-weight: bold;font-size: 35px; font-family: cursive;">Sách Thuê</span>
+<div class="hr">
+    <hr />
+</div>
+<br>
 <div class="shop-control-bar">
     <ul class="shop-view-switcher nav nav-tabs" role="tablist">
         <li class="nav-item"><a class="nav-link active" data-toggle="tab" title="Grid View" href="#grid" aria-expanded="true"><i class="fa fa-th"></i></a></li>
@@ -52,20 +55,26 @@
             @foreach($books as $book)
             @foreach($book->images as $image)
             <li class="product">
-                <div class="product-outer" style="height: 391px;">
+                <div class="product-outer" >
                     <div class="product-inner">
                         <span class="loop-product-categories"><a href="javascript:void(0)" rel="tag">Sách thuê</a></span>
                         <span class="loop-product-categories" style="color: red;">{{ $book->name }}</span>
                         <a data-toggle="modal" href="#myModal" class="book-show" data-id="{{ $book->id }}">
                             <h3></h3>
+                        {{-- <span class="loop-product-categories"><a href="javascript:void(0)" rel="tag">Sách thuê</a></span> --}}
+                        <span class="loop-product-categories"><i class="fa fa-tags" aria-hidden="true"></i>
+                        Cũ
+                        </span>
+                        <a href="javascript:void(0)">
+                            <h3>{{ $book->name }}</h3>
                             <div class="product-thumbnail">
-                                <img src="{{ URL::to('assets/images/product/' . $image->path) }}" alt="">
+                                <img style="max-width: 200px;max-height: 220px;margin: auto;" src="{{ URL::to('assets/images/product/' . $image->path) }}" alt="">
                             </div>
                         </a>
                         <div class="price-add-to-cart">
                             <span class="price">
                                 <span class="electro-price">
-                                    <ins><span class="amount">{{ $book->price }}VNĐ</span></ins>
+                                    <ins><span class="amount">{{ $book->price }} VNĐ</span></ins>
                             </span>
                             </span>
                             <a rel="nofollow" href="javascript:void(0)" data-id="{{ $book->id }}" class="button add_to_cart_button">Add to cart</a>
@@ -119,7 +128,7 @@
                                 <div class="availability in-stock">
                                     Trạng thái: <span>Sẵn sàng</span>
                                 </div>
-                                <span class="price"><span class="electro-price"><span class="amount">{{ $book->price }}</span></span>
+                                <span class="price"><span class="electro-price"><span class="amount">{{ $book->price }} VNĐ</span></span>
                                 </span>
                                 <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-id="{{ $book->id }}" data-quantity="1" href="javascript:void(0)" rel="nofollow">Thêm vào giỏ</a>
                                 <div class="hover-area">

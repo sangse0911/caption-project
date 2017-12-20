@@ -33,6 +33,7 @@ class OrderController extends Controller
     public function getOrder()
     {
         $orders = $this->orderRepository->getOrder();
+
         return view('admin.orders.order-buy', compact('orders'));
     }
 

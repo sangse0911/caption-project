@@ -88,7 +88,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($orders as $order) @foreach($order->books as $book)
+                    @foreach($orders as $order)
+                    @if($order->books->count() > 0)
                     <tr>
                         <td>{{ $order->id }}</td>
                         <td>{{ $order->created_at }}</td>
@@ -119,7 +120,9 @@
                             &nbsp
                         </td>
                     </tr>
-                    @endforeach @endforeach
+                    @else
+                    @endif
+                    @endforeach
                 </tbody>
             </table>
         </div>

@@ -188,15 +188,18 @@ class BookRepository implements BookInterface
         $book = Book::findOrFail($id);
         $categories = $book->bookCategories()->where('book_id', $id)->get();
         $details = $book->contractDetails()->where('book_id', $id)->get();
+        $rates = $book->rates()->where('book_id', $id)->get();
 
         $contract = Contract::where('id', $details[0]->contract_id)->first();
         $images = $book->images()->where('book_id', $id)->get();
+
         return $array = [
             'book' => $book,
             'categories' => $categories,
             'images' => $images,
             'details' => $details,
             'contract' => $contract,
+            'rates' => $rates,
         ];
     }
 

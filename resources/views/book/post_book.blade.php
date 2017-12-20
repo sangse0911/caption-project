@@ -18,22 +18,19 @@
                                 <img src="{{ URL::to('assets/images/product/' . $book->images[0]->path) }}" style="margin: auto; max-width: 180px; max-height: 220px;" alt="">
                             </div>
                         </a>
-
                         <div class="price-add-to-cart" style="margin: auto;">
                             <span class="price">
                                 <br>
                                 <span class="electro-price">
                                     <span style="margin-left: 60px; color: red;" >Gía:  {{ $book->price }} VNĐ</span>
-
+                                    <span style=" color: red;" >{{ $book->price }} VNĐ</span>
                                     <br><span style="font-size: 15px;">Người đăng: </span> <span style="font-size: 15px; color: blue;">
                                         {{ $book->contracts[0]->user->name }}
                                     </span>
                                     <span class="amount"> </span>
                                 </span>
                             </span>
-
-                        </div><!-- /.price-add-to-cart -->
-
+                        </div>
                         <div style="text-align: center;">
                             <i class="fa fa-bookmark" aria-hidden="true"></i> <span style="color: red;">
                                 @php

@@ -32,7 +32,7 @@ Route::get('/search', function () {
 
 Route::get('/admin/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.show');
 Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login');
-Route::post('/admin/logout', 'Auth\AdminLoginController@adminLogout')->name('admin_logout')->middleware('auth:admin');
+Route::get('/admin/logout', 'Auth\AdminLoginController@adminLogout')->name('admin.logout');
 
 /**
  *

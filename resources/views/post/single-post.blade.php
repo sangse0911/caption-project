@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group col-md-6 supplier">
                             <h6>Tên Sách</h6>
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Nhập Tên Sách">
+                            <input type="text" name="name" class="form-control" id="namexx" placeholder="Nhập Tên Sách">
                             <span class="help-block">
                                     <strong id="error-name"></strong>
                                 </span>
@@ -185,8 +185,7 @@
                 for (var i = 0; i < data['categories'].length; i++) {
                     array.push(data['categories'][i]['category_id']);
                 }
-                // $('#name').val('1');
-                $('#name').val(data['book']['name']).prop("readonly",true);
+                $('#namexx').val(data['book']['name']).prop("readonly",true);
                 $('#id').prop("readonly",true).val(data['book']['id']);
                 $('#category').val(array).trigger('change').prop("readonly",true);
                 $('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));

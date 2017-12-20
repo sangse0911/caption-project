@@ -49,18 +49,17 @@ class OrderRepository implements OrderInterface
      */
     public function getOrder()
     {
-        $books = Order::with([
-
+        $orders = Order::with([
+            'user',
+            'detailOrders',
             'books' => function ($query) {
                 $query->whereHas('contracts', function ($q) {
                     $q->where('kind', '=', '0');
                 });
-            },
-            'user',
-            'detailOrders',
-        ])->get();
-
-        return $books;
+            }])
+            ->groupBy('id')
+            ->get();
+        return $orders;
     }
 
     public function getOrderById($id)

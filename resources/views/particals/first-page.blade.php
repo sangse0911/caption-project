@@ -115,8 +115,6 @@
         var id = $(this).data('id');
         window.location.href = "/postByUser/" + id;
     });
-
-
 </script>
 <script>
     $('.book-show').on('click', function(e) {
@@ -127,7 +125,7 @@
             dataType: 'JSON',
             url: '/book/' + book_id,
             success: function(data) {
-                // $('.electro-nav-tabs').val('');
+                $('a[href="#tab-description"]').click();
                 $('#book-rate').val(data['book']['id']);
                 $('#book-name').text(data['book']['name']);
                 $('#book-status').text(data['book']['status']);
@@ -143,6 +141,24 @@
                 $('.modal-footer').css('display','none');
                 $('#book-isbn').text(data['book']['isbn']);
                 $('.add_to_wishlist').attr('id','book-'+ book_id);
+                $('.my-rating-9').val('');
+
+                var count = 0;
+                var avg = 0;
+                var sum = 0;
+                for(var i = 0; i< data['rates'].length; i++) {
+                    count++;
+                    sum += parseInt(data['rates'][i]['rate']);
+                }
+                if(count == 0){
+                    avg = 0;
+                } else {
+                    avg = sum/count;
+                }
+                console.log(count);
+                console.log(sum);
+                $('.based-title').text('Dựa trên ' + count + ' đánh gía');
+                $('.avg-rating-number').text(avg);
             },
             error: function(data) {
             }

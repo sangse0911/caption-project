@@ -154,17 +154,14 @@
                     <div id="reviews" class="electro-advanced-reviews">
                         <div class="advanced-review row">
                             <div class="col-xs-12 col-md-6">
-                                <h2 class="based-title">Dựa trên 3 đánh giá</h2>
+                                <h2 class="based-title"></h2>
                                 <div class="avg-rating">
-                                    <span class="avg-rating-number">4.3</span> overall
+                                    Trung bình: <span class="avg-rating-number"></span>
                                 </div>
                                 <div class="rating-histogram">
                                     <div class="rating-bar">
                                         <div class="star-rating" title="Rated 5 out of 5">
                                             <span style="width:100%"></span>
-                                        </div>
-                                        <div class="rating-percentage-bar">
-                                            <span style="width:33%" class="rating-percentage"></span>
                                         </div>
                                         <div class="rating-count">1</div>
                                     </div>
@@ -172,17 +169,11 @@
                                         <div class="star-rating" title="Rated 4 out of 5">
                                             <span style="width:80%"></span>
                                         </div>
-                                        <div class="rating-percentage-bar">
-                                            <span style="width:67%" class="rating-percentage"></span>
-                                        </div>
-                                        <div class="rating-count">2</div>
+                                        <div class="rating-count">0</div>
                                     </div>
                                     <div class="rating-bar">
                                         <div class="star-rating" title="Rated 3 out of 5">
                                             <span style="width:60%"></span>
-                                        </div>
-                                        <div class="rating-percentage-bar">
-                                            <span style="width:0%" class="rating-percentage"></span>
                                         </div>
                                         <div class="rating-count zero">0</div>
                                     </div>
@@ -190,17 +181,11 @@
                                         <div class="star-rating" title="Rated 2 out of 5">
                                             <span style="width:40%"></span>
                                         </div>
-                                        <div class="rating-percentage-bar">
-                                            <span style="width:0%" class="rating-percentage"></span>
-                                        </div>
                                         <div class="rating-count zero">0</div>
                                     </div>
                                     <div class="rating-bar">
                                         <div class="star-rating" title="Rated 1 out of 5">
                                             <span style="width:20%"></span>
-                                        </div>
-                                        <div class="rating-percentage-bar">
-                                            <span style="width:0%" class="rating-percentage"></span>
                                         </div>
                                         <div class="rating-count zero">0</div>
                                     </div>
@@ -291,6 +276,7 @@
         initialRating: 0,
         disableAfterRate: false,
         strokeColor: '#a3d133',
+        useFullStars: true,
         onHover: function(currentIndex, currentRating, $el){
           $('.live-rating').text(currentIndex);
         },
@@ -328,6 +314,7 @@
                 }
                 if(data.status === 500) {
                     alert('Bạn đã vote cho sách này, cảm ơn bạn');
+                    $('#myModal').modal('hide');
                 }
             }
         });

@@ -7,10 +7,10 @@
                     Trang Chủ
                 </li></a>
                 --}}
-                <a href="" style="color: white;"><li style="display: inline;">Sách bán |</li></a>
-                 <a href="" style="color: white;"><li style="display: inline;">Sách thuê |</li></a>
-                 <a href="" style="color: white;"><li style="display: inline;">Bán sách & Cho thuê |</li></a>
-                 <a href="" style="color: white;"><li style="display: inline;">Góc sách |</li></a>
+                <a href="{{ route('book.sell') }}" style="color: white;"><li style="display: inline;">Sách bán |</li></a>
+                 <a href="{{ route('book.renter') }}" style="color: white;"><li style="display: inline;">Sách thuê |</li></a>
+                 <a href="javascript:void(0)" style="color: white;"><li style="display: inline;">Bán sách & Cho thuê |</li></a>
+                 <a href="{{ route('post.index') }}" style="color: white;"><li style="display: inline;">Góc sách |</li></a>
                  <a href="" style="color: white;"><li style="display: inline;">Liên hệ quảng cáo</li></a>
             </ul>
         </div>
@@ -24,10 +24,10 @@
                                 <br>
                 Địa chỉ: 1D, Ngõ 75 Hồ Tùng Mậu, Quận Mai Dịch, TP.HN
                 <br>
-                Điện thoại : (848)- 3820 5592 Fax : (848) - 3820 9525
+                Điện thoại : (848)- 3820 5592 
                 <br>
                 Email: bookserviceonline@gmail.com
-                <br>Website : bookserviceonline.com
+                <br>Số Tài Khoản: 13213213213
             </div>
     </div>
     </div>
