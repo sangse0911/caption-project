@@ -177,7 +177,7 @@ Table of Contents
       color: black;
     }
     .help-block {
-      color: red;
+      color: red !important;
     }
     .sizec{
       font-size: 30px;
