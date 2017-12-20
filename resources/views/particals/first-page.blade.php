@@ -12,8 +12,6 @@
             <a href="#products-carousel-next" data-target="#products-carousel-57176fb2c4230" class="slider-next"><i class="fa fa-angle-right"></i></a>
         </div>
     </header>
-    @if(Auth::guest()) @else
-    <input type="hidden" name="" id="user-id" value="{{ Auth::user()->id }}"> @endif
  <div id="recommended-product">
      <div class="woocommerce columns-4">
            <div class="products owl-carousel products-carousel columns-4 owl-loaded owl-drag" id="owl-demo">
@@ -111,10 +109,7 @@
         }
     });
 
-    $('#post-show').click(function(e) {
-        var id = $(this).data('id');
-        window.location.href = "/postByUser/" + id;
-    });
+
 </script>
 <script>
     $('.book-show').on('click', function(e) {

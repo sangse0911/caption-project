@@ -69,10 +69,28 @@ class OrderController extends Controller
 
     }
 
+    /**
+     * [showOrder description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function showOrder($id)
     {
         return $this->orderRepository->getOrderById($id);
     }
+
+    /**
+     * [showOrderOfUser description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function showOrderOfUser($id)
+    {
+
+        $orders = $this->orderRepository->getOrderByUser($id);
+        return view('users.single-order', compact('orders'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

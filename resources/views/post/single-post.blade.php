@@ -1,4 +1,4 @@
-@extends('layouts.master') @section('title') Cua hang sach hang dau @endsection() @section('style')
+@extends('layouts.master')  @section('style')
 <link rel="stylesheet" type="text/css" href="{{ URL::to('css/jquery.dataTables.min.css') }}"> @endsection @section('header-v2') @include('particals.header-v2') @endsection() @section('nav-v2') @include('particals.nav-bar-v2') @endsection @section('content') @section('customer')
 <article class="page type-page status-publish hentry" style="margin-top: 50px;">
     <header class="entry-header">

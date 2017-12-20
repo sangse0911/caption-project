@@ -10,6 +10,6 @@ interface OrderInterface
     public function getOrder();
     public function getRenter();
     public function getOrderById($id);
-    public function getRenterById($id);
     public function modified($data);
+    public function getOrderByUser($id);
 }

@@ -214,7 +214,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/post/delete', 'PostController@destroy')->name('post.delete');
 
     // Route::get('/book/info', ['as' => 'book.info', 'uses' => 'BookController@getSupplier']);
-
+    Route::get('/orderByUser/{id}', 'OrderController@showOrderOfUser')->name('user.get.order');
+    Route::get('/detailOrders/{id}', 'OrderController@showOrder')->name('user.order.detail');
     /**
      *
      */

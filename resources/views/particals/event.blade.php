@@ -15,10 +15,10 @@
                         <div class="onsale-product">
                             <div class="onsale-product-thumbnails">
                                 <div class="savings">
-                                <span class="savings-text">
+                                    <span class="savings-text">
                                     Tiết kiệm <span class="amount">20.000 VNĐ</span>
-                                </span>
-                            </div>
+                                    </span>
+                                </div>
                                 <div class="images" style="margin-top: 48px;">
                                     <a href="#">
                                     <img width="450" height="600" src="{{ URL::to('assets/images/event/'. $event->path) }}" class="wp-post-image" alt="" title="{{ $event->title }}">
@@ -29,7 +29,6 @@
                                 <a href="javascript:void(0)">
                                     <h3>{{ $event->title }}</h3>
                                 </a>
-
                                 </span>
                                 </span>
                                 <div class="deal-progress">
@@ -38,11 +37,23 @@
                                     <div class="marketing-text text-xs-center">
                                         Sự kiện kết thúc trong: </div>
                                     <span class="deal-end-date" style="display:none;">{{ $event->end_date }}</span>
-                                    <div id="deal-countdown" class="countdown" style="margin-left: 0px; "><span style="padding-left: 0px; data-value="-317" class="days"><span class="value">-317</span><b>Ngày</b></span><span class="hours"><span class="value">-10</span><b>Giờ</b></span><span class="minutes"><span class="value">-18</span><b>Phút</b></span><span class="seconds"><span class="value">-28</span><b>Gíây</b></span>
+                                    <div id="deal-countdown" class="countdown" style="margin-left: 0px; ">
+                                        <span style="padding-left: 0px;" data-value="" class="days">
+                                            <span class="value"></span><b>Ngày</b>
+                                        </span>
+                                        <span class="hours ">
+                                            <span class="value">-</span><b>Giờ</b>
+                                        </span>
+                                        <span class="minutes">
+                                            <span class="value"></span><b>Phút</b>
+                                        </span>
+                                        <span class="seconds">
+                                            <span class="value"></span><b>Gíây</b>
+                                        </span>
                                     </div>
                                     <script>
                                     // set the date we're counting down to
-                                    var deal_end_date = document.querySelector(".deal-end-date").textContent;
+                                    var deal_end_date = document.querySelector(".deal-end-date ").textContent;
                                     var target_date = new Date(deal_end_date).getTime();
 
                                     // variables for time units
@@ -51,10 +62,10 @@
                                     // get tag element
                                     var countdown = document.getElementById('deal-countdown');
 
-                                    // update the tag with id "countdown" every 1 second
+                                    // update the tag with id "countdown " every 1 second
                                     setInterval(function() {
 
-                                        // find the amount of "seconds" between now and target
+                                        // find the amount of "seconds " between now and target
                                         var current_date = new Date().getTime();
                                         var seconds_left = (target_date - current_date) / 1000;
 
@@ -69,8 +80,8 @@
                                         seconds = parseInt(seconds_left % 60);
 
                                         // format countdown string + set tag value
-                                        countdown.innerHTML = '<span data-value="' + days + '" class="days"><span class="value">' + days + '</span><b>Ngày</b></span><span class="hours"><span class="value">' + hours + '</span><b>Giờ</b></span><span class="minutes"><span class="value">' +
-                                            minutes + '</span><b>Phút</b></span><span class="seconds"><span class="value">' + seconds + '</span><b>Giây</b></span>';
+                                        countdown.innerHTML = '<span data-value=" ' + days + ' " class="days "><span class="value ">' + days + '</span><b>Ngày</b></span><span class="hours "><span class="value ">' + hours + '</span><b>Giờ</b></span><span class="minutes "><span class="value ">' +
+                                            minutes + '</span><b>Phút</b></span><span class="seconds "><span class="value ">' + seconds + '</span><b>Giây</b></span>';
 
                                     }, 1000);
                                     </script>

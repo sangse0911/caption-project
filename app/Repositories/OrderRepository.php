@@ -64,13 +64,13 @@ class OrderRepository implements OrderInterface
 
     public function getOrderById($id)
     {
-        $books = Order::with([
+        $orders = Order::with([
             'user',
             'detailOrders',
             'books',
         ])->findOrFail($id);
 
-        return $books;
+        return $orders;
     }
 
     /**
@@ -91,11 +91,23 @@ class OrderRepository implements OrderInterface
         return $books;
     }
 
-    public function getRenterById($id)
+    /**
+     * [getOrderByUser description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function getOrderByUser($id)
     {
 
+        $orders = Order::where('user_id', $id)->get();
+        return $orders;
     }
 
+    /**
+     * change order status
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
     public function modified($data)
     {
         $order = Order::findOrFail($data['id']);
