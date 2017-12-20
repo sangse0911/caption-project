@@ -17,11 +17,11 @@
             <label for="introduce">Bạn muốn làm gì với sách</label>
             <br/>
             <label class="radio-inline">
-                <input type="radio" name="kind" value="0">Bán</label>
+                <input type="radio" name="kind" id="1" value="0">Bán</label>
             <label class="radio-inline">
-                <input type="radio" name="kind" value="1">Cho thuê</label>
+                <input type="radio" name="kind" id="2" value="1">Cho thuê</label>
             <label class="radio-inline">
-                <input type="radio" name="kind" value="2">Cho mượn</label>
+                <input type="radio" name="kind" id="3" value="2">Cho mượn</label>
             <br/>
             <span class="help-block">
             <strong id="error-kind"></strong>
@@ -36,8 +36,8 @@
                 <input type="radio" name="method" value="1">Chuyển khoản</label>
             <br/>
             <span class="help-block">
-            <strong id="error-method"></strong>
-        </span>
+                <strong id="error-method"></strong>
+            </span>
         </div>
         <div class="form-group col-sm-6 post">
             <label for="name">Số tài khoản</label>
@@ -53,7 +53,7 @@
             <strong id="error-price"></strong>
         </span>
         </div>
-        <div class="form-group col-md-6 post">
+        <div class="form-group col-md-6 price-rent" style="display: none;">
             <label for="">Gía thuê</label>
             <input type="text" name="price-rent" id="price-rent" class="form-control" placeholder="Gía bạn mong muốn">
             <span class="help-block">
@@ -129,13 +129,12 @@
         </div>
         <div class="form-group col-sm-12 post">
             <label for="description">Mô tả về sách</label>
-            <textarea class="form-control" id="description" name="description" rows="10" placeholder="Mô tả về sách" style="border-width: 1px;"></textarea>
+            <textarea class="form-control" id="description" name="description" rows="5"
+                placeholder="Mô tả về sách" style="border-width: 1px;">
+            </textarea>
         </div>
         <div class="form-group image-area post">
-            <div class="col-md-6">
-                <input type="file" id="input-file-now" class="dropify" name="images[]" />
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <input type="file" id="input-file-now" class="dropify" name="images[]" />
             </div>
         </div>
@@ -151,8 +150,22 @@
 <script>
 $("#quality").select2({ closeOnSelect: true, maximumSelectionLength: 1 });
 $('#year').datetimepicker({
+    format: 'YYYY-MM-DD',
+    minDate: new Date()
+});
 
-    format: 'YYYY-MM-DD'
+$('#2').click(function(e) {
+    $('.price-rent').removeAttr('style');
+    $('#price-rent').val(parseInt(0));
+});
+
+$('#1').click(function() {
+    $('.price-rent').css('display','none');
+});
+
+$('#3').click(function() {
+    $('.price-rent').css('display','none');
+    $('#price-rent').val(parseInt(0));
 });
 
 $('#post-create').click(function(e) {
@@ -211,7 +224,6 @@ $('#ahaha').submit(function(evt) {
             }
         }
     });
-
 });
 
 $('#sidebar').css('margin-top', '150px');

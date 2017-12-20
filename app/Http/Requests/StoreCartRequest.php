@@ -26,6 +26,7 @@ class StoreCartRequest extends FormRequest
         return [
             'address' => 'required|min:6',
             'phone' => 'required|numeric|min:9',
+            'method' => 'required',
         ];
     }
 
@@ -38,6 +39,8 @@ class StoreCartRequest extends FormRequest
             'phone.required' => 'Vui lòng điền thông tin số điện thoại',
             'phone.numeric' => 'Vui lòng kiểm tra lại, số điện thoại chưa chính xác',
             'phone.min' => 'Số điện thoại không nhỏ hơn 9 số',
+
+            'method.required' => 'Vui lòng chọn phương thức thanh toán',
         ];
     }
 }
