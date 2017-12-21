@@ -5,7 +5,7 @@
                 <div class="thumbnails-single owl-carousel owl-loaded owl-drag">
                     <div class="owl-stage-outer">
                         <div class="owl-stage">
-                            <div class="owl-item active" style="width: 300px;">
+                            <div class="owl-item active" style="height: 300px; width: auto;">
                                 <a href="#" class="zoom" title="" data-rel="prettyPhoto[product-gallery]">
                                     <img  class="wp-post-image" alt="" id="image-book">
                                 </a>
@@ -13,18 +13,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- .thumbnails-single -->
-                <div class="thumbnails-all columns-5 owl-carousel owl-loaded owl-drag">
-                    <div class="owl-stage-outer">
-                        <div class="owl-stage">
-                            <div class="owl-item active synced" style="width: 87.6px; margin-right: 8px;">
-                                <a href="assets/images/single-product/single-thumb1.jpg" class="first" title="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- .thumbnails-all -->
             </div>
             <!-- .electro-gallery -->
         </div>

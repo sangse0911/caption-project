@@ -25,12 +25,12 @@
                             <a data-toggle="modal" href="#myModal" class="book-show" id="book-{{ $book->id}}">
                                 <h3 class="product-name">{{ $book->name }}</h3>
                                 <div class="product-thumbnail">
-                                    <img src="{{ URL::to('assets/images/product'. '/'. $book->images[0]['path'])}}" class="img-responsive" style="max-height: 190px;margin:auto; max-width: 150px;" alt="">
+                                    <img src="{{ URL::to('assets/images/product'. '/'. $book->images[0]['path'])}}" class="img-responsive" style="max-height: 150px;margin:auto; width: auto;" alt="">
                                 </div>
                             </a>
                             <div class="price-add-to-cart" style="margin-top: 150px;">
                                 <span class="price">
-                                    <span class="electro-price" style="position: relative;">
+                                    <span class="electro-price" style="position: relative; font-size: 18px;">
                                         <ins><span class="amount">{{ $book->price }} VNĐ</span></ins>
                                 <span class="amount"> </span>
                                 </span>
