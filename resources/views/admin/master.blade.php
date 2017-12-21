@@ -396,7 +396,7 @@
                 console.log('ee');
             }
         })
-    }, 300000);
+    }, 500000);
     </script>
        <script>
   //paste this code under head tag or in a seperate js file.

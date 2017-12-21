@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreEventRequest extends FormRequest
+class StoreUpdateEventRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,7 +29,6 @@ class StoreEventRequest extends FormRequest
             'status' => 'required',
             'start' => 'required',
             'end' => 'required',
-            'images' => 'required',
         ];
     }
 
@@ -52,9 +51,6 @@ class StoreEventRequest extends FormRequest
             'start.required' => 'Vui lòng chọn ngày bắt đầu',
 
             'end.required' => 'Vui lòng chọn ngày kết thúc',
-
-            'images.required' => 'Vui lòng cung cấp ảnh',
-            'images.mimes' => 'Ảnh bạn cung cấp không đúng định dạng JPEG, JPG, PNG',
         ];
     }
 }

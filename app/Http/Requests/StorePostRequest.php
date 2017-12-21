@@ -32,7 +32,7 @@ class StorePostRequest extends FormRequest
             'kind' => 'required',
             'method' => 'required',
             'price' => 'required|numeric',
-            'price-rent' => 'numeric',
+            'price-rent' => 'required|numeric',
             'account' => 'required|min:6|max:255',
             'republish' => 'required|numeric',
             'quality' => 'required',
@@ -76,6 +76,7 @@ class StorePostRequest extends FormRequest
             'account.min' => 'Vui lòng kiểm tra lại thông tin, không nhỏ hơn 6 kí tự',
             'account.max' => 'Độ dài tài khoản không quá 255 kí tự',
 
+            'price-rent.required' => 'Vui lòng nhập gía thuê',
             'price-rent.numeric' => 'Gía thuê phải là số',
 
             'republish.required' => 'Vui lòng điền thông tin tái bản',

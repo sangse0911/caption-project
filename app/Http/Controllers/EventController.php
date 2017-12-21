@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEventRequest;
+use App\Http\Requests\StoreUpdateEventRequest;
 use App\Interfaces\EventInterface;
 use App\Interfaces\ImageInterface;
 use Illuminate\Http\Request;
@@ -93,7 +94,7 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreEventRequest $request)
+    public function update(StoreUpdateEventRequest $request)
     {
         if ($request->ajax()) {
 

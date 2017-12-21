@@ -23,13 +23,13 @@
                         <div class="modal-body">
                             <div class="form-group col-md-6 supplier kind-book">
                                 <h6>Loại Sách</h6>
-                                <label class="custom-control custom-radio">
+                                <label class="custom-control custom-radio kind-1">
                                     <input id="radio1" name="kind" value="0" type="radio" class="custom-control-input">
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">Sách Bán</span>
 
                                 </label>
-                                <label class="custom-control custom-radio">
+                                <label class="custom-control custom-radio kind-2">
                                     <input id="radio2" name="kind" value="1" type="radio" class="custom-control-input">
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">Sách Thuê</span>
@@ -117,7 +117,7 @@
                                     <strong id="error-price"></strong>
                                 </span>
                             </div>
-                            <div class="form-group col-md-6 supplier">
+                            <div class="form-group col-md-6 supplier form-rent" style="display: none;">
                                 <h6>Giá thuê</h6>
                                 <input type="text" name="price-rent" class="form-control form-control-success" id="price-rent">
                                 <span class="help-block">
@@ -592,5 +592,14 @@ $('.btn-delete').click(function(e) {
     });
     e.preventDefault();
 });
+$('#radio2').click(function() {
+    $('.form-rent').removeAttr('style');
+    $('#price-rent').val('');
+});
+$('#radio1').click(function() {
+    $('.form-rent').css('display','none');
+    $('#price-rent').val(0);
+});
+
 </script>
 @endsection

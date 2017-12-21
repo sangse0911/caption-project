@@ -32,7 +32,7 @@ class StoreUpdateBookAdminRequest extends FormRequest
             'price' => 'required:numeric',
             'rent' => 'required|numeric',
             'categories' => 'required',
-            'isbn' => 'required|min:10|max:255',
+            'isbn' => 'max:255',
             'republish' => 'required|numeric',
             'location' => 'required',
             'quality' => 'required',
@@ -81,7 +81,7 @@ class StoreUpdateBookAdminRequest extends FormRequest
 
             'quality.required' => 'Vui lòng chọn chất lượng sách',
 
-            'isbn.required' => 'Vui lòng điền isbn của sách',
+            'isbn.max' => 'Độ dài mã số sách không quá 255 kí tự',
 
             // 'image.required' => 'Vui lòng cung cấp ảnh của sách cho chúng tôi',
             // 'image.image' => 'Xin lỗi, ảnh bạn cung cấp không chính xác, vui lòng kiểm tra lại',

@@ -211,8 +211,8 @@
                 $('#title').val(data['title']);
                 $('#description').val(data['description']);
                 $('input[type=radio][name="status"][value='+data['status']+']').prop('checked', true);
-                $('#start-date').val(data['start_date']);
-                $('#end-date').val(data['end_date']);
+                $('#start-date').val(data['start']);
+                $('#end-date').val(data['end']);
 
             },
             error: function(data){
@@ -229,7 +229,8 @@
         var start = $('#start-date').val();
         var end = $('#end-date').val();
         var id = $('#id').val();
-
+        console.log(start);
+        console.log(end);
         $.ajax({
 
             cache: false,
@@ -241,8 +242,8 @@
                 title: title,
                 description: description,
                 status: status,
-                'start-date': start,
-                'end-date': end
+                start: start,
+                end: end
             },
             success: function() {
                 alert('Thay đổi thông tin sự kiện thành công');
@@ -253,8 +254,8 @@
 
                     var errors = data.responseJSON;
 
-                    $('#error-start').text(errors['start_date']);
-                    $('#error-end').text(errors['end_date']);
+                    $('#error-start').text(errors['start']);
+                    $('#error-end').text(errors['end']);
                     $('#error-description').text(errors['description']);
                     $('#error-title').text(errors['title']);
                     $('#error-status').text(errors['status']);

@@ -62,8 +62,8 @@ class EventRepository implements EventInterface
         $event->title = $data['title'];
         $event->description = $data['description'];
         $event->status = $data['status'];
-        $event->start_date = $data['start-date'];
-        $event->end_date = $data['end-date'];
+        $event->start = $data['start'];
+        $event->end = $data['end'];
 
         $images = Input::hasFile('images');
         //save image
@@ -86,8 +86,8 @@ class EventRepository implements EventInterface
         $event->title = $data['title'];
         $event->description = $data['description'];
         $event->status = $data['status'];
-        $event->start_date = $data['start-date'];
-        $event->end_date = $data['end-date'];
+        $event->start = $data['start'];
+        $event->end = $data['end'];
 
         return $event->save();
     }
