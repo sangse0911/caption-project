@@ -24,9 +24,9 @@ class StoreAdminRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|numeric|min:9',
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|numeric|min:10|max:11',
         ];
     }
 
@@ -35,13 +35,16 @@ class StoreAdminRequest extends FormRequest
         return [
 
             'name.required' => 'Vui lòng nhập tên nhân viên',
+            'name.max' => 'Độ dài của tên không quá 255 kí tự',
 
             'email.required' => 'Vui lòng nhập địa chỉ email',
             'email.email' => 'Vui lòng kiểm tra lại, email chưa đúng định dạng',
+            'email.max' => 'Độ dài email không quá 255 kí tự',
 
             'phone.required' => 'Vui lòng nhập số điện thoại',
-            'phone.min' => 'Vui lòng kiểm tra lại, số điện thoại không nhỏ hơn 9 kí tự',
+            'phone.min' => 'Vui lòng kiểm tra lại, số điện thoại không nhỏ hơn 10 kí tự',
             'phone.numeric' => 'Vui lòng kiểm tra lại, số điện thoại chưa chính xác',
+            'phone.max' => 'Độ dài của số điện thoại không quá 11 số',
         ];
     }
 }

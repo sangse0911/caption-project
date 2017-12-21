@@ -24,21 +24,22 @@ class StoreBookRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3',
-            'introduce' => 'required|min:6',
-            'author' => 'required|min:6',
-            'company' => 'required|min:6',
+            'name' => 'required|min:3|max:255',
+            'introduce' => 'required|min:6|max:255',
+            'author' => 'required|min:6|max:255',
+            'company' => 'required|min:6|max:255',
             'year' => 'required',
             'kind' => 'required',
             'method' => 'required',
             'price' => 'required:numeric',
             'price-rent' => 'required|numeric',
-            'account' => 'required|min:6',
+            'account' => 'required|min:6|max:255',
             'categories' => 'required',
-            'isbn' => 'required',
+            'isbn' => 'required|max:255',
             'republish' => 'required|numeric',
-            'location' => 'required',
+            'location' => 'required|max:255',
             'quality' => 'required',
+            'images' => 'required | mimes:jpeg,jpg,png | max:1000',
         ];
     }
 
@@ -84,6 +85,8 @@ class StoreBookRequest extends FormRequest
 
             'isbn.required' => 'Vui lòng điền isbn của sách',
 
+            'images.required' => 'Vui lòng cung cấp ảnh của cuốn sách',
+            'images.mimes' => 'Ảnh bạn chọn phải đúng định dạng JPEG, JPG, PNG',
         ];
     }
 }

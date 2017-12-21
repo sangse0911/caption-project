@@ -24,26 +24,30 @@ class StoreContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone' => 'required|numeric',
-            'email' => 'required|email',
-            'address' => 'required|min:4',
-            'account' => 'required',
+            'phone' => 'required|numeric|min:10|max:11',
+            'email' => 'required|email|max:255',
+            'address' => 'required|min:6|max:255',
+            'account' => 'required|max:255',
         ];
     }
 
     public function messages()
     {
         return [
-            'phone.required' => 'Vui lòng nhập thông tin số điện thoại',
-            'phone.numeric' => 'Số điện thoại phải là số',
+            'phone.required' => 'Vui lòng điền thông tin số điện thoại',
+            'phone.numeric' => 'Vui lòng kiểm tra lại, số điện thoại chưa chính xác',
+            'phone.min' => 'Số điện thoại không nhỏ hơn 10 số',
+            'phone.max' => 'Số điện thoại không quá 11 kí tự',
 
             'email.required' => 'Vui lòng nhập địa chỉ email',
             'email.email' => 'Vui lòng kiểm tra lại, chưa đúng định dạng email',
 
-            'address.required' => 'Vui lòng điền địa chỉ liên hệ',
-            'address.min' => 'Vui lòng kiểm tra lại, địa chỉ không nhỏ hơn 4 kí tự',
+            'address.required' => 'Vui lòng điền thông tin địa chỉ của bạn',
+            'address.min' => 'Vui lòng kiểm tra lại địa chỉ, không nhỏ hơn 6 kí tự',
+            'address.max' => 'Địa chỉ không quá 255 kí tự',
 
             'account.required' => 'Vui lòng nhập thông tin tài khoản ngân hàng',
+            'account.max' => 'Độ dài tài khoản không vượt quá 255 kí tự',
         ];
     }
 }

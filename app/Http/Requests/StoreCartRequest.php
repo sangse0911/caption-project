@@ -24,8 +24,8 @@ class StoreCartRequest extends FormRequest
     public function rules()
     {
         return [
-            'address' => 'required|min:6',
-            'phone' => 'required|numeric|min:9',
+            'address' => 'required|min:6|max:255',
+            'phone' => 'required|numeric|min:10|max:11',
             'method' => 'required',
         ];
     }
@@ -35,10 +35,12 @@ class StoreCartRequest extends FormRequest
         return [
             'address.required' => 'Vui lòng điền thông tin địa chỉ của bạn',
             'address.min' => 'Vui lòng kiểm tra lại địa chỉ, không nhỏ hơn 6 kí tự',
+            'address.max' => 'Địa chỉ không quá 255 kí tự',
 
             'phone.required' => 'Vui lòng điền thông tin số điện thoại',
             'phone.numeric' => 'Vui lòng kiểm tra lại, số điện thoại chưa chính xác',
-            'phone.min' => 'Số điện thoại không nhỏ hơn 9 số',
+            'phone.min' => 'Số điện thoại không nhỏ hơn 10 số',
+            'phone.max' => 'Số điện thoại không quá 11 kí tự',
 
             'method.required' => 'Vui lòng chọn phương thức thanh toán',
         ];

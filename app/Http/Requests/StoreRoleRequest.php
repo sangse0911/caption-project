@@ -24,7 +24,7 @@ class StoreRoleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:4',
+            'name' => 'required|min:4|max:50',
         ];
     }
 
@@ -37,6 +37,7 @@ class StoreRoleRequest extends FormRequest
         return [
             'name.required' => 'Vui lòng điền thông tin quyền',
             'name.min' => 'Vui lòng kiểm tra lại, tên không nhỏ hơn 4 kí tự',
+            'name.max' => 'Độ dài tên không quá 50 kí tự',
         ];
     }
 }

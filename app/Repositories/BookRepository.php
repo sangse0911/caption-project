@@ -50,7 +50,7 @@ class BookRepository implements BookInterface
      */
     public function all()
     {
-        return Book::where('status', '<>', 9)->get();
+        return Book::where('status', '<>', '9')->get();
     }
 
     /**
@@ -78,6 +78,7 @@ class BookRepository implements BookInterface
                     ->where('contracts.status', '=', '0');
             })->take(20)->get();
     }
+
     /**
      * get all sell-book and display in the admin page
      * @return [type] [description]
@@ -130,6 +131,7 @@ class BookRepository implements BookInterface
                     ->where('contracts.status', '0');
             })->take(20)->get();
     }
+
     /**
      * get all rent-book and display in the rent-book page
      * @return [type] [description]
@@ -142,6 +144,7 @@ class BookRepository implements BookInterface
                     ->where('contracts.status', '0');
             })->orderBy('created_at', 'desc')->paginate(15);
     }
+
     /**
      * [getBestSell description]
      * @return [type] [description]

@@ -27,8 +27,9 @@ class StoreEventRequest extends FormRequest
             'title' => 'required|min:6',
             'description' => 'required|min:6',
             'status' => 'required',
-            // 'start_date' => 'required',
-            // 'end_date' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'images' => 'required|mimes:jpeg,jpg,png|max:1000',
         ];
     }
 
@@ -48,9 +49,11 @@ class StoreEventRequest extends FormRequest
 
             'status.required' => 'Vui lòng nhập thông tin trạng thái',
 
-            // 'start_date.required' => 'Vui lòng chọn ngày bắt đầu',
+            'start_date.required' => 'Vui lòng chọn ngày bắt đầu',
 
-            // 'end_date.required' => 'Vui lòng chọn ngày kết thúc',
+            'end_date.required' => 'Vui lòng chọn ngày kết thúc',
+            'images.required' => 'Vui lòng cung cấp ảnh',
+            'images.mimes' => 'Ảnh bạn cung cấp không đúng định dạng JPEG, JPG, PNG',
         ];
     }
 }

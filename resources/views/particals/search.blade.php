@@ -14,9 +14,9 @@
                 <li class="product" v-for="product in products">
                     <div class="product-outer" style="height: 391px;">
                         <div class="product-inner">
-                            <span class="loop-product-categories"><a href="javascript:void(0)" rel="tag">Sách bán</a></span>
+                            <span class="loop-product-categories"><a href="javascript:void(0)" rel="tag"></a></span>
                             <span class="loop-product-categories" style="color: red;">@{{ product.name }}</span>
-                            <a href="javascript:void(0)">
+                            <a data-toggle="modal" href="#myModal" class="book-show" id="book-@{{ product.id }}">
                                 <h3></h3>
                                 <div class="product-thumbnail">
                                     <img src="{{ URL::to('assets/images/product/')}}/@{{ product.images[0].path}}" alt="">
@@ -25,7 +25,7 @@
                             <div class="price-add-to-cart">
                                 <span class="price">
                                 <span class="electro-price">
-                                    <ins><span class="amount">@{{ product.price }}</span></ins>
+                                    <ins><span class="amount">@{{ product.price }} VNĐ</span></ins>
                                 </span>
                                 </span>
                                 <a rel="nofollow" href="javascript:void(0)" data-id="@{{ product.id }}" class="button add_to_cart_button">Thêm vào giỏ</a>
@@ -50,14 +50,15 @@
                 <li class="product list-view" v-for="product in products">
                     <div class="media">
                         <div class="media-left">
-                            <a href="javascript:void(0)">
-                            <img class="wp-post-image" src="{{ URL::to('assets/images/product/')}}/@{{ product.images[0].path}}" alt="">
-                        </a>
+                            <a data-toggle="modal" href="#myModal" class="book-show" id="book-@{{ product.id }}">
+                                <img class="wp-post-image"
+                                src="{{ URL::to('assets/images/product/')}}/@{{ product.images[0].path}}" alt="">
+                            </a>
                         </div>
                         <div class="media-body media-middle">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <span class="loop-product-categories"><a rel="tag" href="javascript:void(0)">Sách bán</a></span><a href="javascript:void(0)"><h3>@{{ product.name }}</h3>
+                                    <span class="loop-product-categories"><a rel="tag" href="javascript:void(0)"></a></span><a href="javascript:void(0)"><h3>@{{ product.name }}</h3>
                                     <div class="product-rating">
                                         <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
                                     </div>
@@ -76,7 +77,7 @@
                                         Trạng thái: <span>Sẵn sàng</span>
                                     </div>
                                     <span class="price">
-                                    <span class="electro-price"><span class="amount">@{{ product.price }}</span></span>
+                                    <span class="electro-price"><span class="amount">@{{ product.price }} VNĐ</span></span>
                                     </span>
                                     <a class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_sku="5487FB8/35" data-id="@{{ product.id }}" data-quantity="1" href="javascript:void(0)" rel="nofollow">Thêm vào giỏ</a>
                                     <div class="hover-area">
@@ -95,20 +96,4 @@
             </ul>
         </div>
     </div>
-    {{-- <div class="shop-control-bar-bottom">
-        <form class="form-electro-wc-ppp">
-            <select class="electro-wc-wppp-select c-select" onchange="this.form.submit()" name="ppp">
-                <option selected="selected" value="15">Show 15</option>
-                <option value="-1">Show All</option>
-            </select>
-        </form>
-        <p class="woocommerce-result-count">Showing 1–15 of 20 results</p>
-        <nav class="woocommerce-pagination">
-            <ul class="page-numbers">
-                <li><span class="page-numbers current">1</span></li>
-                <li><a href="#" class="page-numbers">2</a></li>
-                <li><a href="#" class="next page-numbers">→</a></li>
-            </ul>
-        </nav>
-    </div> --}}
 </div>

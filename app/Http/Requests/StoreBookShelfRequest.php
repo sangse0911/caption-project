@@ -24,7 +24,7 @@ class StoreBookShelfRequest extends FormRequest
     public function rules()
     {
         return [
-            'location' => 'required|min:6',
+            'location' => 'required|min:6|max:255',
         ];
     }
 
@@ -34,6 +34,7 @@ class StoreBookShelfRequest extends FormRequest
 
             'location.required' => 'Vui lòng điền địa điểm gía sách',
             'location.min' => 'Thông tin không đủ 6 kí tự',
+            'location.max' => 'Độ dài không quá 255 kí tự',
         ];
     }
 }

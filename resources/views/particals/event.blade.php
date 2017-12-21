@@ -42,7 +42,7 @@
                                             <span class="value"></span><b>Ngày</b>
                                         </span>
                                         <span class="hours ">
-                                            <span class="value">-</span><b>Giờ</b>
+                                            <span class="value">x</span><b>Giờ</b>
                                         </span>
                                         <span class="minutes">
                                             <span class="value"></span><b>Phút</b>
@@ -60,7 +60,7 @@
                                     var days, hours, minutes, seconds;
 
                                     // get tag element
-                                    var countdown = document.getElementById('deal-countdown');
+                                    var countdown = document.getElementsByClassName('countdown');
 
                                     // update the tag with id "countdown " every 1 second
                                     setInterval(function() {

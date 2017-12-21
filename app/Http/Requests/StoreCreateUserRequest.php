@@ -24,7 +24,7 @@ class StoreCreateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
+            'email' => 'required|email|max:255',
         ];
     }
 
@@ -35,6 +35,7 @@ class StoreCreateUserRequest extends FormRequest
 
             'email.required' => 'Vui lòng nhập email người dùng',
             'email.email' => 'Vui lòng kiểm tra lại, email của bạn chưa chính xác',
+            'email.max' => 'Độ dài email không quá 255 kí tự',
         ];
     }
 }

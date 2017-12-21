@@ -313,7 +313,7 @@
     <script type="text/javascript" src="{{ URL::to('js/admin/jquery-1.12.3.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/admin/tether.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/admin/bootstrap.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+    <script src="{{ URL::to('js/admin/moment.min.js') }}"></script>
     <script src="{{ URL::to('js/bootstrap-datetimepicker.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/admin/detectmobilebrowser.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/admin/jquery.mousewheel.js') }}"></script>

@@ -24,7 +24,7 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:6',
+            'name' => 'required|min:6|max:255',
         ];
     }
 
@@ -33,6 +33,7 @@ class StoreCategoryRequest extends FormRequest
         return [
             'name.required' => 'Vui lòng điền thông tin thể loại sách',
             'name.min' => 'Vui lòng kiểm tra lại, tên không nhỏ hơn 6 kí tự',
+            'name.max' => 'Độ dài không quá 255 kí tự',
         ];
     }
 }

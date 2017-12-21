@@ -24,8 +24,8 @@ class StoreUserLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required|min:3',
+            'email' => 'required|email|max:255',
+            'password' => 'required|min:6',
         ];
     }
 
@@ -35,8 +35,11 @@ class StoreUserLoginRequest extends FormRequest
 
             'email.required' => 'Vui lòng nhập địa chỉ email',
             'email.email' => 'Bạn vừa nhập không phải email',
+            'email.max' => 'Độ dài địa chỉ email không quá 255 kí tự',
+
             'password.required' => 'Vui lòng nhập mật khẩu',
-            'password.min' => 'Vui lòng kiểm tra lại mật khẩu',
+            'password.min' => 'Vui lòng kiểm tra lại mật khẩu, không nhỏ hơn 6 kí tự',
+
             'failed' => 'Tài khoản không hợp lệ, vui lòng kiểm tra lại',
         ];
     }

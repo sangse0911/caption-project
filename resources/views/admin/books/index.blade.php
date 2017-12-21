@@ -189,22 +189,7 @@
                             </div>
                             <div class="form-group col-md-12 image-area">
                                 <h6>Hình Ảnh</h6>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <input type="file" id="" class="dropify" name="images[]" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="file" id="" class="dropify" name="images[]" />
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 30px;">
-                                    <div class="col-md-6">
-                                        <input type="file" id="" class="dropify" name="images[]" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="file" id="" class="dropify" name="images[]" />
-                                    </div>
-                                </div>
+                                <input type="file" id="" class="dropify" name="images[]" />
                             </div>
                         </div>
                         <div style="clear: both;"></div>
