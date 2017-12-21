@@ -25,6 +25,7 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             'name' => 'required|min:6|max:255',
+            'images' => 'required',
         ];
     }
 
@@ -34,6 +35,9 @@ class StoreCategoryRequest extends FormRequest
             'name.required' => 'Vui lòng điền thông tin thể loại sách',
             'name.min' => 'Vui lòng kiểm tra lại, tên không nhỏ hơn 6 kí tự',
             'name.max' => 'Độ dài không quá 255 kí tự',
+
+            'images.required' => 'Vui lòng nhập ảnh',
+            'images.mimes' => 'Vui lòng kiểm tra lại ảnh, chấp nhận định dạng JPEG ,JPG, PNG',
         ];
     }
 }

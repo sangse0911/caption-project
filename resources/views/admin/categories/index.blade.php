@@ -66,6 +66,9 @@
                             </div>
                             <div class="form-group image">
                                 <input type="file" class="dropify" name="images[]" id="image" multiple="multiple">
+                                <span class="help-block">
+                                    <strong id="error-image"></strong>
+                                </span>
                             </div>
                         </div>
 
@@ -196,6 +199,7 @@
                 if(data.status === 422) {
                     var errors = data.responseJSON;
                     $('#error-name').text(errors['name']);
+                    $('#error-image').text(errors['images']);
                 }
             }
         });

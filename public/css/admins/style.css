@@ -256,7 +256,9 @@ a:focus {
 }
 
 
-
+.help-block {
+    color: red !important;
+}
 
 
 /**

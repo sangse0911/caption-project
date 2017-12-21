@@ -1,7 +1,6 @@
 <div class="product" id="single-product">
     <div class="single-product-wrapper">
         <div class="product-images-wrapper">
-            <span class="onsale">Cũ</span>
             <div class="images electro-gallery">
                 <div class="thumbnails-single owl-carousel owl-loaded owl-drag">
                     <div class="owl-stage-outer">
@@ -20,7 +19,6 @@
                         <div class="owl-stage">
                             <div class="owl-item active synced" style="width: 87.6px; margin-right: 8px;">
                                 <a href="assets/images/single-product/single-thumb1.jpg" class="first" title="">
-                                    {{-- <img src="assets/images/single-product/single-thumb1.jpg" class="wp-post-image" alt=""> --}}
                                 </a>
                             </div>
                         </div>
@@ -34,20 +32,7 @@
         <div class="summary entry-summary">
             <div class="summary entry-summary">
                 <h1 itemprop="name" class="product_title entry-title" id="book-name"></h1>
-                <div class="woocommerce-product-rating">
-                    <div class="star-rating" title="Rated 4.33 out of 5">
-                        <span style="width:86.6%">
-                  <strong itemprop="ratingValue" class="rating">4.33</strong>
-                  out of <span itemprop="bestRating">5</span> based on
-                        <span itemprop="ratingCount" class="rating">3</span> customer ratings
-                        </span>
-                    </div>
-                    <a href="#reviews" class="woocommerce-review-link">
-               (<span itemprop="reviewCount" class="count">3</span> Đánh Giá)
-             </a>
-                </div>
-                <!-- .woocommerce-product-rating -->
-                <!-- .brand -->
+
                 <div class="availability in-stock">
                     Tác Giả: <span class="book-author"></span>
                 </div>
@@ -67,9 +52,13 @@
                 </div>
                 <!-- .description -->
                 <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                    <p class="price"><span class="electro-price"><ins>Giá Bán: <span class="amount" id="book-price"></span></ins>
-                        <br>
-                        <del>Giá Bìa: <span class="amount">120.000 VNĐ</span></del>
+                    <p class="price">
+                        <span class="electro-price">
+                            <ins>Giá Bán:
+                                <span class="amount" id="book-price">
+
+                                </span>
+                            </ins>
                         </span>
                     </p>
                     <meta itemprop="price" content="1215" />
@@ -143,7 +132,7 @@
                                 <td id="book-company"></td>
                             </tr>
                             <tr>
-                                <td>ISBN/ISSN</td>
+                                <td>ISBN</td>
                                 <td id="book-isbn"></td>
                             </tr>
                         </tbody>

@@ -29,7 +29,7 @@ class StoreEventRequest extends FormRequest
             'status' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
-            'images' => 'required|mimes:jpeg,jpg,png|max:1000',
+            'images' => 'required',
         ];
     }
 
