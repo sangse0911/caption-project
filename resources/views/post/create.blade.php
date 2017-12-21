@@ -155,11 +155,12 @@ $('#year').datetimepicker({
 
 $('#2').click(function(e) {
     $('.price-rent').removeAttr('style');
-    $('#price-rent').val(parseInt(0));
+    $('#price-rent').val('');
 });
 
 $('#1').click(function() {
     $('.price-rent').css('display','none');
+    $('#price-rent').val(parseInt(0));
 });
 
 $('#3').click(function() {
@@ -174,6 +175,7 @@ $('#4').click(function() {
 
 $('#5').click(function() {
     $('.account').removeAttr('style');
+    $('#account').val('');
 });
 
 $('#post-create').click(function(e) {

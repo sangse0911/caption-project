@@ -36,7 +36,7 @@
                                 <div class="deal-countdown-timer" style="margin-top: 70px;margin-left: 0px;">
                                     <div class="marketing-text text-xs-center">
                                         Sự kiện kết thúc trong: </div>
-                                    <span id="deal-end-date-{{ $event->id }}" class="deal-end-date" style="display:none;">{{ $event->end_date }}</span>
+                                    <span id="deal-end-date-{{ $event->id }}" class="deal-end-date" style="display:none;">{{ $event->end }}</span>
                                     <div id="deal-countdown-{{ $event->id }}" class="countdown" style="margin-left: 0px; ">
                                         <span style="padding-left: 0px;" data-value="" class="days">
                                             <span class="value"></span><b>Ngày</b>
