@@ -115,9 +115,9 @@
                         </ul>
                     </li>
                     <li class="with-sub">
-                        <a href="#" class="waves-effect  waves-light">
+                        <a href="#" class="waves-effect waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
-                            <span class="tag tag-danger">10</span>
+                            <span class="tag tag-danger" id="order-tag"></span>
                             <span class="s-icon"><i class="fa fa-cart-arrow-down"></i></span>
                             <span class="s-text">Đơn Hàng</span>
                         </a>
@@ -375,13 +375,27 @@
             data: {},
             success: function(data)
             {
-                $('div.site-content').html(data.html)
+                $('div.site-content').html(data.html);
             },
             error: function (res) {
                 console.log(res);
             }
         });
-    })
+    });
+
+    setInterval(function() {
+        $.ajax({
+            cache: false,
+            method: 'GET',
+            url: '/newOrder',
+            success: function(data) {
+                $('#order-tag').text(data);
+            },
+            error: function(data) {
+                console.log('ee');
+            }
+        })
+    }, 300000);
     </script>
        <script>
   //paste this code under head tag or in a seperate js file.

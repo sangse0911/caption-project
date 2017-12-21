@@ -35,7 +35,7 @@ class StoreSaleRequest extends FormRequest
             'account' => 'required|min:6|max:255',
             'republish' => 'required|numeric',
             'quality' => 'required',
-            'phone' => 'required|numeric|min:10|max:11',
+            'phone' => 'required|min:10|max:11|numeric',
             'address' => 'required|min:8|max:255',
             'images' => 'required|mimes:jpeg,jpg,png|max:1000',
         ];

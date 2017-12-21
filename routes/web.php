@@ -173,6 +173,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::put('/event/update', ['as' => 'event.update', 'uses' => 'EventController@update']);
     Route::get('/event/{id}', ['as' => 'event.show', 'uses' => 'EventController@show']);
 
+    Route::get('/newOrder', 'OrderController@getNewOrder')->name('get.new.order');
     /**
      *
      */

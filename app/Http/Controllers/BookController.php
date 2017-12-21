@@ -112,11 +112,16 @@ class BookController extends Controller
         return view('admin.posts.index', compact('books'));
     }
 
+    /**
+     * [getAllSellBook description]
+     * @return [type] [description]
+     */
     public function getAllSellBook()
     {
         $books = $this->bookRepository->getSupplierBook();
         return view('admin.posts.sell-book', compact('books'));
     }
+
     /**
      * Show the form for creating a new resource.
      *

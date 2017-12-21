@@ -115,4 +115,15 @@ class OrderRepository implements OrderInterface
         $order->status = $data['status'];
         return $order->save();
     }
+
+    /**
+     * [getNewOrder description]
+     * @return [type] [description]
+     */
+    public function getNewOrder()
+    {
+        $orders = Order::where('status', '0')->count();
+
+        return $orders;
+    }
 }

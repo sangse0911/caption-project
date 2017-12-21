@@ -36,13 +36,13 @@
                                 <div class="deal-countdown-timer" style="margin-top: 70px;margin-left: 0px;">
                                     <div class="marketing-text text-xs-center">
                                         Sự kiện kết thúc trong: </div>
-                                    <span class="deal-end-date" style="display:none;">{{ $event->end_date }}</span>
-                                    <div id="deal-countdown" class="countdown" style="margin-left: 0px; ">
+                                    <span id="deal-end-date-{{ $event->id }}" class="deal-end-date" style="display:none;">{{ $event->end_date }}</span>
+                                    <div id="deal-countdown-{{ $event->id }}" class="countdown" style="margin-left: 0px; ">
                                         <span style="padding-left: 0px;" data-value="" class="days">
                                             <span class="value"></span><b>Ngày</b>
                                         </span>
                                         <span class="hours ">
-                                            <span class="value">x</span><b>Giờ</b>
+                                            <span class="value"></span><b>Giờ</b>
                                         </span>
                                         <span class="minutes">
                                             <span class="value"></span><b>Phút</b>
@@ -52,38 +52,43 @@
                                         </span>
                                     </div>
                                     <script>
-                                    // set the date we're counting down to
-                                    var deal_end_date = document.querySelector(".deal-end-date ").textContent;
-                                    var target_date = new Date(deal_end_date).getTime();
+                                    (function() {
+                                        // set the date we're counting down to
+                                        var id = "{{ $event->id }}";
 
-                                    // variables for time units
-                                    var days, hours, minutes, seconds;
+                                        var deal_end_date = document.getElementById("deal-end-date-"+ id).textContent;
+                                        var target_date = new Date(deal_end_date).getTime();
 
-                                    // get tag element
-                                    var countdown = document.getElementsByClassName('countdown');
+                                        // variables for time units
+                                        var days, hours, minutes, seconds;
 
-                                    // update the tag with id "countdown " every 1 second
-                                    setInterval(function() {
+                                        // get tag element
+                                        console.log(id);
+                                        var countdown = document.getElementById('deal-countdown-' + id);
 
-                                        // find the amount of "seconds " between now and target
-                                        var current_date = new Date().getTime();
-                                        var seconds_left = (target_date - current_date) / 1000;
+                                        // update the tag with id "countdown " every 1 second
+                                        setInterval(function() {
 
-                                        // do some time calculations
-                                        days = parseInt(seconds_left / 86400);
-                                        seconds_left = seconds_left % 86400;
+                                            // find the amount of "seconds " between now and target
+                                            var current_date = new Date().getTime();
+                                            var seconds_left = (target_date - current_date) / 1000;
 
-                                        hours = parseInt(seconds_left / 3600);
-                                        seconds_left = seconds_left % 3600;
+                                            // do some time calculations
+                                            days = parseInt(seconds_left / 86400);
+                                            seconds_left = seconds_left % 86400;
 
-                                        minutes = parseInt(seconds_left / 60);
-                                        seconds = parseInt(seconds_left % 60);
+                                            hours = parseInt(seconds_left / 3600);
+                                            seconds_left = seconds_left % 3600;
 
-                                        // format countdown string + set tag value
-                                        countdown.innerHTML = '<span data-value=" ' + days + ' " class="days "><span class="value ">' + days + '</span><b>Ngày</b></span><span class="hours "><span class="value ">' + hours + '</span><b>Giờ</b></span><span class="minutes "><span class="value ">' +
-                                            minutes + '</span><b>Phút</b></span><span class="seconds "><span class="value ">' + seconds + '</span><b>Giây</b></span>';
+                                            minutes = parseInt(seconds_left / 60);
+                                            seconds = parseInt(seconds_left % 60);
 
-                                    }, 1000);
+                                            // format countdown string + set tag value
+                                            countdown.innerHTML = '<span data-value=" ' + days + ' " class="days "><span class="value ">' + days + '</span><b>Ngày</b></span><span class="hours "><span class="value ">' + hours + '</span><b>Giờ</b></span><span class="minutes "><span class="value ">' +
+                                                minutes + '</span><b>Phút</b></span><span class="seconds "><span class="value ">' + seconds + '</span><b>Giây</b></span>';
+
+                                        }, 1000);
+                                    })();
                                     </script>
                                 </div>
                             </div>

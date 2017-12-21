@@ -115,7 +115,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-left">
                                 <div class="check-products">
-                                    <div class="fb-comments" data-width="800" data-numposts="5"></div>
+                                    <div class="fb-comments" data-numposts="1"></div>
                                 </div>
                             </div>
                         </div>
@@ -163,31 +163,31 @@
                                         <div class="star-rating" title="Rated 5 out of 5">
                                             <span style="width:100%"></span>
                                         </div>
-                                        <div class="rating-count">1</div>
+                                        <div id="rating-5" class="rating-count">0</div>
                                     </div>
                                     <div class="rating-bar">
                                         <div class="star-rating" title="Rated 4 out of 5">
-                                            <span style="width:80%"></span>
+                                            <span  style="width:80%"></span>
                                         </div>
-                                        <div class="rating-count">0</div>
+                                        <div id="rating-4" class="rating-count">0</div>
                                     </div>
                                     <div class="rating-bar">
                                         <div class="star-rating" title="Rated 3 out of 5">
-                                            <span style="width:60%"></span>
+                                            <span  style="width:60%"></span>
                                         </div>
-                                        <div class="rating-count zero">0</div>
+                                        <div id="rating-3" class="rating-count zero">0</div>
                                     </div>
                                     <div class="rating-bar">
                                         <div class="star-rating" title="Rated 2 out of 5">
-                                            <span style="width:40%"></span>
+                                            <span  style="width:40%"></span>
                                         </div>
-                                        <div class="rating-count zero">0</div>
+                                        <div id="rating-2" class="rating-count zero">0</div>
                                     </div>
                                     <div class="rating-bar">
                                         <div class="star-rating" title="Rated 1 out of 5">
                                             <span style="width:20%"></span>
                                         </div>
-                                        <div class="rating-count zero">0</div>
+                                        <div id="rating-1" class="rating-count zero">0</div>
                                     </div>
                                 </div>
                             </div>
@@ -258,16 +258,7 @@
                 </div>
             </div>
         </div>
-        <div id="fb-root"></div>
-            <script>(function(d, s, id) {
-                  var js, fjs = d.getElementsByTagName(s)[0];
-                  if (d.getElementById(id)) return;
-                  js = d.createElement(s); js.id = id;
-                  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.11&appId=251903588593570';
-                  fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-            </script>
-        </div>
+
 </div>
 @push('scripts')
 <script>

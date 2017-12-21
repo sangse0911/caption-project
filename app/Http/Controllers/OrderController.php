@@ -37,6 +37,13 @@ class OrderController extends Controller
         return view('admin.orders.order-buy', compact('orders'));
     }
 
+    public function getNewOrder(Request $request)
+    {
+        if ($request->ajax()) {
+
+            return response()->json($this->orderRepository->getNewOrder(), 200);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
