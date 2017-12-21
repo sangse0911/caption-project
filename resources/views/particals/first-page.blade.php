@@ -113,63 +113,6 @@
 </script>
 <script>
 
-    $('.book-show').on('click', function(e) {
-        var book_id = e.currentTarget.id.substring(5);
-        $.ajax({
-            cache: false,
-            method: 'GET',
-            dataType: 'JSON',
-            url: '/book/' + book_id,
-            success: function(data) {
-
-                $('a[href="#tab-description"]').click();
-                $('#book-rate').val(data['book']['id']);
-                $('#book-name').text(data['book']['name']);
-                $('#book-status').text(data['book']['status']);
-                $('#book-company').text(data['book']['company']);
-                $('#book-year').text(data['book']['year']);
-                $('#book-republish').text(data['book']['republish']);
-                $('.book-author').text(data['book']['author']);
-                $('#book-price').text('Gía: ' + data['book']['price'] + ' VND');
-                $('#book-introduce').text(data['book']['introduce']);
-                $('#book-description').text(data['book']['description']);
-                $('#image-book').attr('src','{{ URL::to('assets/images/product/') }}' + '/' + data['images'][0]['path']);
-                $('.fb-comments').attr('data-href',"htttp://54.88.16.179/book/"+ book_id );
-                FB.XFBML.parse($('.fb-comments'));
-                $('.modal-footer').css('display','none');
-                $('#book-isbn').text(data['book']['isbn']);
-                $('.add_to_wishlist').attr('id','book-'+ book_id);
-                $('.my-rating-9').starRating('setRating',0);
-                $('.live-rating').text('');
-                $('#comment').val('');
-
-                var count = 0;
-                var avg = 0;
-                var sum = 0;
-                for (var rating = 1; rating <= 5; ++rating) {
-                    $('#rating-'+ rating).text('0');
-                }
-                for(var i = 0; i< data['rates'].length; i++) {
-                    count++;
-                    sum += parseInt(data['rates'][i]['rate']);
-                    var currentNumber = parseInt($('#rating-'+ data['rates'][i]['rate']).text());
-                    $('#rating-'+ data['rates'][i]['rate']).text(currentNumber + 1);
-                }
-                if(count == 0){
-                    avg = 0;
-                } else {
-                    avg = sum/count;
-                }
-                console.log(count);
-                console.log(sum);
-                $('.based-title').text('Dựa trên ' + count + ' đánh gía');
-                $('.avg-rating-number').text(avg);
-            },
-            error: function(data) {
-            }
-        });
-        e.preventDefault();
-    });
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
