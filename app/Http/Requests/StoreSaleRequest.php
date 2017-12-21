@@ -35,7 +35,7 @@ class StoreSaleRequest extends FormRequest
             'account' => 'required|min:6|max:255',
             'republish' => 'required|numeric',
             'quality' => 'required',
-            'phone' => 'required|min:10|max:11|numeric',
+            'phone' => 'required|numeric',
             'address' => 'required|min:8|max:255',
             'images' => 'required|mimes:jpeg,jpg,png|max:1000',
         ];
@@ -93,8 +93,6 @@ class StoreSaleRequest extends FormRequest
 
             'phone.required' => 'Vui lòng điền thông tin điện thoại',
             'phone.numeric' => 'Số điện thoại phải là số',
-            'phone.min' => 'Số điện thoại không nhỏ hơn 10 kí tự',
-            'phone.max' => 'Số điện thoại không lớn hơn 11 kí tự',
 
             'address.required' => 'Vui lòng điền thông tin địa chỉ của bạn',
             'address.min' => 'Địa chỉ không nhỏ hơn 8 kí tự',

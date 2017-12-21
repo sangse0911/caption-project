@@ -24,7 +24,7 @@ class StoreContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone' => 'required|numeric|min:10|max:11',
+            'phone' => 'required|numeric',
             'email' => 'required|email|max:255',
             'address' => 'required|min:6|max:255',
             'account' => 'required|max:255',
@@ -36,8 +36,6 @@ class StoreContactRequest extends FormRequest
         return [
             'phone.required' => 'Vui lòng điền thông tin số điện thoại',
             'phone.numeric' => 'Vui lòng kiểm tra lại, số điện thoại chưa chính xác',
-            'phone.min' => 'Số điện thoại không nhỏ hơn 10 số',
-            'phone.max' => 'Số điện thoại không quá 11 kí tự',
 
             'email.required' => 'Vui lòng nhập địa chỉ email',
             'email.email' => 'Vui lòng kiểm tra lại, chưa đúng định dạng email',

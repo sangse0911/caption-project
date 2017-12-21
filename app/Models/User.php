@@ -80,11 +80,6 @@ class User extends Authenticatable
         return $this->hasMany(\App\Models\Rate::class);
     }
 
-    public function renters()
-    {
-        return $this->hasMany(\App\Models\Renter::class);
-    }
-
     public function reviews()
     {
         return $this->hasMany(\App\Models\Review::class);

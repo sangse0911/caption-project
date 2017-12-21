@@ -39,7 +39,7 @@ class StoreBookRequest extends FormRequest
             'republish' => 'required|numeric',
             'location' => 'required|max:255',
             'quality' => 'required',
-            'images' => 'required | mimes:jpeg,jpg,png | max:1000',
+            'images' => 'required|mimes:jpeg,jpg,png|max:1000',
         ];
     }
 

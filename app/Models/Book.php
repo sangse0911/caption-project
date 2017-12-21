@@ -129,11 +129,6 @@ class Book extends Model
         return $this->hasMany(\App\Models\DetailOrder::class);
     }
 
-    public function detailRenters()
-    {
-        return $this->hasMany(\App\Models\DetailRenter::class);
-    }
-
     public function rates()
     {
         return $this->hasMany(\App\Models\Rate::class);
