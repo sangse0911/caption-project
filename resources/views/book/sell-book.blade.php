@@ -58,9 +58,7 @@
                         <a data-toggle="modal" href="#myModal" class="book-show" data-id="{{ $book->id }}">
                             <h3></h3>
                         {{-- <span class="loop-product-categories"><a href="javascript:void(0)" rel="tag">Sách bán</a></span> --}}
-                        <span class="loop-product-categories"><i class="fa fa-tags" aria-hidden="true"></i>
-                                            Cũ
-                                        </span>
+
                         <a href="javascript:void(0)">
                             <h3>{{ $book->name }}</h3>
                             <div class="product-thumbnail">

@@ -19,6 +19,9 @@
                 <div class="product">
                     <div class="product-outer" style="height: 360px;">
                         <div class="product-inner" style="height: 360px;">
+                              <span class="loop-product-categories"><i class="fa fa-tags" aria-hidden="true"></i>
+
+                                </span>
                             <a data-toggle="modal" href="#myModal" class="book-show" id="book-{{ $book->id}}">
                                 <h3 class="product-name">{{ $book->name }}</h3>
                                 <div class="product-thumbnail">
