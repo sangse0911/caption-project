@@ -472,7 +472,7 @@
                 $('#book-introduce').text(data['book']['introduce']);
                 $('#book-description').text(data['book']['description']);
                 $('#image-book').attr('src','{{ URL::to('assets/images/product/') }}' + '/' + data['images'][0]['path']);
-                $('.fb-comments').attr('data-href',"htttp://54.88.16.179/book/"+ book_id );
+                $('.fb-comments').attr('data-href',"http://54.88.16.179/book/"+ book_id );
                 FB.XFBML.parse();
                 $('.modal-footer').css('display','none');
                 $('#book-isbn').text(data['book']['isbn']);
