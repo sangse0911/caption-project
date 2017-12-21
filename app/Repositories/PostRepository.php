@@ -116,4 +116,18 @@ class PostRepository implements PostInterface
         }
         return $post;
     }
+
+    /**
+     * [modified description]
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public function modified($data)
+    {
+        $book = Book::find($data['id']);
+
+        $book->status = $data['status'];
+
+        return $book->save();
+    }
 }

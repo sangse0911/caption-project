@@ -203,6 +203,7 @@ class BookRepository implements BookInterface
     public function getAllPost()
     {
         return Book::with('images')
+            ->where('status', '<>', '9')
             ->whereHas('contracts', function ($query) {
                 $query->where('contracts.status', '1');
             })->orderBy('created_at', 'desc')->get();

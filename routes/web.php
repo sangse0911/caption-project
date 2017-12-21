@@ -164,6 +164,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/book/storeIfOwned', 'BookController@storeIfOwned')->name('book.own.store');
     Route::put('/book/update', 'BookController@update')->name('book.update');
     Route::put('/book/delete', 'BookController@destroy')->name('book.delete');
+    Route::put('/book/updatePost', 'PostController@update')->name('admin.update.post');
     /**
      *
      */

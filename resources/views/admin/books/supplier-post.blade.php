@@ -109,13 +109,6 @@
                                 </span>
                             </div>
                             <div class="form-group col-md-6 supplier">
-                                <h6>ISBN</h6>
-                                <input type="text" name="isbn" class="form-control" id="isbn" placeholder="Mã số sách">
-                                <span class="help-block">
-                                    <strong id="error-isbn"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
                                 <h6>Tái Bản Lần Thứ</h6>
                                 <input type="text" name="republish" class="form-control" id="republish" placeholder="Tái bản lần thứ">
                                 <span class="help-block">
@@ -161,8 +154,8 @@
                         </div>
                         <div style="clear: both;"></div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="create-book">Thêm mới</button>
-                            <button type="button" class="btn btn-success" id="book-update" style="display: none;">Lưu</button>
+
+                            <button type="button" class="btn btn-success" id="post-update">Lưu</button>
                             <button type="button" class="btn btn-danger " data-dismiss="modal">Đóng</button>
                         </div>
                     </div>
@@ -471,7 +464,7 @@ $('.btn-update').on('click', function(e) {
         }
     });
 });
-$('#book-update').click(function(evt) {
+$('#post-update').click(function(evt) {
 
     $('#error-name').text("");
     $('#error-introduce').text("");
@@ -490,43 +483,43 @@ $('#book-update').click(function(evt) {
     $('#error-isbn').text("");
 
     var id = $('#id').val();
-    var name = $('#name').val();
-    var categories = $('#category').val();
-    var description = CKEDITOR.instances['description'].getData();
-    var introduce = $('#introduce').val();
-    var location = $('#location').val();
-    var price = $('#price').val();
-    var author = $('#author').val();
+    // var name = $('#name').val();
+    // var categories = $('#category').val();
+    // var description = CKEDITOR.instances['description'].getData();
+    // var introduce = $('#introduce').val();
+    // var location = $('#location').val();
+    // var price = $('#price').val();
+    // var author = $('#author').val();
     var status = $('input[name=status]:checked').val();
-    var company = $('#company').val();
-    var year = $('#year').val();
-    var republish = $('#republish').val();
-    var isbn = $('#isbn').val();
-    var rent = $('#price-rent').val();
-    var quality = $('#quality').val();
+    // var company = $('#company').val();
+    // var year = $('#year').val();
+    // var republish = $('#republish').val();
+    // var isbn = $('#isbn').val();
+    // var rent = $('#price-rent').val();
+    // var quality = $('#quality').val();
 
     $.ajax({
 
         cache: false,
         method: 'PUT',
         dataType: 'JSON',
-        url: '/book/update',
+        url: '/book/updatePost',
         data: {
             id: id,
-            name: name,
-            categories: categories,
+            // name: name,
+            // categories: categories,
             status: status,
-            description: description,
-            introduce: introduce,
-            location: location,
-            price: price,
-            author: author,
-            company: company,
-            year: year,
-            republish: republish,
-            isbn: isbn,
-            rent: rent,
-            quality: quality
+            // description: description,
+            // introduce: introduce,
+            // location: location,
+            // price: price,
+            // author: author,
+            // company: company,
+            // year: year,
+            // republish: republish,
+            // isbn: isbn,
+            // rent: rent,
+            // quality: quality
         },
         success: function(data) {
             alert("Cập nhật thành công thông tin sách");

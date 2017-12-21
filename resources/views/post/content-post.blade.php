@@ -86,17 +86,7 @@
                                     <strong id="error-company"></strong>
                                 </span>
                             </div>
-                            <div class="form-group col-md-6 supplier">
-                                <h6>Thể Loại</h6>
-                                <select id="category" multiple="multiple" name="categories[]" class="category" style="width: 100%;">
-                                    @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="help-block">
-                                    <strong id="error-category"></strong>
-                                </span>
-                            </div>
+
                             <div class="form-group col-md-6 supplier">
                                 <h6>Năm Xuất Bản</h6>
                                 <input type="text" name="year" class="form-control" id="year" placeholder="Nhập Năm Xuất Bản">
@@ -119,13 +109,6 @@
                                 </span>
                             </div>
                             <div class="form-group col-md-6 supplier">
-                                <h6>ISBN</h6>
-                                <input type="text" name="isbn" class="form-control" id="isbn" placeholder="Mã số sách">
-                                <span class="help-block">
-                                    <strong id="error-isbn"></strong>
-                                </span>
-                            </div>
-                            <div class="form-group col-md-6 supplier">
                                 <h6>Tái Bản Lần Thứ</h6>
                                 <input type="text" name="republish" class="form-control" id="republish" placeholder="Tái bản lần thứ">
                                 <span class="help-block">
@@ -145,18 +128,11 @@
                             <div class="form-group col-sm-6 form-status">
                                 <h6>Cập nhật trạng thái</h6><br/>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="0">Không sẵn sàng</label>
+                                    <input type="radio" name="status" value="1">Phê duyệt</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="1">Sẵn sàng</label>
+                                    <input type="radio" name="status" value="3">Từ chối</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="2">Đang </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="status" value="3">Đã bán</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="status" value="4">Đã cho thuê</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="status" value="5">Đã trả lại</label>
-
+                                    <input type="radio" name="status" value="4">Mới</label>
                                 <span class="help-block">
                                     <strong id="error-status"></strong>
                                 </span>
@@ -175,8 +151,8 @@
                         </div>
                         <div style="clear: both;"></div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-info btn-default b-a-0 waves-effect waves-light" id="create-book">Thêm mới</button>
-                            <button type="button" class="btn btn-success" id="book-update" style="display: none;">Lưu</button>
+
+                            <button type="button" class="btn btn-success" id="post-update">Lưu</button>
                             <button type="button" class="btn btn-danger " data-dismiss="modal">Đóng</button>
                         </div>
                     </div>
@@ -190,8 +166,8 @@
                         <th>ID</th>
                         <th>Tên</th>
                         <th>Tác gỉa</th>
-                        <th>Năm xuất bản</th>
-                        <th>Xuất bản lần thứ</th>
+                        <th>Trạng thái</th>
+                        <th>Tái bản lần thứ</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
@@ -201,18 +177,35 @@
                         <td>{{ $book->id }}</td>
                         <td>{{ $book->name }}</td>
                         <td>{{ $book->author }}</td>
-                        <td>{{ $book->year }}</td>
+                        <td>
+
+                            @php
+                                switch ($book->status) {
+                                    case '1':
+                                        echo 'Phê duyệt';
+                                        break;
+                                    case '3':
+                                        echo 'Từ chối';
+                                        break;
+                                    case '4':
+                                        echo 'Mới';
+                                           break;
+                                    default:
+                                        # code...
+                                        break;
+                                }
+
+                            @endphp
+
+                        </td>
                         <td>{{ $book->republish }}</td>
                         <td align="center">
-                            <button id="{{ $book->id }}" data-id="{{ $book->id }}" type="button" class="btn btn-warning btn-view btn-sm label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
-                                <span class="btn-label"><i class="fa fa-eye" ></i></span> Xem
-                            </button>
-                            &nbsp
+
                             <button type="button" id="update-{{ $book->id }}" data-id="{{ $book->id }}" class="btn btn-success btn-sm btn-update label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
                                 <span class="btn-label"><i class="fa fa-edit"></i></span> Sửa
                             </button>
                             &nbsp
-                            <button id="view-{{ $book->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
+                            <button data-id="{{ $book->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light btn-delete" >
                                 <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span> Xóa
                             </button>
                         </td>
@@ -242,69 +235,7 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $('.btn-view').click(function(e) {
-        $('.image-area').css("display", "none");
-        $('#book-update').removeAttr("style");
-        $('#create-book').css("display", "none");
-        $('.form-status').removeAttr("style");
 
-        $('.modal-title').text('Thông tin sách');
-        $('.bank-account').css("display", "none");
-        $('.method-pay').css("display", "none");
-        $('.kind-book').css("display", "none");
-        $('.modal-footer').css('display', 'none');
-        $('#error-name').text("");
-        $('#error-introduce').text("");
-        $('#error-description').text("");
-        $('#error-price').text("");
-        $('#error-price-rent').text("");
-        $('#error-author').text("");
-        $('#error-company').text("");
-        $('#error-year').text("");
-        $('#error-kind').text("");
-        $('#error-method').text("");
-        $('#error-account').text("");
-        $('#error-category').text("");
-        $('#error-quality').text("");
-        $('#error-republish').text("");
-        $('#error-location').text("");
-        $('#error-isbn').text("");
-
-        var book_id = $(this).data('id');
-        var array = [];
-
-        $.ajax({
-            cache: false,
-            method: 'GET',
-            dataType: 'JSON',
-            url: '/admin/books/' + book_id,
-            success: function(data) {
-                $('#name').val(data['book']['name']).prop("readonly",true);
-                for (var i = 0; i < data['categories'].length; i++) {
-                    array.push(data['categories'][i]['category_id']);
-                }
-
-                $('#id').prop("readonly",true).val(data['book']['id']);
-                $('#category').val(array).trigger('change').prop("readonly",true);
-                $('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
-                $('#introduce').val(data['book']['introduce']).prop("readonly",true);
-                $('#location').val(data['book']['bookshelf_id']).trigger('change');
-                $('#quality').val(data['details'][0]['quality']).trigger('change');
-                $('#price').val(data['book']['price']).prop("readonly",true);
-                $('#price-rent').val(data['book']['rental_fee']).prop("readonly",true);
-                $('#author').val(data['book']['author']).prop("readonly",true);
-                $('input[type=radio][name="status"][value=' + data['book']['status'] + ']').prop('checked', true);
-                $('input[type=radio][name="status"]').prop('disabled', true);
-                $('#company').val(data['book']['company']).prop("readonly",true);
-                $('#year').val(data['book']['year']).prop("readonly",true);
-                $('#republish').val(data['book']['republish']).prop("readonly",true);
-                $('#isbn').val(data['book']['isbn']).prop("readonly",true);
-                $('select').prop('disabled', true);
-            },
-            error: function(data) {
-            }
-        });
-    });
     $('.btn-update').on('click', function(e) {
         $('.image-area').css("display", "none");
         $('#book-update').removeAttr("style");
@@ -343,90 +274,47 @@
             dataType: 'JSON',
             url: '/admin/books/' + book_id,
             success: function(data) {
-                console.log(data);
-                $('#name').val(data['book']['name']).prop('readonly', false);
+                 $('#name').val(data['book']['name']).prop("readonly",true);
                 for (var i = 0; i < data['categories'].length; i++) {
                     array.push(data['categories'][i]['category_id']);
                 }
 
-                $('#id').val(data['book']['id']);
-                $('#category').val(array).trigger('change');
+                $('#id').prop("readonly",true).val(data['book']['id']);
+                $('#category').val(array).trigger('change').prop("readonly",true);
                 $('#description').val(CKEDITOR.instances.description.setData(data['book']['description']));
-                $('#introduce').val(data['book']['introduce']).prop('readonly', false);
+                $('#introduce').val(data['book']['introduce']).prop("readonly",true);
                 $('#location').val(data['book']['bookshelf_id']).trigger('change');
                 $('#quality').val(data['details'][0]['quality']).trigger('change');
-                $('#price').val(data['book']['price']).prop('readonly', false);
-                $('#price-rent').val(data['book']['rental_fee']).prop('readonly', false);
-                $('#author').val(data['book']['author']).prop('readonly', false);
+                $('#price').val(data['book']['price']).prop("readonly",true);
+                $('#price-rent').val(data['book']['rental_fee']).prop("readonly",true);
+                $('#author').val(data['book']['author']).prop("readonly",true);
                 $('input[type=radio][name="status"][value=' + data['book']['status'] + ']').prop('checked', true);
-                $('input[type=radio][name="status"]').prop('disabled', false);
-                $('#company').val(data['book']['company']).prop('readonly', false);
-                $('#year').val(data['book']['year']).prop('readonly', false);
-                $('#republish').val(data['book']['republish']).prop('readonly', false);
-                $('#isbn').val(data['book']['isbn']).prop('readonly', false);
-                $('select').prop('disabled', false);
+                $('#company').val(data['book']['company']).prop("readonly",true);
+                $('#year').val(data['book']['year']).prop("readonly",true);
+                $('#republish').val(data['book']['republish']).prop("readonly",true);
+                $('#isbn').val(data['book']['isbn']).prop("readonly",true);
+                $('select').prop('disabled', true);
             },
             error: function(data) {
             }
         });
     });
-    $('#book-update').click(function(evt) {
-
-        $('#error-name').text("");
-        $('#error-introduce').text("");
-        $('#error-description').text("");
-        $('#error-price').text("");
-        $('#error-price-rent').text("");
-        $('#error-author').text("");
-        $('#error-company').text("");
-        $('#error-year').text("");
-        $('#error-kind').text("");
-        $('#error-method').text("");
-        $('#error-account').text("");
-        $('#error-category').text("");
-        $('#error-quality').text("");
-        $('#error-republish').text("");
-        $('#error-location').text("");
-        $('#error-isbn').text("");
+    $('#post-update').click(function(evt) {
 
         var id = $('#id').val();
-        var name = $('#name').val();
-        var categories = $('#category').val();
-        var description = CKEDITOR.instances['description'].getData();
-        var introduce = $('#introduce').val();
-        var location = '1';
-        var price = $('#price').val();
-        var author = $('#author').val();
+
         var status = $('input[name=status]:checked').val();
-        var company = $('#company').val();
-        var year = $('#year').val();
-        var republish = $('#republish').val();
-        var isbn = $('#isbn').val();
-        var rent = $('#price-rent').val();
-        var quality = $('#quality').val();
+
 
         $.ajax({
 
             cache: false,
             method: 'PUT',
             dataType: 'JSON',
-            url: '/book/update',
+            url: '/book/updatePost',
             data: {
                 id: id,
-                name: name,
-                categories: categories,
                 status: status,
-                description: description,
-                introduce: introduce,
-                location: location,
-                price: price,
-                author: author,
-                company: company,
-                year: year,
-                republish: republish,
-                isbn: isbn,
-                rent: rent,
-                quality: quality
             },
             success: function(data) {
                 alert("Cập nhật thành công thông tin sách");
@@ -457,5 +345,26 @@
         });
         evt.preventDefault();
     });
+    $('.btn-delete').click(function(e) {
+    var id = $(this).data('id');
+    console.log(id);
+    $.ajax({
+        cache: false,
+        method: 'PUT',
+        dataType: 'JSON',
+        data: {
+            id: id,
+        },
+        url: '/book/delete',
+        success: function(data) {
+            alert('Bạn đã xóa thành công sách khỏi hệ thống');
+            window.location.reload(true);
+        },
+        error: function(data) {
+            alert('Có lỗi xảy ra, vui lòng thử lại');
+        }
+    });
+    e.preventDefault();
+});
 </script>
 @endsection

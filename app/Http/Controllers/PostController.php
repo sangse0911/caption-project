@@ -127,9 +127,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $data = $request->all();
+            $book = $this->postRepository->modified($data);
+
+            return response()->json($book, 200);
+        }
     }
 
     /**

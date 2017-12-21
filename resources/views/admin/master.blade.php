@@ -123,7 +123,7 @@
                             <span class="s-text">Đơn Hàng</span>
                         </a>
                         <ul>
-                            <li><a href="{{ route('admin.supplierPost') }}">Đơn hàng sách bán cho cửa hàng</a></li>
+
                             <li><a href="{{ route('admin.get.orderBuy') }}">Đơn hàng mua sách</a></li>
                             <li><a href="{{ route('admin.get.orderRent') }}">Đơn hàng thuê sách</a></li>
                         </ul>
@@ -137,6 +137,7 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.post') }}">Danh sách bài đăng</a></li>
+                            <li><a href="{{ route('admin.supplierPost') }}">Đơn hàng sách bán cho cửa hàng</a></li>
 
                         </ul>
                     </li>
@@ -153,7 +154,7 @@
                         </ul>
                     </li>
                     @else
-                    <li class="with-sub">
+                   <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
                             <span class="s-icon"><i class="fa fa-users"></i></span>
@@ -195,21 +196,19 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.book.index') }}">Danh Sách</a></li>
-                            <li><a href="javascript:void(0)" class="call_ajax"
-                                data-method="GET" data-url="sell-book">Sách bán</a></li>
-                            <li><a href="javascript:void(0)" class="call_ajax"
-                                data-method="GET" data-url="rent-book">Sách thuê</a></li>
+                            <li><a href="{{ route('admin.book.sell-book') }}">Sách bán</a></li>
+                            <li><a href="{{ route('admin.book.rent-book') }}">Sách thuê</a></li>
                         </ul>
                     </li>
                     <li class="with-sub">
-                        <a href="#" class="waves-effect  waves-light">
+                        <a href="#" class="waves-effect waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
-                            <span class="tag tag-danger">10</span>
+                            <span class="tag tag-danger" id="order-tag"></span>
                             <span class="s-icon"><i class="fa fa-cart-arrow-down"></i></span>
                             <span class="s-text">Đơn Hàng</span>
                         </a>
                         <ul>
-                            <li><a href="{{ route('admin.supplierPost') }}">Đơn hàng sách bán cho cửa hàng</a></li>
+
                             <li><a href="{{ route('admin.get.orderBuy') }}">Đơn hàng mua sách</a></li>
                             <li><a href="{{ route('admin.get.orderRent') }}">Đơn hàng thuê sách</a></li>
                         </ul>
@@ -223,6 +222,8 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.post') }}">Danh sách bài đăng</a></li>
+                            <li><a href="{{ route('admin.supplierPost') }}">Đơn hàng sách bán cho cửa hàng</a></li>
+
                         </ul>
                     </li>
 
@@ -276,15 +277,7 @@
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right animated fadeInUp">
-                                {{--     <a class="dropdown-item" href="index.html#">
-                                        <i class="ti-email mr-0-5"></i> Tin nhắn
-                                    </a>
-                                    <a class="dropdown-item" href="index.html#">
-                                        <i class="ti-user mr-0-5"></i> Thông tin
-                                    </a> --}}
-                                   {{--  <div class="dropdown-divider"></div> --}}
                                     <a class="dropdown-item" href="admin/logout" ><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng Xuất</a>
-                                   {{--  </form> --}}
                                 </div>
                             </li>
                         </ul>
