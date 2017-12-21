@@ -65,6 +65,20 @@ class PostRepository implements PostInterface
     }
 
     /**
+     * [getNewPost description]
+     * @return [type] [description]
+     */
+    public function getNewPost()
+    {
+        return Book::where('status', '4')
+
+            ->whereHas('contracts', function ($query) {
+                $query->where('contracts.status', '1');
+            })
+            ->count();
+    }
+
+    /**
      * [find description]
      * @param  [type] $id [description]
      * @return [type]     [description]

@@ -9,4 +9,5 @@ interface PostInterface
     public function create($data);
     public function getAtHome();
     public function modified($data);
+    public function getNewPost();
 }

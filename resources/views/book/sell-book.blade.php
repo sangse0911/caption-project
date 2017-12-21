@@ -607,5 +607,6 @@ $(".my-rating-9").starRating({
         });
         evt.preventDefault();
     });
+
 </script>
 @endpush

@@ -225,7 +225,7 @@
                                 <span class="btn-label"><i class="fa fa-edit"></i></span> Sửa
                             </button>
                             &nbsp
-                            <button id="view-{{ $book->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light">
+                            <button data-id="{{ $book->id }}" type="button" class="btn btn-danger btn-sm label-left b-a-0 waves-effect waves-light btn-delete">
                                 <span class="btn-label"><i class="fa fa-trash-o  fa-fw"></i></span> Xóa
                             </button>
                         </td>
@@ -580,6 +580,7 @@ $('.btn-delete').click(function(e) {
         url: '/book/delete',
         success: function(data) {
             alert('Bạn đã xóa thành công sách khỏi hệ thống');
+            window.location.reload(true);
         },
         error: function(data) {
             alert('Có lỗi xảy ra, vui lòng thử lại');

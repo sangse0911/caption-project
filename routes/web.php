@@ -175,6 +175,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/event/{id}', ['as' => 'event.show', 'uses' => 'EventController@show']);
 
     Route::get('/newOrder', 'OrderController@getNewOrder')->name('get.new.order');
+    Route::get('/newPost', 'PostController@getNewPost')->name('get.new.post');
     /**
      *
      */

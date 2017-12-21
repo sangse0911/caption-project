@@ -131,13 +131,13 @@
                     <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
-                            <span class="tag tag-danger">10</span>
+                            <span class="tag tag-danger" id="post-tag"></span>
                             <span class="s-icon"><i class="fa fa-bars"></i></span>
                             <span class="s-text">Góc Sách</span>
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.post') }}">Danh sách bài đăng</a></li>
-                            <li><a href="{{ route('admin.supplierPost') }}">Đơn hàng sách bán cho cửa hàng</a></li>
+                            <li><a href="{{ route('admin.supplierPost') }}">Sách bán cho cửa hàng</a></li>
 
                         </ul>
                     </li>
@@ -145,7 +145,7 @@
                     <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
-                            <span class="tag tag-danger">10</span>
+                            <span class="tag tag-danger"></span>
                             <span class="s-icon"><i class="fa fa-bell"></i></span>
                             <span class="s-text">Sự kiện</span>
                         </a>
@@ -222,7 +222,7 @@
                         </a>
                         <ul>
                             <li><a href="{{ route('admin.post') }}">Danh sách bài đăng</a></li>
-                            <li><a href="{{ route('admin.supplierPost') }}">Đơn hàng sách bán cho cửa hàng</a></li>
+                            <li><a href="{{ route('admin.supplierPost') }}">Sách bán cho cửa hàng</a></li>
 
                         </ul>
                     </li>
@@ -230,7 +230,7 @@
                     <li class="with-sub">
                         <a href="#" class="waves-effect  waves-light">
                             <span class="s-caret"><i class="fa fa-angle-down"></i></span>
-                            <span class="tag tag-danger">10</span>
+                            <span class="tag tag-danger"></span>
                             <span class="s-icon"><i class="fa fa-bell"></i></span>
                             <span class="s-text">Sự kiện</span>
                         </a>
@@ -389,6 +389,21 @@
                 console.log('ee');
             }
         })
+    }, 5000);
+
+    setInterval(function() {
+
+        $.ajax({
+            cache:false,
+            method: 'GET',
+            url: '/newPost',
+            success: function(data) {
+                $('#post-tag').text(data);
+            },
+            error: function(data) {
+                console.log('ee');
+            }
+        });
     }, 5000);
     </script>
        <script>

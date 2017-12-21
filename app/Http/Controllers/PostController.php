@@ -95,11 +95,24 @@ class PostController extends Controller
         return $this->postRepository->find($id);
     }
 
+    /**
+     * [getAllPostByUserId description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function getAllPostByUserId($id)
     {
         $books = $this->postRepository->find($id);
 
         return view('post.single-post', compact('books'));
+    }
+
+    public function getNewPost(Request $request)
+    {
+        if ($request->ajax()) {
+
+            return response()->json($this->postRepository->getNewPost(), 200);
+        }
     }
     /*
 

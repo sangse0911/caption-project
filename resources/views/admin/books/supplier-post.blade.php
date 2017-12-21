@@ -132,9 +132,7 @@
                                 <label class="radio-inline">
                                     <input type="radio" name="status" value="1">Đã xác nhận</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="status" value="2">Đã hoàn thành </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="status" value="3">Đã hủy</label>
+                                    <input type="radio" name="status" value="9">Đã hủy</label>
 
                                 <span class="help-block">
                                     <strong id="error-status"></strong>
@@ -170,35 +168,18 @@
                         <th>Tên</th>
                         <th>Tác gỉa</th>
                         <th>Xuất bản lần thứ</th>
-                        <th>Trạng thái</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {{-- {{ dd($books) }} --}}
                     @foreach($books as $book)
                     <tr>
                         <td>{{ $book->id }}</td>
                         <td>{{ $book->name }}</td>
                         <td>{{ $book->author }}</td>
                         <td>{{ $book->republish }}</td>
-                        <td>
-                            @php
-                                switch ($book->status) {
-                                    case '1':
-                                        echo 'Xác nhận';
-                                        break;
-                                    case '2':
-                                        echo 'Hoàn thành';
-                                        break;
-                                    case '3':
-                                        echo 'Đã hủy';
-                                        break;
-                                    default:
-                                        echo 'Đơn hàng mới';
-                                        break;
-                                }
-                            @endphp
-                        </td>
+
                         <td align="center">
                             <button id="{{ $book->id }}" data-id="{{ $book->id }}" type="button" class="btn btn-warning btn-view btn-sm label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">
                                 <span class="btn-label"><i class="fa fa-eye" ></i></span> Xem
