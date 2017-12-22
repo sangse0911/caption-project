@@ -167,7 +167,7 @@
                         <th>ID</th>
                         <th>Tên</th>
                         <th>Tác gỉa</th>
-                        <th>Xuất bản lần thứ</th>
+                        <th>Trạng thái</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
@@ -178,7 +178,26 @@
                         <td>{{ $book->id }}</td>
                         <td>{{ $book->name }}</td>
                         <td>{{ $book->author }}</td>
-                        <td>{{ $book->republish }}</td>
+                        <td>
+
+                            @php
+                                switch ($book->status) {
+                                    case '2':
+                                        echo 'Đã xác nhận ';
+                                        break;
+                                    case '3':
+                                        echo'Đã hoàn thành';
+                                        break;
+                                    case '9':
+                                        echo 'Đã hủy';
+                                        break;
+                                    default:
+                                        echo 'Mới';
+                                        break;
+                                }
+                            @endphp
+
+                        </td>
 
                         <td align="center">
                             <button id="{{ $book->id }}" data-id="{{ $book->id }}" type="button" class="btn btn-warning btn-view btn-sm label-left b-a-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal">

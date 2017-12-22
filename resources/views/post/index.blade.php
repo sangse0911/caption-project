@@ -46,7 +46,7 @@
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="grid" aria-expanded="true">
         <ul class="products columns-3">
-            @foreach($books as $book) {{-- {{ dd($book) }} --}} {{-- @foreach($book->images as $image) --}}
+            @foreach($books as $book)
             <li class="product">
                 <div class="product-outer" style="height: 391px;">
                     <div class="product-inner">
@@ -174,21 +174,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="summary entry-summary">
+
                                         <div class="summary entry-summary">
                                             <h1 itemprop="name" class="product_title entry-title" id="book-name"></h1>
-                                            <div class="woocommerce-product-rating">
-                                                <div class="star-rating" title="Rated 4.33 out of 5">
-                                                    <span style="width:86.6%">
-                                                          <strong itemprop="ratingValue" class="rating">4.33</strong>
-                                                          out of <span itemprop="bestRating">5</span> based on
-                                                    <span itemprop="ratingCount" class="rating">3</span> customer ratings
-                                                    </span>
-                                                </div>
-                                                <a href="#reviews" class="woocommerce-review-link">
-                                                   (<span itemprop="reviewCount" class="count">3</span> Đánh Giá)
-                                                 </a>
-                                            </div>
                                             <!-- .woocommerce-product-rating -->
                                             <!-- .brand -->
                                             <div class="availability in-stock">
@@ -205,8 +193,6 @@
                                             <!-- .description -->
                                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                                                 <p class="price"><span class="electro-price"><ins>Giá Bán: <span class="amount" id="book-price"></span></ins>
-                                                    <br>
-                                                    <del>Giá Bìa: <span class="amount">120.000 VNĐ</span></del>
                                                     </span>
                                                 </p>
                                                 <meta itemprop="price" content="1215" />
@@ -228,7 +214,7 @@
                                             <br/>
                                         </div>
                                         <!-- .summary -->
-                                    </div>
+
                                     <!-- /.single-product-wrapper -->
                                     <div class="woocommerce-tabs wc-tabs-wrapper">
                                         <ul class="nav nav-tabs electro-nav-tabs tabs wc-tabs" role="tablist">
@@ -277,26 +263,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="fb-root"></div>
-                                    <script>
-                                    (function(d, s, id) {
-                                        var js, fjs = d.getElementsByTagName(s)[0];
-                                        if (d.getElementById(id)) return;
-                                        js = d.createElement(s);
-                                        js.id = id;
-                                        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.11&appId=251903588593570';
-                                        fjs.parentNode.insertBefore(js, fjs);
-                                    }(document, 'script', 'facebook-jssdk'));
-                                    </script>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div style="clear: both;"></div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-success btn-default  b-a-0 waves-effect waves-light" id="post-create">Lưu</button>
-                        <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Đóng</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -325,14 +296,15 @@
 </script>
 <script>
     $('.book-show').on('click', function(e) {
-        var book_id = $(this).data('id');
+      var book_id = parseInt($(this).data('id'));
+      console.log(book_id);
         $.ajax({
             cache: false,
             method: 'GET',
             dataType: 'JSON',
-            url: '/book/' + book_id,
+            url: '/book/'+ book_id ,
             success: function(data) {
-                // console.log(data['user']['phone']);
+
                 $('#user-id').text(data['user']['phone']);
                 $('#book-rate').val(data['book']['id']);
                 $('#book-name').text(data['book']['name']);
@@ -345,10 +317,11 @@
                 $('#book-introduce').text(data['book']['introduce']);
                 $('#book-description').text(data['book']['description']);
                 $('#image-book').attr('src','{{ URL::to('assets/images/product/') }}' + '/' + data['images'][0]['path']);
-                $('.fb-comments').attr('data-href',"http://localhost:8000/book/"+ book_id );
-                $('.modal-footer').css('display','none');
+                // $('.fb-comments').attr('data-href',"http://localhost:8000/book/"+ book_id );
+                // $('.modal-footer').css('display','none');
             },
             error: function(data) {
+                alert('aa');
             }
         });
         e.preventDefault();

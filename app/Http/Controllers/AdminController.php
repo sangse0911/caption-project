@@ -33,7 +33,7 @@ class AdminController extends Controller
     {
         $admins = $this->adminRepository->all();
 
-        return view('admin.managers.index', compact('admins'));
+        return view('admin.index', compact('admins'));
     }
 
     public function getAllBookByAdmin()

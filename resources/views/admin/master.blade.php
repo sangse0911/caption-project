@@ -384,9 +384,9 @@
             url: '/newOrder',
             success: function(data) {
                 $('#order-tag').text(data);
+                $('#new-order').text(data);
             },
             error: function(data) {
-                console.log('ee');
             }
         })
     }, 5000);
@@ -399,6 +399,7 @@
             url: '/newPost',
             success: function(data) {
                 $('#post-tag').text(data);
+                $('#new-post').text(data);
             },
             error: function(data) {
                 console.log('ee');

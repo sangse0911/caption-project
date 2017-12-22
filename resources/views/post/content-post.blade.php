@@ -305,7 +305,6 @@
 
         var status = $('input[name=status]:checked').val();
 
-
         $.ajax({
 
             cache: false,

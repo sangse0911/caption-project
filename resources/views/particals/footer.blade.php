@@ -3,15 +3,11 @@
    <style type="text/css"></style>    <div class="footer-newsletter" style="height: 70px;">
         <div class="container" style="text-align: center; height: 60px;">
             <ul style="list-style: none; font-size: 25px; margin-top: 5px;">
-              {{--   <a href=""> <li>
-                    Trang Chủ
-                </li></a>
-                --}}
                 <a href="{{ route('book.sell') }}" style="color: white;"><li style="display: inline;">Sách bán |</li></a>
                  <a href="{{ route('book.renter') }}" style="color: white;"><li style="display: inline;">Sách thuê |</li></a>
                  <a href="javascript:void(0)" style="color: white;"><li style="display: inline;">Bán sách & Cho thuê |</li></a>
                  <a href="{{ route('post.index') }}" style="color: white;"><li style="display: inline;">Góc sách |</li></a>
-                 <a href="" style="color: white;"><li style="display: inline;">Liên hệ quảng cáo</li></a>
+                 <a href="javascript:void(0)" style="color: white;"><li style="display: inline;">Liên hệ quảng cáo</li></a>
             </ul>
         </div>
     </div>
@@ -22,12 +18,12 @@
                 <br>
                 © BOOKSERVICEONLINE
                                 <br>
-                Địa chỉ: 1D, Ngõ 75 Hồ Tùng Mậu, Quận Mai Dịch, TP.HN
+                Địa chỉ: {{ $contacts->get(0)->address }}
                 <br>
-                Điện thoại : (848)- 3820 5592 
+                Điện thoại : {{ $contacts->get(0)->phone }}
                 <br>
-                Email: bookserviceonline@gmail.com
-                <br>Số Tài Khoản: 13213213213
+                Email: {{ $contacts->get(0)->email }}
+                <br>Số Tài Khoản: {{ $contacts->get(0)->account }}
             </div>
     </div>
     </div>
