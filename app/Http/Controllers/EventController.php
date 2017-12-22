@@ -114,6 +114,10 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $events = $this->eventRepository->getAll();
+
+        foreach ($events as $event) {
+            // if($event->end)
+        }
     }
 }

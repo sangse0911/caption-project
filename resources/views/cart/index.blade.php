@@ -70,9 +70,218 @@
                                 <input type="radio" name="method" value="1">Thanh toán khi nhận sách</label>
                             <label class="radio-inline">
                                 <input type="radio" name="method" value="2">Chuyển khoản trước</label>
-                            <span class="help-block">
-                                <strong id="error-method"></strong>
-                            </span>
+
+                        </div>
+                        <div style="clear: both;">
+
+                        </div>
+                        <a data-toggle="modal" href="#myModal" style="color: red;">Quy định của website khi thuê(mượn, mua) sách</a>
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog modal-lg" style="max-width: 1100px;">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Chỉnh sửa sách</h4>
+                                    </div>
+                                    <input type="hidden" name="" id="id">
+                                    <div class="modal-body">
+                                        <div id="content-page" class="span12 content group">
+                                            <div id="post-9122" class="group post-9122 page type-page status-publish hentry instock">
+                                                <h3><span style="color: #dc8323;">1. Thuê Thời Hạn Dưới 1 Năm.</span></h3>
+                                                <p>Bạn có thói quen đọc thật chậm rãi, thưởng thức từng câu chữ qua mỗi trang sách. Mỗi quyển sách đối với bạn là một trải nghiệm sâu sắc, vì thế bạn <span style="color: #dc8323;">cần rất nhiều thời gian</span> để đọc một quyển sách. Hoặc chỉ đơn giản là bạn <span style="color: #dc8323;">không có nhiều thời gian</span> và chỉ có thể đọc được <span style="color: #dc8323;">mỗi ngày một ít</span>, vậy thì đây là hình thức thuê rất phù hợp với bạn. Với hình thức thuê này, bạn có thể giữ sách trong vòng 1 năm mà không cần suy nghĩ gì cả.</p>
+                                                <table class="price" border="1" cellspacing="0" cellpadding="0" align="center">
+                                                    <tbody style="text-align: center;">
+                                                        <tr>
+                                                            <th width="50%">GIÁ BÌA (KHÔNG CÓ GIẢM GIÁ)</th>
+                                                            <th width="50%">Giá Thuê</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>50.000 &#8211; 70.000</td>
+                                                            <td>20.000 đ</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>70.000 &#8211; 90.000</td>
+                                                            <td>30.000 đ</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>90.000 &#8211; 110.000</td>
+                                                            <td>40.000 đ</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>110.000 &#8211; 130.000</td>
+                                                            <td>50.000 đ</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>130.000 &#8211; 150.000</td>
+                                                            <td>60.000 đ</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>150.000 &#8211; 300.000</td>
+                                                            <td>70.000 đ</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>300.000 đ &#8211; 500.000 đ</td>
+                                                            <td>120.000 đ</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p><span style="text-decoration: underline; color: #dc8323;">Lưu ý:</span></p>
+                                                <ul>
+                                                    <li>Đối với sách có giá bìa dưới 50.000 đ quý khách vui lòng chọn 2 quyển cho 1 lần thuê.</li>
+                                                    <li>Qúy khách có thể đọc đến bao lâu cũng được (miễn là không quá 1 năm kể từ ngày giao sách)</li>
+                                                    <li>Nếu quá thời gian thuê 1 năm mà quý khách chưa trả lại sách thì chúng tôi sẽ mặc định đã mua hẳn cuốn sách đó và sẽ tự động trừ vào số tiền mà khách đặt cọc.</li>
+                                                </ul>
+                                                <h3><span style="color: #dc8323;">2. Thuê Trong 2 Tuần.</span></h3>
+                                                <p>Nhằm giúp bạn đọc tiết kiệm thêm chi phí, <span style="color: red;font-weight: bold;">BookServiceOnline </span> quyết định áp dụng hình thức thuê dành cho khách hàng đăng ký trả sách sớm trong vòng 2 tuần. Với hình thức thuê này quý khách có thể <span style="color: #228b22;">tiết kiệm được CỰC NHIỀU</span> tiền thuê cho <span style="color: #228b22;">mỗi quyển sách </span>so với hình thức Thuê Dưới 1 Năm.</p>
+                                                <table class="price" border="1" cellspacing="0" cellpadding="0" align="center">
+                                                    <tbody style="text-align: center;">
+                                                        <tr>
+                                                            <th width="50%">GIÁ BÌA (KHÔNG CÓ GIẢM GIÁ)</th>
+                                                            <th width="100%">Giá Thuê</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>50.000 đ &#8211; 70.000 đ</td>
+                                                            <td>10.000 đ/ 2 tuần</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>70.000 đ &#8211; 90.000 đ</td>
+                                                            <td>15.000 đ/ 2 tuần</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>90.000 đ &#8211; 110.000 đ</td>
+                                                            <td>20.000 đ/ 2 tuần</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>110.000 đ &#8211; 130.000 đ</td>
+                                                            <td>25.000 đ/ 2 tuần</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>130.000 đ &#8211; 150.000 đ</td>
+                                                            <td>30.000 đ/ 2 tuần</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>150.000 đ &#8211; 300.000 đ</td>
+                                                            <td>35.000 đ/ 2 tuần</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p><span style="text-decoration: underline; color: #dc8323;">Lưu ý:</span></p>
+                                                <ul>
+                                                    <li>Đối với sách có giá bìa dưới 50.000 đ quý khách vui lòng chọn 2 quyển cho 1 lần thuê.</li>
+                                                    <li>Thời gian giữ sách bắt đầu được tính kể từ khi giao sách. Nếu quá thời gian thuê sách (2 tuần) thì chúng tôi sẽ thu thêm là 5.000 đ/ 1 tuần tiền phí quá hạn và sẽ được trừ vào tiền cọc khi quý khách trả sách.</li>
+                                                    <li>Nếu tổng giá trên mức 300.000 đ thì chúng tôi sẽ áp dụng chính sách giá theo mục #4 Thuê Theo Bộ Sách bên dưới đây.</li>
+                                                </ul>
+                                                <h3><span style="color: #dc8323;">3. Thuê Trong 1 Tháng.</span></h3>
+                                                <p>Nhằm giúp bạn đọc tiết kiệm thêm chi phí và thêm thời gian đọc, <span style="color: red;font-weight: bold;">BookServiceOnline </span> quyết định áp dụng hình thức thuê dành cho khách hàng đăng ký trả sách trong vòng 1 tháng. Với hình thức thuê này quý khách có thể <span style="color: #228b22;">tiết kiệm thêm 3.000 đ</span> tiền thuê cho <span style="color: #228b22;">mỗi quyển sách</span> so với hình thức <span style="color: #228b22;">Thuê Dưới 1 Năm</span>.</p>
+                                                <table class="price" border="1" cellspacing="0" cellpadding="0" align="center">
+                                                    <tbody style="text-align: center;">
+                                                        <tr>
+                                                            <th width="50%">GIÁ BÌA (KHÔNG CÓ GIẢM GIÁ)</th>
+                                                            <th width="50%">Giá Thuê</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>50.000 đ &#8211; 70.000 đ</td>
+                                                            <td>12.000 đ/ 1 tháng</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>70.000 đ &#8211; 90.000 đ</td>
+                                                            <td>17.000 đ/ 1 tháng</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>90.000 đ &#8211; 110.000 đ</td>
+                                                            <td>22.000 đ/ 1 tháng</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>110.000 đ &#8211; 130.000 đ</td>
+                                                            <td>27.000 đ/ 1 tháng</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>130.000 đ &#8211; 150.000 đ</td>
+                                                            <td>32.000 đ/ 1 tháng</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>150.000 đ &#8211; 300.000 đ</td>
+                                                            <td>37.000 đ/ 1 tháng</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p><span style="text-decoration: underline; color: #dc8323;">Lưu ý:</span></p>
+                                                <ul>
+                                                    <li>Đối với sách có giá bìa dưới 50.000 đ quý khách vui lòng chọn 2 quyển cho 1 lần thuê.</li>
+                                                    <li>Nếu tổng giá trên mức 300.000 đ thì chúng tôi sẽ áp dụng chính sách giá theo mục #4 Thuê Theo Bộ Sách bên dưới đây.</li>
+                                                    <li>Thời gian giữ sách bắt đầu được tính kể từ khi giao sách. Nếu quá thời gian thuê sách (1 tháng) thì chúng tôi sẽ thu thêm là <span style="color: #228b22;">5.000 đ/ 1 tuần</span> tiền phí quá hạn và sẽ được trừ vào tiền cọc khi quý khách trả sách.</li>
+                                                </ul>
+                                                <h3><span style="color: #dc8323;">4. Thuê Theo Bộ Sách.</span></h3>
+                                                <p>Bạn có sở thích đọc các bộ truyện tranh, các bộ tiểu thuyết dài tập, các bộ sách hay…nhưng lại không có thời gian cũng như chi phí để thuê từng cuốn. <span style="color: red;font-weight: bold;">BookServiceOnline </span> quyết định áp dụng cho thuê sách theo các bộ sách nằm ở BSO.</p>
+                                                <p>Với hình thức này, khách hàng sẽ tiết kiệm được rất nhiều chi phí so với hình thức thuê theo giá bìa của từng cuốn</p>
+                                                <table class="price" border="1" cellspacing="0" cellpadding="0" align="center">
+                                                    <tbody style="text-align: center;">
+                                                        <tr>
+                                                            <th width="50%">Giá Bìa (không có giảm giá)</th>
+                                                            <th width="50%">Giá Thuê</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>150.000 đ &#8211; 300.000 đ</td>
+                                                            <td>30.000 đ/ 1 tháng</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>300.000 đ &#8211; 500.000 đ</td>
+                                                            <td>45.000 đ/ 1 tháng</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>500.000 đ &#8211; 800.000 đ</td>
+                                                            <td>70.000 đ/ 1 tháng</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>800.000 đ &#8211; 1.000.000 đ</td>
+                                                            <td>80.000 đ/ 1 tháng</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p><span style="text-decoration: underline;"><span style="color: #dc8323; text-decoration: underline;">Lưu ý:</span></span>
+                                                </p>
+                                                <ul>
+                                                    <li>Thời gian giữ sách bắt đầu được tính kể từ khi giao sách. Nếu quá thời gian thuê sách (1 tháng) thì chúng tôi sẽ thu thêm là <span style="color: #228b22;">10.000 đ/ 1 tuần / 1 bộ</span> tiền phí quá hạn và sẽ được trừ vào tiền cọc khi quý khách trả sách.</li>
+                                                </ul>
+                                                <h3><span style="color: #dc8323;">5 Phí Vận Chuyển.</span></h3>
+                                                <p>Để thuận tiện cho việc vận chuyển sách đến khách hàng, <span style="color: #228b22;">BSO</span> đưa ra bảng giá phí vận chuyển khi khách hàng áp dụng chương trình “<span style="color: #228b22;">Thuê Sách</span>” tại <span style="color: #228b22;">BSO</span>.</p>
+                                                <table class="price" border="1" cellspacing="0" cellpadding="0" align="center">
+                                                    <tbody style="text-align: center;">
+                                                        <tr>
+                                                            <th width="50%">Phạm Vi Bán Kính (Tính từ cửa hàng theo Google map)</th>
+                                                            <th width="50%">Phí Vận Chuyển ( 2 chiều giao &amp; nhận lại sách)</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Từ 5 Km &#8211; 7 Km</td>
+                                                            <td>20.000 đ</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Từ 7 Km &#8211; 10 Km</td>
+                                                            <td>30.000 đ</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Từ 10 Km &#8211; 15 Km</td>
+                                                            <td>40.000 đ</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Từ 15 Km &#8211; 20 Km</td>
+                                                            <td>50.000 đ</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p><span style="text-decoration: underline; color: #dc8323;">Lưu ý:</span></p>
+                                                <ul>
+                                                    <li>Khung chi phí trên chỉ áp dụng cho khách hàng trong khu vực nội thành Hà Nội.</li>
+                                                    <li>Các khu vực ngoại thành, khách hàng chịu chi phí vận chuyển.</li>
+                                                </ul>
+                                                <p>&nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </td>
                 </tr>

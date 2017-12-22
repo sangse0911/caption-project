@@ -593,12 +593,10 @@ $('.btn-delete').click(function(e) {
     e.preventDefault();
 });
 $('#radio2').click(function() {
-    $('.form-rent').removeAttr('style');
-    $('#price-rent').val('');
+    $('#price-rent').val(parseInt(0));
 });
 $('#radio1').click(function() {
-    $('.form-rent').css('display','none');
-    $('#price-rent').val(0);
+    $('#price-rent').val(parseInt(0));
 });
 
 </script>

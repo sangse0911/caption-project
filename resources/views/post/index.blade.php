@@ -27,6 +27,8 @@
 .pagination li:hover:not(.active) {
     background-color: #ddd;
 }
+table.cart .actions {text-align: center !important;
+    }
 </style>
 @endsection()
 <div style="margin-top: 50px;"></div>
@@ -110,9 +112,6 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <span class="loop-product-categories"><a rel="tag" href="javascript:void(0)"></a></span><a href="javascript:void(0)"><h3>{{ $book->name }}</h3>
-                                    <div class="product-rating">
-                                        <div title="Rated 4 out of 5" class="star-rating"><span style="width:80%"><strong class="rating">4</strong> out of 5</span></div> (3)
-                                    </div>
                                     <div class="product-short-description">
                                         <ul style="padding-left: 18px;">
                                             <li>Tác gỉa: {{ $book->author }}</li>
@@ -297,12 +296,12 @@
 <script>
     $('.book-show').on('click', function(e) {
       var book_id = parseInt($(this).data('id'));
-      console.log(book_id);
+
         $.ajax({
             cache: false,
             method: 'GET',
             dataType: 'JSON',
-            url: '/book/'+ book_id ,
+            url:'/book/'+ book_id,
             success: function(data) {
 
                 $('#user-id').text(data['user']['phone']);
